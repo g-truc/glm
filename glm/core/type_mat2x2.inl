@@ -271,8 +271,8 @@ namespace detail
 
         tmat2x2<T> Inverse(
             + this->value[1][1] / Determinant,
+            - this->value[0][1] / Determinant,
             - this->value[1][0] / Determinant,
-            - this->value[0][1] / Determinant, 
             + this->value[0][0] / Determinant);
         return Inverse;
     }
