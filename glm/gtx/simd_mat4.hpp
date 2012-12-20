@@ -91,6 +91,8 @@ namespace detail
 			fvec4SIMD const & v3);
 		explicit fmat4x4SIMD(
 			tmat4x4<float> const & m);
+        explicit fmat4x4SIMD(
+            __m128 const in[4]);
 
 		// Conversions
 		//template <typename U> 

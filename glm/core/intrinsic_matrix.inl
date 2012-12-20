@@ -46,7 +46,7 @@ GLM_FUNC_QUALIFIER matType sse_comp_mul_ps
 	out[3] = _mm_mul_ps(in1[3], in2[3]);
 }
 
-GLM_FUNC_QUALIFIER void sse_add_ps(__m128 in1[4], __m128 in2[4], __m128 out[4])
+GLM_FUNC_QUALIFIER void sse_add_ps(__m128 const in1[4], __m128 const in2[4], __m128 out[4])
 {
 	{
 		out[0] = _mm_add_ps(in1[0], in2[0]);
@@ -56,7 +56,7 @@ GLM_FUNC_QUALIFIER void sse_add_ps(__m128 in1[4], __m128 in2[4], __m128 out[4])
 	}
 }
 
-GLM_FUNC_QUALIFIER void sse_sub_ps(__m128 in1[4], __m128 in2[4], __m128 out[4])
+GLM_FUNC_QUALIFIER void sse_sub_ps(__m128 const in1[4], __m128 const in2[4], __m128 out[4])
 {
 	{
 		out[0] = _mm_sub_ps(in1[0], in2[0]);
@@ -66,7 +66,7 @@ GLM_FUNC_QUALIFIER void sse_sub_ps(__m128 in1[4], __m128 in2[4], __m128 out[4])
 	}
 }
 
-GLM_FUNC_QUALIFIER __m128 sse_mul_ps(__m128 m[4], __m128 v)
+GLM_FUNC_QUALIFIER __m128 sse_mul_ps(__m128 const m[4], __m128 v)
 {
 	__m128 v0 = _mm_shuffle_ps(v, v, _MM_SHUFFLE(0, 0, 0, 0));
 	__m128 v1 = _mm_shuffle_ps(v, v, _MM_SHUFFLE(1, 1, 1, 1));
@@ -85,7 +85,7 @@ GLM_FUNC_QUALIFIER __m128 sse_mul_ps(__m128 m[4], __m128 v)
 	return a2;
 }
 
-GLM_FUNC_QUALIFIER __m128 sse_mul_ps(__m128 v, __m128 m[4])
+GLM_FUNC_QUALIFIER __m128 sse_mul_ps(__m128 v, __m128 const m[4])
 {
 	__m128 i0 = m[0];
 	__m128 i1 = m[1];
