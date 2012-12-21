@@ -102,7 +102,7 @@ GLM_FUNC_QUALIFIER fvec4SIMD & fmat4x4SIMD::operator[]
 )
 {
 	assert(
-		i >= fmat4x4SIMD::size_type(0) &&
+		//i >= fmat4x4SIMD::size_type(0) &&
 		i < fmat4x4SIMD::col_size());
 
 	return this->Data[i];
@@ -114,7 +114,7 @@ GLM_FUNC_QUALIFIER fvec4SIMD const & fmat4x4SIMD::operator[]
 ) const
 {
 	assert(
-		i >= fmat4x4SIMD::size_type(0) &&
+		//i >= fmat4x4SIMD::size_type(0) &&
 		i < fmat4x4SIMD::col_size());
 
 	return this->Data[i];
