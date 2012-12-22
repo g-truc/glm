@@ -1153,6 +1153,9 @@ namespace detail
     //////////////////////////////////////
 	// Static constants
 
+    template <typename T> const tvec3<T> tvec3<T>::zero     = tvec3<T>(T( 0), T( 0), T( 0));
+    template <typename T> const tvec3<T> tvec3<T>::one      = tvec3<T>(T( 1), T( 1), T( 1));
+
     template <typename T> const tvec3<T> tvec3<T>::xpos     = tvec3<T>(T( 1), T( 0), T( 0));
     template <typename T> const tvec3<T> tvec3<T>::xneg     = tvec3<T>(T(-1), T( 0), T( 0));
     template <typename T> const tvec3<T> tvec3<T>::ypos     = tvec3<T>(T( 0), T( 1), T( 0));

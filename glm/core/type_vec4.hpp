@@ -305,6 +305,9 @@ namespace detail
         //////////////////////////////////////
 		// Static constants
 
+        static const tvec4<T> zero;
+        static const tvec4<T> one;
+
         static const tvec4<T> xpos;
         static const tvec4<T> xneg;
         static const tvec4<T> ypos;

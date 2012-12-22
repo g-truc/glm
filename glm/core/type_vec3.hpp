@@ -249,6 +249,9 @@ namespace detail
         //////////////////////////////////////
 		// Static constants
 
+        static const tvec3<T> zero;
+        static const tvec3<T> one;
+
         static const tvec3<T> xpos;
         static const tvec3<T> xneg;
         static const tvec3<T> ypos;
