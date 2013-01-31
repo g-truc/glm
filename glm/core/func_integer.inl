@@ -103,7 +103,7 @@ namespace glm
 		if(x > y)
 			return genUType(detail::highp_int_t(x) - detail::highp_int_t(y));
 		else
-			return genUType(detail::highp_int_t(1) << detail::highp_int_t(32) + detail::highp_int_t(x) - detail::highp_int_t(y));
+			return genUType((detail::highp_int_t(1) << detail::highp_int_t(32)) + detail::highp_int_t(x) - detail::highp_int_t(y));
 	}
 
 	template <typename T>
