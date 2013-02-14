@@ -452,7 +452,7 @@ namespace detail
 #   define GLM_RESTRICT
 #   define GLM_RESTRICT_VAR __restrict
 #   define GLM_CONSTEXPR
-#elif((GLM_COMPILER & (GLM_COMPILER_GCC | GLM_COMPILER_LLVM_GCC)) && (GLM_COMPILER >= GLM_COMPILER_GCC31))
+#elif(((GLM_COMPILER & (GLM_COMPILER_GCC | GLM_COMPILER_LLVM_GCC)) && (GLM_COMPILER >= GLM_COMPILER_GCC31)) || (GLM_COMPILER & GLM_COMPILER_CLANG))
 #	define GLM_DEPRECATED __attribute__((__deprecated__))
 #	define GLM_ALIGN(x) __attribute__((aligned(x)))
 #	define GLM_ALIGNED_STRUCT(x) struct __attribute__((aligned(x)))
