@@ -72,6 +72,7 @@
 #include "./gtc/matrix_transform.hpp"
 #include "./gtc/noise.hpp"
 #include "./gtc/quaternion.hpp"
+#include "./gtc/dual_quaternion.hpp"
 #include "./gtc/random.hpp"
 #include "./gtc/reciprocal.hpp"
 #include "./gtc/swizzle.hpp"
