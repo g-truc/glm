@@ -109,7 +109,7 @@ namespace detail
 	{
 		value_type const Zero(0);
 		this->value[0] = col_type(s, Zero, Zero, Zero);
-		this->value[1] = col_type(Zero, Zero, Zero, Zero);
+		this->value[1] = col_type(Zero, s, Zero, Zero);
 	}
 
 	template <typename T> 
