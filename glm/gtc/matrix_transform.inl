@@ -339,7 +339,7 @@ namespace glm
 		return Result;
 	}
 
-	template <typename T, precision P, typename U>
+	template <typename T, typename U, precision P>
 	GLM_FUNC_QUALIFIER detail::tvec3<T, P> project
 	(
 		detail::tvec3<T, P> const & obj,
@@ -360,7 +360,7 @@ namespace glm
 		return detail::tvec3<T, P>(tmp);
 	}
 
-	template <typename T, precision P, typename U>
+	template <typename T, typename U, precision P>
 	GLM_FUNC_QUALIFIER detail::tvec3<T, P> unProject
 	(
 		detail::tvec3<T, P> const & win,

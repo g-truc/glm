@@ -27,20 +27,20 @@ namespace glm
 		return f;
 	}
 
-	template <typename T>
+	template <typename T, precision P>
 	GLM_FUNC_QUALIFIER detail::tvec2<T, P> fastPow(
 		const detail::tvec2<T, P>& x, 
-		const detail::tvec2<int>& y)
+		const detail::tvec2<int, P>& y)
 	{
 		return detail::tvec2<T, P>(
 			fastPow(x.x, y.x),
 			fastPow(x.y, y.y));
 	}
 
-	template <typename T>
+	template <typename T, precision P>
 	GLM_FUNC_QUALIFIER detail::tvec3<T, P> fastPow(
 		const detail::tvec3<T, P>& x, 
-		const detail::tvec3<int>& y)
+		const detail::tvec3<int, P>& y)
 	{
 		return detail::tvec3<T, P>(
 			fastPow(x.x, y.x),
@@ -48,10 +48,10 @@ namespace glm
 			fastPow(x.z, y.z));
 	}
 
-	template <typename T>
+	template <typename T, precision P>
 	GLM_FUNC_QUALIFIER detail::tvec4<T, P> fastPow(
 		const detail::tvec4<T, P>& x, 
-		const detail::tvec4<int>& y)
+		const detail::tvec4<int, P>& y)
 	{
 		return detail::tvec4<T, P>(
 			fastPow(x.x, y.x),

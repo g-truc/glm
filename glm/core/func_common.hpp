@@ -208,7 +208,7 @@ namespace glm
 		genType const & minVal,
 		genType const & maxVal);
 
-	template <typename genType>
+	template <typename genType, precision P>
 	genType clamp(
 		genType const & x,
 		typename genType::value_type const & minVal,

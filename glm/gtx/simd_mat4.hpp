@@ -90,7 +90,7 @@ namespace detail
 			fvec4SIMD const & v2,
 			fvec4SIMD const & v3);
 		explicit fmat4x4SIMD(
-			tmat4x4<float> const & m);
+			mat4x4 const & m);
         explicit fmat4x4SIMD(
             __m128 const in[4]);
 
@@ -163,7 +163,7 @@ namespace detail
 
 	//! Convert a simdMat4 to a mat4.
 	//! (From GLM_GTX_simd_mat4 extension)
-	detail::tmat4x4<float> mat4_cast(
+	mat4 mat4_cast(
 		detail::fmat4x4SIMD const & x);
 
 	//! Multiply matrix x by matrix y component-wise, i.e.,

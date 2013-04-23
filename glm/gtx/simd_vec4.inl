@@ -33,7 +33,7 @@ GLM_FUNC_QUALIFIER fvec4SIMD::fvec4SIMD(fvec4SIMD const & v) :
 	Data(v.Data)
 {}
 
-GLM_FUNC_QUALIFIER fvec4SIMD::fvec4SIMD(tvec4<float> const & v) :
+GLM_FUNC_QUALIFIER fvec4SIMD::fvec4SIMD(vec4 const & v) :
 	Data(_mm_set_ps(v.w, v.z, v.y, v.x))
 {}
 
@@ -269,12 +269,12 @@ GLM_FUNC_QUALIFIER fvec4SIMD operator-- (fvec4SIMD const & v, int)
 
 }//namespace detail
 
-GLM_FUNC_QUALIFIER detail::tvec4<float> vec4_cast
+GLM_FUNC_QUALIFIER vec4 vec4_cast
 (
 	detail::fvec4SIMD const & x
 )
 {
-	GLM_ALIGN(16) detail::tvec4<float> Result;
+	GLM_ALIGN(16) vec4 Result;
 	_mm_store_ps(&Result[0], x.Data);
 	return Result;
 }

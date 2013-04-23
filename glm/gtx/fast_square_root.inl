@@ -36,7 +36,7 @@ namespace glm
 		i = 0x5f375a86 - (i >> 1);
 		//x = *(float*)&i;
 		//x = *((float*)(char*)&i);
-		tmp = detail::uif(i).f;
+		tmp = detail::uif32(i).f;
 		tmp = tmp * (1.5f - xhalf * tmp * tmp);
 		return genType(tmp);
 	}
@@ -53,30 +53,30 @@ namespace glm
 		return abs(x);
 	}
 
-	template <typename valType>
+	template <typename valType, precision P>
 	GLM_FUNC_QUALIFIER valType fastLength
 	(
-		detail::tvec2<valType> const & x
+		detail::tvec2<valType, P> const & x
 	)
 	{
 		valType sqr = x.x * x.x + x.y * x.y;
 		return fastSqrt(sqr);
 	}
 
-	template <typename valType>
+	template <typename valType, precision P>
 	GLM_FUNC_QUALIFIER valType fastLength
 	(
-		detail::tvec3<valType> const & x
+		detail::tvec3<valType, P> const & x
 	)
 	{
 		valType sqr = x.x * x.x + x.y * x.y + x.z * x.z;
 		return fastSqrt(sqr);
 	}
 
-	template <typename valType>
+	template <typename valType, precision P>
 	GLM_FUNC_QUALIFIER valType fastLength
 	(
-		detail::tvec4<valType> const & x
+		detail::tvec4<valType, P> const & x
 	)
 	{
 		valType sqr = x.x * x.x + x.y * x.y + x.z * x.z + x.w * x.w;
@@ -104,30 +104,30 @@ namespace glm
 		return x > genType(0) ? genType(1) : -genType(1);
 	}
 
-	template <typename valType>
-	GLM_FUNC_QUALIFIER detail::tvec2<valType> fastNormalize
+	template <typename valType, precision P>
+	GLM_FUNC_QUALIFIER detail::tvec2<valType, P> fastNormalize
 	(
-		detail::tvec2<valType> const & x
+		detail::tvec2<valType, P> const & x
 	)
 	{
 		valType sqr = x.x * x.x + x.y * x.y;
 		return x * fastInverseSqrt(sqr);
 	}
 
-	template <typename valType>
-	GLM_FUNC_QUALIFIER detail::tvec3<valType> fastNormalize
+	template <typename valType, precision P>
+	GLM_FUNC_QUALIFIER detail::tvec3<valType, P> fastNormalize
 	(
-		detail::tvec3<valType> const & x
+		detail::tvec3<valType, P> const & x
 	)
 	{
 		valType sqr = x.x * x.x + x.y * x.y + x.z * x.z;
 		return x * fastInverseSqrt(sqr);
 	}
 
-	template <typename valType>
-	GLM_FUNC_QUALIFIER detail::tvec4<valType> fastNormalize
+	template <typename valType, precision P>
+	GLM_FUNC_QUALIFIER detail::tvec4<valType, P> fastNormalize
 	(
-		detail::tvec4<valType> const & x
+		detail::tvec4<valType, P> const & x
 	)
 	{
 		valType sqr = x.x * x.x + x.y * x.y + x.z * x.z + x.w * x.w;

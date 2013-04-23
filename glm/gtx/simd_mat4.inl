@@ -73,7 +73,7 @@ GLM_FUNC_QUALIFIER fmat4x4SIMD::fmat4x4SIMD
 
 GLM_FUNC_QUALIFIER fmat4x4SIMD::fmat4x4SIMD
 (
-	tmat4x4<float> const & m
+	mat4 const & m
 )
 {
 	this->Data[0] = fvec4SIMD(m[0]);
@@ -520,12 +520,12 @@ GLM_FUNC_QUALIFIER fmat4x4SIMD const operator++
 
 }//namespace detail
 
-GLM_FUNC_QUALIFIER detail::tmat4x4<float> mat4_cast
+GLM_FUNC_QUALIFIER mat4 mat4_cast
 (
 	detail::fmat4x4SIMD const & x
 )
 {
-	GLM_ALIGN(16) detail::tmat4x4<float> Result;
+	GLM_ALIGN(16) mat4 Result;
 	_mm_store_ps(&Result[0][0], x.Data[0].Data);
 	_mm_store_ps(&Result[1][0], x.Data[1].Data);
 	_mm_store_ps(&Result[2][0], x.Data[2].Data);

@@ -76,7 +76,7 @@ namespace detail
 		static size_type value_size();
 
 		typedef fvec4SIMD type;
-		typedef tvec4<bool> bool_type;
+		typedef tvec4<bool, highp> bool_type;
 
 #ifdef GLM_SIMD_ENABLE_XYZW_UNION
         union
@@ -108,7 +108,7 @@ namespace detail
 			float const & z, 
 			float const & w);
 		explicit fvec4SIMD(
-			tvec4<float> const & v);
+			vec4 const & v);
 
 		////////////////////////////////////////
 		//// Convertion vector constructors
@@ -161,7 +161,7 @@ namespace detail
 
 	//! Convert a simdVec4 to a vec4.
 	//! (From GLM_GTX_simd_vec4 extension)
-	detail::tvec4<float> vec4_cast(
+	vec4 vec4_cast(
 		detail::fvec4SIMD const & x);
 
 	//! Returns x if x >= 0; otherwise, it returns -x. 
