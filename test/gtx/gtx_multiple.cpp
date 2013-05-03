@@ -14,13 +14,16 @@ int test_higher()
 {
 	int Error(0);
 
-	int Higher0 = glm::higherMultiple(-5, 4);
-	Error += Higher0 == -4 ? 0 : 1;
+	Error += glm::higherMultiple(-5, 4) == -4 ? 0 : 1;
 	Error += glm::higherMultiple(-4, 4) == -4 ? 0 : 1;
-	Error += glm::higherMultiple(-3, 4) == -4 ? 0 : 1;
-	Error += glm::higherMultiple(-2, 4) == -4 ? 0 : 1;
-	Error += glm::higherMultiple(-1, 4) == -4 ? 0 : 1;
+	Error += glm::higherMultiple(-3, 4) == 0 ? 0 : 1;
+	Error += glm::higherMultiple(-2, 4) == 0 ? 0 : 1;
+	Error += glm::higherMultiple(-1, 4) == 0 ? 0 : 1;
+
 	Error += glm::higherMultiple(0, 4) == 0 ? 0 : 1;
+	Error += glm::higherMultiple(1, 4) == 4 ? 0 : 1;
+	Error += glm::higherMultiple(2, 4) == 4 ? 0 : 1;
+	Error += glm::higherMultiple(3, 4) == 4 ? 0 : 1;
 	Error += glm::higherMultiple(4, 4) == 4 ? 0 : 1;
 	Error += glm::higherMultiple(5, 4) == 8 ? 0 : 1;
 	Error += glm::higherMultiple(6, 4) == 8 ? 0 : 1;
@@ -35,12 +38,15 @@ int test_Lower()
 {
 	int Error(0);
 
-	Error += glm::lowerMultiple(-5, 4) == -4 ? 0 : 1;
+	Error += glm::lowerMultiple(-5, 4) == -8 ? 0 : 1;
 	Error += glm::lowerMultiple(-4, 4) == -4 ? 0 : 1;
-	Error += glm::lowerMultiple(-3, 4) == 0 ? 0 : 1;
-	Error += glm::lowerMultiple(-2, 4) == 0 ? 0 : 1;
-	Error += glm::lowerMultiple(-1, 4) == 0 ? 0 : 1;
+	Error += glm::lowerMultiple(-3, 4) == -4 ? 0 : 1;
+	Error += glm::lowerMultiple(-2, 4) == -4 ? 0 : 1;
+	Error += glm::lowerMultiple(-1, 4) == -4 ? 0 : 1;
 	Error += glm::lowerMultiple(0, 4) == 0 ? 0 : 1;
+	Error += glm::lowerMultiple(1, 4) == 0 ? 0 : 1;
+	Error += glm::lowerMultiple(2, 4) == 0 ? 0 : 1;
+	Error += glm::lowerMultiple(3, 4) == 0 ? 0 : 1;
 	Error += glm::lowerMultiple(4, 4) == 4 ? 0 : 1;
 	Error += glm::lowerMultiple(5, 4) == 4 ? 0 : 1;
 	Error += glm::lowerMultiple(6, 4) == 4 ? 0 : 1;

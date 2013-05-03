@@ -22,8 +22,13 @@ namespace glm
 		genType const & Multiple
 	)
 	{
-		genType Tmp = Source % Multiple;
-		return Tmp ? Source + Multiple - Tmp : Source;
+		if (Source > 0)
+		{
+			genType Tmp = Source - 1;
+			return Tmp + (Multiple - (Tmp % Multiple));
+		}
+		else
+			return Source + (-Source % Multiple);
 	}
 
 	template <> 
@@ -74,8 +79,13 @@ namespace glm
 		genType const & Multiple
 	)
 	{
-		genType Tmp = Source % Multiple;
-		return Tmp ? Source - Tmp : Source;
+		if (Source >= 0)
+			return Source - Source % Multiple;
+		else
+		{
+			genType Tmp = Source + 1;
+			return Tmp - Tmp % Multiple - Multiple;
+		}
 	}
 
 	template <> 
