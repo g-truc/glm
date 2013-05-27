@@ -56,127 +56,127 @@ namespace glm
 	/// @todo Implement epsilon for half-precision floating point type.
 	/// @see gtc_constants
 	template <typename genType>
-	genType epsilon();
+	GLM_FUNC_DECL genType epsilon();
 
 	/// Return 0.
 	/// @see gtc_constants
 	template <typename genType>
-	genType zero();
+	GLM_FUNC_DECL genType zero();
 
 	/// Return 1.
 	/// @see gtc_constants
 	template <typename genType>
-	genType one();
+	GLM_FUNC_DECL genType one();
 
 	/// Return the pi constant.
 	/// @see gtc_constants
 	template <typename genType>
-	genType pi();
+	GLM_FUNC_DECL genType pi();
 
 	/// Return square root of pi.
 	/// @see gtc_constants
 	template <typename genType>
-	genType root_pi();
+	GLM_FUNC_DECL genType root_pi();
 
 	/// Return pi / 2.
 	/// @see gtc_constants
 	template <typename genType>
-	genType half_pi();
+	GLM_FUNC_DECL genType half_pi();
 
 	/// Return pi / 4.
 	/// @see gtc_constants
 	template <typename genType>
-	genType quarter_pi();
+	GLM_FUNC_DECL genType quarter_pi();
 
 	/// Return 1 / pi.
 	/// @see gtc_constants
 	template <typename genType>
-	genType one_over_pi();
+	GLM_FUNC_DECL genType one_over_pi();
 
 	/// Return 2 / pi.
 	/// @see gtc_constants
 	template <typename genType>
-	genType two_over_pi();
+	GLM_FUNC_DECL genType two_over_pi();
 
 	/// Return 2 / sqrt(pi).
 	/// @see gtc_constants
 	template <typename genType>
-	genType two_over_root_pi();
+	GLM_FUNC_DECL genType two_over_root_pi();
 
 	/// Return 1 / sqrt(2).
 	/// @see gtc_constants
 	template <typename genType>
-	genType one_over_root_two();
+	GLM_FUNC_DECL genType one_over_root_two();
 
 	/// Return sqrt(pi / 2).
 	/// @see gtc_constants
 	template <typename genType>
-	genType root_half_pi();
+	GLM_FUNC_DECL genType root_half_pi();
 
 	/// Return sqrt(2 * pi).
 	/// @see gtc_constants
 	template <typename genType>
-	genType root_two_pi();
+	GLM_FUNC_DECL genType root_two_pi();
 
 	/// Return sqrt(ln(4)).
 	/// @see gtc_constants
 	template <typename genType>
-	genType root_ln_four();
+	GLM_FUNC_DECL genType root_ln_four();
 
 	/// Return e constant.
 	/// @see gtc_constants
 	template <typename genType>
-	genType e();
+	GLM_FUNC_DECL genType e();
 
 	/// Return Euler's constant.
 	/// @see gtc_constants
 	template <typename genType>
-	genType euler();
+	GLM_FUNC_DECL genType euler();
 
 	/// Return sqrt(2).
 	/// @see gtc_constants
 	template <typename genType>
-	genType root_two();
+	GLM_FUNC_DECL genType root_two();
 
 	/// Return sqrt(3).
 	/// @see gtc_constants
 	template <typename genType>
-	genType root_three();
+	GLM_FUNC_DECL genType root_three();
 
 	/// Return sqrt(5).
 	/// @see gtc_constants
 	template <typename genType>
-	genType root_five();
+	GLM_FUNC_DECL genType root_five();
 
 	/// Return ln(2).
 	/// @see gtc_constants
 	template <typename genType>
-	genType ln_two();
+	GLM_FUNC_DECL genType ln_two();
 
 	/// Return ln(10).
 	/// @see gtc_constants
 	template <typename genType>
-	genType ln_ten();
+	GLM_FUNC_DECL genType ln_ten();
 
 	/// Return ln(ln(2)).
 	/// @see gtc_constants
 	template <typename genType>
-	genType ln_ln_two();
+	GLM_FUNC_DECL genType ln_ln_two();
 
 	/// Return 1 / 3.
 	/// @see gtc_constants
 	template <typename genType>
-	genType third();
+	GLM_FUNC_DECL genType third();
 
 	/// Return 2 / 3.
 	/// @see gtc_constants
 	template <typename genType>
-	genType two_thirds();
+	GLM_FUNC_DECL genType two_thirds();
 
 	/// Return the golden ratio constant.
 	/// @see gtc_constants
 	template <typename genType>
-	genType golden_ratio();
+	GLM_FUNC_DECL genType golden_ratio();
 
 	/// @}
 } //namespace glm

@@ -36,7 +36,7 @@ namespace detail
 	template <typename genFIType>
 	struct Abs_<genFIType, true>
 	{
-		static genFIType get(genFIType const & x)
+		GLM_FUNC_QUALIFIER static genFIType get(genFIType const & x)
 		{
 			GLM_STATIC_ASSERT(
 				detail::type<genFIType>::is_float || 
@@ -49,7 +49,7 @@ namespace detail
 	template <typename genFIType>
 	struct Abs_<genFIType, false>
 	{
-		static genFIType get(genFIType const & x)
+		GLM_FUNC_QUALIFIER static genFIType get(genFIType const & x)
 		{
 			GLM_STATIC_ASSERT(
 					detail::type<genFIType>::is_uint, "'abs' only accept floating-point and integer inputs");

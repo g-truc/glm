@@ -151,82 +151,82 @@ namespace detail
 
 	// Binary operators
 	template <typename T> 
-	tmat3x2<T> operator+ (
+	GLM_FUNC_DECL tmat3x2<T> operator+ (
 		tmat3x2<T> const & m, 
 		typename tmat3x2<T>::value_type const & s);
 
 	template <typename T> 
-	tmat3x2<T> operator+ (
+	GLM_FUNC_DECL tmat3x2<T> operator+ (
 		tmat3x2<T> const & m1, 
 		tmat3x2<T> const & m2);
 
 	template <typename T> 
-	tmat3x2<T> operator- (
+	GLM_FUNC_DECL tmat3x2<T> operator- (
 		tmat3x2<T> const & m, 
 		typename tmat3x2<T>::value_type const & s);
 
 	template <typename T> 
-	tmat3x2<T> operator- (
+	GLM_FUNC_DECL tmat3x2<T> operator- (
 		tmat3x2<T> const & m1, 
 		tmat3x2<T> const & m2);
 
 	template <typename T> 
-	tmat3x2<T> operator* (
+	GLM_FUNC_DECL tmat3x2<T> operator* (
 		tmat3x2<T> const & m, 
 		typename tmat3x2<T>::value_type const & s);
 
 	template <typename T> 
-	tmat3x2<T> operator* (
+	GLM_FUNC_DECL tmat3x2<T> operator* (
 		typename tmat3x2<T>::value_type const & s, 
 		tmat3x2<T> const & m);
 
 	template <typename T>
-	typename tmat3x2<T>::col_type operator* (
+	GLM_FUNC_DECL typename tmat3x2<T>::col_type operator* (
 		tmat3x2<T> const & m, 
 		typename tmat3x2<T>::row_type const & v);
 
 	template <typename T> 
-	typename tmat3x2<T>::row_type operator* (
+	GLM_FUNC_DECL typename tmat3x2<T>::row_type operator* (
 		typename tmat3x2<T>::col_type const & v,
 		tmat3x2<T> const & m);
 
 	template <typename T>
-	tmat2x2<T> operator* (
+	GLM_FUNC_DECL tmat2x2<T> operator* (
 		tmat3x2<T> const & m1, 
 		tmat2x3<T> const & m2);
 		
 	template <typename T>
-	tmat3x2<T> operator* (
+	GLM_FUNC_DECL tmat3x2<T> operator* (
 		tmat3x2<T> const & m1, 
 		tmat3x3<T> const & m2);
 		
 	template <typename T>
-	tmat4x2<T> operator* (
+	GLM_FUNC_DECL tmat4x2<T> operator* (
 		tmat3x2<T> const & m1, 
 		tmat4x3<T> const & m2);
 
 	template <typename T> 
-	tmat3x2<T> operator/ (
+	GLM_FUNC_DECL tmat3x2<T> operator/ (
 		tmat3x2<T> const & m, 
 		typename tmat3x2<T>::value_type const & s);
 
 	template <typename T> 
-	tmat3x2<T> operator/ (
+	GLM_FUNC_DECL tmat3x2<T> operator/ (
 		typename tmat3x2<T>::value_type const & s, 
 		tmat3x2<T> const & m);
 
 	// Unary constant operators
 	template <typename T> 
-	tmat3x2<T> const operator-  (
+	GLM_FUNC_DECL tmat3x2<T> const operator-  (
 		tmat3x2<T> const & m);
 
 	template <typename T> 
-	tmat3x2<T> const operator-- (
+	GLM_FUNC_DECL tmat3x2<T> const operator-- (
 		tmat3x2<T> const & m, 
 		int);
 
 	template <typename T> 
-	tmat3x2<T> const operator++ (
+	GLM_FUNC_DECL tmat3x2<T> const operator++ (
 		tmat3x2<T> const & m, 
 		int);
 } //namespace detail

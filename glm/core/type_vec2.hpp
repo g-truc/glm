@@ -123,7 +123,7 @@ namespace detail
 		//////////////////////////////////////
 		// Swizzle constructors
 
-		tvec2(tref2<T> const & r);
+		GLM_FUNC_DECL tvec2(tref2<T> const & r);
 
 		template <int E0, int E1>
 		GLM_FUNC_DECL tvec2(const glm::detail::swizzle<2,T,tvec2<T>,E0,E1,-1,-2>& that)
