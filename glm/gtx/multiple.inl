@@ -28,7 +28,7 @@ namespace glm
 			return Tmp + (Multiple - (Tmp % Multiple));
 		}
 		else
-			return Source + (-Source % Multiple);
+			return Source + (-1*Source % Multiple);
 	}
 
 	template <>
