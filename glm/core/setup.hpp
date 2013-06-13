@@ -32,11 +32,11 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // Version
 
-#define GLM_VERSION					94
+#define GLM_VERSION	                94
 #define GLM_VERSION_MAJOR			0
 #define GLM_VERSION_MINOR			9
 #define GLM_VERSION_PATCH			4
-#define GLM_VERSION_REVISION		3
+#define GLM_VERSION_REVISION        4
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // Platform
@@ -434,6 +434,12 @@
 #else
 #	if(__cplusplus >= 201103L)
 #		define GLM_LANG GLM_LANG_CXX11
+#	elif((GLM_COMPILER & GLM_COMPILER_GCC) == GLM_COMPILER_GCC)
+#       if defined(__GXX_EXPERIMENTAL_CXX0X__)
+#           define GLM_LANG GLM_LANG_CXX0X
+#       else
+#           define GLM_LANG GLM_LANG_CXX98
+#       endif
 #	elif(((GLM_COMPILER & GLM_COMPILER_GCC) == GLM_COMPILER_GCC) && defined(__GXX_EXPERIMENTAL_CXX0X__)) 
 #		define GLM_LANG GLM_LANG_CXX0X
 #	elif(((GLM_COMPILER & GLM_COMPILER_VC) == GLM_COMPILER_VC) && defined(_MSC_EXTENSIONS))
