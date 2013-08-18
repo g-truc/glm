@@ -361,8 +361,8 @@ namespace bitfieldInterleave
 
 	int test()
 	{
-		glm::uint32 x_max = 1 << 13;
-		glm::uint32 y_max = 1 << 12;
+		glm::uint32 x_max = 1 << 11;
+		glm::uint32 y_max = 1 << 10;
 
 		// ALU
 		std::vector<glm::uint64> Data(x_max * y_max);
@@ -493,17 +493,14 @@ namespace bitfieldInterleave
 #		if(GLM_ARCH != GLM_ARCH_PURE)
 		{
 			// SIMD
-			glm::int32 simd_x_max = 1 << 13;
-			glm::int32 simd_y_max = 1 << 12;
-
 			std::vector<__m128i> SimdData(x_max * y_max);
 			std::vector<__m128i> SimdParam(x_max * y_max);
 			for(int i = 0; i < SimdParam.size(); ++i)
-				SimdParam[i] = _mm_set_epi32(i % simd_x_max, 0, i / simd_y_max, 0);
+				SimdParam[i] = _mm_set_epi32(i % x_max, 0, i / y_max, 0);
 
 			std::clock_t LastTime = std::clock();
 
-			for(std::size_t i = 0; i < Data.size(); ++i)
+			for(std::size_t i = 0; i < SimdData.size(); ++i)
 				SimdData[i] = glm::detail::_mm_bit_interleave_si128(SimdParam[i]);
 
 			std::clock_t Time = std::clock() - LastTime;
