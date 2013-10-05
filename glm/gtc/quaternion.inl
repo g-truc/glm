@@ -668,17 +668,27 @@ namespace detail
 	)
 	{
 		detail::tmat3x3<T, P> Result(T(1));
-		Result[0][0] = 1 - 2 * q.y * q.y - 2 * q.z * q.z;
-		Result[0][1] = 2 * q.x * q.y + 2 * q.w * q.z;
-		Result[0][2] = 2 * q.x * q.z - 2 * q.w * q.y;
+		T qxx(q.x * q.x);
+		T qyy(q.y * q.y);
+		T qzz(q.z * q.z);
+		T qxz(q.x * q.z);
+		T qxy(q.x * q.y);
+		T qyz(q.y * q.z);
+		T qwx(q.w * q.x);
+		T qwy(q.w * q.y);
+		T qwz(q.w * q.z);
 
-		Result[1][0] = 2 * q.x * q.y - 2 * q.w * q.z;
-		Result[1][1] = 1 - 2 * q.x * q.x - 2 * q.z * q.z;
-		Result[1][2] = 2 * q.y * q.z + 2 * q.w * q.x;
+		Result[0][0] = 1 - 2 * (qyy -  qzz);
+		Result[0][1] = 2 * (qxy + qwz);
+		Result[0][2] = 2 * (qxz - qwy);
 
-		Result[2][0] = 2 * q.x * q.z + 2 * q.w * q.y;
-		Result[2][1] = 2 * q.y * q.z - 2 * q.w * q.x;
-		Result[2][2] = 1 - 2 * q.x * q.x - 2 * q.y * q.y;
+		Result[1][0] = 2 * (qxy - qwz);
+		Result[1][1] = 1 - 2 * (qxx -  qzz);
+		Result[1][2] = 2 * (qyz + qwx);
+
+		Result[2][0] = 2 * (qxz + qwy);
+		Result[2][1] = 2 * (qyz - qwx);
+		Result[2][2] = 1 - 2 * (qxx -  qyy);
 		return Result;
 	}
 
