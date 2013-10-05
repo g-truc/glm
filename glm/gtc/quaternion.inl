@@ -678,17 +678,17 @@ namespace detail
 		T qwy(q.w * q.y);
 		T qwz(q.w * q.z);
 
-		Result[0][0] = 1 - 2 * (qyy -  qzz);
+		Result[0][0] = 1 - 2 * (qyy +  qzz);
 		Result[0][1] = 2 * (qxy + qwz);
 		Result[0][2] = 2 * (qxz - qwy);
 
 		Result[1][0] = 2 * (qxy - qwz);
-		Result[1][1] = 1 - 2 * (qxx -  qzz);
+		Result[1][1] = 1 - 2 * (qxx +  qzz);
 		Result[1][2] = 2 * (qyz + qwx);
 
 		Result[2][0] = 2 * (qxz + qwy);
 		Result[2][1] = 2 * (qyz - qwx);
-		Result[2][2] = 1 - 2 * (qxx -  qyy);
+		Result[2][2] = 1 - 2 * (qxx +  qyy);
 		return Result;
 	}
 
