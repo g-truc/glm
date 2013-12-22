@@ -1279,15 +1279,15 @@ namespace detail
 	template <typename T> 
 	tref4<T>::tref4
 	(
-		T & x, 
-		T & y, 
-		T & z, 
-		T & w
+		T & x_,
+		T & y_,
+		T & z_,
+		T & w_
 	) :
-		x(x),
-		y(y),
-		z(z),
-		w(w)
+		x(x_),
+		y(y_),
+		z(z_),
+		w(w_)
 	{}
 
 	template <typename T> 

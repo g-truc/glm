@@ -136,12 +136,12 @@ namespace detail
 			i(0)
 		{}
 
-		GLM_FUNC_QUALIFIER uif32(float f) :
-			f(f)
+		GLM_FUNC_QUALIFIER uif32(float f_) :
+			f(f_)
 		{}
 
-		GLM_FUNC_QUALIFIER uif32(unsigned int i) :
-			i(i)
+		GLM_FUNC_QUALIFIER uif32(unsigned int i_) :
+			i(i_)
 		{}
 
 		float f;
@@ -154,12 +154,12 @@ namespace detail
 			i(0)
 		{}
 
-		GLM_FUNC_QUALIFIER uif64(double f) :
-			f(f)
+		GLM_FUNC_QUALIFIER uif64(double f_) :
+			f(f_)
 		{}
 
-		GLM_FUNC_QUALIFIER uif64(uint64 i) :
-			i(i)
+		GLM_FUNC_QUALIFIER uif64(uint64 i_) :
+			i(i_)
 		{}
 
 		double f;

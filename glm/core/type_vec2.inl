@@ -942,11 +942,11 @@ namespace detail
 	template <typename T> 
 	tref2<T>::tref2
 	(
-		T & x, 
-		T & y
+		T & x_,
+		T & y_
 	) :
-		x(x),
-		y(y)
+		x(x_),
+		y(y_)
 	{}
 
 	template <typename T> 

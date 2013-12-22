@@ -60,15 +60,15 @@ namespace detail
 	template <typename T> 
 	GLM_FUNC_QUALIFIER tquat<T>::tquat
 	(
-		value_type const & w, 
-		value_type const & x, 
-		value_type const & y, 
-		value_type const & z
+		value_type const & w_,
+		value_type const & x_,
+		value_type const & y_,
+		value_type const & z_
 	) :
-		x(x),
-		y(y),
-		z(z),
-		w(w)
+		x(x_),
+		y(y_),
+		z(z_),
+		w(w_)
 	{}
 
 	//////////////////////////////////////////////////////////////

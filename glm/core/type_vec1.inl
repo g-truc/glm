@@ -883,9 +883,9 @@ namespace detail
 	template <typename T> 
 	GLM_FUNC_QUALIFIER tref1<T>::tref1
 	(
-		T & x
+		T & x_
 	) :
-		x(x)
+		x(x_)
 	{}
 
 	template <typename T> 
