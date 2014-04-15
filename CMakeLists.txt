@@ -127,8 +127,8 @@ if(CMAKE_COMPILER_IS_GNUCXX)
 	#ctest_enable_coverage()
 endif()
 
-include_directories(".")
-include_directories("./test/external")
+include_directories("${PROJECT_SOURCE_DIR}")
+include_directories("${PROJECT_SOURCE_DIR}/test/external")
 
 add_subdirectory(glm)
 add_subdirectory(test)
