@@ -4,6 +4,9 @@ cmake_policy(VERSION 2.6)
 project(glm)
 enable_testing()
 
+list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
+include(GNUInstallDirs)
+
 add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 
 option(GLM_TEST_ENABLE "GLM test" OFF)
@@ -129,5 +132,6 @@ include_directories("./test/external")
 
 add_subdirectory(glm)
 add_subdirectory(test)
+add_subdirectory(util)
 
-install(DIRECTORY glm DESTINATION include)
+install(DIRECTORY glm DESTINATION ${CMAKE_INSTALL_FULL_INCLUDEDIR})
