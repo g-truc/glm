@@ -8,6 +8,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include "../geometric.hpp"
+#include "fast_square_root.hpp"
 #include <cfloat>
 #include <limits>
 
@@ -837,7 +838,7 @@ namespace glm
 		
 		return t >= typename genType::value_type(0.0f);
 	}
-	
+
 	template<typename genType>
 	GLM_FUNC_QUALIFIER bool intersectLineDegenerateQuad
 	(
