@@ -140,6 +140,42 @@ namespace glm
 
 	);
 
+	//! Compute the intersection of a ray and any quadrilateral.
+	//! From the GLM_GTX_intersect extension
+	template <typename genType>
+	GLM_FUNC_DECL bool intersectRayDegenerateQuad(
+		genType const & orig, genType const & dir, 
+		genType const & v00, genType const & v10, genType const & v11, genType const & v01,
+		genType & bilinearCoordinates
+	);
+
+	//! Compute the intersection of a ray and any quadrilateral.
+	//! Does not compute the bilinear coordinates of the intersection.
+	//! From the GLM_GTX_intersect extension
+	template<typename genType>
+	GLM_FUNC_DECL bool fastIntersectRayDegenerateQuad(
+		genType const & orig, genType const & dir,
+		genType const & v00, genType const & v10, genType const & v11, genType const & v01
+	);
+
+	//! Compute the intersection of a line and any quadrilateral.
+	//! From the GLM_GTX_intersect extension
+	template<typename genType>
+	GLM_FUNC_DECL bool intersectLineDegenerateQuad(
+		genType const & orig, genType const & dir, 
+		genType const & v00, genType const & v10, genType const & v11, genType const & v01,
+		genType & bilinearCoordinates
+	);
+
+	//! Compute the intersection of a line and any quadrilateral.
+	//! Does not compute the bilinear coordinates of the intersection.
+	//! From the GLM_GTX_intersect extension
+	template<typename genType>
+	GLM_FUNC_DECL bool fastIntersectLineDegenerateQuad(
+		genType const & orig, genType const & dir,
+		genType const & v00, genType const & v10, genType const & v11, genType const & v01
+	);
+
 	/// @}
 }//namespace glm
 
