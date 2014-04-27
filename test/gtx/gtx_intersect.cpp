@@ -19,11 +19,10 @@ int test_conformity()
 
 	const int vertexCount = 100000;
 
-	glm::vec3** vertices = new glm::vec3*[vertexCount];
+	glm::vec3 vertices[vertexCount][6];
 
 	for (int i = 0; i < vertexCount; ++i)
 	{
-		vertices[i] = new glm::vec3[6];
 		vertices[i][0] = glm::vec3((float)(rand() % 1000)/100, (float)(rand() % 1000)/100,(float)(rand() % 1000)/100);
 		vertices[i][1] = glm::vec3((float)(rand() % 1000)/100, (float)(rand() % 1000)/100,(float)(rand() % 1000)/100);
 		vertices[i][2] = glm::vec3((float)(rand() % 1000)/100, (float)(rand() % 1000)/100,(float)(rand() % 1000)/100);
@@ -73,7 +72,6 @@ int test_conformity()
 		assert(intersects_line == intersects_line_tri);
 	}	
 
-	delete vertices;
 	return Error;
 }
 
