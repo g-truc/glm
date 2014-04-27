@@ -223,57 +223,40 @@ namespace glm
 		genType & bilinearCoordinates
 	)
 	{
-		// Epsilon to reject parallell lines
 		typename genType::value_type epsilon = std::numeric_limits<typename genType::value_type>::epsilon();
 
-		// Calculate edges and normal of first triangle
 		genType e01 = v10 - v00;
 		genType e03 = v01 - v00;
 
 		genType p = glm::cross(dir, e03);
-
 		typename genType::value_type det = glm::dot(e01, p);
-
-		// Reject rays orthagonal to the normal vector. I.e. rays parallell to the plane.
 		if(det < epsilon)
 			return false;
 
 		typename genType::value_type inv_det = typename genType::value_type(1.0f)/det;
-
 		genType s = orig - v00;
-
-		// Calculate the barycentric alpha coordinate of the first triangle
 		typename genType::value_type alpha = inv_det * glm::dot(s, p);
 
-		// It lies outside the triangle
 		if(alpha > typename genType::value_type(1.0f))
 			return false;
-
 		if(alpha < typename genType::value_type(0.0f))
 			return false;
 
-		// Vector perpendicular to T and e01 
 		genType q = glm::cross(s, e01);
-
-		// Calculate barycentric beta coordinate of the first triangle
 		typename genType::value_type beta = inv_det * glm::dot(dir, q);
 
 		if(beta > typename genType::value_type(1.0f))
 			return false;
-
 		if(beta < typename genType::value_type(0.0f))
 			return false;
 
 		bilinearCoordinates.z = inv_det * glm::dot(e03, q);
 
 		if(alpha + beta > typename genType::value_type(1.0f)){
-		// Do exactly the same for the second triangle
-
 			genType e23 = v01 - v11;
 			genType e21 = v10 - v11;
 
-			p = glm::cross(dir, e21);
-			
+			p = glm::cross(dir, e21);	
 			det = glm::dot(e23, p);
 
 			if(det < epsilon && det > -epsilon)
@@ -292,8 +275,6 @@ namespace glm
 
 			if(beta < typename genType::value_type(0.0f))
 				return false;
-
-			// This to support degenerate squares
 			if(beta + alpha > typename genType::value_type(1.0f))
 				return false;
 
@@ -303,8 +284,7 @@ namespace glm
 		
 		if(bilinearCoordinates.z < typename genType::value_type(0.0f))
 			return false;
-
-		// Compute barycentric coordinates of v11
+	
 		genType e02 = v11 - v00;
 		genType N = glm::cross(e01, e03);
 		
@@ -321,7 +301,6 @@ namespace glm
 			beta_11  = (e01.x * e02.y - e01.y * e02.x) / N.z;
 		}
 
-		// Compute bilinear coordinates of the intersection point
 		if(abs(alpha_11 - typename genType::value_type(1.0f)) < epsilon) { 
 			bilinearCoordinates.x = alpha;
 			
@@ -330,7 +309,6 @@ namespace glm
 			} else {
 				bilinearCoordinates.y = beta/(bilinearCoordinates.x * (beta_11 - typename genType::value_type(1.0f)) + typename genType::value_type(1.0f));
 			}
-
 		} else if(abs(beta_11 - typename genType::value_type(1.0f)) < epsilon) {
 			bilinearCoordinates.y = alpha;
 			bilinearCoordinates.x = alpha/(bilinearCoordinates.y*(alpha_11 - typename genType::value_type(1.0f)) + typename genType::value_type(1.0f));
@@ -342,8 +320,7 @@ namespace glm
 			c = alpha;
 
 			discr = b*b - typename genType::value_type(4.0f)*a*c;
-
-			// Get sign of b
+			
 			typename genType::value_type sign = (typename genType::value_type(0) < b) - (b < typename genType::value_type(0));
 			
 			q = -(typename genType::value_type(0.5f)) * (b + sign*glm::fastSqrt(discr));
@@ -356,7 +333,6 @@ namespace glm
 
 			bilinearCoordinates.y = beta/(bilinearCoordinates.x*(beta_11 - 1) + 1);
 		}
-
 		return true;
 	}
 
@@ -366,41 +342,28 @@ namespace glm
 		genType const & orig, genType const & dir,
 		genType const & v00, genType const & v10, genType const & v11, genType const & v01
 	)
-	{
-		// Epsilon to reject parallell lines
+	{		
 		typename genType::value_type epsilon = std::numeric_limits<typename genType::value_type>::epsilon();
-
-		// Calculate edges and normal of first triangle
+		
 		genType e01 = v10 - v00;
 		genType e03 = v01 - v00;
 
 		genType p = glm::cross(dir, e03);
-
 		typename genType::value_type det = glm::dot(e01, p);
-
-		// Reject rays orthagonal to the normal vector. I.e. rays parallell to the plane.
+		
 		if(det < epsilon)
 			return false;
 
 		typename genType::value_type inv_det = typename genType::value_type(1.0f)/det;
-
-
 		genType s = orig - v00;
-
-		// Calculate the barycentric alpha coordinate of the first triangle
 		typename genType::value_type alpha = inv_det * glm::dot(s, p);
 
-		// It lies outside the triangle
 		if(alpha > typename genType::value_type(1.0f))
 			return false;
-
 		if(alpha < typename genType::value_type(0.0f))
 			return false;
-
-		// Vector perpendicular to T and e01 
+		
 		genType q = glm::cross(s, e01);
-
-		// Calculate barycentric beta coordinate of the first triangle
 		typename genType::value_type beta = inv_det * glm::dot(dir, q);
 
 		if(beta > typename genType::value_type(1.0f))
@@ -411,13 +374,10 @@ namespace glm
 		typename genType::value_type t = inv_det * glm::dot(e03, q);
 
 		if(alpha + beta > typename genType::value_type(1.0f)){
-		// Do exactly the same for the second triangle
-
 			genType e23 = v01 - v11;
 			genType e21 = v10 - v11;
 
 			p = glm::cross(dir, e21);
-			
 			det = glm::dot(e23, p);
 
 			if(det < epsilon)
@@ -425,7 +385,6 @@ namespace glm
 
 			inv_det = typename genType::value_type(1.0f)/det;
 			s = orig - v11;
-
 			alpha = inv_det * glm::dot(s, p);
 
 			if(alpha < typename genType::value_type(0.0f))
@@ -436,8 +395,7 @@ namespace glm
 
 			if(beta < typename genType::value_type(0.0f))
 				return false;
-
-			// This to support degenerate squares
+			
 			if(beta + alpha > typename genType::value_type(1.0f))
 				return false;
 		
@@ -446,7 +404,6 @@ namespace glm
 		
 		if(t < typename genType::value_type(0.0f))
 			return false;
-
 		return true;
 	}
 
@@ -458,39 +415,28 @@ namespace glm
 		genType & bilinearCoordinates
 	)
 	{
-		// Epsilon to reject parallell lines
 		typename genType::value_type epsilon = std::numeric_limits<typename genType::value_type>::epsilon();
 
-		// Calculate edges and normal of first triangle
 		genType e01 = v10 - v00;
 		genType e03 = v01 - v00;
 
 		genType p = glm::cross(dir, e03);
-
 		typename genType::value_type det = glm::dot(e01, p);
-
-		// Reject rays orthagonal to the normal vector. I.e. rays parallell to the plane.
+		
 		if(det < epsilon && det > -epsilon)
 			return false;
 
 		typename genType::value_type inv_det = typename genType::value_type(1.0f)/det;
-
-		genType s = orig - v00;
-
-		// Calculate the barycentric alpha coordinate of the first triangle
+		genType s = orig - v00;		
 		typename genType::value_type alpha = inv_det * glm::dot(s, p);
-
-		// It lies outside the triangle
+	
 		if(alpha > typename genType::value_type(1.0f))
 			return false;
 
 		if(alpha < typename genType::value_type(0.0f))
 			return false;
 
-		// Vector perpendicular to T and e01 
 		genType q = glm::cross(s, e01);
-
-		// Calculate barycentric beta coordinate of the first triangle
 		typename genType::value_type beta = inv_det * glm::dot(dir, q);
 
 		if(beta > typename genType::value_type(1.0f))
@@ -501,13 +447,10 @@ namespace glm
 		bilinearCoordinates.z = inv_det * glm::dot(e03, q);
 
 		if(alpha + beta > typename genType::value_type(1.0f)){
-		// Do exactly the same for the second triangle
-
 			genType e23 = v01 - v11;
 			genType e21 = v10 - v11;
 
 			p = glm::cross(dir, e21);
-			
 			det = glm::dot(e23, p);
 
 			if(det < epsilon && det > -epsilon)
@@ -515,7 +458,6 @@ namespace glm
 
 			inv_det = typename genType::value_type(1.0f)/det;
 			s = orig - v11;
-
 			alpha = inv_det * glm::dot(s, p);
 
 			if(alpha < typename genType::value_type(0.0f))
@@ -526,15 +468,13 @@ namespace glm
 
 			if(beta < typename genType::value_type(0.0f))
 				return false;
-
-			// This to support degenerate squares
+			
 			if(beta + alpha > typename genType::value_type(1.0f))
 				return false;
 			
 			bilinearCoordinates.z = inv_det * glm::dot(e21, q);
 		}
-
-		// Compute barycentric coordinates of v11
+	
 		genType e02 = v11 - v00;
 		genType N = glm::cross(e01, e03);
 		
@@ -551,7 +491,6 @@ namespace glm
 			beta_11  = (e01.x * e02.y - e01.y * e02.x) / N.z;
 		}
 
-		// Compute bilinear coordinates of the intersection point
 		if(abs(alpha_11 - typename genType::value_type(1.0f)) < epsilon) { 
 			bilinearCoordinates.x = alpha;
 			
@@ -573,7 +512,7 @@ namespace glm
 
 			discr = b*b - typename genType::value_type(4.0f)*a*c;
 
-			// Get sign of b
+			
 			typename genType::value_type sign = (typename genType::value_type(0) < b) - (b < typename genType::value_type(0));
 			
 			q = -(typename genType::value_type(0.5f)) * (b + sign*glm::fastSqrt(discr));
@@ -598,40 +537,28 @@ namespace glm
 
 	)
 	{
-		// Epsilon to reject parallell lines
 		typename genType::value_type epsilon = std::numeric_limits<typename genType::value_type>::epsilon();
 
-		// Calculate edges and normal of first triangle
 		genType e01 = v10 - v00;
 		genType e03 = v01 - v00;
 
 		genType p = glm::cross(dir, e03);
-
 		typename genType::value_type det = glm::dot(e01, p);
-
-		// Reject rays orthagonal to the normal vector. I.e. rays parallell to the plane.
+		
 		if(det < epsilon && det > -epsilon)
 			return false;
 
 		typename genType::value_type inv_det = typename genType::value_type(1.0f)/det;
-
-
 		genType s = orig - v00;
-
-		// Calculate the barycentric alpha coordinate of the first triangle
 		typename genType::value_type alpha = inv_det * glm::dot(s, p);
 
-		// It lies outside the triangle
 		if(alpha > typename genType::value_type(1.0f))
 			return false;
-
 		if(alpha < typename genType::value_type(0.0f))
 			return false;
 
-		// Vector perpendicular to T and e01 
+		
 		genType q = glm::cross(s, e01);
-
-		// Calculate barycentric beta coordinate of the first triangle
 		typename genType::value_type beta = inv_det * glm::dot(dir, q);
 
 		if(beta > typename genType::value_type(1.0f))
@@ -639,15 +566,12 @@ namespace glm
 		if(beta < typename genType::value_type(0.0f))
 			return false;
 
-
 		if(alpha + beta > typename genType::value_type(1.0f)){
-		// Do exactly the same for the second triangle
-
+		
 			genType e23 = v01 - v11;
 			genType e21 = v10 - v11;
 
 			p = glm::cross(dir, e21);
-			
 			det = glm::dot(e23, p);
 
 			if(det < epsilon && det > -epsilon)
@@ -655,7 +579,6 @@ namespace glm
 
 			inv_det = typename genType::value_type(1.0f)/det;
 			s = orig - v11;
-
 			alpha = inv_det * glm::dot(s, p);
 
 			if(alpha < typename genType::value_type(0.0f))
@@ -666,8 +589,6 @@ namespace glm
 
 			if(beta < typename genType::value_type(0.0f))
 				return false;
-
-			// This to support degenerate squares
 			if(beta + alpha > typename genType::value_type(1.0f))
 				return false;
 			
@@ -676,234 +597,8 @@ namespace glm
 		return true;
 	}
 
-	template<typename genType>
-	GLM_FUNC_QUALIFIER bool intersectLineQuad
-	(
-		genType const & orig, genType const & dir, 
-		genType const & v00, genType const & v10, genType const & v11, genType const & v01,
-		genType & bilinearCoordinates
-	)
-	{
-		// Epsilon to reject parallell lines
-		typename genType::value_type epsilon = std::numeric_limits<typename genType::value_type>::epsilon();
-
-		// Calculate edges and normal of first triangle
-		genType e01 = v10 - v00;
-		genType e03 = v01 - v00;
-
-		genType p = glm::cross(dir, e03);
-
-		typename genType::value_type det = glm::dot(e01, p);
-
-		// Reject rays orthagonal to the normal vector. I.e. rays parallell to the plane.
-		if(det < epsilon && det > -epsilon)
-			return false;
-
-		typename genType::value_type inv_det = typename genType::value_type(1.0f)/det;
-
-		genType s = orig - v00;
-
-		// Calculate the barycentric alpha coordinate of the first triangle
-		typename genType::value_type alpha = inv_det * glm::dot(s, p);
-
-		// It lies outside the triangle
-		if(alpha > typename genType::value_type(1.0f))
-			return false;
-
-		if(alpha < typename genType::value_type(0.0f))
-			return false;
-
-		// Vector perpendicular to T and e01 
-		genType q = glm::cross(s, e01);
-
-		// Calculate barycentric beta coordinate of the first triangle
-		typename genType::value_type beta = inv_det * glm::dot(dir, q);
-
-		if(beta > typename genType::value_type(1.0f))
-			return false;
-		if(beta < typename genType::value_type(0.0f))
-			return false;
-
-		bilinearCoordinates.z = inv_det * glm::dot(e03, q);
-
-		if(alpha + beta > typename genType::value_type(1.0f)){
-		// Do exactly the same for the second triangle
-
-			genType e23 = v01 - v11;
-			genType e21 = v10 - v11;
-
-			p = glm::cross(dir, e21);
-			
-			det = glm::dot(e23, p);
-
-			if(det < epsilon && det > -epsilon)
-				return false;
-
-			inv_det = typename genType::value_type(1.0f)/det;
-			s = orig - v11;
-
-			alpha = inv_det * glm::dot(s, p);
-
-			if(alpha < typename genType::value_type(0.0f))
-				return false;
-
-			q = glm::cross(s, e23);
-			beta = inv_det * glm::dot(dir, q);
-
-			if(beta < typename genType::value_type(0.0f))
-				return false;
-
-			// This to support degenerate squares
-			if(beta + alpha > typename genType::value_type(1.0f))
-				return false;
-			
-			bilinearCoordinates.z = inv_det * glm::dot(e21, q);
-		}
-
-		// Compute barycentric coordinates of v11
-		genType e02 = v11 - v00;
-		genType N = glm::cross(e01, e03);
-		
-		typename genType::value_type alpha_11, beta_11;
-
-		if(abs(N.x) >= abs(N.y) && abs(N.x) >= abs(N.z)) {
-			alpha_11 = (e02.y * e03.z - e02.z * e03.y) / N.x;
-			beta_11  = (e01.y * e02.z - e01.z * e02.y) / N.x;
-		} else if(abs(N.y) >= abs(N.x) && abs(N.y) >= abs(N.z)) {		
-			alpha_11 = (e02.z * e03.x - e02.x * e03.z) / N.x;
-			beta_11  = (e01.z * e02.x - e01.x * e02.z) / N.x;
-		} else {
-			alpha_11 = (e02.x * e03.y - e02.y * e03.x) / N.z;
-			beta_11  = (e01.x * e02.y - e01.y * e02.x) / N.z;
-		}
-
-		// Compute bilinear coordinates of the intersection point
-		if(abs(alpha_11 - typename genType::value_type(1.0f)) < epsilon) { 
-			bilinearCoordinates.x = alpha;
-			
-			if(abs(beta_11 - typename genType::value_type(1.0f)) < epsilon){
-				bilinearCoordinates.y = beta;
-			} else {
-				bilinearCoordinates.y = beta/(bilinearCoordinates.x * (beta_11 - typename genType::value_type(1.0f)) + typename genType::value_type(1.0f));
-			}
-
-		} else if(abs(beta_11 - typename genType::value_type(1.0f)) < epsilon) {
-			bilinearCoordinates.y = alpha;
-			bilinearCoordinates.x = alpha/(bilinearCoordinates.y*(alpha_11 - typename genType::value_type(1.0f)) + typename genType::value_type(1.0f));
-		} else {
-			typename genType::value_type a, b, c, discr, q;
-
-			a = -(beta_11 - typename genType::value_type(1.0f));
-			b = alpha*(beta_11 - 1) - beta*(alpha_11 - typename genType::value_type(1.0f)) - typename genType::value_type(1.0f);
-			c = alpha;
-
-			discr = b*b - typename genType::value_type(4.0f)*a*c;
-
-			// Get sign of b
-			typename genType::value_type sign = (typename genType::value_type(0) < b) - (b < typename genType::value_type(0));
-			
-			q = -(typename genType::value_type(0.5f)) * (b + sign*glm::fastSqrt(discr));
-
-			bilinearCoordinates.x = q/a;
-
-			if(bilinearCoordinates.x < 0 || bilinearCoordinates.y > 1){
-				bilinearCoordinates.x = c/q;
-			} 
-
-			bilinearCoordinates.y = beta/(bilinearCoordinates.x*(beta_11 - 1) + 1);
-		}
-
-		return true;
-	}
-
-	template<typename genType>
-	GLM_FUNC_QUALIFIER bool fastIntersectLineQuad
-	(
-		genType const & orig, genType const & dir,
-		genType const & v00, genType const & v10, genType const & v11, genType const & v01
-
-	)
-	{
-		// Epsilon to reject parallell lines
-		typename genType::value_type epsilon = std::numeric_limits<typename genType::value_type>::epsilon();
-
-		// Calculate edges and normal of first triangle
-		genType e01 = v10 - v00;
-		genType e03 = v01 - v00;
-
-		genType p = glm::cross(dir, e03);
-
-		typename genType::value_type det = glm::dot(e01, p);
-
-		// Reject rays orthagonal to the normal vector. I.e. rays parallell to the plane.
-		if(det < epsilon && det > -epsilon)
-			return false;
-
-		typename genType::value_type inv_det = typename genType::value_type(1.0f)/det;
-
-
-		genType s = orig - v00;
-
-		// Calculate the barycentric alpha coordinate of the first triangle
-		typename genType::value_type alpha = inv_det * glm::dot(s, p);
-
-		// It lies outside the triangle
-		if(alpha > typename genType::value_type(1.0f))
-			return false;
-
-		if(alpha < typename genType::value_type(0.0f))
-			return false;
-
-		// Vector perpendicular to T and e01 
-		genType q = glm::cross(s, e01);
-
-		// Calculate barycentric beta coordinate of the first triangle
-		typename genType::value_type beta = inv_det * glm::dot(dir, q);
-
-		if(beta > typename genType::value_type(1.0f))
-			return false;
-		if(beta < typename genType::value_type(0.0f))
-			return false;
-
-
-		if(alpha + beta > typename genType::value_type(1.0f)){
-		// Do exactly the same for the second triangle
-
-			genType e23 = v01 - v11;
-			genType e21 = v10 - v11;
-
-			p = glm::cross(dir, e21);
-			
-			det = glm::dot(e23, p);
-
-			if(det < epsilon && det > -epsilon)
-				return false;
-
-			inv_det = typename genType::value_type(1.0f)/det;
-			s = orig - v11;
-
-			alpha = inv_det * glm::dot(s, p);
-
-			if(alpha < typename genType::value_type(0.0f))
-				return false;
-
-			q = glm::cross(s, e23);
-			beta = inv_det * glm::dot(dir, q);
-
-			if(beta < typename genType::value_type(0.0f))
-				return false;
-
-			// This to support degenerate squares
-			if(beta + alpha > typename genType::value_type(1.0f))
-				return false;
-			
-		}
-		
-		return true;
-	}
-
-	template<typename genType>
-	GLM_FUNC_QUALIFIER bool intersectLineDegenerateQuad
+	template <typename genType>
+	GLM_FUNC_QUALIFIER bool intersectRayDegenerateQuad
 	(
 		genType const & orig, genType const & dir, 
 		genType const & v00, genType const & v10, genType const & v11, genType const & v01,
@@ -911,13 +606,11 @@ namespace glm
 	)
 	{
 		genType e01, e03, p, s, q;
-		typename genType::value_type epsilon, det, inv_det, alpha, beta;
+		typename genType::value_type epsilon, det, inv_det, alpha, beta, t;
 		bool isInOne = true;
 
-		// Epsilon to reject parallell lines
 		epsilon = std::numeric_limits<typename genType::value_type>::epsilon();
 
-		// Calculate edges and normal of first triangle
 		e01 = v10 - v00;
 		e03 = v01 - v00;
 
@@ -925,19 +618,15 @@ namespace glm
 
 		det = glm::dot(e01, p);
 
-		// Reject rays orthagonal to the normal vector. I.e. rays parallell to the plane.
-		if(det < epsilon && det > -epsilon){
+		if(det < epsilon){
 			isInOne = false;
 			goto second;	
 		}
 
 		inv_det = typename genType::value_type(1.0f)/det;
 		s = orig - v00;
-
-		// Calculate the barycentric alpha coordinate of the first triangle
 		alpha = inv_det * glm::dot(s, p);
 
-		// It lies outside the triangle
 		if(alpha > typename genType::value_type(1.0f)){
 			isInOne = false;
 			goto second;
@@ -948,10 +637,7 @@ namespace glm
 			goto second;
 		}
 
-		// Vector perpendicular to T and e01 
 		q = glm::cross(s, e01);
-
-		// Calculate barycentric beta coordinate of the first triangle
 		beta = inv_det * glm::dot(dir, q);
 
 		if(beta > typename genType::value_type(1.0f)){
@@ -964,25 +650,27 @@ namespace glm
 			goto second;
 		}
 
-		/* Intersection is not in the first triangle, check the second*/
+		t = inv_det * glm::dot(e03, q);		
+
+		if(t < typename genType::value_type(0.0f)){
+			isInOne = false;
+			goto second;
+		}
+
 		second:
 		if(!isInOne || alpha + beta > typename genType::value_type(1.0f)){
-			// Do exactly the same for the second triangle
-
 			genType e23 = v01 - v11;
 			genType e21 = v10 - v11;
 
 			p = glm::cross(dir, e21);
-			
 			det = glm::dot(e23, p);
 
-			if(det < epsilon && det > -epsilon){
+			if(det < epsilon){
 				return false;
 			}
 
 			inv_det = typename genType::value_type(1.0f)/det;
 			s = orig - v11;
-
 			alpha = inv_det * glm::dot(s, p);
 
 			if(alpha < typename genType::value_type(0.0f))
@@ -993,14 +681,15 @@ namespace glm
 
 			if(beta < typename genType::value_type(0.0f))
 				return false;
-
-			// This to support degenerate squares
 			if(beta + alpha > typename genType::value_type(1.0f))
 				return false;
-		}
-		
 
-		// Compute barycentric coordinates of v11
+			t = inv_det * glm::dot(e21, q);		
+
+			if(t < typename genType::value_type(0.0f))
+				return false;
+		}
+
 		genType e02 = v11 - v00;
 		genType N = glm::cross(e01, e03);
 		
@@ -1017,7 +706,6 @@ namespace glm
 			beta_11  = (e01.x * e02.y - e01.y * e02.x) / N.z;
 		}
 
-		// Compute bilinear coordinates of the intersection point
 		if(abs(alpha_11 - typename genType::value_type(1.0f)) < epsilon) { 
 			bilinearCoordinates.x = alpha;
 			
@@ -1039,7 +727,235 @@ namespace glm
 
 			discr = b*b - typename genType::value_type(4.0f)*a*c;
 
-			// Get sign of b
+			typename genType::value_type sign = (typename genType::value_type(0) < b) - (b < typename genType::value_type(0));
+			
+			q = -(typename genType::value_type(0.5f)) * (b + sign*glm::fastSqrt(discr));
+
+			bilinearCoordinates.x = q/a;
+
+			if(bilinearCoordinates.x < 0 || bilinearCoordinates.y > 1){
+				bilinearCoordinates.x = c/q;
+			} 
+
+			bilinearCoordinates.y = beta/(bilinearCoordinates.x*(beta_11 - 1) + 1);
+		}
+
+		return true;
+	}
+
+	template<typename genType>
+	GLM_FUNC_QUALIFIER bool fastIntersectRayDegenerateQuad
+	(
+		genType const & orig, genType const & dir,
+		genType const & v00, genType const & v10, genType const & v11, genType const & v01
+	)
+	{
+		genType e01, e03, p, s, q;
+		typename genType::value_type epsilon, det, inv_det, alpha, beta, t;
+		bool isInOne = true;
+
+		epsilon = std::numeric_limits<typename genType::value_type>::epsilon();
+
+		e01 = v10 - v00;
+		e03 = v01 - v00;
+
+		p = glm::cross(dir, e03);
+		det = glm::dot(e01, p);
+
+		if(det < epsilon){
+			isInOne = false;
+			goto second;	
+		}
+
+		inv_det = typename genType::value_type(1.0f)/det;
+		s = orig - v00;
+		alpha = inv_det * glm::dot(s, p);
+
+		if(alpha > typename genType::value_type(1.0f)){
+			isInOne = false;
+			goto second;
+		}
+
+		if(alpha < typename genType::value_type(0.0f)){
+			isInOne = false;
+			goto second;
+		}
+
+		q = glm::cross(s, e01);
+		beta = inv_det * glm::dot(dir, q);
+
+		if(beta > typename genType::value_type(1.0f)){
+			isInOne = false;
+			goto second;
+		}
+
+		if(beta < typename genType::value_type(0.0f)){
+			isInOne = false;
+			goto second;
+		}
+
+		t = inv_det * glm::dot(e03, q);		
+
+		if(t < typename genType::value_type(0.0f)){
+			isInOne = false;
+			goto second;
+		}
+
+		second:
+		if(!isInOne || alpha + beta > typename genType::value_type(1.0f)){
+
+			genType e23 = v01 - v11;
+			genType e21 = v10 - v11;
+
+			p = glm::cross(dir, e21);
+			
+			det = glm::dot(e23, p);
+
+			if(det < epsilon){
+				return false;
+			}
+
+			inv_det = typename genType::value_type(1.0f)/det;
+			s = orig - v11;
+
+			alpha = inv_det * glm::dot(s, p);
+
+			if(alpha < typename genType::value_type(0.0f))
+				return false;
+
+			q = glm::cross(s, e23);
+			beta = inv_det * glm::dot(dir, q);
+
+			if(beta < typename genType::value_type(0.0f))
+				return false;
+
+			if(beta + alpha > typename genType::value_type(1.0f))
+				return false;
+
+			t = inv_det * glm::dot(e21, q);		
+		}
+		
+		return t >= typename genType::value_type(0.0f);
+	}
+	
+	template<typename genType>
+	GLM_FUNC_QUALIFIER bool intersectLineDegenerateQuad
+	(
+		genType const & orig, genType const & dir, 
+		genType const & v00, genType const & v10, genType const & v11, genType const & v01,
+		genType & bilinearCoordinates
+	)
+	{
+		genType e01, e03, p, s, q;
+		typename genType::value_type epsilon, det, inv_det, alpha, beta;
+		bool isInOne = true;
+
+		epsilon = std::numeric_limits<typename genType::value_type>::epsilon();
+
+		e01 = v10 - v00;
+		e03 = v01 - v00;
+
+		p = glm::cross(dir, e03);
+		det = glm::dot(e01, p);
+		
+		if(det < epsilon && det > -epsilon){
+			isInOne = false;
+			goto second;	
+		}
+
+		inv_det = typename genType::value_type(1.0f)/det;
+		s = orig - v00;
+		alpha = inv_det * glm::dot(s, p);
+		
+		if(alpha > typename genType::value_type(1.0f)){
+			isInOne = false;
+			goto second;
+		}
+
+		if(alpha < typename genType::value_type(0.0f)){
+			isInOne = false;
+			goto second;
+		}
+
+		q = glm::cross(s, e01);
+		beta = inv_det * glm::dot(dir, q);
+
+		if(beta > typename genType::value_type(1.0f)){
+			isInOne = false;
+			goto second;
+		}
+		if(beta < typename genType::value_type(0.0f)){
+			isInOne = false;
+			goto second;
+		}
+
+		second:
+		if(!isInOne || alpha + beta > typename genType::value_type(1.0f)){
+
+			genType e23 = v01 - v11;
+			genType e21 = v10 - v11;
+
+			p = glm::cross(dir, e21);
+			det = glm::dot(e23, p);
+
+			if(det < epsilon && det > -epsilon){
+				return false;
+			}
+
+			inv_det = typename genType::value_type(1.0f)/det;
+			s = orig - v11;
+			alpha = inv_det * glm::dot(s, p);
+
+			if(alpha < typename genType::value_type(0.0f))
+				return false;
+
+			q = glm::cross(s, e23);
+			beta = inv_det * glm::dot(dir, q);
+
+			if(beta < typename genType::value_type(0.0f))
+				return false;
+
+			if(beta + alpha > typename genType::value_type(1.0f))
+				return false;
+		}
+		
+		genType e02 = v11 - v00;
+		genType N = glm::cross(e01, e03);
+		
+		typename genType::value_type alpha_11, beta_11;
+
+		if(abs(N.x) >= abs(N.y) && abs(N.x) >= abs(N.z)) {
+			alpha_11 = (e02.y * e03.z - e02.z * e03.y) / N.x;
+			beta_11  = (e01.y * e02.z - e01.z * e02.y) / N.x;
+		} else if(abs(N.y) >= abs(N.x) && abs(N.y) >= abs(N.z)) {		
+			alpha_11 = (e02.z * e03.x - e02.x * e03.z) / N.x;
+			beta_11  = (e01.z * e02.x - e01.x * e02.z) / N.x;
+		} else {
+			alpha_11 = (e02.x * e03.y - e02.y * e03.x) / N.z;
+			beta_11  = (e01.x * e02.y - e01.y * e02.x) / N.z;
+		}
+
+		if(abs(alpha_11 - typename genType::value_type(1.0f)) < epsilon) { 
+			bilinearCoordinates.x = alpha;
+			
+			if(abs(beta_11 - typename genType::value_type(1.0f)) < epsilon){
+				bilinearCoordinates.y = beta;
+			} else {
+				bilinearCoordinates.y = beta/(bilinearCoordinates.x * (beta_11 - typename genType::value_type(1.0f)) + typename genType::value_type(1.0f));
+			}
+
+		} else if(abs(beta_11 - typename genType::value_type(1.0f)) < epsilon) {
+			bilinearCoordinates.y = alpha;
+			bilinearCoordinates.x = alpha/(bilinearCoordinates.y*(alpha_11 - typename genType::value_type(1.0f)) + typename genType::value_type(1.0f));
+		} else {
+			typename genType::value_type a, b, c, discr, q;
+
+			a = -(beta_11 - typename genType::value_type(1.0f));
+			b = alpha*(beta_11 - 1) - beta*(alpha_11 - typename genType::value_type(1.0f)) - typename genType::value_type(1.0f);
+			c = alpha;
+
+			discr = b*b - typename genType::value_type(4.0f)*a*c;
+
 			typename genType::value_type sign = (typename genType::value_type(0) < b) - (b < typename genType::value_type(0));
 			
 			q = -(typename genType::value_type(0.5f)) * (b + sign*glm::fastSqrt(discr));
@@ -1067,18 +983,14 @@ namespace glm
 		typename genType::value_type epsilon, det, inv_det, alpha, beta;
 		bool isInOne = true;
 
-		// Epsilon to reject parallell lines
 		epsilon = std::numeric_limits<typename genType::value_type>::epsilon();
 
-		// Calculate edges and normal of first triangle
 		e01 = v10 - v00;
 		e03 = v01 - v00;
 
 		p = glm::cross(dir, e03);
-
 		det = glm::dot(e01, p);
 
-		// Reject rays orthagonal to the normal vector. I.e. rays parallell to the plane.
 		if(det < epsilon && det > -epsilon){
 			isInOne = false;
 			goto second;	
@@ -1086,11 +998,8 @@ namespace glm
 
 		inv_det = typename genType::value_type(1.0f)/det;
 		s = orig - v00;
-
-		// Calculate the barycentric alpha coordinate of the first triangle
 		alpha = inv_det * glm::dot(s, p);
 
-		// It lies outside the triangle
 		if(alpha > typename genType::value_type(1.0f)){
 			isInOne = false;
 			goto second;
@@ -1101,10 +1010,7 @@ namespace glm
 			goto second;
 		}
 
-		// Vector perpendicular to T and e01 
 		q = glm::cross(s, e01);
-
-		// Calculate barycentric beta coordinate of the first triangle
 		beta = inv_det * glm::dot(dir, q);
 
 		if(beta > typename genType::value_type(1.0f)){
@@ -1117,16 +1023,13 @@ namespace glm
 			goto second;
 		}
 
-		/* Intersection is not in the first triangle, check the second*/
 		second:
 		if(!isInOne || alpha + beta > typename genType::value_type(1.0f)){
-			// Do exactly the same for the second triangle
 
 			genType e23 = v01 - v11;
 			genType e21 = v10 - v11;
 
 			p = glm::cross(dir, e21);
-			
 			det = glm::dot(e23, p);
 
 			if(det < epsilon && det > -epsilon){
@@ -1135,7 +1038,6 @@ namespace glm
 
 			inv_det = typename genType::value_type(1.0f)/det;
 			s = orig - v11;
-
 			alpha = inv_det * glm::dot(s, p);
 
 			if(alpha < typename genType::value_type(0.0f))
@@ -1146,14 +1048,11 @@ namespace glm
 
 			if(beta < typename genType::value_type(0.0f))
 				return false;
-
-			// This to support degenerate squares
 			if(beta + alpha > typename genType::value_type(1.0f))
 				return false;
 		}
 		
 		return true;
 	}
-
 
 }//namespace glm
