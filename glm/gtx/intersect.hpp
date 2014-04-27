@@ -103,6 +103,24 @@ namespace glm
 		genType & intersectionPosition1, genType & intersectionNormal1, 
 		genType & intersectionPosition2 = genType(), genType & intersectionNormal2 = genType());
 
+	//! Compute the intersection of a line and a non-degenerate quadrilateral.
+	//! From the GLM_GTX_intersect extension
+	template <typename genType>
+	GLM_FUNC_DECL bool intersectRayQuad(
+		genType const & orig, genType const & dir, 
+		genType const & v00, genType const & v10, genType const & v11, genType const & v01,
+		genType & bilinearCoordinates
+	);
+
+	//! Compute the intersection of a line and a non-degenerate quadrilateral.
+	//! Does not compute the bilinear coordinates of the intersection.
+	//! From the GLM_GTX_intersect extension
+	template<typename genType>
+	GLM_FUNC_DECL bool fastIntersectRayQuad(
+		genType const & orig, genType const & dir,
+		genType const & v00, genType const & v10, genType const & v11, genType const & v01
+	);
+
 	/// @}
 }//namespace glm
 
