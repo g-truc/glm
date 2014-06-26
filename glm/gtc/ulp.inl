@@ -245,7 +245,7 @@ namespace glm
 #		if((GLM_LANG & GLM_LANG_CXX11_FLAG) && !(GLM_PLATFORM & GLM_PLATFORM_ANDROID))
 			return std::nextafter(x, std::numeric_limits<double>::min());
 #		elif((GLM_PLATFORM & GLM_PLATFORM_ANDROID) || (GLM_COMPILER & GLM_COMPILER_VC) || ((GLM_COMPILER & GLM_COMPILER_INTEL) && (GLM_PLATFORM & GLM_PLATFORM_WINDOWS)))
-			return _nextafter(x, DBL_MIN);
+			return detail::nextafter(x, DBL_MIN);
 #		else
 			return nextafter(x, DBL_MIN);
 #		endif
