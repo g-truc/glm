@@ -37,6 +37,13 @@ More informations in GLM manual:
 http://glm.g-truc.net/glm.pdf
 
 ================================================================================
+GLM 0.9.5.5: 2014-XX-XX
+--------------------------------------------------------------------------------
+- Fixed std::nextafter not supported with C++11 on Android #213
+- Fixed missing value_type for dual quaternion
+- Fixed return type of dual quaternion length
+
+================================================================================
 GLM 0.9.5.4: 2014-06-21
 --------------------------------------------------------------------------------
 - Fixed non-utf8 character #196

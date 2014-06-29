@@ -57,13 +57,13 @@ namespace detail
 	struct tdualquat
 	{
 		enum ctor{null};
-		
+		typedef T value_type;
 		typedef glm::detail::tquat<T, P> part_type;
 		
 	public:
 		glm::detail::tquat<T, P> real, dual;
 		
-		GLM_FUNC_DECL GLM_CONSTEXPR int length() const;
+		GLM_FUNC_DECL GLM_CONSTEXPR length_t length() const;
 		
 		// Constructors
 		GLM_FUNC_DECL tdualquat();

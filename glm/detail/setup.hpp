@@ -38,7 +38,7 @@
 #define GLM_VERSION_MAJOR			0
 #define GLM_VERSION_MINOR			9
 #define GLM_VERSION_PATCH			5
-#define GLM_VERSION_REVISION		4
+#define GLM_VERSION_REVISION		5
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // Platform
