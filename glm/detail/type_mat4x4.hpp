@@ -34,6 +34,7 @@
 #include "type_mat.hpp"
 #include <limits>
 #include <cstddef>
+#include <utility>
 
 namespace glm{
 namespace detail

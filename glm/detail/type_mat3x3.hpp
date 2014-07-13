@@ -40,6 +40,7 @@
 #endif
 #include <limits>
 #include <cstddef>
+#include <utility>
 
 namespace glm{
 namespace detail
