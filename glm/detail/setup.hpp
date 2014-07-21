@@ -455,6 +455,10 @@
 #				define GLM_LANG (GLM_LANG_CXX98)
 #			endif
 #		endif
+#	elif(GLM_COMPILER & GLM_COMPILER_CUDA)
+#		if(defined(_MSC_EXTENSIONS))
+#			define GLM_LANG (GLM_LANG_CXX0X | GLM_LANG_CXXMS_FLAG)
+#		endif
 #	elif(__cplusplus >= 199711L)
 #		define GLM_LANG GLM_LANG_CXX98
 #	else
