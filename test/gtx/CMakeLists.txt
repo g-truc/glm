@@ -1,3 +1,4 @@
+glmCreateTestGTC(gtx_adl)
 glmCreateTestGTC(gtx_associated_min_max)
 glmCreateTestGTC(gtx_bit)
 glmCreateTestGTC(gtx_closest_point)
