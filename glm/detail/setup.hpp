@@ -226,7 +226,7 @@
 
 // Clang
 #elif defined(__clang__)
-#	if GLM_PLATFORM & GLM_COMPILER_APPLE_CLANG
+#	if GLM_PLATFORM & GLM_PLATFORM_APPLE
 #		if __clang_major__ == 4 && __clang_minor__ == 0
 #			define GLM_COMPILER GLM_COMPILER_APPLE_CLANG40
 #		elif __clang_major__ == 4 && __clang_minor__ == 1
@@ -240,7 +240,7 @@
 #		elif __clang_major__ >= 6
 #			define GLM_COMPILER GLM_COMPILER_APPLE_CLANG60
 #		endif
-#	elif GLM_PLATFORM & GLM_COMPILER_LLVM
+#	elif GLM_PLATFORM & GLM_PLATFORM_LINUX
 #		if __clang_major__ == 3 && __clang_minor__ == 0
 #			define GLM_COMPILER GLM_COMPILER_LLVM30
 #		elif __clang_major__ == 3 && __clang_minor__ == 1
