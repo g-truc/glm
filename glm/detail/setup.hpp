@@ -152,14 +152,14 @@
 #define GLM_COMPILER_CUDA60			0x10000080
 #define GLM_COMPILER_CUDA65			0x10000090
 
-// LLVM
-#define GLM_COMPILER_LLVM			0x20000000
-#define GLM_COMPILER_LLVM30			0x20000010
-#define GLM_COMPILER_LLVM31			0x20000020
-#define GLM_COMPILER_LLVM32			0x20000030
-#define GLM_COMPILER_LLVM33			0x20000040
-#define GLM_COMPILER_LLVM34			0x20000050
-#define GLM_COMPILER_LLVM35			0x20000060
+// Clang
+#define GLM_COMPILER_CLANG			0x20000000
+#define GLM_COMPILER_CLANG30		0x20000010
+#define GLM_COMPILER_CLANG31		0x20000020
+#define GLM_COMPILER_CLANG32		0x20000030
+#define GLM_COMPILER_CLANG33		0x20000040
+#define GLM_COMPILER_CLANG34		0x20000050
+#define GLM_COMPILER_CLANG35		0x20000060
 
 // Apple Clang
 #define GLM_COMPILER_APPLE_CLANG	0x40000000
@@ -226,7 +226,7 @@
 
 // Clang
 #elif defined(__clang__)
-#	if GLM_PLATFORM & GLM_COMPILER_APPLE_CLANG
+#	if GLM_PLATFORM & GLM_PLATFORM_APPLE
 #		if __clang_major__ == 4 && __clang_minor__ == 0
 #			define GLM_COMPILER GLM_COMPILER_APPLE_CLANG40
 #		elif __clang_major__ == 4 && __clang_minor__ == 1
@@ -240,21 +240,21 @@
 #		elif __clang_major__ >= 6
 #			define GLM_COMPILER GLM_COMPILER_APPLE_CLANG60
 #		endif
-#	elif GLM_PLATFORM & GLM_COMPILER_LLVM
+#	elif GLM_PLATFORM & GLM_PLATFORM_LINUX
 #		if __clang_major__ == 3 && __clang_minor__ == 0
-#			define GLM_COMPILER GLM_COMPILER_LLVM30
+#			define GLM_COMPILER GLM_COMPILER_CLANG30
 #		elif __clang_major__ == 3 && __clang_minor__ == 1
-#			define GLM_COMPILER GLM_COMPILER_LLVM31
+#			define GLM_COMPILER GLM_COMPILER_CLANG31
 #		elif __clang_major__ == 3 && __clang_minor__ == 2
-#			define GLM_COMPILER GLM_COMPILER_LLVM32
+#			define GLM_COMPILER GLM_COMPILER_CLANG32
 #		elif __clang_major__ == 3 && __clang_minor__ == 3
-#			define GLM_COMPILER GLM_COMPILER_LLVM33
+#			define GLM_COMPILER GLM_COMPILER_CLANG33
 #		elif __clang_major__ == 3 && __clang_minor__ == 4
-#			define GLM_COMPILER GLM_COMPILER_LLVM34
+#			define GLM_COMPILER GLM_COMPILER_CLANG34
 #		elif __clang_major__ == 3 && __clang_minor__ == 5
-#			define GLM_COMPILER GLM_COMPILER_LLVM35
+#			define GLM_COMPILER GLM_COMPILER_CLANG35
 #		else
-#			define GLM_COMPILER GLM_COMPILER_LLVM35
+#			define GLM_COMPILER GLM_COMPILER_CLANG35
 #		endif
 #	endif
 

@@ -251,7 +251,7 @@ namespace glm
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<genIUType>::is_integer, "'bitCount' only accept integer values");
 
-		return bitCount(tvec1(x)).x;
+		return bitCount(tvec1<genIUType>(x)).x;
 	}
 
 	template <typename T, precision P, template <typename, precision> class vecType>
@@ -284,7 +284,7 @@ namespace glm
 	template <typename T, precision P, template <typename, precision> class vecType>
 	GLM_FUNC_QUALIFIER vecType<int, P> findLSB(vecType<T, P> const & x)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<genIUType>::is_integer, "'findLSB' only accept integer values");
+		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_integer, "'findLSB' only accept integer values");
 
 		return detail::functor1<int, T, P, vecType>::call(findLSB, x);
 	}
