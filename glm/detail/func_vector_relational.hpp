@@ -43,6 +43,9 @@
 #include "precision.hpp"
 #include "setup.hpp"
 
+// Dependency for 'uninitialized' enum
+#include "type_vec.hpp"
+
 #if !((GLM_COMPILER & GLM_COMPILER_VC) && (GLM_COMPILER <= GLM_COMPILER_VC10)) // Workaround a Visual C++ bug
 
 namespace glm
