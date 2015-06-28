@@ -30,17 +30,12 @@
 ///////////////////////////////////////////////////////////////////////////////////
 
 #include <glm/trigonometric.hpp>
-/*
-float sin(float x) {
-	float temp;
-	temp = (x + M_PI) / ((2 * M_PI) - M_PI);
-	return limited_sin((x + M_PI) - ((2 * M_PI) - M_PI) * temp));
-}
-*/
+
 int main()
 {
-	int Failed = 0;
+	int Error = 0;
 
-	return Failed;
+
+	return Error;
 }
 

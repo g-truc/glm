@@ -1,10 +1,14 @@
 cmake_minimum_required(VERSION 2.6 FATAL_ERROR)
 
 project(glm)
-enable_testing()
+set(GLM_VERSION "0.9.7")
 
-list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+
 include(GNUInstallDirs)
+include(CMakePackageConfigHelpers)
+
+enable_testing()
 
 add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 
@@ -129,7 +133,6 @@ endif()
 if(CMAKE_COMPILER_IS_GNUCXX)
 	#add_definitions(-S)
 	#add_definitions(-s)
-	add_definitions(-m64)
 	add_definitions(-O2)
 
 	#add_definitions(-fprofile-arcs -ftest-coverage) gcov
@@ -141,6 +144,56 @@ include_directories("${PROJECT_SOURCE_DIR}/test/external")
 
 add_subdirectory(glm)
 add_subdirectory(test)
-add_subdirectory(util)
 
-install(DIRECTORY glm DESTINATION ${CMAKE_INSTALL_FULL_INCLUDEDIR})
+set(GLM_INSTALL_CONFIGDIR "${CMAKE_INSTALL_LIBDIR}/cmake/glm")
+install(DIRECTORY glm DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+
+write_basic_package_version_file(
+    "${CMAKE_CURRENT_BINARY_DIR}/glmVersion.cmake"
+    VERSION ${GLM_VERSION}
+    COMPATIBILITY AnyNewerVersion
+)
+
+# build tree package config
+configure_file(
+    cmake/glmBuildConfig.cmake.in
+    glmConfig.cmake
+    @ONLY
+)
+
+# install tree package config
+configure_package_config_file(
+    cmake/glmConfig.cmake.in
+    ${GLM_INSTALL_CONFIGDIR}/glmConfig.cmake
+    INSTALL_DESTINATION ${GLM_INSTALL_CONFIGDIR}
+    PATH_VARS CMAKE_INSTALL_INCLUDEDIR
+    NO_CHECK_REQUIRED_COMPONENTS_MACRO
+)
+
+install(
+    FILES 
+        "${CMAKE_CURRENT_BINARY_DIR}/${GLM_INSTALL_CONFIGDIR}/glmConfig.cmake"
+        "${CMAKE_CURRENT_BINARY_DIR}/glmVersion.cmake"
+    DESTINATION ${GLM_INSTALL_CONFIGDIR}
+)
+
+if (NOT CMAKE_VERSION VERSION_LESS "2.8.12")
+    add_library(glm INTERFACE)
+    target_include_directories(glm INTERFACE
+        $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+    )
+    install(TARGETS glm EXPORT glmTargets)
+
+    export(
+        EXPORT glmTargets
+        FILE "${CMAKE_CURRENT_BINARY_DIR}/glmTargets.cmake"
+    )
+    
+    install(
+        EXPORT glmTargets FILE glmTargets.cmake
+        DESTINATION ${GLM_INSTALL_CONFIGDIR}
+    )
+endif()
+
+export(PACKAGE glm)

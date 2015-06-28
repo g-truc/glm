@@ -55,7 +55,7 @@ namespace glm
 	/// @addtogroup gtx_intersect
 	/// @{
 
-	//! Compute the intersection of a ray and a triangle.
+	//! Compute the intersection of a ray and a plane.
 	//! Ray direction and plane normal must be unit length.
 	//! From GLM_GTX_intersect extension.
 	template <typename genType>

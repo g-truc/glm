@@ -169,6 +169,22 @@ namespace mod_
 		int Error(0);
 
 		{
+			float A(1.5f);
+			float B(1.0f);
+			float C = glm::mod(A, B);
+
+			Error += glm::abs(C - 0.5f) < 0.00001f ? 0 : 1;
+		}
+
+		{
+			float A(-0.2f);
+			float B(1.0f);
+			float C = glm::mod(A, B);
+
+			Error += glm::abs(C - 0.8f) < 0.00001f ? 0 : 1;
+		}
+
+		{
 			float A(3.0);
 			float B(2.0f);
 			float C = glm::mod(A, B);

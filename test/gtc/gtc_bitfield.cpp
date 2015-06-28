@@ -631,11 +631,13 @@ namespace bitfieldInterleave
 			std::printf("glm::detail::bitfieldInterleave Time %d clocks\n", static_cast<unsigned int>(Time));
 		}
 
-#		if(GLM_ARCH != GLM_ARCH_PURE)
+#		if(GLM_ARCH != GLM_ARCH_PURE && !(GLM_COMPILER & GLM_COMPILER_GCC))
 		{
 			// SIMD
-			std::vector<__m128i> SimdData(x_max * y_max);
-			std::vector<__m128i> SimdParam(x_max * y_max);
+			std::vector<__m128i> SimdData;
+			SimdData.resize(x_max * y_max);
+			std::vector<__m128i> SimdParam;
+			SimdParam.resize(x_max * y_max);
 			for(int i = 0; i < SimdParam.size(); ++i)
 				SimdParam[i] = _mm_set_epi32(i % x_max, 0, i / y_max, 0);
 
