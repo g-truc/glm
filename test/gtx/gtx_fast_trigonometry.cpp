@@ -233,21 +233,10 @@ namespace taylorCos
 			- Powed6 * static_cast<T>(0.00138888888888888888888888888889);
 	}
 
-	template <glm::precision P, template <typename, glm::precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<float, P> fastAbs(vecType<float, P> x)
-	{
-		int* Pointer = reinterpret_cast<int*>(&x[0]);
-		*(((int *) &Pointer[0]) + 1) &= 0x7fffffff;
-		*(((int *) &Pointer[1]) + 1) &= 0x7fffffff;
-		*(((int *) &Pointer[2]) + 1) &= 0x7fffffff;
-		*(((int *) &Pointer[3]) + 1) &= 0x7fffffff;
-		return x;
-	}
-
 	template <typename T, glm::precision P, template <typename, glm::precision> class vecType>
 	GLM_FUNC_QUALIFIER vecType<T, P> fastCosNew(vecType<T, P> const & x)
 	{
-		vecType<T, P> const Angle0_PI(fastAbs(fmod(x + glm::pi<T>(), glm::two_pi<T>()) - glm::pi<T>()));
+		vecType<T, P> const Angle0_PI(glm::abs(fmod(x + glm::pi<T>(), glm::two_pi<T>()) - glm::pi<T>()));
 		return taylorSeriesNewCos6(x);
 /*
 		vecType<bool, P> const FirstQuarterPi(lessThanEqual(Angle0_PI, vecType<T, P>(glm::half_pi<T>())));
