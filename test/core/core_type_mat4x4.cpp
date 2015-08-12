@@ -31,6 +31,14 @@
 
 #include <glm/gtc/epsilon.hpp>
 #include <glm/matrix.hpp>
+#include <glm/mat2x2.hpp>
+#include <glm/mat2x3.hpp>
+#include <glm/mat2x4.hpp>
+#include <glm/mat3x2.hpp>
+#include <glm/mat3x3.hpp>
+#include <glm/mat3x4.hpp>
+#include <glm/mat4x2.hpp>
+#include <glm/mat4x3.hpp>
 #include <glm/mat4x4.hpp>
 #include <cstdio>
 #include <vector>
@@ -274,10 +282,61 @@ int perf_mul()
 	return Error;
 }
 
+namespace cast
+{
+	template <typename genType>
+	int entry()
+	{
+		int Error = 0;
+
+		genType A(1.0f);
+		glm::mat4x4 B(A);
+		glm::mat4x4 Identity(1.0f);
+
+		for(glm::length_t i = 0, length = B.length(); i < length; ++i)
+			Error += glm::all(glm::equal(B[i], Identity[i])) ? 0 : 1;
+
+		return Error;
+	}
+
+	int test()
+	{
+		int Error = 0;
+		
+		Error += entry<glm::mat2x2>();
+		Error += entry<glm::mat2x3>();
+		Error += entry<glm::mat2x4>();
+		Error += entry<glm::mat3x2>();
+		Error += entry<glm::mat3x3>();
+		Error += entry<glm::mat3x4>();
+		Error += entry<glm::mat4x2>();
+		Error += entry<glm::mat4x3>();
+		Error += entry<glm::mat4x4>();
+
+		return Error;
+	}
+}//namespace cast
+
+struct repro
+{
+	repro(){ this->matrix = new glm::mat4(); }
+	~repro(){delete this->matrix;}
+
+	glm::mat4* matrix;
+};
+
 int main()
 {
 	int Error = 0;
 
+	repro Repro;
+
+#ifdef GLM_META_PROG_HELPERS
+		assert(glm::mat4::rows == glm::mat4::row_type::components);
+		assert(glm::mat4::cols == glm::mat4::col_type::components);
+#endif
+
+	Error += cast::test();
 	Error += test_ctr();
 	Error += test_inverse_dmat4x4();
 	Error += test_inverse_mat4x4();

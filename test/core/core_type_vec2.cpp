@@ -333,6 +333,7 @@ int main()
 	assert(v.length() == 2);
 
 #	ifdef GLM_META_PROG_HELPERS
+		assert(glm::vec2::components == glm::vec2().length());
 		assert(glm::vec2::components == 2);
 #	endif
 

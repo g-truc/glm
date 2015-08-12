@@ -46,7 +46,7 @@
 
 #if(defined(GLM_MESSAGES) && !defined(GLM_MESSAGE_VERSION_DISPLAYED))
 #	define GLM_MESSAGE_VERSION_DISPLAYED
-#	pragma message ("GLM: version 0.9.7")
+#	pragma message ("GLM: version 0.9.7.0")
 #endif//GLM_MESSAGE
 
 ///////////////////////////////////////////////////////////////////////////////////
@@ -619,7 +619,8 @@
 #else
 #	define GLM_HAS_DEFAULTED_FUNCTIONS (GLM_LANG & GLM_LANG_CXX0X_FLAG) && (\
 		((GLM_COMPILER & GLM_COMPILER_GCC) && (GLM_COMPILER >= GLM_COMPILER_GCC44)) || \
-		((GLM_COMPILER & GLM_COMPILER_VC) && (GLM_COMPILER >= GLM_COMPILER_VC2013)))
+		((GLM_COMPILER & GLM_COMPILER_VC) && (GLM_COMPILER >= GLM_COMPILER_VC2013)) || \
+		((GLM_COMPILER & GLM_COMPILER_INTEL) && (GLM_COMPILER >= GLM_COMPILER_INTEL12)))
 #endif
 
 // N2118
@@ -922,6 +923,18 @@
 #	define GLM_RESTRICT
 #	define GLM_RESTRICT_VAR
 #endif//GLM_COMPILER
+
+#if GLM_HAS_DEFAULTED_FUNCTIONS
+#	define GLM_DEFAULT = default
+#	ifdef GLM_FORCE_NO_CTOR_INIT
+#		define GLM_DEFAULT_CTOR = default
+#	else
+#		define GLM_DEFAULT_CTOR
+#	endif
+#else
+#	define GLM_DEFAULT
+#	define GLM_DEFAULT_CTOR
+#endif
 
 #if GLM_HAS_CONSTEXPR
 #	define GLM_CONSTEXPR constexpr

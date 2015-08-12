@@ -174,6 +174,7 @@ int main()
 	assert(v.length() == 1);
 
 #	ifdef GLM_META_PROG_HELPERS
+		assert(glm::vec1::components == glm::vec1().length());
 		assert(glm::vec1::components == 1);
 #	endif
 

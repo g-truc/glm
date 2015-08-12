@@ -29,7 +29,6 @@
 /// @author Christophe Riccio
 ///////////////////////////////////////////////////////////////////////////////////
 
-//#define GLM_FORCE_AVX2
 #if !(GLM_COMPILER & GLM_COMPILER_GCC)
 #	define GLM_META_PROG_HELPERS
 #endif
@@ -477,6 +476,7 @@ int main()
 	assert(v.length() == 4);
 
 #	ifdef GLM_META_PROG_HELPERS
+		assert(glm::vec4::components == glm::vec4().length());
 		assert(glm::vec4::components == 4);
 #	endif
 

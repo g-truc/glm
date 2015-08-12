@@ -71,6 +71,11 @@ namespace detail
 		typedef fmat4x4SIMD type;
 		typedef fmat4x4SIMD transpose_type;
 
+		typedef tmat4x4<float, defaultp> pure_type;
+		typedef tvec4<float, defaultp> pure_row_type;
+		typedef tvec4<float, defaultp> pure_col_type;
+		typedef tmat4x4<float, defaultp> pure_transpose_type;
+
 #		ifdef GLM_META_PROG_HELPERS
 			static GLM_RELAXED_CONSTEXPR length_t components = 4;
 			static GLM_RELAXED_CONSTEXPR length_t cols = 4;
@@ -85,7 +90,7 @@ namespace detail
 		//////////////////////////////////////
 		// Constructors
 
-		fmat4x4SIMD();
+		fmat4x4SIMD() GLM_DEFAULT_CTOR;
 		explicit fmat4x4SIMD(float const & s);
 		explicit fmat4x4SIMD(
 			float const & x0, float const & y0, float const & z0, float const & w0,
@@ -120,7 +125,7 @@ namespace detail
 		fvec4SIMD const & operator[](length_t i) const;
 
 		// Unary updatable operators
-		fmat4x4SIMD & operator= (fmat4x4SIMD const & m);
+		fmat4x4SIMD & operator= (fmat4x4SIMD const & m) GLM_DEFAULT;
 		fmat4x4SIMD & operator+= (float const & s);
 		fmat4x4SIMD & operator+= (fmat4x4SIMD const & m);
 		fmat4x4SIMD & operator-= (float const & s);

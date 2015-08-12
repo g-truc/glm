@@ -501,6 +501,7 @@ int main()
 	assert(v.length() == 3);
 
 #	ifdef GLM_META_PROG_HELPERS
+		assert(glm::vec3::components == glm::vec3().length());
 		assert(glm::vec3::components == 3);
 #	endif
 

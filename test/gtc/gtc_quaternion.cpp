@@ -243,6 +243,7 @@ int test_quat_mul()
 	glm::quat temp5 = glm::normalize(temp1 * temp2);
 	glm::vec3 temp6 = temp5 * glm::vec3(0.0, 1.0, 0.0) * glm::inverse(temp5);
 
+#	ifndef GLM_FORCE_NO_CTOR_INIT
 	{
 		glm::quat temp7;
 
@@ -251,6 +252,7 @@ int test_quat_mul()
 
 		Error += temp7 != glm::quat();
 	}
+#	endif
 
 	return Error;
 }
@@ -325,7 +327,10 @@ int main()
 {
 	int Error(0);
 
-	assert(glm::quat::components == 4);
+#ifdef GLM_META_PROG_HELPERS
+		assert(glm::quat::components == 4);
+		assert(glm::quat::components == glm::quat().length());
+#endif
 
 	Error += test_quat_ctr();
 	Error += test_quat_mul_vec();
