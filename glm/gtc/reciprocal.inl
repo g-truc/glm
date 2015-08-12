@@ -67,7 +67,7 @@ namespace glm
 
 	// cot
 	template <typename genType>
-	GLM_FUNC_QUALIFIER genType cot(genType angle)
+	GLM_FUNC_QUALIFIER genType cot(genType const & angle)
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559, "'cot' only accept floating-point values");
 	
