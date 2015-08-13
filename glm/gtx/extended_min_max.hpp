@@ -159,4 +159,4 @@ namespace glm
 	/// @}
 }//namespace glm
 
-#include "extented_min_max.inl"
+#include "extended_min_max.inl"
