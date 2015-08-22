@@ -151,6 +151,21 @@ namespace glm
 		T right,
 		T bottom,
 		T top);
+		
+	/// Creates a matrix for projecting two-dimensional coordinates onto the screen.
+	/// 
+	/// @param left 
+	/// @param right 
+	/// @param bottom 
+	/// @param top 
+	/// @tparam T Value type used to build the matrix. Currently supported: half (not recommanded), float or double.
+	/// @see gtc_matrix_transform
+	template <typename T>
+	GLM_FUNC_DECL tmat3x3<T, defaultp> ortho_2d(
+		T left,
+		T right,
+		T bottom,
+		T top);
 
 	/// Creates a frustum matrix.
 	/// 
