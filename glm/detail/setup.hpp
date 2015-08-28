@@ -689,14 +689,6 @@
 		((GLM_COMPILER & GLM_COMPILER_VC) && (GLM_COMPILER >= GLM_COMPILER_VC2013)))
 #endif
 
-//
-#if GLM_ARCH == GLM_ARCH_PURE
-#	define GLM_HAS_BITSCAN_WINDOWS 0
-#else
-#	define GLM_HAS_BITSCAN_WINDOWS (GLM_PLATFORM & GLM_PLATFORM_WINDOWS) && (\
-		(GLM_COMPILER & (GLM_COMPILER_VC | GLM_COMPILER_LLVM | GLM_COMPILER_INTEL))
-#endif
-
 // OpenMP
 #ifdef _OPENMP
 #	if GLM_COMPILER & GLM_COMPILER_GCC
@@ -785,6 +777,14 @@
 #	endif
 #else
 #	define GLM_ARCH GLM_ARCH_PURE
+#endif
+
+//
+#if GLM_ARCH == GLM_ARCH_PURE
+#	define GLM_HAS_BITSCAN_WINDOWS 0
+#else
+#	define GLM_HAS_BITSCAN_WINDOWS (GLM_PLATFORM & GLM_PLATFORM_WINDOWS) && (\
+		(GLM_COMPILER & (GLM_COMPILER_VC | GLM_COMPILER_LLVM | GLM_COMPILER_INTEL))
 #endif
 
 // With MinGW-W64, including intrinsic headers before intrin.h will produce some errors. The problem is
