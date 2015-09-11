@@ -995,7 +995,7 @@ namespace detail
 #	endif
 
 	template <typename genType>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR component_count_t component_count(genType const & m)
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR component_count_t component_count(genType const & m) GLM_NOEXCEPT
 	{
 #		ifdef GLM_FORCE_SIZE_FUNC
 			return m.size();
@@ -1028,7 +1028,7 @@ namespace detail
 	namespace glm
 	{
 		template <typename T, std::size_t N>
-		constexpr std::size_t countof(T const (&)[N])
+		constexpr std::size_t countof(T const (&)[N]) GLM_NOEXCEPT
 		{
 			return N;
 		}

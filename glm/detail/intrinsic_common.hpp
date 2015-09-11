@@ -37,47 +37,47 @@
 namespace glm{
 namespace detail
 {
-	__m128 sse_abs_ps(__m128 x);
+	__m128 sse_abs_ps(__m128 x) GLM_NOEXCEPT;
 
-	__m128 sse_sgn_ps(__m128 x);
+	__m128 sse_sgn_ps(__m128 x) GLM_NOEXCEPT;
 
 	//floor
-	__m128 sse_flr_ps(__m128 v);
+	__m128 sse_flr_ps(__m128 v) GLM_NOEXCEPT;
 
 	//trunc
-	__m128 sse_trc_ps(__m128 v);
+	__m128 sse_trc_ps(__m128 v) GLM_NOEXCEPT;
 
 	//round
-	__m128 sse_nd_ps(__m128 v);
+	__m128 sse_nd_ps(__m128 v) GLM_NOEXCEPT;
 
 	//roundEven
-	__m128 sse_rde_ps(__m128 v);
+	__m128 sse_rde_ps(__m128 v) GLM_NOEXCEPT;
 
-	__m128 sse_rnd_ps(__m128 x);
+	__m128 sse_rnd_ps(__m128 x) GLM_NOEXCEPT;
 
-	__m128 sse_ceil_ps(__m128 v);
+	__m128 sse_ceil_ps(__m128 v) GLM_NOEXCEPT;
 
-	__m128 sse_frc_ps(__m128 x);
+	__m128 sse_frc_ps(__m128 x) GLM_NOEXCEPT;
 
-	__m128 sse_mod_ps(__m128 x, __m128 y);
+	__m128 sse_mod_ps(__m128 x, __m128 y) GLM_NOEXCEPT;
 
-	__m128 sse_modf_ps(__m128 x, __m128i & i);
+	__m128 sse_modf_ps(__m128 x, __m128i & i) GLM_NOEXCEPT;
 
-	//GLM_FUNC_QUALIFIER __m128 sse_min_ps(__m128 x, __m128 y)
+	//GLM_FUNC_QUALIFIER __m128 sse_min_ps(__m128 x, __m128 y) GLM_NOEXCEPT
 
-	//GLM_FUNC_QUALIFIER __m128 sse_max_ps(__m128 x, __m128 y)
+	//GLM_FUNC_QUALIFIER __m128 sse_max_ps(__m128 x, __m128 y) GLM_NOEXCEPT
 
-	__m128 sse_clp_ps(__m128 v, __m128 minVal, __m128 maxVal);
+	__m128 sse_clp_ps(__m128 v, __m128 minVal, __m128 maxVal) GLM_NOEXCEPT;
 
-	__m128 sse_mix_ps(__m128 v1, __m128 v2, __m128 a);
+	__m128 sse_mix_ps(__m128 v1, __m128 v2, __m128 a) GLM_NOEXCEPT;
 
-	__m128 sse_stp_ps(__m128 edge, __m128 x);
+	__m128 sse_stp_ps(__m128 edge, __m128 x) GLM_NOEXCEPT;
 
-	__m128 sse_ssp_ps(__m128 edge0, __m128 edge1, __m128 x);
+	__m128 sse_ssp_ps(__m128 edge0, __m128 edge1, __m128 x) GLM_NOEXCEPT;
 
-	__m128 sse_nan_ps(__m128 x);
+	__m128 sse_nan_ps(__m128 x) GLM_NOEXCEPT;
 
-	__m128 sse_inf_ps(__m128 x);
+	__m128 sse_inf_ps(__m128 x) GLM_NOEXCEPT;
 
 }//namespace detail
 }//namespace glm

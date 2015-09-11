@@ -37,7 +37,7 @@ namespace glm{
 namespace detail
 {
 	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tvec4<T, P> grad4(T const & j, tvec4<T, P> const & ip)
+	GLM_FUNC_QUALIFIER tvec4<T, P> grad4(T const & j, tvec4<T, P> const & ip) GLM_NOEXCEPT
 	{
 		tvec3<T, P> pXYZ = floor(fract(tvec3<T, P>(j) * tvec3<T, P>(ip)) * T(7)) * ip[2] - T(1);
 		T pW = static_cast<T>(1.5) - dot(abs(pXYZ), tvec3<T, P>(1));
@@ -48,13 +48,13 @@ namespace detail
 }//namespace detail
 
 	template <typename T>
-	GLM_FUNC_QUALIFIER T noise1(T const & x)
+	GLM_FUNC_QUALIFIER T noise1(T const & x) GLM_NOEXCEPT
 	{
 		return noise1(tvec2<T, defaultp>(x, T(0)));
 	}
 
 	template <typename T>
-	GLM_FUNC_QUALIFIER tvec2<T, defaultp> noise2(T const & x)
+	GLM_FUNC_QUALIFIER tvec2<T, defaultp> noise2(T const & x) GLM_NOEXCEPT
 	{
 		return tvec2<T, defaultp>(
 			noise1(x + T(0.0)),
@@ -62,7 +62,7 @@ namespace detail
 	}
 
 	template <typename T>
-	GLM_FUNC_QUALIFIER tvec3<T, defaultp> noise3(T const & x)
+	GLM_FUNC_QUALIFIER tvec3<T, defaultp> noise3(T const & x) GLM_NOEXCEPT
 	{
 		return tvec3<T, defaultp>(
 			noise1(x - T(1.0)),
@@ -71,7 +71,7 @@ namespace detail
 	}
 
 	template <typename T>
-	GLM_FUNC_QUALIFIER tvec4<T, defaultp> noise4(T const & x)
+	GLM_FUNC_QUALIFIER tvec4<T, defaultp> noise4(T const & x) GLM_NOEXCEPT
 	{
 		return tvec4<T, defaultp>(
 			noise1(x - T(1.0)),
@@ -81,7 +81,7 @@ namespace detail
 	}
 	
 	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER T noise1(tvec2<T, P> const & v)
+	GLM_FUNC_QUALIFIER T noise1(tvec2<T, P> const & v) GLM_NOEXCEPT
 	{
 		tvec4<T, P> const C = tvec4<T, P>(
 			T( 0.211324865405187),		// (3.0 -  sqrt(3.0)) / 6.0
@@ -139,7 +139,7 @@ namespace detail
 	}
 	
 	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER T noise1(tvec3<T, P> const & v)
+	GLM_FUNC_QUALIFIER T noise1(tvec3<T, P> const & v) GLM_NOEXCEPT
 	{
 		tvec2<T, P> const C(1.0 / 6.0, 1.0 / 3.0);
 		tvec4<T, P> const D(0.0, 0.5, 1.0, 2.0);
@@ -214,7 +214,7 @@ namespace detail
 	}
 	
 	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER T noise1(tvec4<T, P> const & v)
+	GLM_FUNC_QUALIFIER T noise1(tvec4<T, P> const & v) GLM_NOEXCEPT
 	{
 		tvec4<T, P> const C(
 			0.138196601125011,		// (5 - sqrt(5))/20  G4
@@ -304,7 +304,7 @@ namespace detail
 	}
 	
 	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tvec2<T, P> noise2(tvec2<T, P> const & x)
+	GLM_FUNC_QUALIFIER tvec2<T, P> noise2(tvec2<T, P> const & x) GLM_NOEXCEPT
 	{
 		return tvec2<T, P>(
 			noise1(x + tvec2<T, P>(0.0)),
@@ -312,7 +312,7 @@ namespace detail
 	}
 	
 	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tvec2<T, P> noise2(tvec3<T, P> const & x)
+	GLM_FUNC_QUALIFIER tvec2<T, P> noise2(tvec3<T, P> const & x) GLM_NOEXCEPT
 	{
 		return tvec2<T, P>(
 			noise1(x + tvec3<T, P>(0.0)),
@@ -320,7 +320,7 @@ namespace detail
 	}
 	
 	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tvec2<T, P> noise2(tvec4<T, P> const & x)
+	GLM_FUNC_QUALIFIER tvec2<T, P> noise2(tvec4<T, P> const & x) GLM_NOEXCEPT
 	{
 		return tvec2<T, P>(
 			noise1(x + tvec4<T, P>(0)),
@@ -328,7 +328,7 @@ namespace detail
 	}
 	
 	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tvec3<T, P> noise3(tvec2<T, P> const & x)
+	GLM_FUNC_QUALIFIER tvec3<T, P> noise3(tvec2<T, P> const & x) GLM_NOEXCEPT
 	{
 		return tvec3<T, P>(
 			noise1(x - tvec2<T, P>(1.0)),
@@ -337,7 +337,7 @@ namespace detail
 	}
 	
 	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tvec3<T, P> noise3(tvec3<T, P> const & x)
+	GLM_FUNC_QUALIFIER tvec3<T, P> noise3(tvec3<T, P> const & x) GLM_NOEXCEPT
 	{
 		return tvec3<T, P>(
 			noise1(x - tvec3<T, P>(1.0)),
@@ -346,7 +346,7 @@ namespace detail
 	}
 	
 	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tvec3<T, P> noise3(tvec4<T, P> const & x)
+	GLM_FUNC_QUALIFIER tvec3<T, P> noise3(tvec4<T, P> const & x) GLM_NOEXCEPT
 	{
 		return tvec3<T, P>(
 			noise1(x - tvec4<T, P>(1)),
@@ -355,7 +355,7 @@ namespace detail
 	}
 	
 	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tvec4<T, P> noise4(tvec2<T, P> const & x)
+	GLM_FUNC_QUALIFIER tvec4<T, P> noise4(tvec2<T, P> const & x) GLM_NOEXCEPT
 	{
 		return tvec4<T, P>(
 			noise1(x - tvec2<T, P>(1)),
@@ -366,7 +366,7 @@ namespace detail
 
 	
 	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tvec4<T, P> noise4(tvec3<T, P> const & x)
+	GLM_FUNC_QUALIFIER tvec4<T, P> noise4(tvec3<T, P> const & x) GLM_NOEXCEPT
 	{
 		return tvec4<T, P>(
 			noise1(x - tvec3<T, P>(1)),
@@ -376,7 +376,7 @@ namespace detail
 	}
 	
 	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tvec4<T, P> noise4(tvec4<T, P> const & x)
+	GLM_FUNC_QUALIFIER tvec4<T, P> noise4(tvec4<T, P> const & x) GLM_NOEXCEPT
 	{
 		return tvec4<T, P>(
 			noise1(x - tvec4<T, P>(1)),

@@ -46,7 +46,7 @@ namespace detail
 	template <typename R, typename T, precision P>
 	struct functor1<R, T, P, tvec1>
 	{
-		GLM_FUNC_QUALIFIER static tvec1<R, P> call(R (*Func) (T x), tvec1<T, P> const & v)
+		GLM_FUNC_QUALIFIER static tvec1<R, P> call(R (*Func) (T x), tvec1<T, P> const & v) GLM_NOEXCEPT
 		{
 			return tvec1<R, P>(Func(v.x));
 		}
@@ -55,7 +55,7 @@ namespace detail
 	template <typename R, typename T, precision P>
 	struct functor1<R, T, P, tvec2>
 	{
-		GLM_FUNC_QUALIFIER static tvec2<R, P> call(R (*Func) (T x), tvec2<T, P> const & v)
+		GLM_FUNC_QUALIFIER static tvec2<R, P> call(R (*Func) (T x), tvec2<T, P> const & v) GLM_NOEXCEPT
 		{
 			return tvec2<R, P>(Func(v.x), Func(v.y));
 		}
@@ -64,7 +64,7 @@ namespace detail
 	template <typename R, typename T, precision P>
 	struct functor1<R, T, P, tvec3>
 	{
-		GLM_FUNC_QUALIFIER static tvec3<R, P> call(R (*Func) (T x), tvec3<T, P> const & v)
+		GLM_FUNC_QUALIFIER static tvec3<R, P> call(R (*Func) (T x), tvec3<T, P> const & v) GLM_NOEXCEPT
 		{
 			return tvec3<R, P>(Func(v.x), Func(v.y), Func(v.z));
 		}
@@ -73,7 +73,7 @@ namespace detail
 	template <typename R, typename T, precision P>
 	struct functor1<R, T, P, tvec4>
 	{
-		GLM_FUNC_QUALIFIER static tvec4<R, P> call(R (*Func) (T x), tvec4<T, P> const & v)
+		GLM_FUNC_QUALIFIER static tvec4<R, P> call(R (*Func) (T x), tvec4<T, P> const & v) GLM_NOEXCEPT
 		{
 			return tvec4<R, P>(Func(v.x), Func(v.y), Func(v.z), Func(v.w));
 		}
@@ -85,7 +85,7 @@ namespace detail
 	template <typename T, precision P>
 	struct functor2<T, P, tvec1>
 	{
-		GLM_FUNC_QUALIFIER static tvec1<T, P> call(T (*Func) (T x, T y), tvec1<T, P> const & a, tvec1<T, P> const & b)
+		GLM_FUNC_QUALIFIER static tvec1<T, P> call(T (*Func) (T x, T y), tvec1<T, P> const & a, tvec1<T, P> const & b) GLM_NOEXCEPT
 		{
 			return tvec1<T, P>(Func(a.x, b.x));
 		}
@@ -94,7 +94,7 @@ namespace detail
 	template <typename T, precision P>
 	struct functor2<T, P, tvec2>
 	{
-		GLM_FUNC_QUALIFIER static tvec2<T, P> call(T (*Func) (T x, T y), tvec2<T, P> const & a, tvec2<T, P> const & b)
+		GLM_FUNC_QUALIFIER static tvec2<T, P> call(T (*Func) (T x, T y), tvec2<T, P> const & a, tvec2<T, P> const & b) GLM_NOEXCEPT
 		{
 			return tvec2<T, P>(Func(a.x, b.x), Func(a.y, b.y));
 		}
@@ -103,7 +103,7 @@ namespace detail
 	template <typename T, precision P>
 	struct functor2<T, P, tvec3>
 	{
-		GLM_FUNC_QUALIFIER static tvec3<T, P> call(T (*Func) (T x, T y), tvec3<T, P> const & a, tvec3<T, P> const & b)
+		GLM_FUNC_QUALIFIER static tvec3<T, P> call(T (*Func) (T x, T y), tvec3<T, P> const & a, tvec3<T, P> const & b) GLM_NOEXCEPT
 		{
 			return tvec3<T, P>(Func(a.x, b.x), Func(a.y, b.y), Func(a.z, b.z));
 		}
@@ -112,7 +112,7 @@ namespace detail
 	template <typename T, precision P>
 	struct functor2<T, P, tvec4>
 	{
-		GLM_FUNC_QUALIFIER static tvec4<T, P> call(T (*Func) (T x, T y), tvec4<T, P> const & a, tvec4<T, P> const & b)
+		GLM_FUNC_QUALIFIER static tvec4<T, P> call(T (*Func) (T x, T y), tvec4<T, P> const & a, tvec4<T, P> const & b) GLM_NOEXCEPT
 		{
 			return tvec4<T, P>(Func(a.x, b.x), Func(a.y, b.y), Func(a.z, b.z), Func(a.w, b.w));
 		}
@@ -124,7 +124,7 @@ namespace detail
 	template <typename T, precision P>
 	struct functor2_vec_sca<T, P, tvec1>
 	{
-		GLM_FUNC_QUALIFIER static tvec1<T, P> call(T (*Func) (T x, T y), tvec1<T, P> const & a, T b)
+		GLM_FUNC_QUALIFIER static tvec1<T, P> call(T (*Func) (T x, T y), tvec1<T, P> const & a, T b) GLM_NOEXCEPT
 		{
 			return tvec1<T, P>(Func(a.x, b));
 		}
@@ -133,7 +133,7 @@ namespace detail
 	template <typename T, precision P>
 	struct functor2_vec_sca<T, P, tvec2>
 	{
-		GLM_FUNC_QUALIFIER static tvec2<T, P> call(T (*Func) (T x, T y), tvec2<T, P> const & a, T b)
+		GLM_FUNC_QUALIFIER static tvec2<T, P> call(T (*Func) (T x, T y), tvec2<T, P> const & a, T b) GLM_NOEXCEPT
 		{
 			return tvec2<T, P>(Func(a.x, b), Func(a.y, b));
 		}
@@ -142,7 +142,7 @@ namespace detail
 	template <typename T, precision P>
 	struct functor2_vec_sca<T, P, tvec3>
 	{
-		GLM_FUNC_QUALIFIER static tvec3<T, P> call(T (*Func) (T x, T y), tvec3<T, P> const & a, T b)
+		GLM_FUNC_QUALIFIER static tvec3<T, P> call(T (*Func) (T x, T y), tvec3<T, P> const & a, T b) GLM_NOEXCEPT
 		{
 			return tvec3<T, P>(Func(a.x, b), Func(a.y, b), Func(a.z, b));
 		}
@@ -151,7 +151,7 @@ namespace detail
 	template <typename T, precision P>
 	struct functor2_vec_sca<T, P, tvec4>
 	{
-		GLM_FUNC_QUALIFIER static tvec4<T, P> call(T (*Func) (T x, T y), tvec4<T, P> const & a, T b)
+		GLM_FUNC_QUALIFIER static tvec4<T, P> call(T (*Func) (T x, T y), tvec4<T, P> const & a, T b) GLM_NOEXCEPT
 		{
 			return tvec4<T, P>(Func(a.x, b), Func(a.y, b), Func(a.z, b), Func(a.w, b));
 		}

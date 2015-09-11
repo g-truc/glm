@@ -37,8 +37,8 @@
 namespace glm{
 namespace detail
 {
-	__m128i _mm_bit_interleave_si128(__m128i x);
-	__m128i _mm_bit_interleave_si128(__m128i x, __m128i y);
+	__m128i _mm_bit_interleave_si128(__m128i x) GLM_NOEXCEPT;
+	__m128i _mm_bit_interleave_si128(__m128i x, __m128i y) GLM_NOEXCEPT;
 
 }//namespace detail
 }//namespace glm
