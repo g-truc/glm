@@ -37,7 +37,7 @@ namespace glm
 	// isfinite
 	template <typename genType>
 	GLM_FUNC_QUALIFIER bool isfinite(
-		genType const & x)
+		genType const & x) GLM_NOEXCEPT
 	{
 #		if GLM_HAS_CXX11_STL
 			return std::isfinite(x) != 0;
@@ -55,7 +55,7 @@ namespace glm
 
 	template <typename T, precision P>
 	GLM_FUNC_QUALIFIER tvec1<bool, P> isfinite(
-		tvec1<T, P> const & x)
+		tvec1<T, P> const & x) GLM_NOEXCEPT
 	{
 		return tvec1<bool, P>(
 			isfinite(x.x));
@@ -63,7 +63,7 @@ namespace glm
 
 	template <typename T, precision P>
 	GLM_FUNC_QUALIFIER tvec2<bool, P> isfinite(
-		tvec2<T, P> const & x)
+		tvec2<T, P> const & x) GLM_NOEXCEPT
 	{
 		return tvec2<bool, P>(
 			isfinite(x.x),
@@ -72,7 +72,7 @@ namespace glm
 
 	template <typename T, precision P>
 	GLM_FUNC_QUALIFIER tvec3<bool, P> isfinite(
-		tvec3<T, P> const & x)
+		tvec3<T, P> const & x) GLM_NOEXCEPT
 	{
 		return tvec3<bool, P>(
 			isfinite(x.x),
@@ -82,7 +82,7 @@ namespace glm
 
 	template <typename T, precision P>
 	GLM_FUNC_QUALIFIER tvec4<bool, P> isfinite(
-		tvec4<T, P> const & x)
+		tvec4<T, P> const & x) GLM_NOEXCEPT
 	{
 		return tvec4<bool, P>(
 			isfinite(x.x),

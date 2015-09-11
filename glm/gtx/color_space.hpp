@@ -57,39 +57,39 @@ namespace glm
 	/// @see gtx_color_space
 	template <typename T, precision P>
 	GLM_FUNC_DECL tvec3<T, P> rgbColor(
-		tvec3<T, P> const & hsvValue);
+		tvec3<T, P> const & hsvValue) GLM_NOEXCEPT;
 
 	/// Converts a color from RGB color space to its color in HSV color space.
 	/// @see gtx_color_space
 	template <typename T, precision P>
 	GLM_FUNC_DECL tvec3<T, P> hsvColor(
-		tvec3<T, P> const & rgbValue);
-		
+		tvec3<T, P> const & rgbValue) GLM_NOEXCEPT;
+
 	/// Build a saturation matrix.
 	/// @see gtx_color_space
 	template <typename T>
 	GLM_FUNC_DECL tmat4x4<T, defaultp> saturation(
-		T const s);
+		T const s) GLM_NOEXCEPT;
 
 	/// Modify the saturation of a color.
 	/// @see gtx_color_space
 	template <typename T, precision P>
 	GLM_FUNC_DECL tvec3<T, P> saturation(
 		T const s,
-		tvec3<T, P> const & color);
-		
+		tvec3<T, P> const & color) GLM_NOEXCEPT;
+
 	/// Modify the saturation of a color.
 	/// @see gtx_color_space
 	template <typename T, precision P>
 	GLM_FUNC_DECL tvec4<T, P> saturation(
 		T const s,
-		tvec4<T, P> const & color);
-		
+		tvec4<T, P> const & color) GLM_NOEXCEPT;
+
 	/// Compute color luminosity associating ratios (0.33, 0.59, 0.11) to RGB canals.
 	/// @see gtx_color_space
 	template <typename T, precision P>
 	GLM_FUNC_DECL T luminosity(
-		tvec3<T, P> const & color);
+		tvec3<T, P> const & color) GLM_NOEXCEPT;
 
 	/// @}
 }//namespace glm

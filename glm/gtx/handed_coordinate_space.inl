@@ -38,7 +38,7 @@ namespace glm
 		tvec3<T, P> const & tangent,
 		tvec3<T, P> const & binormal,
 		tvec3<T, P> const & normal
-	)
+	) GLM_NOEXCEPT
 	{
 		return dot(cross(normal, tangent), binormal) > T(0);
 	}
@@ -49,7 +49,7 @@ namespace glm
 		tvec3<T, P> const & tangent,
 		tvec3<T, P> const & binormal,
 		tvec3<T, P> const & normal
-	)
+	) GLM_NOEXCEPT
 	{
 		return dot(cross(normal, tangent), binormal) < T(0);
 	}

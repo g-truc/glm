@@ -34,7 +34,7 @@ namespace glm
 {
 	template <typename T, precision P>
 	GLM_FUNC_QUALIFIER tmat4x4<T, P> translate(
-		tvec3<T, P> const & v)
+		tvec3<T, P> const & v) GLM_NOEXCEPT
 	{
 		return translate(
 			tmat4x4<T, P>(1.0f), v);
@@ -42,8 +42,8 @@ namespace glm
 
 	template <typename T, precision P>
 	GLM_FUNC_QUALIFIER tmat4x4<T, P> rotate(
-		T angle, 
-		tvec3<T, P> const & v)
+		T angle,
+		tvec3<T, P> const & v) GLM_NOEXCEPT
 	{
 		return rotate(
 			tmat4x4<T, P>(1), angle, v);
@@ -51,7 +51,7 @@ namespace glm
 
 	template <typename T, precision P>
 	GLM_FUNC_QUALIFIER tmat4x4<T, P> scale(
-		tvec3<T, P> const & v)
+		tvec3<T, P> const & v) GLM_NOEXCEPT
 	{
 		return scale(
 			tmat4x4<T, P>(1.0f), v);

@@ -62,7 +62,7 @@ namespace glm
 	/// Returns the log2 of x for integer values. Can be reliably using to compute mipmap count from the texture size.
 	/// @see gtc_integer
 	template <typename genIUType>
-	GLM_FUNC_DECL genIUType log2(genIUType x);
+	GLM_FUNC_DECL genIUType log2(genIUType x) GLM_NOEXCEPT;
 
 	/// Modulus. Returns x % y
 	/// for each component in x using the floating point value y.
@@ -73,7 +73,7 @@ namespace glm
 	/// @see <a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/mod.xml">GLSL mod man page</a>
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.3 Common Functions</a>
 	template <typename genIUType>
-	GLM_FUNC_DECL genIUType mod(genIUType x, genIUType y);
+	GLM_FUNC_DECL genIUType mod(genIUType x, genIUType y) GLM_NOEXCEPT;
 
 	/// Modulus. Returns x % y
 	/// for each component in x using the floating point value y.
@@ -85,7 +85,7 @@ namespace glm
 	/// @see <a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/mod.xml">GLSL mod man page</a>
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.3 Common Functions</a>
 	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_DECL vecType<T, P> mod(vecType<T, P> const & x, T y);
+	GLM_FUNC_DECL vecType<T, P> mod(vecType<T, P> const & x, T y) GLM_NOEXCEPT;
 
 	/// Modulus. Returns x % y
 	/// for each component in x using the floating point value y.
@@ -97,7 +97,7 @@ namespace glm
 	/// @see <a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/mod.xml">GLSL mod man page</a>
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.3 Common Functions</a>
 	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_DECL vecType<T, P> mod(vecType<T, P> const & x, vecType<T, P> const & y);
+	GLM_FUNC_DECL vecType<T, P> mod(vecType<T, P> const & x, vecType<T, P> const & y) GLM_NOEXCEPT;
 
 	/// @}
 } //namespace glm

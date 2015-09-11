@@ -40,7 +40,7 @@ namespace glm
 	(
 		tvec3<T, P> const & v,
 		tquat<T, P> const & q
-	)
+	) GLM_NOEXCEPT
 	{
 		return inverse(q) * v;
 	}
@@ -50,7 +50,7 @@ namespace glm
 	(
 		tquat<T, P> const & q,
 		tvec3<T, P> const & v
-	)
+	) GLM_NOEXCEPT
 	{
 		return q * v;
 	}
@@ -62,7 +62,7 @@ namespace glm
 		tquat<T, P> const & q2,
 		tquat<T, P> const & s1,
 		tquat<T, P> const & s2,
-		T const & h)
+		T const & h) GLM_NOEXCEPT
 	{
 		return mix(mix(q1, q2, h), mix(s1, s2, h), static_cast<T>(2) * (static_cast<T>(1) - h) * h);
 	}
@@ -73,7 +73,7 @@ namespace glm
 		tquat<T, P> const & prev,
 		tquat<T, P> const & curr,
 		tquat<T, P> const & next
-	)
+	) GLM_NOEXCEPT
 	{
 		tquat<T, P> invQuat = inverse(curr);
 		return exp((log(next + invQuat) + log(prev + invQuat)) / static_cast<T>(-4)) * curr;
@@ -83,7 +83,7 @@ namespace glm
 	GLM_FUNC_QUALIFIER tquat<T, P> exp
 	(
 		tquat<T, P> const & q
-	)
+	) GLM_NOEXCEPT
 	{
 		tvec3<T, P> u(q.x, q.y, q.z);
 		T Angle = glm::length(u);
@@ -98,7 +98,7 @@ namespace glm
 	GLM_FUNC_QUALIFIER tquat<T, P> log
 	(
 		tquat<T, P> const & q
-	)
+	) GLM_NOEXCEPT
 	{
 		tvec3<T, P> u(q.x, q.y, q.z);
 		T Vec3Len = length(u);
@@ -121,7 +121,7 @@ namespace glm
 	}
 
 	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tquat<T, P> pow(tquat<T, P> const & x, T const & y)
+	GLM_FUNC_QUALIFIER tquat<T, P> pow(tquat<T, P> const & x, T const & y) GLM_NOEXCEPT
 	{
 		//Raising to the power of 0 should yield 1
 		//Needed to prevent a division by 0 error later on
@@ -149,7 +149,7 @@ namespace glm
 	(
 		tquat<T, P> const & q,
 		tvec3<T, P> const & v
-	)
+	) GLM_NOEXCEPT
 	{
 		return q * v;
 	}
@@ -159,7 +159,7 @@ namespace glm
 	(
 		tquat<T, P> const & q,
 		tvec4<T, P> const & v
-	)
+	) GLM_NOEXCEPT
 	{
 		return q * v;
 	}
@@ -168,7 +168,7 @@ namespace glm
 	GLM_FUNC_QUALIFIER T extractRealComponent
 	(
 		tquat<T, P> const & q
-	)
+	) GLM_NOEXCEPT
 	{
 		T w = static_cast<T>(1) - q.x * q.x - q.y * q.y - q.z * q.z;
 		if(w < T(0))
@@ -181,7 +181,7 @@ namespace glm
 	GLM_FUNC_QUALIFIER T length2
 	(
 		tquat<T, P> const & q
-	)
+	) GLM_NOEXCEPT
 	{
 		return q.x * q.x + q.y * q.y + q.z * q.z + q.w * q.w;
 	}
@@ -192,7 +192,7 @@ namespace glm
 		tquat<T, P> const & x,
 		tquat<T, P> const & y,
 		T const & a
-	)
+	) GLM_NOEXCEPT
 	{
 		if(a <= static_cast<T>(0)) return x;
 		if(a >= static_cast<T>(1)) return y;
@@ -234,7 +234,7 @@ namespace glm
 		tquat<T, P> const & x,
 		tquat<T, P> const & y,
 		T const & a
-	)
+	) GLM_NOEXCEPT
 	{
 		return glm::normalize(x * (static_cast<T>(1) - a) + (y * a));
 	}
@@ -244,7 +244,7 @@ namespace glm
 	(
 		tvec3<T, P> const & orig,
 		tvec3<T, P> const & dest
-	)
+	) GLM_NOEXCEPT
 	{
 		T cosTheta = dot(orig, dest);
 		tvec3<T, P> rotationAxis;
@@ -274,7 +274,7 @@ namespace glm
 		T invs = static_cast<T>(1) / s;
 
 		return tquat<T, P>(
-			s * static_cast<T>(0.5f), 
+			s * static_cast<T>(0.5f),
 			rotationAxis.x * invs,
 			rotationAxis.y * invs,
 			rotationAxis.z * invs);

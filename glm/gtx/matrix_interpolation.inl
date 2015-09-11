@@ -38,7 +38,7 @@ namespace glm
 		tmat4x4<T, P> const & mat,
 		tvec3<T, P> & axis,
 		T & angle
-	)
+	) GLM_NOEXCEPT
 	{
 		T epsilon = (T)0.01;
 		T epsilon2 = (T)0.1;
@@ -112,7 +112,7 @@ namespace glm
 	(
 		tvec3<T, P> const & axis,
 		T const angle
-	)
+	) GLM_NOEXCEPT
 	{
 		T c = cos(angle);
 		T s = sin(angle);
@@ -131,7 +131,7 @@ namespace glm
 	GLM_FUNC_QUALIFIER tmat4x4<T, P> extractMatrixRotation
 	(
 		tmat4x4<T, P> const & mat
-	)
+	) GLM_NOEXCEPT
 	{
 		return tmat4x4<T, P>(
 			mat[0][0], mat[0][1], mat[0][2], 0.0,
@@ -147,7 +147,7 @@ namespace glm
 		tmat4x4<T, P> const & m1,
 		tmat4x4<T, P> const & m2,
 		T const delta
-	)
+	) GLM_NOEXCEPT
 	{
 		tmat4x4<T, P> m1rot = extractMatrixRotation(m1);
 		tmat4x4<T, P> dltRotation = m2 * transpose(m1rot);

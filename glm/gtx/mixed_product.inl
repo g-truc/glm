@@ -38,7 +38,7 @@ namespace glm
 		tvec3<T, P> const & v1,
 		tvec3<T, P> const & v2,
 		tvec3<T, P> const & v3
-	)
+	) GLM_NOEXCEPT
 	{
 		return dot(cross(v1, v2), v3);
 	}

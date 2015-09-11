@@ -55,11 +55,11 @@ namespace glm
 
 	/// Extends of Length the Origin position using the (Source - Origin) direction.
 	/// @see gtx_extend
-	template <typename genType> 
+	template <typename genType>
 	GLM_FUNC_DECL genType extend(
-		genType const & Origin, 
-		genType const & Source, 
-		typename genType::value_type const Length);
+		genType const & Origin,
+		genType const & Source,
+		typename genType::value_type const Length) GLM_NOEXCEPT;
 
 	/// @}
 }//namespace glm

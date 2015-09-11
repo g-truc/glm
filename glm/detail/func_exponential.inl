@@ -52,7 +52,7 @@ namespace detail
 	template <typename T, precision P, template <class, precision> class vecType, bool isFloat = true>
 	struct compute_log2
 	{
-		GLM_FUNC_QUALIFIER static vecType<T, P> call(vecType<T, P> const & vec)
+		GLM_FUNC_QUALIFIER static vecType<T, P> call(vecType<T, P> const & vec) GLM_NOEXCEPT
 		{
 			return detail::functor1<T, T, P, vecType>::call(log2, vec);
 		}
@@ -61,16 +61,16 @@ namespace detail
 	template <template <class, precision> class vecType, typename T, precision P>
 	struct compute_inversesqrt
 	{
-		GLM_FUNC_QUALIFIER static vecType<T, P> call(vecType<T, P> const & x)
+		GLM_FUNC_QUALIFIER static vecType<T, P> call(vecType<T, P> const & x) GLM_NOEXCEPT
 		{
 			return static_cast<T>(1) / sqrt(x);
 		}
 	};
-		
+
 	template <template <class, precision> class vecType>
 	struct compute_inversesqrt<vecType, float, lowp>
 	{
-		GLM_FUNC_QUALIFIER static vecType<float, lowp> call(vecType<float, lowp> const & x)
+		GLM_FUNC_QUALIFIER static vecType<float, lowp> call(vecType<float, lowp> const & x) GLM_NOEXCEPT
 		{
 			vecType<float, lowp> tmp(x);
 			vecType<float, lowp> xhalf(tmp * 0.5f);
@@ -87,7 +87,7 @@ namespace detail
 	// pow
 	using std::pow;
 	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<T, P> pow(vecType<T, P> const & base, vecType<T, P> const & exponent)
+	GLM_FUNC_QUALIFIER vecType<T, P> pow(vecType<T, P> const & base, vecType<T, P> const & exponent) GLM_NOEXCEPT
 	{
 		return detail::functor2<T, P, vecType>::call(pow, base, exponent);
 	}
@@ -95,7 +95,7 @@ namespace detail
 	// exp
 	using std::exp;
 	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<T, P> exp(vecType<T, P> const & x)
+	GLM_FUNC_QUALIFIER vecType<T, P> exp(vecType<T, P> const & x) GLM_NOEXCEPT
 	{
 		return detail::functor1<T, T, P, vecType>::call(exp, x);
 	}
@@ -103,14 +103,14 @@ namespace detail
 	// log
 	using std::log;
 	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<T, P> log(vecType<T, P> const & x)
+	GLM_FUNC_QUALIFIER vecType<T, P> log(vecType<T, P> const & x) GLM_NOEXCEPT
 	{
 		return detail::functor1<T, T, P, vecType>::call(log, x);
 	}
 
 	//exp2, ln2 = 0.69314718055994530941723212145818f
 	template <typename genType>
-	GLM_FUNC_QUALIFIER genType exp2(genType x)
+	GLM_FUNC_QUALIFIER genType exp2(genType x) GLM_NOEXCEPT
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559, "'exp2' only accept floating-point inputs");
 
@@ -118,20 +118,20 @@ namespace detail
 	}
 
 	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<T, P> exp2(vecType<T, P> const & x)
+	GLM_FUNC_QUALIFIER vecType<T, P> exp2(vecType<T, P> const & x) GLM_NOEXCEPT
 	{
 		return detail::functor1<T, T, P, vecType>::call(exp2, x);
 	}
 
 	// log2, ln2 = 0.69314718055994530941723212145818f
 	template <typename genType>
-	GLM_FUNC_QUALIFIER genType log2(genType x)
+	GLM_FUNC_QUALIFIER genType log2(genType x) GLM_NOEXCEPT
 	{
 		return log2(tvec1<genType>(x)).x;
 	}
 
 	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<T, P> log2(vecType<T, P> const & x)
+	GLM_FUNC_QUALIFIER vecType<T, P> log2(vecType<T, P> const & x) GLM_NOEXCEPT
 	{
 		return detail::compute_log2<T, P, vecType, std::numeric_limits<T>::is_iec559>::call(x);
 	}
@@ -139,7 +139,7 @@ namespace detail
 	// sqrt
 	using std::sqrt;
 	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<T, P> sqrt(vecType<T, P> const & x)
+	GLM_FUNC_QUALIFIER vecType<T, P> sqrt(vecType<T, P> const & x) GLM_NOEXCEPT
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'sqrt' only accept floating-point inputs");
 		return detail::functor1<T, T, P, vecType>::call(sqrt, x);
@@ -147,13 +147,13 @@ namespace detail
 
 	// inversesqrt
 	template <typename genType>
-	GLM_FUNC_QUALIFIER genType inversesqrt(genType x)
+	GLM_FUNC_QUALIFIER genType inversesqrt(genType x) GLM_NOEXCEPT
 	{
 		return static_cast<genType>(1) / sqrt(x);
 	}
 	
 	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<T, P> inversesqrt(vecType<T, P> const & x)
+	GLM_FUNC_QUALIFIER vecType<T, P> inversesqrt(vecType<T, P> const & x) GLM_NOEXCEPT
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'inversesqrt' only accept floating-point inputs");
 		return detail::compute_inversesqrt<vecType, T, P>::call(x);

@@ -38,13 +38,13 @@ namespace glm
 	GLM_FUNC_QUALIFIER tvec3<T, P> combine(
 		tvec3<T, P> const & a, 
 		tvec3<T, P> const & b,
-		T ascl, T bscl)
+		T ascl, T bscl) GLM_NOEXCEPT
 	{
 		return (a * ascl) + (b * bscl);
 	}
 
 	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER void v3Scale(tvec3<T, P> & v, T desiredLength)
+	GLM_FUNC_QUALIFIER void v3Scale(tvec3<T, P> & v, T desiredLength) GLM_NOEXCEPT
 	{
 		T len = glm::length(v);
 		if(len != 0)
@@ -64,7 +64,7 @@ namespace glm
 	*/
 
 	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER bool decompose(tmat4x4<T, P> const & ModelMatrix, tvec3<T, P> & Scale, tquat<T, P> & Orientation, tvec3<T, P> & Translation, tvec3<T, P> & Skew, tvec4<T, P> & Perspective)
+	GLM_FUNC_QUALIFIER bool decompose(tmat4x4<T, P> const & ModelMatrix, tvec3<T, P> & Scale, tquat<T, P> & Orientation, tvec3<T, P> & Translation, tvec3<T, P> & Skew, tvec4<T, P> & Perspective) GLM_NOEXCEPT
 	{
 		tmat4x4<T, P> LocalMatrix(ModelMatrix);
 

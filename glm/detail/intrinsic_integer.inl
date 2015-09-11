@@ -29,7 +29,7 @@
 namespace glm{
 namespace detail
 {
-	inline __m128i _mm_bit_interleave_si128(__m128i x)
+	inline __m128i _mm_bit_interleave_si128(__m128i x) GLM_NOEXCEPT
 	{
 		__m128i const Mask4 = _mm_set1_epi32(0x0000FFFF);
 		__m128i const Mask3 = _mm_set1_epi32(0x00FF00FF);
@@ -83,7 +83,7 @@ namespace detail
 		return Reg1;
 	}
 
-	inline __m128i _mm_bit_interleave_si128(__m128i x, __m128i y)
+	inline __m128i _mm_bit_interleave_si128(__m128i x, __m128i y) GLM_NOEXCEPT
 	{
 		__m128i const Mask4 = _mm_set1_epi32(0x0000FFFF);
 		__m128i const Mask3 = _mm_set1_epi32(0x00FF00FF);

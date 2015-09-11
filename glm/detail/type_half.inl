@@ -48,15 +48,15 @@ namespace detail
 
 	union uif32
 	{
-		GLM_FUNC_QUALIFIER uif32() :
+		GLM_FUNC_QUALIFIER uif32() GLM_NOEXCEPT :
 			i(0)
 		{}
 
-		GLM_FUNC_QUALIFIER uif32(float f) :
+		GLM_FUNC_QUALIFIER uif32(float f) GLM_NOEXCEPT :
 			f(f)
 		{}
 
-		GLM_FUNC_QUALIFIER uif32(uint32 i) :
+		GLM_FUNC_QUALIFIER uif32(uint32 i) GLM_NOEXCEPT :
 			i(i)
 		{}
 
@@ -64,7 +64,7 @@ namespace detail
 		uint32 i;
 	};
 
-	GLM_FUNC_QUALIFIER float toFloat32(hdata value)
+	GLM_FUNC_QUALIFIER float toFloat32(hdata value) GLM_NOEXCEPT
 	{
 		int s = (value >> 15) & 0x00000001;
 		int e = (value >> 10) & 0x0000001f;
@@ -138,7 +138,7 @@ namespace detail
 		return Result.f;
 	}
 
-	GLM_FUNC_QUALIFIER hdata toFloat16(float const & f)
+	GLM_FUNC_QUALIFIER hdata toFloat16(float const & f) GLM_NOEXCEPT
 	{
 		uif32 Entry;
 		Entry.f = f;

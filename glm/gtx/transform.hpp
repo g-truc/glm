@@ -62,22 +62,22 @@ namespace glm
 	/// @see gtx_transform
 	template <typename T, precision P>
 	GLM_FUNC_DECL tmat4x4<T, P> translate(
-		tvec3<T, P> const & v);
+		tvec3<T, P> const & v) GLM_NOEXCEPT;
 
 	/// Builds a rotation 4 * 4 matrix created from an axis of 3 scalars and an angle expressed in degrees. 
 	/// @see gtc_matrix_transform
 	/// @see gtx_transform
 	template <typename T, precision P>
 	GLM_FUNC_DECL tmat4x4<T, P> rotate(
-		T angle, 
-		tvec3<T, P> const & v);
+		T angle,
+		tvec3<T, P> const & v) GLM_NOEXCEPT;
 
 	/// Transforms a matrix with a scale 4 * 4 matrix created from a vector of 3 components.
 	/// @see gtc_matrix_transform
 	/// @see gtx_transform
 	template <typename T, precision P>
 	GLM_FUNC_DECL tmat4x4<T, P> scale(
-		tvec3<T, P> const & v);
+		tvec3<T, P> const & v) GLM_NOEXCEPT;
 
 	/// @}
 }// namespace glm

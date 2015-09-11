@@ -30,7 +30,7 @@ namespace glm{
 namespace detail{
 
 //length
-GLM_FUNC_QUALIFIER __m128 sse_len_ps(__m128 x)
+GLM_FUNC_QUALIFIER __m128 sse_len_ps(__m128 x) GLM_NOEXCEPT
 {
 	__m128 dot0 = sse_dot_ps(x, x);
 	__m128 sqt0 = _mm_sqrt_ps(dot0);
@@ -38,7 +38,7 @@ GLM_FUNC_QUALIFIER __m128 sse_len_ps(__m128 x)
 }
 
 //distance
-GLM_FUNC_QUALIFIER __m128 sse_dst_ps(__m128 p0, __m128 p1)
+GLM_FUNC_QUALIFIER __m128 sse_dst_ps(__m128 p0, __m128 p1) GLM_NOEXCEPT
 {
 	__m128 sub0 = _mm_sub_ps(p0, p1);
 	__m128 len0 = sse_len_ps(sub0);
@@ -46,7 +46,7 @@ GLM_FUNC_QUALIFIER __m128 sse_dst_ps(__m128 p0, __m128 p1)
 }
 
 //dot
-GLM_FUNC_QUALIFIER __m128 sse_dot_ps(__m128 v1, __m128 v2)
+GLM_FUNC_QUALIFIER __m128 sse_dot_ps(__m128 v1, __m128 v2) GLM_NOEXCEPT
 {
 
 #	if(GLM_ARCH & GLM_ARCH_AVX)
@@ -62,7 +62,7 @@ GLM_FUNC_QUALIFIER __m128 sse_dot_ps(__m128 v1, __m128 v2)
 }
 
 // SSE1
-GLM_FUNC_QUALIFIER __m128 sse_dot_ss(__m128 v1, __m128 v2)
+GLM_FUNC_QUALIFIER __m128 sse_dot_ss(__m128 v1, __m128 v2) GLM_NOEXCEPT
 {
 	__m128 mul0 = _mm_mul_ps(v1, v2);
 	__m128 mov0 = _mm_movehl_ps(mul0, mul0);
@@ -73,7 +73,7 @@ GLM_FUNC_QUALIFIER __m128 sse_dot_ss(__m128 v1, __m128 v2)
 }
 
 //cross
-GLM_FUNC_QUALIFIER __m128 sse_xpd_ps(__m128 v1, __m128 v2)
+GLM_FUNC_QUALIFIER __m128 sse_xpd_ps(__m128 v1, __m128 v2) GLM_NOEXCEPT
 {
 	__m128 swp0 = _mm_shuffle_ps(v1, v1, _MM_SHUFFLE(3, 0, 2, 1));
 	__m128 swp1 = _mm_shuffle_ps(v1, v1, _MM_SHUFFLE(3, 1, 0, 2));
@@ -86,7 +86,7 @@ GLM_FUNC_QUALIFIER __m128 sse_xpd_ps(__m128 v1, __m128 v2)
 }
 
 //normalize
-GLM_FUNC_QUALIFIER __m128 sse_nrm_ps(__m128 v)
+GLM_FUNC_QUALIFIER __m128 sse_nrm_ps(__m128 v) GLM_NOEXCEPT
 {
 	__m128 dot0 = sse_dot_ps(v, v);
 	__m128 isr0 = _mm_rsqrt_ps(dot0);
@@ -95,7 +95,7 @@ GLM_FUNC_QUALIFIER __m128 sse_nrm_ps(__m128 v)
 }
 
 //faceforward
-GLM_FUNC_QUALIFIER __m128 sse_ffd_ps(__m128 N, __m128 I, __m128 Nref)
+GLM_FUNC_QUALIFIER __m128 sse_ffd_ps(__m128 N, __m128 I, __m128 Nref) GLM_NOEXCEPT
 {
 	//__m128 dot0 = _mm_dot_ps(v, v);
 	//__m128 neg0 = _mm_neg_ps(N);
@@ -111,7 +111,7 @@ GLM_FUNC_QUALIFIER __m128 sse_ffd_ps(__m128 N, __m128 I, __m128 Nref)
 }
 
 //reflect
-GLM_FUNC_QUALIFIER __m128 sse_rfe_ps(__m128 I, __m128 N)
+GLM_FUNC_QUALIFIER __m128 sse_rfe_ps(__m128 I, __m128 N) GLM_NOEXCEPT
 {
 	__m128 dot0 = sse_dot_ps(N, I);
 	__m128 mul0 = _mm_mul_ps(N, dot0);
@@ -121,7 +121,7 @@ GLM_FUNC_QUALIFIER __m128 sse_rfe_ps(__m128 I, __m128 N)
 }
 
 //refract
-GLM_FUNC_QUALIFIER __m128 sse_rfa_ps(__m128 I, __m128 N, __m128 eta)
+GLM_FUNC_QUALIFIER __m128 sse_rfa_ps(__m128 I, __m128 N, __m128 eta) GLM_NOEXCEPT
 {
 	__m128 dot0 = sse_dot_ps(N, I);
 	__m128 mul0 = _mm_mul_ps(eta, eta);

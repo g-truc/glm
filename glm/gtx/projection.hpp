@@ -57,7 +57,7 @@ namespace glm
 	///
 	/// @see gtx_projection
 	template <typename vecType>
-	GLM_FUNC_DECL vecType proj(vecType const & x, vecType const & Normal);
+	GLM_FUNC_DECL vecType proj(vecType const & x, vecType const & Normal) GLM_NOEXCEPT;
 
 	/// @}
 }//namespace glm

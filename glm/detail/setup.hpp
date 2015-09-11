@@ -785,6 +785,18 @@
 		((GLM_COMPILER & GLM_COMPILER_VC) && (GLM_COMPILER >= GLM_COMPILER_VC2012))))
 #endif
 
+// N3050 http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2010/n3050.html
+#if GLM_COMPILER & (GLM_COMPILER_LLVM | GLM_COMPILER_APPLE_CLANG)
+#	define GLM_HAS_NOEXCEPT __has_feature(cxx_noexcept)
+#elif GLM_LANG & GLM_LANG_CXX11_FLAG
+#	define GLM_HAS_NOEXCEPT 1
+#else
+#	define GLM_HAS_NOEXCEPT ((GLM_LANG & GLM_LANG_CXX0X_FLAG) && (\
+		((GLM_COMPILER & GLM_COMPILER_INTEL) && (GLM_COMPILER >= GLM_COMPILER_INTEL14)) || \
+		((GLM_COMPILER & GLM_COMPILER_GCC) && (GLM_COMPILER >= GLM_COMPILER_GCC46)) || \
+		((GLM_COMPILER & GLM_COMPILER_VC) && (GLM_COMPILER >= GLM_COMPILER_VC2015))))
+#endif
+
 //
 #if GLM_LANG & GLM_LANG_CXX11_FLAG
 #	define GLM_HAS_ASSIGNABLE 1
@@ -949,6 +961,16 @@
 #	define GLM_EXPLICIT
 #endif
 
+#ifdef GLM_HAS_NOEXCEPT
+#	define GLM_NOEXCEPT noexcept
+# define GLM_NOEXCEPT_COND(x) noexcept(x)
+# define GLM_NOEXCEPT_OP(x) noexcept(x)
+#else
+#	define GLM_NOEXCEPT
+#	define GLM_NOEXCEPT_COND(x)
+#	define GLM_NOEXCEPT_OP(x) false
+#endif
+
 ///////////////////////////////////////////////////////////////////////////////////
 // Length type
 
@@ -972,7 +994,7 @@ namespace detail
 #	endif
 
 	template <typename genType>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR component_count_t component_count(genType const & m)
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR component_count_t component_count(genType const & m) GLM_NOEXCEPT
 	{
 #		ifdef GLM_FORCE_SIZE_FUNC
 			return m.size();
@@ -1005,7 +1027,7 @@ namespace detail
 	namespace glm
 	{
 		template <typename T, std::size_t N>
-		constexpr std::size_t countof(T const (&)[N])
+		constexpr std::size_t countof(T const (&)[N]) GLM_NOEXCEPT
 		{
 			return N;
 		}

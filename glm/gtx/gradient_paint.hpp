@@ -61,7 +61,7 @@ namespace glm
 		tvec2<T, P> const & Center,
 		T const & Radius,
 		tvec2<T, P> const & Focal,
-		tvec2<T, P> const & Position);
+		tvec2<T, P> const & Position) GLM_NOEXCEPT;
 
 	/// Return a color from a linear gradient.
 	/// @see - gtx_gradient_paint
@@ -69,7 +69,7 @@ namespace glm
 	GLM_FUNC_DECL T linearGradient(
 		tvec2<T, P> const & Point0,
 		tvec2<T, P> const & Point1,
-		tvec2<T, P> const & Position);
+		tvec2<T, P> const & Position) GLM_NOEXCEPT;
 
 	/// @}
 }// namespace glm

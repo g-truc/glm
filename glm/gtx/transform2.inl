@@ -34,8 +34,8 @@ namespace glm
 {
 	template <typename T, precision P>
 	GLM_FUNC_QUALIFIER tmat3x3<T, P> shearX2D(
-		const tmat3x3<T, P>& m, 
-		T s)
+		const tmat3x3<T, P>& m,
+		T s) GLM_NOEXCEPT
 	{
 		tmat3x3<T, P> r(1);
 		r[0][1] = s;
@@ -44,8 +44,8 @@ namespace glm
 
 	template <typename T, precision P>
 	GLM_FUNC_QUALIFIER tmat3x3<T, P> shearY2D(
-		const tmat3x3<T, P>& m, 
-		T s)
+		const tmat3x3<T, P>& m,
+		T s) GLM_NOEXCEPT
 	{
 		tmat3x3<T, P> r(1);
 		r[1][0] = s;
@@ -54,9 +54,9 @@ namespace glm
 
 	template <typename T, precision P>
 	GLM_FUNC_QUALIFIER tmat4x4<T, P> shearX3D(
-		const tmat4x4<T, P>& m, 
-		T s, 
-		T t)
+		const tmat4x4<T, P>& m,
+		T s,
+		T t) GLM_NOEXCEPT
 	{
 		tmat4x4<T, P> r(1);
 		r[1][0] = s;
@@ -66,9 +66,9 @@ namespace glm
 
 	template <typename T, precision P>
 	GLM_FUNC_QUALIFIER tmat4x4<T, P> shearY3D(
-		const tmat4x4<T, P>& m, 
-		T s, 
-		T t)
+		const tmat4x4<T, P>& m,
+		T s,
+		T t) GLM_NOEXCEPT
 	{
 		tmat4x4<T, P> r(1);
 		r[0][1] = s;
@@ -78,9 +78,9 @@ namespace glm
 
 	template <typename T, precision P>
 	GLM_FUNC_QUALIFIER tmat4x4<T, P> shearZ3D(
-		const tmat4x4<T, P>& m, 
-		T s, 
-		T t)
+		const tmat4x4<T, P>& m,
+		T s,
+		T t) GLM_NOEXCEPT
 	{
 		tmat4x4<T, P> r(1);
 		r[0][2] = s;
@@ -90,8 +90,8 @@ namespace glm
 
 	template <typename T, precision P>
 	GLM_FUNC_QUALIFIER tmat3x3<T, P> reflect2D(
-		const tmat3x3<T, P>& m, 
-		const tvec3<T, P>& normal)
+		const tmat3x3<T, P>& m,
+		const tvec3<T, P>& normal) GLM_NOEXCEPT
 	{
 		tmat3x3<T, P> r(1);
 		r[0][0] = 1 - 2 * normal.x * normal.x;
@@ -103,8 +103,8 @@ namespace glm
 
 	template <typename T, precision P>
 	GLM_FUNC_QUALIFIER tmat4x4<T, P> reflect3D(
-		const tmat4x4<T, P>& m, 
-		const tvec3<T, P>& normal)
+		const tmat4x4<T, P>& m,
+		const tvec3<T, P>& normal) GLM_NOEXCEPT
 	{
 		tmat4x4<T, P> r(1);
 		r[0][0] = 1 - 2 * normal.x * normal.x;
@@ -123,8 +123,8 @@ namespace glm
 
 	template <typename T, precision P>
 	GLM_FUNC_QUALIFIER tmat3x3<T, P> proj2D(
-		const tmat3x3<T, P>& m, 
-		const tvec3<T, P>& normal)
+		const tmat3x3<T, P>& m,
+		const tvec3<T, P>& normal) GLM_NOEXCEPT
 	{
 		tmat3x3<T, P> r(1);
 		r[0][0] = 1 - normal.x * normal.x;
@@ -136,8 +136,8 @@ namespace glm
 
 	template <typename T, precision P>
 	GLM_FUNC_QUALIFIER tmat4x4<T, P> proj3D(
-		const tmat4x4<T, P>& m, 
-		const tvec3<T, P>& normal)
+		const tmat4x4<T, P>& m,
+		const tvec3<T, P>& normal) GLM_NOEXCEPT
 	{
 		tmat4x4<T, P> r(1);
 		r[0][0] = 1 - normal.x * normal.x;
@@ -154,8 +154,8 @@ namespace glm
 
 	template <typename T, precision P>
 	GLM_FUNC_QUALIFIER tmat4x4<T, P> scaleBias(
-		T scale, 
-		T bias)
+		T scale,
+		T bias) GLM_NOEXCEPT
 	{
 		tmat4x4<T, P> result;
 		result[3] = tvec4<T, P>(tvec3<T, P>(bias), T(1));
@@ -165,11 +165,11 @@ namespace glm
 		return result;
 	}
 
-	template <typename T, precision P> 
+	template <typename T, precision P>
 	GLM_FUNC_QUALIFIER tmat4x4<T, P> scaleBias(
-		const tmat4x4<T, P>& m, 
-		T scale, 
-		T bias)
+		const tmat4x4<T, P>& m,
+		T scale,
+		T bias) GLM_NOEXCEPT
 	{
 		return m * scaleBias(scale, bias);
 	}

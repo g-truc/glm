@@ -58,85 +58,85 @@ namespace glm
 	//! From GLM_GTX_matrix_major_storage extension.
 	template <typename T, precision P>
 	GLM_FUNC_DECL tmat2x2<T, P> rowMajor2(
-		tvec2<T, P> const & v1, 
-		tvec2<T, P> const & v2);
-		
+		tvec2<T, P> const & v1,
+		tvec2<T, P> const & v2) GLM_NOEXCEPT;
+
 	//! Build a row major matrix from other matrix.
 	//! From GLM_GTX_matrix_major_storage extension.
 	template <typename T, precision P>
 	GLM_FUNC_DECL tmat2x2<T, P> rowMajor2(
-		tmat2x2<T, P> const & m);
+		tmat2x2<T, P> const & m) GLM_NOEXCEPT;
 
 	//! Build a row major matrix from row vectors.
 	//! From GLM_GTX_matrix_major_storage extension.
 	template <typename T, precision P>
 	GLM_FUNC_DECL tmat3x3<T, P> rowMajor3(
-		tvec3<T, P> const & v1, 
-		tvec3<T, P> const & v2, 
-		tvec3<T, P> const & v3);
+		tvec3<T, P> const & v1,
+		tvec3<T, P> const & v2,
+		tvec3<T, P> const & v3) GLM_NOEXCEPT;
 
 	//! Build a row major matrix from other matrix.
 	//! From GLM_GTX_matrix_major_storage extension.
 	template <typename T, precision P>
 	GLM_FUNC_DECL tmat3x3<T, P> rowMajor3(
-		tmat3x3<T, P> const & m);
+		tmat3x3<T, P> const & m) GLM_NOEXCEPT;
 
 	//! Build a row major matrix from row vectors.
 	//! From GLM_GTX_matrix_major_storage extension.
 	template <typename T, precision P>
 	GLM_FUNC_DECL tmat4x4<T, P> rowMajor4(
-		tvec4<T, P> const & v1, 
+		tvec4<T, P> const & v1,
 		tvec4<T, P> const & v2,
-		tvec4<T, P> const & v3, 
-		tvec4<T, P> const & v4);
+		tvec4<T, P> const & v3,
+		tvec4<T, P> const & v4) GLM_NOEXCEPT;
 
 	//! Build a row major matrix from other matrix.
 	//! From GLM_GTX_matrix_major_storage extension.
 	template <typename T, precision P>
 	GLM_FUNC_DECL tmat4x4<T, P> rowMajor4(
-		tmat4x4<T, P> const & m);
+		tmat4x4<T, P> const & m) GLM_NOEXCEPT;
 
 	//! Build a column major matrix from column vectors.
 	//! From GLM_GTX_matrix_major_storage extension.
 	template <typename T, precision P>
 	GLM_FUNC_DECL tmat2x2<T, P> colMajor2(
-		tvec2<T, P> const & v1, 
-		tvec2<T, P> const & v2);
-		
+		tvec2<T, P> const & v1,
+		tvec2<T, P> const & v2) GLM_NOEXCEPT;
+
 	//! Build a column major matrix from other matrix.
 	//! From GLM_GTX_matrix_major_storage extension.
 	template <typename T, precision P>
 	GLM_FUNC_DECL tmat2x2<T, P> colMajor2(
-		tmat2x2<T, P> const & m);
+		tmat2x2<T, P> const & m) GLM_NOEXCEPT;
 
 	//! Build a column major matrix from column vectors.
 	//! From GLM_GTX_matrix_major_storage extension.
 	template <typename T, precision P>
 	GLM_FUNC_DECL tmat3x3<T, P> colMajor3(
-		tvec3<T, P> const & v1, 
-		tvec3<T, P> const & v2, 
-		tvec3<T, P> const & v3);
-		
+		tvec3<T, P> const & v1,
+		tvec3<T, P> const & v2,
+		tvec3<T, P> const & v3) GLM_NOEXCEPT;
+
 	//! Build a column major matrix from other matrix.
 	//! From GLM_GTX_matrix_major_storage extension.
 	template <typename T, precision P>
 	GLM_FUNC_DECL tmat3x3<T, P> colMajor3(
-		tmat3x3<T, P> const & m);
-		
+		tmat3x3<T, P> const & m) GLM_NOEXCEPT;
+
 	//! Build a column major matrix from column vectors.
 	//! From GLM_GTX_matrix_major_storage extension.
 	template <typename T, precision P>
 	GLM_FUNC_DECL tmat4x4<T, P> colMajor4(
-		tvec4<T, P> const & v1, 
-		tvec4<T, P> const & v2, 
-		tvec4<T, P> const & v3, 
-		tvec4<T, P> const & v4);
-				
+		tvec4<T, P> const & v1,
+		tvec4<T, P> const & v2,
+		tvec4<T, P> const & v3,
+		tvec4<T, P> const & v4) GLM_NOEXCEPT;
+
 	//! Build a column major matrix from other matrix.
 	//! From GLM_GTX_matrix_major_storage extension.
-	template <typename T, precision P> 
+	template <typename T, precision P>
 	GLM_FUNC_DECL tmat4x4<T, P> colMajor4(
-		tmat4x4<T, P> const & m);
+		tmat4x4<T, P> const & m) GLM_NOEXCEPT;
 
 	/// @}
 }//namespace glm

@@ -59,7 +59,7 @@ namespace glm
 	GLM_FUNC_DECL bool rightHanded(
 		tvec3<T, P> const & tangent,
 		tvec3<T, P> const & binormal,
-		tvec3<T, P> const & normal);
+		tvec3<T, P> const & normal) GLM_NOEXCEPT;
 
 	//! Return if a trihedron left handed or not.
 	//! From GLM_GTX_handed_coordinate_space extension.
@@ -67,7 +67,7 @@ namespace glm
 	GLM_FUNC_DECL bool leftHanded(
 		tvec3<T, P> const & tangent,
 		tvec3<T, P> const & binormal,
-		tvec3<T, P> const & normal);
+		tvec3<T, P> const & normal) GLM_NOEXCEPT;
 
 	/// @}
 }// namespace glm

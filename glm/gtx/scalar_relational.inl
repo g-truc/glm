@@ -35,9 +35,9 @@ namespace glm
 	template <typename T>
 	GLM_FUNC_QUALIFIER bool lessThan
 	(
-		T const & x, 
+		T const & x,
 		T const & y
-	)
+	) GLM_NOEXCEPT
 	{
 		return x < y;
 	}
@@ -45,9 +45,9 @@ namespace glm
 	template <typename T>
 	GLM_FUNC_QUALIFIER bool lessThanEqual
 	(
-		T const & x, 
+		T const & x,
 		T const & y
-	)
+	) GLM_NOEXCEPT
 	{
 		return x <= y;
 	}
@@ -55,9 +55,9 @@ namespace glm
 	template <typename T>
 	GLM_FUNC_QUALIFIER bool greaterThan
 	(
-		T const & x, 
+		T const & x,
 		T const & y
-	)
+	) GLM_NOEXCEPT
 	{
 		return x > y;
 	}
@@ -65,9 +65,9 @@ namespace glm
 	template <typename T>
 	GLM_FUNC_QUALIFIER bool greaterThanEqual
 	(
-		T const & x, 
+		T const & x,
 		T const & y
-	)
+	) GLM_NOEXCEPT
 	{
 		return x >= y;
 	}
@@ -75,9 +75,9 @@ namespace glm
 	template <typename T>
 	GLM_FUNC_QUALIFIER bool equal
 	(
-		T const & x, 
+		T const & x,
 		T const & y
-	)
+	) GLM_NOEXCEPT
 	{
 		return x == y;
 	}
@@ -85,9 +85,9 @@ namespace glm
 	template <typename T>
 	GLM_FUNC_QUALIFIER bool notEqual
 	(
-		T const & x, 
+		T const & x,
 		T const & y
-	)
+	) GLM_NOEXCEPT
 	{
 		return x != y;
 	}
@@ -95,7 +95,7 @@ namespace glm
 	GLM_FUNC_QUALIFIER bool any
 	(
 		bool const & x
-	)
+	) GLM_NOEXCEPT
 	{
 		return x;
 	}
@@ -103,7 +103,7 @@ namespace glm
 	GLM_FUNC_QUALIFIER bool all
 	(
 		bool const & x
-	)
+	) GLM_NOEXCEPT
 	{
 		return x;
 	}
@@ -111,7 +111,7 @@ namespace glm
 	GLM_FUNC_QUALIFIER bool not_
 	(
 		bool const & x
-	)
+	) GLM_NOEXCEPT
 	{
 		return !x;
 	}

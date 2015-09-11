@@ -41,7 +41,7 @@ namespace detail
 	template <typename T, precision P>
 	struct compute_areCollinear<T, P, tvec2>
 	{
-		GLM_FUNC_QUALIFIER static bool call(tvec2<T, P> const & v0, tvec2<T, P> const & v1, T const & epsilon)
+		GLM_FUNC_QUALIFIER static bool call(tvec2<T, P> const & v0, tvec2<T, P> const & v1, T const & epsilon) GLM_NOEXCEPT
 		{
 			return length(cross(tvec3<T, P>(v0, static_cast<T>(0)), tvec3<T, P>(v1, static_cast<T>(0)))) < epsilon;
 		}
@@ -50,7 +50,7 @@ namespace detail
 	template <typename T, precision P>
 	struct compute_areCollinear<T, P, tvec3>
 	{
-		GLM_FUNC_QUALIFIER static bool call(tvec3<T, P> const & v0, tvec3<T, P> const & v1, T const & epsilon)
+		GLM_FUNC_QUALIFIER static bool call(tvec3<T, P> const & v0, tvec3<T, P> const & v1, T const & epsilon) GLM_NOEXCEPT
 		{
 			return length(cross(v0, v1)) < epsilon;
 		}
@@ -59,7 +59,7 @@ namespace detail
 	template <typename T, precision P>
 	struct compute_areCollinear<T, P, tvec4>
 	{
-		GLM_FUNC_QUALIFIER static bool call(tvec4<T, P> const & v0, tvec4<T, P> const & v1, T const & epsilon)
+		GLM_FUNC_QUALIFIER static bool call(tvec4<T, P> const & v0, tvec4<T, P> const & v1, T const & epsilon) GLM_NOEXCEPT
 		{
 			return length(cross(tvec3<T, P>(v0), tvec3<T, P>(v1))) < epsilon;
 		}
@@ -71,7 +71,7 @@ namespace detail
 	template <typename T, precision P>
 	struct compute_isCompNull<T, P, tvec2>
 	{
-		GLM_FUNC_QUALIFIER static tvec2<bool, P> call(tvec2<T, P> const & v, T const & epsilon)
+		GLM_FUNC_QUALIFIER static tvec2<bool, P> call(tvec2<T, P> const & v, T const & epsilon) GLM_NOEXCEPT
 		{
 			return tvec2<bool, P>(
 				(abs(v.x) < epsilon),
@@ -82,7 +82,7 @@ namespace detail
 	template <typename T, precision P>
 	struct compute_isCompNull<T, P, tvec3>
 	{
-		GLM_FUNC_QUALIFIER static tvec3<bool, P> call(tvec3<T, P> const & v, T const & epsilon)
+		GLM_FUNC_QUALIFIER static tvec3<bool, P> call(tvec3<T, P> const & v, T const & epsilon) GLM_NOEXCEPT
 		{
 			return tvec3<bool, P>(
 				(abs(v.x) < epsilon),
@@ -94,7 +94,7 @@ namespace detail
 	template <typename T, precision P>
 	struct compute_isCompNull<T, P, tvec4>
 	{
-		GLM_FUNC_QUALIFIER static tvec4<bool, P> call(tvec4<T, P> const & v, T const & epsilon)
+		GLM_FUNC_QUALIFIER static tvec4<bool, P> call(tvec4<T, P> const & v, T const & epsilon) GLM_NOEXCEPT
 		{
 			return tvec4<bool, P>(
 				(abs(v.x) < epsilon),
@@ -112,7 +112,7 @@ namespace detail
 		vecType<T, P> const & v0,
 		vecType<T, P> const & v1,
 		T const & epsilon
-	)
+	) GLM_NOEXCEPT
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'areCollinear' only accept floating-point inputs");
 
@@ -125,7 +125,7 @@ namespace detail
 		vecType<T, P> const & v0,
 		vecType<T, P> const & v1,
 		T const & epsilon
-	)
+	) GLM_NOEXCEPT
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'areOrthogonal' only accept floating-point inputs");
 
@@ -139,7 +139,7 @@ namespace detail
 	(
 		vecType<T, P> const & v,
 		T const & epsilon
-	)
+	) GLM_NOEXCEPT
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'isNormalized' only accept floating-point inputs");
 
@@ -151,7 +151,7 @@ namespace detail
 	(
 		vecType<T, P> const & v,
 		T const & epsilon
-	)
+	) GLM_NOEXCEPT
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'isNull' only accept floating-point inputs");
 
@@ -163,7 +163,7 @@ namespace detail
 	(
 		vecType<T, P> const & v,
 		T const & epsilon
-	)
+	) GLM_NOEXCEPT
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'isCompNull' only accept floating-point inputs");
 
@@ -174,7 +174,7 @@ namespace detail
 	GLM_FUNC_QUALIFIER tvec2<bool, P> isCompNull
 	(
 		tvec2<T, P> const & v,
-		T const & epsilon)
+		T const & epsilon) GLM_NOEXCEPT
 	{
 		return tvec2<bool, P>(
 			abs(v.x) < epsilon,
@@ -186,7 +186,7 @@ namespace detail
 	(
 		tvec3<T, P> const & v,
 		T const & epsilon
-	)
+	) GLM_NOEXCEPT
 	{
 		return tvec3<bool, P>(
 			abs(v.x) < epsilon,
@@ -199,7 +199,7 @@ namespace detail
 	(
 		tvec4<T, P> const & v,
 		T const & epsilon
-	)
+	) GLM_NOEXCEPT
 	{
 		return tvec4<bool, P>(
 			abs(v.x) < epsilon,
@@ -214,7 +214,7 @@ namespace detail
 		vecType<T, P> const & v0,
 		vecType<T, P> const & v1,
 		T const & epsilon
-	)
+	) GLM_NOEXCEPT
 	{
 		return isNormalized(v0, epsilon) && isNormalized(v1, epsilon) && (abs(dot(v0, v1)) <= epsilon);
 	}

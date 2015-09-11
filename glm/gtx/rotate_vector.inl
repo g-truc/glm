@@ -38,7 +38,7 @@ namespace glm
 		tvec3<T, P> const & x,
 		tvec3<T, P> const & y,
 		T const & a
-	)
+	) GLM_NOEXCEPT
 	{
 		// get cosine of angle between vectors (-1 -> 1)
 		T CosAlpha = dot(x, y);
@@ -59,7 +59,7 @@ namespace glm
 	(
 		tvec2<T, P> const & v,
 		T const & angle
-	)
+	) GLM_NOEXCEPT
 	{
 		tvec2<T, P> Result;
 		T const Cos(cos(angle));
@@ -76,7 +76,7 @@ namespace glm
 		tvec3<T, P> const & v,
 		T const & angle,
 		tvec3<T, P> const & normal
-	)
+	) GLM_NOEXCEPT
 	{
 		return tmat3x3<T, P>(glm::rotate(angle, normal)) * v;
 	}
@@ -98,7 +98,7 @@ namespace glm
 		tvec4<T, P> const & v,
 		T const & angle,
 		tvec3<T, P> const & normal
-	)
+	) GLM_NOEXCEPT
 	{
 		return rotate(angle, normal) * v;
 	}
@@ -108,7 +108,7 @@ namespace glm
 	(
 		tvec3<T, P> const & v,
 		T const & angle
-	)
+	) GLM_NOEXCEPT
 	{
 		tvec3<T, P> Result(v);
 		T const Cos(cos(angle));
@@ -124,7 +124,7 @@ namespace glm
 	(
 		tvec3<T, P> const & v,
 		T const & angle
-	)
+	) GLM_NOEXCEPT
 	{
 		tvec3<T, P> Result = v;
 		T const Cos(cos(angle));
@@ -140,7 +140,7 @@ namespace glm
 	(
 		tvec3<T, P> const & v,
 		T const & angle
-	)
+	) GLM_NOEXCEPT
 	{
 		tvec3<T, P> Result = v;
 		T const Cos(cos(angle));
@@ -156,7 +156,7 @@ namespace glm
 	(
 		tvec4<T, P> const & v,
 		T const & angle
-	)
+	) GLM_NOEXCEPT
 	{
 		tvec4<T, P> Result = v;
 		T const Cos(cos(angle));
@@ -172,7 +172,7 @@ namespace glm
 	(
 		tvec4<T, P> const & v,
 		T const & angle
-	)
+	) GLM_NOEXCEPT
 	{
 		tvec4<T, P> Result = v;
 		T const Cos(cos(angle));
@@ -188,7 +188,7 @@ namespace glm
 	(
 		tvec4<T, P> const & v,
 		T const & angle
-	)
+	) GLM_NOEXCEPT
 	{
 		tvec4<T, P> Result = v;
 		T const Cos(cos(angle));
@@ -204,7 +204,7 @@ namespace glm
 	(
 		tvec3<T, P> const & Normal,
 		tvec3<T, P> const & Up
-	)
+	) GLM_NOEXCEPT
 	{
 		if(all(equal(Normal, Up)))
 			return tmat4x4<T, P>(T(1));

@@ -36,7 +36,7 @@ namespace detail
 	template <typename T, precision P, template <class, precision> class vecType>
 	struct compute_log2<T, P, vecType, false>
 	{
-		GLM_FUNC_QUALIFIER static vecType<T, P> call(vecType<T, P> const & vec)
+		GLM_FUNC_QUALIFIER static vecType<T, P> call(vecType<T, P> const & vec) GLM_NOEXCEPT
 		{
 			//Equivalent to return findMSB(vec); but save one function call in ASM with VC
 			//return findMSB(vec);
@@ -48,7 +48,7 @@ namespace detail
 		template <precision P>
 		struct compute_log2<int, P, tvec4, false>
 		{
-			GLM_FUNC_QUALIFIER static tvec4<int, P> call(tvec4<int, P> const & vec)
+			GLM_FUNC_QUALIFIER static tvec4<int, P> call(tvec4<int, P> const & vec) GLM_NOEXCEPT
 			{
 				tvec4<int, P> Result(glm::uninitialize);
 

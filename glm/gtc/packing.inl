@@ -40,7 +40,7 @@
 namespace glm{
 namespace detail
 {
-	GLM_FUNC_QUALIFIER glm::uint16 float2half(glm::uint32 f)
+	GLM_FUNC_QUALIFIER glm::uint16 float2half(glm::uint32 f) GLM_NOEXCEPT
 	{
 		// 10 bits    =>                         EE EEEFFFFF
 		// 11 bits    =>                        EEE EEFFFFFF
@@ -58,7 +58,7 @@ namespace detail
 			((f >> 13) & 0x03ff); // Mantissa
 	}
 
-	GLM_FUNC_QUALIFIER glm::uint32 float2packed11(glm::uint32 f)
+	GLM_FUNC_QUALIFIER glm::uint32 float2packed11(glm::uint32 f) GLM_NOEXCEPT
 	{
 		// 10 bits    =>                         EE EEEFFFFF
 		// 11 bits    =>                        EEE EEFFFFFF
@@ -76,7 +76,7 @@ namespace detail
 			((f >> 17) & 0x003f); // Mantissa
 	}
 
-	GLM_FUNC_QUALIFIER glm::uint32 packed11ToFloat(glm::uint32 p)
+	GLM_FUNC_QUALIFIER glm::uint32 packed11ToFloat(glm::uint32 p) GLM_NOEXCEPT
 	{
 		// 10 bits    =>                         EE EEEFFFFF
 		// 11 bits    =>                        EEE EEFFFFFF
@@ -94,7 +94,7 @@ namespace detail
 			((p & 0x003f) << 17); // Mantissa
 	}
 
-	GLM_FUNC_QUALIFIER glm::uint32 float2packed10(glm::uint32 f)
+	GLM_FUNC_QUALIFIER glm::uint32 float2packed10(glm::uint32 f) GLM_NOEXCEPT
 	{
 		// 10 bits    =>                         EE EEEFFFFF
 		// 11 bits    =>                        EEE EEFFFFFF
@@ -115,7 +115,7 @@ namespace detail
 			((f >> 18) & 0x001f); // Mantissa
 	}
 
-	GLM_FUNC_QUALIFIER glm::uint32 packed10ToFloat(glm::uint32 p)
+	GLM_FUNC_QUALIFIER glm::uint32 packed10ToFloat(glm::uint32 p) GLM_NOEXCEPT
 	{
 		// 10 bits    =>                         EE EEEFFFFF
 		// 11 bits    =>                        EEE EEFFFFFF
@@ -136,12 +136,12 @@ namespace detail
 			((p & 0x001f) << 18); // Mantissa
 	}
 
-	GLM_FUNC_QUALIFIER glm::uint half2float(glm::uint h)
+	GLM_FUNC_QUALIFIER glm::uint half2float(glm::uint h) GLM_NOEXCEPT
 	{
 		return ((h & 0x8000) << 16) | ((( h & 0x7c00) + 0x1C000) << 13) | ((h & 0x03FF) << 13);
 	}
 
-	GLM_FUNC_QUALIFIER glm::uint floatTo11bit(float x)
+	GLM_FUNC_QUALIFIER glm::uint floatTo11bit(float x) GLM_NOEXCEPT
 	{
 		if(x == 0.0f)
 			return 0u;
@@ -160,7 +160,7 @@ namespace detail
 		return float2packed11(Pack);
 	}
 
-	GLM_FUNC_QUALIFIER float packed11bitToFloat(glm::uint x)
+	GLM_FUNC_QUALIFIER float packed11bitToFloat(glm::uint x) GLM_NOEXCEPT
 	{
 		if(x == 0)
 			return 0.0f;
@@ -180,7 +180,7 @@ namespace detail
 #		endif
 	}
 
-	GLM_FUNC_QUALIFIER glm::uint floatTo10bit(float x)
+	GLM_FUNC_QUALIFIER glm::uint floatTo10bit(float x) GLM_NOEXCEPT
 	{
 		if(x == 0.0f)
 			return 0u;
@@ -199,7 +199,7 @@ namespace detail
 		return float2packed10(Pack);
 	}
 
-	GLM_FUNC_QUALIFIER float packed10bitToFloat(glm::uint x)
+	GLM_FUNC_QUALIFIER float packed10bitToFloat(glm::uint x) GLM_NOEXCEPT
 	{
 		if(x == 0)
 			return 0.0f;
@@ -219,7 +219,7 @@ namespace detail
 #		endif
 	}
 
-//	GLM_FUNC_QUALIFIER glm::uint f11_f11_f10(float x, float y, float z)
+//	GLM_FUNC_QUALIFIER glm::uint f11_f11_f10(float x, float y, float z) GLM_NOEXCEPT
 //	{
 //		return ((floatTo11bit(x) & ((1 << 11) - 1)) << 0) |  ((floatTo11bit(y) & ((1 << 11) - 1)) << 11) | ((floatTo10bit(z) & ((1 << 10) - 1)) << 22);
 //	}
@@ -250,87 +250,87 @@ namespace detail
 
 }//namespace detail
 
-	GLM_FUNC_QUALIFIER uint8 packUnorm1x8(float v)
+	GLM_FUNC_QUALIFIER uint8 packUnorm1x8(float v) GLM_NOEXCEPT
 	{
 		return static_cast<uint8>(round(clamp(v, 0.0f, 1.0f) * 255.0f));
 	}
-	
-	GLM_FUNC_QUALIFIER float unpackUnorm1x8(uint8 p)
+
+	GLM_FUNC_QUALIFIER float unpackUnorm1x8(uint8 p) GLM_NOEXCEPT
 	{
 		float const Unpack(p);
 		return Unpack * static_cast<float>(0.0039215686274509803921568627451); // 1 / 255
 	}
-	
-	GLM_FUNC_QUALIFIER uint16 packUnorm2x8(vec2 const & v)
+
+	GLM_FUNC_QUALIFIER uint16 packUnorm2x8(vec2 const & v) GLM_NOEXCEPT
 	{
 		u8vec2 const Topack(round(clamp(v, 0.0f, 1.0f) * 255.0f));
 		return reinterpret_cast<uint16 const &>(Topack);
 	}
-	
-	GLM_FUNC_QUALIFIER vec2 unpackUnorm2x8(uint16 p)
+
+	GLM_FUNC_QUALIFIER vec2 unpackUnorm2x8(uint16 p) GLM_NOEXCEPT
 	{
 		vec2 const Unpack(reinterpret_cast<u8vec2 const &>(p));
 		return Unpack * float(0.0039215686274509803921568627451); // 1 / 255
 	}
 
-	GLM_FUNC_QUALIFIER uint8 packSnorm1x8(float v)
+	GLM_FUNC_QUALIFIER uint8 packSnorm1x8(float v) GLM_NOEXCEPT
 	{
 		int8 const Topack(static_cast<int8>(round(clamp(v ,-1.0f, 1.0f) * 127.0f)));
 		return reinterpret_cast<uint8 const &>(Topack);
 	}
-	
-	GLM_FUNC_QUALIFIER float unpackSnorm1x8(uint8 p)
+
+	GLM_FUNC_QUALIFIER float unpackSnorm1x8(uint8 p) GLM_NOEXCEPT
 	{
 		float const Unpack(reinterpret_cast<int8 const &>(p));
 		return clamp(
 			Unpack * 0.00787401574803149606299212598425f, // 1.0f / 127.0f
 			-1.0f, 1.0f);
 	}
-	
-	GLM_FUNC_QUALIFIER uint16 packSnorm2x8(vec2 const & v)
+
+	GLM_FUNC_QUALIFIER uint16 packSnorm2x8(vec2 const & v) GLM_NOEXCEPT
 	{
 		i8vec2 const Topack(round(clamp(v, -1.0f, 1.0f) * 127.0f));
 		return reinterpret_cast<uint16 const &>(Topack);
 	}
-	
-	GLM_FUNC_QUALIFIER vec2 unpackSnorm2x8(uint16 p)
+
+	GLM_FUNC_QUALIFIER vec2 unpackSnorm2x8(uint16 p) GLM_NOEXCEPT
 	{
 		vec2 const Unpack(reinterpret_cast<i8vec2 const &>(p));
 		return clamp(
 			Unpack * 0.00787401574803149606299212598425f, // 1.0f / 127.0f
 			-1.0f, 1.0f);
 	}
-	
-	GLM_FUNC_QUALIFIER uint16 packUnorm1x16(float s)
+
+	GLM_FUNC_QUALIFIER uint16 packUnorm1x16(float s) GLM_NOEXCEPT
 	{
 		return static_cast<uint16>(round(clamp(s, 0.0f, 1.0f) * 65535.0f));
 	}
 
-	GLM_FUNC_QUALIFIER float unpackUnorm1x16(uint16 p)
+	GLM_FUNC_QUALIFIER float unpackUnorm1x16(uint16 p) GLM_NOEXCEPT
 	{
 		float const Unpack(p);
 		return Unpack * 1.5259021896696421759365224689097e-5f; // 1.0 / 65535.0
 	}
 
-	GLM_FUNC_QUALIFIER uint64 packUnorm4x16(vec4 const & v)
+	GLM_FUNC_QUALIFIER uint64 packUnorm4x16(vec4 const & v) GLM_NOEXCEPT
 	{
 		u16vec4 const Topack(round(clamp(v , 0.0f, 1.0f) * 65535.0f));
 		return reinterpret_cast<uint64 const &>(Topack);
 	}
 
-	GLM_FUNC_QUALIFIER vec4 unpackUnorm4x16(uint64 p)
+	GLM_FUNC_QUALIFIER vec4 unpackUnorm4x16(uint64 p) GLM_NOEXCEPT
 	{
 		vec4 const Unpack(reinterpret_cast<u16vec4 const &>(p));
 		return Unpack * 1.5259021896696421759365224689097e-5f; // 1.0 / 65535.0
 	}
 
-	GLM_FUNC_QUALIFIER uint16 packSnorm1x16(float v)
+	GLM_FUNC_QUALIFIER uint16 packSnorm1x16(float v) GLM_NOEXCEPT
 	{
 		int16 const Topack = static_cast<int16>(round(clamp(v ,-1.0f, 1.0f) * 32767.0f));
 		return reinterpret_cast<uint16 const &>(Topack);
 	}
 
-	GLM_FUNC_QUALIFIER float unpackSnorm1x16(uint16 p)
+	GLM_FUNC_QUALIFIER float unpackSnorm1x16(uint16 p) GLM_NOEXCEPT
 	{
 		float const Unpack(reinterpret_cast<int16 const &>(p));
 		return clamp(
@@ -338,13 +338,13 @@ namespace detail
 			-1.0f, 1.0f);
 	}
 
-	GLM_FUNC_QUALIFIER uint64 packSnorm4x16(vec4 const & v)
+	GLM_FUNC_QUALIFIER uint64 packSnorm4x16(vec4 const & v) GLM_NOEXCEPT
 	{
 		i16vec4 const Topack(round(clamp(v ,-1.0f, 1.0f) * 32767.0f));
 		return reinterpret_cast<uint64 const &>(Topack);
 	}
 
-	GLM_FUNC_QUALIFIER vec4 unpackSnorm4x16(uint64 p)
+	GLM_FUNC_QUALIFIER vec4 unpackSnorm4x16(uint64 p) GLM_NOEXCEPT
 	{
 		vec4 const Unpack(reinterpret_cast<i16vec4 const &>(p));
 		return clamp(
@@ -352,18 +352,18 @@ namespace detail
 			-1.0f, 1.0f);
 	}
 
-	GLM_FUNC_QUALIFIER uint16 packHalf1x16(float v)
+	GLM_FUNC_QUALIFIER uint16 packHalf1x16(float v) GLM_NOEXCEPT
 	{
 		int16 const Topack(detail::toFloat16(v));
 		return reinterpret_cast<uint16 const &>(Topack);
 	}
 
-	GLM_FUNC_QUALIFIER float unpackHalf1x16(uint16 v)
+	GLM_FUNC_QUALIFIER float unpackHalf1x16(uint16 v) GLM_NOEXCEPT
 	{
 		return detail::toFloat32(reinterpret_cast<int16 const &>(v));
 	}
 
-	GLM_FUNC_QUALIFIER uint64 packHalf4x16(glm::vec4 const & v)
+	GLM_FUNC_QUALIFIER uint64 packHalf4x16(glm::vec4 const & v) GLM_NOEXCEPT
 	{
 		i16vec4 Unpack(
 			detail::toFloat16(v.x),
@@ -374,10 +374,10 @@ namespace detail
 		return reinterpret_cast<uint64 const &>(Unpack);
 	}
 
-	GLM_FUNC_QUALIFIER glm::vec4 unpackHalf4x16(uint64 v)
+	GLM_FUNC_QUALIFIER glm::vec4 unpackHalf4x16(uint64 v) GLM_NOEXCEPT
 	{
 		i16vec4 Unpack(reinterpret_cast<i16vec4 const &>(v));
-	
+
 		return vec4(
 			detail::toFloat32(Unpack.x),
 			detail::toFloat32(Unpack.y),
@@ -385,7 +385,7 @@ namespace detail
 			detail::toFloat32(Unpack.w));
 	}
 
-	GLM_FUNC_QUALIFIER uint32 packI3x10_1x2(ivec4 const & v)
+	GLM_FUNC_QUALIFIER uint32 packI3x10_1x2(ivec4 const & v) GLM_NOEXCEPT
 	{
 		detail::i10i10i10i2 Result;
 		Result.data.x = v.x;
@@ -395,7 +395,7 @@ namespace detail
 		return Result.pack; 
 	}
 
-	GLM_FUNC_QUALIFIER ivec4 unpackI3x10_1x2(uint32 v)
+	GLM_FUNC_QUALIFIER ivec4 unpackI3x10_1x2(uint32 v) GLM_NOEXCEPT
 	{
 		detail::i10i10i10i2 Unpack;
 		Unpack.pack = v;
@@ -406,7 +406,7 @@ namespace detail
 			Unpack.data.w);
 	}
 
-	GLM_FUNC_QUALIFIER uint32 packU3x10_1x2(uvec4 const & v)
+	GLM_FUNC_QUALIFIER uint32 packU3x10_1x2(uvec4 const & v) GLM_NOEXCEPT
 	{
 		detail::u10u10u10u2 Result;
 		Result.data.x = v.x;
@@ -416,7 +416,7 @@ namespace detail
 		return Result.pack; 
 	}
 
-	GLM_FUNC_QUALIFIER uvec4 unpackU3x10_1x2(uint32 v)
+	GLM_FUNC_QUALIFIER uvec4 unpackU3x10_1x2(uint32 v) GLM_NOEXCEPT
 	{
 		detail::u10u10u10u2 Unpack;
 		Unpack.pack = v;
@@ -427,7 +427,7 @@ namespace detail
 			Unpack.data.w);
 	}
 
-	GLM_FUNC_QUALIFIER uint32 packSnorm3x10_1x2(vec4 const & v)
+	GLM_FUNC_QUALIFIER uint32 packSnorm3x10_1x2(vec4 const & v) GLM_NOEXCEPT
 	{
 		detail::i10i10i10i2 Result;
 		Result.data.x = int(round(clamp(v.x,-1.0f, 1.0f) * 511.f));
@@ -437,7 +437,7 @@ namespace detail
 		return Result.pack;
 	}
 
-	GLM_FUNC_QUALIFIER vec4 unpackSnorm3x10_1x2(uint32 v)
+	GLM_FUNC_QUALIFIER vec4 unpackSnorm3x10_1x2(uint32 v) GLM_NOEXCEPT
 	{
 		detail::i10i10i10i2 Unpack;
 		Unpack.pack = v;
@@ -449,7 +449,7 @@ namespace detail
 		return Result;
 	}
 
-	GLM_FUNC_QUALIFIER uint32 packUnorm3x10_1x2(vec4 const & v)
+	GLM_FUNC_QUALIFIER uint32 packUnorm3x10_1x2(vec4 const & v) GLM_NOEXCEPT
 	{
 		detail::i10i10i10i2 Result;
 		Result.data.x = int(round(clamp(v.x, 0.0f, 1.0f) * 1023.f));
@@ -459,7 +459,7 @@ namespace detail
 		return Result.pack;
 	}
 
-	GLM_FUNC_QUALIFIER vec4 unpackUnorm3x10_1x2(uint32 v)
+	GLM_FUNC_QUALIFIER vec4 unpackUnorm3x10_1x2(uint32 v) GLM_NOEXCEPT
 	{
 		detail::i10i10i10i2 Unpack;
 		Unpack.pack = v;
@@ -471,7 +471,7 @@ namespace detail
 		return Result;
 	}
 
-	GLM_FUNC_QUALIFIER uint32 packF2x11_1x10(vec3 const & v)
+	GLM_FUNC_QUALIFIER uint32 packF2x11_1x10(vec3 const & v) GLM_NOEXCEPT
 	{
 		return
 			((detail::floatTo11bit(v.x) & ((1 << 11) - 1)) <<  0) |
@@ -479,7 +479,7 @@ namespace detail
 			((detail::floatTo10bit(v.z) & ((1 << 10) - 1)) << 22);
 	}
 
-	GLM_FUNC_QUALIFIER vec3 unpackF2x11_1x10(uint32 v)
+	GLM_FUNC_QUALIFIER vec3 unpackF2x11_1x10(uint32 v) GLM_NOEXCEPT
 	{
 		return vec3(
 			detail::packed11bitToFloat(v >> 0),

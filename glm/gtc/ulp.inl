@@ -97,7 +97,7 @@ typedef union
 namespace glm{
 namespace detail
 {
-	GLM_FUNC_QUALIFIER float nextafterf(float x, float y)
+	GLM_FUNC_QUALIFIER float nextafterf(float x, float y) GLM_NOEXCEPT
 	{
 		volatile float t;
 		glm::detail::int32 hx, hy, ix, iy;
@@ -142,7 +142,7 @@ namespace detail
 		return x;
 	}
 
-	GLM_FUNC_QUALIFIER double nextafter(double x, double y)
+	GLM_FUNC_QUALIFIER double nextafter(double x, double y) GLM_NOEXCEPT
 	{
 		volatile double t;
 		glm::detail::int32 hx, hy, ix, iy;
@@ -201,7 +201,7 @@ namespace detail
 namespace glm
 {
 	template <>
-	GLM_FUNC_QUALIFIER float next_float(float const & x)
+	GLM_FUNC_QUALIFIER float next_float(float const & x) GLM_NOEXCEPT
 	{
 #		if GLM_HAS_CXX11_STL
 			return std::nextafter(x, std::numeric_limits<float>::max());
@@ -215,7 +215,7 @@ namespace glm
 	}
 
 	template <>
-	GLM_FUNC_QUALIFIER double next_float(double const & x)
+	GLM_FUNC_QUALIFIER double next_float(double const & x) GLM_NOEXCEPT
 	{
 #		if GLM_HAS_CXX11_STL
 			return std::nextafter(x, std::numeric_limits<double>::max());
@@ -229,7 +229,7 @@ namespace glm
 	}
 
 	template<typename T, precision P, template<typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<T, P> next_float(vecType<T, P> const & x)
+	GLM_FUNC_QUALIFIER vecType<T, P> next_float(vecType<T, P> const & x) GLM_NOEXCEPT
 	{
 		vecType<T, P> Result(uninitialize);
 		for(detail::component_count_t i = 0; i < detail::component_count(Result); ++i)
@@ -237,7 +237,7 @@ namespace glm
 		return Result;
 	}
 
-	GLM_FUNC_QUALIFIER float prev_float(float const & x)
+	GLM_FUNC_QUALIFIER float prev_float(float const & x) GLM_NOEXCEPT
 	{
 #		if GLM_HAS_CXX11_STL
 			return std::nextafter(x, std::numeric_limits<float>::min());
@@ -250,7 +250,7 @@ namespace glm
 #		endif
 	}
 
-	GLM_FUNC_QUALIFIER double prev_float(double const & x)
+	GLM_FUNC_QUALIFIER double prev_float(double const & x) GLM_NOEXCEPT
 	{
 #		if GLM_HAS_CXX11_STL
 			return std::nextafter(x, std::numeric_limits<double>::min());
@@ -264,7 +264,7 @@ namespace glm
 	}
 
 	template<typename T, precision P, template<typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<T, P> prev_float(vecType<T, P> const & x)
+	GLM_FUNC_QUALIFIER vecType<T, P> prev_float(vecType<T, P> const & x) GLM_NOEXCEPT
 	{
 		vecType<T, P> Result(uninitialize);
 		for(detail::component_count_t i = 0; i < detail::component_count(Result); ++i)
@@ -273,7 +273,7 @@ namespace glm
 	}
 
 	template <typename T>
-	GLM_FUNC_QUALIFIER T next_float(T const & x, uint const & ulps)
+	GLM_FUNC_QUALIFIER T next_float(T const & x, uint const & ulps) GLM_NOEXCEPT
 	{
 		T temp = x;
 		for(uint i = 0; i < ulps; ++i)
@@ -282,7 +282,7 @@ namespace glm
 	}
 
 	template<typename T, precision P, template<typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<T, P> next_float(vecType<T, P> const & x, vecType<uint, P> const & ulps)
+	GLM_FUNC_QUALIFIER vecType<T, P> next_float(vecType<T, P> const & x, vecType<uint, P> const & ulps) GLM_NOEXCEPT
 	{
 		vecType<T, P> Result(uninitialize);
 		for(detail::component_count_t i = 0; i < detail::component_count(Result); ++i)
@@ -291,7 +291,7 @@ namespace glm
 	}
 
 	template <typename T>
-	GLM_FUNC_QUALIFIER T prev_float(T const & x, uint const & ulps)
+	GLM_FUNC_QUALIFIER T prev_float(T const & x, uint const & ulps) GLM_NOEXCEPT
 	{
 		T temp = x;
 		for(uint i = 0; i < ulps; ++i)
@@ -300,7 +300,7 @@ namespace glm
 	}
 
 	template<typename T, precision P, template<typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<T, P> prev_float(vecType<T, P> const & x, vecType<uint, P> const & ulps)
+	GLM_FUNC_QUALIFIER vecType<T, P> prev_float(vecType<T, P> const & x, vecType<uint, P> const & ulps) GLM_NOEXCEPT
 	{
 		vecType<T, P> Result(uninitialize);
 		for(detail::component_count_t i = 0; i < detail::component_count(Result); ++i)
@@ -309,7 +309,7 @@ namespace glm
 	}
 
 	template <typename T>
-	GLM_FUNC_QUALIFIER uint float_distance(T const & x, T const & y)
+	GLM_FUNC_QUALIFIER uint float_distance(T const & x, T const & y) GLM_NOEXCEPT
 	{
 		uint ulp = 0;
 
@@ -340,7 +340,7 @@ namespace glm
 	}
 
 	template<typename T, precision P, template<typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<uint, P> float_distance(vecType<T, P> const & x, vecType<T, P> const & y)
+	GLM_FUNC_QUALIFIER vecType<uint, P> float_distance(vecType<T, P> const & x, vecType<T, P> const & y) GLM_NOEXCEPT
 	{
 		vecType<uint, P> Result(uninitialize);
 		for(detail::component_count_t i = 0; i < detail::component_count(Result); ++i)

@@ -36,7 +36,7 @@ namespace detail
 	template <typename T, precision P, template <typename, precision> class vecType>
 	struct compute_rgbToSrgb
 	{
-		GLM_FUNC_QUALIFIER static vecType<T, P> call(vecType<T, P> const & ColorRGB, T GammaCorrection)
+		GLM_FUNC_QUALIFIER static vecType<T, P> call(vecType<T, P> const & ColorRGB, T GammaCorrection) GLM_NOEXCEPT
 		{
 			vecType<T, P> const ClampedColor(clamp(ColorRGB, static_cast<T>(0), static_cast<T>(1)));
 
@@ -50,7 +50,7 @@ namespace detail
 	template <typename T, precision P>
 	struct compute_rgbToSrgb<T, P, tvec4>
 	{
-		GLM_FUNC_QUALIFIER static tvec4<T, P> call(tvec4<T, P> const & ColorRGB, T GammaCorrection)
+		GLM_FUNC_QUALIFIER static tvec4<T, P> call(tvec4<T, P> const & ColorRGB, T GammaCorrection) GLM_NOEXCEPT
 		{
 			return tvec4<T, P>(compute_rgbToSrgb<T, P, tvec3>::call(tvec3<T, P>(ColorRGB), GammaCorrection), ColorRGB.a);
 		}
@@ -59,7 +59,7 @@ namespace detail
 	template <typename T, precision P, template <typename, precision> class vecType>
 	struct compute_srgbToRgb
 	{
-		GLM_FUNC_QUALIFIER static vecType<T, P> call(vecType<T, P> const & ColorSRGB, T Gamma)
+		GLM_FUNC_QUALIFIER static vecType<T, P> call(vecType<T, P> const & ColorSRGB, T Gamma) GLM_NOEXCEPT
 		{
 			return mix(
 				pow((ColorSRGB + static_cast<T>(0.055)) * static_cast<T>(0.94786729857819905213270142180095), vecType<T, P>(Gamma)),
@@ -71,7 +71,7 @@ namespace detail
 	template <typename T, precision P>
 	struct compute_srgbToRgb<T, P, tvec4>
 	{
-		GLM_FUNC_QUALIFIER static tvec4<T, P> call(tvec4<T, P> const & ColorSRGB, T Gamma)
+		GLM_FUNC_QUALIFIER static tvec4<T, P> call(tvec4<T, P> const & ColorSRGB, T Gamma) GLM_NOEXCEPT
 		{
 			return tvec4<T, P>(compute_srgbToRgb<T, P, tvec3>::call(tvec3<T, P>(ColorSRGB), Gamma), ColorSRGB.a);
 		}
@@ -79,25 +79,25 @@ namespace detail
 }//namespace detail
 
 	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<T, P> convertLinearToSRGB(vecType<T, P> const & ColorLinear)
+	GLM_FUNC_QUALIFIER vecType<T, P> convertLinearToSRGB(vecType<T, P> const & ColorLinear) GLM_NOEXCEPT
 	{
 		return detail::compute_rgbToSrgb<T, P, vecType>::call(ColorLinear, static_cast<T>(0.41666));
 	}
 
 	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<T, P> convertLinearToSRGB(vecType<T, P> const & ColorLinear, T Gamma)
+	GLM_FUNC_QUALIFIER vecType<T, P> convertLinearToSRGB(vecType<T, P> const & ColorLinear, T Gamma) GLM_NOEXCEPT
 	{
 		return detail::compute_rgbToSrgb<T, P, vecType>::call(ColorLinear, static_cast<T>(1) / Gamma);
 	}
 
 	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<T, P> convertSRGBToLinear(vecType<T, P> const & ColorSRGB)
+	GLM_FUNC_QUALIFIER vecType<T, P> convertSRGBToLinear(vecType<T, P> const & ColorSRGB) GLM_NOEXCEPT
 	{
 		return detail::compute_srgbToRgb<T, P, vecType>::call(ColorSRGB, static_cast<T>(2.4));
 	}
-	
+
 	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<T, P> convertSRGBToLinear(vecType<T, P> const & ColorSRGB, T Gamma)
+	GLM_FUNC_QUALIFIER vecType<T, P> convertSRGBToLinear(vecType<T, P> const & ColorSRGB, T Gamma) GLM_NOEXCEPT
 	{
 		return detail::compute_srgbToRgb<T, P, vecType>::call(ColorSRGB, Gamma);
 	}

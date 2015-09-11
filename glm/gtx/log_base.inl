@@ -32,15 +32,15 @@
 
 namespace glm
 {
-	template <typename genType> 
-	GLM_FUNC_QUALIFIER genType log(genType const & x, genType const & base)
+	template <typename genType>
+	GLM_FUNC_QUALIFIER genType log(genType const & x, genType const & base) GLM_NOEXCEPT
 	{
 		assert(x != genType(0));
 		return glm::log(x) / glm::log(base);
 	}
 
 	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<T, P> log(vecType<T, P> const & x, vecType<T, P> const & base)
+	GLM_FUNC_QUALIFIER vecType<T, P> log(vecType<T, P> const & x, vecType<T, P> const & base) GLM_NOEXCEPT
 	{
 		return glm::log(x) / glm::log(base);
 	}

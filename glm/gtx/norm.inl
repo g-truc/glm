@@ -36,7 +36,7 @@ namespace glm
 	GLM_FUNC_QUALIFIER T length2
 	(
 		T const & x
-	)
+	) GLM_NOEXCEPT
 	{
 		return x * x;
 	}
@@ -45,7 +45,7 @@ namespace glm
 	GLM_FUNC_QUALIFIER T length2
 	(
 		tvec2<T, P> const & x
-	)
+	) GLM_NOEXCEPT
 	{
 		return dot(x, x);
 	}
@@ -54,7 +54,7 @@ namespace glm
 	GLM_FUNC_QUALIFIER T length2
 	(
 		tvec3<T, P> const & x
-	)
+	) GLM_NOEXCEPT
 	{
 		return dot(x, x);
 	}
@@ -63,7 +63,7 @@ namespace glm
 	GLM_FUNC_QUALIFIER T length2
 	(
 		tvec4<T, P> const & x
-	)
+	) GLM_NOEXCEPT
 	{
 		return dot(x, x);
 	}
@@ -73,7 +73,7 @@ namespace glm
 	(
 		T const & p0,
 		T const & p1
-	)
+	) GLM_NOEXCEPT
 	{
 		return length2(p1 - p0);
 	}
@@ -83,7 +83,7 @@ namespace glm
 	(
 		tvec2<T, P> const & p0,
 		tvec2<T, P> const & p1
-	)
+	) GLM_NOEXCEPT
 	{
 		return length2(p1 - p0);
 	}
@@ -93,7 +93,7 @@ namespace glm
 	(
 		tvec3<T, P> const & p0,
 		tvec3<T, P> const & p1
-	)
+	) GLM_NOEXCEPT
 	{
 		return length2(p1 - p0);
 	}
@@ -103,7 +103,7 @@ namespace glm
 	(
 		tvec4<T, P> const & p0,
 		tvec4<T, P> const & p1
-	)
+	) GLM_NOEXCEPT
 	{
 		return length2(p1 - p0);
 	}
@@ -113,7 +113,7 @@ namespace glm
 	(
 		tvec3<T, P> const & a,
 		tvec3<T, P> const & b
-	)
+	) GLM_NOEXCEPT
 	{
 		return abs(b.x - a.x) + abs(b.y - a.y) + abs(b.z - a.z);
 	}
@@ -122,7 +122,7 @@ namespace glm
 	GLM_FUNC_QUALIFIER T l1Norm
 	(
 		tvec3<T, P> const & v
-	)
+	) GLM_NOEXCEPT
 	{
 		return abs(v.x) + abs(v.y) + abs(v.z);
 	}
@@ -132,7 +132,7 @@ namespace glm
 	(
 		tvec3<T, P> const & a,
 		tvec3<T, P> const & b
-	)
+	) GLM_NOEXCEPT
 	{
 		return length(b - a);
 	}
@@ -141,7 +141,7 @@ namespace glm
 	GLM_FUNC_QUALIFIER T l2Norm
 	(
 		tvec3<T, P> const & v
-	)
+	) GLM_NOEXCEPT
 	{
 		return length(v);
 	}
@@ -152,7 +152,7 @@ namespace glm
 		tvec3<T, P> const & x,
 		tvec3<T, P> const & y,
 		unsigned int Depth
-	)
+	) GLM_NOEXCEPT
 	{
 		return pow(pow(y.x - x.x, T(Depth)) + pow(y.y - x.y, T(Depth)) + pow(y.z - x.z, T(Depth)), T(1) / T(Depth));
 	}
@@ -162,7 +162,7 @@ namespace glm
 	(
 		tvec3<T, P> const & v,
 		unsigned int Depth
-	)
+	) GLM_NOEXCEPT
 	{
 		return pow(pow(v.x, T(Depth)) + pow(v.y, T(Depth)) + pow(v.z, T(Depth)), T(1) / T(Depth));
 	}

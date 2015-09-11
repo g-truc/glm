@@ -42,7 +42,7 @@ namespace detail
 	template <typename T, precision P>
 	struct compute_transpose<tmat2x2, T, P>
 	{
-		GLM_FUNC_QUALIFIER static tmat2x2<T, P> call(tmat2x2<T, P> const & m)
+		GLM_FUNC_QUALIFIER static tmat2x2<T, P> call(tmat2x2<T, P> const & m) GLM_NOEXCEPT
 		{
 			tmat2x2<T, P> result(uninitialize);
 			result[0][0] = m[0][0];
@@ -56,7 +56,7 @@ namespace detail
 	template <typename T, precision P>
 	struct compute_transpose<tmat2x3, T, P>
 	{
-		GLM_FUNC_QUALIFIER static tmat3x2<T, P> call(tmat2x3<T, P> const & m)
+		GLM_FUNC_QUALIFIER static tmat3x2<T, P> call(tmat2x3<T, P> const & m) GLM_NOEXCEPT
 		{
 			tmat3x2<T, P> result(uninitialize);
 			result[0][0] = m[0][0];
@@ -72,7 +72,7 @@ namespace detail
 	template <typename T, precision P>
 	struct compute_transpose<tmat2x4, T, P>
 	{
-		GLM_FUNC_QUALIFIER static tmat4x2<T, P> call(tmat2x4<T, P> const & m)
+		GLM_FUNC_QUALIFIER static tmat4x2<T, P> call(tmat2x4<T, P> const & m) GLM_NOEXCEPT
 		{
 			tmat4x2<T, P> result(uninitialize);
 			result[0][0] = m[0][0];
@@ -90,7 +90,7 @@ namespace detail
 	template <typename T, precision P>
 	struct compute_transpose<tmat3x2, T, P>
 	{
-		GLM_FUNC_QUALIFIER static tmat2x3<T, P> call(tmat3x2<T, P> const & m)
+		GLM_FUNC_QUALIFIER static tmat2x3<T, P> call(tmat3x2<T, P> const & m) GLM_NOEXCEPT
 		{
 			tmat2x3<T, P> result(uninitialize);
 			result[0][0] = m[0][0];
@@ -106,7 +106,7 @@ namespace detail
 	template <typename T, precision P>
 	struct compute_transpose<tmat3x3, T, P>
 	{
-		GLM_FUNC_QUALIFIER static tmat3x3<T, P> call(tmat3x3<T, P> const & m)
+		GLM_FUNC_QUALIFIER static tmat3x3<T, P> call(tmat3x3<T, P> const & m) GLM_NOEXCEPT
 		{
 			tmat3x3<T, P> result(uninitialize);
 			result[0][0] = m[0][0];
@@ -127,7 +127,7 @@ namespace detail
 	template <typename T, precision P>
 	struct compute_transpose<tmat3x4, T, P>
 	{
-		GLM_FUNC_QUALIFIER static tmat4x3<T, P> call(tmat3x4<T, P> const & m)
+		GLM_FUNC_QUALIFIER static tmat4x3<T, P> call(tmat3x4<T, P> const & m) GLM_NOEXCEPT
 		{
 			tmat4x3<T, P> result(uninitialize);
 			result[0][0] = m[0][0];
@@ -149,7 +149,7 @@ namespace detail
 	template <typename T, precision P>
 	struct compute_transpose<tmat4x2, T, P>
 	{
-		GLM_FUNC_QUALIFIER static tmat2x4<T, P> call(tmat4x2<T, P> const & m)
+		GLM_FUNC_QUALIFIER static tmat2x4<T, P> call(tmat4x2<T, P> const & m) GLM_NOEXCEPT
 		{
 			tmat2x4<T, P> result(uninitialize);
 			result[0][0] = m[0][0];
@@ -167,7 +167,7 @@ namespace detail
 	template <typename T, precision P>
 	struct compute_transpose<tmat4x3, T, P>
 	{
-		GLM_FUNC_QUALIFIER static tmat3x4<T, P> call(tmat4x3<T, P> const & m)
+		GLM_FUNC_QUALIFIER static tmat3x4<T, P> call(tmat4x3<T, P> const & m) GLM_NOEXCEPT
 		{
 			tmat3x4<T, P> result(uninitialize);
 			result[0][0] = m[0][0];
@@ -189,7 +189,7 @@ namespace detail
 	template <typename T, precision P>
 	struct compute_transpose<tmat4x4, T, P>
 	{
-		GLM_FUNC_QUALIFIER static tmat4x4<T, P> call(tmat4x4<T, P> const & m)
+		GLM_FUNC_QUALIFIER static tmat4x4<T, P> call(tmat4x4<T, P> const & m) GLM_NOEXCEPT
 		{
 			tmat4x4<T, P> result(uninitialize);
 			result[0][0] = m[0][0];
@@ -221,7 +221,7 @@ namespace detail
 	template <typename T, precision P>
 	struct compute_determinant<tmat2x2, T, P>
 	{
-		GLM_FUNC_QUALIFIER static T call(tmat2x2<T, P> const & m)
+		GLM_FUNC_QUALIFIER static T call(tmat2x2<T, P> const & m) GLM_NOEXCEPT
 		{
 			return m[0][0] * m[1][1] - m[1][0] * m[0][1];
 		}
@@ -230,7 +230,7 @@ namespace detail
 	template <typename T, precision P>
 	struct compute_determinant<tmat3x3, T, P>
 	{
-		GLM_FUNC_QUALIFIER static T call(tmat3x3<T, P> const & m)
+		GLM_FUNC_QUALIFIER static T call(tmat3x3<T, P> const & m) GLM_NOEXCEPT
 		{
 			return
 				+ m[0][0] * (m[1][1] * m[2][2] - m[2][1] * m[1][2])
@@ -242,7 +242,7 @@ namespace detail
 	template <typename T, precision P>
 	struct compute_determinant<tmat4x4, T, P>
 	{
-		GLM_FUNC_QUALIFIER static T call(tmat4x4<T, P> const & m)
+		GLM_FUNC_QUALIFIER static T call(tmat4x4<T, P> const & m) GLM_NOEXCEPT
 		{
 			T SubFactor00 = m[2][2] * m[3][3] - m[3][2] * m[2][3];
 			T SubFactor01 = m[2][1] * m[3][3] - m[3][1] * m[2][3];
@@ -265,7 +265,7 @@ namespace detail
 }//namespace detail
 
 	template <typename T, precision P, template <typename, precision> class matType>
-	GLM_FUNC_QUALIFIER matType<T, P> matrixCompMult(matType<T, P> const & x, matType<T, P> const & y)
+	GLM_FUNC_QUALIFIER matType<T, P> matrixCompMult(matType<T, P> const & x, matType<T, P> const & y) GLM_NOEXCEPT
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'matrixCompMult' only accept floating-point inputs");
 
@@ -276,7 +276,7 @@ namespace detail
 	}
 
 	template<typename T, precision P, template <typename, precision> class vecTypeA, template <typename, precision> class vecTypeB>
-	GLM_FUNC_QUALIFIER typename detail::outerProduct_trait<T, P, vecTypeA, vecTypeB>::type outerProduct(vecTypeA<T, P> const & c, vecTypeB<T, P> const & r)
+	GLM_FUNC_QUALIFIER typename detail::outerProduct_trait<T, P, vecTypeA, vecTypeB>::type outerProduct(vecTypeA<T, P> const & c, vecTypeB<T, P> const & r) GLM_NOEXCEPT
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'outerProduct' only accept floating-point inputs");
 
@@ -287,21 +287,21 @@ namespace detail
 	}
 
 	template <typename T, precision P, template <typename, precision> class matType>
-	GLM_FUNC_QUALIFIER typename matType<T, P>::transpose_type transpose(matType<T, P> const & m)
+	GLM_FUNC_QUALIFIER typename matType<T, P>::transpose_type transpose(matType<T, P> const & m) GLM_NOEXCEPT
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'transpose' only accept floating-point inputs");
 		return detail::compute_transpose<matType, T, P>::call(m);
 	}
 
 	template <typename T, precision P, template <typename, precision> class matType>
-	GLM_FUNC_QUALIFIER T determinant(matType<T, P> const & m)
+	GLM_FUNC_QUALIFIER T determinant(matType<T, P> const & m) GLM_NOEXCEPT
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'determinant' only accept floating-point inputs");
 		return detail::compute_determinant<matType, T, P>::call(m);
 	}
 
 	template <typename T, precision P, template <typename, precision> class matType>
-	GLM_FUNC_QUALIFIER matType<T, P> inverse(matType<T, P> const & m)
+	GLM_FUNC_QUALIFIER matType<T, P> inverse(matType<T, P> const & m) GLM_NOEXCEPT
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'inverse' only accept floating-point inputs");
 		return detail::compute_inverse(m);

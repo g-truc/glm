@@ -61,19 +61,19 @@ namespace glm
 
 	/// Convert a linear color to sRGB color using a standard gamma correction
 	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_DECL vecType<T, P> convertLinearToSRGB(vecType<T, P> const & ColorLinear);
+	GLM_FUNC_DECL vecType<T, P> convertLinearToSRGB(vecType<T, P> const & ColorLinear) GLM_NOEXCEPT;
 
-	/// Convert a linear color to sRGB color using a custom gamma correction	
+	/// Convert a linear color to sRGB color using a custom gamma correction
 	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_DECL vecType<T, P> convertLinearToSRGB(vecType<T, P> const & ColorLinear, T Gamma);
+	GLM_FUNC_DECL vecType<T, P> convertLinearToSRGB(vecType<T, P> const & ColorLinear, T Gamma) GLM_NOEXCEPT;
 
 	/// Convert a sRGB color to linear color using a standard gamma correction
 	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_DECL vecType<T, P> convertSRGBToLinear(vecType<T, P> const & ColorSRGB);
+	GLM_FUNC_DECL vecType<T, P> convertSRGBToLinear(vecType<T, P> const & ColorSRGB) GLM_NOEXCEPT;
 
 	/// Convert a sRGB color to linear color using a custom gamma correction
 	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_DECL vecType<T, P> convertSRGBToLinear(vecType<T, P> const & ColorSRGB, T Gamma);
+	GLM_FUNC_DECL vecType<T, P> convertSRGBToLinear(vecType<T, P> const & ColorSRGB, T Gamma) GLM_NOEXCEPT;
 
 	/// @}
 } //namespace glm

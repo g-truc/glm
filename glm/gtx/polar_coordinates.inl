@@ -36,7 +36,7 @@ namespace glm
 	GLM_FUNC_QUALIFIER tvec3<T, P> polar
 	(
 		tvec3<T, P> const & euclidean
-	)
+	) GLM_NOEXCEPT
 	{
 		T const Length(length(euclidean));
 		tvec3<T, P> const tmp(euclidean / Length);
@@ -52,7 +52,7 @@ namespace glm
 	GLM_FUNC_QUALIFIER tvec3<T, P> euclidean
 	(
 		tvec2<T, P> const & polar
-	)
+	) GLM_NOEXCEPT
 	{
 		T const latitude(polar.x);
 		T const longitude(polar.y);

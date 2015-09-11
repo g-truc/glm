@@ -63,7 +63,7 @@ namespace glm
 	template<typename T, precision P>
 	GLM_FUNC_DECL tvec3<T, P> cross(
 		tquat<T, P> const & q,
-		tvec3<T, P> const & v);
+		tvec3<T, P> const & v) GLM_NOEXCEPT;
 
 	//! Compute a cross product between a vector and a quaternion.
 	///
@@ -71,7 +71,7 @@ namespace glm
 	template<typename T, precision P>
 	GLM_FUNC_DECL tvec3<T, P> cross(
 		tvec3<T, P> const & v,
-		tquat<T, P> const & q);
+		tquat<T, P> const & q) GLM_NOEXCEPT;
 
 	//! Compute a point on a path according squad equation. 
 	//! q1 and q2 are control points; s1 and s2 are intermediate control points.
@@ -83,7 +83,7 @@ namespace glm
 		tquat<T, P> const & q2,
 		tquat<T, P> const & s1,
 		tquat<T, P> const & s2,
-		T const & h);
+		T const & h) GLM_NOEXCEPT;
 
 	//! Returns an intermediate control point for squad interpolation.
 	///
@@ -92,21 +92,21 @@ namespace glm
 	GLM_FUNC_DECL tquat<T, P> intermediate(
 		tquat<T, P> const & prev,
 		tquat<T, P> const & curr,
-		tquat<T, P> const & next);
+		tquat<T, P> const & next) GLM_NOEXCEPT;
 
 	//! Returns a exp of a quaternion.
 	///
 	/// @see gtx_quaternion
 	template<typename T, precision P>
 	GLM_FUNC_DECL tquat<T, P> exp(
-		tquat<T, P> const & q);
+		tquat<T, P> const & q) GLM_NOEXCEPT;
 
 	//! Returns a log of a quaternion.
 	///
 	/// @see gtx_quaternion
 	template<typename T, precision P>
 	GLM_FUNC_DECL tquat<T, P> log(
-		tquat<T, P> const & q);
+		tquat<T, P> const & q) GLM_NOEXCEPT;
 
 	/// Returns x raised to the y power.
 	///
@@ -114,14 +114,14 @@ namespace glm
 	template<typename T, precision P>
 	GLM_FUNC_DECL tquat<T, P> pow(
 		tquat<T, P> const & x,
-		T const & y);
+		T const & y) GLM_NOEXCEPT;
 
 	//! Returns quarternion square root.
 	///
 	/// @see gtx_quaternion
 	//template<typename T, precision P>
 	//tquat<T, P> sqrt(
-	//	tquat<T, P> const & q);
+	//	tquat<T, P> const & q) GLM_NOEXCEPT;
 
 	//! Rotates a 3 components vector by a quaternion.
 	///
@@ -129,7 +129,7 @@ namespace glm
 	template<typename T, precision P>
 	GLM_FUNC_DECL tvec3<T, P> rotate(
 		tquat<T, P> const & q,
-		tvec3<T, P> const & v);
+		tvec3<T, P> const & v) GLM_NOEXCEPT;
 
 	/// Rotates a 4 components vector by a quaternion.
 	///
@@ -137,42 +137,42 @@ namespace glm
 	template<typename T, precision P>
 	GLM_FUNC_DECL tvec4<T, P> rotate(
 		tquat<T, P> const & q,
-		tvec4<T, P> const & v);
+		tvec4<T, P> const & v) GLM_NOEXCEPT;
 
 	/// Extract the real component of a quaternion.
 	///
 	/// @see gtx_quaternion
 	template<typename T, precision P>
 	GLM_FUNC_DECL T extractRealComponent(
-		tquat<T, P> const & q);
+		tquat<T, P> const & q) GLM_NOEXCEPT;
 
 	/// Converts a quaternion to a 3 * 3 matrix.
 	///
 	/// @see gtx_quaternion
 	template<typename T, precision P>
 	GLM_FUNC_DECL tmat3x3<T, P> toMat3(
-		tquat<T, P> const & x){return mat3_cast(x);}
+		tquat<T, P> const & x) GLM_NOEXCEPT {return mat3_cast(x);}
 
 	/// Converts a quaternion to a 4 * 4 matrix.
 	///
 	/// @see gtx_quaternion
 	template<typename T, precision P>
 	GLM_FUNC_DECL tmat4x4<T, P> toMat4(
-		tquat<T, P> const & x){return mat4_cast(x);}
+		tquat<T, P> const & x) GLM_NOEXCEPT {return mat4_cast(x);}
 
 	/// Converts a 3 * 3 matrix to a quaternion.
 	///
 	/// @see gtx_quaternion
 	template<typename T, precision P>
 	GLM_FUNC_DECL tquat<T, P> toQuat(
-		tmat3x3<T, P> const & x){return quat_cast(x);}
+		tmat3x3<T, P> const & x) GLM_NOEXCEPT {return quat_cast(x);}
 
 	/// Converts a 4 * 4 matrix to a quaternion.
 	///
 	/// @see gtx_quaternion
 	template<typename T, precision P>
 	GLM_FUNC_DECL tquat<T, P> toQuat(
-		tmat4x4<T, P> const & x){return quat_cast(x);}
+		tmat4x4<T, P> const & x) GLM_NOEXCEPT {return quat_cast(x);}
 
 	/// Quaternion interpolation using the rotation short path.
 	///
@@ -181,7 +181,7 @@ namespace glm
 	GLM_FUNC_DECL tquat<T, P> shortMix(
 		tquat<T, P> const & x,
 		tquat<T, P> const & y,
-		T const & a);
+		T const & a) GLM_NOEXCEPT;
 
 	/// Quaternion normalized linear interpolation.
 	///
@@ -190,7 +190,7 @@ namespace glm
 	GLM_FUNC_DECL tquat<T, P> fastMix(
 		tquat<T, P> const & x,
 		tquat<T, P> const & y,
-		T const & a);
+		T const & a) GLM_NOEXCEPT;
 
 	/// Compute the rotation between two vectors.
 	/// param orig vector, needs to be normalized
@@ -199,14 +199,14 @@ namespace glm
 	/// @see gtx_quaternion
 	template<typename T, precision P>
 	GLM_FUNC_DECL tquat<T, P> rotation(
-		tvec3<T, P> const & orig, 
-		tvec3<T, P> const & dest);
+		tvec3<T, P> const & orig,
+		tvec3<T, P> const & dest) GLM_NOEXCEPT;
 
 	/// Returns the squared length of x.
-	/// 
+	///
 	/// @see gtx_quaternion
 	template<typename T, precision P>
-	GLM_FUNC_DECL T length2(tquat<T, P> const & q);
+	GLM_FUNC_DECL T length2(tquat<T, P> const & q) GLM_NOEXCEPT;
 
 	/// @}
 }//namespace glm

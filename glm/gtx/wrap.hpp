@@ -55,23 +55,23 @@ namespace glm
 
 	/// Simulate GL_CLAMP OpenGL wrap mode
 	/// @see gtx_wrap extension.
-	template <typename genType> 
-	GLM_FUNC_DECL genType clamp(genType const & Texcoord);
+	template <typename genType>
+	GLM_FUNC_DECL genType clamp(genType const & Texcoord) GLM_NOEXCEPT;
 
 	/// Simulate GL_REPEAT OpenGL wrap mode
 	/// @see gtx_wrap extension.
-	template <typename genType> 
-	GLM_FUNC_DECL genType repeat(genType const & Texcoord);
+	template <typename genType>
+	GLM_FUNC_DECL genType repeat(genType const & Texcoord) GLM_NOEXCEPT;
 
 	/// Simulate GL_MIRRORED_REPEAT OpenGL wrap mode
 	/// @see gtx_wrap extension.
-	template <typename genType> 
-	GLM_FUNC_DECL genType mirrorClamp(genType const & Texcoord);
+	template <typename genType>
+	GLM_FUNC_DECL genType mirrorClamp(genType const & Texcoord) GLM_NOEXCEPT;
 
 	/// Simulate GL_MIRROR_REPEAT OpenGL wrap mode
 	/// @see gtx_wrap extension.
-	template <typename genType> 
-	GLM_FUNC_DECL genType mirrorRepeat(genType const & Texcoord);
+	template <typename genType>
+	GLM_FUNC_DECL genType mirrorRepeat(genType const & Texcoord) GLM_NOEXCEPT;
 
 	/// @}
 }// namespace glm
