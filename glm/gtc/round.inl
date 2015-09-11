@@ -37,7 +37,7 @@ namespace detail
 	template <typename T, precision P, template <typename, precision> class vecType, bool compute = false>
 	struct compute_ceilShift
 	{
-		GLM_FUNC_QUALIFIER static vecType<T, P> call(vecType<T, P> const & v, T)
+		GLM_FUNC_QUALIFIER static vecType<T, P> call(vecType<T, P> const & v, T) GLM_NOEXCEPT
 		{
 			return v;
 		}
@@ -46,7 +46,7 @@ namespace detail
 	template <typename T, precision P, template <typename, precision> class vecType>
 	struct compute_ceilShift<T, P, vecType, true>
 	{
-		GLM_FUNC_QUALIFIER static vecType<T, P> call(vecType<T, P> const & v, T Shift)
+		GLM_FUNC_QUALIFIER static vecType<T, P> call(vecType<T, P> const & v, T Shift) GLM_NOEXCEPT
 		{
 			return v | (v >> Shift);
 		}
@@ -55,7 +55,7 @@ namespace detail
 	template <typename T, precision P, template <typename, precision> class vecType, bool isSigned = true>
 	struct compute_ceilPowerOfTwo
 	{
-		GLM_FUNC_QUALIFIER static vecType<T, P> call(vecType<T, P> const & x)
+		GLM_FUNC_QUALIFIER static vecType<T, P> call(vecType<T, P> const & x) GLM_NOEXCEPT
 		{
 			GLM_STATIC_ASSERT(!std::numeric_limits<T>::is_iec559, "'ceilPowerOfTwo' only accept integer scalar or vector inputs");
 
@@ -77,7 +77,7 @@ namespace detail
 	template <typename T, precision P, template <typename, precision> class vecType>
 	struct compute_ceilPowerOfTwo<T, P, vecType, false>
 	{
-		GLM_FUNC_QUALIFIER static vecType<T, P> call(vecType<T, P> const & x)
+		GLM_FUNC_QUALIFIER static vecType<T, P> call(vecType<T, P> const & x) GLM_NOEXCEPT
 		{
 			GLM_STATIC_ASSERT(!std::numeric_limits<T>::is_iec559, "'ceilPowerOfTwo' only accept integer scalar or vector inputs");
 
@@ -101,7 +101,7 @@ namespace detail
 	struct compute_ceilMultiple<true, true>
 	{
 		template <typename genType>
-		GLM_FUNC_QUALIFIER static genType call(genType Source, genType Multiple)
+		GLM_FUNC_QUALIFIER static genType call(genType Source, genType Multiple) GLM_NOEXCEPT
 		{
 			if(Source > genType(0))
 			{
@@ -117,7 +117,7 @@ namespace detail
 	struct compute_ceilMultiple<false, false>
 	{
 		template <typename genType>
-		GLM_FUNC_QUALIFIER static genType call(genType Source, genType Multiple)
+		GLM_FUNC_QUALIFIER static genType call(genType Source, genType Multiple) GLM_NOEXCEPT
 		{
 			genType Tmp = Source - genType(1);
 			return Tmp + (Multiple - (Tmp % Multiple));
@@ -128,7 +128,7 @@ namespace detail
 	struct compute_ceilMultiple<false, true>
 	{
 		template <typename genType>
-		GLM_FUNC_QUALIFIER static genType call(genType Source, genType Multiple)
+		GLM_FUNC_QUALIFIER static genType call(genType Source, genType Multiple) GLM_NOEXCEPT
 		{
 			if(Source > genType(0))
 			{
@@ -147,7 +147,7 @@ namespace detail
 	struct compute_floorMultiple<true, true>
 	{
 		template <typename genType>
-		GLM_FUNC_QUALIFIER static genType call(genType Source, genType Multiple)
+		GLM_FUNC_QUALIFIER static genType call(genType Source, genType Multiple) GLM_NOEXCEPT
 		{
 			if(Source >= genType(0))
 				return Source - std::fmod(Source, Multiple);
@@ -163,7 +163,7 @@ namespace detail
 	struct compute_floorMultiple<false, false>
 	{
 		template <typename genType>
-		GLM_FUNC_QUALIFIER static genType call(genType Source, genType Multiple)
+		GLM_FUNC_QUALIFIER static genType call(genType Source, genType Multiple) GLM_NOEXCEPT
 		{
 			if(Source >= genType(0))
 				return Source - Source % Multiple;
@@ -179,7 +179,7 @@ namespace detail
 	struct compute_floorMultiple<false, true>
 	{
 		template <typename genType>
-		GLM_FUNC_QUALIFIER static genType call(genType Source, genType Multiple)
+		GLM_FUNC_QUALIFIER static genType call(genType Source, genType Multiple) GLM_NOEXCEPT
 		{
 			if(Source >= genType(0))
 				return Source - Source % Multiple;
@@ -198,7 +198,7 @@ namespace detail
 	struct compute_roundMultiple<true, true>
 	{
 		template <typename genType>
-		GLM_FUNC_QUALIFIER static genType call(genType Source, genType Multiple)
+		GLM_FUNC_QUALIFIER static genType call(genType Source, genType Multiple) GLM_NOEXCEPT
 		{
 			if(Source >= genType(0))
 				return Source - std::fmod(Source, Multiple);
@@ -214,7 +214,7 @@ namespace detail
 	struct compute_roundMultiple<false, false>
 	{
 		template <typename genType>
-		GLM_FUNC_QUALIFIER static genType call(genType Source, genType Multiple)
+		GLM_FUNC_QUALIFIER static genType call(genType Source, genType Multiple) GLM_NOEXCEPT
 		{
 			if(Source >= genType(0))
 				return Source - Source % Multiple;
@@ -230,7 +230,7 @@ namespace detail
 	struct compute_roundMultiple<false, true>
 	{
 		template <typename genType>
-		GLM_FUNC_QUALIFIER static genType call(genType Source, genType Multiple)
+		GLM_FUNC_QUALIFIER static genType call(genType Source, genType Multiple) GLM_NOEXCEPT
 		{
 			if(Source >= genType(0))
 				return Source - Source % Multiple;
@@ -247,14 +247,14 @@ namespace detail
 	// isPowerOfTwo
 
 	template <typename genType>
-	GLM_FUNC_QUALIFIER bool isPowerOfTwo(genType Value)
+	GLM_FUNC_QUALIFIER bool isPowerOfTwo(genType Value) GLM_NOEXCEPT
 	{
 		genType const Result = glm::abs(Value);
 		return !(Result & (Result - 1));
 	}
 
 	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<bool, P> isPowerOfTwo(vecType<T, P> const & Value)
+	GLM_FUNC_QUALIFIER vecType<bool, P> isPowerOfTwo(vecType<T, P> const & Value) GLM_NOEXCEPT
 	{
 		vecType<T, P> const Result(abs(Value));
 		return equal(Result & (Result - 1), vecType<T, P>(0));
@@ -264,13 +264,13 @@ namespace detail
 	// ceilPowerOfTwo
 
 	template <typename genType>
-	GLM_FUNC_QUALIFIER genType ceilPowerOfTwo(genType value)
+	GLM_FUNC_QUALIFIER genType ceilPowerOfTwo(genType value) GLM_NOEXCEPT
 	{
 		return detail::compute_ceilPowerOfTwo<genType, defaultp, tvec1, std::numeric_limits<genType>::is_signed>::call(tvec1<genType, defaultp>(value)).x;
 	}
 
 	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<T, P> ceilPowerOfTwo(vecType<T, P> const & v)
+	GLM_FUNC_QUALIFIER vecType<T, P> ceilPowerOfTwo(vecType<T, P> const & v) GLM_NOEXCEPT
 	{
 		return detail::compute_ceilPowerOfTwo<T, P, vecType, std::numeric_limits<T>::is_signed>::call(v);
 	}
@@ -279,13 +279,13 @@ namespace detail
 	// floorPowerOfTwo
 
 	template <typename genType>
-	GLM_FUNC_QUALIFIER genType floorPowerOfTwo(genType value)
+	GLM_FUNC_QUALIFIER genType floorPowerOfTwo(genType value) GLM_NOEXCEPT
 	{
 		return isPowerOfTwo(value) ? value : highestBitValue(value);
 	}
 
 	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<T, P> floorPowerOfTwo(vecType<T, P> const & v)
+	GLM_FUNC_QUALIFIER vecType<T, P> floorPowerOfTwo(vecType<T, P> const & v) GLM_NOEXCEPT
 	{
 		return detail::functor1<T, T, P, vecType>::call(floorPowerOfTwo, v);
 	}
@@ -294,7 +294,7 @@ namespace detail
 	// roundPowerOfTwo
 
 	template <typename genIUType>
-	GLM_FUNC_QUALIFIER genIUType roundPowerOfTwo(genIUType value)
+	GLM_FUNC_QUALIFIER genIUType roundPowerOfTwo(genIUType value) GLM_NOEXCEPT
 	{
 		if(isPowerOfTwo(value))
 			return value;
@@ -305,7 +305,7 @@ namespace detail
 	}
 
 	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<T, P> roundPowerOfTwo(vecType<T, P> const & v)
+	GLM_FUNC_QUALIFIER vecType<T, P> roundPowerOfTwo(vecType<T, P> const & v) GLM_NOEXCEPT
 	{
 		return detail::functor1<T, T, P, vecType>::call(roundPowerOfTwo, v);
 	}
@@ -314,19 +314,19 @@ namespace detail
 	// isMultiple
 
 	template <typename genType>
-	GLM_FUNC_QUALIFIER bool isMultiple(genType Value, genType Multiple)
+	GLM_FUNC_QUALIFIER bool isMultiple(genType Value, genType Multiple) GLM_NOEXCEPT
 	{
 		return isMultiple(tvec1<genType>(Value), tvec1<genType>(Multiple)).x;
 	}
 
 	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<bool, P> isMultiple(vecType<T, P> const & Value, T Multiple)
+	GLM_FUNC_QUALIFIER vecType<bool, P> isMultiple(vecType<T, P> const & Value, T Multiple) GLM_NOEXCEPT
 	{
 		return (Value % Multiple) == vecType<T, P>(0);
 	}
 
 	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<bool, P> isMultiple(vecType<T, P> const & Value, vecType<T, P> const & Multiple)
+	GLM_FUNC_QUALIFIER vecType<bool, P> isMultiple(vecType<T, P> const & Value, vecType<T, P> const & Multiple) GLM_NOEXCEPT
 	{
 		return (Value % Multiple) == vecType<T, P>(0);
 	}
@@ -335,13 +335,13 @@ namespace detail
 	// ceilMultiple
 
 	template <typename genType>
-	GLM_FUNC_QUALIFIER genType ceilMultiple(genType Source, genType Multiple)
+	GLM_FUNC_QUALIFIER genType ceilMultiple(genType Source, genType Multiple) GLM_NOEXCEPT
 	{
 		return detail::compute_ceilMultiple<std::numeric_limits<genType>::is_iec559, std::numeric_limits<genType>::is_signed>::call(Source, Multiple);
 	}
 
 	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<T, P> ceilMultiple(vecType<T, P> const & Source, vecType<T, P> const & Multiple)
+	GLM_FUNC_QUALIFIER vecType<T, P> ceilMultiple(vecType<T, P> const & Source, vecType<T, P> const & Multiple) GLM_NOEXCEPT
 	{
 		return detail::functor2<T, P, vecType>::call(ceilMultiple, Source, Multiple);
 	}
@@ -350,13 +350,13 @@ namespace detail
 	// floorMultiple
 
 	template <typename genType>
-	GLM_FUNC_QUALIFIER genType floorMultiple(genType Source, genType Multiple)
+	GLM_FUNC_QUALIFIER genType floorMultiple(genType Source, genType Multiple) GLM_NOEXCEPT
 	{
 		return detail::compute_floorMultiple<std::numeric_limits<genType>::is_iec559, std::numeric_limits<genType>::is_signed>::call(Source, Multiple);
 	}
 
 	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<T, P> floorMultiple(vecType<T, P> const & Source, vecType<T, P> const & Multiple)
+	GLM_FUNC_QUALIFIER vecType<T, P> floorMultiple(vecType<T, P> const & Source, vecType<T, P> const & Multiple) GLM_NOEXCEPT
 	{
 		return detail::functor2<T, P, vecType>::call(floorMultiple, Source, Multiple);
 	}
@@ -365,13 +365,13 @@ namespace detail
 	// roundMultiple
 
 	template <typename genType>
-	GLM_FUNC_QUALIFIER genType roundMultiple(genType Source, genType Multiple)
+	GLM_FUNC_QUALIFIER genType roundMultiple(genType Source, genType Multiple) GLM_NOEXCEPT
 	{
 		return detail::compute_roundMultiple<std::numeric_limits<genType>::is_iec559, std::numeric_limits<genType>::is_signed>::call(Source, Multiple);
 	}
 
 	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<T, P> roundMultiple(vecType<T, P> const & Source, vecType<T, P> const & Multiple)
+	GLM_FUNC_QUALIFIER vecType<T, P> roundMultiple(vecType<T, P> const & Source, vecType<T, P> const & Multiple) GLM_NOEXCEPT
 	{
 		return detail::functor2<T, P, vecType>::call(roundMultiple, Source, Multiple);
 	}

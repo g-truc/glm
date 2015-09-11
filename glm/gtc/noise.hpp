@@ -68,20 +68,20 @@ namespace glm
 	/// @see gtc_noise
 	template <typename T, precision P, template<typename, precision> class vecType>
 	GLM_FUNC_DECL T perlin(
-		vecType<T, P> const & p);
 		
+		vecType<T, P> const & p) GLM_NOEXCEPT;
 	/// Periodic perlin noise.
 	/// @see gtc_noise
 	template <typename T, precision P, template<typename, precision> class vecType>
 	GLM_FUNC_DECL T perlin(
 		vecType<T, P> const & p,
-		vecType<T, P> const & rep);
+		vecType<T, P> const & rep) GLM_NOEXCEPT;
 
 	/// Simplex noise.
 	/// @see gtc_noise
 	template <typename T, precision P, template<typename, precision> class vecType>
 	GLM_FUNC_DECL T simplex(
-		vecType<T, P> const & p);
+		vecType<T, P> const & p) GLM_NOEXCEPT;
 
 	/// @}
 }//namespace glm

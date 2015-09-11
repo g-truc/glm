@@ -57,147 +57,147 @@ namespace glm
 	/// Return the epsilon constant for floating point types.
 	/// @see gtc_constants
 	template <typename genType>
-	GLM_FUNC_DECL GLM_CONSTEXPR genType epsilon();
+	GLM_FUNC_DECL GLM_CONSTEXPR genType epsilon() GLM_NOEXCEPT;
 
 	/// Return 0.
 	/// @see gtc_constants
 	template <typename genType>
-	GLM_FUNC_DECL GLM_CONSTEXPR genType zero();
+	GLM_FUNC_DECL GLM_CONSTEXPR genType zero() GLM_NOEXCEPT;
 
 	/// Return 1.
 	/// @see gtc_constants
 	template <typename genType>
-	GLM_FUNC_DECL GLM_CONSTEXPR genType one();
+	GLM_FUNC_DECL GLM_CONSTEXPR genType one() GLM_NOEXCEPT;
 
 	/// Return the pi constant.
 	/// @see gtc_constants
 	template <typename genType>
-	GLM_FUNC_DECL GLM_CONSTEXPR genType pi();
+	GLM_FUNC_DECL GLM_CONSTEXPR genType pi() GLM_NOEXCEPT;
 
 	/// Return pi * 2.
 	/// @see gtc_constants
 	template <typename genType>
-	GLM_FUNC_DECL GLM_CONSTEXPR genType two_pi();
+	GLM_FUNC_DECL GLM_CONSTEXPR genType two_pi() GLM_NOEXCEPT;
 
 	/// Return square root of pi.
 	/// @see gtc_constants
 	template <typename genType>
-	GLM_FUNC_DECL GLM_CONSTEXPR genType root_pi();
+	GLM_FUNC_DECL GLM_CONSTEXPR genType root_pi() GLM_NOEXCEPT;
 
 	/// Return pi / 2.
 	/// @see gtc_constants
 	template <typename genType>
-	GLM_FUNC_DECL GLM_CONSTEXPR genType half_pi();
+	GLM_FUNC_DECL GLM_CONSTEXPR genType half_pi() GLM_NOEXCEPT;
 
 	/// Return pi / 2 * 3.
 	/// @see gtc_constants
 	template <typename genType>
-	GLM_FUNC_DECL GLM_CONSTEXPR genType three_over_two_pi();
+	GLM_FUNC_DECL GLM_CONSTEXPR genType three_over_two_pi() GLM_NOEXCEPT;
 
 	/// Return pi / 4.
 	/// @see gtc_constants
 	template <typename genType>
-	GLM_FUNC_DECL GLM_CONSTEXPR genType quarter_pi();
+	GLM_FUNC_DECL GLM_CONSTEXPR genType quarter_pi() GLM_NOEXCEPT;
 
 	/// Return 1 / pi.
 	/// @see gtc_constants
 	template <typename genType>
-	GLM_FUNC_DECL GLM_CONSTEXPR genType one_over_pi();
+	GLM_FUNC_DECL GLM_CONSTEXPR genType one_over_pi() GLM_NOEXCEPT;
 
 	/// Return 1 / (pi * 2).
 	/// @see gtc_constants
 	template <typename genType>
-	GLM_FUNC_DECL GLM_CONSTEXPR genType one_over_two_pi();
+	GLM_FUNC_DECL GLM_CONSTEXPR genType one_over_two_pi() GLM_NOEXCEPT;
 
 	/// Return 2 / pi.
 	/// @see gtc_constants
 	template <typename genType>
-	GLM_FUNC_DECL GLM_CONSTEXPR genType two_over_pi();
+	GLM_FUNC_DECL GLM_CONSTEXPR genType two_over_pi() GLM_NOEXCEPT;
 
 	/// Return 4 / pi.
 	/// @see gtc_constants
 	template <typename genType>
-	GLM_FUNC_DECL GLM_CONSTEXPR genType four_over_pi();
+	GLM_FUNC_DECL GLM_CONSTEXPR genType four_over_pi() GLM_NOEXCEPT;
 
 	/// Return 2 / sqrt(pi).
 	/// @see gtc_constants
 	template <typename genType>
-	GLM_FUNC_DECL GLM_CONSTEXPR genType two_over_root_pi();
+	GLM_FUNC_DECL GLM_CONSTEXPR genType two_over_root_pi() GLM_NOEXCEPT;
 
 	/// Return 1 / sqrt(2).
 	/// @see gtc_constants
 	template <typename genType>
-	GLM_FUNC_DECL GLM_CONSTEXPR genType one_over_root_two();
+	GLM_FUNC_DECL GLM_CONSTEXPR genType one_over_root_two() GLM_NOEXCEPT;
 
 	/// Return sqrt(pi / 2).
 	/// @see gtc_constants
 	template <typename genType>
-	GLM_FUNC_DECL GLM_CONSTEXPR genType root_half_pi();
+	GLM_FUNC_DECL GLM_CONSTEXPR genType root_half_pi() GLM_NOEXCEPT;
 
 	/// Return sqrt(2 * pi).
 	/// @see gtc_constants
 	template <typename genType>
-	GLM_FUNC_DECL GLM_CONSTEXPR genType root_two_pi();
+	GLM_FUNC_DECL GLM_CONSTEXPR genType root_two_pi() GLM_NOEXCEPT;
 
 	/// Return sqrt(ln(4)).
 	/// @see gtc_constants
 	template <typename genType>
-	GLM_FUNC_DECL GLM_CONSTEXPR genType root_ln_four();
+	GLM_FUNC_DECL GLM_CONSTEXPR genType root_ln_four() GLM_NOEXCEPT;
 
 	/// Return e constant.
 	/// @see gtc_constants
 	template <typename genType>
-	GLM_FUNC_DECL GLM_CONSTEXPR genType e();
+	GLM_FUNC_DECL GLM_CONSTEXPR genType e() GLM_NOEXCEPT;
 
 	/// Return Euler's constant.
 	/// @see gtc_constants
 	template <typename genType>
-	GLM_FUNC_DECL GLM_CONSTEXPR genType euler();
+	GLM_FUNC_DECL GLM_CONSTEXPR genType euler() GLM_NOEXCEPT;
 
 	/// Return sqrt(2).
 	/// @see gtc_constants
 	template <typename genType>
-	GLM_FUNC_DECL GLM_CONSTEXPR genType root_two();
+	GLM_FUNC_DECL GLM_CONSTEXPR genType root_two() GLM_NOEXCEPT;
 
 	/// Return sqrt(3).
 	/// @see gtc_constants
 	template <typename genType>
-	GLM_FUNC_DECL GLM_CONSTEXPR genType root_three();
+	GLM_FUNC_DECL GLM_CONSTEXPR genType root_three() GLM_NOEXCEPT;
 
 	/// Return sqrt(5).
 	/// @see gtc_constants
 	template <typename genType>
-	GLM_FUNC_DECL GLM_CONSTEXPR genType root_five();
+	GLM_FUNC_DECL GLM_CONSTEXPR genType root_five() GLM_NOEXCEPT;
 
 	/// Return ln(2).
 	/// @see gtc_constants
 	template <typename genType>
-	GLM_FUNC_DECL GLM_CONSTEXPR genType ln_two();
+	GLM_FUNC_DECL GLM_CONSTEXPR genType ln_two() GLM_NOEXCEPT;
 
 	/// Return ln(10).
 	/// @see gtc_constants
 	template <typename genType>
-	GLM_FUNC_DECL GLM_CONSTEXPR genType ln_ten();
+	GLM_FUNC_DECL GLM_CONSTEXPR genType ln_ten() GLM_NOEXCEPT;
 
 	/// Return ln(ln(2)).
 	/// @see gtc_constants
 	template <typename genType>
-	GLM_FUNC_DECL GLM_CONSTEXPR genType ln_ln_two();
+	GLM_FUNC_DECL GLM_CONSTEXPR genType ln_ln_two() GLM_NOEXCEPT;
 
 	/// Return 1 / 3.
 	/// @see gtc_constants
 	template <typename genType>
-	GLM_FUNC_DECL GLM_CONSTEXPR genType third();
+	GLM_FUNC_DECL GLM_CONSTEXPR genType third() GLM_NOEXCEPT;
 
 	/// Return 2 / 3.
 	/// @see gtc_constants
 	template <typename genType>
-	GLM_FUNC_DECL GLM_CONSTEXPR genType two_thirds();
+	GLM_FUNC_DECL GLM_CONSTEXPR genType two_thirds() GLM_NOEXCEPT;
 
 	/// Return the golden ratio constant.
 	/// @see gtc_constants
 	template <typename genType>
-	GLM_FUNC_DECL GLM_CONSTEXPR genType golden_ratio();
+	GLM_FUNC_DECL GLM_CONSTEXPR genType golden_ratio() GLM_NOEXCEPT;
 
 	/// @}
 } //namespace glm

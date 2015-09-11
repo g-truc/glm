@@ -197,7 +197,7 @@ namespace glm
 	/// 
 	/// @see gtc_quaternion
 	template <typename T, precision P, template <typename, precision> class quatType>
-	GLM_FUNC_DECL T dot(quatType<T, P> const & x, quatType<T, P> const & y);
+	GLM_FUNC_DECL T dot(quatType<T, P> const & x, quatType<T, P> const & y) GLM_NOEXCEPT;
 
 	/// Spherical linear interpolation of two quaternions.
 	/// The interpolation is oriented and the rotation is performed at constant speed.

@@ -34,16 +34,16 @@ namespace glm{
 namespace detail
 {
 	template <typename PARAM, typename RET>
-	GLM_FUNC_DECL RET bitfieldInterleave(PARAM x, PARAM y);
+	GLM_FUNC_DECL RET bitfieldInterleave(PARAM x, PARAM y) GLM_NOEXCEPT;
 
 	template <typename PARAM, typename RET>
-	GLM_FUNC_DECL RET bitfieldInterleave(PARAM x, PARAM y, PARAM z);
+	GLM_FUNC_DECL RET bitfieldInterleave(PARAM x, PARAM y, PARAM z) GLM_NOEXCEPT;
 
 	template <typename PARAM, typename RET>
-	GLM_FUNC_DECL RET bitfieldInterleave(PARAM x, PARAM y, PARAM z, PARAM w);
+	GLM_FUNC_DECL RET bitfieldInterleave(PARAM x, PARAM y, PARAM z, PARAM w) GLM_NOEXCEPT;
 
 	template <>
-	GLM_FUNC_QUALIFIER glm::uint16 bitfieldInterleave(glm::uint8 x, glm::uint8 y)
+	GLM_FUNC_QUALIFIER glm::uint16 bitfieldInterleave(glm::uint8 x, glm::uint8 y) GLM_NOEXCEPT
 	{
 		glm::uint16 REG1(x);
 		glm::uint16 REG2(y);
@@ -61,7 +61,7 @@ namespace detail
 	}
 
 	template <>
-	GLM_FUNC_QUALIFIER glm::uint32 bitfieldInterleave(glm::uint16 x, glm::uint16 y)
+	GLM_FUNC_QUALIFIER glm::uint32 bitfieldInterleave(glm::uint16 x, glm::uint16 y) GLM_NOEXCEPT
 	{
 		glm::uint32 REG1(x);
 		glm::uint32 REG2(y);
@@ -82,7 +82,7 @@ namespace detail
 	}
 
 	template <>
-	GLM_FUNC_QUALIFIER glm::uint64 bitfieldInterleave(glm::uint32 x, glm::uint32 y)
+	GLM_FUNC_QUALIFIER glm::uint64 bitfieldInterleave(glm::uint32 x, glm::uint32 y) GLM_NOEXCEPT
 	{
 		glm::uint64 REG1(x);
 		glm::uint64 REG2(y);
@@ -106,7 +106,7 @@ namespace detail
 	}
 
 	template <>
-	GLM_FUNC_QUALIFIER glm::uint32 bitfieldInterleave(glm::uint8 x, glm::uint8 y, glm::uint8 z)
+	GLM_FUNC_QUALIFIER glm::uint32 bitfieldInterleave(glm::uint8 x, glm::uint8 y, glm::uint8 z) GLM_NOEXCEPT
 	{
 		glm::uint32 REG1(x);
 		glm::uint32 REG2(y);
@@ -130,9 +130,9 @@ namespace detail
 
 		return REG1 | (REG2 << 1) | (REG3 << 2);
 	}
-		
+
 	template <>
-	GLM_FUNC_QUALIFIER glm::uint64 bitfieldInterleave(glm::uint16 x, glm::uint16 y, glm::uint16 z)
+	GLM_FUNC_QUALIFIER glm::uint64 bitfieldInterleave(glm::uint16 x, glm::uint16 y, glm::uint16 z) GLM_NOEXCEPT
 	{
 		glm::uint64 REG1(x);
 		glm::uint64 REG2(y);
@@ -162,7 +162,7 @@ namespace detail
 	}
 
 	template <>
-	GLM_FUNC_QUALIFIER glm::uint64 bitfieldInterleave(glm::uint32 x, glm::uint32 y, glm::uint32 z)
+	GLM_FUNC_QUALIFIER glm::uint64 bitfieldInterleave(glm::uint32 x, glm::uint32 y, glm::uint32 z) GLM_NOEXCEPT
 	{
 		glm::uint64 REG1(x);
 		glm::uint64 REG2(y);
@@ -192,7 +192,7 @@ namespace detail
 	}
 
 	template <>
-	GLM_FUNC_QUALIFIER glm::uint32 bitfieldInterleave(glm::uint8 x, glm::uint8 y, glm::uint8 z, glm::uint8 w)
+	GLM_FUNC_QUALIFIER glm::uint32 bitfieldInterleave(glm::uint8 x, glm::uint8 y, glm::uint8 z, glm::uint8 w) GLM_NOEXCEPT
 	{
 		glm::uint32 REG1(x);
 		glm::uint32 REG2(y);
@@ -218,7 +218,7 @@ namespace detail
 	}
 
 	template <>
-	GLM_FUNC_QUALIFIER glm::uint64 bitfieldInterleave(glm::uint16 x, glm::uint16 y, glm::uint16 z, glm::uint16 w)
+	GLM_FUNC_QUALIFIER glm::uint64 bitfieldInterleave(glm::uint16 x, glm::uint16 y, glm::uint16 z, glm::uint16 w) GLM_NOEXCEPT
 	{
 		glm::uint64 REG1(x);
 		glm::uint64 REG2(y);
@@ -250,7 +250,7 @@ namespace detail
 }//namespace detail
 
 	template <typename genIUType>
-	GLM_FUNC_QUALIFIER genIUType mask(genIUType Bits)
+	GLM_FUNC_QUALIFIER genIUType mask(genIUType Bits) GLM_NOEXCEPT
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<genIUType>::is_integer, "'mask' accepts only integer values");
 
@@ -258,7 +258,7 @@ namespace detail
 	}
 
 	template <typename T, precision P, template <typename, precision> class vecIUType>
-	GLM_FUNC_QUALIFIER vecIUType<T, P> mask(vecIUType<T, P> const & v)
+	GLM_FUNC_QUALIFIER vecIUType<T, P> mask(vecIUType<T, P> const & v) GLM_NOEXCEPT
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_integer, "'mask' accepts only integer values");
 
@@ -266,7 +266,7 @@ namespace detail
 	}
 
 	template <typename genIType>
-	GLM_FUNC_QUALIFIER genIType bitfieldRotateRight(genIType In, int Shift)
+	GLM_FUNC_QUALIFIER genIType bitfieldRotateRight(genIType In, int Shift) GLM_NOEXCEPT
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<genIType>::is_integer, "'bitfieldRotateRight' accepts only integer values");
 
@@ -275,7 +275,7 @@ namespace detail
 	}
 
 	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<T, P> bitfieldRotateRight(vecType<T, P> const & In, int Shift)
+	GLM_FUNC_QUALIFIER vecType<T, P> bitfieldRotateRight(vecType<T, P> const & In, int Shift) GLM_NOEXCEPT
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_integer, "'bitfieldRotateRight' accepts only integer values");
 
@@ -284,7 +284,7 @@ namespace detail
 	}
 
 	template <typename genIType>
-	GLM_FUNC_QUALIFIER genIType bitfieldRotateLeft(genIType In, int Shift)
+	GLM_FUNC_QUALIFIER genIType bitfieldRotateLeft(genIType In, int Shift) GLM_NOEXCEPT
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<genIType>::is_integer, "'bitfieldRotateLeft' accepts only integer values");
 
@@ -293,7 +293,7 @@ namespace detail
 	}
 
 	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<T, P> bitfieldRotateLeft(vecType<T, P> const & In, int Shift)
+	GLM_FUNC_QUALIFIER vecType<T, P> bitfieldRotateLeft(vecType<T, P> const & In, int Shift) GLM_NOEXCEPT
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_integer, "'bitfieldRotateLeft' accepts only integer values");
 
@@ -302,30 +302,30 @@ namespace detail
 	}
 
 	template <typename genIUType>
-	GLM_FUNC_QUALIFIER genIUType bitfieldFillOne(genIUType Value, int FirstBit, int BitCount)
+	GLM_FUNC_QUALIFIER genIUType bitfieldFillOne(genIUType Value, int FirstBit, int BitCount) GLM_NOEXCEPT
 	{
 		return Value | static_cast<genIUType>(mask(BitCount) << FirstBit);
 	}
 
 	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<T, P> bitfieldFillOne(vecType<T, P> const & Value, int FirstBit, int BitCount)
+	GLM_FUNC_QUALIFIER vecType<T, P> bitfieldFillOne(vecType<T, P> const & Value, int FirstBit, int BitCount) GLM_NOEXCEPT
 	{
 		return Value | static_cast<T>(mask(BitCount) << FirstBit);
 	}
 
 	template <typename genIUType>
-	GLM_FUNC_QUALIFIER genIUType bitfieldFillZero(genIUType Value, int FirstBit, int BitCount)
+	GLM_FUNC_QUALIFIER genIUType bitfieldFillZero(genIUType Value, int FirstBit, int BitCount) GLM_NOEXCEPT
 	{
 		return Value & static_cast<genIUType>(~(mask(BitCount) << FirstBit));
 	}
 
 	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<T, P> bitfieldFillZero(vecType<T, P> const & Value, int FirstBit, int BitCount)
+	GLM_FUNC_QUALIFIER vecType<T, P> bitfieldFillZero(vecType<T, P> const & Value, int FirstBit, int BitCount) GLM_NOEXCEPT
 	{
 		return Value & static_cast<T>(~(mask(BitCount) << FirstBit));
 	}
 
-	GLM_FUNC_QUALIFIER int16 bitfieldInterleave(int8 x, int8 y)
+	GLM_FUNC_QUALIFIER int16 bitfieldInterleave(int8 x, int8 y) GLM_NOEXCEPT
 	{
 		union sign8
 		{
@@ -346,12 +346,12 @@ namespace detail
 		return result.i;
 	}
 
-	GLM_FUNC_QUALIFIER uint16 bitfieldInterleave(uint8 x, uint8 y)
+	GLM_FUNC_QUALIFIER uint16 bitfieldInterleave(uint8 x, uint8 y) GLM_NOEXCEPT
 	{
 		return detail::bitfieldInterleave<uint8, uint16>(x, y);
 	}
 
-	GLM_FUNC_QUALIFIER int32 bitfieldInterleave(int16 x, int16 y)
+	GLM_FUNC_QUALIFIER int32 bitfieldInterleave(int16 x, int16 y) GLM_NOEXCEPT
 	{
 		union sign16
 		{
@@ -372,12 +372,12 @@ namespace detail
 		return result.i;
 	}
 
-	GLM_FUNC_QUALIFIER uint32 bitfieldInterleave(uint16 x, uint16 y)
+	GLM_FUNC_QUALIFIER uint32 bitfieldInterleave(uint16 x, uint16 y) GLM_NOEXCEPT
 	{
 		return detail::bitfieldInterleave<uint16, uint32>(x, y);
 	}
 
-	GLM_FUNC_QUALIFIER int64 bitfieldInterleave(int32 x, int32 y)
+	GLM_FUNC_QUALIFIER int64 bitfieldInterleave(int32 x, int32 y) GLM_NOEXCEPT
 	{
 		union sign32
 		{
@@ -398,12 +398,12 @@ namespace detail
 		return result.i;
 	}
 
-	GLM_FUNC_QUALIFIER uint64 bitfieldInterleave(uint32 x, uint32 y)
+	GLM_FUNC_QUALIFIER uint64 bitfieldInterleave(uint32 x, uint32 y) GLM_NOEXCEPT
 	{
 		return detail::bitfieldInterleave<uint32, uint64>(x, y);
 	}
 
-	GLM_FUNC_QUALIFIER int32 bitfieldInterleave(int8 x, int8 y, int8 z)
+	GLM_FUNC_QUALIFIER int32 bitfieldInterleave(int8 x, int8 y, int8 z) GLM_NOEXCEPT
 	{
 		union sign8
 		{
@@ -425,12 +425,12 @@ namespace detail
 		return result.i;
 	}
 
-	GLM_FUNC_QUALIFIER uint32 bitfieldInterleave(uint8 x, uint8 y, uint8 z)
+	GLM_FUNC_QUALIFIER uint32 bitfieldInterleave(uint8 x, uint8 y, uint8 z) GLM_NOEXCEPT
 	{
 		return detail::bitfieldInterleave<uint8, uint32>(x, y, z);
 	}
 
-	GLM_FUNC_QUALIFIER int64 bitfieldInterleave(int16 x, int16 y, int16 z)
+	GLM_FUNC_QUALIFIER int64 bitfieldInterleave(int16 x, int16 y, int16 z) GLM_NOEXCEPT
 	{
 		union sign16
 		{
@@ -452,12 +452,12 @@ namespace detail
 		return result.i;
 	}
 
-	GLM_FUNC_QUALIFIER uint64 bitfieldInterleave(uint16 x, uint16 y, uint16 z)
+	GLM_FUNC_QUALIFIER uint64 bitfieldInterleave(uint16 x, uint16 y, uint16 z) GLM_NOEXCEPT
 	{
 		return detail::bitfieldInterleave<uint32, uint64>(x, y, z);
 	}
 
-	GLM_FUNC_QUALIFIER int64 bitfieldInterleave(int32 x, int32 y, int32 z)
+	GLM_FUNC_QUALIFIER int64 bitfieldInterleave(int32 x, int32 y, int32 z) GLM_NOEXCEPT
 	{
 		union sign16
 		{
@@ -479,12 +479,12 @@ namespace detail
 		return result.i;
 	}
 
-	GLM_FUNC_QUALIFIER uint64 bitfieldInterleave(uint32 x, uint32 y, uint32 z)
+	GLM_FUNC_QUALIFIER uint64 bitfieldInterleave(uint32 x, uint32 y, uint32 z) GLM_NOEXCEPT
 	{
 		return detail::bitfieldInterleave<uint32, uint64>(x, y, z);
 	}
 
-	GLM_FUNC_QUALIFIER int32 bitfieldInterleave(int8 x, int8 y, int8 z, int8 w)
+	GLM_FUNC_QUALIFIER int32 bitfieldInterleave(int8 x, int8 y, int8 z, int8 w) GLM_NOEXCEPT
 	{
 		union sign8
 		{
@@ -507,12 +507,12 @@ namespace detail
 		return result.i;
 	}
 
-	GLM_FUNC_QUALIFIER uint32 bitfieldInterleave(uint8 x, uint8 y, uint8 z, uint8 w)
+	GLM_FUNC_QUALIFIER uint32 bitfieldInterleave(uint8 x, uint8 y, uint8 z, uint8 w) GLM_NOEXCEPT
 	{
 		return detail::bitfieldInterleave<uint8, uint32>(x, y, z, w);
 	}
 
-	GLM_FUNC_QUALIFIER int64 bitfieldInterleave(int16 x, int16 y, int16 z, int16 w)
+	GLM_FUNC_QUALIFIER int64 bitfieldInterleave(int16 x, int16 y, int16 z, int16 w) GLM_NOEXCEPT
 	{
 		union sign16
 		{
@@ -535,7 +535,7 @@ namespace detail
 		return result.i;
 	}
 
-	GLM_FUNC_QUALIFIER uint64 bitfieldInterleave(uint16 x, uint16 y, uint16 z, uint16 w)
+	GLM_FUNC_QUALIFIER uint64 bitfieldInterleave(uint16 x, uint16 y, uint16 z, uint16 w) GLM_NOEXCEPT
 	{
 		return detail::bitfieldInterleave<uint16, uint64>(x, y, z, w);
 	}

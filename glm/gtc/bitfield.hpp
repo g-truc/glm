@@ -62,173 +62,173 @@ namespace glm
 	///
 	/// @see gtc_bitfield
 	template <typename genIUType>
-	GLM_FUNC_DECL genIUType mask(genIUType Bits);
 	
+	GLM_FUNC_DECL genIUType mask(genIUType Bits) GLM_NOEXCEPT;
 	/// Build a mask of 'count' bits
 	///
 	/// @see gtc_bitfield
 	template <typename T, precision P, template <typename, precision> class vecIUType>
-	GLM_FUNC_DECL vecIUType<T, P> mask(vecIUType<T, P> const & v);
+	GLM_FUNC_DECL vecIUType<T, P> mask(vecIUType<T, P> const & v) GLM_NOEXCEPT;
 
 	/// Rotate all bits to the right. All the bits dropped in the right side are inserted back on the left side.
 	///
 	/// @see gtc_bitfield
 	template <typename genIUType>
-	GLM_FUNC_DECL genIUType bitfieldRotateRight(genIUType In, int Shift);
+	GLM_FUNC_DECL genIUType bitfieldRotateRight(genIUType In, int Shift) GLM_NOEXCEPT;
 
 	/// Rotate all bits to the right. All the bits dropped in the right side are inserted back on the left side.
 	///
 	/// @see gtc_bitfield
 	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_DECL vecType<T, P> bitfieldRotateRight(vecType<T, P> const & In, int Shift);
+	GLM_FUNC_DECL vecType<T, P> bitfieldRotateRight(vecType<T, P> const & In, int Shift) GLM_NOEXCEPT;
 
 	/// Rotate all bits to the left. All the bits dropped in the left side are inserted back on the right side.
 	///
 	/// @see gtc_bitfield
 	template <typename genIUType>
-	GLM_FUNC_DECL genIUType bitfieldRotateLeft(genIUType In, int Shift);
+	GLM_FUNC_DECL genIUType bitfieldRotateLeft(genIUType In, int Shift) GLM_NOEXCEPT;
 
 	/// Rotate all bits to the left. All the bits dropped in the left side are inserted back on the right side.
 	///
 	/// @see gtc_bitfield
 	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_DECL vecType<T, P> bitfieldRotateLeft(vecType<T, P> const & In, int Shift);
+	GLM_FUNC_DECL vecType<T, P> bitfieldRotateLeft(vecType<T, P> const & In, int Shift) GLM_NOEXCEPT;
 
 	/// Set to 1 a range of bits.
 	///
 	/// @see gtc_bitfield
 	template <typename genIUType>
-	GLM_FUNC_DECL genIUType bitfieldFillOne(genIUType Value, int FirstBit, int BitCount);
+	GLM_FUNC_DECL genIUType bitfieldFillOne(genIUType Value, int FirstBit, int BitCount) GLM_NOEXCEPT;
 
 	/// Set to 1 a range of bits.
 	///
 	/// @see gtc_bitfield
 	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_DECL vecType<T, P> bitfieldFillOne(vecType<T, P> const & Value, int FirstBit, int BitCount);
+	GLM_FUNC_DECL vecType<T, P> bitfieldFillOne(vecType<T, P> const & Value, int FirstBit, int BitCount) GLM_NOEXCEPT;
 
 	/// Set to 0 a range of bits.
 	///
 	/// @see gtc_bitfield
 	template <typename genIUType>
-	GLM_FUNC_DECL genIUType bitfieldFillZero(genIUType Value, int FirstBit, int BitCount);
+	GLM_FUNC_DECL genIUType bitfieldFillZero(genIUType Value, int FirstBit, int BitCount) GLM_NOEXCEPT;
 
 	/// Set to 0 a range of bits.
 	///
 	/// @see gtc_bitfield
 	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_DECL vecType<T, P> bitfieldFillZero(vecType<T, P> const & Value, int FirstBit, int BitCount);
+	GLM_FUNC_DECL vecType<T, P> bitfieldFillZero(vecType<T, P> const & Value, int FirstBit, int BitCount) GLM_NOEXCEPT;
 
 	/// Interleaves the bits of x and y.
 	/// The first bit is the first bit of x followed by the first bit of y.
 	/// The other bits are interleaved following the previous sequence.
 	/// 
 	/// @see gtc_bitfield
-	GLM_FUNC_DECL int16 bitfieldInterleave(int8 x, int8 y);
+	GLM_FUNC_DECL int16 bitfieldInterleave(int8 x, int8 y) GLM_NOEXCEPT;
 
 	/// Interleaves the bits of x and y.
 	/// The first bit is the first bit of x followed by the first bit of y.
 	/// The other bits are interleaved following the previous sequence.
 	/// 
 	/// @see gtc_bitfield
-	GLM_FUNC_DECL uint16 bitfieldInterleave(uint8 x, uint8 y);
+	GLM_FUNC_DECL uint16 bitfieldInterleave(uint8 x, uint8 y) GLM_NOEXCEPT;
 
 	/// Interleaves the bits of x and y.
 	/// The first bit is the first bit of x followed by the first bit of y.
 	/// The other bits are interleaved following the previous sequence.
 	/// 
 	/// @see gtc_bitfield
-	GLM_FUNC_DECL int32 bitfieldInterleave(int16 x, int16 y);
+	GLM_FUNC_DECL int32 bitfieldInterleave(int16 x, int16 y) GLM_NOEXCEPT;
 
 	/// Interleaves the bits of x and y.
 	/// The first bit is the first bit of x followed by the first bit of y.
 	/// The other bits are interleaved following the previous sequence.
 	/// 
 	/// @see gtc_bitfield
-	GLM_FUNC_DECL uint32 bitfieldInterleave(uint16 x, uint16 y);
+	GLM_FUNC_DECL uint32 bitfieldInterleave(uint16 x, uint16 y) GLM_NOEXCEPT;
 
 	/// Interleaves the bits of x and y.
 	/// The first bit is the first bit of x followed by the first bit of y.
 	/// The other bits are interleaved following the previous sequence.
 	/// 
 	/// @see gtc_bitfield
-	GLM_FUNC_DECL int64 bitfieldInterleave(int32 x, int32 y);
+	GLM_FUNC_DECL int64 bitfieldInterleave(int32 x, int32 y) GLM_NOEXCEPT;
 
 	/// Interleaves the bits of x and y.
 	/// The first bit is the first bit of x followed by the first bit of y.
 	/// The other bits are interleaved following the previous sequence.
 	/// 
 	/// @see gtc_bitfield
-	GLM_FUNC_DECL uint64 bitfieldInterleave(uint32 x, uint32 y);
+	GLM_FUNC_DECL uint64 bitfieldInterleave(uint32 x, uint32 y) GLM_NOEXCEPT;
 
 	/// Interleaves the bits of x, y and z.
 	/// The first bit is the first bit of x followed by the first bit of y and the first bit of z.
 	/// The other bits are interleaved following the previous sequence.
 	/// 
 	/// @see gtc_bitfield
-	GLM_FUNC_DECL int32 bitfieldInterleave(int8 x, int8 y, int8 z);
+	GLM_FUNC_DECL int32 bitfieldInterleave(int8 x, int8 y, int8 z) GLM_NOEXCEPT;
 
 	/// Interleaves the bits of x, y and z.
 	/// The first bit is the first bit of x followed by the first bit of y and the first bit of z.
 	/// The other bits are interleaved following the previous sequence.
 	/// 
 	/// @see gtc_bitfield
-	GLM_FUNC_DECL uint32 bitfieldInterleave(uint8 x, uint8 y, uint8 z);
+	GLM_FUNC_DECL uint32 bitfieldInterleave(uint8 x, uint8 y, uint8 z) GLM_NOEXCEPT;
 
 	/// Interleaves the bits of x, y and z.
 	/// The first bit is the first bit of x followed by the first bit of y and the first bit of z.
 	/// The other bits are interleaved following the previous sequence.
 	/// 
 	/// @see gtc_bitfield
-	GLM_FUNC_DECL int64 bitfieldInterleave(int16 x, int16 y, int16 z);
+	GLM_FUNC_DECL int64 bitfieldInterleave(int16 x, int16 y, int16 z) GLM_NOEXCEPT;
 
 	/// Interleaves the bits of x, y and z. 
 	/// The first bit is the first bit of x followed by the first bit of y and the first bit of z.
 	/// The other bits are interleaved following the previous sequence.
 	/// 
 	/// @see gtc_bitfield
-	GLM_FUNC_DECL uint64 bitfieldInterleave(uint16 x, uint16 y, uint16 z);
+	GLM_FUNC_DECL uint64 bitfieldInterleave(uint16 x, uint16 y, uint16 z) GLM_NOEXCEPT;
 
 	/// Interleaves the bits of x, y and z. 
 	/// The first bit is the first bit of x followed by the first bit of y and the first bit of z.
 	/// The other bits are interleaved following the previous sequence.
 	/// 
 	/// @see gtc_bitfield
-	GLM_FUNC_DECL int64 bitfieldInterleave(int32 x, int32 y, int32 z);
+	GLM_FUNC_DECL int64 bitfieldInterleave(int32 x, int32 y, int32 z) GLM_NOEXCEPT;
 
 	/// Interleaves the bits of x, y and z. 
 	/// The first bit is the first bit of x followed by the first bit of y and the first bit of z.
 	/// The other bits are interleaved following the previous sequence.
 	/// 
 	/// @see gtc_bitfield
-	GLM_FUNC_DECL uint64 bitfieldInterleave(uint32 x, uint32 y, uint32 z);
+	GLM_FUNC_DECL uint64 bitfieldInterleave(uint32 x, uint32 y, uint32 z) GLM_NOEXCEPT;
 
 	/// Interleaves the bits of x, y, z and w. 
 	/// The first bit is the first bit of x followed by the first bit of y, the first bit of z and finally the first bit of w.
 	/// The other bits are interleaved following the previous sequence.
 	/// 
 	/// @see gtc_bitfield
-	GLM_FUNC_DECL int32 bitfieldInterleave(int8 x, int8 y, int8 z, int8 w);
+	GLM_FUNC_DECL int32 bitfieldInterleave(int8 x, int8 y, int8 z, int8 w) GLM_NOEXCEPT;
 
 	/// Interleaves the bits of x, y, z and w. 
 	/// The first bit is the first bit of x followed by the first bit of y, the first bit of z and finally the first bit of w.
 	/// The other bits are interleaved following the previous sequence.
 	/// 
 	/// @see gtc_bitfield
-	GLM_FUNC_DECL uint32 bitfieldInterleave(uint8 x, uint8 y, uint8 z, uint8 w);
+	GLM_FUNC_DECL uint32 bitfieldInterleave(uint8 x, uint8 y, uint8 z, uint8 w) GLM_NOEXCEPT;
 
 	/// Interleaves the bits of x, y, z and w. 
 	/// The first bit is the first bit of x followed by the first bit of y, the first bit of z and finally the first bit of w.
 	/// The other bits are interleaved following the previous sequence.
 	/// 
 	/// @see gtc_bitfield
-	GLM_FUNC_DECL int64 bitfieldInterleave(int16 x, int16 y, int16 z, int16 w);
+	GLM_FUNC_DECL int64 bitfieldInterleave(int16 x, int16 y, int16 z, int16 w) GLM_NOEXCEPT;
 
 	/// Interleaves the bits of x, y, z and w. 
 	/// The first bit is the first bit of x followed by the first bit of y, the first bit of z and finally the first bit of w.
 	/// The other bits are interleaved following the previous sequence.
 	/// 
 	/// @see gtc_bitfield
-	GLM_FUNC_DECL uint64 bitfieldInterleave(uint16 x, uint16 y, uint16 z, uint16 w);
+	GLM_FUNC_DECL uint64 bitfieldInterleave(uint16 x, uint16 y, uint16 z, uint16 w) GLM_NOEXCEPT;
 
 	/// @}
 } //namespace glm

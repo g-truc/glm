@@ -65,12 +65,12 @@ namespace glm
 	template <typename genTYpe>
 	GLM_FUNC_DECL genTYpe linearRand(
 		genTYpe Min,
-		genTYpe Max);
+		genTYpe Max) GLM_NOEXCEPT;
 
 	template <typename T, precision P, template <typename, precision> class vecType>
 	GLM_FUNC_DECL vecType<T, P> linearRand(
 		vecType<T, P> const & Min,
-		vecType<T, P> const & Max);
+		vecType<T, P> const & Max) GLM_NOEXCEPT;
 
 	/// Generate random numbers in the interval [Min, Max], according a gaussian distribution 
 	/// 
@@ -80,40 +80,40 @@ namespace glm
 	template <typename genType>
 	GLM_FUNC_DECL genType gaussRand(
 		genType Mean,
-		genType Deviation);
-	
+		genType Deviation) GLM_NOEXCEPT;
+
 	/// Generate a random 2D vector which coordinates are regulary distributed on a circle of a given radius
-	/// 
-	/// @param Radius 
+	///
+	/// @param Radius
 	/// @see gtc_random
 	template <typename T>
 	GLM_FUNC_DECL tvec2<T, defaultp> circularRand(
-		T Radius);
-	
+		T Radius) GLM_NOEXCEPT;
+
 	/// Generate a random 3D vector which coordinates are regulary distributed on a sphere of a given radius
-	/// 
+	///
 	/// @param Radius
 	/// @see gtc_random
 	template <typename T>
 	GLM_FUNC_DECL tvec3<T, defaultp> sphericalRand(
-		T Radius);
-	
+		T Radius) GLM_NOEXCEPT;
+
 	/// Generate a random 2D vector which coordinates are regulary distributed within the area of a disk of a given radius
-	/// 
+	///
 	/// @param Radius
 	/// @see gtc_random
 	template <typename T>
 	GLM_FUNC_DECL tvec2<T, defaultp> diskRand(
-		T Radius);
-	
+		T Radius) GLM_NOEXCEPT;
+
 	/// Generate a random 3D vector which coordinates are regulary distributed within the volume of a ball of a given radius
-	/// 
+	///
 	/// @param Radius
 	/// @see gtc_random
 	template <typename T>
 	GLM_FUNC_DECL tvec3<T, defaultp> ballRand(
-		T Radius);
-	
+		T Radius) GLM_NOEXCEPT;
+
 	/// @}
 }//namespace glm
 
