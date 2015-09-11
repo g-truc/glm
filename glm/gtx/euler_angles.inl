@@ -38,7 +38,7 @@ namespace glm
 	GLM_FUNC_QUALIFIER tmat4x4<T, defaultp> eulerAngleX
 	(
 		T const & angleX
-	)
+	) GLM_NOEXCEPT
 	{
 		T cosX = glm::cos(angleX);
 		T sinX = glm::sin(angleX);
@@ -54,7 +54,7 @@ namespace glm
 	GLM_FUNC_QUALIFIER tmat4x4<T, defaultp> eulerAngleY
 	(
 		T const & angleY
-	)
+	) GLM_NOEXCEPT
 	{
 		T cosY = glm::cos(angleY);
 		T sinY = glm::sin(angleY);
@@ -70,7 +70,7 @@ namespace glm
 	GLM_FUNC_QUALIFIER tmat4x4<T, defaultp> eulerAngleZ
 	(
 		T const & angleZ
-	)
+	) GLM_NOEXCEPT
 	{
 		T cosZ = glm::cos(angleZ);
 		T sinZ = glm::sin(angleZ);
@@ -87,7 +87,7 @@ namespace glm
 	(
 		T const & angleX,
 		T const & angleY
-	)
+	) GLM_NOEXCEPT
 	{
 		T cosX = glm::cos(angleX);
 		T sinX = glm::sin(angleX);
@@ -106,7 +106,7 @@ namespace glm
 	(
 		T const & angleY,
 		T const & angleX
-	)
+	) GLM_NOEXCEPT
 	{
 		T cosX = glm::cos(angleX);
 		T sinX = glm::sin(angleX);
@@ -125,7 +125,7 @@ namespace glm
 	(
 		T const & angleX,
 		T const & angleZ
-	)
+	) GLM_NOEXCEPT
 	{
 		return eulerAngleX(angleX) * eulerAngleZ(angleZ);
 	}
@@ -135,7 +135,7 @@ namespace glm
 	(
 		T const & angleZ,
 		T const & angleX
-	)
+	) GLM_NOEXCEPT
 	{
 		return eulerAngleZ(angleZ) * eulerAngleX(angleX);
 	}
@@ -145,7 +145,7 @@ namespace glm
 	(
 		T const & angleY,
 		T const & angleZ
-	)
+	) GLM_NOEXCEPT
 	{
 		return eulerAngleY(angleY) * eulerAngleZ(angleZ);
 	}
@@ -155,53 +155,53 @@ namespace glm
 	(
 		T const & angleZ,
 		T const & angleY
-	)
+	) GLM_NOEXCEPT
 	{
 		return eulerAngleZ(angleZ) * eulerAngleY(angleY);
 	}
-    
-    template <typename T>
-    GLM_FUNC_QUALIFIER tmat4x4<T, defaultp> eulerAngleXYZ
-    (
-     T const & t1,
-     T const & t2,
-     T const & t3
-     )
-    {
-        T c1 = glm::cos(-t1);
-        T c2 = glm::cos(-t2);
-        T c3 = glm::cos(-t3);
-        T s1 = glm::sin(-t1);
-        T s2 = glm::sin(-t2);
-        T s3 = glm::sin(-t3);
-        
-        tmat4x4<T, defaultp> Result;
-        Result[0][0] = c2 * c3;
-        Result[0][1] =-c1 * s3 + s1 * s2 * c3;
-        Result[0][2] = s1 * s3 + c1 * s2 * c3;
-        Result[0][3] = static_cast<T>(0);
-        Result[1][0] = c2 * s3;
-        Result[1][1] = c1 * c3 + s1 * s2 * s3;
-        Result[1][2] =-s1 * c3 + c1 * s2 * s3;
-        Result[1][3] = static_cast<T>(0);
-        Result[2][0] =-s2;
-        Result[2][1] = s1 * c2;
-        Result[2][2] = c1 * c2;
-        Result[2][3] = static_cast<T>(0);
-        Result[3][0] = static_cast<T>(0);
-        Result[3][1] = static_cast<T>(0);
-        Result[3][2] = static_cast<T>(0);
-        Result[3][3] = static_cast<T>(1);
-        return Result;
-    }
-    
+
+		template <typename T>
+		GLM_FUNC_QUALIFIER tmat4x4<T, defaultp> eulerAngleXYZ
+		(
+		 T const & t1,
+		 T const & t2,
+		 T const & t3
+		 ) GLM_NOEXCEPT
+		{
+				T c1 = glm::cos(-t1);
+				T c2 = glm::cos(-t2);
+				T c3 = glm::cos(-t3);
+				T s1 = glm::sin(-t1);
+				T s2 = glm::sin(-t2);
+				T s3 = glm::sin(-t3);
+
+				tmat4x4<T, defaultp> Result;
+				Result[0][0] = c2 * c3;
+				Result[0][1] =-c1 * s3 + s1 * s2 * c3;
+				Result[0][2] = s1 * s3 + c1 * s2 * c3;
+				Result[0][3] = static_cast<T>(0);
+				Result[1][0] = c2 * s3;
+				Result[1][1] = c1 * c3 + s1 * s2 * s3;
+				Result[1][2] =-s1 * c3 + c1 * s2 * s3;
+				Result[1][3] = static_cast<T>(0);
+				Result[2][0] =-s2;
+				Result[2][1] = s1 * c2;
+				Result[2][2] = c1 * c2;
+				Result[2][3] = static_cast<T>(0);
+				Result[3][0] = static_cast<T>(0);
+				Result[3][1] = static_cast<T>(0);
+				Result[3][2] = static_cast<T>(0);
+				Result[3][3] = static_cast<T>(1);
+				return Result;
+		}
+
 	template <typename T>
 	GLM_FUNC_QUALIFIER tmat4x4<T, defaultp> eulerAngleYXZ
 	(
 		T const & yaw,
 		T const & pitch,
 		T const & roll
-	)
+	) GLM_NOEXCEPT
 	{
 		T tmp_ch = glm::cos(yaw);
 		T tmp_sh = glm::sin(yaw);
@@ -236,7 +236,7 @@ namespace glm
 		T const & yaw,
 		T const & pitch,
 		T const & roll
-	)
+	) GLM_NOEXCEPT
 	{
 		T tmp_ch = glm::cos(yaw);
 		T tmp_sh = glm::sin(yaw);
@@ -269,7 +269,7 @@ namespace glm
 	GLM_FUNC_QUALIFIER tmat2x2<T, defaultp> orientate2
 	(
 		T const & angle
-	)
+	) GLM_NOEXCEPT
 	{
 		T c = glm::cos(angle);
 		T s = glm::sin(angle);
@@ -286,7 +286,7 @@ namespace glm
 	GLM_FUNC_QUALIFIER tmat3x3<T, defaultp> orientate3
 	(
 		T const & angle
-	)
+	) GLM_NOEXCEPT
 	{
 		T c = glm::cos(angle);
 		T s = glm::sin(angle);
@@ -308,7 +308,7 @@ namespace glm
 	GLM_FUNC_QUALIFIER tmat3x3<T, P> orientate3
 	(
 		tvec3<T, P> const & angles
-	)
+	) GLM_NOEXCEPT
 	{
 		return tmat3x3<T, P>(yawPitchRoll(angles.z, angles.x, angles.y));
 	}
@@ -317,25 +317,25 @@ namespace glm
 	GLM_FUNC_QUALIFIER tmat4x4<T, P> orientate4
 	(
 		tvec3<T, P> const & angles
-	)
+	) GLM_NOEXCEPT
 	{
 		return yawPitchRoll(angles.z, angles.x, angles.y);
 	}
-    
-    template <typename T>
-    GLM_FUNC_DECL void extractEulerAngleXYZ(tmat4x4<T, defaultp> & M,
-                                            T & t1,
-                                            T & t2,
-                                            T & t3)
-    {
-        float T1 = glm::atan2<T, defaultp>(M[2][1], M[2][2]);
-        float C2 = glm::sqrt(M[0][0]*M[0][0] + M[1][0]*M[1][0]);
-        float T2 = glm::atan2<T, defaultp>(-M[2][0], C2);
-        float S1 = glm::sin(T1);
-        float C1 = glm::cos(T1);
-        float T3 = glm::atan2<T, defaultp>(S1*M[0][2] - C1*M[0][1], C1*M[1][1] - S1*M[1][2  ]);
-        t1 = -T1;
-        t2 = -T2;
-        t3 = -T3;
-    }
+
+		template <typename T>
+		GLM_FUNC_DECL void extractEulerAngleXYZ(tmat4x4<T, defaultp> & M,
+																						T & t1,
+																						T & t2,
+																						T & t3) GLM_NOEXCEPT
+		{
+				float T1 = glm::atan2<T, defaultp>(M[2][1], M[2][2]);
+				float C2 = glm::sqrt(M[0][0]*M[0][0] + M[1][0]*M[1][0]);
+				float T2 = glm::atan2<T, defaultp>(-M[2][0], C2);
+				float S1 = glm::sin(T1);
+				float C1 = glm::cos(T1);
+				float T3 = glm::atan2<T, defaultp>(S1*M[0][2] - C1*M[0][1], C1*M[1][1] - S1*M[1][2  ]);
+				t1 = -T1;
+				t2 = -T2;
+				t3 = -T3;
+		}
 }//namespace glm

@@ -54,29 +54,29 @@ namespace glm
 	/// @addtogroup gtx_component_wise
 	/// @{
 
-	/// Add all vector components together. 
+	/// Add all vector components together.
 	/// @see gtx_component_wise
-	template <typename genType> 
+	template <typename genType>
 	GLM_FUNC_DECL typename genType::value_type compAdd(
-		genType const & v);
+		genType const & v) GLM_NOEXCEPT;
 
-	/// Multiply all vector components together. 
+	/// Multiply all vector components together.
 	/// @see gtx_component_wise
-	template <typename genType> 
+	template <typename genType>
 	GLM_FUNC_DECL typename genType::value_type compMul(
-		genType const & v);
+		genType const & v) GLM_NOEXCEPT;
 
 	/// Find the minimum value between single vector components.
 	/// @see gtx_component_wise
-	template <typename genType> 
+	template <typename genType>
 	GLM_FUNC_DECL typename genType::value_type compMin(
-		genType const & v);
+		genType const & v) GLM_NOEXCEPT;
 
 	/// Find the maximum value between single vector components.
 	/// @see gtx_component_wise
-	template <typename genType> 
+	template <typename genType>
 	GLM_FUNC_DECL typename genType::value_type compMax(
-		genType const & v);
+		genType const & v) GLM_NOEXCEPT;
 
 	/// @}
 }//namespace glm

@@ -62,7 +62,7 @@ namespace glm
 	template <typename T, precision P>
 	GLM_FUNC_QUALIFIER tmat3x3<T, P> translate(
 		tmat3x3<T, P> const & m,
-		tvec2<T, P> const & v);
+		tvec2<T, P> const & v) GLM_NOEXCEPT;
 
 	/// Builds a rotation 3 * 3 matrix created from an angle. 
 	///
@@ -71,7 +71,7 @@ namespace glm
 	template <typename T, precision P> 
 	GLM_FUNC_QUALIFIER tmat3x3<T, P> rotate(
 		tmat3x3<T, P> const & m,
-		T angle);
+		T angle) GLM_NOEXCEPT;
 
 	/// Builds a scale 3 * 3 matrix created from a vector of 2 components.
 	///
@@ -80,7 +80,7 @@ namespace glm
 	template <typename T, precision P> 
 	GLM_FUNC_QUALIFIER tmat3x3<T, P> scale(
 		tmat3x3<T, P> const & m,
-		tvec2<T, P> const & v);
+		tvec2<T, P> const & v) GLM_NOEXCEPT;
 
 	/// Builds an horizontal (parallel to the x axis) shear 3 * 3 matrix. 
 	///
@@ -89,7 +89,7 @@ namespace glm
 	template <typename T, precision P> 
 	GLM_FUNC_QUALIFIER tmat3x3<T, P> shearX(
 		tmat3x3<T, P> const & m,
-		T y);
+		T y) GLM_NOEXCEPT;
 
 	/// Builds a vertical (parallel to the y axis) shear 3 * 3 matrix. 
 	///
@@ -98,7 +98,7 @@ namespace glm
 	template <typename T, precision P> 
 	GLM_FUNC_QUALIFIER tmat3x3<T, P> shearY(
 		tmat3x3<T, P> const & m,
-		T x);
+		T x) GLM_NOEXCEPT;
 
 	/// @}
 }//namespace glm

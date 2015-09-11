@@ -34,7 +34,7 @@ namespace glm{
 
 // Min comparison between 2 variables
 template<typename T, typename U, precision P>
-GLM_FUNC_QUALIFIER U associatedMin(T x, U a, T y, U b)
+GLM_FUNC_QUALIFIER U associatedMin(T x, U a, T y, U b) GLM_NOEXCEPT
 {
 	return x < y ? a : b;
 }
@@ -44,7 +44,7 @@ GLM_FUNC_QUALIFIER tvec2<U, P> associatedMin
 (
 	vecType<T, P> const & x, vecType<U, P> const & a,
 	vecType<T, P> const & y, vecType<U, P> const & b
-)
+) GLM_NOEXCEPT
 {
 	vecType<U, P> Result(uninitialize);
 	for(detail::component_count_t i = 0; i < detail::component_count(Result); ++i)
@@ -57,7 +57,7 @@ GLM_FUNC_QUALIFIER vecType<U, P> associatedMin
 (
 	T x, const vecType<U, P>& a,
 	T y, const vecType<U, P>& b
-)
+) GLM_NOEXCEPT
 {
 	vecType<U, P> Result(uninitialize);
 	for(detail::component_count_t i = 0; i < detail::component_count(Result); ++i)
@@ -70,7 +70,7 @@ GLM_FUNC_QUALIFIER vecType<U, P> associatedMin
 (
 	vecType<T, P> const & x, U a,
 	vecType<T, P> const & y, U b
-)
+) GLM_NOEXCEPT
 {
 	vecType<U, P> Result(uninitialize);
 	for(detail::component_count_t i = 0; i < detail::component_count(Result); ++i)
@@ -85,7 +85,7 @@ GLM_FUNC_QUALIFIER U associatedMin
 	T x, U a,
 	T y, U b,
 	T z, U c
-)
+) GLM_NOEXCEPT
 {
 	U Result = x < y ? (x < z ? a : c) : (y < z ? b : c);
 	return Result;
@@ -97,7 +97,7 @@ GLM_FUNC_QUALIFIER vecType<U, P> associatedMin
 	vecType<T, P> const & x, vecType<U, P> const & a,
 	vecType<T, P> const & y, vecType<U, P> const & b,
 	vecType<T, P> const & z, vecType<U, P> const & c
-)
+) GLM_NOEXCEPT
 {
 	vecType<U, P> Result(uninitialize);
 	for(detail::component_count_t i = 0; i < detail::component_count(Result); ++i)
@@ -113,7 +113,7 @@ GLM_FUNC_QUALIFIER U associatedMin
 	T y, U b,
 	T z, U c,
 	T w, U d
-)
+) GLM_NOEXCEPT
 {
 	T Test1 = min(x, y);
 	T Test2 = min(z, w);;
@@ -131,7 +131,7 @@ GLM_FUNC_QUALIFIER vecType<U, P> associatedMin
 	vecType<T, P> const & y, vecType<U, P> const & b,
 	vecType<T, P> const & z, vecType<U, P> const & c,
 	vecType<T, P> const & w, vecType<U, P> const & d
-)
+) GLM_NOEXCEPT
 {
 	vecType<U, P> Result(uninitialize);
 	for(detail::component_count_t i = 0; i < detail::component_count(Result); ++i)
@@ -153,7 +153,7 @@ GLM_FUNC_QUALIFIER vecType<U, P> associatedMin
 	T y, vecType<U, P> const & b,
 	T z, vecType<U, P> const & c,
 	T w, vecType<U, P> const & d
-)
+) GLM_NOEXCEPT
 {
 	T Test1 = min(x, y);
 	T Test2 = min(z, w);
@@ -176,7 +176,7 @@ GLM_FUNC_QUALIFIER vecType<U, P> associatedMin
 	vecType<T, P> const & y, U b,
 	vecType<T, P> const & z, U c,
 	vecType<T, P> const & w, U d
-)
+) GLM_NOEXCEPT
 {
 	vecType<U, P> Result(uninitialize);
 	for(detail::component_count_t i = 0; i < detail::component_count(Result); ++i)
@@ -192,7 +192,7 @@ GLM_FUNC_QUALIFIER vecType<U, P> associatedMin
 
 // Max comparison between 2 variables
 template<typename T, typename U>
-GLM_FUNC_QUALIFIER U associatedMax(T x, U a, T y, U b)
+GLM_FUNC_QUALIFIER U associatedMax(T x, U a, T y, U b) GLM_NOEXCEPT
 {
 	return x > y ? a : b;
 }
@@ -203,7 +203,7 @@ GLM_FUNC_QUALIFIER tvec2<U, P> associatedMax
 (
 	vecType<T, P> const & x, vecType<U, P> const & a,
 	vecType<T, P> const & y, vecType<U, P> const & b
-)
+) GLM_NOEXCEPT
 {
 	vecType<U, P> Result(uninitialize);
 	for(detail::component_count_t i = 0; i < detail::component_count(Result); ++i)
@@ -217,7 +217,7 @@ GLM_FUNC_QUALIFIER vecType<T, P> associatedMax
 (
 	T x, vecType<U, P> const & a,
 	T y, vecType<U, P> const & b
-)
+) GLM_NOEXCEPT
 {
 	vecType<U, P> Result(uninitialize);
 	for(detail::component_count_t i = 0; i < detail::component_count(Result); ++i)
@@ -231,7 +231,7 @@ GLM_FUNC_QUALIFIER vecType<U, P> associatedMax
 (
 	vecType<T, P> const & x, U a,
 	vecType<T, P> const & y, U b
-)
+) GLM_NOEXCEPT
 {
 	vecType<T, P> Result(uninitialize);
 	for(detail::component_count_t i = 0; i < detail::component_count(Result); ++i)
@@ -246,7 +246,7 @@ GLM_FUNC_QUALIFIER U associatedMax
 	T x, U a,
 	T y, U b,
 	T z, U c
-)
+) GLM_NOEXCEPT
 {
 	U Result = x > y ? (x > z ? a : c) : (y > z ? b : c);
 	return Result;
@@ -259,7 +259,7 @@ GLM_FUNC_QUALIFIER vecType<U, P> associatedMax
 	vecType<T, P> const & x, vecType<U, P> const & a,
 	vecType<T, P> const & y, vecType<U, P> const & b,
 	vecType<T, P> const & z, vecType<U, P> const & c
-)
+) GLM_NOEXCEPT
 {
 	vecType<U, P> Result(uninitialize);
 	for(detail::component_count_t i = 0; i < detail::component_count(Result); ++i)
@@ -274,7 +274,7 @@ GLM_FUNC_QUALIFIER vecType<T, P> associatedMax
 	T x, vecType<U, P> const & a,
 	T y, vecType<U, P> const & b,
 	T z, vecType<U, P> const & c
-)
+) GLM_NOEXCEPT
 {
 	vecType<U, P> Result(uninitialize);
 	for(detail::component_count_t i = 0; i < detail::component_count(Result); ++i)
@@ -289,7 +289,7 @@ GLM_FUNC_QUALIFIER vecType<U, P> associatedMax
 	vecType<T, P> const & x, U a,
 	vecType<T, P> const & y, U b,
 	vecType<T, P> const & z, U c
-)
+) GLM_NOEXCEPT
 {
 	vecType<T, P> Result(uninitialize);
 	for(detail::component_count_t i = 0; i < detail::component_count(Result); ++i)
@@ -305,7 +305,7 @@ GLM_FUNC_QUALIFIER U associatedMax
 	T y, U b,
 	T z, U c,
 	T w, U d
-)
+) GLM_NOEXCEPT
 {
 	T Test1 = max(x, y);
 	T Test2 = max(z, w);;
@@ -323,7 +323,7 @@ GLM_FUNC_QUALIFIER vecType<U, P> associatedMax
 	vecType<T, P> const & y, vecType<U, P> const & b,
 	vecType<T, P> const & z, vecType<U, P> const & c,
 	vecType<T, P> const & w, vecType<U, P> const & d
-)
+) GLM_NOEXCEPT
 {
 	vecType<U, P> Result(uninitialize);
 	for(detail::component_count_t i = 0; i < detail::component_count(Result); ++i)
@@ -345,7 +345,7 @@ GLM_FUNC_QUALIFIER vecType<U, P> associatedMax
 	T y, vecType<U, P> const & b,
 	T z, vecType<U, P> const & c,
 	T w, vecType<U, P> const & d
-)
+) GLM_NOEXCEPT
 {
 	T Test1 = max(x, y);
 	T Test2 = max(z, w);
@@ -368,7 +368,7 @@ GLM_FUNC_QUALIFIER vecType<U, P> associatedMax
 	vecType<T, P> const & y, U b,
 	vecType<T, P> const & z, U c,
 	vecType<T, P> const & w, U d
-)
+) GLM_NOEXCEPT
 {
 	vecType<U, P> Result(uninitialize);
 	for(detail::component_count_t i = 0; i < detail::component_count(Result); ++i)

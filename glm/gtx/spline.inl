@@ -40,7 +40,7 @@ namespace glm
 		genType const & v3, 
 		genType const & v4, 
 		typename genType::value_type const & s
-	)
+	) GLM_NOEXCEPT
 	{
 		typename genType::value_type s1 = s;
 		typename genType::value_type s2 = pow2(s);
@@ -63,7 +63,7 @@ namespace glm
 		genType const & v2, 
 		genType const & t2, 
 		typename genType::value_type const & s
-	)
+	) GLM_NOEXCEPT
 	{
 		typename genType::value_type s1 = s;
 		typename genType::value_type s2 = pow2(s);
@@ -85,7 +85,7 @@ namespace glm
 		genType const & v3, 
 		genType const & v4, 
 		typename genType::value_type const & s
-	)
+	) GLM_NOEXCEPT
 	{
 		return ((v1 * s + v2) * s + v3) * s + v4;
 	}

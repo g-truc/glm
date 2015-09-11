@@ -58,103 +58,103 @@ namespace glm
 	/// @see gtx_extented_min_max
 	template <typename T>
 	GLM_FUNC_DECL T min(
-		T const & x, 
-		T const & y, 
-		T const & z);
+		T const & x,
+		T const & y,
+		T const & z) GLM_NOEXCEPT;
 
 	/// Return the minimum component-wise values of 3 inputs
 	/// @see gtx_extented_min_max
 	template <typename T, template <typename> class C>
 	GLM_FUNC_DECL C<T> min(
-		C<T> const & x, 
-		typename C<T>::T const & y, 
-		typename C<T>::T const & z);
+		C<T> const & x,
+		typename C<T>::T const & y,
+		typename C<T>::T const & z) GLM_NOEXCEPT;
 
 	/// Return the minimum component-wise values of 3 inputs 
 	/// @see gtx_extented_min_max
 	template <typename T, template <typename> class C>
 	GLM_FUNC_DECL C<T> min(
-		C<T> const & x, 
-		C<T> const & y, 
-		C<T> const & z);
+		C<T> const & x,
+		C<T> const & y,
+		C<T> const & z) GLM_NOEXCEPT;
 
-	/// Return the minimum component-wise values of 4 inputs 
+	/// Return the minimum component-wise values of 4 inputs
 	/// @see gtx_extented_min_max
 	template <typename T>
 	GLM_FUNC_DECL T min(
-		T const & x, 
-		T const & y, 
-		T const & z, 
-		T const & w);
-
-	/// Return the minimum component-wise values of 4 inputs 
-	/// @see gtx_extented_min_max
-	template <typename T, template <typename> class C>
-	GLM_FUNC_DECL C<T> min(
-		C<T> const & x, 
-		typename C<T>::T const & y, 
-		typename C<T>::T const & z, 
-		typename C<T>::T const & w);
+		T const & x,
+		T const & y,
+		T const & z,
+		T const & w) GLM_NOEXCEPT;
 
 	/// Return the minimum component-wise values of 4 inputs
 	/// @see gtx_extented_min_max
 	template <typename T, template <typename> class C>
 	GLM_FUNC_DECL C<T> min(
-		C<T> const & x, 
-		C<T> const & y, 
-		C<T> const & z,
-		C<T> const & w);
+		C<T> const & x,
+		typename C<T>::T const & y,
+		typename C<T>::T const & z,
+		typename C<T>::T const & w) GLM_NOEXCEPT;
 
-	/// Return the maximum component-wise values of 3 inputs 
+	/// Return the minimum component-wise values of 4 inputs
+	/// @see gtx_extented_min_max
+	template <typename T, template <typename> class C>
+	GLM_FUNC_DECL C<T> min(
+		C<T> const & x,
+		C<T> const & y,
+		C<T> const & z,
+		C<T> const & w) GLM_NOEXCEPT;
+
+	/// Return the maximum component-wise values of 3 inputs
 	/// @see gtx_extented_min_max
 	template <typename T>
 	GLM_FUNC_DECL T max(
-		T const & x, 
-		T const & y, 
-		T const & z);
+		T const & x,
+		T const & y,
+		T const & z) GLM_NOEXCEPT;
 
 	/// Return the maximum component-wise values of 3 inputs
 	/// @see gtx_extented_min_max
 	template <typename T, template <typename> class C>
 	GLM_FUNC_DECL C<T> max(
-		C<T> const & x, 
-		typename C<T>::T const & y, 
-		typename C<T>::T const & z);
+		C<T> const & x,
+		typename C<T>::T const & y,
+		typename C<T>::T const & z) GLM_NOEXCEPT;
 
-	/// Return the maximum component-wise values of 3 inputs 
+	/// Return the maximum component-wise values of 3 inputs
 	/// @see gtx_extented_min_max
 	template <typename T, template <typename> class C>
 	GLM_FUNC_DECL C<T> max(
-		C<T> const & x, 
-		C<T> const & y, 
-		C<T> const & z);
+		C<T> const & x,
+		C<T> const & y,
+		C<T> const & z) GLM_NOEXCEPT;
 
 	/// Return the maximum component-wise values of 4 inputs
 	/// @see gtx_extented_min_max
 	template <typename T>
 	GLM_FUNC_DECL T max(
-		T const & x, 
-		T const & y, 
-		T const & z, 
-		T const & w);
+		T const & x,
+		T const & y,
+		T const & z,
+		T const & w) GLM_NOEXCEPT;
 
-	/// Return the maximum component-wise values of 4 inputs 
+	/// Return the maximum component-wise values of 4 inputs
 	/// @see gtx_extented_min_max
 	template <typename T, template <typename> class C>
 	GLM_FUNC_DECL C<T> max(
-		C<T> const & x, 
-		typename C<T>::T const & y, 
-		typename C<T>::T const & z, 
-		typename C<T>::T const & w);
+		C<T> const & x,
+		typename C<T>::T const & y,
+		typename C<T>::T const & z,
+		typename C<T>::T const & w) GLM_NOEXCEPT;
 
-	/// Return the maximum component-wise values of 4 inputs 
+	/// Return the maximum component-wise values of 4 inputs
 	/// @see gtx_extented_min_max
 	template <typename T, template <typename> class C>
 	GLM_FUNC_DECL C<T> max(
-		C<T> const & x, 
-		C<T> const & y, 
-		C<T> const & z, 
-		C<T> const & w);
+		C<T> const & x,
+		C<T> const & y,
+		C<T> const & z,
+		C<T> const & w) GLM_NOEXCEPT;
 
 	/// @}
 }//namespace glm

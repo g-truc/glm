@@ -19,7 +19,7 @@ namespace glm
 		genType const & orig, genType const & dir,
 		genType const & planeOrig, genType const & planeNormal,
 		typename genType::value_type & intersectionDistance
-	)
+	) GLM_NOEXCEPT
 	{
 		typename genType::value_type d = glm::dot(dir, planeNormal);
 		typename genType::value_type Epsilon = std::numeric_limits<typename genType::value_type>::epsilon();
@@ -39,7 +39,7 @@ namespace glm
 		genType const & orig, genType const & dir,
 		genType const & v0, genType const & v1, genType const & v2,
 		genType & baryPosition
-	)
+	) GLM_NOEXCEPT
 	{
 		genType e1 = v1 - v0;
 		genType e2 = v2 - v0;
@@ -79,7 +79,7 @@ namespace glm
 	//	genType const & orig, genType const & dir,
 	//	genType const & vert0, genType const & vert1, genType const & vert2,
 	//	genType & position
-	//)
+	//) GLM_NOEXCEPT
 	//{
 	//	typename genType::value_type Epsilon = std::numeric_limits<typename genType::value_type>::epsilon();
 	//
@@ -116,7 +116,7 @@ namespace glm
 		genType const & orig, genType const & dir,
 		genType const & vert0, genType const & vert1, genType const & vert2,
 		genType & position
-	)
+	) GLM_NOEXCEPT
 	{
 		typename genType::value_type Epsilon = std::numeric_limits<typename genType::value_type>::epsilon();
 
@@ -154,7 +154,7 @@ namespace glm
 		genType const & rayStarting, genType const & rayNormalizedDirection,
 		genType const & sphereCenter, const typename genType::value_type sphereRadiusSquered,
 		typename genType::value_type & intersectionDistance
-	)
+	) GLM_NOEXCEPT
 	{
 		typename genType::value_type Epsilon = std::numeric_limits<typename genType::value_type>::epsilon();
 		genType diff = sphereCenter - rayStarting;
@@ -175,7 +175,7 @@ namespace glm
 		genType const & rayStarting, genType const & rayNormalizedDirection,
 		genType const & sphereCenter, const typename genType::value_type sphereRadius,
 		genType & intersectionPosition, genType & intersectionNormal
-	)
+	) GLM_NOEXCEPT
 	{
 		typename genType::value_type distance;
 		if( intersectRaySphere( rayStarting, rayNormalizedDirection, sphereCenter, sphereRadius * sphereRadius, distance ) )
@@ -194,7 +194,7 @@ namespace glm
 		genType const & sphereCenter, typename genType::value_type sphereRadius,
 		genType & intersectionPoint1, genType & intersectionNormal1, 
 		genType & intersectionPoint2, genType & intersectionNormal2
-	)
+	) GLM_NOEXCEPT
 	{
 		typename genType::value_type Epsilon = std::numeric_limits<typename genType::value_type>::epsilon();
 		genType dir = normalize(point1 - point0);

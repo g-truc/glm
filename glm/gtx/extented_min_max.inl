@@ -34,9 +34,9 @@ namespace glm
 {
 	template <typename T>
 	GLM_FUNC_QUALIFIER T min(
-		T const & x, 
-		T const & y, 
-		T const & z)
+		T const & x,
+		T const & y,
+		T const & z) GLM_NOEXCEPT
 	{
 		return glm::min(glm::min(x, y), z);
 	}
@@ -47,7 +47,7 @@ namespace glm
 		C<T> const & x, 
 		typename C<T>::T const & y, 
 		typename C<T>::T const & z
-	)
+	) GLM_NOEXCEPT
 	{
 		return glm::min(glm::min(x, y), z);
 	}
@@ -58,7 +58,7 @@ namespace glm
 		C<T> const & x, 
 		C<T> const & y, 
 		C<T> const & z
-	)
+	) GLM_NOEXCEPT
 	{
 		return glm::min(glm::min(x, y), z);
 	}
@@ -70,7 +70,7 @@ namespace glm
 		T const & y, 
 		T const & z, 
 		T const & w
-	)
+	) GLM_NOEXCEPT
 	{
 		return glm::min(glm::min(x, y), glm::min(z, w));
 	}
@@ -82,7 +82,7 @@ namespace glm
 		typename C<T>::T const & y, 
 		typename C<T>::T const & z, 
 		typename C<T>::T const & w
-	)
+	) GLM_NOEXCEPT
 	{
 		return glm::min(glm::min(x, y), glm::min(z, w));
 	}
@@ -94,16 +94,16 @@ namespace glm
 		C<T> const & y, 
 		C<T> const & z, 
 		C<T> const & w
-	)
+	) GLM_NOEXCEPT
 	{
 		return glm::min(glm::min(x, y), glm::min(z, w));
 	}
 
 	template <typename T>
 	GLM_FUNC_QUALIFIER T max(
-		T const & x, 
-		T const & y, 
-		T const & z)
+		T const & x,
+		T const & y,
+		T const & z) GLM_NOEXCEPT
 	{
 		return glm::max(glm::max(x, y), z);
 	}
@@ -114,7 +114,7 @@ namespace glm
 		C<T> const & x, 
 		typename C<T>::T const & y, 
 		typename C<T>::T const & z
-	)
+	) GLM_NOEXCEPT
 	{
 		return glm::max(glm::max(x, y), z);
 	}
@@ -125,7 +125,7 @@ namespace glm
 		C<T> const & x, 
 		C<T> const & y, 
 		C<T> const & z
-	)
+	) GLM_NOEXCEPT
 	{
 		return glm::max(glm::max(x, y), z);
 	}
@@ -137,7 +137,7 @@ namespace glm
 		T const & y, 
 		T const & z, 
 		T const & w
-	)
+	) GLM_NOEXCEPT
 	{
 		return glm::max(glm::max(x, y), glm::max(z, w));
 	}
@@ -149,7 +149,7 @@ namespace glm
 		typename C<T>::T const & y, 
 		typename C<T>::T const & z, 
 		typename C<T>::T const & w
-	)
+	) GLM_NOEXCEPT
 	{
 		return glm::max(glm::max(x, y), glm::max(z, w));
 	}
@@ -161,7 +161,7 @@ namespace glm
 		C<T> const & y, 
 		C<T> const & z, 
 		C<T> const & w
-	)
+	) GLM_NOEXCEPT
 	{
 		return glm::max(glm::max(x, y), glm::max(z, w));
 	}

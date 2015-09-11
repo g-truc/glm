@@ -33,7 +33,7 @@
 namespace glm
 {
 	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tvec3<T, P> rgbColor(const tvec3<T, P>& hsvColor)
+	GLM_FUNC_QUALIFIER tvec3<T, P> rgbColor(const tvec3<T, P>& hsvColor) GLM_NOEXCEPT
 	{
 		tvec3<T, P> hsv = hsvColor;
 		tvec3<T, P> rgbColor;
@@ -90,7 +90,7 @@ namespace glm
 	}
 
 	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tvec3<T, P> hsvColor(const tvec3<T, P>& rgbColor)
+	GLM_FUNC_QUALIFIER tvec3<T, P> hsvColor(const tvec3<T, P>& rgbColor) GLM_NOEXCEPT
 	{
 		tvec3<T, P> hsv = rgbColor;
 		float Min   = min(min(rgbColor.r, rgbColor.g), rgbColor.b);
@@ -130,7 +130,7 @@ namespace glm
 	}
 
 	template <typename T>
-	GLM_FUNC_QUALIFIER tmat4x4<T, defaultp> saturation(T const s)
+	GLM_FUNC_QUALIFIER tmat4x4<T, defaultp> saturation(T const s) GLM_NOEXCEPT
 	{
 		tvec3<T, defaultp> rgbw = tvec3<T, defaultp>(T(0.2126), T(0.7152), T(0.0722));
 
@@ -152,19 +152,19 @@ namespace glm
 	}
 
 	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tvec3<T, P> saturation(const T s, const tvec3<T, P>& color)
+	GLM_FUNC_QUALIFIER tvec3<T, P> saturation(const T s, const tvec3<T, P>& color) GLM_NOEXCEPT
 	{
 		return tvec3<T, P>(saturation(s) * tvec4<T, P>(color, T(0)));
 	}
 
 	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tvec4<T, P> saturation(const T s, const tvec4<T, P>& color)
+	GLM_FUNC_QUALIFIER tvec4<T, P> saturation(const T s, const tvec4<T, P>& color) GLM_NOEXCEPT
 	{
 		return saturation(s) * color;
 	}
 
-	template <typename T, precision P> 
-	GLM_FUNC_QUALIFIER T luminosity(const tvec3<T, P>& color)
+	template <typename T, precision P>
+	GLM_FUNC_QUALIFIER T luminosity(const tvec3<T, P>& color) GLM_NOEXCEPT
 	{
 		const tvec3<T, P> tmp = tvec3<T, P>(0.33, 0.59, 0.11);
 		return dot(color, tmp);

@@ -36,7 +36,7 @@ namespace glm
 	// highestBitValue
 
 	template <typename genIUType>
-	GLM_FUNC_QUALIFIER genIUType highestBitValue(genIUType Value)
+	GLM_FUNC_QUALIFIER genIUType highestBitValue(genIUType Value) GLM_NOEXCEPT
 	{
 		genIUType tmp = Value;
 		genIUType result = genIUType(0);
@@ -49,7 +49,7 @@ namespace glm
 	}
 
 	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<T, P> highestBitValue(vecType<T, P> const & v)
+	GLM_FUNC_QUALIFIER vecType<T, P> highestBitValue(vecType<T, P> const & v) GLM_NOEXCEPT
 	{
 		return detail::functor1<T, T, P, vecType>::call(highestBitValue, v);
 	}
@@ -58,13 +58,13 @@ namespace glm
 	// powerOfTwoAbove
 
 	template <typename genType>
-	GLM_FUNC_QUALIFIER genType powerOfTwoAbove(genType value)
+	GLM_FUNC_QUALIFIER genType powerOfTwoAbove(genType value) GLM_NOEXCEPT
 	{
 		return isPowerOfTwo(value) ? value : highestBitValue(value) << 1;
 	}
 
 	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<T, P> powerOfTwoAbove(vecType<T, P> const & v)
+	GLM_FUNC_QUALIFIER vecType<T, P> powerOfTwoAbove(vecType<T, P> const & v) GLM_NOEXCEPT
 	{
 		return detail::functor1<T, T, P, vecType>::call(powerOfTwoAbove, v);
 	}
@@ -73,13 +73,13 @@ namespace glm
 	// powerOfTwoBelow
 
 	template <typename genType>
-	GLM_FUNC_QUALIFIER genType powerOfTwoBelow(genType value)
+	GLM_FUNC_QUALIFIER genType powerOfTwoBelow(genType value) GLM_NOEXCEPT
 	{
 		return isPowerOfTwo(value) ? value : highestBitValue(value);
 	}
 
 	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<T, P> powerOfTwoBelow(vecType<T, P> const & v)
+	GLM_FUNC_QUALIFIER vecType<T, P> powerOfTwoBelow(vecType<T, P> const & v) GLM_NOEXCEPT
 	{
 		return detail::functor1<T, T, P, vecType>::call(powerOfTwoBelow, v);
 	}
@@ -88,7 +88,7 @@ namespace glm
 	// powerOfTwoNearest
 
 	template <typename genType>
-	GLM_FUNC_QUALIFIER genType powerOfTwoNearest(genType value)
+	GLM_FUNC_QUALIFIER genType powerOfTwoNearest(genType value) GLM_NOEXCEPT
 	{
 		if(isPowerOfTwo(value))
 			return value;
@@ -99,7 +99,7 @@ namespace glm
 	}
 
 	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<T, P> powerOfTwoNearest(vecType<T, P> const & v)
+	GLM_FUNC_QUALIFIER vecType<T, P> powerOfTwoNearest(vecType<T, P> const & v) GLM_NOEXCEPT
 	{
 		return detail::functor1<T, T, P, vecType>::call(powerOfTwoNearest, v);
 	}

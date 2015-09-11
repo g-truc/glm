@@ -59,20 +59,20 @@ namespace glm
 	GLM_FUNC_DECL void axisAngle(
 		tmat4x4<T, P> const & mat,
 		tvec3<T, P> & axis,
-		T & angle);
+		T & angle) GLM_NOEXCEPT;
 
 	/// Build a matrix from axis and angle.
 	/// From GLM_GTX_matrix_interpolation extension.
 	template <typename T, precision P>
 	GLM_FUNC_DECL tmat4x4<T, P> axisAngleMatrix(
 		tvec3<T, P> const & axis,
-		T const angle);
+		T const angle) GLM_NOEXCEPT;
 
 	/// Extracts the rotation part of a matrix.
 	/// From GLM_GTX_matrix_interpolation extension.
 	template <typename T, precision P>
 	GLM_FUNC_DECL tmat4x4<T, P> extractMatrixRotation(
-		tmat4x4<T, P> const & mat);
+		tmat4x4<T, P> const & mat) GLM_NOEXCEPT;
 
 	/// Build a interpolation of 4 * 4 matrixes.
 	/// From GLM_GTX_matrix_interpolation extension.
@@ -81,7 +81,7 @@ namespace glm
 	GLM_FUNC_DECL tmat4x4<T, P> interpolate(
 		tmat4x4<T, P> const & m1,
 		tmat4x4<T, P> const & m2,
-		T const delta);
+		T const delta) GLM_NOEXCEPT;
 
 	/// @}
 }//namespace glm

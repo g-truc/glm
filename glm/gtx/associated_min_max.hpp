@@ -56,28 +56,28 @@ namespace glm
 	/// Minimum comparison between 2 variables and returns 2 associated variable values
 	/// @see gtx_associated_min_max
 	template<typename T, typename U, precision P>
-	GLM_FUNC_DECL U associatedMin(T x, U a, T y, U b);
+	GLM_FUNC_DECL U associatedMin(T x, U a, T y, U b) GLM_NOEXCEPT;
 
 	/// Minimum comparison between 2 variables and returns 2 associated variable values
 	/// @see gtx_associated_min_max
 	template<typename T, typename U, precision P, template <typename, precision> class vecType>
 	GLM_FUNC_DECL tvec2<U, P> associatedMin(
 		vecType<T, P> const & x, vecType<U, P> const & a,
-		vecType<T, P> const & y, vecType<U, P> const & b);
+		vecType<T, P> const & y, vecType<U, P> const & b) GLM_NOEXCEPT;
 
 	/// Minimum comparison between 2 variables and returns 2 associated variable values
 	/// @see gtx_associated_min_max
 	template<typename T, typename U, precision P, template <typename, precision> class vecType>
 	GLM_FUNC_DECL vecType<U, P> associatedMin(
 		T x, const vecType<U, P>& a,
-		T y, const vecType<U, P>& b);
+		T y, const vecType<U, P>& b) GLM_NOEXCEPT;
 
 	/// Minimum comparison between 2 variables and returns 2 associated variable values
 	/// @see gtx_associated_min_max
 	template<typename T, typename U, precision P, template <typename, precision> class vecType>
 	GLM_FUNC_DECL vecType<U, P> associatedMin(
 		vecType<T, P> const & x, U a,
-		vecType<T, P> const & y, U b);
+		vecType<T, P> const & y, U b) GLM_NOEXCEPT;
 
 	/// Minimum comparison between 3 variables and returns 3 associated variable values
 	/// @see gtx_associated_min_max
@@ -85,7 +85,7 @@ namespace glm
 	GLM_FUNC_DECL U associatedMin(
 		T x, U a,
 		T y, U b,
-		T z, U c);
+		T z, U c) GLM_NOEXCEPT;
 
 	/// Minimum comparison between 3 variables and returns 3 associated variable values
 	/// @see gtx_associated_min_max
@@ -93,7 +93,7 @@ namespace glm
 	GLM_FUNC_DECL vecType<U, P> associatedMin(
 		vecType<T, P> const & x, vecType<U, P> const & a,
 		vecType<T, P> const & y, vecType<U, P> const & b,
-		vecType<T, P> const & z, vecType<U, P> const & c);
+		vecType<T, P> const & z, vecType<U, P> const & c) GLM_NOEXCEPT;
 
 	/// Minimum comparison between 4 variables and returns 4 associated variable values
 	/// @see gtx_associated_min_max
@@ -102,7 +102,7 @@ namespace glm
 		T x, U a,
 		T y, U b,
 		T z, U c,
-		T w, U d);
+		T w, U d) GLM_NOEXCEPT;
 
 	/// Minimum comparison between 4 variables and returns 4 associated variable values
 	/// @see gtx_associated_min_max
@@ -111,7 +111,7 @@ namespace glm
 		vecType<T, P> const & x, vecType<U, P> const & a,
 		vecType<T, P> const & y, vecType<U, P> const & b,
 		vecType<T, P> const & z, vecType<U, P> const & c,
-		vecType<T, P> const & w, vecType<U, P> const & d);
+		vecType<T, P> const & w, vecType<U, P> const & d) GLM_NOEXCEPT;
 
 	/// Minimum comparison between 4 variables and returns 4 associated variable values
 	/// @see gtx_associated_min_max
@@ -120,7 +120,7 @@ namespace glm
 		T x, vecType<U, P> const & a,
 		T y, vecType<U, P> const & b,
 		T z, vecType<U, P> const & c,
-		T w, vecType<U, P> const & d);
+		T w, vecType<U, P> const & d) GLM_NOEXCEPT;
 
 	/// Minimum comparison between 4 variables and returns 4 associated variable values
 	/// @see gtx_associated_min_max
@@ -129,33 +129,33 @@ namespace glm
 		vecType<T, P> const & x, U a,
 		vecType<T, P> const & y, U b,
 		vecType<T, P> const & z, U c,
-		vecType<T, P> const & w, U d);
+		vecType<T, P> const & w, U d) GLM_NOEXCEPT;
 
 	/// Maximum comparison between 2 variables and returns 2 associated variable values
 	/// @see gtx_associated_min_max
 	template<typename T, typename U>
-	GLM_FUNC_DECL U associatedMax(T x, U a, T y, U b);
+	GLM_FUNC_DECL U associatedMax(T x, U a, T y, U b) GLM_NOEXCEPT;
 
 	/// Maximum comparison between 2 variables and returns 2 associated variable values
 	/// @see gtx_associated_min_max
 	template<typename T, typename U, precision P, template <typename, precision> class vecType>
 	GLM_FUNC_DECL tvec2<U, P> associatedMax(
 		vecType<T, P> const & x, vecType<U, P> const & a,
-		vecType<T, P> const & y, vecType<U, P> const & b);
+		vecType<T, P> const & y, vecType<U, P> const & b) GLM_NOEXCEPT;
 
 	/// Maximum comparison between 2 variables and returns 2 associated variable values
 	/// @see gtx_associated_min_max
 	template<typename T, typename U, precision P, template <typename, precision> class vecType>
 	GLM_FUNC_DECL vecType<T, P> associatedMax(
 		T x, vecType<U, P> const & a,
-		T y, vecType<U, P> const & b);
+		T y, vecType<U, P> const & b) GLM_NOEXCEPT;
 
 	/// Maximum comparison between 2 variables and returns 2 associated variable values
 	/// @see gtx_associated_min_max
 	template<typename T, typename U, precision P, template <typename, precision> class vecType>
 	GLM_FUNC_DECL vecType<U, P> associatedMax(
 		vecType<T, P> const & x, U a,
-		vecType<T, P> const & y, U b);
+		vecType<T, P> const & y, U b) GLM_NOEXCEPT;
 
 	/// Maximum comparison between 3 variables and returns 3 associated variable values
 	/// @see gtx_associated_min_max
@@ -163,7 +163,7 @@ namespace glm
 	GLM_FUNC_DECL U associatedMax(
 		T x, U a,
 		T y, U b,
-		T z, U c);
+		T z, U c) GLM_NOEXCEPT;
 
 	/// Maximum comparison between 3 variables and returns 3 associated variable values
 	/// @see gtx_associated_min_max
@@ -171,7 +171,7 @@ namespace glm
 	GLM_FUNC_DECL vecType<U, P> associatedMax(
 		vecType<T, P> const & x, vecType<U, P> const & a,
 		vecType<T, P> const & y, vecType<U, P> const & b,
-		vecType<T, P> const & z, vecType<U, P> const & c);
+		vecType<T, P> const & z, vecType<U, P> const & c) GLM_NOEXCEPT;
 
 	/// Maximum comparison between 3 variables and returns 3 associated variable values
 	/// @see gtx_associated_min_max
@@ -179,7 +179,7 @@ namespace glm
 	GLM_FUNC_DECL vecType<T, P> associatedMax(
 		T x, vecType<U, P> const & a,
 		T y, vecType<U, P> const & b,
-		T z, vecType<U, P> const & c);
+		T z, vecType<U, P> const & c) GLM_NOEXCEPT;
 
 	/// Maximum comparison between 3 variables and returns 3 associated variable values
 	/// @see gtx_associated_min_max
@@ -187,7 +187,7 @@ namespace glm
 	GLM_FUNC_DECL vecType<U, P> associatedMax(
 		vecType<T, P> const & x, U a,
 		vecType<T, P> const & y, U b,
-		vecType<T, P> const & z, U c);
+		vecType<T, P> const & z, U c) GLM_NOEXCEPT;
 
 	/// Maximum comparison between 4 variables and returns 4 associated variable values
 	/// @see gtx_associated_min_max
@@ -196,7 +196,7 @@ namespace glm
 		T x, U a,
 		T y, U b,
 		T z, U c,
-		T w, U d);
+		T w, U d) GLM_NOEXCEPT;
 
 	/// Maximum comparison between 4 variables and returns 4 associated variable values
 	/// @see gtx_associated_min_max
@@ -205,7 +205,7 @@ namespace glm
 		vecType<T, P> const & x, vecType<U, P> const & a,
 		vecType<T, P> const & y, vecType<U, P> const & b,
 		vecType<T, P> const & z, vecType<U, P> const & c,
-		vecType<T, P> const & w, vecType<U, P> const & d);
+		vecType<T, P> const & w, vecType<U, P> const & d) GLM_NOEXCEPT;
 
 	/// Maximum comparison between 4 variables and returns 4 associated variable values
 	/// @see gtx_associated_min_max
@@ -214,7 +214,7 @@ namespace glm
 		T x, vecType<U, P> const & a,
 		T y, vecType<U, P> const & b,
 		T z, vecType<U, P> const & c,
-		T w, vecType<U, P> const & d);
+		T w, vecType<U, P> const & d) GLM_NOEXCEPT;
 
 	/// Maximum comparison between 4 variables and returns 4 associated variable values
 	/// @see gtx_associated_min_max
@@ -223,7 +223,7 @@ namespace glm
 		vecType<T, P> const & x, U a,
 		vecType<T, P> const & y, U b,
 		vecType<T, P> const & z, U c,
-		vecType<T, P> const & w, U d);
+		vecType<T, P> const & w, U d) GLM_NOEXCEPT;
 
 	/// @}
 } //namespace glm

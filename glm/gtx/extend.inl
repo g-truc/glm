@@ -38,7 +38,7 @@ namespace glm
 		genType const & Origin, 
 		genType const & Source, 
 		genType const & Distance
-	)
+	) GLM_NOEXCEPT
 	{
 		return Origin + (Source - Origin) * Distance;
 	}
@@ -49,7 +49,7 @@ namespace glm
 		tvec2<T, P> const & Origin,
 		tvec2<T, P> const & Source,
 		T const & Distance
-	)
+	) GLM_NOEXCEPT
 	{
 		return Origin + (Source - Origin) * Distance;
 	}
@@ -60,7 +60,7 @@ namespace glm
 		tvec3<T, P> const & Origin,
 		tvec3<T, P> const & Source,
 		T const & Distance
-	)
+	) GLM_NOEXCEPT
 	{
 		return Origin + (Source - Origin) * Distance;
 	}
@@ -71,7 +71,7 @@ namespace glm
 		tvec4<T, P> const & Origin,
 		tvec4<T, P> const & Source,
 		T const & Distance
-	)
+	) GLM_NOEXCEPT
 	{
 		return Origin + (Source - Origin) * Distance;
 	}

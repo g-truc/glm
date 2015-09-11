@@ -36,7 +36,7 @@ namespace glm
 	GLM_FUNC_QUALIFIER tvec3<T, P> rgb2YCoCg
 	(
 		tvec3<T, P> const & rgbColor
-	)
+	) GLM_NOEXCEPT
 	{
 		tvec3<T, P> result;
 		result.x/*Y */ =   rgbColor.r / T(4) + rgbColor.g / T(2) + rgbColor.b / T(4);
@@ -49,7 +49,7 @@ namespace glm
 	GLM_FUNC_QUALIFIER tvec3<T, P> YCoCg2rgb
 	(
 		tvec3<T, P> const & YCoCgColor
-	)
+	) GLM_NOEXCEPT
 	{
 		tvec3<T, P> result;
 		result.r = YCoCgColor.x + YCoCgColor.y - YCoCgColor.z;
@@ -64,7 +64,7 @@ namespace glm
 		static GLM_FUNC_QUALIFIER tvec3<T, P> rgb2YCoCgR
 		(
 			tvec3<T, P> const & rgbColor
-		)
+		) GLM_NOEXCEPT
 		{
 			tvec3<T, P> result;
 			result.x/*Y */ = rgbColor.g / T(2) + (rgbColor.r + rgbColor.b) / T(4);
@@ -76,7 +76,7 @@ namespace glm
 		static GLM_FUNC_QUALIFIER tvec3<T, P> YCoCgR2rgb
 		(
 			tvec3<T, P> const & YCoCgRColor
-		)
+		) GLM_NOEXCEPT
 		{
 			tvec3<T, P> result;
 			T tmp = YCoCgRColor.x - (YCoCgRColor.z / T(2));
@@ -93,7 +93,7 @@ namespace glm
 		static GLM_FUNC_QUALIFIER tvec3<T, P> rgb2YCoCgR
 		(
 			tvec3<T, P> const & rgbColor
-		)
+		) GLM_NOEXCEPT
 		{
 			tvec3<T, P> result;
 			result.y/*Co*/ = rgbColor.r - rgbColor.b;
@@ -106,7 +106,7 @@ namespace glm
 		static GLM_FUNC_QUALIFIER tvec3<T, P> YCoCgR2rgb
 		(
 			tvec3<T, P> const & YCoCgRColor
-		)
+		) GLM_NOEXCEPT
 		{
 			tvec3<T, P> result;
 			T tmp = YCoCgRColor.x - (YCoCgRColor.z >> 1);
@@ -121,7 +121,7 @@ namespace glm
 	GLM_FUNC_QUALIFIER tvec3<T, P> rgb2YCoCgR
 	(
 		tvec3<T, P> const & rgbColor
-	)
+	) GLM_NOEXCEPT
 	{
 		return compute_YCoCgR<T, P, std::numeric_limits<T>::is_integer>::rgb2YCoCgR(rgbColor);
 	}
@@ -130,7 +130,7 @@ namespace glm
 	GLM_FUNC_QUALIFIER tvec3<T, P> YCoCgR2rgb
 	(
 		tvec3<T, P> const & YCoCgRColor
-	)
+	) GLM_NOEXCEPT
 	{
 		return compute_YCoCgR<T, P, std::numeric_limits<T>::is_integer>::YCoCgR2rgb(YCoCgRColor);
 	}

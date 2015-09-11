@@ -72,7 +72,7 @@ namespace glm
 	GLM_FUNC_DECL tmat4x4<T, P> rotateNormalizedAxis(
 		tmat4x4<T, P> const & m,
 		T const & angle,
-		tvec3<T, P> const & axis);
+		tvec3<T, P> const & axis) GLM_NOEXCEPT;
 
 	/// Rotates a quaternion from a vector of 3 components normalized axis and an angle.
 	/// 
@@ -85,7 +85,7 @@ namespace glm
 	GLM_FUNC_DECL tquat<T, P> rotateNormalizedAxis(
 		tquat<T, P> const & q,
 		T const & angle,
-		tvec3<T, P> const & axis);
+		tvec3<T, P> const & axis) GLM_NOEXCEPT;
 
 	/// @}
 }//namespace glm

@@ -36,7 +36,7 @@ namespace glm
 	GLM_FUNC_QUALIFIER tmat3x3<T, P> matrixCross3
 	(
 		tvec3<T, P> const & x
-	)
+	) GLM_NOEXCEPT
 	{
 		tmat3x3<T, P> Result(T(0));
 		Result[0][1] = x.z;
@@ -52,7 +52,7 @@ namespace glm
 	GLM_FUNC_QUALIFIER tmat4x4<T, P> matrixCross4
 	(
 		tvec3<T, P> const & x
-	)
+	) GLM_NOEXCEPT
 	{
 		tmat4x4<T, P> Result(T(0));
 		Result[0][1] = x.z;

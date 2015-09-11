@@ -33,7 +33,7 @@
 namespace glm
 {
 	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER T compAdd(vecType<T, P> const & v)
+	GLM_FUNC_QUALIFIER T compAdd(vecType<T, P> const & v) GLM_NOEXCEPT
 	{
 		T result(0);
 		for(detail::component_count_t i = 0; i < detail::component_count(v); ++i)
@@ -42,7 +42,7 @@ namespace glm
 	}
 
 	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER T compMul(vecType<T, P> const & v)
+	GLM_FUNC_QUALIFIER T compMul(vecType<T, P> const & v) GLM_NOEXCEPT
 	{
 		T result(1);
 		for(detail::component_count_t i = 0; i < detail::component_count(v); ++i)
@@ -51,7 +51,7 @@ namespace glm
 	}
 
 	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER T compMin(vecType<T, P> const & v)
+	GLM_FUNC_QUALIFIER T compMin(vecType<T, P> const & v) GLM_NOEXCEPT
 	{
 		T result(v[0]);
 		for(detail::component_count_t i = 1; i < detail::component_count(v); ++i)
@@ -60,7 +60,7 @@ namespace glm
 	}
 
 	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER T compMax(vecType<T, P> const & v)
+	GLM_FUNC_QUALIFIER T compMax(vecType<T, P> const & v) GLM_NOEXCEPT
 	{
 		T result(v[0]);
 		for(detail::component_count_t i = 1; i < detail::component_count(v); ++i)

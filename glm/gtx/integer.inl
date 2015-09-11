@@ -33,7 +33,7 @@
 namespace glm
 {
 	// pow
-	GLM_FUNC_QUALIFIER int pow(int x, int y)
+	GLM_FUNC_QUALIFIER int pow(int x, int y) GLM_NOEXCEPT
 	{
 		if(y == 0)
 			return 1;
@@ -44,7 +44,7 @@ namespace glm
 	}
 
 	// sqrt: From Christopher J. Musial, An integer square root, Graphics Gems, 1990, page 387
-	GLM_FUNC_QUALIFIER int sqrt(int x)
+	GLM_FUNC_QUALIFIER int sqrt(int x) GLM_NOEXCEPT
 	{
 		if(x <= 1) return x;
 
@@ -63,7 +63,7 @@ namespace glm
 // Henry Gordon Dietz: http://aggregate.org/MAGIC/
 namespace detail
 {
-	GLM_FUNC_QUALIFIER unsigned int ones32(unsigned int x)
+	GLM_FUNC_QUALIFIER unsigned int ones32(unsigned int x) GLM_NOEXCEPT
 	{
 		/* 32-bit recursive reduction using SWAR...
 		but first step is mapping 2-bit values
@@ -80,7 +80,7 @@ namespace detail
 
 	// Henry Gordon Dietz: http://aggregate.org/MAGIC/
 /*
-	GLM_FUNC_QUALIFIER unsigned int floor_log2(unsigned int x)
+	GLM_FUNC_QUALIFIER unsigned int floor_log2(unsigned int x) GLM_NOEXCEPT
 	{
 		x |= (x >> 1);
 		x |= (x >> 2);
@@ -92,14 +92,14 @@ namespace detail
 	}
 */
 	// mod
-	GLM_FUNC_QUALIFIER int mod(int x, int y)
+	GLM_FUNC_QUALIFIER int mod(int x, int y) GLM_NOEXCEPT
 	{
 		return x - y * (x / y);
 	}
 
 	// factorial (!12 max, integer only)
 	template <typename genType>
-	GLM_FUNC_QUALIFIER genType factorial(genType const & x)
+	GLM_FUNC_QUALIFIER genType factorial(genType const & x) GLM_NOEXCEPT
 	{
 		genType Temp = x;
 		genType Result;
@@ -110,7 +110,7 @@ namespace detail
 
 	template <typename T, precision P>
 	GLM_FUNC_QUALIFIER tvec2<T, P> factorial(
-		tvec2<T, P> const & x)
+		tvec2<T, P> const & x) GLM_NOEXCEPT
 	{
 		return tvec2<T, P>(
 			factorial(x.x),
@@ -119,7 +119,7 @@ namespace detail
 
 	template <typename T, precision P>
 	GLM_FUNC_QUALIFIER tvec3<T, P> factorial(
-		tvec3<T, P> const & x)
+		tvec3<T, P> const & x) GLM_NOEXCEPT
 	{
 		return tvec3<T, P>(
 			factorial(x.x),
@@ -129,7 +129,7 @@ namespace detail
 
 	template <typename T, precision P>
 	GLM_FUNC_QUALIFIER tvec4<T, P> factorial(
-		tvec4<T, P> const & x)
+		tvec4<T, P> const & x) GLM_NOEXCEPT
 	{
 		return tvec4<T, P>(
 			factorial(x.x),
@@ -138,7 +138,7 @@ namespace detail
 			factorial(x.w));
 	}
 
-	GLM_FUNC_QUALIFIER uint pow(uint x, uint y)
+	GLM_FUNC_QUALIFIER uint pow(uint x, uint y) GLM_NOEXCEPT
 	{
 		uint result = x;
 		for(uint i = 1; i < y; ++i)
@@ -146,7 +146,7 @@ namespace detail
 		return result;
 	}
 
-	GLM_FUNC_QUALIFIER uint sqrt(uint x)
+	GLM_FUNC_QUALIFIER uint sqrt(uint x) GLM_NOEXCEPT
 	{
 		if(x <= 1) return x;
 
@@ -162,14 +162,14 @@ namespace detail
 		return CurrentAnswer;
 	}
 
-	GLM_FUNC_QUALIFIER uint mod(uint x, uint y)
+	GLM_FUNC_QUALIFIER uint mod(uint x, uint y) GLM_NOEXCEPT
 	{
 		return x - y * (x / y);
 	}
 
 #if(GLM_COMPILER & (GLM_COMPILER_VC | GLM_COMPILER_GCC))
 
-	GLM_FUNC_QUALIFIER unsigned int nlz(unsigned int x) 
+	GLM_FUNC_QUALIFIER unsigned int nlz(unsigned int x) GLM_NOEXCEPT
 	{
 		return 31u - findMSB(x);
 	}
@@ -177,7 +177,7 @@ namespace detail
 #else
 
 	// Hackers Delight: http://www.hackersdelight.org/HDcode/nlz.c.txt
-	GLM_FUNC_QUALIFIER unsigned int nlz(unsigned int x) 
+	GLM_FUNC_QUALIFIER unsigned int nlz(unsigned int x) GLM_NOEXCEPT
 	{
 		int y, m, n;
 

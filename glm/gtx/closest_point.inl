@@ -38,7 +38,7 @@ namespace glm
 		tvec3<T, P> const & point,
 		tvec3<T, P> const & a,
 		tvec3<T, P> const & b
-	)
+	) GLM_NOEXCEPT
 	{
 		T LineLength = distance(a, b);
 		tvec3<T, P> Vector = point - a;
@@ -51,14 +51,14 @@ namespace glm
 		if(Distance >= LineLength) return b;
 		return a + LineDirection * Distance;
 	}
-	
+
 	template <typename T, precision P>
 	GLM_FUNC_QUALIFIER tvec2<T, P> closestPointOnLine
 	(
 		tvec2<T, P> const & point,
 		tvec2<T, P> const & a,
 		tvec2<T, P> const & b
-	)
+	) GLM_NOEXCEPT
 	{
 		T LineLength = distance(a, b);
 		tvec2<T, P> Vector = point - a;
@@ -71,5 +71,5 @@ namespace glm
 		if(Distance >= LineLength) return b;
 		return a + LineDirection * Distance;
 	}
-	
+
 }//namespace glm

@@ -62,7 +62,7 @@ namespace glm
 	GLM_FUNC_DECL bool intersectRayPlane(
 		genType const & orig, genType const & dir,
 		genType const & planeOrig, genType const & planeNormal,
-		typename genType::value_type & intersectionDistance);
+		typename genType::value_type & intersectionDistance) GLM_NOEXCEPT;
 
 	//! Compute the intersection of a ray and a triangle.
 	//! From GLM_GTX_intersect extension.
@@ -70,7 +70,7 @@ namespace glm
 	GLM_FUNC_DECL bool intersectRayTriangle(
 		genType const & orig, genType const & dir,
 		genType const & vert0, genType const & vert1, genType const & vert2,
-		genType & baryPosition);
+		genType & baryPosition) GLM_NOEXCEPT;
 
 	//! Compute the intersection of a line and a triangle.
 	//! From GLM_GTX_intersect extension.
@@ -78,7 +78,7 @@ namespace glm
 	GLM_FUNC_DECL bool intersectLineTriangle(
 		genType const & orig, genType const & dir,
 		genType const & vert0, genType const & vert1, genType const & vert2,
-		genType & position);
+		genType & position) GLM_NOEXCEPT;
 
 	//! Compute the intersection distance of a ray and a sphere. 
 	//! The ray direction vector is unit length.
@@ -87,7 +87,7 @@ namespace glm
 	GLM_FUNC_DECL bool intersectRaySphere(
 		genType const & rayStarting, genType const & rayNormalizedDirection,
 		genType const & sphereCenter, typename genType::value_type const sphereRadiusSquered,
-		typename genType::value_type & intersectionDistance);
+		typename genType::value_type & intersectionDistance) GLM_NOEXCEPT;
 
 	//! Compute the intersection of a ray and a sphere.
 	//! From GLM_GTX_intersect extension.
@@ -95,7 +95,7 @@ namespace glm
 	GLM_FUNC_DECL bool intersectRaySphere(
 		genType const & rayStarting, genType const & rayNormalizedDirection,
 		genType const & sphereCenter, const typename genType::value_type sphereRadius,
-		genType & intersectionPosition, genType & intersectionNormal);
+		genType & intersectionPosition, genType & intersectionNormal) GLM_NOEXCEPT;
 
 	//! Compute the intersection of a line and a sphere.
 	//! From GLM_GTX_intersect extension
@@ -103,8 +103,8 @@ namespace glm
 	GLM_FUNC_DECL bool intersectLineSphere(
 		genType const & point0, genType const & point1,
 		genType const & sphereCenter, typename genType::value_type sphereRadius,
-		genType & intersectionPosition1, genType & intersectionNormal1, 
-		genType & intersectionPosition2 = genType(), genType & intersectionNormal2 = genType());
+		genType & intersectionPosition1, genType & intersectionNormal1,
+		genType & intersectionPosition2 = genType(), genType & intersectionNormal2 = genType()) GLM_NOEXCEPT;
 
 	/// @}
 }//namespace glm

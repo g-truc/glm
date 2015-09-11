@@ -38,7 +38,7 @@ namespace glm
 		tmat4x4<T, P> const & m,
 		T const & angle,
 		tvec3<T, P> const & v
-	)
+	) GLM_NOEXCEPT
 	{
 		T const a = angle;
 		T const c = cos(a);
@@ -72,10 +72,10 @@ namespace glm
 	template <typename T, precision P>
 	GLM_FUNC_QUALIFIER tquat<T, P> rotateNormalizedAxis
 	(
-		tquat<T, P> const & q, 
+		tquat<T, P> const & q,
 		T const & angle,
 		tvec3<T, P> const & v
-	)
+	) GLM_NOEXCEPT
 	{
 		tvec3<T, P> const Tmp(v);
 
