@@ -962,6 +962,16 @@
 #	define GLM_EXPLICIT
 #endif
 
+#ifdef GLM_HAS_NOEXCEPT
+#	define GLM_NOEXCEPT noexcept
+# define GLM_NOEXCEPT_COND(x) noexcept(x)
+# define GLM_NOEXCEPT_OP(x) noexcept(x)
+#else
+#	define GLM_NOEXCEPT
+#	define GLM_NOEXCEPT_COND(x)
+#	define GLM_NOEXCEPT_OP(x) false
+#endif
+
 ///////////////////////////////////////////////////////////////////////////////////
 // Length type
 
