@@ -225,6 +225,11 @@ namespace detail
 		template <typename U, precision Q>
 		GLM_FUNC_DECL GLM_EXPLICIT tvec4(tvec4<U, Q> const & v);
 
+#		ifdef GLM_META_PROG_HELPERS
+		template <typename X, typename Y, typename Z = Y>
+		GLM_FUNC_DECL tvec4(X const& x, Y const& y, Z const& z = Z(0));
+#		endif
+
 		// -- Swizzle constructors --
 
 #		if GLM_HAS_ANONYMOUS_UNION && defined(GLM_SWIZZLE)

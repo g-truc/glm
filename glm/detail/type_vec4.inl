@@ -202,6 +202,14 @@ namespace glm
 		w(static_cast<T>(v.w))
 	{}
 
+#	ifdef GLM_META_PROG_HELPERS
+	template <typename T, precision P>
+	template <typename X, typename Y, typename Z>
+	GLM_FUNC_QUALIFIER tvec4<T, P>::tvec4(X const& x, Y const& y, Z const& z)
+		: x(static_cast<T>(x)), y(static_cast<T>(y)), z(static_cast<T>(z)), w(static_cast<T>(0))
+	{}
+#	endif
+
 	// -- Component accesses --
 
 #	ifdef GLM_FORCE_SIZE_FUNC
