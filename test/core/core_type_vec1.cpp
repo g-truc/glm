@@ -80,6 +80,17 @@ int test_vec1_ctor()
 		Error += std::is_copy_constructible<glm::vec1>::value ? 0 : 1;
 #	endif
 
+#	ifdef GLM_META_PROG_HELPERS
+	{
+		glm::vec1 a(1), b(1, 2), c(1, 2, 3), d(1, 2, 3, 4);
+
+		Error += (a == b) ? 0 : 1;
+		Error += (b == c) ? 0 : 1;
+		Error += (c == d) ? 0 : 1;
+		Error += (d == a) ? 0 : 1;
+	}
+#	endif
+
 /*
 #if GLM_HAS_INITIALIZER_LISTS
 	{
