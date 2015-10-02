@@ -140,6 +140,21 @@ namespace glm
 		z(static_cast<T>(v.z))
 	{}
 
+	// -- Metaprogramming helper constructors --
+#	ifdef GLM_META_PROG_HELPERS
+	template <typename T, precision P>
+	template <typename X, typename Y, typename Z, typename W>
+	GLM_FUNC_QUALIFIER tvec3<T, P>::tvec3(X const& x, Y const& y, Z const& z, W const&)
+		: x(static_cast<T>(x)), y(static_cast<T>(y)), z(static_cast<T>(z))
+	{}
+
+	template <typename T, precision P>
+	template <typename X, typename Y>
+	GLM_FUNC_QUALIFIER tvec3<T, P>::tvec3(X const& x, Y const& y)
+		: x(static_cast<T>(x)), y(static_cast<T>(y)), z(static_cast<T>(0))
+	{}
+#	endif
+
 	// -- Component accesses --
 
 #	ifdef GLM_FORCE_SIZE_FUNC

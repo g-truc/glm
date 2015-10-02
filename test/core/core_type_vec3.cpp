@@ -45,6 +45,16 @@ int test_vec3_ctor()
 {
 	int Error = 0;
 
+#	ifdef GLM_META_PROG_HELPERS
+	{
+		glm::vec3 a(1, 2, 0), b(1, 2, 0, 4), c(1, 2);
+
+		Error += (a == b) ? 0 : 1;
+		Error += (b == c) ? 0 : 1;
+		Error += (a == c) ? 0 : 1;
+	}
+#	endif
+
 #	if GLM_HAS_TRIVIAL_QUERIES
 	//	Error += std::is_trivially_default_constructible<glm::vec3>::value ? 0 : 1;
 	//	Error += std::is_trivially_copy_assignable<glm::vec3>::value ? 0 : 1;
