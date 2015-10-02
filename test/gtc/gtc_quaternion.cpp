@@ -177,39 +177,39 @@ int test_quat_slerp()
 	Error += glm::all(glm::epsilonEqual(id, id2, Epsilon)) ? 0 : 1;
 
 	// Testing a == 1
-	// Must be 90° rotation on Y : 0 0.7 0 0.7
+	// Must be 90deg rotation on Y : 0 0.7 0 0.7
 	glm::quat Y90rot2 = glm::slerp(id, Y90rot, 1.0f);
 	Error += glm::all(glm::epsilonEqual(Y90rot, Y90rot2, Epsilon)) ? 0 : 1;
 
 	// Testing standard, easy case
-	// Must be 45° rotation on Y : 0 0.38 0 0.92
+	// Must be 45deg rotation on Y : 0 0.38 0 0.92
 	glm::quat Y45rot1 = glm::slerp(id, Y90rot, 0.5f);
 
 	// Testing reverse case
-	// Must be 45° rotation on Y : 0 0.38 0 0.92
+	// Must be 45deg rotation on Y : 0 0.38 0 0.92
 	glm::quat Ym45rot2 = glm::slerp(Y90rot, id, 0.5f);
 
 	// Testing against full circle around the sphere instead of shortest path
-	// Must be 45° rotation on Y
-	// certainly not a 135° rotation
+	// Must be 45deg rotation on Y
+	// certainly not a 135deg rotation
 	glm::quat Y45rot3 = glm::slerp(id , -Y90rot, 0.5f);
 	float Y45angle3 = glm::angle(Y45rot3);
 	Error += glm::epsilonEqual(Y45angle3, glm::pi<float>() * 0.25f, Epsilon) ? 0 : 1;
 	Error += glm::all(glm::epsilonEqual(Ym45rot2, Y45rot3, Epsilon)) ? 0 : 1;
 
 	// Same, but inverted
-	// Must also be 45° rotation on Y :  0 0.38 0 0.92
+	// Must also be 45deg rotation on Y :  0 0.38 0 0.92
 	// -0 -0.38 -0 -0.92 is ok too
 	glm::quat Y45rot4 = glm::slerp(-Y90rot, id, 0.5f);
 	Error += glm::all(glm::epsilonEqual(Ym45rot2, -Y45rot4, Epsilon)) ? 0 : 1;
 
 	// Testing q1 = q2
-	// Must be 90° rotation on Y : 0 0.7 0 0.7
+	// Must be 90deg rotation on Y : 0 0.7 0 0.7
 	glm::quat Y90rot3 = glm::slerp(Y90rot, Y90rot, 0.5f);
 	Error += glm::all(glm::epsilonEqual(Y90rot, Y90rot3, Epsilon)) ? 0 : 1;
 
-	// Testing 180° rotation
-	// Must be 90° rotation on almost any axis that is on the XZ plane
+	// Testing 180deg rotation
+	// Must be 90deg rotation on almost any axis that is on the XZ plane
 	glm::quat XZ90rot = glm::slerp(id, -Y90rot, 0.5f);
 	float XZ90angle = glm::angle(XZ90rot); // Must be PI/4 = 0.78;
 	Error += glm::epsilonEqual(XZ90angle, glm::pi<float>() * 0.25f, Epsilon) ? 0 : 1;
@@ -297,6 +297,16 @@ int test_quat_mul_vec()
 int test_quat_ctr()
 {
 	int Error(0);
+
+#	ifdef GLM_META_PROG_HELPERS
+	{
+		glm::quat a(0, 1, 0, 0), b(0, 1, 0), c(0, 1);
+
+		Error += (a == b) ? 0 : 1;
+		Error += (b == c) ? 0 : 1;
+		Error += (a == c) ? 0 : 1;
+	}
+#	endif
 
 #	if GLM_HAS_TRIVIAL_QUERIES
 	//	Error += std::is_trivially_default_constructible<glm::quat>::value ? 0 : 1;

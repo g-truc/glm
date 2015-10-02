@@ -113,6 +113,10 @@ namespace detail
 		explicit fquatSIMD(
 			vec3 const & eulerAngles);
 
+#		ifdef GLM_META_PROG_HELPERS
+		template <typename W, typename X, typename Y = X>
+		GLM_FUNC_DECL fquatSIMD(W const& w, X const& x, Y const& y = Y());
+#		endif
 
 		//////////////////////////////////////
 		// Unary arithmetic operators
