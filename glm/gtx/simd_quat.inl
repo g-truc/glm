@@ -96,6 +96,13 @@ GLM_FUNC_QUALIFIER fquatSIMD::fquatSIMD(vec3 const & eulerAngles)
 		(s.x * c.y * c.z) - (c.x * s.y * s.z));
 }
 
+#	ifdef GLM_META_PROG_HELPERS
+	template <typename W, typename X, typename Y>
+	GLM_FUNC_QUALIFIER fquatSIMD::fquatSIMD(W const& w, X const& x, Y const& y)
+		: fquatSIMD(static_cast<float>(w), static_cast<float>(x), static_cast<float>(y), 0.0f)
+	{}
+#	endif
+
 
 //////////////////////////////////////
 // Unary arithmetic operators

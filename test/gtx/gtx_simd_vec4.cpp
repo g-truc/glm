@@ -29,22 +29,32 @@
 /// @author Christophe Riccio
 ///////////////////////////////////////////////////////////////////////////////////
 
+#define GLM_META_PROG_HELPERS
 #include <glm/glm.hpp>
 #include <glm/gtx/simd_vec4.hpp>
 #include <cstdio>
+
 
 #if(GLM_ARCH != GLM_ARCH_PURE)
 
 int main()
 {
+	int Error = 0;
 
 #ifdef GLM_META_PROG_HELPERS
 		assert(glm::simdVec4::components == glm::simdVec4::pure_type::components);
+	{
+		glm::simdVec4 a(1, 2, 0, 0), b(1, 2), c(1, 2, 0);
+
+		Error += (glm::vec4_cast(a) == glm::vec4_cast(b)) ? 0 : 1;
+		Error += (glm::vec4_cast(b) == glm::vec4_cast(c)) ? 0 : 1;
+		Error += (glm::vec4_cast(c) == glm::vec4_cast(a)) ? 0 : 1;
+	}
 #endif
 
 	glm::simdVec4 A1(0.0f, 0.1f, 0.2f, 0.3f);
 	glm::simdVec4 B1(0.4f, 0.5f, 0.6f, 0.7f);
-	glm::simdVec4 C1 = A1 + B1;
+	//glm::simdVec4 C1 = A1 + B1;
 	glm::simdVec4 D1 = A1.swizzle<glm::X, glm::Z, glm::Y, glm::W>();
 	glm::simdVec4 E1(glm::vec4(1.0f));
 	glm::vec4 F1 = glm::vec4_cast(E1);
@@ -61,7 +71,7 @@ int main()
 
 	glm::simdVec4 GNI(add0);
 
-	return 0;
+	return Error;
 }
 
 #else

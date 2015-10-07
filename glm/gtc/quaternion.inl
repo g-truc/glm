@@ -196,6 +196,14 @@ namespace detail
 		*this = quat_cast(m);
 	}
 
+#	ifdef GLM_META_PROG_HELPERS
+	template <typename T, precision P>
+	template <typename W, typename X, typename Y>
+	GLM_FUNC_QUALIFIER tquat<T, P>::tquat(W const& w, X const& x, Y const& y)
+		: x(static_cast<T>(x)), y(static_cast<T>(y)), z(static_cast<T>(0)), w(static_cast<T>(w))
+	{}
+#	endif
+
 #	if GLM_HAS_EXPLICIT_CONVERSION_OPERATORS
 	template <typename T, precision P>
 	GLM_FUNC_QUALIFIER tquat<T, P>::operator tmat3x3<T, P>()

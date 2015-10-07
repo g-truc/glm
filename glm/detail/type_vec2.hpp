@@ -140,6 +140,12 @@ namespace glm
 		template <typename U, precision Q>
 		GLM_FUNC_DECL GLM_EXPLICIT tvec2(tvec2<U, Q> const & v);
 
+		/// Extra helper constructors for metaprogramming
+#		ifdef GLM_META_PROG_HELPERS
+		template <typename X, typename Y, typename Z, typename W = Z>
+		GLM_FUNC_DECL tvec2(X const& x, Y const& y, Z const& z, W const& w = W(0));
+#		endif
+
 		// -- Swizzle constructors --
 
 #		if GLM_HAS_ANONYMOUS_UNION && defined(GLM_SWIZZLE)

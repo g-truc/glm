@@ -136,6 +136,11 @@ namespace detail
 		explicit fvec4SIMD(
 			vec4 const & v);
 
+#		ifdef GLM_META_PROG_HELPERS
+		template <typename X, typename Y, typename Z = Y>
+		GLM_FUNC_DECL fvec4SIMD(X const& x, Y const& y, Z const& z = Z(0));
+#		endif
+
 		////////////////////////////////////////
 		//// Conversion vector constructors
 

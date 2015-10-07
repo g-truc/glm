@@ -150,6 +150,15 @@ namespace glm
 		template <typename U, precision Q>
 		GLM_FUNC_DECL GLM_EXPLICIT tvec3(tvec3<U, Q> const & v);
 
+		/// Extra helper constructors for metaprogramming
+#		ifdef GLM_META_PROG_HELPERS
+		template <typename X, typename Y, typename Z, typename W>
+		GLM_FUNC_DECL tvec3(X const& x, Y const& y, Z const& z, W const&);
+
+		template <typename X, typename Y>
+		GLM_FUNC_DECL tvec3(X const& x, Y const& y);
+#		endif
+
 		// -- Swizzle constructors --
 
 #		if GLM_HAS_ANONYMOUS_UNION && defined(GLM_SWIZZLE)

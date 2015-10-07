@@ -107,6 +107,11 @@ namespace glm
 		GLM_FUNC_DECL explicit tquat(T const & s, tvec3<T, P> const & v);
 		GLM_FUNC_DECL tquat(T const & w, T const & x, T const & y, T const & z);
 
+#		ifdef GLM_META_PROG_HELPERS
+		template <typename W, typename X, typename Y = X>
+		GLM_FUNC_DECL tquat(W const& w, X const& x, Y const& y = Y());
+#		endif
+
 		// -- Conversion constructors --
 
 		template <typename U, precision Q>

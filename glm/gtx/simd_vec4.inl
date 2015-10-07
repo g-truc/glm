@@ -89,6 +89,12 @@ GLM_FUNC_QUALIFIER fvec4SIMD::fvec4SIMD(vec2 const & v1, vec2 const & v2) :
 	Data(_mm_set_ps(v2.y, v2.x, v1.y, v1.x))
 {}
 
+#	ifdef GLM_META_PROG_HELPERS
+	template <typename X, typename Y, typename Z>
+	GLM_FUNC_QUALIFIER fvec4SIMD::fvec4SIMD(X const& x, Y const& y, Z const& z)
+		: fvec4SIMD(static_cast<float>(x), static_cast<float>(y), static_cast<float>(z), 0.0f)
+	{}
+#	endif
 //GLM_FUNC_QUALIFIER fvec4SIMD::fvec4SIMD(ivec4SIMD const & v) :
 //	Data(_mm_cvtepi32_ps(v.Data))
 //{}
