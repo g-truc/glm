@@ -43,8 +43,13 @@
 #pragma once
 
 // Dependency:
+#include <cfloat>
+#include <limits>
 #include "../glm.hpp"
+#include "../geometric.hpp"
+#include "../gtc/epsilon.hpp"
 #include "../gtx/closest_point.hpp"
+#include "../gtx/vector_query.hpp"
 
 #if(defined(GLM_MESSAGES) && !defined(GLM_EXT_INCLUDED))
 #	pragma message("GLM: GLM_GTX_closest_point extension included")
@@ -106,6 +111,42 @@ namespace glm
 		genType & intersectionPosition1, genType & intersectionNormal1, 
 		genType & intersectionPosition2 = genType(), genType & intersectionNormal2 = genType());
 
+	//! Returns true if the two given line segments intersect.
+	//! From GLM_GTX_intersect extension
+	/// @param a, b The two endpoints of the first line segment (ab)
+	/// @param c, d The two endpoints of the second line segment (cd)
+	template <typename T, precision P = defaultp>
+	GLM_FUNC_DECL bool intersectLineLine(
+			tvec2<T, P> const& a,
+			tvec2<T, P> const& b,
+			tvec2<T, P> const& c,
+			tvec2<T, P> const& d
+			);
+
+	//! Returns true if the two given line segments intersect properly (i.e. they
+	/// both cross one another without merely touching).
+	//! From GLM_GTX_intersect extension
+	/// @param a, b The two endpoints of the first line segment (ab)
+	/// @param c, d The two endpoints of the second line segment (cd)
+	template <typename T, precision P = defaultp>
+	GLM_FUNC_DECL bool intersectLineLineProper(
+			tvec2<T, P> const& a,
+			tvec2<T, P> const& b,
+			tvec2<T, P> const& c,
+			tvec2<T, P> const& d
+			);
+
+	///! Returns true if the two given line segments properly overlap one another
+	/// (i.e. they're collinear and their intersection is a line segment of non-zero
+	/// length).
+	/// From GLM_GTX_intersect extension
+	template <typename T, precision P = defaultp>
+	GLM_FUNC_DECL bool overlapSegment(
+			tvec2<T, P> const& a,
+			tvec2<T, P> const& b,
+			tvec2<T, P> const& c,
+			tvec2<T, P> const& d
+			);
 	/// @}
 }//namespace glm
 

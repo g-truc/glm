@@ -7,10 +7,6 @@
 // File    : glm/gtx/intersect.inl
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include "../geometric.hpp"
-#include <cfloat>
-#include <limits>
-
 namespace glm
 {
 	template <typename genType>
@@ -213,5 +209,52 @@ namespace glm
 		intersectionPoint2 = point0 + dir * (t0 + t1);
 		intersectionNormal2 = (intersectionPoint2 - sphereCenter) / sphereRadius;
 		return true;
+	}
+
+	template <typename T, precision P>
+	GLM_FUNC_QUALIFIER bool intersectLineLine
+	(
+		tvec2<T, P> const& a,
+		tvec2<T, P> const& b,
+		tvec2<T, P> const& c,
+		tvec2<T, P> const& d
+	)
+	{
+		return (isLeft(a, b, c) ^ isLeft(a, b, d))
+				&& (isLeft(c, d, a) ^ isLeft(c, d, b));
+	}
+
+	template <typename T, precision P>
+	GLM_FUNC_QUALIFIER bool intersectLineLineProper
+	(
+		tvec2<T, P> const& a,
+		tvec2<T, P> const& b,
+		tvec2<T, P> const& c,
+		tvec2<T, P> const& d
+	)
+	{
+		T Epsilon = std::numeric_limits<T>::epsilon();
+		if (epsilonEqual(detail::area2<T, P, float>(a, b, c), 0.0f, Epsilon) ||
+				epsilonEqual(detail::area2<T, P, float>(a, b, d), 0.0f, Epsilon) ||
+				epsilonEqual(detail::area2<T, P, float>(c, d, a), 0.0f, Epsilon) ||
+				epsilonEqual(detail::area2<T, P, float>(c, d, b), 0.0f, Epsilon))
+			// If any triple of points here is collinear...
+			return false;
+
+		return intersectLineLine(a, b, c, d);
+	}
+
+	template <typename T, precision P>
+	GLM_FUNC_QUALIFIER bool overlapSegment
+	(
+		tvec2<T, P> const& a,
+		tvec2<T, P> const& b,
+		tvec2<T, P> const& c,
+		tvec2<T, P> const& d
+	)
+	{
+		return areCollinear(a, b, c) && areCollinear(a, b, d)
+				&& a != c && a != d
+				&& b != c && b != d;
 	}
 }//namespace glm

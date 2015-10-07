@@ -43,6 +43,9 @@
 
 // Dependency:
 #include "../glm.hpp"
+#include "../gtx/area.hpp"
+#include "../gtc/epsilon.hpp"
+#include "../gtc/constants.hpp"
 #include <cfloat>
 #include <limits>
 
@@ -59,7 +62,12 @@ namespace glm
 	/// @see gtx_vector_query extensions.
 	template <typename T, precision P, template <typename, precision> class vecType>
 	GLM_FUNC_DECL bool areCollinear(vecType<T, P> const & v0, vecType<T, P> const & v1, T const & epsilon);
-		
+
+	//! Returns true if the three given points are collinear.
+	/// @see gtx_vector_query extensions
+	template<typename T, precision P = defaultp>
+	GLM_FUNC_DECL bool areCollinear(tvec2<T, P> const& a, tvec2<T, P> const& b, tvec2<T, P> const& c);
+
 	//! Check whether two vectors are orthogonals.
 	/// @see gtx_vector_query extensions.
 	template <typename T, precision P, template <typename, precision> class vecType>
@@ -85,6 +93,21 @@ namespace glm
 	template <typename T, precision P, template <typename, precision> class vecType>
 	GLM_FUNC_DECL bool areOrthonormal(vecType<T, P> const & v0, vecType<T, P> const & v1, T const & epsilon);
 
+	//! Returns true if the given vector is to the left of the given oriented line
+	/// segment, with respect to its direction.
+	/// @param a, b The two vectors that make up the line segment to test against
+	/// @param v The point to test against the line segment
+	/// @see gtx_vector_query extensions
+	template<typename T, precision P>
+	GLM_FUNC_DECL bool isLeft(tvec2<T, P> const& a, tvec2<T, P> const& b, tvec2<T, P> const& v);
+
+	//! Returns true if the given vector is to the left of or on the given oriented
+	/// line segment, with respect to its direction.
+	/// @param a, b The two vectors that make up the line segment to test against
+	/// @param v The point to test against the line segment
+	/// @see gtx_vector_query extensions
+	template<typename T, precision P>
+	GLM_FUNC_DECL bool isLeftOrOn(tvec2<T, P> const& a, tvec2<T, P> const& b, tvec2<T, P> const& v);
 	/// @}
 }// namespace glm
 

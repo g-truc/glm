@@ -34,6 +34,8 @@
 #include <glm/vec4.hpp>
 #include <glm/gtx/vector_query.hpp>
 
+using namespace glm;
+
 int test_areCollinear()
 {
 	int Error(0);
@@ -51,6 +53,16 @@ int test_areCollinear()
 	{
 		bool TestA = glm::areCollinear(glm::vec4(-1), glm::vec4(1), 0.00001f);
 		Error += TestA ? 0 : 1;
+	}
+
+	{
+		bool TestA = glm::areCollinear(glm::vec2(0, 0), glm::vec2(1, 1), glm::vec2(2, 2));
+		Error += TestA ? 0 : 1;
+	}
+
+	{
+		bool TestA = glm::areCollinear(glm::vec2(0, 0), glm::vec2(1, 1), glm::vec2(4, 2));
+		Error += !TestA ? 0 : 1;
 	}
 
 	return Error;
@@ -96,6 +108,31 @@ int test_areOrthonormal()
 	return Error;
 }
 
+int test_isLeft()
+{
+	int Error(0);
+
+	Error += isLeft(vec2(1, 1), vec2(2.5, 2), vec2(1.305, 3.062)) ? 0 : 1;
+	Error += isLeft(vec2(1.278, 1.176), vec2(0.734, 2.257), vec2(0.5, 1.5)) ? 0 : 1;
+	Error += isLeft(vec2(1.183, 1.326), vec2(0.923, 0.695), vec2(2, 0)) ? 0 : 1;
+	Error += !isLeft(vec2(0.923, 0.695), vec2(1.183, 1.326), vec2(2, 0)) ? 0 : 1;
+	Error += isLeft(vec2(0, 0), vec2(1, 0), vec2(-1, 1)) ? 0 : 1;
+	return Error;
+}
+
+int test_isLeftOrOn()
+{
+	int Error(0);
+
+	Error += isLeftOrOn(vec2(0, 2), vec2(2, 0), vec2(1, 1)) ? 0 : 1;
+	Error += isLeftOrOn(vec2(0, 2), vec2(2, 0), vec2(2, 2)) ? 0 : 1;
+	Error += isLeftOrOn(ivec2(0, 2), ivec2(2, 0), ivec2(0, 5)) ? 0 : 1;
+	Error += isLeftOrOn(dvec2(0, 2), dvec2(2, 0), dvec2(-1, 5)) ? 0 : 1;
+	Error += !isLeftOrOn(vec2(0, 2), vec2(2, 0), vec2(0, 0)) ? 0 : 1;
+
+	return Error;
+}
+
 int main()
 {
 	int Error(0);
@@ -105,6 +142,8 @@ int main()
 	Error += test_isNormalized();
 	Error += test_isNull();
 	Error += test_areOrthonormal();
+	Error += test_isLeft();
+	Error += test_isLeftOrOn();
 
 	return Error;
 }
