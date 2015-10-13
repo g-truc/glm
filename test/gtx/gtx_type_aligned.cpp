@@ -47,7 +47,7 @@ int test_decl()
 			glm::vec4 B;
 		};
 
-		printf("vec4 - Aligned: %ld, unaligned: %ld\n", sizeof(S1), sizeof(S2));
+		printf("vec4 - Aligned: %d, unaligned: %d\n", static_cast<int>(sizeof(S1)), static_cast<int>(sizeof(S2)));
 
 		Error += sizeof(S1) >= sizeof(S2) ? 0 : 1;
 	}
@@ -65,7 +65,7 @@ int test_decl()
 			glm::aligned_vec3 B;
 		};
 
-		printf("vec3: %ld, aligned: %ld\n", sizeof(S1), sizeof(S2));
+		printf("vec3 - Aligned: %d, unaligned: %d\n", static_cast<int>(sizeof(S1)), static_cast<int>(sizeof(S2)));
 
 		Error += sizeof(S1) <= sizeof(S2) ? 0 : 1;
 	}
@@ -83,7 +83,7 @@ int test_decl()
 			glm::vec4 B;
 		};
 
-		printf("vec4 - Aligned: %ld, unaligned: %ld\n", sizeof(S1), sizeof(S2));
+		printf("vec4 - Aligned: %d, unaligned: %d\n", static_cast<int>(sizeof(S1)), static_cast<int>(sizeof(S2)));
 
 		Error += sizeof(S1) >= sizeof(S2) ? 0 : 1;
 	}
@@ -101,7 +101,7 @@ int test_decl()
 			glm::dvec4 B;
 		};
 
-		printf("dvec4 - Aligned: %ld, unaligned: %ld\n", sizeof(S1), sizeof(S2));
+		printf("dvec4 - Aligned: %d, unaligned: %d\n", static_cast<int>(sizeof(S1)), static_cast<int>(sizeof(S2)));
 
 		Error += sizeof(S1) >= sizeof(S2) ? 0 : 1;
 	}

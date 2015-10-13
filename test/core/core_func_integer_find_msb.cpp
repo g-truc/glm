@@ -342,7 +342,7 @@ int main()
 		0x4000000,5, 0x8000000,4, 0x0FFFFFFF,4, 0x10000000,3,
 		0x3000FFFF,2, 0x50003333,1, 0x7FFFFFFF,1, 0x80000000,0,
 		0xFFFFFFFF,0};
-	std::size_t const Count = 10000000;
+	std::size_t const Count = 1000;
 
 	n = sizeof(test)/4;
 

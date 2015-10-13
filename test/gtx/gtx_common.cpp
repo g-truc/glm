@@ -40,7 +40,7 @@ namespace fmod_
 	template <typename genType>
 	GLM_FUNC_QUALIFIER genType modTrunc(genType a, genType b)
 	{
-		return a - b * trunc(a / b);
+		return a - b * glm::trunc(a / b);
 	}
 
 	int test()

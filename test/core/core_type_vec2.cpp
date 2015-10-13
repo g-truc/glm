@@ -29,6 +29,7 @@
 /// @author Christophe Riccio
 ///////////////////////////////////////////////////////////////////////////////////
 
+#define GLM_STATIC_CONST_MEMBERS
 #if !(GLM_COMPILER & GLM_COMPILER_GCC)
 #	define GLM_META_PROG_HELPERS
 #endif
@@ -39,6 +40,7 @@
 #if GLM_HAS_TRIVIAL_QUERIES
 #	include <type_traits>
 #endif
+
 
 int test_vec2_operators()
 {
@@ -229,6 +231,12 @@ int test_vec2_ctor()
 {
 	int Error = 0;
 
+	{
+		glm::vec2 A(1);
+		glm::vec2 B(A);
+		Error += A == B ? 0 : 1;
+	}
+
 #	if GLM_HAS_TRIVIAL_QUERIES
 	//	Error += std::is_trivially_default_constructible<glm::vec2>::value ? 0 : 1;
 	//	Error += std::is_trivially_copy_assignable<glm::vec2>::value ? 0 : 1;
@@ -325,6 +333,17 @@ int test_operator_increment()
 	return Error;
 }
 
+int test_vec2_static_const() {
+	int Error(0);
+
+	Error += (glm::ivec2(0, 0) == glm::ivec2::ZERO) ? 0 : 1;
+	Error += (glm::vec2(1, 0) == glm::vec2::X) ? 0 : 1;
+	Error += (glm::bvec2(false, true) == glm::bvec2::Y) ? 0 : 1;
+	Error += (glm::dvec2(1, 1) == glm::dvec2::XY) ? 0 : 1;
+
+	return Error;
+}
+
 int main()
 {
 	int Error = 0;
@@ -337,6 +356,7 @@ int main()
 		assert(glm::vec2::components == 2);
 #	endif
 
+	Error += test_vec2_static_const();
 	Error += test_vec2_size();
 	Error += test_vec2_ctor();
 	Error += test_vec2_operators();

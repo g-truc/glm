@@ -996,11 +996,11 @@ namespace sign
 		return Error;
 	}
 
-	int perf_rand()
+	int perf_rand(std::size_t Samples)
 	{
 		int Error = 0;
 
-		std::size_t const Count = 100000000;
+		std::size_t const Count = Samples;
 		std::vector<glm::int32> Input, Output;
 		Input.resize(Count);
 		Output.resize(Count);
@@ -1049,11 +1049,11 @@ namespace sign
 		return Error;
 	}
 
-	int perf_linear()
+	int perf_linear(std::size_t Samples)
 	{
 		int Error = 0;
 
-		std::size_t const Count = 10000000;
+		std::size_t const Count = Samples;
 		std::vector<glm::int32> Input, Output;
 		Input.resize(Count);
 		Output.resize(Count);
@@ -1096,11 +1096,11 @@ namespace sign
 		return Error;
 	}
 
-	int perf_linear_cal()
+	int perf_linear_cal(std::size_t Samples)
 	{
 		int Error = 0;
 
-		glm::uint32 const Count = 10000000;
+		glm::int32 const Count = static_cast<glm::int32>(Samples);
 
 		std::clock_t Timestamp0 = std::clock();
 		glm::int32 Sum = 0;
@@ -1141,13 +1141,13 @@ namespace sign
 		return Error;
 	}
 
-	int perf()
+	int perf(std::size_t Samples)
 	{
 		int Error(0);
 
-		Error += perf_linear_cal();
-		Error += perf_linear();
-		Error += perf_rand();
+		Error += perf_linear_cal(Samples);
+		Error += perf_linear(Samples);
+		Error += perf_rand(Samples);
 
 		return Error;
 	}
@@ -1173,7 +1173,8 @@ int main()
 	Error += isinf_::test();
 
 #	ifdef NDEBUG
-		Error += sign::perf();
+		std::size_t Samples = 1000;
+		Error += sign::perf(Samples);
 #	endif
 
 	return Error;

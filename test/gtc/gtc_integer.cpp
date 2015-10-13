@@ -83,10 +83,9 @@ namespace log2_
 		return Error;
 	}
 
-	int perf()
+	int perf(std::size_t Count)
 	{
 		int Error = 0;
-		std::size_t const Count(100000000);
 
 		{
 			std::vector<int> Result;
@@ -218,7 +217,8 @@ int main()
 	Error += ::log2_::test();
 
 #	ifdef NDEBUG
-		Error += ::log2_::perf();
+		std::size_t const Samples(1000);
+		Error += ::log2_::perf(Samples);
 #	endif//NDEBUG
 
 	return Error;

@@ -249,6 +249,9 @@ namespace glm
 		T cosTheta = dot(orig, dest);
 		tvec3<T, P> rotationAxis;
 
+		if(cosTheta >= static_cast<T>(1) - epsilon<T>())
+			return quat();
+
 		if(cosTheta < static_cast<T>(-1) + epsilon<T>())
 		{
 			// special case when vectors in opposite directions :

@@ -186,7 +186,6 @@ namespace glm
 		T near,
 		T far);
 
-
 	/// Creates a matrix for a right handed, symetric perspective-view frustum.
 	/// 
 	/// @param fovy Specifies the field of view angle, in degrees, in the y direction. Expressed in radians.

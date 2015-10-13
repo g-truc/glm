@@ -32,6 +32,72 @@
 
 namespace glm
 {
+
+#	ifdef GLM_STATIC_CONST_MEMBERS
+	template <typename T, precision P>
+	const tvec4<T, P> tvec4<T, P>::ZERO
+			(static_cast<T>(0), static_cast<T>(0), static_cast<T>(0), static_cast<T>(0));
+
+	template <typename T, precision P>
+	const tvec4<T, P> tvec4<T, P>::X
+			(static_cast<T>(1), static_cast<T>(0), static_cast<T>(0), static_cast<T>(0));
+
+	template <typename T, precision P>
+	const tvec4<T, P> tvec4<T, P>::Y
+			(static_cast<T>(0), static_cast<T>(1), static_cast<T>(0), static_cast<T>(0));
+
+	template <typename T, precision P>
+	const tvec4<T, P> tvec4<T, P>::Z
+			(static_cast<T>(0), static_cast<T>(0), static_cast<T>(1), static_cast<T>(0));
+
+	template <typename T, precision P>
+	const tvec4<T, P> tvec4<T, P>::W
+			(static_cast<T>(0), static_cast<T>(0), static_cast<T>(0), static_cast<T>(1));
+
+	template <typename T, precision P>
+	const tvec4<T, P> tvec4<T, P>::XY
+			(static_cast<T>(1), static_cast<T>(1), static_cast<T>(0), static_cast<T>(0));
+
+	template <typename T, precision P>
+	const tvec4<T, P> tvec4<T, P>::XZ
+			(static_cast<T>(1), static_cast<T>(0), static_cast<T>(1), static_cast<T>(0));
+
+	template <typename T, precision P>
+	const tvec4<T, P> tvec4<T, P>::XW
+			(static_cast<T>(1), static_cast<T>(0), static_cast<T>(0), static_cast<T>(1));
+
+	template <typename T, precision P>
+	const tvec4<T, P> tvec4<T, P>::YZ
+			(static_cast<T>(0), static_cast<T>(1), static_cast<T>(1), static_cast<T>(0));
+
+	template <typename T, precision P>
+	const tvec4<T, P> tvec4<T, P>::YW
+			(static_cast<T>(0), static_cast<T>(1), static_cast<T>(0), static_cast<T>(1));
+
+	template <typename T, precision P>
+	const tvec4<T, P> tvec4<T, P>::ZW
+			(static_cast<T>(0), static_cast<T>(0), static_cast<T>(1), static_cast<T>(1));
+
+	template <typename T, precision P>
+	const tvec4<T, P> tvec4<T, P>::XYZ
+			(static_cast<T>(1), static_cast<T>(1), static_cast<T>(1), static_cast<T>(0));
+
+	template <typename T, precision P>
+	const tvec4<T, P> tvec4<T, P>::XYW
+			(static_cast<T>(1), static_cast<T>(1), static_cast<T>(0), static_cast<T>(1));
+
+	template <typename T, precision P>
+	const tvec4<T, P> tvec4<T, P>::XZW
+			(static_cast<T>(1), static_cast<T>(0), static_cast<T>(1), static_cast<T>(1));
+
+	template <typename T, precision P>
+	const tvec4<T, P> tvec4<T, P>::YZW
+			(static_cast<T>(0), static_cast<T>(1), static_cast<T>(1), static_cast<T>(1));
+
+	template <typename T, precision P>
+	const tvec4<T, P> tvec4<T, P>::XYZW
+			(static_cast<T>(1), static_cast<T>(1), static_cast<T>(1), static_cast<T>(1));
+#	endif
 	// -- Implicit basic constructors --
 
 #	if !GLM_HAS_DEFAULTED_FUNCTIONS || !defined(GLM_FORCE_NO_CTOR_INIT)
@@ -63,8 +129,8 @@ namespace glm
 	{}
 
 	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tvec4<T, P>::tvec4(T s)
-		: x(s), y(s), z(s), w(s)
+	GLM_FUNC_QUALIFIER tvec4<T, P>::tvec4(T scalar)
+		: x(scalar), y(scalar), z(scalar), w(scalar)
 	{}
 
 	template <typename T, precision P>
@@ -341,12 +407,12 @@ namespace glm
 
 	template <typename T, precision P>
 	template <typename U>
-	GLM_FUNC_QUALIFIER tvec4<T, P> & tvec4<T, P>::operator*=(U s)
+	GLM_FUNC_QUALIFIER tvec4<T, P> & tvec4<T, P>::operator*=(U v)
 	{
-		this->x *= static_cast<T>(s);
-		this->y *= static_cast<T>(s);
-		this->z *= static_cast<T>(s);
-		this->w *= static_cast<T>(s);
+		this->x *= static_cast<T>(v);
+		this->y *= static_cast<T>(v);
+		this->z *= static_cast<T>(v);
+		this->w *= static_cast<T>(v);
 		return *this;
 	}
 
@@ -374,12 +440,12 @@ namespace glm
 
 	template <typename T, precision P>
 	template <typename U> 
-	GLM_FUNC_QUALIFIER tvec4<T, P> & tvec4<T, P>::operator/=(U s)
+	GLM_FUNC_QUALIFIER tvec4<T, P> & tvec4<T, P>::operator/=(U v)
 	{
-		this->x /= static_cast<T>(s);
-		this->y /= static_cast<T>(s);
-		this->z /= static_cast<T>(s);
-		this->w /= static_cast<T>(s);
+		this->x /= static_cast<T>(v);
+		this->y /= static_cast<T>(v);
+		this->z /= static_cast<T>(v);
+		this->w /= static_cast<T>(v);
 		return *this;
 	}
 
@@ -780,43 +846,43 @@ namespace glm
 	// -- Binary bit operators --
 
 	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tvec4<T, P> operator%(tvec4<T, P> const & v, T s)
+	GLM_FUNC_QUALIFIER tvec4<T, P> operator%(tvec4<T, P> const & v, T scalar)
 	{
 		return tvec4<T, P>(
-			v.x % s,
-			v.y % s,
-			v.z % s,
-			v.w % s);
+			v.x % scalar,
+			v.y % scalar,
+			v.z % scalar,
+			v.w % scalar);
 	}
 
 	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tvec4<T, P> operator%(tvec4<T, P> const & v, tvec1<T, P> const & s)
+	GLM_FUNC_QUALIFIER tvec4<T, P> operator%(tvec4<T, P> const & v, tvec1<T, P> const & scalar)
 	{
 		return tvec4<T, P>(
-			v.x % s.x,
-			v.y % s.x,
-			v.z % s.x,
-			v.w % s.x);
+			v.x % scalar.x,
+			v.y % scalar.x,
+			v.z % scalar.x,
+			v.w % scalar.x);
 	}
 
 	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tvec4<T, P> operator%(T s, tvec4<T, P> const & v)
+	GLM_FUNC_QUALIFIER tvec4<T, P> operator%(T scalar, tvec4<T, P> const & v)
 	{
 		return tvec4<T, P>(
-			s % v.x,
-			s % v.y,
-			s % v.z,
-			s % v.w);
+			scalar % v.x,
+			scalar % v.y,
+			scalar % v.z,
+			scalar % v.w);
 	}
 
 	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tvec4<T, P> operator%(tvec1<T, P> const & s, tvec4<T, P> const & v)
+	GLM_FUNC_QUALIFIER tvec4<T, P> operator%(tvec1<T, P> const & scalar, tvec4<T, P> const & v)
 	{
 		return tvec4<T, P>(
-			s.x % v.x,
-			s.x % v.y,
-			s.x % v.z,
-			s.x % v.w);
+			scalar.x % v.x,
+			scalar.x % v.y,
+			scalar.x % v.z,
+			scalar.x % v.w);
 	}
 
 	template <typename T, precision P>
@@ -830,43 +896,43 @@ namespace glm
 	}
 
 	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tvec4<T, P> operator&(tvec4<T, P> const & v, T s)
+	GLM_FUNC_QUALIFIER tvec4<T, P> operator&(tvec4<T, P> const & v, T scalar)
 	{
 		return tvec4<T, P>(
-			v.x & s,
-			v.y & s,
-			v.z & s,
-			v.w & s);
+			v.x & scalar,
+			v.y & scalar,
+			v.z & scalar,
+			v.w & scalar);
 	}
 
 	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tvec4<T, P> operator&(tvec4<T, P> const & v, tvec1<T, P> const & s)
+	GLM_FUNC_QUALIFIER tvec4<T, P> operator&(tvec4<T, P> const & v, tvec1<T, P> const & scalar)
 	{
 		return tvec4<T, P>(
-			v.x & s.x,
-			v.y & s.x,
-			v.z & s.x,
-			v.w & s.x);
+			v.x & scalar.x,
+			v.y & scalar.x,
+			v.z & scalar.x,
+			v.w & scalar.x);
 	}
 
 	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tvec4<T, P> operator&(T s, tvec4<T, P> const & v)
+	GLM_FUNC_QUALIFIER tvec4<T, P> operator&(T scalar, tvec4<T, P> const & v)
 	{
 		return tvec4<T, P>(
-			s & v.x,
-			s & v.y,
-			s & v.z,
-			s & v.w);
+			scalar & v.x,
+			scalar & v.y,
+			scalar & v.z,
+			scalar & v.w);
 	}
 
 	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tvec4<T, P> operator&(tvec1<T, P> const & s, tvec4<T, P> const & v)
+	GLM_FUNC_QUALIFIER tvec4<T, P> operator&(tvec1<T, P> const & scalar, tvec4<T, P> const & v)
 	{
 		return tvec4<T, P>(
-			s.x & v.x,
-			s.x & v.y,
-			s.x & v.z,
-			s.x & v.w);
+			scalar.x & v.x,
+			scalar.x & v.y,
+			scalar.x & v.z,
+			scalar.x & v.w);
 	}
 
 	template <typename T, precision P>
@@ -880,43 +946,43 @@ namespace glm
 	}
 
 	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tvec4<T, P> operator|(tvec4<T, P> const & v, T s)
+	GLM_FUNC_QUALIFIER tvec4<T, P> operator|(tvec4<T, P> const & v, T scalar)
 	{
 		return tvec4<T, P>(
-			v.x | s,
-			v.y | s,
-			v.z | s,
-			v.w | s);
+			v.x | scalar,
+			v.y | scalar,
+			v.z | scalar,
+			v.w | scalar);
 	}
 
 	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tvec4<T, P> operator|(tvec4<T, P> const & v, tvec1<T, P> const & s)
+	GLM_FUNC_QUALIFIER tvec4<T, P> operator|(tvec4<T, P> const & v, tvec1<T, P> const & scalar)
 	{
 		return tvec4<T, P>(
-			v.x | s.x,
-			v.y | s.x,
-			v.z | s.x,
-			v.w | s.x);
+			v.x | scalar.x,
+			v.y | scalar.x,
+			v.z | scalar.x,
+			v.w | scalar.x);
 	}
 
 	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tvec4<T, P> operator|(T s, tvec4<T, P> const & v)
+	GLM_FUNC_QUALIFIER tvec4<T, P> operator|(T scalar, tvec4<T, P> const & v)
 	{
 		return tvec4<T, P>(
-			s | v.x,
-			s | v.y,
-			s | v.z,
-			s | v.w);
+			scalar | v.x,
+			scalar | v.y,
+			scalar | v.z,
+			scalar | v.w);
 	}
 
 	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tvec4<T, P> operator|(tvec1<T, P> const & s, tvec4<T, P> const & v)
+	GLM_FUNC_QUALIFIER tvec4<T, P> operator|(tvec1<T, P> const & scalar, tvec4<T, P> const & v)
 	{
 		return tvec4<T, P>(
-			s.x | v.x,
-			s.x | v.y,
-			s.x | v.z,
-			s.x | v.w);
+			scalar.x | v.x,
+			scalar.x | v.y,
+			scalar.x | v.z,
+			scalar.x | v.w);
 	}
 
 	template <typename T, precision P>
@@ -930,23 +996,23 @@ namespace glm
 	}
 
 	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tvec4<T, P> operator^(tvec4<T, P> const & v, T s)
+	GLM_FUNC_QUALIFIER tvec4<T, P> operator^(tvec4<T, P> const & v, T scalar)
 	{
 		return tvec4<T, P>(
-			v.x ^ s,
-			v.y ^ s,
-			v.z ^ s,
-			v.w ^ s);
+			v.x ^ scalar,
+			v.y ^ scalar,
+			v.z ^ scalar,
+			v.w ^ scalar);
 	}
 
 	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tvec4<T, P> operator^(tvec4<T, P> const & v, tvec1<T, P> const & s)
+	GLM_FUNC_QUALIFIER tvec4<T, P> operator^(tvec4<T, P> const & v, tvec1<T, P> const & scalar)
 	{
 		return tvec4<T, P>(
-			v.x ^ s.x,
-			v.y ^ s.x,
-			v.z ^ s.x,
-			v.w ^ s.x);
+			v.x ^ scalar.x,
+			v.y ^ scalar.x,
+			v.z ^ scalar.x,
+			v.w ^ scalar.x);
 	}
 
 	template <typename T, precision P>
@@ -960,13 +1026,13 @@ namespace glm
 	}
 
 	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tvec4<T, P> operator^(tvec1<T, P> const & s, tvec4<T, P> const & v)
+	GLM_FUNC_QUALIFIER tvec4<T, P> operator^(tvec1<T, P> const & scalar, tvec4<T, P> const & v)
 	{
 		return tvec4<T, P>(
-			s.x ^ v.x,
-			s.x ^ v.y,
-			s.x ^ v.z,
-			s.x ^ v.w);
+			scalar.x ^ v.x,
+			scalar.x ^ v.y,
+			scalar.x ^ v.z,
+			scalar.x ^ v.w);
 	}
 
 	template <typename T, precision P>
@@ -990,13 +1056,13 @@ namespace glm
 	}
 
 	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tvec4<T, P> operator<<(tvec4<T, P> const & v, tvec1<T, P> const & s)
+	GLM_FUNC_QUALIFIER tvec4<T, P> operator<<(tvec4<T, P> const & v, tvec1<T, P> const & scalar)
 	{
 		return tvec4<T, P>(
-			v.x << s.x,
-			v.y << s.x,
-			v.z << s.x,
-			v.w << s.x);
+			v.x << scalar.x,
+			v.y << scalar.x,
+			v.z << scalar.x,
+			v.w << scalar.x);
 	}
 
 	template <typename T, precision P>
@@ -1010,13 +1076,13 @@ namespace glm
 	}
 
 	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tvec4<T, P> operator<<(tvec1<T, P> const & s, tvec4<T, P> const & v)
+	GLM_FUNC_QUALIFIER tvec4<T, P> operator<<(tvec1<T, P> const & scalar, tvec4<T, P> const & v)
 	{
 		return tvec4<T, P>(
-			s.x << v.x,
-			s.x << v.y,
-			s.x << v.z,
-			s.x << v.w);
+			scalar.x << v.x,
+			scalar.x << v.y,
+			scalar.x << v.z,
+			scalar.x << v.w);
 	}
 
 	template <typename T, precision P>
@@ -1040,13 +1106,13 @@ namespace glm
 	}
 
 	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tvec4<T, P> operator>>(tvec4<T, P> const & v, tvec1<T, P> const & s)
+	GLM_FUNC_QUALIFIER tvec4<T, P> operator>>(tvec4<T, P> const & v, tvec1<T, P> const & scalar)
 	{
 		return tvec4<T, P>(
-			v.x >> s.x,
-			v.y >> s.x,
-			v.z >> s.x,
-			v.w >> s.x);
+			v.x >> scalar.x,
+			v.y >> scalar.x,
+			v.z >> scalar.x,
+			v.w >> scalar.x);
 	}
 
 	template <typename T, precision P>
@@ -1060,13 +1126,13 @@ namespace glm
 	}
 
 	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tvec4<T, P> operator>>(tvec1<T, P> const & s, tvec4<T, P> const & v)
+	GLM_FUNC_QUALIFIER tvec4<T, P> operator>>(tvec1<T, P> const & scalar, tvec4<T, P> const & v)
 	{
 		return tvec4<T, P>(
-			s.x >> v.x,
-			s.x >> v.y,
-			s.x >> v.z,
-			s.x >> v.w);
+			scalar.x >> v.x,
+			scalar.x >> v.y,
+			scalar.x >> v.z,
+			scalar.x >> v.w);
 	}
 
 	template <typename T, precision P>

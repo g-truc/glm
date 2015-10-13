@@ -29,6 +29,8 @@
 /// @author Christophe Riccio
 ///////////////////////////////////////////////////////////////////////////////////
 
+#define GLM_STATIC_CONST_MEMBERS
+#define GLM_SIMD
 #include <glm/gtc/epsilon.hpp>
 #include <glm/matrix.hpp>
 #include <glm/mat2x2.hpp>
@@ -282,6 +284,15 @@ int perf_mul()
 	return Error;
 }
 
+int test_static_const() {
+	int Error(0);
+
+	Error += glm::mat4x4(1) == glm::mat4x4::IDENTITY ? 0 : 1;
+	Error += glm::mat4x4(0) == glm::mat4x4::ZERO ? 0 : 1;
+
+	return Error;
+}
+
 namespace cast
 {
 	template <typename genType>
@@ -338,6 +349,7 @@ int main()
 
 	Error += cast::test();
 	Error += test_ctr();
+	Error += test_static_const();
 	Error += test_inverse_dmat4x4();
 	Error += test_inverse_mat4x4();
 	Error += test_operators();

@@ -29,6 +29,7 @@
 /// @author Christophe Riccio
 ///////////////////////////////////////////////////////////////////////////////////
 
+#define GLM_STATIC_CONST_MEMBERS
 #include <glm/vector_relational.hpp>
 #include <glm/mat2x2.hpp>
 #include <glm/mat2x3.hpp>
@@ -106,6 +107,15 @@ int test_ctr()
 	return Error;
 }
 
+int test_static_const() {
+	int Error(0);
+
+	Error += glm::mat3x4(1) == glm::mat3x4::IDENTITY ? 0 : 1;
+	Error += glm::mat3x4(0) == glm::mat3x4::ZERO ? 0 : 1;
+
+	return Error;
+}
+
 namespace cast
 {
 	template <typename genType>
@@ -151,6 +161,7 @@ int main()
 #endif
 
 	Error += cast::test();
+	Error += test_static_const();
 	Error += test_ctr();
 	Error += test_operators();
 

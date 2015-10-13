@@ -31,6 +31,7 @@
 #include <glm/gtc/round.hpp>
 #include <glm/gtc/type_precision.hpp>
 #include <glm/gtc/vec1.hpp>
+#include <glm/gtc/epsilon.hpp>
 #include <vector>
 #include <ctime>
 #include <cstdio>
@@ -293,6 +294,86 @@ namespace ceilPowerOfTwo
 	}
 }//namespace ceilPowerOfTwo
 
+namespace floorMultiple
+{
+	template <typename genType>
+	struct type
+	{
+		genType		Source;
+		genType		Multiple;
+		genType		Return;
+		genType		Epsilon;
+	};
+
+	int test_float()
+	{
+		type<glm::float64> const Data[] = 
+		{
+			{3.4, 0.3, 3.3, 0.0001},
+			{-1.4, 0.3, -1.5, 0.0001},
+		};
+
+		int Error(0);
+		
+		for(std::size_t i = 0, n = sizeof(Data) / sizeof(type<glm::float64>); i < n; ++i)
+		{
+			glm::float64 Result = glm::floorMultiple(Data[i].Source, Data[i].Multiple);
+			Error += glm::epsilonEqual(Data[i].Return, Result, Data[i].Epsilon) ? 0 : 1;
+		}
+
+		return Error;
+	}
+
+	int test()
+	{
+		int Error(0);
+
+		Error += test_float();
+
+		return Error;
+	}
+}//namespace floorMultiple
+
+namespace ceilMultiple
+{
+	template <typename genType>
+	struct type
+	{
+		genType		Source;
+		genType		Multiple;
+		genType		Return;
+		genType		Epsilon;
+	};
+
+	int test_float()
+	{
+		type<glm::float64> const Data[] = 
+		{
+			{3.4, 0.3, 3.6, 0.0001},
+			{-1.4, 0.3, -1.2, 0.0001},
+		};
+
+		int Error(0);
+		
+		for(std::size_t i = 0, n = sizeof(Data) / sizeof(type<glm::float64>); i < n; ++i)
+		{
+			glm::float64 Result = glm::ceilMultiple(Data[i].Source, Data[i].Multiple);
+			Error += glm::epsilonEqual(Data[i].Return, Result, Data[i].Epsilon) ? 0 : 1;
+		}
+
+		return Error;
+	}
+
+	int test()
+	{
+		int Error(0);
+
+		Error += test_float();
+
+		return Error;
+	}
+}//namespace ceilMultiple
+
 int main()
 {
 	int Error(0);
@@ -303,6 +384,9 @@ int main()
 #	ifdef NDEBUG
 		Error += ceilPowerOfTwo::perf();
 #	endif//NDEBUG
+
+	Error += floorMultiple::test();
+	Error += ceilMultiple::test();
 
 	return Error;
 }

@@ -44,18 +44,18 @@
 
 namespace fastCos
 {
-	int perf()
+	int perf(bool NextFloat)
 	{
 		const float begin = -glm::pi<float>();
 		const float end = glm::pi<float>();
 		float result = 0.f;
 
 		const std::clock_t timestamp1 = std::clock();
-		for(float i = begin; i < end; i = glm::next_float(i))
+		for(float i = begin; i < end; i = NextFloat ? glm::next_float(i) : i += 0.1f)
 			result = glm::fastCos(i);
 
 		const std::clock_t timestamp2 = std::clock();
-		for(float i = begin; i < end; i = glm::next_float(i))
+		for(float i = begin; i < end; i = NextFloat ? glm::next_float(i) : i += 0.1f)
 			result = glm::cos(i);
 
 		const std::clock_t timestamp3 = std::clock();
@@ -64,7 +64,7 @@ namespace fastCos
 		std::printf("fastCos Time %d clocks\n", static_cast<unsigned int>(time_fast));
 		std::printf("cos Time %d clocks\n", static_cast<unsigned int>(time_default));
 
-		return time_fast < time_default ? 0 : 1;
+		return time_fast <= time_default ? 0 : 1;
 	}
 }//namespace fastCos
 
@@ -78,18 +78,18 @@ namespace fastSin
 	}
 	*/
 
-	int perf()
+	int perf(bool NextFloat)
 	{
 		const float begin = -glm::pi<float>();
 		const float end = glm::pi<float>();
 		float result = 0.f;
 
 		const std::clock_t timestamp1 = std::clock();
-		for(float i = begin; i < end; i = glm::next_float(i))
+		for(float i = begin; i < end; i = NextFloat ? glm::next_float(i) : i += 0.1f)
 			result = glm::fastSin(i);
 
 		const std::clock_t timestamp2 = std::clock();
-		for(float i = begin; i < end; i = glm::next_float(i))
+		for(float i = begin; i < end; i = NextFloat ? glm::next_float(i) : i += 0.1f)
 			result = glm::sin(i);
 
 		const std::clock_t timestamp3 = std::clock();
@@ -98,24 +98,24 @@ namespace fastSin
 		std::printf("fastSin Time %d clocks\n", static_cast<unsigned int>(time_fast));
 		std::printf("sin Time %d clocks\n", static_cast<unsigned int>(time_default));
 
-		return time_fast < time_default ? 0 : 1;
+		return time_fast <= time_default ? 0 : 1;
 	}
 }//namespace fastSin
 
 namespace fastTan
 {
-	int perf()
+	int perf(bool NextFloat)
 	{
 		const float begin = -glm::pi<float>();
 		const float end = glm::pi<float>();
 		float result = 0.f;
 
 		const std::clock_t timestamp1 = std::clock();
-		for(float i = begin; i < end; i = glm::next_float(i))
+		for(float i = begin; i < end; i = NextFloat ? glm::next_float(i) : i += 0.1f)
 			result = glm::fastTan(i);
 
 		const std::clock_t timestamp2 = std::clock();
-		for (float i = begin; i < end; i = glm::next_float(i))
+		for (float i = begin; i < end; i = NextFloat ? glm::next_float(i) : i += 0.1f)
 			result = glm::tan(i);
 
 		const std::clock_t timestamp3 = std::clock();
@@ -124,24 +124,24 @@ namespace fastTan
 		std::printf("fastTan Time %d clocks\n", static_cast<unsigned int>(time_fast));
 		std::printf("tan Time %d clocks\n", static_cast<unsigned int>(time_default));
 
-		return time_fast < time_default ? 0 : 1;
+		return time_fast <= time_default ? 0 : 1;
 	}
 }//namespace fastTan
 
 namespace fastAcos
 {
-	int perf()
+	int perf(bool NextFloat)
 	{
 		const float begin = -glm::pi<float>();
 		const float end = glm::pi<float>();
 		float result = 0.f;
 
 		const std::clock_t timestamp1 = std::clock();
-		for(float i = begin; i < end; i = glm::next_float(i))
+		for(float i = begin; i < end; i = NextFloat ? glm::next_float(i) : i += 0.1f)
 			result = glm::fastAcos(i);
 
 		const std::clock_t timestamp2 = std::clock();
-		for(float i = begin; i < end; i = glm::next_float(i))
+		for(float i = begin; i < end; i = NextFloat ? glm::next_float(i) : i += 0.1f)
 			result = glm::acos(i);
 
 		const std::clock_t timestamp3 = std::clock();
@@ -151,22 +151,22 @@ namespace fastAcos
 		std::printf("fastAcos Time %d clocks\n", static_cast<unsigned int>(time_fast));
 		std::printf("acos Time %d clocks\n", static_cast<unsigned int>(time_default));
 
-		return time_fast < time_default ? 0 : 1;
+		return time_fast <= time_default ? 0 : 1;
 	}
 }//namespace fastAcos
 
 namespace fastAsin
 {
-	int perf()
+	int perf(bool NextFloat)
 	{
 		const float begin = -glm::pi<float>();
 		const float end = glm::pi<float>();
 		float result = 0.f;
 		const std::clock_t timestamp1 = std::clock();
-		for(float i = begin; i < end; i = glm::next_float(i))
+		for(float i = begin; i < end; i = NextFloat ? glm::next_float(i) : i += 0.1f)
 			result = glm::fastAsin(i);
 		const std::clock_t timestamp2 = std::clock();
-		for(float i = begin; i < end; i = glm::next_float(i))
+		for(float i = begin; i < end; i = NextFloat ? glm::next_float(i) : i += 0.1f)
 			result = glm::asin(i);
 		const std::clock_t timestamp3 = std::clock();
 		const std::clock_t time_fast = timestamp2 - timestamp1;
@@ -174,22 +174,22 @@ namespace fastAsin
 		std::printf("fastAsin Time %d clocks\n", static_cast<unsigned int>(time_fast));
 		std::printf("asin Time %d clocks\n", static_cast<unsigned int>(time_default));
 
-		return time_fast < time_default ? 0 : 1;
+		return time_fast <= time_default ? 0 : 1;
 	}
 }//namespace fastAsin
 
 namespace fastAtan
 {
-	int perf()
+	int perf(bool NextFloat)
 	{
 		const float begin = -glm::pi<float>();
 		const float end = glm::pi<float>();
 		float result = 0.f;
 		const std::clock_t timestamp1 = std::clock();
-		for(float i = begin; i < end; i = glm::next_float(i))
+		for(float i = begin; i < end; i = NextFloat ? glm::next_float(i) : i += 0.1f)
 			result = glm::fastAtan(i);
 		const std::clock_t timestamp2 = std::clock();
-		for(float i = begin; i < end; i = glm::next_float(i))
+		for(float i = begin; i < end; i = NextFloat ? glm::next_float(i) : i += 0.1f)
 			result = glm::atan(i);
 		const std::clock_t timestamp3 = std::clock();
 		const std::clock_t time_fast = timestamp2 - timestamp1;
@@ -197,7 +197,7 @@ namespace fastAtan
 		std::printf("fastAtan Time %d clocks\n", static_cast<unsigned int>(time_fast));
 		std::printf("atan Time %d clocks\n", static_cast<unsigned int>(time_default));
 
-		return time_fast < time_default ? 0 : 1;
+		return time_fast <= time_default ? 0 : 1;
 	}
 }//namespace fastAtan
 
@@ -414,13 +414,12 @@ namespace taylorCos
 		return Error;
 	}
 
-	int perf()
+	int perf(std::size_t const Samples)
 	{
 		int Error = 0;
 
 		float const Begin = -glm::pi<float>();
 		float const End = glm::pi<float>();
-		std::size_t const Samples = 10000000;
 
 		Error += perf_cos(Begin, End, Samples);
 		Error += perf_fastCosOld(Begin, End, Samples);
@@ -462,15 +461,15 @@ int main()
 	int Error(0);
 
 	Error += ::taylorCos::test();
-	Error += ::taylorCos::perf();
+	Error += ::taylorCos::perf(1000);
 
 #	ifdef NDEBUG
-		Error += ::fastCos::perf();
-		Error += ::fastSin::perf();
-		Error += ::fastTan::perf();
-		Error += ::fastAcos::perf();
-		Error += ::fastAsin::perf();
-		Error += ::fastAtan::perf();
+		::fastCos::perf(false);
+		::fastSin::perf(false);
+		::fastTan::perf(false);
+		::fastAcos::perf(false);
+		::fastAsin::perf(false);
+		::fastAtan::perf(false);
 #	endif//NDEBUG
 
 	return Error;

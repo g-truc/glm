@@ -58,6 +58,17 @@ namespace glm
 			static GLM_RELAXED_CONSTEXPR precision prec = P;
 #		endif//GLM_META_PROG_HELPERS
 
+#		ifdef GLM_STATIC_CONST_MEMBERS
+		static const type ZERO;
+		static const type X;
+		static const type Y;
+		static const type Z;
+		static const type XY;
+		static const type XZ;
+		static const type YZ;
+		static const type XYZ;
+#		endif
+
 		// -- Data --
 
 #		if GLM_HAS_ANONYMOUS_UNION
@@ -117,7 +128,7 @@ namespace glm
 		// -- Explicit basic constructors --
 
 		GLM_FUNC_DECL explicit tvec3(ctor);
-		GLM_FUNC_DECL explicit tvec3(T const & s);
+		GLM_FUNC_DECL explicit tvec3(T const & scalar);
 		GLM_FUNC_DECL tvec3(T const & a, T const & b, T const & c);
 
 		// -- Conversion scalar constructors --
@@ -160,15 +171,15 @@ namespace glm
 			}
 
 			template <int E0, int E1>
-			GLM_FUNC_DECL tvec3(detail::_swizzle<2, T, P, tvec2<T, P>, E0, E1, -1, -2> const & v, T const & s)
+			GLM_FUNC_DECL tvec3(detail::_swizzle<2, T, P, tvec2<T, P>, E0, E1, -1, -2> const & v, T const & scalar)
 			{
-				*this = tvec3<T, P>(v(), s);
+				*this = tvec3<T, P>(v(), scalar);
 			}
 
 			template <int E0, int E1>
-			GLM_FUNC_DECL tvec3(T const & s, detail::_swizzle<2, T, P, tvec2<T, P>, E0, E1, -1, -2> const & v)
+			GLM_FUNC_DECL tvec3(T const & scalar, detail::_swizzle<2, T, P, tvec2<T, P>, E0, E1, -1, -2> const & v)
 			{
-				*this = tvec3<T, P>(s, v());
+				*this = tvec3<T, P>(scalar, v());
 			}
 #		endif// GLM_HAS_ANONYMOUS_UNION && defined(GLM_SWIZZLE)
 
@@ -179,25 +190,25 @@ namespace glm
 		template <typename U>
 		GLM_FUNC_DECL tvec3<T, P> & operator=(tvec3<U, P> const & v);
 		template <typename U>
-		GLM_FUNC_DECL tvec3<T, P> & operator+=(U s);
+		GLM_FUNC_DECL tvec3<T, P> & operator+=(U scalar);
 		template <typename U>
 		GLM_FUNC_DECL tvec3<T, P> & operator+=(tvec1<U, P> const & v);
 		template <typename U>
 		GLM_FUNC_DECL tvec3<T, P> & operator+=(tvec3<U, P> const & v);
 		template <typename U>
-		GLM_FUNC_DECL tvec3<T, P> & operator-=(U s);
+		GLM_FUNC_DECL tvec3<T, P> & operator-=(U scalar);
 		template <typename U>
 		GLM_FUNC_DECL tvec3<T, P> & operator-=(tvec1<U, P> const & v);
 		template <typename U>
 		GLM_FUNC_DECL tvec3<T, P> & operator-=(tvec3<U, P> const & v);
 		template <typename U>
-		GLM_FUNC_DECL tvec3<T, P> & operator*=(U s);
+		GLM_FUNC_DECL tvec3<T, P> & operator*=(U scalar);
 		template <typename U>
 		GLM_FUNC_DECL tvec3<T, P> & operator*=(tvec1<U, P> const & v);
 		template <typename U>
 		GLM_FUNC_DECL tvec3<T, P> & operator*=(tvec3<U, P> const & v);
 		template <typename U>
-		GLM_FUNC_DECL tvec3<T, P> & operator/=(U s);
+		GLM_FUNC_DECL tvec3<T, P> & operator/=(U scalar);
 		template <typename U>
 		GLM_FUNC_DECL tvec3<T, P> & operator/=(tvec1<U, P> const & v);
 		template <typename U>
@@ -213,37 +224,37 @@ namespace glm
 		// -- Unary bit operators --
 
 		template <typename U>
-		GLM_FUNC_DECL tvec3<T, P> & operator%=(U s);
+		GLM_FUNC_DECL tvec3<T, P> & operator%=(U scalar);
 		template <typename U>
 		GLM_FUNC_DECL tvec3<T, P> & operator%=(tvec1<U, P> const & v);
 		template <typename U>
 		GLM_FUNC_DECL tvec3<T, P> & operator%=(tvec3<U, P> const & v);
 		template <typename U>
-		GLM_FUNC_DECL tvec3<T, P> & operator&=(U s);
+		GLM_FUNC_DECL tvec3<T, P> & operator&=(U scalar);
 		template <typename U>
 		GLM_FUNC_DECL tvec3<T, P> & operator&=(tvec1<U, P> const & v);
 		template <typename U>
 		GLM_FUNC_DECL tvec3<T, P> & operator&=(tvec3<U, P> const & v);
 		template <typename U>
-		GLM_FUNC_DECL tvec3<T, P> & operator|=(U s);
+		GLM_FUNC_DECL tvec3<T, P> & operator|=(U scalar);
 		template <typename U>
 		GLM_FUNC_DECL tvec3<T, P> & operator|=(tvec1<U, P> const & v);
 		template <typename U>
 		GLM_FUNC_DECL tvec3<T, P> & operator|=(tvec3<U, P> const & v);
 		template <typename U>
-		GLM_FUNC_DECL tvec3<T, P> & operator^=(U s);
+		GLM_FUNC_DECL tvec3<T, P> & operator^=(U scalar);
 		template <typename U>
 		GLM_FUNC_DECL tvec3<T, P> & operator^=(tvec1<U, P> const & v);
 		template <typename U>
 		GLM_FUNC_DECL tvec3<T, P> & operator^=(tvec3<U, P> const & v);
 		template <typename U>
-		GLM_FUNC_DECL tvec3<T, P> & operator<<=(U s);
+		GLM_FUNC_DECL tvec3<T, P> & operator<<=(U scalar);
 		template <typename U>
 		GLM_FUNC_DECL tvec3<T, P> & operator<<=(tvec1<U, P> const & v);
 		template <typename U>
 		GLM_FUNC_DECL tvec3<T, P> & operator<<=(tvec3<U, P> const & v);
 		template <typename U>
-		GLM_FUNC_DECL tvec3<T, P> & operator>>=(U s);
+		GLM_FUNC_DECL tvec3<T, P> & operator>>=(U scalar);
 		template <typename U>
 		GLM_FUNC_DECL tvec3<T, P> & operator>>=(tvec1<U, P> const & v);
 		template <typename U>
@@ -258,151 +269,151 @@ namespace glm
 	// -- Binary operators --
 
 	template <typename T, precision P>
-	GLM_FUNC_DECL tvec3<T, P> operator+(tvec3<T, P> const & v, T const & s);
+	GLM_FUNC_DECL tvec3<T, P> operator+(tvec3<T, P> const & v, T const & scalar);
 
 	template <typename T, precision P>
-	GLM_FUNC_DECL tvec3<T, P> operator+(tvec3<T, P> const & v, tvec1<T, P> const & s);
+	GLM_FUNC_DECL tvec3<T, P> operator+(tvec3<T, P> const & v, tvec1<T, P> const & scalar);
 
 	template <typename T, precision P>
-	GLM_FUNC_DECL tvec3<T, P> operator+(T const & s, tvec3<T, P> const & v);
+	GLM_FUNC_DECL tvec3<T, P> operator+(T const & scalar, tvec3<T, P> const & v);
 
 	template <typename T, precision P>
-	GLM_FUNC_DECL tvec3<T, P> operator+(tvec1<T, P> const & s, tvec3<T, P> const & v);
+	GLM_FUNC_DECL tvec3<T, P> operator+(tvec1<T, P> const & scalar, tvec3<T, P> const & v);
 
 	template <typename T, precision P>
 	GLM_FUNC_DECL tvec3<T, P> operator+(tvec3<T, P> const & v1, tvec3<T, P> const & v2);
 
 	template <typename T, precision P>
-	GLM_FUNC_DECL tvec3<T, P> operator-(tvec3<T, P> const & v, T const & s);
+	GLM_FUNC_DECL tvec3<T, P> operator-(tvec3<T, P> const & v, T const & scalar);
 
 	template <typename T, precision P>
-	GLM_FUNC_DECL tvec3<T, P> operator-(tvec3<T, P> const & v, tvec1<T, P> const & s);
+	GLM_FUNC_DECL tvec3<T, P> operator-(tvec3<T, P> const & v, tvec1<T, P> const & scalar);
 
 	template <typename T, precision P>
-	GLM_FUNC_DECL tvec3<T, P> operator-(T const & s, tvec3<T, P> const & v);
+	GLM_FUNC_DECL tvec3<T, P> operator-(T const & scalar, tvec3<T, P> const & v);
 
 	template <typename T, precision P>
-	GLM_FUNC_DECL tvec3<T, P> operator-(tvec1<T, P> const & s, tvec3<T, P> const & v);
+	GLM_FUNC_DECL tvec3<T, P> operator-(tvec1<T, P> const & scalar, tvec3<T, P> const & v);
 
 	template <typename T, precision P>
 	GLM_FUNC_DECL tvec3<T, P> operator-(tvec3<T, P> const & v1, tvec3<T, P> const & v2);
 
 	template <typename T, precision P>
-	GLM_FUNC_DECL tvec3<T, P> operator*(tvec3<T, P> const & v, T const & s);
+	GLM_FUNC_DECL tvec3<T, P> operator*(tvec3<T, P> const & v, T const & scalar);
 
 	template <typename T, precision P>
-	GLM_FUNC_DECL tvec3<T, P> operator*(tvec3<T, P> const & v, tvec1<T, P> const & s);
+	GLM_FUNC_DECL tvec3<T, P> operator*(tvec3<T, P> const & v, tvec1<T, P> const & scalar);
 
 	template <typename T, precision P>
-	GLM_FUNC_DECL tvec3<T, P> operator*(T const & s, tvec3<T, P> const & v);
+	GLM_FUNC_DECL tvec3<T, P> operator*(T const & scalar, tvec3<T, P> const & v);
 
 	template <typename T, precision P>
-	GLM_FUNC_DECL tvec3<T, P> operator*(tvec1<T, P> const & s, tvec3<T, P> const & v);
+	GLM_FUNC_DECL tvec3<T, P> operator*(tvec1<T, P> const & scalar, tvec3<T, P> const & v);
 
 	template <typename T, precision P>
 	GLM_FUNC_DECL tvec3<T, P> operator*(tvec3<T, P> const & v1, tvec3<T, P> const & v2);
 
 	template <typename T, precision P>
-	GLM_FUNC_DECL tvec3<T, P> operator/(tvec3<T, P> const & v, T const & s);
+	GLM_FUNC_DECL tvec3<T, P> operator/(tvec3<T, P> const & v, T const & scalar);
 
 	template <typename T, precision P>
-	GLM_FUNC_DECL tvec3<T, P> operator/(tvec3<T, P> const & v, tvec1<T, P> const & s);
+	GLM_FUNC_DECL tvec3<T, P> operator/(tvec3<T, P> const & v, tvec1<T, P> const & scalar);
 
 	template <typename T, precision P>
-	GLM_FUNC_DECL tvec3<T, P> operator/(T const & s, tvec3<T, P> const & v);
+	GLM_FUNC_DECL tvec3<T, P> operator/(T const & scalar, tvec3<T, P> const & v);
 
 	template <typename T, precision P>
-	GLM_FUNC_DECL tvec3<T, P> operator/(tvec1<T, P> const & s, tvec3<T, P> const & v);
+	GLM_FUNC_DECL tvec3<T, P> operator/(tvec1<T, P> const & scalar, tvec3<T, P> const & v);
 
 	template <typename T, precision P>
 	GLM_FUNC_DECL tvec3<T, P> operator/(tvec3<T, P> const & v1, tvec3<T, P> const & v2);
 
 	template <typename T, precision P>
-	GLM_FUNC_DECL tvec3<T, P> operator%(tvec3<T, P> const & v, T const & s);
+	GLM_FUNC_DECL tvec3<T, P> operator%(tvec3<T, P> const & v, T const & scalar);
 
 	template <typename T, precision P>
-	GLM_FUNC_DECL tvec3<T, P> operator%(tvec3<T, P> const & v, tvec1<T, P> const & s);
+	GLM_FUNC_DECL tvec3<T, P> operator%(tvec3<T, P> const & v, tvec1<T, P> const & scalar);
 
 	template <typename T, precision P>
-	GLM_FUNC_DECL tvec3<T, P> operator%(T const & s, tvec3<T, P> const & v);
+	GLM_FUNC_DECL tvec3<T, P> operator%(T const & scalar, tvec3<T, P> const & v);
 
 	template <typename T, precision P>
-	GLM_FUNC_DECL tvec3<T, P> operator%(tvec1<T, P> const & s, tvec3<T, P> const & v);
+	GLM_FUNC_DECL tvec3<T, P> operator%(tvec1<T, P> const & scalar, tvec3<T, P> const & v);
 
 	template <typename T, precision P>
 	GLM_FUNC_DECL tvec3<T, P> operator%(tvec3<T, P> const & v1, tvec3<T, P> const & v2);
 
 	template <typename T, precision P>
-	GLM_FUNC_DECL tvec3<T, P> operator&(tvec3<T, P> const & v, T const & s);
+	GLM_FUNC_DECL tvec3<T, P> operator&(tvec3<T, P> const & v, T const & scalar);
 
 	template <typename T, precision P>
-	GLM_FUNC_DECL tvec3<T, P> operator&(tvec3<T, P> const & v, tvec1<T, P> const & s);
+	GLM_FUNC_DECL tvec3<T, P> operator&(tvec3<T, P> const & v, tvec1<T, P> const & scalar);
 
 	template <typename T, precision P>
-	GLM_FUNC_DECL tvec3<T, P> operator&(T const & s, tvec3<T, P> const & v);
+	GLM_FUNC_DECL tvec3<T, P> operator&(T const & scalar, tvec3<T, P> const & v);
 
 	template <typename T, precision P>
-	GLM_FUNC_DECL tvec3<T, P> operator&(tvec1<T, P> const & s, tvec3<T, P> const & v);
+	GLM_FUNC_DECL tvec3<T, P> operator&(tvec1<T, P> const & scalar, tvec3<T, P> const & v);
 
 	template <typename T, precision P>
 	GLM_FUNC_DECL tvec3<T, P> operator&(tvec3<T, P> const & v1, tvec3<T, P> const & v2);
 
 	template <typename T, precision P>
-	GLM_FUNC_DECL tvec3<T, P> operator|(tvec3<T, P> const & v, T const & s);
+	GLM_FUNC_DECL tvec3<T, P> operator|(tvec3<T, P> const & v, T const & scalar);
 
 	template <typename T, precision P>
-	GLM_FUNC_DECL tvec3<T, P> operator|(tvec3<T, P> const & v, tvec1<T, P> const & s);
+	GLM_FUNC_DECL tvec3<T, P> operator|(tvec3<T, P> const & v, tvec1<T, P> const & scalar);
 
 	template <typename T, precision P>
-	GLM_FUNC_DECL tvec3<T, P> operator|(T const & s, tvec3<T, P> const & v);
+	GLM_FUNC_DECL tvec3<T, P> operator|(T const & scalar, tvec3<T, P> const & v);
 
 	template <typename T, precision P>
-	GLM_FUNC_DECL tvec3<T, P> operator|(tvec1<T, P> const & s, tvec3<T, P> const & v);
+	GLM_FUNC_DECL tvec3<T, P> operator|(tvec1<T, P> const & scalar, tvec3<T, P> const & v);
 
 	template <typename T, precision P>
 	GLM_FUNC_DECL tvec3<T, P> operator|(tvec3<T, P> const & v1, tvec3<T, P> const & v2);
 
 	template <typename T, precision P>
-	GLM_FUNC_DECL tvec3<T, P> operator^(tvec3<T, P> const & v, T const & s);
+	GLM_FUNC_DECL tvec3<T, P> operator^(tvec3<T, P> const & v, T const & scalar);
 
 	template <typename T, precision P>
-	GLM_FUNC_DECL tvec3<T, P> operator^(tvec3<T, P> const & v, tvec1<T, P> const & s);
+	GLM_FUNC_DECL tvec3<T, P> operator^(tvec3<T, P> const & v, tvec1<T, P> const & scalar);
 
 	template <typename T, precision P>
-	GLM_FUNC_DECL tvec3<T, P> operator^(T const & s, tvec3<T, P> const & v);
+	GLM_FUNC_DECL tvec3<T, P> operator^(T const & scalar, tvec3<T, P> const & v);
 
 	template <typename T, precision P>
-	GLM_FUNC_DECL tvec3<T, P> operator^(tvec1<T, P> const & s, tvec3<T, P> const & v);
+	GLM_FUNC_DECL tvec3<T, P> operator^(tvec1<T, P> const & scalar, tvec3<T, P> const & v);
 
 	template <typename T, precision P>
 	GLM_FUNC_DECL tvec3<T, P> operator^(tvec3<T, P> const & v1, tvec3<T, P> const & v2);
 
 	template <typename T, precision P>
-	GLM_FUNC_DECL tvec3<T, P> operator<<(tvec3<T, P> const & v, T const & s);
+	GLM_FUNC_DECL tvec3<T, P> operator<<(tvec3<T, P> const & v, T const & scalar);
 
 	template <typename T, precision P>
-	GLM_FUNC_DECL tvec3<T, P> operator<<(tvec3<T, P> const & v, tvec1<T, P> const & s);
+	GLM_FUNC_DECL tvec3<T, P> operator<<(tvec3<T, P> const & v, tvec1<T, P> const & scalar);
 
 	template <typename T, precision P>
-	GLM_FUNC_DECL tvec3<T, P> operator<<(T const & s, tvec3<T, P> const & v);
+	GLM_FUNC_DECL tvec3<T, P> operator<<(T const & scalar, tvec3<T, P> const & v);
 
 	template <typename T, precision P>
-	GLM_FUNC_DECL tvec3<T, P> operator<<(tvec1<T, P> const & s, tvec3<T, P> const & v);
+	GLM_FUNC_DECL tvec3<T, P> operator<<(tvec1<T, P> const & scalar, tvec3<T, P> const & v);
 
 	template <typename T, precision P>
 	GLM_FUNC_DECL tvec3<T, P> operator<<(tvec3<T, P> const & v1, tvec3<T, P> const & v2);
 
 	template <typename T, precision P>
-	GLM_FUNC_DECL tvec3<T, P> operator>>(tvec3<T, P> const & v, T const & s);
+	GLM_FUNC_DECL tvec3<T, P> operator>>(tvec3<T, P> const & v, T const & scalar);
 
 	template <typename T, precision P>
-	GLM_FUNC_DECL tvec3<T, P> operator>>(tvec3<T, P> const & v, tvec1<T, P> const & s);
+	GLM_FUNC_DECL tvec3<T, P> operator>>(tvec3<T, P> const & v, tvec1<T, P> const & scalar);
 
 	template <typename T, precision P>
-	GLM_FUNC_DECL tvec3<T, P> operator>>(T const & s, tvec3<T, P> const & v);
+	GLM_FUNC_DECL tvec3<T, P> operator>>(T const & scalar, tvec3<T, P> const & v);
 
 	template <typename T, precision P>
-	GLM_FUNC_DECL tvec3<T, P> operator>>(tvec1<T, P> const & s, tvec3<T, P> const & v);
+	GLM_FUNC_DECL tvec3<T, P> operator>>(tvec1<T, P> const & scalar, tvec3<T, P> const & v);
 
 	template <typename T, precision P>
 	GLM_FUNC_DECL tvec3<T, P> operator>>(tvec3<T, P> const & v1, tvec3<T, P> const & v2);
@@ -417,6 +428,16 @@ namespace glm
 
 	template <typename T, precision P>
 	GLM_FUNC_DECL bool operator!=(tvec3<T, P> const & v1, tvec3<T, P> const & v2);
+
+	// -- Is type --
+
+	template <typename T, precision P>
+	struct type<T, P, tvec3>
+	{
+		static bool const is_vec = true;
+		static bool const is_mat = false;
+		static bool const is_quat = false;
+	};
 }//namespace glm
 
 #ifndef GLM_EXTERNAL_TEMPLATE
