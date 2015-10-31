@@ -166,7 +166,10 @@ namespace glm
 	// -- Unary operators --
 
 	template <typename T, precision P>
-	GLM_FUNC_DECL tmat4x3<T, P> const operator-(tmat4x3<T, P> const & m);
+	GLM_FUNC_DECL tmat4x3<T, P> operator+(tmat4x3<T, P> const & m);
+
+	template <typename T, precision P>
+	GLM_FUNC_DECL tmat4x3<T, P> operator-(tmat4x3<T, P> const & m);
 
 	// -- Binary operators --
 

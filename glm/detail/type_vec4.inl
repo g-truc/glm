@@ -712,6 +712,12 @@ namespace glm
 	// -- Unary constant operators --
 
 	template <typename T, precision P>
+	GLM_FUNC_QUALIFIER tvec4<T, P> operator+(tvec4<T, P> const & v)
+	{
+		return v;
+	}
+
+	template <typename T, precision P>
 	GLM_FUNC_QUALIFIER tvec4<T, P> operator-(tvec4<T, P> const & v)
 	{
 		return tvec4<T, P>(
@@ -1167,6 +1173,18 @@ namespace glm
 	GLM_FUNC_QUALIFIER bool operator!=(tvec4<T, P> const & v1, tvec4<T, P> const & v2)
 	{
 		return (v1.x != v2.x) || (v1.y != v2.y) || (v1.z != v2.z) || (v1.w != v2.w);
+	}
+
+	template <precision P>
+	GLM_FUNC_QUALIFIER tvec4<bool, P> operator&&(tvec4<bool, P> const & v1, tvec4<bool, P> const & v2)
+	{
+		return tvec4<bool, P>(v1.x && v2.x, v1.y && v2.y, v1.z && v2.z, v1.w && v2.w);
+	}
+
+	template <precision P>
+	GLM_FUNC_QUALIFIER tvec4<bool, P> operator||(tvec4<bool, P> const & v1, tvec4<bool, P> const & v2)
+	{
+		return tvec4<bool, P>(v1.x || v2.x, v1.y || v2.y, v1.z || v2.z, v1.w || v2.w);
 	}
 }//namespace glm
 

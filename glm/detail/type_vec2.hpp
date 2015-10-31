@@ -238,6 +238,9 @@ namespace glm
 	// -- Unary operators --
 
 	template <typename T, precision P>
+	GLM_FUNC_DECL tvec2<T, P> operator+(tvec2<T, P> const & v);
+
+	template <typename T, precision P>
 	GLM_FUNC_DECL tvec2<T, P> operator-(tvec2<T, P> const & v);
 
 	// -- Binary operators --
@@ -405,6 +408,12 @@ namespace glm
 
 	template <typename T, precision P>
 	GLM_FUNC_DECL bool operator!=(tvec2<T, P> const & v1, tvec2<T, P> const & v2);
+
+	template <precision P>
+	GLM_FUNC_DECL tvec2<bool, P> operator&&(tvec2<bool, P> const & v1, tvec2<bool, P> const & v2);
+
+	template <precision P>
+	GLM_FUNC_DECL tvec2<bool, P> operator||(tvec2<bool, P> const & v1, tvec2<bool, P> const & v2);
 
 	// -- Is type --
 

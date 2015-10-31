@@ -65,6 +65,8 @@
 
 #ifdef GLM_FORCE_PLATFORM_UNKNOWN
 #	define GLM_PLATFORM GLM_PLATFORM_UNKNOWN
+#elif defined(__CYGWIN__)
+#	define GLM_PLATFORM GLM_PLATFORM_CYGWIN
 #elif defined(__QNXNTO__)
 #	define GLM_PLATFORM GLM_PLATFORM_QNXNTO
 #elif defined(__APPLE__)
@@ -650,7 +652,7 @@
 // http://gcc.gnu.org/projects/cxx0x.html
 // http://msdn.microsoft.com/en-us/library/vstudio/hh567368(v=vs.120).aspx
 
-#if GLM_PLATFORM == GLM_PLATFORM_ANDROID
+#if GLM_PLATFORM == GLM_PLATFORM_ANDROID || GLM_PLATFORM == GLM_PLATFORM_CYGWIN
 #	define GLM_HAS_CXX11_STL 0
 #elif GLM_COMPILER & (GLM_COMPILER_LLVM | GLM_COMPILER_APPLE_CLANG)
 #	if __has_include(<__config>) // libc++

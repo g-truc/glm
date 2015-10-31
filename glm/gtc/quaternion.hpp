@@ -170,6 +170,9 @@ namespace glm
 	// -- Unary bit operators --
 
 	template <typename T, precision P>
+	GLM_FUNC_DECL tquat<T, P> operator+(tquat<T, P> const & q);
+
+	template <typename T, precision P>
 	GLM_FUNC_DECL tquat<T, P> operator-(tquat<T, P> const & q);
 
 	// -- Binary operators --

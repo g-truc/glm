@@ -364,6 +364,12 @@ namespace detail
 	// -- Unary bit operators --
 
 	template <typename T, precision P>
+	GLM_FUNC_QUALIFIER tquat<T, P> operator+(tquat<T, P> const & q)
+	{
+		return q;
+	}
+
+	template <typename T, precision P>
 	GLM_FUNC_QUALIFIER tquat<T, P> operator-(tquat<T, P> const & q)
 	{
 		return tquat<T, P>(-q.w, -q.x, -q.y, -q.z);

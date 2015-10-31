@@ -438,6 +438,7 @@ int test_packSnorm1x8()
 	std::vector<glm::vec1> A;
 	A.push_back(glm::vec1( 1.0f));
 	A.push_back(glm::vec1(-0.7f));
+	A.push_back(glm::vec1(-1.0f));
 	
 	for(std::size_t i = 0; i < A.size(); ++i)
 	{

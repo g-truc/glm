@@ -345,7 +345,13 @@ namespace glm
 	// -- Unary arithmetic operators --
 
 	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tmat2x4<T, P> const operator-(tmat2x4<T, P> const & m)
+	GLM_FUNC_QUALIFIER tmat2x4<T, P> operator+(tmat2x4<T, P> const & m)
+	{
+		return m;
+	}
+
+	template <typename T, precision P>
+	GLM_FUNC_QUALIFIER tmat2x4<T, P> operator-(tmat2x4<T, P> const & m)
 	{
 		return tmat2x4<T, P>(
 			-m[0], 
