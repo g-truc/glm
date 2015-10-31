@@ -134,8 +134,8 @@ namespace glm
 
 		/// Explicit conversion operators
 #		if GLM_HAS_EXPLICIT_CONVERSION_OPERATORS
-			GLM_FUNC_DECL explicit operator tmat3x3<T, P>();
-			GLM_FUNC_DECL explicit operator tmat4x4<T, P>();
+			GLM_FUNC_DECL explicit operator tmat3x3<T, P>() const;
+			GLM_FUNC_DECL explicit operator tmat4x4<T, P>() const;
 #		endif
 
 		/// Create a quaternion from two normalized axis
