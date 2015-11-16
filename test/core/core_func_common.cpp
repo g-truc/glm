@@ -1178,7 +1178,6 @@ namespace sign
 
 		return Error;
 	}
-	
 }//namespace sign
 
 int main()
