@@ -222,8 +222,8 @@ namespace floatBitsToInt
 			float A = 1.0f;
 			int B = glm::floatBitsToInt(A);
 			float C = glm::intBitsToFloat(B);
-		    int D;
-            std::memcpy(&D, &A, sizeof(D));
+		   	int D;
+            		std::memcpy(&D, &A, sizeof(D));
 			Error += B == D ? 0 : 1;
 			Error += A == C ? 0 : 1;
 		}
