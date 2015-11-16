@@ -1127,7 +1127,7 @@ namespace sign
 	{
 		int Error = 0;
 
-		glm::uint32 const Count = Samples;
+		glm::int32 const Count = static_cast<glm::int32>(Samples);
 
 		std::clock_t Timestamp0 = std::clock();
 		glm::int32 Sum = 0;
@@ -1178,6 +1178,7 @@ namespace sign
 
 		return Error;
 	}
+	
 }//namespace sign
 
 int main()
