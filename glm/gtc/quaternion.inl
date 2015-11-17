@@ -265,13 +265,13 @@ namespace detail
 
 #	if GLM_HAS_EXPLICIT_CONVERSION_OPERATORS
 	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tquat<T, P>::operator tmat3x3<T, P>()
+	GLM_FUNC_QUALIFIER tquat<T, P>::operator tmat3x3<T, P>() const
 	{
 		return mat3_cast(*this);
 	}
 	
 	template <typename T, precision P>	
-	GLM_FUNC_QUALIFIER tquat<T, P>::operator tmat4x4<T, P>()
+	GLM_FUNC_QUALIFIER tquat<T, P>::operator tmat4x4<T, P>() const
 	{
 		return mat4_cast(*this);
 	}
