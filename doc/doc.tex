@@ -87,15 +87,13 @@ THE SOFTWARE IS PROVIDED \say{AS IS}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
 \section*{Introduction}
 \addcontentsline{toc}{section}{Introduction}
 
-OpenGL Mathematics (GLM) is a C++ mathematics library for graphics C++ programs based on the \href{http://www.opengl.org/registry/}{OpenGL Shading Language} (GLSL) specification.
+OpenGL Mathematics (GLM) is a C++ mathematics library based on the \href{https://www.opengl.org/documentation/glsl/}{OpenGL Shading Language} (GLSL) specification.
 
-GLM provides classes and functions designed and implemented with the same naming conventions and features as those of GLSL, so that knowledge of GLSL is easily transferable.
+GLM provides classes and functions designed and implemented with the same naming conventions and features as those of GLSL, so that knowledge of GLSL is easily transferable.  An extension system, based on OpenGL's extension system, provides extra capabilities including (but not limited to) matrix transformations, quaternions, data packing, random numbers, and noise.
 
-GLM also goes above and beyond to provide extra mathematical utilities.  An extension system, based on the GLSL extension convention, provides extended capabilities, including (but not limited to): matrix transformations, quaternions, data packing, random numbers, noise, etc.
+GLM library works perfectly with \href{http://www.opengl.org}{OpenGL}, but is also well-suited for use with other libraries and SDKS. GLM is a good candidate for software rendering (ray-tracing/rasterisation), image processing, physic simulation, and other projects that demand a simple (yet flexible) mathematics framework.
 
-This library works perfectly with \href{http://www.opengl.org}{OpenGL} but it also ensures interoperability with other third party libraries and SDK. It is a good candidate for software rendering (ray-tracing/rasterisation), image processing, physic simulations and any other development context that requires a simple and convenient mathematics library.
-
-GLM is written in C++98, but can take advantage of C++11 when supported by the compiler. It is a platform independent library with no dependencies and it officially supports the following compilers:
+GLM is written in C++98, but can take advantage of C++11 where support exists. GLM is platform independent, has no dependencies, and supports the following compilers:
 
 \begin{itemize}
   \item \href{https://developer.apple.com/Library/mac/documentation/CompilerTools/Conceptual/LLVMCompilerOverview/index.html}{Apple Clang} 4.0 and higher
@@ -107,7 +105,7 @@ GLM is written in C++98, but can take advantage of C++11 when supported by the c
   \item Any conforming C++98 or C++11 compiler
 \end{itemize}
 
-The source code and documentation (including this manual) are licensed under the \hyperlink{happybunny}{Happy Bunny License (Modified MIT)} and the \hyperlink{mit}{MIT License}.
+The source code and the documentation (including this manual) are licensed under the \hyperlink{happybunny}{Happy Bunny License (Modified MIT)} and the \hyperlink{mit}{MIT License}.
 
 Feedback, bug reports, feature requests, and acts upon thereof are highly appreciated.  The author may be contacted at \href{mailto://glm@g-truc.net}{glm@g-truc.net}.
 
