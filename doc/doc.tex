@@ -523,14 +523,14 @@ void foo()
 
 \subsection{Requiring Explicit Conversions}
 
-GLSL supports implicit conversions of vector and matrix types (e.g. from \verb|ivec4| to \verb|vec4|).
+GLSL allows implicit conversions of vector and matrix types (e.g. from \verb|ivec4| to \verb|vec4|).
 
 \begin{glslcode}
 ivec4 a;
 vec4 b = a; // Implicit conversion, OK
 \end{glslcode}
 
-This behavior isn't always desirable in C++, but in the spirit of the library it is fully supported.
+Such behavior isn't always desirable in C++, but in the spirit of GLM's mission it is fully supported.
 
 \begin{cppcode}
 #include <glm/glm.hpp>
@@ -1017,11 +1017,11 @@ glm::dmat4 glm::lookAt(
 \section{Known Issues}
 This section reports the divergences of GLM with GLSL.
 
-\subsection{\texttt{not} function}
+\subsection{The \texttt{not} Function}
 
-The GLSL keyword \verb|not| is also a keyword in C++. To prevent name collisions, ensure cross compiler support and a high API consistency, the GLSL not function has been implemented with the name \verb|not_|.
+The GLSL keyword \verb|not| is also a keyword in C++. To prevent name collisions, ensure cross compiler support and a high API consistency, the GLSL \verb|not| function has been implemented with the name \verb|not_| (note the underscore).
 
-\subsection{Precision Qualifiers Support}
+\subsection{Precision Qualifiers}
 
 GLM supports GLSL precision qualifiers through prefixes instead of qualifiers. For example, additionally to \verb|vec4|, GLM exposes \verb|lowp_vec4|, \verb|mediump_vec4| and \verb|highp_vec4| types.
 
