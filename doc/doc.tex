@@ -1109,8 +1109,6 @@ Such behavior is the result of a domain error that follows the precedent set by 
 
 \section{Code Samples}
 
-This series of samples only shows various GLM features without consideration of any sort.
-
 \subsection{Compute a Triangle Normal}
 
 \begin{cppcode}
@@ -1128,7 +1126,7 @@ glm::vec3 computeNormal
 \end{cppcode}
 
 \begin{cppcode}
-// A much faster but less accurate alternative:
+// A faster (but less accurate) alternative:
 #include <glm/glm.hpp> // vec3 cross
 #include <glm/gtx/fast_square_root.hpp> // fastNormalize
 
@@ -1146,120 +1144,151 @@ glm::vec3 computeNormal
 \iffalse
 
 \subsection{Matrix Transformations}
-// vec3, vec4, ivec4, mat4
-#include <glm/glm.hpp>
-// translate, rotate, scale, perspective 
-#include <glm/gtc/matrix_transform.hpp>
-// value_ptr
-#include <glm/gtc/type_ptr.hpp>
+
+\begin{cppcode}
+#include <glm/glm.hpp> // vec3, vec4, ivec4, mat4
+#include <glm/gtc/matrix_transform.hpp> // translate, scale, etc.
+#include <glm/gtc/type_ptr.hpp> // value_ptr
+
+using glm::mat4;
+using glm::vec3;
 
 void setUniformMVP
 (
-GLuint Location, 
-glm::vec3 const & Translate, 
-glm::vec3 const & Rotate
+  GLuint Location, 
+  vec3 const & Translate, 
+  vec3 const & Rotate
 )
 {
-glm::mat4 Projection =
-glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 100.f);
-glm::mat4 ViewTranslate = glm::translate(
-glm::mat4(1.0f),
-Translate);
-glm::mat4 ViewRotateX = glm::rotate(
-ViewTranslate,
-Rotate.y, glm::vec3(-1.0f, 0.0f, 0.0f));
-glm::mat4 View = glm::rotate(
-ViewRotateX,
-Rotate.x, glm::vec3(0.0f, 1.0f, 0.0f));
-glm::mat4 Model = glm::scale(
-glm::mat4(1.0f),
-glm::vec3(0.5f));
-glm::mat4 MVP = Projection * View * Model;
-glUniformMatrix4fv(Location, 1, GL_FALSE, glm::value_ptr(MVP));
+  mat4 Projection = glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 100.f);
+  mat4 ViewTranslate = glm::translate(
+    mat4(1.0f),
+    Translate
+  );
+  mat4 ViewRotateX = glm::rotate(
+    ViewTranslate,
+    Rotate.y,
+    vec3(-1.0f, 0.0f, 0.0f)
+  );
+  mat4 View = glm::rotate(
+    ViewRotateX,
+    Rotate.x,
+    vec3(0.0f, 1.0f, 0.0f)
+  );
+  mat4 Model = glm::scale(
+    mat4(1.0f),
+    vec3(0.5f)
+  );
+  mat4 MVP = Projection * View * Model;
+
+  glUniformMatrix4fv(Location, 1, GL_FALSE, glm::value_ptr(MVP));
 }
-8.3. Vector types
+\end{cppcode}
+
+\subsection{Vector Types}
+
+\begin{cppcode}
 #include <glm/glm.hpp> //vec2
 #include <glm/gtc/type_precision.hpp> //hvec2, i8vec2, i32vec2
+
+using glm::vec2;
+using glm::hvec2;
+using glm::i8vec2;
+using glm::i32vec2;
 
 std::size_t const VertexCount = 4;
 
 // Float quad geometry
-std::size_t const PositionSizeF32 = VertexCount * sizeof(glm::vec2);
-glm::vec2 const PositionDataF32[VertexCount] =
+std::size_t const PositionSizeF32 = VertexCount * sizeof(vec2);
+vec2 const PositionDataF32[VertexCount] =
 {
-glm::vec2(-1.0f,-1.0f),
-glm::vec2( 1.0f,-1.0f),
-glm::vec2( 1.0f, 1.0f),
-glm::vec2(-1.0f, 1.0f)
+  vec2(-1.0f,-1.0f),
+  vec2( 1.0f,-1.0f),
+  vec2( 1.0f, 1.0f),
+  vec2(-1.0f, 1.0f)
 };
+
 // Half-float quad geometry
-std::size_t const PositionSizeF16 = VertexCount * sizeof(glm::hvec2);
-glm::hvec2 const PositionDataF16[VertexCount] =
+std::size_t const PositionSizeF16 = VertexCount * sizeof(hvec2);
+hvec2 const PositionDataF16[VertexCount] =
 {
-glm::hvec2(-1.0f, -1.0f),
-glm::hvec2( 1.0f, -1.0f),
-glm::hvec2( 1.0f, 1.0f),
-glm::hvec2(-1.0f, 1.0f)
+  hvec2(-1.0f, -1.0f),
+  hvec2( 1.0f, -1.0f),
+  hvec2( 1.0f, 1.0f),
+  hvec2(-1.0f, 1.0f)
 };
+
 // 8 bits signed integer quad geometry
-std::size_t const PositionSizeI8 = VertexCount * sizeof(glm::i8vec2);
-glm::i8vec2 const PositionDataI8[VertexCount] =
+std::size_t const PositionSizeI8 = VertexCount * sizeof(i8vec2);
+i8vec2 const PositionDataI8[VertexCount] =
 {
-glm::i8vec2(-1,-1),
-glm::i8vec2( 1,-1),
-glm::i8vec2( 1, 1),
-glm::i8vec2(-1, 1)
+  i8vec2(-1,-1),
+  i8vec2( 1,-1),
+  i8vec2( 1, 1),
+  i8vec2(-1, 1)
 };
+
 // 32 bits signed integer quad geometry
-std::size_t const PositionSizeI32 = VertexCount * sizeof(glm::i32vec2);
-glm::i32vec2 const PositionDataI32[VertexCount] =
+std::size_t const PositionSizeI32 = VertexCount * sizeof(i32vec2);
+i32vec2 const PositionDataI32[VertexCount] =
 {
-glm::i32vec2(-1,-1),
-glm::i32vec2( 1,-1),
-glm::i32vec2( 1, 1),
-glm::i32vec2(-1, 1)
+  i32vec2(-1,-1),
+  i32vec2( 1,-1),
+  i32vec2( 1, 1),
+  i32vec2(-1, 1)
 };
-8.4. Lighting
-#include <glm/glm.hpp> // vec3 normalize reflect dot pow
+\end{cppcode}
+
+
+\subsection{Lighting}
+
+\begin{cppcode}
+#include <glm/glm.hpp> // vec3, normalize, reflect, dot, pow
 #include <glm/gtx/random.hpp> // vecRand3
 
+using glm::vec3;
+using glm::dot;
+using glm::normalize;
+
 // vecRand3, generate a random and equiprobable normalized vec3
-glm::vec3 lighting
+vec3 lighting
 (
-intersection const & Intersection,
-material const & Material,
-light const & Light,
-glm::vec3 const & View
+  intersection const & Intersection,
+  material const & Material,
+  light const & Light,
+  vec3 const & View
 )
 {
-glm::vec3 Color = glm::vec3(0.0f);
-glm::vec3 LightVertor = glm::normalize(
-Light.position() - Intersection.globalPosition() +
-glm::vecRand3(0.0f, Light.inaccuracy());
-if(!shadow(
-Intersection.globalPosition(),
-Light.position(),
-LightVertor))
-{
-float Diffuse = glm::dot(Intersection.normal(), LightVector);
-if(Diffuse <= 0.0f)
-return Color;
-if(Material.isDiffuse())
-Color += Light.color() * Material.diffuse() * Diffuse;
-if(Material.isSpecular())
-{
-glm::vec3 Reflect = glm::reflect(
--LightVector,
-Intersection.normal());
-float Dot = glm::dot(Reflect, View);
-float Base = Dot > 0.0f ? Dot : 0.0f;
-float Specular = glm::pow(Base, Material.exponent());
-Color += Material.specular() * Specular;
-}
-}
-return Color;
-}
+  vec3 Color = vec3(0.0f);
+  vec3 LightVector = normalize(
+    Light.position() - Intersection.globalPosition() +
+    glm::vecRand3(0.0f, Light.inaccuracy()
+  );
+  if(!shadow(
+    Intersection.globalPosition(), Light.position(), LightVector)
+  )
+  {
+    float Diffuse = dot(Intersection.normal(), LightVector);
+    if(Diffuse <= 0.0f)
+      return Color;
 
+    if(Material.isDiffuse())
+      Color += Light.color() * Material.diffuse() * Diffuse;
+
+    if(Material.isSpecular())
+    {
+      vec3 Reflect = glm::reflect(-LightVector, Intersection.normal());
+      float Dot = dot(Reflect, View);
+      float Base = Dot > 0.0f ? Dot : 0.0f;
+      float Specular = glm::pow(Base, Material.exponent());
+      Color += Material.specular() * Specular;
+    }
+  }
+  return Color;
+}
+\end{cppcode}
+
+\newpage{}
 
 9. References
 9.1. GLM development
