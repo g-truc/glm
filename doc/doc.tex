@@ -906,13 +906,13 @@ Add *\verb|vec1| types.
 
 \newpage{}
 
-\section{OpenGL Interoperability}
+\section{Substituting Deprecated OpenGL Functions}
 
-\subsection{GLM Replacements for Deprecated OpenGL Functions}
+\subsection{OpenGL Substitutes}
 
-Most fixed-function APIs were deprecated in OpenGL 3.1, and removed entirely in OpenGL 3.2.  GLM provides substitutes for this lost functionality.
+Most fixed-function APIs were deprecated in OpenGL 3.1, and removed entirely in OpenGL 3.2.  GLM provides substitutes for some of this lost functionality.
 
-\subsubsection{\texttt{glRotate}}
+\subsubsection{\href{http://docs.gl/gl2/glRotate}{\texttt{glRotate}}}
 
 \begin{cppcode}
 glm::mat4 glm::rotate(
@@ -932,7 +932,7 @@ glm::dmat4 glm::rotate(
 
 \textbf{Header:} \glmheader{gtc/matrix\_transform}
 
-\cprotect{\href{http://docs.gl/gl2/glScale}}{\verb|glScale|}:
+\subsubsection{\href{http://docs.gl/gl2/glScale}{\texttt{glScale}}}
 
 \begin{cppcode}
 glm::mat4 glm::scale(
@@ -952,66 +952,112 @@ glm::dmat4 glm::scale(
  
 \iffalse
  
-glTranslate{f, d}:
+\subsubsection{\href{http://docs.gl/gl2/glTranslate}{\texttt{glTranslate}}}
+
+\begin{cppcode}
 glm::mat4 glm::translate(
-glm::mat4 const & m,
-glm::vec3 const & translation);
+  glm::mat4 const & m,
+  glm::vec3 const & translation
+);
 
 glm::dmat4 glm::translate(
-glm::dmat4 const & m,
-glm::dvec3 const & translation);
-From GLM_GTC_matrix_transform extension: <glm/gtc/matrix_transform.hpp>
- 
-glLoadIdentity:
+  glm::dmat4 const & m,
+  glm::dvec3 const & translation
+);
+\end{cppcode}
+
+\textbf{Extension:} \verb|GLM_GTC_matrix_transform|
+
+\textbf{Header:} \glmheader{gtc/matrix\_transform}
+
+\subsubsection{\href{http://docs.gl/gl2/glLoadIdentity}{\texttt{glLoadIdentity}}}
+
+\begin{cppcode}
 glm::mat4(1.0) or glm::mat4();
 glm::dmat4(1.0) or glm::dmat4();
-From GLM core library: <glm/glm.hpp>
- 
-glMultMatrix{f, d}: 
+\end{cppcode}
+
+\textbf{Extension:} None, part of GLM core
+
+\textbf{Header:} \glmheader{glm}
+
+\subsubsection{\href{http://docs.gl/gl2/glMultMatrix}{\texttt{glMultMatrix}}}
+
+\begin{cppcode}
 glm::mat4() * glm::mat4();
 glm::dmat4() * glm::dmat4();
-From GLM core library: <glm/glm.hpp>
- 
-glLoadTransposeMatrix{f, d}: 
+\end{cppcode}
+
+\textbf{Extension:} None, part of GLM core
+
+\textbf{Header:} \glmheader{glm}
+
+\subsubsection{\href{http://docs.gl/gl2/glLoadTransposeMatrix}{\texttt{glLoadTransposeMatrix}}}
+
+\begin{cppcode}
 glm::transpose(glm::mat4());
 glm::transpose(glm::dmat4());
-From GLM core library: <glm/glm.hpp>
- 
-glMultTransposeMatrix{f, d}: 
+\end{cppcode}
+
+\textbf{Extension:} None, part of GLM core
+
+\textbf{Header:} \glmheader{glm}
+
+\subsubsection{\href{http://docs.gl/gl2/glMultTransposeMatrix}{\texttt{glMultTransposeMatrix}}}
+
+\begin{cppcode}
 glm::mat4() * glm::transpose(glm::mat4());
 glm::dmat4() * glm::transpose(glm::dmat4());
-From GLM core library: <glm/glm.hpp>
- 
-glFrustum: 
+\end{cppcode}
+
+\textbf{Extension:} None, part of GLM core
+
+\textbf{Header:} \glmheader{glm}
+
+
+\subsubsection{\href{http://docs.gl/gl2/glFrustum}{\texttt{glFrustum}}}
+
+\begin{cppcode}
 glm::mat4 glm::frustum(
-float left, float right, 
-float bottom, float top, 
-float zNear, float zFar);
+  float left, float right,
+  float bottom, float top,
+  float zNear, float zFar
+);
 
 glm::dmat4 glm::frustum(
-double left, double right, 
-double bottom, double top, 
-double zNear, double zFar);
-From GLM_GTC_matrix_transform extension: <glm/gtc/matrix_transform.hpp>
+  double left, double right,
+  double bottom, double top,
+  double zNear, double zFar
+);
+\end{cppcode}
+
+\textbf{Extension:} \verb|GLM_GTC_matrix_transform|
+
+\textbf{Header:} \glmheader{gtc/matrix\_transform}
  
-glOrtho: 
+\subsubsection{\href{http://docs.gl/gl2/glOrtho}{\texttt{glOrtho}}}
+
+\begin{cppcode}
 glm::mat4 glm::ortho(
-float left, float right, 
-float bottom, float top, 
-float zNear, float zFar);
+  float left, float right, 
+  float bottom, float top, 
+  float zNear, float zFar
+);
 
 glm::dmat4 glm::ortho(
-double left, double right, 
-double bottom, double top, 
-double zNear, double zFar);
-From GLM_GTC_matrix_transform extension: <glm/gtc/matrix_transform.hpp>
+  double left, double right, 
+  double bottom, double top, 
+  double zNear, double zFar
+);
+\end{cppcode}
 
-\fi
+\textbf{Extension:} \verb|GLM_GTC_matrix_transform|
 
+\textbf{Header:} \glmheader{gtc/matrix\_transform}
 
-\subsection{GLM Replacements for GLU Functions}
+\subsection{GLU Substitutes}
 
-\verb|gluLookAt|:
+\subsubsection{\href{https://www.opengl.org/sdk/docs/man2/xhtml/gluLookAt.xml}{\texttt{gluLookAt}}}
 
 \begin{cppcode}
 glm::mat4 glm::lookAt(
@@ -1031,7 +1077,103 @@ glm::dmat4 glm::lookAt(
 
 \textbf{Header:} \glmheader{gtc/matrix\_transform}
  
+\subsubsection{\href{https://www.opengl.org/sdk/docs/man2/xhtml/gluOrtho2D.xml}{\texttt{gluOrtho2D}}}
 
+\begin{cppcode}
+glm::mat4 glm::ortho(
+  float left, float right, float bottom, float top
+);
+  
+glm::dmat4 glm::ortho(
+  double left, double right, double bottom, double top
+);
+\end{cppcode}
+
+\textbf{Extension:} \verb|GLM_GTC_matrix_transform|
+
+\textbf{Header:} \glmheader{gtc/matrix\_transform}
+
+\subsubsection{\href{https://www.opengl.org/sdk/docs/man2/xhtml/gluPerspective.xml}{\texttt{gluPerspective}}}
+
+\begin{cppcode}
+glm::mat4 perspective(
+  float fovy, float aspect, float zNear, float zFar
+);
+
+glm::dmat4 perspective(
+  double fovy, double aspect, double zNear, double zFar
+);
+\end{cppcode}
+
+One difference between GLM and GLU is that fovy is expressed in radians in GLM  instead of degrees.
+
+\textbf{Extension:} \verb|GLM_GTC_matrix_transform|
+
+\textbf{Header:} \glmheader{gtc/matrix\_transform}
+
+\subsubsection{\href{https://www.opengl.org/sdk/docs/man2/xhtml/gluPickMatrix.xml}{\texttt{gluPickMatrix}}}
+
+\begin{cppcode}
+glm::mat4 pickMatrix(
+  glm::vec2 const & center, 
+  glm::vec2 const & delta, 
+  glm::ivec4 const & viewport
+);
+
+glm::dmat4 pickMatrix(
+  glm::dvec2 const & center, 
+  glm::dvec2 const & delta, 
+  glm::ivec4 const & viewport
+);
+\end{cppcode}
+
+\textbf{Extension:} \verb|GLM_GTC_matrix_transform|
+
+\textbf{Header:} \glmheader{gtc/matrix\_transform}
+
+\subsubsection{\href{https://www.opengl.org/sdk/docs/man2/xhtml/gluProject.xml}{\texttt{gluProject}}}
+
+\begin{cppcode}
+glm::vec3 project(
+  glm::vec3 const & obj,
+  glm::mat4 const & model,
+  glm::mat4 const & proj,
+  glm::vec4 const & viewport
+);
+
+glm::dvec3 project(
+  glm::dvec3 const & obj,
+  glm::dmat4 const & model,
+  glm::dmat4 const & proj,
+  glm::vec4 const & viewport
+);
+\end{cppcode}
+
+\textbf{Extension:} \verb|GLM_GTC_matrix_transform|
+
+\textbf{Header:} \glmheader{gtc/matrix\_transform}
+ 
+\subsubsection{\href{https://www.opengl.org/sdk/docs/man2/xhtml/gluUnProject.xml}{\texttt{gluUnProject}}}
+
+\begin{cppcode}
+glm::vec3 unProject(
+  glm::vec3 const & win, 
+  glm::mat4 const & model, 
+  glm::mat4 const & proj, 
+  glm::vec4 const & viewport
+);
+
+glm::dvec3 unProject(
+  glm::dvec3 const & win, 
+  glm::dmat4 const & model, 
+  glm::dmat4 const & proj, 
+  glm::vec4 const & viewport
+);
+\end{cppcode}
+
+\textbf{Extension:} \verb|GLM_GTC_matrix_transform|
+
+\textbf{Header:} \glmheader{gtc/matrix\_transform}
 
 \section{Known Issues}
 This section reports the divergences of GLM with GLSL.
