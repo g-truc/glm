@@ -503,6 +503,9 @@ void bar(MatT const & m)
 
 
 \subsection{Disabling Default Initialization}
+
+By default, the nullary (zero-argument) constructors of vectors and matrices initialize their components to zero, as demanded by the GLSL specification.  Such behavior is reliable and convenient, but sometimes unnecessary.  Disable it at compile time by defining \verb|GLM_FORCE_NO_CTOR_INIT|.
+
 GLM's default behavior:
 
 \begin{cppcode}
@@ -526,7 +529,7 @@ void foo()
 }
 \end{cppcode}
 
-Alternatively, you can leave individual variables undefined like so:
+Alternatively, individual variables may be left undefined like so:
 
 \begin{cppcode}
 #include <glm/glm.hpp>
