@@ -1349,25 +1349,44 @@ Are you using GLM in a project?
 - Are you using or working on an alternative library to GLM?
 9.7. Acknowledgements
 GLM is developed and maintained by Christophe Riccio but many contributors have made this project what it is.
+\subsection{Acknowledgements}
+
+GLM is developed and maintained by \href{http://www.g-truc.net}{Christophe Riccio}, but relies on the support of its many contributors to stay great.
+
 Special thanks to:
-- Ashima Arts and Stefan Gustavson for their work on webgl-noise which has been used for GLM noises implementation.
-- Arthur Winters for the C++11 and Visual C++ swizzle operators implementation and tests.
-- Joshua Smith and Christoph Schied for the discussions and the experiments around the swizzle operator implementation issues.
-- Guillaume Chevallereau for providing and maintaining the nightlight build system.
-- Ghenadii Ursachi for GLM_GTX_matrix_interpolation implementation.
-- Mathieu Roumillac for providing some implementation ideas.
-- Grant James for the implementation of all combination of none-squared matrix products.
-- All the GLM users that have report bugs and hence help GLM to become a great library!
-9.8. Quotes from the web
-“I am also going to make use of boost for its time framework and the matrix library GLM, a GL Shader-like Math library for C++. A little advertise for the latter which has a nice design and is useful since matrices have been removed from the latest OpenGL versions”
-Code Xperiments
-“OpenGL Mathematics Library (GLM): Used for vector classes, quaternion classes, matrix classes and math operations that are suited for OpenGL applications.”
-Jeremiah van Oosten
-“Today I ported my code base from my own small linear algebra library to GLM, a GLSL-style vector library for C++. The transition went smoothly.”
-Leonard Ritter
-“A more clever approach is to use a math library like GLM instead. I wish someone had showed me this library a few years ago.”
-Morten Nobel-Jørgensen
 
 \fi
+\begin{itemize}
+  \item Ashima Arts and Stefan Gustavson for their work on \href{https://github.com/ashima/webgl-noise}{webgl-noise}, which which is the base of \verb|GLM_GTC_noise|.
+  \item \href{http://athile.net/library/wiki/index.php?title=Athile_Technologies}{Arthur Winters} for contributing to the swizzle operator implementation.
+  \item Joshua Smith and Christoph Schied for their contributions to the swizzle operator implementation.
+  \item Guillaume Chevallereau for providing and maintaining the \href{http://my.cdash.org/index.php?project=GLM}{nightly build system}.
+  \item Ghenadii Ursachi for \verb|GLM_GTX_matrix_interpolation|.
+  \item Mathieu Roumillac for providing some implementation ideas.
+  \item \href{http://www.zeuscmd.com/}{Grant James} for non-square matrix multiplication (e.g. \verb|mat3 * 3x2|)
+  \item GLM's users!  Without you, there is no GLM!
+\end{itemize}
+
+\subsection{Quotes from the web}
+
+\say{I am also going to make use of boost for its time framework and the matrix library GLM, a GL Shader-like Math library for C++. A little advertise for the latter which has a nice design and is useful since matrices have been removed from the latest OpenGL versions.}
+\begin{flushright}
+---\href{http://www.codexperiments.com/android/2010/10/android-sdk-ndk-part-4-the-silver-bullet-of-android/}{Code Xperiments}
+\end{flushright}
+
+\say{OpenGL Mathematics Library (GLM): Used for vector classes, quaternion classes, matrix classes and math operations that are suited for OpenGL applications.}
+\begin{flushright}
+---\href{http://3dgep.com/?p=1116}{Jeremiah van Oosten}
+\end{flushright}
+
+\say{Today I ported my code base from my own small linear algebra library to GLM, a GLSL-style vector library for C++. The transition went smoothly.}
+\begin{flushright}
+---\href{http://devel.leonard-ritter.com/2011/08/planning-sparse-voxel-octrees.html}{Leonard Ritter}
+\end{flushright}
+
+\say{A more clever approach is to use a math library like GLM instead. I wish someone had showed me this library a few years ago.}
+\begin{flushright}
+---\href{http://blog.nobel-joergensen.com/2011/04/02/glm-brilliant-math-library-for-opengl/}{Morten Nobel-Jørgensen}
+\end{flushright}
 
 \end{document}
