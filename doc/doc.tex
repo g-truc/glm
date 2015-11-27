@@ -212,11 +212,11 @@ vec3 D = B.rsz; // Invalid, won't compile
 
 GLM optionally supports some of this functionality, through the methods described in the following sections. Swizzle operators can be enabled by defining \verb|GLM_SWIZZLE| before including any GLM header files, or as part of your project's build process.
 
-\emph{Note that swizzle operators will massively increase the size of your binaries and the time it takes to compile them!}
+\emph{Note that enabling swizzle operators will massively increase the size of your binaries and the time it takes to compile them!}
 
 \subsection{Default C++98 Implementation}
 
-When compiling as C++98, R-value swizzle operators are simulated through member functions of each vector type.
+When compiling GLM as C++98, R-value swizzle operators are simulated through member functions of each vector type.
 
 \begin{cppcode}
 #define GLM_SWIZZLE // Or define when building (e.g. -DGLM_SWIZZLE)
@@ -245,8 +245,8 @@ void foo()
 {
   glm::vec3 A(1.0f, 0.5f, 0.0f);
 
-  // No compiler error but A is not affected
-  // This code is modifying the components of an anonymous copy.
+  // No compiler error, but A is not modified.
+  // An anonymous copy is being modified (and then discarded).
   A.bgr() = glm::vec3(2.0f, 1.5f, 1.0f); // A is not modified!
 }
 \end{cppcode}
@@ -254,14 +254,13 @@ void foo()
 
 \subsection{Anonymous Union Member Implementation}
 
-Visual C++ supports, as a \emph{non-standard language extension}, anonymous \verb|struct|s in \verb|union|s. This enables a very powerful implementation of swizzle operators on Windows, which both allows L-value swizzle operators and reduces the need for parentheses.  This implementation of the swizzle operators is only enabled when the language extension is enabled and \verb|GLM_SWIZZLE| is defined.
+Visual C++ supports, as a \emph{non-standard language extension}, anonymous \verb|struct|s in \verb|union|s. This enables a very powerful implementation of swizzle operators on Windows, which both allows L-value swizzle operators and makes the syntax for it closer to GLSL's.  This implementation of the swizzle operators is only enabled when the language extension is enabled and \verb|GLM_SWIZZLE| is defined.
 
 \begin{cppcode}
 #define GLM_SWIZZLE 
 #include <glm/glm.hpp>
 
 // Only guaranteed to work with Visual C++!
-//
 // Some compilers that support Microsoft extensions may compile this.
 void foo()
 {
@@ -278,7 +277,7 @@ void foo()
 }
 \end{cppcode}
 
-This implementation returns implementation-specific objects that \emph{implicitly convert} to their respective vector types.  Unfortunately, these extra types can't be interpreted by GLM functions, which means the programmer must convert a swizzle-made \say{vector} to a conventional vector type or call a swizzle object's \verb|operator()| to pass it to another C++ function.
+This versions returns implementation-specific objects that \emph{implicitly convert} to their respective vector types.  Unfortunately, these extra types can't be directly used by GLM functions; the programmer must instead convert a swizzle-made \say{vector} to a conventional vector type or call the swizzle object's \verb|operator()|.
 
 \begin{cppcode}
 #define GLM_SWIZZLE 
@@ -293,12 +292,10 @@ void foo()
   // Generates compiler errors. Color.rgba is not a vector type.
   vec4 ClampedA = glm::clamp(Color.rgba, 0.f, 1.f); // ERROR 
 
-  // We need to cast the swizzled vector into glm::vec4
-
-  // Either use a constructor...
+  // Explicit conversion through a constructor
   vec4 ClampedB = glm::clamp(vec4(Color.rgba), 0.f, 1.f); // OK
 
-  // ...or operator()
+  // Explicit conversion through operator()
   vec4 ClampedC = glm::clamp(Color.rgba(), 0.f, 1.f); // OK
 }
 \end{cppcode}
