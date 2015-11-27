@@ -428,7 +428,7 @@ To gain a bit of performance, a programmer can define \verb|GLM_FORCE_INLINE| be
 #include <glm/glm.hpp>
 \end{cppcode}
 
-\subsection{Vector and Matrix Static Size}
+\subsection{Compile-Time Type Info}
 The member function \verb|length()| returns the dimensionality (number of components) of any GLSL matrix or vector type.
 
 \begin{cppcode}
@@ -479,11 +479,30 @@ void foo(glm::vec4 const & v)
 }
 \end{cppcode}
 
+As of GLM 0.9.7.0, GLM also provides the \verb|GLM_META_PROG_HELPERS|, which enables \verb|static| members that provide information about vector, matrix, and quaternion types at compile time in a manner suitable for template metaprogramming.
 
-\subsection{Disabling Default Constructor Initialization}
+\begin{cppcode}
+#define GLM_META_PROG_HELPERS
+#include <glm/glm.hpp>
 
-By default, the nullary (zero-argument) constructors of vectors and matrices initialize their components to zero, as is required in the GLSL specification.  Such behavior is reliable and convenient, but sometimes unnecessary.  Disable it at compilation time by defining \verb|GLM_FORCE_NO_CTOR_INIT| before including any GLM headers.
+template<typename VecT>
+void foo(VecT const & v)
+{
+  static_assert(VecT::components < 4, "4D doesn't make sense!");
 
+  glm::vec2<VecT::value_type, VecT::prec> something;
+  // vec2 with the same component type and precision as VecT
+}
+
+template<typename MatT>
+void bar(MatT const & m)
+{
+  static_assert(MatT::rows == MatT::cols, "Square matrices only!");
+}
+\end{cppcode}
+
+
+\subsection{Disabling Default Initialization}
 GLM's default behavior:
 
 \begin{cppcode}
