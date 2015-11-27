@@ -141,8 +141,9 @@ GLM is a header-only library, and thus does not need to be compiled.  To use GLM
   \item \glmheader{vector\_relational}: all the GLSL vector relational functions
 \end{itemize}
 
-\subsection{Faster program compilation}
-GLM is a header-only library that heavily uses C++ templates, which may significantly increase the compile time for files that use GLM. Hence, GLM functionality should be included only by files that actually use it.
+\subsection{Faster Compilation}
+% TODO: Benchmark explicit extern template instantiations and write something about them if beneficial http://en.cppreference.com/w/cpp/language/class_template
+GLM makes heavy use of C++ templates, which may significantly increase the compile time for projects that use GLM.  Hence, source files should only include the GLM headers they actually use.
 
 To further reduce compilation time, GLM 0.9.5 introduced forward declarations of all types through the header \glmheader{fwd}.
 
