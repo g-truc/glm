@@ -1061,47 +1061,49 @@ ivec3 foo(const vec4 & v)
 
 \subsection{Why does GLM follow the GLSL specification?}
 
-Following GLSL conventions is a really strict policy of GLM. It has been designed following the idea that everyone does its own math library with his own conventions. The idea is that brilliant developers (the OpenGL ARB) worked together and agreed to make GLSL. Following GLSL conventions is a way to find consensus. Moreover, basically when a developer knows GLSL, he knows GLM.
+Everyone and their dog has their own idea of what should constitute a math library.  The designers of GLSL (the OpenGL ARB) make a living on deciding what should be in its own math library; why not learn from the best and stick to a proven convention?
 
 \subsection{Does GLM actually run GLSL?}
 
-No, GLM is a C++ implementation of a subset of GLSL.
+No.  GLM implements a subset of GLSL's functionality.
 
 \subsection{Can GLM be compiled to GLSL (or vice versa)?}
 
-No, this is not what GLM attends to do.
+No.  That is not one of GLM's goals.
 
-\subsection{Should I use GTX extensions?}
+\subsection{What's the difference between GTX, GTC, and Core?}
 
-GTX extensions are qualified to be experimental extensions.  In GLM this means that these extensions might change from version to version without any restriction. In practice, it doesn't really change except time to time. GTC extensions are stabled, tested and perfectly reliable in time. Many GTX extensions extend GTC extensions and provide a way to explore features and implementations and APIs and then are promoted to GTC extensions. This is fairly the way OpenGL features are developed; through extensions.
+GTX extensions are considered \emph{experimental}, and may thus introduce breaking changes without warning (though in practice this doesn't happen often).  GTC extensions are considered \emph{stable}, and are therefore unlikely to introduce radical changes.  Core libraries are based entirely on functionality provided by GLSL, and can safely be relied upon.  The GTX and GTC extension system provides a way to experiment with new GLM functionality, in the hopes of eventually promoting it to a GTC extension.  OpenGL itself is developed in much the same way.
 
-\subsection{Where can I ask more questions about GLM??}
+%\subsection{Where can I ask more questions about GLM??}
+%
+%A good place is the \href{http://www.opengl.org/discussion_boards/ubbthreads.php?ubb=postlist&Board=10&page=1}{OpenGL Toolkits forum} on \href{http://www.opengl.org/}{OpenGL.org}.
+%
+% TODO: Find the real link
 
-A good place is the OpenGL Toolkits forum on OpenGL.org.
+\subsection{Where's the documentation?}
 
-\subsection{Where can I find all of the documentation?}
+The Doxygen-generated documentation includes a complete list of all extensions available, and can be found right \href{http://glm.g-truc.net/html/index.html}{here}.
 
-The Doxygen generated documentation includes a complete list of all extensions available. Explore this API documentation to get a complete view of all GLM capabilities!
+\subsection{Should I use \texttt{using namespace glm;}?}
 
-\subsection{Should I use \texttt{using namespace glm}?}
-
-NO! Chances are that if using namespace glm; is called, especially in a header file, name collisions will happen as GLM is based on GLSL which uses common tokens for types and functions. Avoiding using namespace glm; will a higher compatibility with third party library and SDKs.
+\textbf{Absolutely not!}  GLM uses many common names, such as \verb|any|, \verb|scale|, and \verb|length|.  Haphazardly writing \verb|using namespace glm;| will almost certainly result in name collisions.  Instead, either prefix GLM calls with \verb|glm::|, or pull individual types or functions into your namespace with \verb|using glm::|*, where * is some desired name.
 
 \subsection{Is GLM fast?}
 
-First, GLM is mainly designed to be convenient and that's why it is written against GLSL specification. Following the 20-80 rules where 20\% of the code grad 80\% of the performances, GLM perfectly operates on the 80\% of the code that consumes 20\% of the performances. This said, on performance critical code section, the developers will probably have to write to specific code based on a specific design to reach peak performances but GLM can provides some descent performances alternatives based on approximations or SIMD instructions.
+GLM is designed for convenience over performance.  \emph{That being said}, the most frequently-used operations are optimized to the fullest reasonable extent.  Approximations and SIMD-flavored structures are provided as well, in case they're needed.
 
-\subsection{I get lots of warnings when building with Visual C++ on warning level \texttt{\/W4}.}
+\subsection{Visual C++ gives me lots of warnings on on warning level \texttt{/W4}.}
 
-You should not have any warnings even in /W4 mode. However, if you expect such level for you code, then you should ask for the same level to the compiler by at least disabling the Visual C++ language extensions (/Za) which generates warnings when used. If these extensions are enabled, then GLM will take advantage of them and the compiler will generate warnings.
+You should not have any warnings, even in \verb|/W4| mode. However, if you expect such level for you code, then you should ask for the same level to the compiler by at least disabling the Visual C++ language extensions (\verb|/Za|) which generates warnings when used. If these extensions are enabled, then GLM will take advantage of them and the compiler will generate warnings.
 
 \subsection{Why are some GLM functions vulnerable to division by zero?}
 
-GLM functions crashing is the result of a domain error that follows the precedent given by C and C++ libraries. For example, it's a domain error to pass a null vector to glm::normalize function.
+Such behavior is the result of a domain error that follows the precedent set by C and C++. For example, it's a domain error to pass a null vector (all zeroes) to glm::normalize, or even to pass a negative number into \verb|std::sqrt|.
 
-\subsection{What unit for angles is used in GLM?}
+\subsection{What unit does GLM use for angles?}
 
-GLSL is using radians but GLU is using degrees to express angles. This has caused GLM to use inconsistent units for angles. Starting with GLM 0.9.6, all GLM functions are using radians. For more information, follow the link.
+\textbf{All angles in GLM are expressed in radians unless otherwise noted.}  GLSL does the same thing.  GLU uses degrees, however.  This used to cause a lot of confusion.  For more information, see \href{http://www.g-truc.net/post-0693.html#menu}{here}.
 
 \newpage{}
 
