@@ -32,7 +32,10 @@
 \newminted{cpp}{linenos, bgcolor=beige}
 \newminted{glsl}{linenos, bgcolor=beige}
 
+
 \begin{document}
+
+\newcommand{\glmheader}[1]{\href{https://github.com/g-truc/glm/tree/master/glm/#1.hpp}{\texttt{<glm/#1.hpp>}}}
 
 % Set up the maketitle command
 \author{Christophe Riccio}
@@ -117,32 +120,32 @@ GLM is a header-only library. Hence, there is nothing to build to use it. To use
 Core GLM features can be included individually to reduce compilation times.
 
 \begin{itemize}
-\item \verb|<glm/vec2.hpp>|: \verb|vec2|, \verb|bvec2|, \verb|dvec2|, \verb|ivec2| and \verb|uvec2|
-\item \verb|<glm/vec3.hpp>|: \verb|vec3|, \verb|bvec3|, \verb|dvec3|, \verb|ivec3| and \verb|uvec3|
-\item \verb|<glm/vec4.hpp>|: \verb|vec4|, \verb|bvec4|, \verb|dvec4|, \verb|ivec4| and \verb|uvec4|
-\item \verb|<glm/mat2x2.hpp>|: \verb|mat2|, \verb|dmat2|
-\item \verb|<glm/mat2x3.hpp>|: \verb|mat2x3|, \verb|dmat2x3|
-\item \verb|<glm/mat2x4.hpp>|: \verb|mat2x4|, \verb|dmat2x4|
-\item \verb|<glm/mat3x2.hpp>|: \verb|mat3x2|, \verb|dmat3x2|
-\item \verb|<glm/mat3x3.hpp>|: \verb|mat3|, \verb|dmat3|
-\item \verb|<glm/mat3x4.hpp>|: \verb|mat3x4|, \verb|dmat3x4|
-\item \verb|<glm/mat4x2.hpp>|: \verb|mat4x2|, \verb|dmat4x2|
-\item \verb|<glm/mat4x3.hpp>|: \verb|mat4x3|, \verb|dmat4x3|
-\item \verb|<glm/mat4x4.hpp>|: \verb|mat4|, \verb|dmat4|
-\item \verb|<glm/common.hpp>|: all the GLSL common functions
-\item \verb|<glm/exponential.hpp>|: all the GLSL exponential functions
-\item \verb|<glm/geometry.hpp>|: all the GLSL geometry functions
-\item \verb|<glm/integer.hpp>|: all the GLSL integer functions
-\item \verb|<glm/matrix.hpp>|: all the GLSL matrix functions
-\item \verb|<glm/packing.hpp>|: all the GLSL packing functions
-\item \verb|<glm/trigonometric.hpp>|: all the GLSL trigonometric functions
-\item \verb|<glm/vector_relational.hpp>|: all the GLSL vector relational functions
+  \item \glmheader{vec2}: \verb|vec2|, \verb|bvec2|, \verb|dvec2|, \verb|ivec2| and \verb|uvec2|
+  \item \glmheader{vec3}: \verb|vec3|, \verb|bvec3|, \verb|dvec3|, \verb|ivec3| and \verb|uvec3|
+  \item \glmheader{vec4}: \verb|vec4|, \verb|bvec4|, \verb|dvec4|, \verb|ivec4| and \verb|uvec4|
+  \item \glmheader{mat2x2}: \verb|mat2|, \verb|dmat2|
+  \item \glmheader{mat2x3}: \verb|mat2x3|, \verb|dmat2x3|
+  \item \glmheader{mat2x4}: \verb|mat2x4|, \verb|dmat2x4|
+  \item \glmheader{mat3x2}: \verb|mat3x2|, \verb|dmat3x2|
+  \item \glmheader{mat3x3}: \verb|mat3|, \verb|dmat3|
+  \item \glmheader{mat3x4}: \verb|mat3x4|, \verb|dmat3x4|
+  \item \glmheader{mat4x2}: \verb|mat4x2|, \verb|dmat4x2|
+  \item \glmheader{mat4x3}: \verb|mat4x3|, \verb|dmat4x3|
+  \item \glmheader{mat4x4}: \verb|mat4|, \verb|dmat4|
+  \item \glmheader{common}: all the GLSL common functions
+  \item \glmheader{exponential}: all the GLSL exponential functions
+  \item \glmheader{geometry}: all the GLSL geometry functions
+  \item \glmheader{integer}: all the GLSL integer functions
+  \item \glmheader{matrix}: all the GLSL matrix functions
+  \item \glmheader{packing}: all the GLSL packing functions
+  \item \glmheader{trigonometric}: all the GLSL trigonometric functions
+  \item \glmheader{vector\_relational}: all the GLSL vector relational functions
 \end{itemize}
 
 \subsection{Faster program compilation}
 GLM is a header-only library that heavily uses C++ templates, which may significantly increase the compile time for files that use GLM. Hence, GLM functionality should be included only by files that actually use it.
 
-To further reduce compilation time, GLM 0.9.5 introduced forward declarations of all types through the header \verb|<glm/fwd.hpp>|.
+To further reduce compilation time, GLM 0.9.5 introduced forward declarations of all types through the header \glmheader{fwd}.
 
 \begin{cppcode}
 // Header file
@@ -367,7 +370,7 @@ GLM can optionally display the following, among other things, at compile-time:
     \item Included extensions
 \end{itemize}
 
-To enable compile-time messaging, define \verb|GLM_MESSAGES| before any inclusion of \verb|<glm/glm.hpp>|. The messages are generated once per build, assuming your compiler supports \verb|#pragma message|.
+To enable compile-time messaging, define \verb|GLM_MESSAGES| before any inclusion of \glmheader{glm}. The messages are generated once per build, assuming your compiler supports \verb|#pragma message|.
 
 \begin{cppcode}
 #define GLM_MESSAGES  // Or as part of your build
@@ -376,7 +379,7 @@ To enable compile-time messaging, define \verb|GLM_MESSAGES| before any inclusio
 
 \subsection{C++ Language Detection}
 
-GLM may implement certain features that require the presence of a minimum C++ standard. A programmer can mandate compatibility with particular revisions of C++ by defining \verb|GLM_FORCE_CXX|** before any inclusion of \verb|<glm/glm.hpp>| (where ** is one of \verb|98|, \verb|03|, \verb|11|, and \verb|14|).
+GLM may implement certain features that require the presence of a minimum C++ standard. A programmer can mandate compatibility with particular revisions of C++ by defining \verb|GLM_FORCE_CXX|** before any inclusion of \glmheader{glm} (where ** is one of \verb|98|, \verb|03|, \verb|11|, and \verb|14|).
 
 \begin{cppcode}
 #define GLM_FORCE_CXX98 
@@ -421,7 +424,7 @@ Useful as \verb|GLM_FORCE_PURE| is, I suggest you enforce this with compiler arg
 \end{cppcode}
 
 \subsection{Force Inline}
-To gain a bit of performance, a programmer can define \verb|GLM_FORCE_INLINE| before any inclusion of \verb|<glm/glm.hpp>| to force the compiler to inline GLM code.
+To gain a bit of performance, a programmer can define \verb|GLM_FORCE_INLINE| before any inclusion of \glmheader{glm} to force the compiler to inline GLM code.
 
 \begin{cppcode}
 #define GLM_FORCE_INLINE 
@@ -582,51 +585,52 @@ void foo()
 Descriptions of the most stable extensions follow.
 
 \subsection{\texttt{GLM\_GTC\_bitfield}}
-\textbf{Header:} \verb|<glm/gtc/bitfield.hpp>|
+\textbf{Header:} \glmheader{gtc/bitfield}
 
 Fast bitfield operations on scalar and vector variables.
 
 \subsection{\texttt{GLM\_GTC\_color\_space}}
-\textbf{Header:} \verb|<glm/gtc/color_space.hpp>|
+\textbf{Header:} \glmheader{gtc/color\_space}
 
 Conversion between linear RGB to sRGB and sRGB to linear RGB.
 
 \subsection{\texttt{GLM\_GTC\_constants}}
-\textbf{Header:} \verb|<glm/gtc/constants.hpp>|
+\textbf{Header:} \glmheader{gtc/constants}
 
 Provide a list of built-in constants.
 
 \subsection{\texttt{GLM\_GTC\_epsilon}}
-\textbf{Header:} \verb|<glm/gtc/epsilon.hpp>|
+\textbf{Header:} \glmheader{gtc/epsilon}
 
 Approximate equal and not equal comparisons with selectable epsilon.
 
 \subsection{\texttt{GLM\_GTC\_integer}}
-\textbf{Header:} \verb|<glm/gtc/integer.hpp>|
+\textbf{Header:} \glmheader{gtc/integer}
+
 Provide integer variants of GLM core functions. 
 
 \subsection{\texttt{GLM\_GTC\_matrix\_access}}
-\textbf{Header:} \verb|<glm/gtc/matrix_access.hpp>|
+\textbf{Header:} \glmheader{gtc/matrix\_access}
 
 Define functions to access rows or columns of a matrix easily.
 
 \subsection{\texttt{GLM\_GTC\_matrix\_integer}}
-\textbf{Header:} \verb|<glm/gtc/matrix_integer.hpp>|
+\textbf{Header:} \glmheader{gtc/matrix\_integer}
 
 Provide integer matrix types. Inverse and determinant functions are not supported for these types.
 
 \subsection{\texttt{GLM\_GTC\_matrix\_inverse}}
-\textbf{Header:} \verb|<glm/gtc/matrix_inverse.hpp>|
+\textbf{Header:} \glmheader{gtc/matrix\_inverse}
 Define additional matrix inverting functions. 
 
 \subsection{\texttt{GLM\_GTC\_matrix\_transform}}
-\textbf{Header:} \verb|<glm/gtc/matrix_transform.hpp>|
+\textbf{Header:} \glmheader{gtc/matrix\_transform}
 
 Define functions that generate common transformation matrices.
 The matrices generated by this extension use standard OpenGL fixed-function conventions. For example, the \verb|lookAt| function generates a transform from world space into the specific eye space that the projective matrix functions (\verb|perspective|, \verb|ortho|, etc) are designed to expect. The OpenGL compatibility specifications define the particular layout of this eye space.
 
 \subsection{\texttt{GLM\_GTC\_noise}}
-\textbf{Header:} \verb|<glm/gtc/noise.hpp>|
+\textbf{Header:} \glmheader{gtc/noise}
 
 Define 2D, 3D and 4D procedural noise functions.
 
@@ -685,17 +689,17 @@ Define 2D, 3D and 4D procedural noise functions.
 \end{figure}
 
 \subsection{\texttt{GLM\_GTC\_packing}}
-\textbf{Header:} \verb|<glm/gtc/packing.hpp>|
+\textbf{Header:} \glmheader{gtc/packing}
 
 Convert scalar and vector types to packed formats. This extension can also unpack packed data to the original format. The use of packing functions will results in precision lost. However, the extension guarantee that packing a value previously unpacked from the same format will be perform losslessly.
 
 \subsection{\texttt{GLM\_GTC\_quaternion}}
-\textbf{Header:} \verb|<glm/gtc/quaternion.hpp>|
+\textbf{Header:} \glmheader{gtc/quaternion}
 
 Define a quaternion type and several quaternion operations.
 
 \subsection{\texttt{GLM\_GTC\_random}}
-\textbf{Header:} \verb|<glm/gtc/random.hpp>|
+\textbf{Header:} \glmheader{gtc/random}
 Generate random number from various distribution methods.
 
 \begin{figure}[h]
@@ -735,18 +739,18 @@ Generate random number from various distribution methods.
 \end{figure}
 
 \subsection{\texttt{GLM\_GTC\_reciprocal}}
-\textbf{Header:} \verb|<glm/gtc/reciprocal.hpp>|
+\textbf{Header:} \glmheader{gtc/reciprocal}
 
 Provide hyperbolic functions: secant, cosecant, cotangent, etc.
 
 \subsection{\texttt{GLM\_GTC\_round}}
-\textbf{Header:} \verb|<glm/gtc/round.hpp>|
+\textbf{Header:} \glmheader{gtc/round}
 
 Rounding operation on power of two and multiple values.
 
 
 \subsection{\texttt{GLM\_GTC\_type\_precision}}
-\textbf{Header:} \verb|<glm/gtc/type_precision.hpp>|
+\textbf{Header:} \glmheader{gtc/type\_precision}
 
 Add vector and matrix types with defined precisions. Eg, \verb|i8vec4|: vector of 4 signed integer of 8 bits.
 
@@ -832,7 +836,7 @@ Available defines for 64-bit floating-point types (\verb|glm::f64vec|*, \verb|gl
 \end{itemize}
 
 \subsection{GLM\_GTC\_type\_ptr}
-\textbf{Header:} \verb|<glm/gtc/type_ptr.hpp>|
+\textbf{Header:} \glmheader{gtc/type\_ptr}
 
 Handle the interaction between pointers and vector, matrix types.
 
@@ -872,12 +876,12 @@ void foo()
 Note: It would be possible to implement \cprotect{\href{http://www.opengl.org/sdk/docs/man2/xhtml/glVertex.xml}}{\verb|glVertex3fv|}{\verb|(glm::vec3(0))|} in C++ with the appropriate cast operator that would result as an implicit cast in this example. However, cast operators may produce undefined behavior.
 
 \subsection{\texttt{GLM\_GTC\_ulp}}
-\textbf{Header:} \verb|<glm/gtc/ulp.hpp>|
+\textbf{Header:} \glmheader{gtc/ulp}
 
 Allow the measurement of the accuracy of a function against a reference implementation. This extension works on floating-point data and provides results in \href{http://ljk.imag.fr/membres/Carine.Lucas/TPScilab/JMMuller/ulp-toms.pdf}{ULP}.
 
 \subsection{\texttt{GLM\_GTC\_vec1}}
-\textbf{Header:} \verb|<glm/gtc/vec1.hpp>|
+\textbf{Header:} \glmheader{gtc/vec1}
 
 Add *\verb|vec1| types.
 
@@ -907,7 +911,7 @@ glm::dmat4 glm::rotate(
 
 \textbf{Extension:} \verb|GLM_GTC_matrix_transform|
 
-\textbf{Header:} \verb|<glm/gtc/matrix_transform.hpp>|
+\textbf{Header:} \glmheader{gtc/matrix\_transform}
 
 \cprotect{\href{http://docs.gl/gl2/glScale}}{\verb|glScale|}:
 
@@ -925,7 +929,7 @@ glm::dmat4 glm::scale(
 
 \textbf{Extension:} \verb|GLM_GTC_matrix_transform|
 
-\textbf{Header:} \verb|<glm/gtc/matrix_transform.hpp>|
+\textbf{Header:} \glmheader{gtc/matrix\_transform}
  
 \iffalse
  
@@ -1006,7 +1010,7 @@ glm::dmat4 glm::lookAt(
 
 \textbf{Extension:} \verb|GLM_GTC_matrix_transform|
 
-\textbf{Header:} \verb|<glm/gtc/matrix_transform.hpp>|
+\textbf{Header:} \glmheader{gtc/matrix\_transform}
  
 
 
