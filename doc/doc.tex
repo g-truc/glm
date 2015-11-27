@@ -190,9 +190,9 @@ mat4 transform(
 
 \subsection{Dependencies}
 
-When \verb|<glm/glm.hpp>| is included, GLM will provide all standard GLSL features.
+The \glmheader{glm} header provides all standard GLSL features.
 
-GLM does not depend on external libraries or external headers such as \verb|gl.h|, \cprotect{\href{http://www.opengl.org/registry/api/GL/glcorearb.h}}{\verb|glcorearb.h|}, \verb|gl3.h|, \verb|glu.h| or \verb|windows.h|. However, if \verb|<boost/static_assert.hpp>| is included, then  \href{http://www.boost.org/doc/libs/release/libs/static_assert/}{Boost.StaticAssert}  will be used to provide compile-time errors.  Otherwise, if using a C++11 compiler, the standard \verb|static_assert| will be used instead. If neither is available, GLM will use its own implementation of \verb|static_assert|.
+GLM does not depend on external libraries or external headers such as \verb|gl.h|, \href{http://www.opengl.org/registry/api/GL/glcorearb.h}{\texttt{glcorearb.h}}, \verb|gl3.h|, \verb|glu.h| or \verb|windows.h|. However, if \verb|<boost/static_assert.hpp>| is included, then \href{http://www.boost.org/doc/libs/release/libs/static_assert/}{\texttt{Boost.StaticAssert}} will be used to provide compile-time errors.  Otherwise, if using a C++11 compiler, the standard \verb|static_assert| will be used instead. If neither is available, GLM will use its own implementation of \verb|static_assert|.
 
 \newpage{}
 
