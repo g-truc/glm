@@ -312,7 +312,7 @@ precision mediump int;
 precision highp float;
 \end{glslcode}
 
-To use the default precision functionality, GLM provides some defines that need to add before any include of glm.hpp:
+To set the default precision of a given arithmetic type, use any one of the following defines:
 
 \begin{cppcode}
 #define GLM_PRECISION_MEDIUMP_INT
@@ -330,7 +330,7 @@ Available defines for floating point types (\verb|glm::vec|*, \verb|glm::mat|*):
     \item \verb|GLM_PRECISION_HIGHP_FLOAT|: High precision (default)
 \end{itemize}
 
-Available defines for floating point types (\verb|glm::dvec|*, \verb|glm::dmat|*):
+Available defines for double-precision floating point types (\verb|glm::dvec|*, \verb|glm::dmat|*):
 
 \begin{itemize}
     \item \verb|GLM_PRECISION_LOWP_DOUBLE|: Low precision
