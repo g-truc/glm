@@ -36,6 +36,9 @@
 \begin{document}
 
 \newcommand{\glmheader}[1]{\href{https://github.com/g-truc/glm/tree/master/glm/#1.hpp}{\texttt{<glm/#1.hpp>}}}
+\newcommand{\glmemail}[1]{\href{mailto://glm@g-truc.net}{#1}}
+\newcommand{\glufunction}[1]{\href{https://www.opengl.org/sdk/docs/man2/xhtml/#1.xml}{\texttt{#1}}}
+\newcommand{\glfunction}[2]{\href{http://docs.gl/gl#1/#2}{\texttt{#2}}}
 
 % Set up the maketitle command
 \author{Christophe Riccio}
@@ -110,7 +113,7 @@ GLM is written in C++98, but can take advantage of C++11 where support exists. G
 
 The source code and the documentation (including this manual) are licensed under the \hyperlink{happybunny}{Happy Bunny License (Modified MIT)} and the \hyperlink{mit}{MIT License}.
 
-Feedback, bug reports, feature requests, and acts upon thereof are highly appreciated.  The author may be contacted at \href{mailto://glm@g-truc.net}{glm@g-truc.net}.
+Feedback, bug reports, feature requests, and acts upon thereof are highly appreciated.  The author may be contacted at \glmemail{glm@g-truc.net}.
 
 
 \section{Getting Started}
@@ -892,7 +895,7 @@ void foo()
 }
 \end{cppcode}
 
-Note: It would be possible to implement \cprotect{\href{http://www.opengl.org/sdk/docs/man2/xhtml/glVertex.xml}}{\verb|glVertex3fv|}{\verb|(glm::vec3(0))|} in C++ with the appropriate cast operator that would result as an implicit cast in this example. However, cast operators may produce undefined behavior.
+Note: It's possible to implement \glfunction{2}{glVertex} and similar functions by defining an implicit cast from GLM types to pointer types.  However, you risk triggering undefined behavior by doing so.
 
 \subsection{\texttt{GLM\_GTC\_ulp}}
 \textbf{Header:} \glmheader{gtc/ulp}
@@ -912,7 +915,7 @@ Add *\verb|vec1| types.
 
 Most fixed-function APIs were deprecated in OpenGL 3.1, and removed entirely in OpenGL 3.2.  GLM provides substitutes for some of this lost functionality.
 
-\subsubsection{\href{http://docs.gl/gl2/glRotate}{\texttt{glRotate}}}
+\subsubsection{\glfunction{2}{glRotate}}
 
 \begin{cppcode}
 glm::mat4 glm::rotate(
@@ -932,7 +935,8 @@ glm::dmat4 glm::rotate(
 
 \textbf{Header:} \glmheader{gtc/matrix\_transform}
 
-\subsubsection{\href{http://docs.gl/gl2/glScale}{\texttt{glScale}}}
+
+\subsubsection{\glfunction{2}{glScale}}
 
 \begin{cppcode}
 glm::mat4 glm::scale(
@@ -950,8 +954,7 @@ glm::dmat4 glm::scale(
 
 \textbf{Header:} \glmheader{gtc/matrix\_transform}
 
- 
-\subsubsection{\href{http://docs.gl/gl2/glTranslate}{\texttt{glTranslate}}}
+\subsubsection{\glfunction{2}{glTranslate}}
 
 \begin{cppcode}
 glm::mat4 glm::translate(
@@ -969,7 +972,7 @@ glm::dmat4 glm::translate(
 
 \textbf{Header:} \glmheader{gtc/matrix\_transform}
 
-\subsubsection{\href{http://docs.gl/gl2/glLoadIdentity}{\texttt{glLoadIdentity}}}
+\subsubsection{\glfunction{2}{glLoadIdentity}}
 
 \begin{cppcode}
 glm::mat4(1.0) or glm::mat4();
@@ -980,7 +983,7 @@ glm::dmat4(1.0) or glm::dmat4();
 
 \textbf{Header:} \glmheader{glm}
 
-\subsubsection{\href{http://docs.gl/gl2/glMultMatrix}{\texttt{glMultMatrix}}}
+\subsubsection{\glfunction{2}{glMultMatrix}}
 
 \begin{cppcode}
 glm::mat4() * glm::mat4();
@@ -991,7 +994,7 @@ glm::dmat4() * glm::dmat4();
 
 \textbf{Header:} \glmheader{glm}
 
-\subsubsection{\href{http://docs.gl/gl2/glLoadTransposeMatrix}{\texttt{glLoadTransposeMatrix}}}
+\subsubsection{\glfunction{2}{glLoadTransposeMatrix}}
 
 \begin{cppcode}
 glm::transpose(glm::mat4());
@@ -1002,7 +1005,7 @@ glm::transpose(glm::dmat4());
 
 \textbf{Header:} \glmheader{glm}
 
-\subsubsection{\href{http://docs.gl/gl2/glMultTransposeMatrix}{\texttt{glMultTransposeMatrix}}}
+\subsubsection{\glfunction{2}{glMultTransposeMatrix}}
 
 \begin{cppcode}
 glm::mat4() * glm::transpose(glm::mat4());
@@ -1014,7 +1017,7 @@ glm::dmat4() * glm::transpose(glm::dmat4());
 \textbf{Header:} \glmheader{glm}
 
 
-\subsubsection{\href{http://docs.gl/gl2/glFrustum}{\texttt{glFrustum}}}
+\subsubsection{\glfunction{2}{glFrustum}}
 
 \begin{cppcode}
 glm::mat4 glm::frustum(
@@ -1034,7 +1037,8 @@ glm::dmat4 glm::frustum(
 
 \textbf{Header:} \glmheader{gtc/matrix\_transform}
  
-\subsubsection{\href{http://docs.gl/gl2/glOrtho}{\texttt{glOrtho}}}
+
+\subsubsection{\glfunction{2}{glOrtho}}
 
 \begin{cppcode}
 glm::mat4 glm::ortho(
@@ -1056,7 +1060,7 @@ glm::dmat4 glm::ortho(
 
 \subsection{GLU Substitutes}
 
-\subsubsection{\href{https://www.opengl.org/sdk/docs/man2/xhtml/gluLookAt.xml}{\texttt{gluLookAt}}}
+\subsubsection{\glufunction{gluLookAt}}
 
 \begin{cppcode}
 glm::mat4 glm::lookAt(
@@ -1076,7 +1080,7 @@ glm::dmat4 glm::lookAt(
 
 \textbf{Header:} \glmheader{gtc/matrix\_transform}
  
-\subsubsection{\href{https://www.opengl.org/sdk/docs/man2/xhtml/gluOrtho2D.xml}{\texttt{gluOrtho2D}}}
+\subsubsection{\glufunction{gluOrtho2D}}
 
 \begin{cppcode}
 glm::mat4 glm::ortho(
@@ -1092,7 +1096,7 @@ glm::dmat4 glm::ortho(
 
 \textbf{Header:} \glmheader{gtc/matrix\_transform}
 
-\subsubsection{\href{https://www.opengl.org/sdk/docs/man2/xhtml/gluPerspective.xml}{\texttt{gluPerspective}}}
+\subsubsection{\glufunction{gluPerspective}}
 
 \begin{cppcode}
 glm::mat4 perspective(
@@ -1110,7 +1114,7 @@ One difference between GLM and GLU is that fovy is expressed in radians in GLM  
 
 \textbf{Header:} \glmheader{gtc/matrix\_transform}
 
-\subsubsection{\href{https://www.opengl.org/sdk/docs/man2/xhtml/gluPickMatrix.xml}{\texttt{gluPickMatrix}}}
+\subsubsection{\glufunction{gluPickMatrix}}
 
 \begin{cppcode}
 glm::mat4 pickMatrix(
@@ -1130,7 +1134,7 @@ glm::dmat4 pickMatrix(
 
 \textbf{Header:} \glmheader{gtc/matrix\_transform}
 
-\subsubsection{\href{https://www.opengl.org/sdk/docs/man2/xhtml/gluProject.xml}{\texttt{gluProject}}}
+\subsubsection{\glufunction{gluProject}}
 
 \begin{cppcode}
 glm::vec3 project(
@@ -1152,7 +1156,7 @@ glm::dvec3 project(
 
 \textbf{Header:} \glmheader{gtc/matrix\_transform}
  
-\subsubsection{\href{https://www.opengl.org/sdk/docs/man2/xhtml/gluUnProject.xml}{\texttt{gluUnProject}}}
+\subsubsection{\glufunction{gluUnProject}}
 
 \begin{cppcode}
 glm::vec3 unProject(
@@ -1527,7 +1531,7 @@ Beautifully hand-crafted levels bring the story of Leo to life in this epic adve
 
 \say{Whatever lies ahead, I must recover my fortune.} ---Leopold
 
-Are you using GLM in a project?  Tell us!
+Are you using GLM in a project?  \glmemail{Tell us!}
 
 \subsection{OpenGL Tutorials using GLM}
 
@@ -1546,7 +1550,7 @@ Are you using GLM in a project?  Tell us!
   \item \href{http://learnopengl.com/}{Learn OpenGL}: An OpenGL tutorial
 \end{itemize}
 
-Are you using GLM in a tutorial?  Tell us!
+Are you using GLM in a tutorial?  \glmemail{Tell us!}
 
 
 \subsection{Alternatives to GLM}
@@ -1557,7 +1561,7 @@ Are you using GLM in a tutorial?  Tell us!
   \item \href{http://glhlib.sourceforge.net/}{glhlib}: A much more than glu C library.
 \end{itemize}
 
-Are you using or working on an alternative library to GLM?
+Are you using or developing an alternative to GLM?  \glmemail{Tell us!}
 
 \subsection{Acknowledgements}
 
