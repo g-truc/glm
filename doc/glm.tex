@@ -199,9 +199,9 @@ GLM does not depend on external libraries or external headers such as \verb|gl.h
 
 \newpage{}
 
-\section{Swizzle Operators}
+\section{Swizzling}
 
-Shader languages like GLSL often feature so-called swizzle operators, which may be used to freely select and arrange a vector's components. For example, \verb|variable.x|, \verb|variable.xzy| and \verb|variable.zxyy| respectively form a scalar, a 3D vector and a 4D vector.  The result of a swizzle expression in GLSL can be either an R-value or an L-value. Swizzle expressions can be written with characters from exactly one of \verb|xyzw| (usually for positions), \verb|rgba| (usually for colors), or \verb|stpq| (usually for texture coordinates).
+Shader languages like GLSL often feature so-called swizzle expression, which may be used to freely select and arrange a vector's components. For example, \verb|variable.x|, \verb|variable.xzy| and \verb|variable.zxyy| respectively form a scalar, a 3D vector and a 4D vector.  The result of a swizzle expression in GLSL can be either an R-value or an L-value. Swizzle expressions can be written with characters from exactly one of \verb|xyzw| (usually for positions), \verb|rgba| (usually for colors), or \verb|stpq| (usually for texture coordinates).
 
 \begin{glslcode}
 vec4 A;
@@ -213,13 +213,13 @@ vec3 C = A.bgr;
 vec3 D = B.rsz; // Invalid, won't compile
 \end{glslcode}
 
-GLM optionally supports some of this functionality, through the methods described in the following sections. Swizzle operators can be enabled by defining \verb|GLM_SWIZZLE| before including any GLM header files, or as part of your project's build process.
+GLM optionally supports some of this functionality via the methods described in the following sections. Swizzling can be enabled by defining \verb|GLM_SWIZZLE| before including any GLM header files, or as part of your project's build process.
 
-\emph{Note that enabling swizzle operators will massively increase the size of your binaries and the time it takes to compile them!}
+\emph{Note that enabling swizzle expressions will massively increase the size of your binaries and the time it takes to compile them!}
 
 \subsection{Default C++98 Implementation}
 
-When compiling GLM as C++98, R-value swizzle operators are simulated through member functions of each vector type.
+When compiling GLM as C++98, R-value swizzle expressions are simulated through member functions of each vector type.
 
 \begin{cppcode}
 #define GLM_SWIZZLE // Or define when building (e.g. -DGLM_SWIZZLE)
@@ -257,7 +257,7 @@ void foo()
 
 \subsection{Anonymous Union Member Implementation}
 
-Visual C++ supports, as a \emph{non-standard language extension}, anonymous \verb|struct|s in \verb|union|s. This enables a very powerful implementation of swizzle operators on Windows, which both allows L-value swizzle operators and makes the syntax for it closer to GLSL's.  This implementation of the swizzle operators is only enabled when the language extension is enabled and \verb|GLM_SWIZZLE| is defined.
+Visual C++ supports, as a \emph{non-standard language extension}, anonymous \verb|struct|s in \verb|union|s. This enables a very powerful implementation of swizzle expressions on Windows, which both allows L-value swizzle operators and makes the syntax for it closer to GLSL's.  You must enable this language extension in a supported compiler and define \verb|GLM_SWIZZLE| to use this implementation of swizzling.
 
 \begin{cppcode}
 #define GLM_SWIZZLE 
@@ -280,7 +280,7 @@ void foo()
 }
 \end{cppcode}
 
-This versions returns implementation-specific objects that \emph{implicitly convert} to their respective vector types.  Unfortunately, these extra types can't be directly used by GLM functions; the programmer must instead convert a swizzle-made \say{vector} to a conventional vector type or call the swizzle object's \verb|operator()|.
+This versions returns implementation-specific objects that \emph{implicitly convert} to their respective vector types.  Unfortunately, these extra types can't be directly used by GLM functions; you must instead convert a swizzle-made \say{vector} to a conventional vector type or call the swizzle object's \verb|operator()|.
 
 \begin{cppcode}
 #define GLM_SWIZZLE 
