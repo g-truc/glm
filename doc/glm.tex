@@ -308,14 +308,15 @@ void foo()
 \section{Preprocessor Options}
 
 \subsection{Default Precision}
-C++ does not provide a way to implement GLSL default precision (GLSL 4.10 specification section 4.5.3) using GLSL-like syntax.
+\label{Default Precision}
+C++ does not provide a way to implement GLSL default precision selection (as defined in GLSL 4.10 specification section 4.5.3) with GLSL-like syntax.
 
 \begin{glslcode}
 precision mediump int;
 precision highp float;
 \end{glslcode}
 
-To set the default precision of a given arithmetic type, use any one of the following defines:
+To set the default precision of a given arithmetic type, use any of the following defines:
 
 \begin{cppcode}
 #define GLM_PRECISION_MEDIUMP_INT
@@ -379,7 +380,7 @@ To enable compile-time messaging, define \verb|GLM_MESSAGES| before any inclusio
 
 \subsection{C++ Language Detection}
 
-GLM may implement certain features that require the presence of a minimum C++ standard. A programmer can mandate compatibility with particular revisions of C++ by defining \verb|GLM_FORCE_CXX|** before any inclusion of \glmheader{glm} (where ** is one of \verb|98|, \verb|03|, \verb|11|, and \verb|14|).
+GLM may implement certain features that require the presence of a minimum C++ standard. You can mandate compatibility with particular revisions of C++ by defining \verb|GLM_FORCE_CXX|** before any inclusion of \glmheader{glm} (where ** is one of \verb|98|, \verb|03|, \verb|11|, and \verb|14|).
 
 \begin{cppcode}
 #define GLM_FORCE_CXX98 
@@ -403,9 +404,9 @@ GLM provides some SIMD (Single instruction, multiple data) optimizations based o
 
 In addition, GLM provides specialized \verb|vec4|, \verb|quat|, and \verb|mat4| implementations through the \verb|GLM_GTX_simd_vec4|, \verb|GLM_GTX_simd_quat|, and \verb|GLM_GTX_simd_mat4| extensions.
 
-A programmer can force GLM to use a particular set of intrinsics with the following defines: \verb|GLM_FORCE_SSE2|, \verb|GLM_FORCE_SSE3|, \verb|GLM_FORCE_SSE4|, \verb|GLM_FORCE_AVX| or \verb|GLM_FORCE_AVX2|.
+You can force GLM to use a particular set of intrinsics with the following defines: \verb|GLM_FORCE_SSE2|, \verb|GLM_FORCE_SSE3|, \verb|GLM_FORCE_SSE4|, \verb|GLM_FORCE_AVX| or \verb|GLM_FORCE_AVX2|.
 
-Intrinsics may also be disabled entirely by defining \verb|GLM_FORCE_PURE| before any inclusion of \glmheader{glm}. If \verb|GLM_FORCE_PURE| is defined, then including any SIMD extension will generate a compiler error.
+You may also disable intrinsics entirely by defining \verb|GLM_FORCE_PURE| before any inclusion of \glmheader{glm}. If \verb|GLM_FORCE_PURE| is defined, then including any SIMD extension will generate a compiler error.
 
 \begin{cppcode}
 #define GLM_FORCE_PURE
@@ -424,7 +425,7 @@ Useful as \verb|GLM_FORCE_PURE| is, I suggest you enforce this with compiler arg
 \end{cppcode}
 
 \subsection{Force Inline}
-To gain a bit of performance, a programmer can define \verb|GLM_FORCE_INLINE| before any inclusion of \glmheader{glm} to force the compiler to inline GLM code.
+To gain a bit of performance, you can define \verb|GLM_FORCE_INLINE| before any inclusion of \glmheader{glm} to force the compiler to inline GLM code.
 
 \begin{cppcode}
 #define GLM_FORCE_INLINE 
@@ -445,7 +446,7 @@ void foo(vec4 const & v)
 
 There are two problems with this function.
 
-First, it returns a \verb|int| (signed) despite typically being used with code that expects a \verb|size_t| (unsigned). To force a \verb|length()| member function to return a \verb|size_t|, define the \verb|GLM_FORCE_SIZE_T_LENGTH| preprocessor option.
+The first problem is that \verb|length()| returns an \verb|int| (signed) despite typically being used with code that expects a \verb|size_t| (unsigned). To force a \verb|length()| member function to return a \verb|size_t|, define \verb|GLM_FORCE_SIZE_T_LENGTH|.
 
 GLM also defines the \verb|typedef| \verb|glm::length_t| to identify the returned type of \verb|length()|, regardless of whether \verb|GLM_FORCE_SIZE_T_LENGTH| is set.
 
@@ -459,7 +460,7 @@ void foo(vec4 const & v)
 }
 \end{cppcode}
 
-Second, \verb|length()| shares its name with \verb|glm::length(|*\verb|vec|*\verb| const & v)|, which is used to return a vector's Euclidean length. Developers familiar with other vector math libraries may be used to their equivalent of \verb|glm::length(|*\verb|vec|*\verb| const & v)| being defined as a member function, may thus ask for a vector's dimensionality when they intend to ask for its Euclidean length.
+The second problem is that \verb|length()| shares its name with \verb|glm::length(|*\verb|vec|*\verb| const & v)|, which is used to return a vector's Euclidean length. Developers familiar with other vector math libraries may be used to their equivalent of \verb|glm::length(|*\verb|vec|*\verb| const & v)| being defined as a member function, and may thus ask for a vector's dimensionality when they intend to ask for its Euclidean length.
 
 \begin{cppcode}
 #include <glm/glm.hpp>
@@ -532,7 +533,7 @@ void foo()
 }
 \end{cppcode}
 
-Alternatively, individual variables may be left undefined like so:
+Alternatively, individual variables may be left undefined, like so:
 
 \begin{cppcode}
 #include <glm/glm.hpp>
