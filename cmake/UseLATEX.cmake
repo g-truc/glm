@@ -658,7 +658,8 @@ function(latex_setup_variables)
   endif()
   latex_wantit(LATEX2HTML_CONVERTER latex2html)
 
-  set(LATEX_COMPILER_FLAGS "-interaction=nonstopmode"
+# HACK: Make it easier to actually build the GLM manual; pray this doesn't become an issue
+  set(LATEX_COMPILER_FLAGS "-shell-escape" 
     CACHE STRING "Flags passed to latex.")
   set(PDFLATEX_COMPILER_FLAGS ${LATEX_COMPILER_FLAGS}
     CACHE STRING "Flags passed to pdflatex.")

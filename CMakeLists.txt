@@ -12,6 +12,13 @@ enable_testing()
 
 add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 
+option(GLM_BUILD_MANUAL_ENABLE "Build GLM manual" OFF)
+if(GLM_BUILD_MANUAL_ENABLE)
+  set(LATEX_OUTPUT_PATH "doc")
+  include(UseLATEX)
+  add_latex_document("doc/glm.tex" TARGET_NAME manual)
+endif()
+
 option(GLM_TEST_ENABLE "GLM test" OFF)
 if(NOT GLM_TEST_ENABLE)
 	message(STATUS "GLM is a header only library, no need to build it. Set the option GLM_TEST_ENABLE with ON to build and run the test bench")
