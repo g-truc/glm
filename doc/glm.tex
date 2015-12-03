@@ -1245,7 +1245,7 @@ GTX extensions are considered \emph{experimental}, and may thus introduce breaki
 
 \subsection{Where's the documentation?}
 
-The Doxygen-generated documentation includes a complete list of all extensions available, and can be found right \href{http://glm.g-truc.net/html/index.html}{here}.
+The Doxygen-generated documentation includes a complete list of all extensions, and can be found \href{http://glm.g-truc.net/html/index.html}{here}.
 
 \subsection{Should I use \texttt{using namespace glm;}?}
 
@@ -1257,11 +1257,11 @@ GLM is designed for convenience over performance.  \emph{That being said}, the m
 
 \subsection{Visual C++ gives me lots of warnings on on warning level \texttt{/W4}.}
 
-You should not have any warnings, even in \verb|/W4| mode. However, if you expect such level for you code, then you should ask for the same level to the compiler by at least disabling the Visual C++ language extensions (\verb|/Za|) which generates warnings when used. If these extensions are enabled, then GLM will take advantage of them and the compiler will generate warnings.
+You should not have any warnings, even in \verb|/W4| mode. However, if you expect such level for your code, then you should ask for the same level to the compiler by at least disabling the Visual C++ language extensions (\verb|/Za|) which generates warnings when used. If these extensions are enabled, then GLM will take advantage of them and the compiler will generate warnings.
 
 \subsection{Why are some GLM functions vulnerable to division by zero?}
 
-Such behavior is the result of a domain error that follows the precedent set by C and C++. For example, it's a domain error to pass a null vector (all zeroes) to glm::normalize, or even to pass a negative number into \verb|std::sqrt|.
+Such behavior follows the precedent set by C and C++'s standard library, in that it's treated as a domain error. For example, it's a domain error to pass a null vector (all zeroes) to \verb|glm::normalize|, or to pass a negative number into \verb|std::sqrt|.
 
 \subsection{What unit does GLM use for angles?}
 
