@@ -1223,7 +1223,7 @@ The syntax for default precision specifications in GLM differs from that in GLSL
 
 \subsection{Why does GLM follow the GLSL specification?}
 
-Everyone and their dog has their own idea of what should constitute a math library.  The designers of GLSL (the OpenGL ARB) make a living on deciding what should be in its own math library; why not learn from the best and stick to a proven convention?
+Everyone and their dog has their own idea of what should constitute a math library.  The designers of GLSL (the OpenGL ARB) make a living on deciding what its own should offer; why not learn from the best and stick to a proven convention?
 
 \subsection{Does GLM actually run GLSL?}
 
@@ -1271,7 +1271,7 @@ Such behavior follows the precedent set by C and C++'s standard library, in that
 
 \section{Code Samples}
 
-\subsection{Compute a Triangle Normal}
+\subsection{Triangle Normal}
 
 \begin{cppcode}
 #include <glm/glm.hpp> // vec3 normalize cross
@@ -1476,7 +1476,7 @@ vec3 lighting
 
 \subsubsection{\href{http://outerra.com/}{Outerra}}
 
-3D planetary engine for seamless planet rendering from space down to the surface. Can use arbitrary resolution of elevation data, refining it to centimeter resolution using fractal algorithms.
+A 3D planetary engine for seamless planet rendering from space down to the surface. Can use arbitrary resolution of elevation data, refining it to centimeter resolution using fractal algorithms.
 
 \begin{center}
   \includegraphics[width=0.4\textwidth]{outerra1}
@@ -1502,15 +1502,15 @@ A collection of cloth simulation demos, visualized with OpenGL.
   \includegraphics[width=0.25\textwidth, right]{glsl4book}
 \end{wrapfigure}
 
-A full set of recipes demonstrating simple and advanced techniques for producing high-quality, real-time 3D graphics using GLSL 4.0.
+A set of recipes that demonstrates a wide variety of techniques for producing high-quality, real-time 3D graphics with GLSL 4.0, such as:
 
-How to use the OpenGL Shading Language to implement lighting and shading techniques.
+\begin{itemize}
+  \item Using GLSL 4.0 to implement lighting and shading techniques.
+  \item Using the new features of GLSL 4.0 including tessellation and geometry shaders.
+  \item Using textures in GLSL as part of a wide variety of techniques from basic texture mapping to deferred shading.
+\end{itemize}
 
-Use the new features of GLSL 4.0 including tessellation and geometry shaders.
-
-How to use textures in GLSL as part of a wide variety of techniques from basic texture mapping to deferred shading.
-
-Simple, easy-to-follow examples with GLSL source code, as well as a basic description of the theory behind each technique.
+Simple, easy-to-follow examples with GLSL source code are provided, as well as a basic description of the theory behind each technique.
 
 \subsubsection{\href{http://www.leosfortune.com/}{Leo's Forture}}
 
@@ -1519,9 +1519,9 @@ Simple, easy-to-follow examples with GLSL source code, as well as a basic descri
   \includegraphics[width=0.4\textwidth, right]{leosfortune2}
 \end{wrapfigure}
 
-Leo's Fortune is a platform adventure game where you hunt down the cunning and mysterious thief that stole your gold. Available on PS4, Xbox One, PC, Mac, iOS and Android.
+Leo's Fortune is a platform adventure game in which you hunt down the cunning and mysterious thief that stole your gold. Available on PS4, Xbox One, PC, Mac, iOS and Android.
 
-Beautifully hand-crafted levels bring the story of Leo to life in this epic adventure. 
+Beautiful hand-crafted levels bring Leo's story to life in this epic adventure. 
 
 \say{I just returned home to find all my gold has been stolen! For some devious purpose, the thief has dropped pieces of my gold like breadcrumbs through the woods.}
 
@@ -1555,8 +1555,7 @@ Are you using GLM in a tutorial?  \glmemail{Tell us!}
 
 \begin{itemize}
   \item \href{http://cmldev.net/}{CML}: The CML (Configurable Math Library) is a free C++ math library for games and graphics.
-  \item \href{http://eigen.tuxfamily.org/}{Eigen}: A more heavy weight math library for general linear algebra in C++.
-  \item \href{http://glhlib.sourceforge.net/}{glhlib}: A much more than glu C library.
+  \item \href{http://eigen.tuxfamily.org/}{Eigen}: A more heavy weight math library for general linear algebra.
 \end{itemize}
 
 Are you using or developing an alternative to GLM?  \glmemail{Tell us!}
@@ -1570,7 +1569,7 @@ Special thanks to:
 \begin{itemize}
   \item Ashima Arts and Stefan Gustavson for their work on \href{https://github.com/ashima/webgl-noise}{webgl-noise}, which which is the base of \verb|GLM_GTC_noise|.
   \item \href{http://athile.net/library/wiki/index.php?title=Athile_Technologies}{Arthur Winters} for contributing to the swizzle operator implementation.
-  \item Joshua Smith and Christoph Schied for their contributions to the swizzle operator implementation.
+  \item Joshua Smith and Christoph Schied for their contributions to the swizzle expression implementation.
   \item Guillaume Chevallereau for providing and maintaining the \href{http://my.cdash.org/index.php?project=GLM}{nightly build system}.
   \item Ghenadii Ursachi for \verb|GLM_GTX_matrix_interpolation|.
   \item Mathieu Roumillac for providing some implementation ideas.
