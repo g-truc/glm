@@ -1176,18 +1176,17 @@ glm::dvec3 unProject(
 \textbf{Header:} \glmheader{gtc/matrix\_transform}
 
 \section{Known Issues}
-This section reports the divergences of GLM with GLSL.
+This section reports GLSL features that GLM can't accurately emulate due to language restrictions.
 
 \subsection{The \texttt{not} Function}
 
-The GLSL keyword \verb|not| is also a keyword in C++. To prevent name collisions, ensure cross compiler support and a high API consistency, the GLSL \verb|not| function has been implemented with the name \verb|not_| (note the underscore).
+The GLSL function \verb|not| is a keyword in C++. To prevent name collisions and ensure a consistent API, the name \verb|not_| (note the underscore) is used instead.
 
 \subsection{Precision Qualifiers}
 
-GLM supports GLSL precision qualifiers through prefixes instead of qualifiers. For example, additionally to \verb|vec4|, GLM exposes \verb|lowp_vec4|, \verb|mediump_vec4| and \verb|highp_vec4| types.
+GLM supports GLSL precision qualifiers through prefixes instead of qualifiers. For example, GLM exposes \verb|lowp_vec4|, \verb|mediump_vec4| and \verb|highp_vec4| as variations of \verb|vec4|.
 
-Similarly to GLSL, GLM precision qualifiers are used to handle trade-off between performances and precision of operations in term of ULPs. 
-By default, all the types use high precision.
+As in GLSL, GLM precision qualifiers are used to exchange precision for performance.  By default, all types use high precision.
 
 \begin{glslcode}
 // Using precision qualifier in GLSL:
@@ -1215,6 +1214,8 @@ ivec3 foo(const vec4 & v)
   returnc;
 }
 \end{cppcode}
+
+The syntax for default precision specifications in GLM differs from that in GLSL; for more information, see section \ref{Default Precision}.
 
 \newpage{}
 
