@@ -53,6 +53,9 @@ Makefile
 *.fls
 *.fdb_latexmk
 *.pyg
+*.pdf
+doc/doc/*
+# ^ All files are copied to a directory when compiling the manual; don't wanna commit these!
 
 # Misc.
 *.log
