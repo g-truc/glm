@@ -95,9 +95,9 @@ THE SOFTWARE IS PROVIDED \say{AS IS}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
 
 OpenGL Mathematics (GLM) is a C++ mathematics library based on the \href{https://www.opengl.org/documentation/glsl/}{OpenGL Shading Language} (GLSL) specification.
 
-GLM provides classes and functions designed and implemented with the same naming conventions and features as those of GLSL, so that knowledge of GLSL is easily transferable.  An extension system, based on OpenGL's extension system, provides extra capabilities including (but not limited to) matrix transformations, quaternions, data packing, random numbers, and noise.
+GLM provides classes and functions to mimic the conventions and functionality provided by GLSL.  An extension system (inspired by OpenGL's) also provides extra capabilities including (but not limited to) matrix transformations, quaternions, data packing, random numbers, and noise.
 
-GLM library works perfectly with \href{http://www.opengl.org}{OpenGL}, but is also well-suited for use with other libraries and SDKS. GLM is a good candidate for software rendering (ray-tracing/rasterisation), image processing, physic simulation, and other projects that demand a simple (yet flexible) mathematics framework.
+GLM works perfectly with \href{http://www.opengl.org}{OpenGL}, but is also well-suited for use with any project that demands a simple (yet flexible) mathematics framework such as software rendering (ray-tracing/rasterisation), image processing, and physics simulation.
 
 GLM is written in C++98, but can take advantage of C++11 where support exists. GLM is platform independent, has no dependencies, and supports the following compilers:
 
@@ -111,7 +111,7 @@ GLM is written in C++98, but can take advantage of C++11 where support exists. G
   \item Any conforming C++98 or C++11 compiler
 \end{itemize}
 
-The source code and the documentation (including this manual) are licensed under the \hyperlink{happybunny}{Happy Bunny License (Modified MIT)} and the \hyperlink{mit}{MIT License}.
+The source code and the documentation (including this manual) are licensed under both the \hyperlink{happybunny}{Happy Bunny License (Modified MIT)} and the \hyperlink{mit}{MIT License}.
 
 Feedback, bug reports, feature requests, and acts upon thereof are highly appreciated.  The author may be contacted at \glmemail{glm@g-truc.net}.
 
@@ -119,7 +119,7 @@ Feedback, bug reports, feature requests, and acts upon thereof are highly apprec
 \section{Getting Started}
 \subsection{Setup}
 
-GLM is a header-only library, and thus does not need to be compiled.  To use GLM, a programmer only has to include the header \glmheader{glm}, which provides GLSL's mathematics functionality.
+GLM is a header-only library, and thus does not need to be compiled.  To use GLM, merely include the \glmheader{glm} header, which provides GLSL's mathematics functionality.
 
 \begin{itemize}
   \item \glmheader{vec2}: \verb|vec2|, \verb|bvec2|, \verb|dvec2|, \verb|ivec2| and \verb|uvec2|
@@ -148,15 +148,15 @@ GLM is a header-only library, and thus does not need to be compiled.  To use GLM
 % TODO: Benchmark explicit extern template instantiations and write something about them if beneficial http://en.cppreference.com/w/cpp/language/class_template
 GLM makes heavy use of C++ templates, which may significantly increase the compile time for projects that use GLM.  Hence, source files should only include the GLM headers they actually use.
 
-To further reduce compilation time, GLM 0.9.5 introduced forward declarations of all types through the header \glmheader{fwd}.
+To further reduce compilation time, include \glmheader{fwd}, which provides forward declarations of all types.
 
 \begin{cppcode}
-// Header file
+// Header file (forward declarations only)
 #include <glm/fwd.hpp>
 \end{cppcode}
 
 \begin{cppcode}
-// Source file
+// Source file (actual types included)
 #include <glm/glm.hpp>
 \end{cppcode}
 
