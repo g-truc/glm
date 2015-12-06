@@ -50,7 +50,7 @@
 
 \maketitle{} % Generates title
 
-\pagebreak{}
+\newpage{}
 
 \section*{Licensing}
 \addcontentsline{toc}{section}{Licensing}
@@ -93,7 +93,7 @@ THE SOFTWARE IS PROVIDED \say{AS IS}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
 
 \tableofcontents{}
 
-\pagebreak{}
+\newpage{}
 
 \section*{Introduction}
 \addcontentsline{toc}{section}{Introduction}
@@ -120,6 +120,7 @@ The source code and the documentation (including this manual) are licensed under
 
 Feedback, bug reports, feature requests, and acts upon thereof are highly appreciated.  The author may be contacted at \glmemail{glm@g-truc.net}.
 
+\newpage{}
 
 \section{Getting Started}
 \subsection{Setup}
@@ -587,6 +588,8 @@ void foo()
   glm::vec4 c = a; // Implicit conversion, ERROR
 }
 \end{cppcode}
+
+\newpage{}
 
 \section{Stable Extensions}
 
@@ -1179,6 +1182,8 @@ glm::dvec3 unProject(
 \textbf{Extension:} \verb|GLM_GTC_matrix_transform|
 
 \textbf{Header:} \glmheader{gtc/matrix\_transform}
+
+\newpage{}
 
 \section{Known Issues}
 This section reports GLSL features that GLM can't accurately emulate due to language restrictions.
