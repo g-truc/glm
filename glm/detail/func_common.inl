@@ -609,7 +609,9 @@ namespace detail
 
 	GLM_FUNC_QUALIFIER int floatBitsToInt(float const & v)
 	{
-		return reinterpret_cast<int&>(const_cast<float&>(v));
+		int Bits;
+		std::memcpy(&Bits, &v, sizeof(Bits));
+		return Bits;
 	}
 
 	template <template <typename, precision> class vecType, precision P>
@@ -620,7 +622,9 @@ namespace detail
 
 	GLM_FUNC_QUALIFIER uint floatBitsToUint(float const & v)
 	{
-		return reinterpret_cast<uint&>(const_cast<float&>(v));
+		uint Bits;
+		std::memcpy(&Bits, &v, sizeof(Bits));
+		return Bits;
 	}
 
 	template <template <typename, precision> class vecType, precision P>
@@ -631,7 +635,9 @@ namespace detail
 
 	GLM_FUNC_QUALIFIER float intBitsToFloat(int const & v)
 	{
-		return reinterpret_cast<float&>(const_cast<int&>(v));
+		float Float;
+		std::memcpy(&Float, &v, sizeof(Float));
+		return Float;
 	}
 
 	template <template <typename, precision> class vecType, precision P>
@@ -642,7 +648,9 @@ namespace detail
 
 	GLM_FUNC_QUALIFIER float uintBitsToFloat(uint const & v)
 	{
-		return reinterpret_cast<float&>(const_cast<uint&>(v));
+		float Float;
+		std::memcpy(&Float, &v, sizeof(Float));
+		return Float;
 	}
 
 	template <template <typename, precision> class vecType, precision P>

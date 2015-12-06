@@ -222,7 +222,8 @@ namespace floatBitsToInt
 			float A = 1.0f;
 			int B = glm::floatBitsToInt(A);
 			float C = glm::intBitsToFloat(B);
-			int D = *(int*)&A;
+		   	int D;
+            		std::memcpy(&D, &A, sizeof(D));
 			Error += B == D ? 0 : 1;
 			Error += A == C ? 0 : 1;
 		}
@@ -231,8 +232,11 @@ namespace floatBitsToInt
 			glm::vec2 A(1.0f, 2.0f);
 			glm::ivec2 B = glm::floatBitsToInt(A);
 			glm::vec2 C = glm::intBitsToFloat(B);
-			Error += B.x == *(int*)&(A.x) ? 0 : 1;
-			Error += B.y == *(int*)&(A.y) ? 0 : 1;
+			int D;
+			std::memcpy(&D, &A.x, sizeof(D));
+			Error += B.x == D ? 0 : 1;
+			std::memcpy(&D, &A.y, sizeof(D));
+			Error += B.y == D ? 0 : 1;
 			Error += A == C? 0 : 1;
 		}
 
@@ -240,9 +244,13 @@ namespace floatBitsToInt
 			glm::vec3 A(1.0f, 2.0f, 3.0f);
 			glm::ivec3 B = glm::floatBitsToInt(A);
 			glm::vec3 C = glm::intBitsToFloat(B);
-			Error += B.x == *(int*)&(A.x) ? 0 : 1;
-			Error += B.y == *(int*)&(A.y) ? 0 : 1;
-			Error += B.z == *(int*)&(A.z) ? 0 : 1;
+			int D;
+			std::memcpy(&D, &A.x, sizeof(D));
+			Error += B.x == D ? 0 : 1;
+			std::memcpy(&D, &A.y, sizeof(D));
+			Error += B.y == D ? 0 : 1;
+			std::memcpy(&D, &A.z, sizeof(D));
+			Error += B.z == D ? 0 : 1;
 			Error += A == C? 0 : 1;
 		}
 	
@@ -250,10 +258,15 @@ namespace floatBitsToInt
 			glm::vec4 A(1.0f, 2.0f, 3.0f, 4.0f);
 			glm::ivec4 B = glm::floatBitsToInt(A);
 			glm::vec4 C = glm::intBitsToFloat(B);
-			Error += B.x == *(int*)&(A.x) ? 0 : 1;
-			Error += B.y == *(int*)&(A.y) ? 0 : 1;
-			Error += B.z == *(int*)&(A.z) ? 0 : 1;
-			Error += B.w == *(int*)&(A.w) ? 0 : 1;
+			int D;
+			std::memcpy(&D, &A.x, sizeof(D));
+			Error += B.x == D ? 0 : 1;
+			std::memcpy(&D, &A.y, sizeof(D));
+			Error += B.y == D ? 0 : 1;
+			std::memcpy(&D, &A.z, sizeof(D));
+			Error += B.z == D ? 0 : 1;
+			std::memcpy(&D, &A.w, sizeof(D));
+			Error += B.w == D ? 0 : 1;
 			Error += A == C? 0 : 1;
 		}
 	
@@ -271,7 +284,9 @@ namespace floatBitsToUint
 			float A = 1.0f;
 			glm::uint B = glm::floatBitsToUint(A);
 			float C = glm::intBitsToFloat(B);
-			Error += B == *(glm::uint*)&A ? 0 : 1;
+			glm::uint D;
+			std::memcpy(&D, &A, sizeof(D));
+			Error += B == D ? 0 : 1;
 			Error += A == C? 0 : 1;
 		}
 	
@@ -279,8 +294,11 @@ namespace floatBitsToUint
 			glm::vec2 A(1.0f, 2.0f);
 			glm::uvec2 B = glm::floatBitsToUint(A);
 			glm::vec2 C = glm::uintBitsToFloat(B);
-			Error += B.x == *(glm::uint*)&(A.x) ? 0 : 1;
-			Error += B.y == *(glm::uint*)&(A.y) ? 0 : 1;
+			glm::uint D;
+			std::memcpy(&D, &A.x, sizeof(D));
+			Error += B.x == D ? 0 : 1;
+			std::memcpy(&D, &A.y, sizeof(D));
+			Error += B.y == D ? 0 : 1;
 			Error += A == C ? 0 : 1;
 		}
 	
@@ -288,9 +306,13 @@ namespace floatBitsToUint
 			glm::vec3 A(1.0f, 2.0f, 3.0f);
 			glm::uvec3 B = glm::floatBitsToUint(A);
 			glm::vec3 C = glm::uintBitsToFloat(B);
-			Error += B.x == *(glm::uint*)&(A.x) ? 0 : 1;
-			Error += B.y == *(glm::uint*)&(A.y) ? 0 : 1;
-			Error += B.z == *(glm::uint*)&(A.z) ? 0 : 1;
+			glm::uint D;
+			std::memcpy(&D, &A.x, sizeof(D));
+			Error += B.x == D ? 0 : 1;
+			std::memcpy(&D, &A.y, sizeof(D));
+			Error += B.y == D ? 0 : 1;
+			std::memcpy(&D, &A.z, sizeof(D));
+			Error += B.z == D ? 0 : 1;
 			Error += A == C? 0 : 1;
 		}
 	
@@ -298,10 +320,15 @@ namespace floatBitsToUint
 			glm::vec4 A(1.0f, 2.0f, 3.0f, 4.0f);
 			glm::uvec4 B = glm::floatBitsToUint(A);
 			glm::vec4 C = glm::uintBitsToFloat(B);
-			Error += B.x == *(glm::uint*)&(A.x) ? 0 : 1;
-			Error += B.y == *(glm::uint*)&(A.y) ? 0 : 1;
-			Error += B.z == *(glm::uint*)&(A.z) ? 0 : 1;
-			Error += B.w == *(glm::uint*)&(A.w) ? 0 : 1;
+			glm::uint D;
+			std::memcpy(&D, &A.x, sizeof(D));
+			Error += B.x == D ? 0 : 1;
+			std::memcpy(&D, &A.y, sizeof(D));
+			Error += B.y == D ? 0 : 1;
+			std::memcpy(&D, &A.z, sizeof(D));
+			Error += B.z == D ? 0 : 1;
+			std::memcpy(&D, &A.w, sizeof(D));
+			Error += B.w == D ? 0 : 1;
 			Error += A == C? 0 : 1;
 		}
 	
@@ -1222,4 +1249,3 @@ int main()
 
 	return Error;
 }
-
