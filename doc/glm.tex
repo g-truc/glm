@@ -154,7 +154,7 @@ GLM is a header-only library, and thus does not need to be compiled.  To use GLM
 % TODO: Benchmark explicit extern template instantiations and write something about them if beneficial http://en.cppreference.com/w/cpp/language/class_template
 GLM makes heavy use of C++ templates, which may significantly increase the compile time for projects that use GLM.  Hence, source files should only include the GLM headers they actually use.
 
-To further reduce compilation time, include \glmheader{fwd}, which provides forward declarations of all types.
+To further reduce compilation time, include \glmheader{fwd}, which provides forward declarations of all types should their full definitions not be needed.
 
 \begin{cppcode}
 // Header file (forward declarations only)
@@ -1194,7 +1194,7 @@ The GLSL function \verb|not| is a keyword in C++. To prevent name collisions and
 
 \subsection{Precision Qualifiers}
 
-GLM supports GLSL precision qualifiers through prefixes instead of qualifiers. For example, GLM exposes \verb|lowp_vec4|, \verb|mediump_vec4| and \verb|highp_vec4| as variations of \verb|vec4|.
+GLM supports GLSL precision qualifiers through prefixes instead of keywords. For example, GLM provides \verb|lowp_vec4|, \verb|mediump_vec4| and \verb|highp_vec4| as variations of \verb|vec4|.
 
 As in GLSL, GLM precision qualifiers are used to exchange precision for performance.  By default, all types use high precision.
 
