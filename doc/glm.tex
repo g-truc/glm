@@ -1302,35 +1302,21 @@ Such behavior follows the precedent set by C and C++'s standard library, in that
 
 \begin{cppcode}
 #include <glm/glm.hpp> // vec3 normalize cross
+#include <glm/gtx/fast_square_root.hpp> // fastNormalize
 
-glm::vec3 computeNormal
-(
-  glm::vec3 const & a, 
-  glm::vec3 const & b,
-  glm::vec3 const & c
-)
+using glm::vec3;
+
+vec3 triNormal(vec3 const & a, vec3 const & b, vec3 const & c)
 {
   return glm::normalize(glm::cross(c - a, b - a));
 }
-\end{cppcode}
 
-\begin{cppcode}
 // A faster (but less accurate) alternative:
-#include <glm/glm.hpp> // vec3 cross
-#include <glm/gtx/fast_square_root.hpp> // fastNormalize
-
-glm::vec3 computeNormal
-(
-  glm::vec3 const & a, 
-  glm::vec3 const & b,
-  glm::vec3 const & c
-)
+vec3 fastTriNormal(vec3 const & a, vec3 const & b, vec3 const & c)
 {
   return glm::fastNormalize(glm::cross(c - a, b - a));
 }
 \end{cppcode}
-
-
 
 \subsection{Matrix Transformations}
 
