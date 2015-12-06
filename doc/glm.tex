@@ -1216,7 +1216,7 @@ GLM supports GLSL precision qualifiers through prefixes instead of keywords. For
 As in GLSL, GLM precision qualifiers are used to exchange precision for performance.  By default, all types use high precision.
 
 \begin{glslcode}
-// Using precision qualifier in GLSL:
+// Using precision qualifiers in GLSL:
 
 ivec3 foo(in vec4 v)
 {
@@ -1224,12 +1224,12 @@ ivec3 foo(in vec4 v)
   mediump vec4 b = a;
   lowp ivec3 c = ivec3(b);
 
-  returnc;
+  return c;
 }
 \end{glslcode}
 
 \begin{cppcode}
-// Using precision qualifier in GLM:
+// Using precision qualifiers in GLM:
 #include <glm/glm.hpp>
 
 ivec3 foo(const vec4 & v)
@@ -1238,7 +1238,7 @@ ivec3 foo(const vec4 & v)
   medium_vec4 b = a;
   lowp_ivec3 c = glm::ivec3(b);
 
-  returnc;
+  return c;
 }
 \end{cppcode}
 
