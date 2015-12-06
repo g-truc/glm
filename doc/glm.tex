@@ -589,6 +589,23 @@ void foo()
 }
 \end{cppcode}
 
+\subsection{Static Constants}
+
+Occasionally, you may need certain common vectors or matrices with unit-sized components, e.g. for working with coordinate systems.  To enable them, define \verb|GLM_STATIC_CONST_MEMBERS|.
+
+\begin{cppcode}
+#define GLM_STATIC_CONST_MEMBERS
+#include <glm/glm.hpp>
+
+void foo()
+{
+  glm::ivec4 a = glm::ivec4::X + glm::ivec4::Z;
+  assert(a == glm::ivec4::XZ);
+}
+\end{cppcode}
+
+For vectors and quaternions, constants for all possible combinations of the component's values being zero and one are defined.  For example, \verb|vec3::XYZ == vec3(1.0f)|.  For matrices, the identity and zero matrices are defined.
+
 \newpage{}
 
 \section{Stable Extensions}
