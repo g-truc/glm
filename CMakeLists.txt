@@ -14,9 +14,12 @@ add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 
 option(GLM_BUILD_MANUAL_ENABLE "Build GLM manual" OFF)
 if(GLM_BUILD_MANUAL_ENABLE)
-  set(LATEX_OUTPUT_PATH "doc")
-  include(UseLATEX)
-  find_package(PythonInterp)
+  set(LATEX_OUTPUT_PATH "doc") # Where the pdf will ultimately be spit out
+  include(UseLATEX) # For compiling the manual
+  find_package(PythonInterp) # For LaTeX's minted package, needed for source highlighting
+  include(FindPythonModule) # For minted, which uses pygments
+  find_python_module(pygments REQUIRED)
+
   add_latex_document("doc/glm.tex" TARGET_NAME manual)
 endif()
 
