@@ -1321,42 +1321,23 @@ vec3 fastTriNormal(vec3 const & a, vec3 const & b, vec3 const & c)
 \subsection{Matrix Transformations}
 
 \begin{cppcode}
+#define GLM_STATIC_CONST_MEMBERS // For unit vectors
 #include <glm/glm.hpp> // vec3, vec4, ivec4, mat4
 #include <glm/gtc/matrix_transform.hpp> // translate, scale, etc.
 #include <glm/gtc/type_ptr.hpp> // value_ptr
 
-using glm::mat4;
-using glm::vec3;
+using namespace glm; // DON'T DO THIS; only done for brevity!
 
-void setUniformMVP
-(
-  GLuint Location, 
-  vec3 const & Translate, 
-  vec3 const & Rotate
-)
+void setUniformMVP(GLuint Location, vec3 const & T, vec3 const & R)
 {
-  mat4 Projection = glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 100.f);
-  mat4 ViewTranslate = glm::translate(
-    mat4(1.0f),
-    Translate
-  );
-  mat4 ViewRotateX = glm::rotate(
-    ViewTranslate,
-    Rotate.y,
-    vec3(-1.0f, 0.0f, 0.0f)
-  );
-  mat4 View = glm::rotate(
-    ViewRotateX,
-    Rotate.x,
-    vec3(0.0f, 1.0f, 0.0f)
-  );
-  mat4 Model = glm::scale(
-    mat4(1.0f),
-    vec3(0.5f)
-  );
+  mat4 Projection = perspective(45.0f, 4.0f / 3.0f, 0.1f, 100.f);
+  mat4 ViewTranslate = translate(mat4(1.0f), T);
+  mat4 ViewRotateX = rotate(ViewTranslate, R.y, -vec3::X);
+  mat4 View = rotate(ViewRotateX, R.x, vec3::Y);
+  mat4 Model = scale(mat4(1.0f), vec3(0.5f));
   mat4 MVP = Projection * View * Model;
 
-  glUniformMatrix4fv(Location, 1, GL_FALSE, glm::value_ptr(MVP));
+  glUniformMatrix4fv(Location, 1, GL_FALSE, value_ptr(MVP));
 }
 \end{cppcode}
 
@@ -1366,54 +1347,42 @@ void setUniformMVP
 #include <glm/glm.hpp> //vec2
 #include <glm/gtc/type_precision.hpp> //hvec2, i8vec2, i32vec2
 
-using glm::vec2;
-using glm::hvec2;
-using glm::i8vec2;
-using glm::i32vec2;
+using namespace glm; // DON'T DO THIS; only done for brevity!
 
 std::size_t const VertexCount = 4;
 
 // Float quad geometry
-std::size_t const PositionSizeF32 = VertexCount * sizeof(vec2);
-vec2 const PositionDataF32[VertexCount] =
-{
-  vec2(-1.0f,-1.0f),
-  vec2( 1.0f,-1.0f),
-  vec2( 1.0f, 1.0f),
-  vec2(-1.0f, 1.0f)
+vec2 const PositionDataF32[VertexCount] = {
+  vec2(-1.0f, -1.0f),
+  vec2( 1.0f, -1.0f),
+  vec2( 1.0f,  1.0f),
+  vec2(-1.0f,  1.0f)
 };
 
 // Half-float quad geometry
-std::size_t const PositionSizeF16 = VertexCount * sizeof(hvec2);
-hvec2 const PositionDataF16[VertexCount] =
-{
+hvec2 const PositionDataF16[VertexCount] = {
   hvec2(-1.0f, -1.0f),
   hvec2( 1.0f, -1.0f),
-  hvec2( 1.0f, 1.0f),
-  hvec2(-1.0f, 1.0f)
+  hvec2( 1.0f,  1.0f),
+  hvec2(-1.0f,  1.0f)
 };
 
 // 8 bits signed integer quad geometry
-std::size_t const PositionSizeI8 = VertexCount * sizeof(i8vec2);
-i8vec2 const PositionDataI8[VertexCount] =
-{
-  i8vec2(-1,-1),
-  i8vec2( 1,-1),
-  i8vec2( 1, 1),
-  i8vec2(-1, 1)
+i8vec2 const PositionDataI8[VertexCount] = {
+  i8vec2(-1, -1),
+  i8vec2( 1, -1),
+  i8vec2( 1,  1),
+  i8vec2(-1,  1)
 };
 
 // 32 bits signed integer quad geometry
-std::size_t const PositionSizeI32 = VertexCount * sizeof(i32vec2);
-i32vec2 const PositionDataI32[VertexCount] =
-{
-  i32vec2(-1,-1),
-  i32vec2( 1,-1),
-  i32vec2( 1, 1),
-  i32vec2(-1, 1)
+i32vec2 const PositionDataI32[VertexCount] = {
+  i32vec2(-1, -1),
+  i32vec2( 1, -1),
+  i32vec2( 1,  1),
+  i32vec2(-1,  1)
 };
 \end{cppcode}
-
 
 \subsection{Lighting}
 
@@ -1421,44 +1390,40 @@ i32vec2 const PositionDataI32[VertexCount] =
 #include <glm/glm.hpp> // vec3, normalize, reflect, dot, pow
 #include <glm/gtx/random.hpp> // vecRand3
 
-using glm::vec3;
-using glm::dot;
-using glm::normalize;
+using namespace glm; // DON'T DO THIS; only done for brevity!
 
-// vecRand3, generate a random and equiprobable normalized vec3
-vec3 lighting
-(
-  intersection const & Intersection,
-  material const & Material,
-  light const & Light,
+vec3 lighting(
+  intersection const & I,
+  material const & M,
+  light const & L,
   vec3 const & View
 )
 {
+  vec3 IntersectionPos = I.globalPosition();
+  vec3 LightPos = L.position();
   vec3 Color = vec3(0.0f);
   vec3 LightVector = normalize(
-    Light.position() - Intersection.globalPosition() +
-    glm::vecRand3(0.0f, Light.inaccuracy()
+    LightPos - IntersectionPos + vecRand3(0.0f, L.inaccuracy())
   );
-  if(!shadow(
-    Intersection.globalPosition(), Light.position(), LightVector)
-  )
-  {
-    float Diffuse = dot(Intersection.normal(), LightVector);
-    if(Diffuse <= 0.0f)
+  // vecRand3 generates a uniformly random normalized vec3
+
+  if (!shadow(IntersectionPos, LightPos, LightVector)) {
+    float Diffuse = dot(I.normal(), LightVector);
+    if (Diffuse <= 0.0f)
       return Color;
 
-    if(Material.isDiffuse())
-      Color += Light.color() * Material.diffuse() * Diffuse;
+    if (M.isDiffuse())
+      Color += L.color() * M.diffuse() * Diffuse;
 
-    if(Material.isSpecular())
-    {
-      vec3 Reflect = glm::reflect(-LightVector, Intersection.normal());
+    if (M.isSpecular()) {
+      vec3 Reflect = reflect(-LightVector, I.normal());
       float Dot = dot(Reflect, View);
       float Base = Dot > 0.0f ? Dot : 0.0f;
-      float Specular = glm::pow(Base, Material.exponent());
-      Color += Material.specular() * Specular;
+      float Specular = pow(Base, M.exponent());
+      Color += M.specular() * Specular;
     }
   }
+
   return Color;
 }
 \end{cppcode}
