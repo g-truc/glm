@@ -444,7 +444,7 @@ The member function \verb|length()| returns the dimensionality (number of compon
 \begin{cppcode}
 #include <glm/glm.hpp>
 
-void foo(vec4 const & v)
+void foo(glm::vec4 const & v)
 {
   int Length = v.length();  // returns 4
 }
@@ -460,7 +460,7 @@ GLM also defines the \verb|typedef| \verb|glm::length_t| to identify the returne
 #define GLM_FORCE_SIZE_T_LENGTH 
 #include <glm/glm.hpp>
 
-void foo(vec4 const & v)
+void foo(glm::vec4 const & v)
 {
   glm::size_t Length = v.length();
 }
