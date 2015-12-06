@@ -16,6 +16,7 @@ option(GLM_BUILD_MANUAL_ENABLE "Build GLM manual" OFF)
 if(GLM_BUILD_MANUAL_ENABLE)
   set(LATEX_OUTPUT_PATH "doc")
   include(UseLATEX)
+  find_package(PythonInterp)
   add_latex_document("doc/glm.tex" TARGET_NAME manual)
 endif()
 
