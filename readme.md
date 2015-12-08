@@ -58,7 +58,7 @@ We've provided a manual for GLM to get you familiar with some of its most notabl
     - [`graphicx`](https://www.ctan.org/pkg/graphicx)
     - [`hyperref`](https://www.ctan.org/pkg/hyperref)
     - [`inputenc`](https://www.ctan.org/pkg/inputenc)
-    - [`lmodern`](https://www.ctan.org/pkg/lmodern)
+    - [`lmodern`](http://www.tug.dk/FontCatalogue/lmodern/)
     - [`minted`](https://www.ctan.org/pkg/minted)
     - [`scrartcl`](https://www.ctan.org/pkg/scrartcl)
     - [`wrapfig`](https://www.ctan.org/pkg/wrapfig)
