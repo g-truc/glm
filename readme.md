@@ -49,7 +49,7 @@ We've provided a manual for GLM to get you familiar with some of its most notabl
     - On Windows, install [MiKTeX](http://miktex.org/).
     - On Mac, install [MacTeX](https://tug.org/mactex/).
     - On Linux, install the `texlive` package from your package manager.
-- The following LaTeX packages (all included with the above distributions)
+- The following LaTeX packages (all included with or available through the above distributions)
     - [`adjustbox`](https://www.ctan.org/pkg/adjustbox)
     - [`amsmath`](https://www.ctan.org/pkg/amsmath)
     - [`cprotect`](https://www.ctan.org/pkg/cprotect)
