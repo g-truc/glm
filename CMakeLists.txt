@@ -12,15 +12,19 @@ enable_testing()
 
 add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 
-option(GLM_BUILD_MANUAL_ENABLE "Build GLM manual" OFF)
+option(GLM_BUILD_MANUAL_ENABLE "Build GLM manual (requires LaTeX, Python, and Pygments)" OFF)
 if(GLM_BUILD_MANUAL_ENABLE)
   set(LATEX_OUTPUT_PATH "doc") # Where the pdf will ultimately be spit out
+
   include(UseLATEX) # For compiling the manual
-  find_package(PythonInterp) # For LaTeX's minted package, needed for source highlighting
+  find_package(PythonInterp REQUIRED) # For LaTeX's minted package, needed for source highlighting
   include(FindPythonModule) # For minted, which uses pygments
   find_python_module(pygments REQUIRED)
 
-  add_latex_document("doc/glm.tex" TARGET_NAME manual)
+  if(LATEX_COMPILER AND PYTHONINTERP_FOUND AND PY_PYGMENTS)
+    add_latex_document("doc/glm.tex" TARGET_NAME manual)
+    message(STATUS "To build the GLM manual by itself, rather than as part of the default target, run the 'manual' target")
+  endif()
 endif()
 
 option(GLM_TEST_ENABLE "GLM test" OFF)
