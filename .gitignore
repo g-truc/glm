@@ -55,6 +55,7 @@ Makefile
 *.pyg
 *.pdf
 doc/doc/*
+doc/_minted*
 # ^ All files are copied to a directory when compiling the manual; don't wanna commit these!
 
 # Misc.
