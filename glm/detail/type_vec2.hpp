@@ -138,10 +138,10 @@ namespace glm
 
 		/// Explicit conversions (From section 5.4.1 Conversion and scalar constructors of GLSL 1.30.08 specification)
 		template <typename U, precision Q>
-		GLM_FUNC_DECL explicit tvec2(tvec3<U, Q> const & v);
+		GLM_FUNC_DECL GLM_EXPLICIT_CONV tvec2(tvec3<U, Q> const & v);
 		/// Explicit conversions (From section 5.4.1 Conversion and scalar constructors of GLSL 1.30.08 specification)
 		template <typename U, precision Q>
-		GLM_FUNC_DECL explicit tvec2(tvec4<U, Q> const & v);
+		GLM_FUNC_DECL GLM_EXPLICIT_CONV tvec2(tvec4<U, Q> const & v);
 
 		/// Explicit conversions (From section 5.4.1 Conversion and scalar constructors of GLSL 1.30.08 specification)
 		template <typename U, precision Q>
