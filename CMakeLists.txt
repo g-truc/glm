@@ -54,6 +54,9 @@ if(("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang") OR ("${CMAKE_CXX_COMPILER_ID}" 
 		set(CMAKE_XCODE_ATTRIBUTE_CLANG_CXX_LIBRARY "libc++")
 		set(CMAKE_CXX_FLAGS "-std=c++98")
 	endif()
+
+  add_definitions(-Wno-c++11-long-long)
+  # Literally hundreds of occurrences of this warning
 endif()
 
 option(GLM_TEST_ENABLE_MS_EXTENSIONS "Enable MS extensions" OFF)
