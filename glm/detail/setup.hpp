@@ -938,6 +938,12 @@
 #	define GLM_RELAXED_CONSTEXPR const
 #endif
 
+#ifdef GLM_IMPLICIT_CONVERSION_CTOR
+#	define GLM_EXPLICIT_CONV
+#else
+#	define GLM_EXPLICIT_CONV explicit
+#endif
+
 #ifdef GLM_FORCE_EXPLICIT_CTOR
 #	define GLM_EXPLICIT explicit
 #else
