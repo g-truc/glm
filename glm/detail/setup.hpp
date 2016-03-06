@@ -896,7 +896,7 @@
 // Clip control
 
 #ifdef GLM_DEPTH_ZERO_TO_ONE // Legacy 0.9.8 development
-#	error Define GLM_FORECE_DEPTH_ZERO_TO_ONE instead of GLM_DEPTH_ZERO_TO_ONE to use 0 to 1 clip space.
+#	error Define GLM_FORCE_DEPTH_ZERO_TO_ONE instead of GLM_DEPTH_ZERO_TO_ONE to use 0 to 1 clip space.
 #endif
 
 #define GLM_DEPTH_ZERO_TO_ONE				0x00000001
