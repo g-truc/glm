@@ -161,6 +161,10 @@ namespace glm
 		template <typename U, precision Q>
 		GLM_FUNC_DECL GLM_EXPLICIT tvec3(tvec3<U, Q> const & v);
 
+		/// Other explicit conversions
+		template <typename U, precision Q>
+		GLM_FUNC_DECL GLM_EXPLICIT tvec3(tvec2<U, Q> const & v);
+
 		// -- Swizzle constructors --
 
 #		if GLM_HAS_ANONYMOUS_UNION && defined(GLM_SWIZZLE)

@@ -268,6 +268,24 @@ namespace glm
 		w(static_cast<T>(v.w))
 	{}
 
+	template <typename T, precision P>
+	template <typename U, precision Q>
+	GLM_FUNC_QUALIFIER tvec4<T, P>::tvec4(tvec2<U, Q> const & v) :
+		x(static_cast<T>(v.x)),
+		y(static_cast<T>(v.y)),
+		z(static_cast<T>(0)),
+		w(static_cast<T>(0))
+	{}
+
+	template <typename T, precision P>
+	template <typename U, precision Q>
+	GLM_FUNC_QUALIFIER tvec4<T, P>::tvec4(tvec3<U, Q> const & v) :
+		x(static_cast<T>(v.x)),
+		y(static_cast<T>(v.y)),
+		z(static_cast<T>(v.z)),
+		w(static_cast<T>(0))
+	{}
+
 	// -- Component accesses --
 
 #	ifdef GLM_FORCE_SIZE_FUNC
