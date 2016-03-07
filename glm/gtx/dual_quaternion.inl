@@ -141,13 +141,15 @@ namespace glm
 	{}
 
 	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tdualquat<T, P>::tdualquat(tmat2x4<T, P> const & m)
+	template <typename U, precision Q>
+	GLM_FUNC_QUALIFIER tdualquat<T, P>::tdualquat(tmat2x4<U, Q> const & m)
 	{
 		*this = dualquat_cast(m);
 	}
 
 	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tdualquat<T, P>::tdualquat(tmat3x4<T, P> const & m)
+	template <typename U, precision Q>
+	GLM_FUNC_QUALIFIER tdualquat<T, P>::tdualquat(tmat3x4<U, Q> const & m)
 	{
 		*this = dualquat_cast(m);
 	}

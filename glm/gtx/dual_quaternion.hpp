@@ -112,8 +112,11 @@ namespace glm
 		template <typename U, precision Q>
 		GLM_FUNC_DECL GLM_EXPLICIT tdualquat(tdualquat<U, Q> const & q);
 
-		GLM_FUNC_DECL GLM_EXPLICIT tdualquat(tmat2x4<T, P> const & holder_mat);
-		GLM_FUNC_DECL GLM_EXPLICIT tdualquat(tmat3x4<T, P> const & aug_mat);
+		template <typename U, precision Q>
+		GLM_FUNC_DECL GLM_EXPLICIT tdualquat(tmat2x4<U, Q> const & holder_mat);
+
+		template <typename U, precision Q>
+		GLM_FUNC_DECL GLM_EXPLICIT tdualquat(tmat3x4<U, Q> const & aug_mat);
 
 		// -- Unary arithmetic operators --
 
