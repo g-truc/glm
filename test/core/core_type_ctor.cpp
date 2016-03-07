@@ -100,6 +100,11 @@ int test_vec3_ctor()
 	}
 #	endif//GLM_HAS_DEFAULTED_FUNCTIONS
 
+	Error += (glm::ivec3(glm::vec2(4.0f, 5.0f)) == glm::ivec3(4, 5, 0)) ? 0 : 1;
+	Error += (glm::ivec3(glm::vec2(5, 6)) == glm::ivec3(5, 6, 0)) ? 0 : 1;
+	Error += (glm::bvec3(glm::vec2(4.0f, 5.0f)) == glm::bvec3(true, true, false)) ? 0 : 1;
+	Error += (glm::ivec3(glm::dvec3(1.0, 1.0, 1.0)) == glm::ivec3(1, 1, 1)) ? 0 : 1;
+
 	return Error;
 }
 
@@ -130,6 +135,10 @@ int test_vec4_ctor()
 		Error += glm::all(glm::equal(B.i, glm::ivec4(1065353216))) ? 0 : 1;
 	}
 #	endif//GLM_HAS_DEFAULTED_FUNCTIONS
+
+	Error += (glm::ivec4(glm::vec2(4.0f, 5.0f)) == glm::ivec4(4, 5, 0, 0)) ? 0 : 1;
+	Error += (glm::vec4(glm::vec3(4.0f, 5.0f, 7.0f)) == glm::vec4(4.0f, 5.0f, 7.0f, 0)) ? 0 : 1;
+	Error += (glm::uvec4(glm::bvec4(true, true, false, true)) == glm::uvec4(1, 1, 0, 1)) ? 0 : 1;
 
 	return Error;
 }
