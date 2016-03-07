@@ -143,6 +143,16 @@ namespace cast
 		Error += entry<glm::mat4x3>();
 		Error += entry<glm::mat4x4>();
 
+		Error += entry<glm::dmat2x2>();
+		Error += entry<glm::dmat2x3>();
+		Error += entry<glm::dmat2x4>();
+		Error += entry<glm::dmat3x2>();
+		Error += entry<glm::dmat3x3>();
+		Error += entry<glm::dmat3x4>();
+		Error += entry<glm::dmat4x2>();
+		Error += entry<glm::dmat4x3>();
+		Error += entry<glm::dmat4x4>();
+
 		return Error;
 	}
 }//namespace cast
