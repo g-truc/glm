@@ -94,14 +94,29 @@ namespace glm
 		template <typename U, precision Q>
 		GLM_FUNC_DECL GLM_EXPLICIT tmat3x2(tmat3x2<U, Q> const & m);
 
-		GLM_FUNC_DECL GLM_EXPLICIT tmat3x2(tmat2x2<T, P> const & x);
-		GLM_FUNC_DECL GLM_EXPLICIT tmat3x2(tmat3x3<T, P> const & x);
-		GLM_FUNC_DECL GLM_EXPLICIT tmat3x2(tmat4x4<T, P> const & x);
-		GLM_FUNC_DECL GLM_EXPLICIT tmat3x2(tmat2x3<T, P> const & x);
-		GLM_FUNC_DECL GLM_EXPLICIT tmat3x2(tmat2x4<T, P> const & x);
-		GLM_FUNC_DECL GLM_EXPLICIT tmat3x2(tmat3x4<T, P> const & x);
-		GLM_FUNC_DECL GLM_EXPLICIT tmat3x2(tmat4x2<T, P> const & x);
-		GLM_FUNC_DECL GLM_EXPLICIT tmat3x2(tmat4x3<T, P> const & x);
+		template <typename U, precision Q>
+		GLM_FUNC_DECL GLM_EXPLICIT tmat3x2(tmat2x2<U, Q> const & x);
+
+		template <typename U, precision Q>
+		GLM_FUNC_DECL GLM_EXPLICIT tmat3x2(tmat3x3<U, Q> const & x);
+
+		template <typename U, precision Q>
+		GLM_FUNC_DECL GLM_EXPLICIT tmat3x2(tmat4x4<U, Q> const & x);
+
+		template <typename U, precision Q>
+		GLM_FUNC_DECL GLM_EXPLICIT tmat3x2(tmat2x3<U, Q> const & x);
+
+		template <typename U, precision Q>
+		GLM_FUNC_DECL GLM_EXPLICIT tmat3x2(tmat2x4<U, Q> const & x);
+
+		template <typename U, precision Q>
+		GLM_FUNC_DECL GLM_EXPLICIT tmat3x2(tmat3x4<U, Q> const & x);
+
+		template <typename U, precision Q>
+		GLM_FUNC_DECL GLM_EXPLICIT tmat3x2(tmat4x2<U, Q> const & x);
+
+		template <typename U, precision Q>
+		GLM_FUNC_DECL GLM_EXPLICIT tmat3x2(tmat4x3<U, Q> const & x);
 
 		// -- Accesses --
 

@@ -276,6 +276,8 @@ int test_quat_type()
 	glm::quat A;
 	glm::dquat B;
 
+	glm::dquat C(A);
+
 	return 0;
 }
 

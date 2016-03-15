@@ -113,9 +113,14 @@ namespace glm
 		GLM_FUNC_DECL tquat(tvec3<T, P> const & u, tvec3<T, P> const & v);
 
 		/// Build a quaternion from euler angles (pitch, yaw, roll), in radians.
-		GLM_FUNC_DECL GLM_EXPLICIT tquat(tvec3<T, P> const & eulerAngles);
-		GLM_FUNC_DECL GLM_EXPLICIT tquat(tmat3x3<T, P> const & m);
-		GLM_FUNC_DECL GLM_EXPLICIT tquat(tmat4x4<T, P> const & m);
+		template <typename U, precision Q>
+		GLM_FUNC_DECL GLM_EXPLICIT tquat(tvec3<U, Q> const & eulerAngles);
+
+		template <typename U, precision Q>
+		GLM_FUNC_DECL GLM_EXPLICIT tquat(tmat3x3<U, Q> const & m);
+
+		template <typename U, precision Q>
+		GLM_FUNC_DECL GLM_EXPLICIT tquat(tmat4x4<U, Q> const & m);
 
 		// -- Unary arithmetic operators --
 
