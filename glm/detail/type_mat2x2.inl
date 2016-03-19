@@ -50,13 +50,6 @@ namespace detail
 	}
 }//namespace detail
 
-#	ifdef GLM_STATIC_CONST_MEMBERS
-		template<typename T, precision P>
-		const tmat2x2<T, P> tmat2x2<T, P>::ZERO(static_cast<T>(0));
-
-		template<typename T, precision P>
-		const tmat2x2<T, P> tmat2x2<T, P>::IDENTITY(static_cast<T>(1));
-#	endif
 	// -- Constructors --
 
 #	if !GLM_HAS_DEFAULTED_FUNCTIONS || !defined(GLM_FORCE_NO_CTOR_INIT)
@@ -92,10 +85,10 @@ namespace detail
 	{}
 
 	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tmat2x2<T, P>::tmat2x2(T const & s)
+	GLM_FUNC_QUALIFIER tmat2x2<T, P>::tmat2x2(T scalar)
 	{
-		this->value[0] = col_type(s, 0);
-		this->value[1] = col_type(0, s);
+		this->value[0] = col_type(scalar, 0);
+		this->value[1] = col_type(0, scalar);
 	}
 
 	template <typename T, precision P>
@@ -271,10 +264,10 @@ namespace detail
 
 	template <typename T, precision P>
 	template <typename U>
-	GLM_FUNC_QUALIFIER tmat2x2<T, P>& tmat2x2<T, P>::operator+=(U s)
+	GLM_FUNC_QUALIFIER tmat2x2<T, P>& tmat2x2<T, P>::operator+=(U scalar)
 	{
-		this->value[0] += s;
-		this->value[1] += s;
+		this->value[0] += scalar;
+		this->value[1] += scalar;
 		return *this;
 	}
 
@@ -289,10 +282,10 @@ namespace detail
 
 	template <typename T, precision P>
 	template <typename U>
-	GLM_FUNC_QUALIFIER tmat2x2<T, P>& tmat2x2<T, P>::operator-=(U s)
+	GLM_FUNC_QUALIFIER tmat2x2<T, P>& tmat2x2<T, P>::operator-=(U scalar)
 	{
-		this->value[0] -= s;
-		this->value[1] -= s;
+		this->value[0] -= scalar;
+		this->value[1] -= scalar;
 		return *this;
 	}
 
@@ -307,10 +300,10 @@ namespace detail
 
 	template <typename T, precision P>
 	template <typename U>
-	GLM_FUNC_QUALIFIER tmat2x2<T, P>& tmat2x2<T, P>::operator*=(U s)
+	GLM_FUNC_QUALIFIER tmat2x2<T, P>& tmat2x2<T, P>::operator*=(U scalar)
 	{
-		this->value[0] *= s;
-		this->value[1] *= s;
+		this->value[0] *= scalar;
+		this->value[1] *= scalar;
 		return *this;
 	}
 
@@ -323,10 +316,10 @@ namespace detail
 
 	template <typename T, precision P>
 	template <typename U>
-	GLM_FUNC_QUALIFIER tmat2x2<T, P>& tmat2x2<T, P>::operator/=(U s)
+	GLM_FUNC_QUALIFIER tmat2x2<T, P>& tmat2x2<T, P>::operator/=(U scalar)
 	{
-		this->value[0] /= s;
-		this->value[1] /= s;
+		this->value[0] /= scalar;
+		this->value[1] /= scalar;
 		return *this;
 	}
 
@@ -390,19 +383,19 @@ namespace detail
 	// -- Binary arithmetic operators --
 
 	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tmat2x2<T, P> operator+(tmat2x2<T, P> const & m, T const & s)
+	GLM_FUNC_QUALIFIER tmat2x2<T, P> operator+(tmat2x2<T, P> const & m, T scalar)
 	{
 		return tmat2x2<T, P>(
-			m[0] + s,
-			m[1] + s);
+			m[0] + scalar,
+			m[1] + scalar);
 	}
 
 	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tmat2x2<T, P> operator+(T const & s, tmat2x2<T, P> const & m)
+	GLM_FUNC_QUALIFIER tmat2x2<T, P> operator+(T scalar, tmat2x2<T, P> const & m)
 	{
 		return tmat2x2<T, P>(
-			m[0] + s,
-			m[1] + s);
+			m[0] + scalar,
+			m[1] + scalar);
 	}
 
 	template <typename T, precision P>
@@ -414,19 +407,19 @@ namespace detail
 	}
 
 	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tmat2x2<T, P> operator-(tmat2x2<T, P> const & m, T const & s)
+	GLM_FUNC_QUALIFIER tmat2x2<T, P> operator-(tmat2x2<T, P> const & m, T scalar)
 	{
 		return tmat2x2<T, P>(
-			m[0] - s,
-			m[1] - s);
+			m[0] - scalar,
+			m[1] - scalar);
 	}
 
 	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tmat2x2<T, P> operator-(T const & s, tmat2x2<T, P> const & m)
+	GLM_FUNC_QUALIFIER tmat2x2<T, P> operator-(T scalar, tmat2x2<T, P> const & m)
 	{
 		return tmat2x2<T, P>(
-			s - m[0],
-			s - m[1]);
+			scalar - m[0],
+			scalar - m[1]);
 	}
 
 	template <typename T, precision P>
@@ -438,19 +431,19 @@ namespace detail
 	}
 
 	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tmat2x2<T, P> operator*(tmat2x2<T, P> const & m,	T const & s)
+	GLM_FUNC_QUALIFIER tmat2x2<T, P> operator*(tmat2x2<T, P> const & m, T scalar)
 	{
 		return tmat2x2<T, P>(
-			m[0] * s,
-			m[1] * s);
+			m[0] * scalar,
+			m[1] * scalar);
 	}
 
 	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tmat2x2<T, P> operator*(T const & s, tmat2x2<T, P> const & m)
+	GLM_FUNC_QUALIFIER tmat2x2<T, P> operator*(T scalar, tmat2x2<T, P> const & m)
 	{
 		return tmat2x2<T, P>(
-			m[0] * s,
-			m[1] * s);
+			m[0] * scalar,
+			m[1] * scalar);
 	}
 
 	template <typename T, precision P>
@@ -514,19 +507,19 @@ namespace detail
 	}
 
 	template <typename T, precision P> 
-	GLM_FUNC_QUALIFIER tmat2x2<T, P> operator/(tmat2x2<T, P> const & m,	T const & s)
+	GLM_FUNC_QUALIFIER tmat2x2<T, P> operator/(tmat2x2<T, P> const & m, T scalar)
 	{
 		return tmat2x2<T, P>(
-			m[0] / s,
-			m[1] / s);
+			m[0] / scalar,
+			m[1] / scalar);
 	}
 
 	template <typename T, precision P> 
-	GLM_FUNC_QUALIFIER tmat2x2<T, P> operator/(T const & s, tmat2x2<T, P> const & m)
+	GLM_FUNC_QUALIFIER tmat2x2<T, P> operator/(T scalar, tmat2x2<T, P> const & m)
 	{
 		return tmat2x2<T, P>(
-			s / m[0],
-			s / m[1]);
+			scalar / m[0],
+			scalar / m[1]);
 	}
 
 	template <typename T, precision P>

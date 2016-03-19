@@ -43,8 +43,12 @@
 #pragma once
 
 // Dependency:
+#include <cfloat>
+#include <limits>
 #include "../glm.hpp"
+#include "../geometric.hpp"
 #include "../gtx/closest_point.hpp"
+#include "../gtx/vector_query.hpp"
 
 #if(defined(GLM_MESSAGES) && !defined(GLM_EXT_INCLUDED))
 #	pragma message("GLM: GLM_GTX_closest_point extension included")

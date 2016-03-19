@@ -16,25 +16,6 @@ struct shuffle_mask
 	enum{value = Value};
 };
 
-#	ifdef GLM_STATIC_CONST_MEMBERS
-	const fvec4SIMD fvec4SIMD::ZERO(0, 0, 0, 0);
-	const fvec4SIMD fvec4SIMD::X(1, 0, 0, 0);
-	const fvec4SIMD fvec4SIMD::Y(0, 1, 0, 0);
-	const fvec4SIMD fvec4SIMD::Z(0, 0, 1, 0);
-	const fvec4SIMD fvec4SIMD::W(0, 0, 0, 1);
-	const fvec4SIMD fvec4SIMD::XY(1, 1, 0, 0);
-	const fvec4SIMD fvec4SIMD::XZ(1, 0, 1, 0);
-	const fvec4SIMD fvec4SIMD::XW(1, 0, 0, 1);
-	const fvec4SIMD fvec4SIMD::YZ(0, 1, 1, 0);
-	const fvec4SIMD fvec4SIMD::YW(0, 1, 0, 1);
-	const fvec4SIMD fvec4SIMD::ZW(0, 0, 1, 1);
-	const fvec4SIMD fvec4SIMD::XYZ(1, 1, 1, 0);
-	const fvec4SIMD fvec4SIMD::XYW(1, 1, 0, 1);
-	const fvec4SIMD fvec4SIMD::XZW(1, 0, 1, 1);
-	const fvec4SIMD fvec4SIMD::YZW(0, 1, 1, 1);
-	const fvec4SIMD fvec4SIMD::XYZW(1, 1, 1, 1);
-#	endif
-
 //////////////////////////////////////
 // Implicit basic constructors
 

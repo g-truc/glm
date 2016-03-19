@@ -80,7 +80,13 @@ int test_packSnorm2x16()
 int test_packUnorm4x8()
 {
 	int Error = 0;
-	
+
+	glm::uint32 Packed = glm::packUnorm4x8(glm::vec4(1.0f, 0.5f, 0.0f, 1.0f));
+	glm::u8vec4 Vec(255, 128, 0, 255);
+	glm::uint32 & Ref = *reinterpret_cast<glm::uint32*>(&Vec[0]);
+
+	Error += Packed == Ref ? 0 : 1;
+
 	std::vector<glm::vec4> A;
 	A.push_back(glm::vec4(1.0f, 0.7f, 0.3f, 0.0f));
 	A.push_back(glm::vec4(0.5f, 0.1f, 0.2f, 0.3f));

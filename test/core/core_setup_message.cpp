@@ -71,6 +71,9 @@ int test_compiler()
 		case GLM_COMPILER_GCC53:
 			std::printf("GLM_COMPILER_GCC53\n");
 			break;
+		case GLM_COMPILER_GCC60:
+			std::printf("GLM_COMPILER_GCC60\n");
+			break;
 		default:
 			std::printf("GCC version not detected\n");
 			Error += 1;

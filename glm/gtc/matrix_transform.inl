@@ -150,30 +150,24 @@ namespace glm
 	template <typename T>
 	GLM_FUNC_QUALIFIER tmat4x4<T, defaultp> ortho
 	(
-		T left,
-		T right,
-		T bottom,
-		T top,
-		T zNear,
-		T zFar
+		T left, T right,
+		T bottom, T top,
+		T zNear, T zFar
 	)
 	{
-		#ifdef GLM_LEFT_HANDED
+#		if GLM_COORDINATE_SYSTEM == GLM_LEFT_HANDED
 			return orthoLH(left, right, bottom, top, zNear, zFar);
-		#else
+#		else
 			return orthoRH(left, right, bottom, top, zNear, zFar);
-		#endif
+#		endif
 	}
 
 	template <typename T>
 	GLM_FUNC_QUALIFIER tmat4x4<T, defaultp> orthoLH
 	(
-		T left,
-		T right,
-		T bottom,
-		T top,
-		T zNear,
-		T zFar
+		T left, T right,
+		T bottom, T top,
+		T zNear, T zFar
 	)
 	{
 		tmat4x4<T, defaultp> Result(1);
@@ -182,25 +176,23 @@ namespace glm
 		Result[3][0] = - (right + left) / (right - left);
 		Result[3][1] = - (top + bottom) / (top - bottom);
 
-#ifdef GLM_DEPTH_ZERO_TO_ONE
-		Result[2][2] = static_cast<T>(1) / (zFar - zNear);
-		Result[3][2] = - zNear / (zFar - zNear);
-#else
-		Result[2][2] = static_cast<T>(2) / (zFar - zNear);
-		Result[3][2] = - (zFar + zNear) / (zFar - zNear);
-#endif
+#		if GLM_DEPTH_CLIP_SPACE == GLM_DEPTH_ZERO_TO_ONE
+			Result[2][2] = static_cast<T>(1) / (zFar - zNear);
+			Result[3][2] = - zNear / (zFar - zNear);
+#		else
+			Result[2][2] = static_cast<T>(2) / (zFar - zNear);
+			Result[3][2] = - (zFar + zNear) / (zFar - zNear);
+#		endif
+
 		return Result;
 	}
 
 	template <typename T>
 	GLM_FUNC_QUALIFIER tmat4x4<T, defaultp> orthoRH
 	(
-		T left,
-		T right,
-		T bottom,
-		T top,
-		T zNear,
-		T zFar
+		T left, T right,
+		T bottom, T top,
+		T zNear, T zFar
 	)
 	{
 		tmat4x4<T, defaultp> Result(1);
@@ -209,61 +201,54 @@ namespace glm
 		Result[3][0] = - (right + left) / (right - left);
 		Result[3][1] = - (top + bottom) / (top - bottom);
 
-#ifdef GLM_DEPTH_ZERO_TO_ONE
-		Result[2][2] = - static_cast<T>(1) / (zFar - zNear);
-		Result[3][2] = - zNear / (zFar - zNear);
-#else
-		Result[2][2] = - static_cast<T>(2) / (zFar - zNear);
-		Result[3][2] = - (zFar + zNear) / (zFar - zNear);
-#endif
+#		if GLM_DEPTH_CLIP_SPACE == GLM_DEPTH_ZERO_TO_ONE
+			Result[2][2] = - static_cast<T>(1) / (zFar - zNear);
+			Result[3][2] = - zNear / (zFar - zNear);
+#		else
+			Result[2][2] = - static_cast<T>(2) / (zFar - zNear);
+			Result[3][2] = - (zFar + zNear) / (zFar - zNear);
+#		endif
+
 		return Result;
 	}
 
 	template <typename T>
 	GLM_FUNC_QUALIFIER tmat4x4<T, defaultp> ortho
 	(
-		T left,
-		T right,
-		T bottom,
-		T top
+		T left, T right,
+		T bottom, T top
 	)
 	{
-	    tmat4x4<T, defaultp> Result(1);
-	    Result[0][0] = static_cast<T>(2) / (right - left);
-	    Result[1][1] = static_cast<T>(2) / (top - bottom);
-	    Result[2][2] = - static_cast<T>(1);
-	    Result[3][0] = - (right + left) / (right - left);
-	    Result[3][1] = - (top + bottom) / (top - bottom);
-	    return Result;
+		tmat4x4<T, defaultp> Result(1);
+		Result[0][0] = static_cast<T>(2) / (right - left);
+		Result[1][1] = static_cast<T>(2) / (top - bottom);
+		Result[2][2] = - static_cast<T>(1);
+		Result[3][0] = - (right + left) / (right - left);
+		Result[3][1] = - (top + bottom) / (top - bottom);
+		return Result;
 	}
 
 	template <typename T>
 	GLM_FUNC_QUALIFIER tmat4x4<T, defaultp> frustum
 	(
-		T left,
-		T right,
-		T bottom,
-		T top,
-		T nearVal,
-		T farVal
+		T left, T right,
+		T bottom, T top,
+		T nearVal, T farVal
 	)
 	{
-#ifdef GLM_LEFT_HANDED
-	return frustumLH(left, right, bottom, top, nearVal, farVal);
-#else
-	return frustumRH(left, right, bottom, top, nearVal, farVal);
-#endif
+#		if GLM_COORDINATE_SYSTEM == GLM_LEFT_HANDED
+			return frustumLH(left, right, bottom, top, nearVal, farVal);
+#		else
+			return frustumRH(left, right, bottom, top, nearVal, farVal);
+#		endif
 	}
 
 	template <typename T>
 	GLM_FUNC_QUALIFIER tmat4x4<T, defaultp> frustumLH
 	(
-		T left,
-		T right,
-		T bottom,
-		T top,
-		T nearVal,
-		T farVal
+		T left, T right,
+		T bottom, T top,
+		T nearVal, T farVal
 	)
 	{
 		tmat4x4<T, defaultp> Result(0);
@@ -273,25 +258,23 @@ namespace glm
 		Result[2][1] = (top + bottom) / (top - bottom);
 		Result[2][3] = static_cast<T>(1);
 
-#ifdef GLM_DEPTH_ZERO_TO_ONE
-		Result[2][2] = farVal / (zFar - nearVal);
-		Result[3][2] = -(farVal * nearVal) / (zFar - nearVal);
-#else
-		Result[2][2] = (farVal + nearVal) / (farVal - nearVal);
-		Result[3][2] = - (static_cast<T>(2) * farVal * nearVal) / (farVal - nearVal);
-#endif
+#		if GLM_DEPTH_CLIP_SPACE == GLM_DEPTH_ZERO_TO_ONE
+			Result[2][2] = farVal / (farVal - nearVal);
+			Result[3][2] = -(farVal * nearVal) / (farVal - nearVal);
+#		else
+			Result[2][2] = (farVal + nearVal) / (farVal - nearVal);
+			Result[3][2] = - (static_cast<T>(2) * farVal * nearVal) / (farVal - nearVal);
+#		endif
+
 		return Result;
 	}
 
 	template <typename T>
 	GLM_FUNC_QUALIFIER tmat4x4<T, defaultp> frustumRH
 	(
-		T left,
-		T right,
-		T bottom,
-		T top,
-		T nearVal,
-		T farVal
+		T left, T right,
+		T bottom, T top,
+		T nearVal, T farVal
 	)
 	{
 		tmat4x4<T, defaultp> Result(0);
@@ -301,13 +284,14 @@ namespace glm
 		Result[2][1] = (top + bottom) / (top - bottom);
 		Result[2][3] = static_cast<T>(-1);
 
-#ifdef GLM_DEPTH_ZERO_TO_ONE
-		Result[2][2] = farVal / (nearVal - farVal);
-		Result[3][2] = -(farVal * nearVal) / (farVal - nearVal);
-#else
-		Result[2][2] = - (farVal + nearVal) / (farVal - nearVal);
-		Result[3][2] = - (static_cast<T>(2) * farVal * nearVal) / (farVal - nearVal);
-#endif
+#		if GLM_DEPTH_CLIP_SPACE == GLM_DEPTH_ZERO_TO_ONE
+			Result[2][2] = farVal / (nearVal - farVal);
+			Result[3][2] = -(farVal * nearVal) / (farVal - nearVal);
+#		else
+			Result[2][2] = - (farVal + nearVal) / (farVal - nearVal);
+			Result[3][2] = - (static_cast<T>(2) * farVal * nearVal) / (farVal - nearVal);
+#		endif
+
 		return Result;
 	}
 
@@ -320,11 +304,11 @@ namespace glm
 		T zFar
 	)
 	{
-		#ifdef GLM_LEFT_HANDED
+#		if GLM_COORDINATE_SYSTEM == GLM_LEFT_HANDED
 			return perspectiveLH(fovy, aspect, zNear, zFar);
-		#else
+#		else
 			return perspectiveRH(fovy, aspect, zNear, zFar);
-		#endif
+#		endif
 	}
 
 	template <typename T>
@@ -332,8 +316,7 @@ namespace glm
 	(
 		T fovy,
 		T aspect,
-		T zNear,
-		T zFar
+		T zNear, T zFar
 	)
 	{
 		assert(abs(aspect - std::numeric_limits<T>::epsilon()) > static_cast<T>(0));
@@ -345,24 +328,24 @@ namespace glm
 		Result[1][1] = static_cast<T>(1) / (tanHalfFovy);
 		Result[2][3] = - static_cast<T>(1);
 
-#ifdef GLM_DEPTH_ZERO_TO_ONE
-		Result[2][2] = zFar / (zNear - zFar);
-		Result[3][2] = -(zFar * zNear) / (zFar - zNear);
-#else
-		Result[2][2] = - (zFar + zNear) / (zFar - zNear);
-		Result[3][2] = - (static_cast<T>(2) * zFar * zNear) / (zFar - zNear);
-#endif
+#		if GLM_DEPTH_CLIP_SPACE == GLM_DEPTH_ZERO_TO_ONE
+			Result[2][2] = zFar / (zNear - zFar);
+			Result[3][2] = -(zFar * zNear) / (zFar - zNear);
+#		else
+			Result[2][2] = - (zFar + zNear) / (zFar - zNear);
+			Result[3][2] = - (static_cast<T>(2) * zFar * zNear) / (zFar - zNear);
+#		endif
+
 		return Result;
 	}
 	
 	template <typename T>
 	GLM_FUNC_QUALIFIER tmat4x4<T, defaultp> perspectiveLH
-		(
+	(
 		T fovy,
 		T aspect,
-		T zNear,
-		T zFar
-		)
+		T zNear, T zFar
+	)
 	{
 		assert(abs(aspect - std::numeric_limits<T>::epsilon()) > static_cast<T>(0));
 
@@ -373,13 +356,14 @@ namespace glm
 		Result[1][1] = static_cast<T>(1) / (tanHalfFovy);
 		Result[2][3] = static_cast<T>(1);
 
-#ifdef GLM_DEPTH_ZERO_TO_ONE
-		Result[2][2] = zFar / (zFar - zNear);
-		Result[3][2] = -(zFar * zNear) / (zFar - zNear);
-#else
-		Result[2][2] = (zFar + zNear) / (zFar - zNear);
-		Result[3][2] = - (static_cast<T>(2) * zFar * zNear) / (zFar - zNear);
-#endif
+#		if GLM_DEPTH_CLIP_SPACE == GLM_DEPTH_ZERO_TO_ONE
+			Result[2][2] = zFar / (zFar - zNear);
+			Result[3][2] = -(zFar * zNear) / (zFar - zNear);
+#		else
+			Result[2][2] = (zFar + zNear) / (zFar - zNear);
+			Result[3][2] = - (static_cast<T>(2) * zFar * zNear) / (zFar - zNear);
+#		endif
+
 		return Result;
 	}
 
@@ -387,27 +371,23 @@ namespace glm
 	GLM_FUNC_QUALIFIER tmat4x4<T, defaultp> perspectiveFov
 	(
 		T fov,
-		T width,
-		T height,
-		T zNear,
-		T zFar
+		T width, T height,
+		T zNear, T zFar
 	)
 	{
-		#ifdef GLM_LEFT_HANDED
+#		if GLM_COORDINATE_SYSTEM == GLM_LEFT_HANDED
 			return perspectiveFovLH(fov, width, height, zNear, zFar);
-		#else
+#		else
 			return perspectiveFovRH(fov, width, height, zNear, zFar);
-		#endif
+#		endif
 	}
 
 	template <typename T>
 	GLM_FUNC_QUALIFIER tmat4x4<T, defaultp> perspectiveFovRH
 	(
 		T fov,
-		T width,
-		T height,
-		T zNear,
-		T zFar
+		T width, T height,
+		T zNear, T zFar
 	)
 	{
 		assert(width > static_cast<T>(0));
@@ -423,13 +403,14 @@ namespace glm
 		Result[1][1] = h;
 		Result[2][3] = - static_cast<T>(1);
 
-#ifdef GLM_DEPTH_ZERO_TO_ONE
-		Result[2][2] = zFar / (zNear - zFar);
-		Result[3][2] = -(zFar * zNear) / (zFar - zNear);
-#else
-		Result[2][2] = - (zFar + zNear) / (zFar - zNear);
-		Result[3][2] = - (static_cast<T>(2) * zFar * zNear) / (zFar - zNear);
-#endif
+#		if GLM_DEPTH_CLIP_SPACE == GLM_DEPTH_ZERO_TO_ONE
+			Result[2][2] = zFar / (zNear - zFar);
+			Result[3][2] = -(zFar * zNear) / (zFar - zNear);
+#		else
+			Result[2][2] = - (zFar + zNear) / (zFar - zNear);
+			Result[3][2] = - (static_cast<T>(2) * zFar * zNear) / (zFar - zNear);
+#		endif
+
 		return Result;
 	}
 
@@ -437,10 +418,8 @@ namespace glm
 	GLM_FUNC_QUALIFIER tmat4x4<T, defaultp> perspectiveFovLH
 	(
 		T fov,
-		T width,
-		T height,
-		T zNear,
-		T zFar
+		T width, T height,
+		T zNear, T zFar
 	)
 	{
 		assert(width > static_cast<T>(0));
@@ -456,13 +435,13 @@ namespace glm
 		Result[1][1] = h;
 		Result[2][3] = static_cast<T>(1);
 
-#ifdef GLM_DEPTH_ZERO_TO_ONE
-		Result[2][2] = zFar / (zFar - zNear);
-		Result[3][2] = -(zFar * zNear) / (zFar - zNear);
-#else
-		Result[2][2] = (zFar + zNear) / (zFar - zNear);
-		Result[3][2] = - (static_cast<T>(2) * zFar * zNear) / (zFar - zNear);
-#endif
+#		if GLM_DEPTH_CLIP_SPACE == GLM_DEPTH_ZERO_TO_ONE
+			Result[2][2] = zFar / (zFar - zNear);
+			Result[3][2] = -(zFar * zNear) / (zFar - zNear);
+#		else
+			Result[2][2] = (zFar + zNear) / (zFar - zNear);
+			Result[3][2] = - (static_cast<T>(2) * zFar * zNear) / (zFar - zNear);
+#		endif
 
 		return Result;
 	}
@@ -475,11 +454,11 @@ namespace glm
 		T zNear
 	)
 	{
-#ifdef GLM_LEFT_HANDED
-	return infinitePerspectiveLH(fovy, aspect, zNear);
-#else
-	return infinitePerspectiveRH(fovy, aspect, zNear);
-#endif
+#		if GLM_COORDINATE_SYSTEM == GLM_LEFT_HANDED
+			return infinitePerspectiveLH(fovy, aspect, zNear);
+#		else
+			return infinitePerspectiveRH(fovy, aspect, zNear);
+#		endif
 	}
 
 	template <typename T>
@@ -578,7 +557,12 @@ namespace glm
 		tmp = proj * tmp;
 
 		tmp /= tmp.w;
-		tmp = tmp * T(0.5) + T(0.5);
+#		if GLM_DEPTH_CLIP_SPACE == GLM_DEPTH_ZERO_TO_ONE
+			tmp.x = tmp.x * T(0.5) + T(0.5);
+			tmp.y = tmp.y * T(0.5) + T(0.5);
+#		else
+			tmp = tmp * T(0.5) + T(0.5);
+#		endif
 		tmp[0] = tmp[0] * T(viewport[2]) + T(viewport[0]);
 		tmp[1] = tmp[1] * T(viewport[3]) + T(viewport[1]);
 
@@ -599,7 +583,12 @@ namespace glm
 		tvec4<T, P> tmp = tvec4<T, P>(win, T(1));
 		tmp.x = (tmp.x - T(viewport[0])) / T(viewport[2]);
 		tmp.y = (tmp.y - T(viewport[1])) / T(viewport[3]);
-		tmp = tmp * T(2) - T(1);
+#		if GLM_DEPTH_CLIP_SPACE == GLM_DEPTH_ZERO_TO_ONE
+			tmp.x = tmp.x * T(2) - T(1);
+			tmp.y = tmp.y * T(2) - T(1);
+#		else
+			tmp = tmp * T(2) - T(1);
+#		endif
 
 		tvec4<T, P> obj = Inverse * tmp;
 		obj /= obj.w;
@@ -639,11 +628,11 @@ namespace glm
 		tvec3<T, P> const & up
 	)
 	{
-		#ifdef GLM_LEFT_HANDED
+#		if GLM_COORDINATE_SYSTEM == GLM_LEFT_HANDED
 			return lookAtLH(eye, center, up);
-		#else
+#		else
 			return lookAtRH(eye, center, up);
-		#endif
+#		endif
 	}
 
 	template <typename T, precision P>

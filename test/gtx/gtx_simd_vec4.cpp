@@ -29,8 +29,6 @@
 /// @author Christophe Riccio
 ///////////////////////////////////////////////////////////////////////////////////
 
-#define GLM_STATIC_CONST_MEMBERS
-
 #include <glm/glm.hpp>
 #include <glm/gtx/simd_vec4.hpp>
 #include <cstdio>
@@ -39,11 +37,6 @@
 
 int main()
 {
-
-#ifdef GLM_META_PROG_HELPERS
-		assert(glm::simdVec4::components == glm::simdVec4::pure_type::components);
-#endif
-
 	glm::simdVec4 A1(0.0f, 0.1f, 0.2f, 0.3f);
 	glm::simdVec4 B1(0.4f, 0.5f, 0.6f, 0.7f);
 	glm::simdVec4 C1 = A1 + B1;

@@ -76,11 +76,6 @@ namespace detail
 		typedef tquat<bool, defaultp> bool_type;
 		typedef tquat<float, defaultp> pure_type;
 
-#		ifdef GLM_META_PROG_HELPERS
-			static GLM_RELAXED_CONSTEXPR length_t components = 4;
-			static GLM_RELAXED_CONSTEXPR precision prec = defaultp;
-#		endif//GLM_META_PROG_HELPERS
-
 #ifdef GLM_SIMD_ENABLE_XYZW_UNION
 		union
 		{
@@ -90,26 +85,6 @@ namespace detail
 #else
 		__m128 Data;
 #endif
-
-#		ifdef GLM_STATIC_CONST_MEMBERS
-		static const type ZERO;
-		static const type IDENTITY;
-		static const type X;
-		static const type Y;
-		static const type Z;
-		static const type W;
-		static const type XY;
-		static const type XZ;
-		static const type XW;
-		static const type YZ;
-		static const type YW;
-		static const type ZW;
-		static const type XYZ;
-		static const type XYW;
-		static const type XZW;
-		static const type YZW;
-		static const type XYZW;
-#		endif
 
 		//////////////////////////////////////
 		// Implicit basic constructors

@@ -29,11 +29,7 @@
 /// @author Christophe Riccio
 ///////////////////////////////////////////////////////////////////////////////////
 
-#if !(GLM_COMPILER & GLM_COMPILER_GCC)
-#	define GLM_META_PROG_HELPERS
-#endif
 #define GLM_SWIZZLE
-#define GLM_STATIC_CONST_MEMBERS
 #include <glm/vector_relational.hpp>
 #include <glm/vec2.hpp>
 #include <glm/vec3.hpp>
@@ -397,28 +393,6 @@ int test_operator_increment()
 	return Error;
 }
 
-int test_vec4_static_const() {
-	int Error(0);
-
-	Error += (glm::ivec4(0, 0, 0, 0) == glm::ivec4::ZERO) ? 0 : 1;
-	Error += (glm::vec4(1, 0, 0, 0) == glm::vec4::X) ? 0 : 1;
-	Error += (glm::bvec4(false, true, false, false) == glm::bvec4::Y) ? 0 : 1;
-	Error += (glm::bvec4(false, false, true, false) == glm::bvec4::Z) ? 0 : 1;
-	Error += (glm::uvec4(0u, 0u, 0u, 1u) == glm::uvec4::W) ? 0 : 1;
-	Error += (glm::dvec4(1, 1, 0, 0) == glm::dvec4::XY) ? 0 : 1;
-	Error += (glm::vec4(1, 0, 1, 0) == glm::vec4::XZ) ? 0 : 1;
-	Error += (glm::vec4(1, 0, 0, 1) == glm::vec4::XW) ? 0 : 1;
-	Error += (glm::uvec4(0u, 1u, 1u, 0u) == glm::uvec4::YZ) ? 0 : 1;
-	Error += (glm::vec4(0, 1, 0, 1) == glm::vec4::YW) ? 0 : 1;
-	Error += (glm::dvec4(1, 1, 1, 0) == glm::dvec4::XYZ) ? 0 : 1;
-	Error += (glm::vec4(1, 1, 0, 1) == glm::vec4::XYW) ? 0 : 1;
-	Error += (glm::vec4(1, 0, 1, 1) == glm::vec4::XZW) ? 0 : 1;
-	Error += (glm::vec4(0, 1, 1, 1) == glm::vec4::YZW) ? 0 : 1;
-	Error += (glm::vec4(1, 1, 1, 1) == glm::vec4::XYZW) ? 0 : 1;
-
-	return Error;
-}
-
 struct AoS
 {
 	glm::vec4 A;
@@ -518,18 +492,12 @@ int main()
 	glm::vec4 v;
 	assert(v.length() == 4);
 
-#	ifdef GLM_META_PROG_HELPERS
-		assert(glm::vec4::components == glm::vec4().length());
-		assert(glm::vec4::components == 4);
-#	endif
-
 #	ifdef NDEBUG
 		std::size_t const Size(1000000);
 		Error += test_vec4_perf_AoS(Size);
 		Error += test_vec4_perf_SoA(Size);
 #	endif//NDEBUG
 
-	Error += test_vec4_static_const();
 	Error += test_vec4_ctor();
 	Error += test_bvec4_ctor();
 	Error += test_vec4_size();

@@ -40,5 +40,18 @@ if(GLM_TEST_ENABLE)
 		${GTX_SOURCE}     ${GTX_INLINE}     ${GTX_HEADER})
 endif(GLM_TEST_ENABLE)
 
-#add_library(glm STATIC glm.cpp)
-#add_library(glm_shared SHARED glm.cpp)
+if(GLM_STATIC_LIBRARY_ENABLE)
+	add_library(glm_static STATIC ${ROOT_TEXT} ${ROOT_MD} ${ROOT_NAT}
+		${ROOT_SOURCE}    ${ROOT_INLINE}    ${ROOT_HEADER}
+		${CORE_SOURCE}    ${CORE_INLINE}    ${CORE_HEADER}
+		${GTC_SOURCE}     ${GTC_INLINE}     ${GTC_HEADER}
+		${GTX_SOURCE}     ${GTX_INLINE}     ${GTX_HEADER})
+endif(GLM_STATIC_LIBRARY_ENABLE)
+
+if(GLM_DYNAMIC_LIBRARY_ENABLE)
+	add_library(glm_shared SHARED ${ROOT_TEXT} ${ROOT_MD} ${ROOT_NAT}
+		${ROOT_SOURCE}    ${ROOT_INLINE}    ${ROOT_HEADER}
+		${CORE_SOURCE}    ${CORE_INLINE}    ${CORE_HEADER}
+		${GTC_SOURCE}     ${GTC_INLINE}     ${GTC_HEADER}
+		${GTX_SOURCE}     ${GTX_INLINE}     ${GTX_HEADER})
+endif(GLM_DYNAMIC_LIBRARY_ENABLE)

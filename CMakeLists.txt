@@ -1,7 +1,11 @@
 cmake_minimum_required(VERSION 2.6 FATAL_ERROR)
+cmake_policy(VERSION 2.6)
+if (NOT CMAKE_VERSION VERSION_LESS "3.1")
+	cmake_policy(SET CMP0054 NEW)
+endif()
 
 project(glm)
-set(GLM_VERSION "0.9.7")
+set(GLM_VERSION "0.9.8")
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
@@ -25,6 +29,16 @@ if(GLM_BUILD_MANUAL_ENABLE)
     add_latex_document("doc/glm.tex" TARGET_NAME manual)
     message(STATUS "To build the GLM manual by itself, rather than as part of the default target, run the 'manual' target")
   endif()
+endif()
+
+option(GLM_STATIC_LIBRARY_ENABLE "GLM static library" OFF)
+if(GLM_STATIC_LIBRARY_ENABLE)
+	message(STATUS "GLM is a header only library, no need to build it. Set the option GLM_STATIC_LIBRARY_ENABLE with ON to build an optional static library")
+endif()
+
+option(GLM_DYNAMIC_LIBRARY_ENABLE "GLM static library" OFF)
+if(GLM_DYNAMIC_LIBRARY_ENABLE)
+	message(STATUS "GLM is a header only library, no need to build it. Set the option GLM_DYNAMIC_LIBRARY_ENABLE with ON to build an optional dynamic library")
 endif()
 
 option(GLM_TEST_ENABLE "GLM test" OFF)
@@ -64,6 +78,12 @@ if(("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang") OR ("${CMAKE_CXX_COMPILER_ID}" 
 		set(CMAKE_XCODE_ATTRIBUTE_CLANG_CXX_LANGUAGE_STANDARD "c++98")
 		set(CMAKE_XCODE_ATTRIBUTE_CLANG_CXX_LIBRARY "libc++")
 		set(CMAKE_CXX_FLAGS "-std=c++98")
+		if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+			# GLM is using GCC 64 bits integer extension
+			add_definitions(-Wno-long-long)
+		elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+			add_definitions(-Wno-c++11-long-long)
+		endif()
 	endif()
 endif()
 

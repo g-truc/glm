@@ -101,7 +101,18 @@ int test_matrixCompMult()
 
 int test_outerProduct()
 {
-	glm::mat4 m = glm::outerProduct(glm::vec4(1.0f), glm::vec4(1.0f));
+	{ glm::mat2 m = glm::outerProduct(glm::vec2(1.0f), glm::vec2(1.0f)); }
+	{ glm::mat3 m = glm::outerProduct(glm::vec3(1.0f), glm::vec3(1.0f)); }
+	{ glm::mat4 m = glm::outerProduct(glm::vec4(1.0f), glm::vec4(1.0f)); }
+
+  { glm::mat2x3 m = glm::outerProduct(glm::vec3(1.0f), glm::vec2(1.0f)); }
+  { glm::mat2x4 m = glm::outerProduct(glm::vec4(1.0f), glm::vec2(1.0f)); }
+
+  { glm::mat3x2 m = glm::outerProduct(glm::vec2(1.0f), glm::vec3(1.0f)); }
+  { glm::mat3x4 m = glm::outerProduct(glm::vec4(1.0f), glm::vec3(1.0f)); }
+  
+  { glm::mat4x2 m = glm::outerProduct(glm::vec2(1.0f), glm::vec4(1.0f)); }
+  { glm::mat4x3 m = glm::outerProduct(glm::vec3(1.0f), glm::vec4(1.0f)); }
 
 	return 0;
 }

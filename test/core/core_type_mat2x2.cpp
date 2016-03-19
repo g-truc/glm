@@ -29,7 +29,6 @@
 /// @author Christophe Riccio
 ///////////////////////////////////////////////////////////////////////////////////
 
-#define GLM_STATIC_CONST_MEMBERS
 #include <glm/gtc/epsilon.hpp>
 #include <glm/matrix.hpp>
 #include <glm/vector_relational.hpp>
@@ -83,15 +82,6 @@ int test_inverse()
 		Error += glm::all(glm::epsilonEqual(Identity[0], glm::vec2(1.0f, 0.0f), glm::vec2(0.01f))) ? 0 : 1;
 		Error += glm::all(glm::epsilonEqual(Identity[1], glm::vec2(0.0f, 1.0f), glm::vec2(0.01f))) ? 0 : 1;
 	}
-
-	return Error;
-}
-
-int test_static_const() {
-	int Error(0);
-
-	Error += glm::mat2x2(1) == glm::mat2x2::IDENTITY ? 0 : 1;
-	Error += glm::mat2x2(0) == glm::mat2x2::ZERO ? 0 : 1;
 
 	return Error;
 }
@@ -177,13 +167,7 @@ int main()
 {
 	int Error(0);
 
-#ifdef GLM_META_PROG_HELPERS
-		assert(glm::mat2::rows == glm::mat2::row_type::components);
-		assert(glm::mat2::cols == glm::mat2::col_type::components);
-#endif
-
 	Error += cast::test();
-	Error += test_static_const();
 	Error += test_ctr();
 	Error += test_operators();
 	Error += test_inverse();

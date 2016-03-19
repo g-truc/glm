@@ -29,10 +29,6 @@
 /// @author Christophe Riccio
 ///////////////////////////////////////////////////////////////////////////////////
 
-#if !(GLM_COMPILER & GLM_COMPILER_GCC)
-#	define GLM_META_PROG_HELPERS
-#endif
-#define GLM_STATIC_CONST_MEMBERS
 #define GLM_SWIZZLE
 #include <glm/vector_relational.hpp>
 #include <glm/gtc/vec1.hpp>
@@ -135,7 +131,6 @@ int test_vec1_size()
 	Error += 8 == sizeof(glm::highp_dvec1) ? 0 : 1;
 	Error += glm::vec1().length() == 1 ? 0 : 1;
 	Error += glm::dvec1().length() == 1 ? 0 : 1;
-	Error += glm::vec1::components == 1 ? 0 : 1;
 	
 	return Error;
 }
@@ -167,18 +162,6 @@ int test_vec1_operator_increment()
 	return Error;
 }
 
-int test_vec1_static_const() {
-	int Error = 0;
-
-	Error += (glm::vec1(1.0f) == glm::vec1::X) ? 0 : 1;
-	Error += (glm::ivec1(1) == glm::ivec1::X) ? 0 : 1;
-	Error += (glm::dvec1(1.0) == glm::dvec1::X) ? 0 : 1;
-	Error += (glm::bvec1(false) == glm::bvec1::ZERO) ? 0 : 1;
-	Error += (glm::uvec1(0) == glm::uvec1::ZERO) ? 0 : 1;
-
-	return Error;
-}
-
 int main()
 {
 	int Error = 0;
@@ -186,12 +169,6 @@ int main()
 	glm::vec1 v;
 	assert(v.length() == 1);
 
-#	ifdef GLM_META_PROG_HELPERS
-		assert(glm::vec1::components == glm::vec1().length());
-		assert(glm::vec1::components == 1);
-#	endif
-
-	Error += test_vec1_static_const();
 	Error += test_vec1_size();
 	Error += test_vec1_ctor();
 	Error += test_vec1_operators();

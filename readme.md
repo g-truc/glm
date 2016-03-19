@@ -80,8 +80,9 @@ To build the manual, install the aforementioned dependencies and then enable the
 
 ## Release notes
 
-#### [GLM 0.9.8.0](https://github.com/g-truc/glm/releases/latest) - 201X-XX-XX
+#### [GLM 0.9.8.0](https://github.com/g-truc/glm/releases/latest) - 2016-XX-XX
 ##### Features:
+- Added right and left handed projection and clip control support #447 #415 #119
 - Added compNormalize and compScale functions to GTX_component_wise
 - Added packF3x9_E1x5 and unpackF3x9_E1x5 to GTC_packing for RGB9E5 #416
 - Added (un)packHalf to GTC_packing
@@ -89,21 +90,52 @@ To build the manual, install the aforementioned dependencies and then enable the
 - Added 16bit pack and unpack to GTC_packing
 - Added 8bit pack and unpack to GTC_packing
 - Added missing bvec* && and || operators
+- Added iround and uround to GTC_integer, fast round on positive values
 
 ##### Improvements:
 - Improved GTC_random linearRand documentation
 - Improved GTC_reciprocal documentation
-- Added unary + operator #435
+- Improved GLM_FORCE_EXPLICIT_CTOR coverage #481
 
 ##### Fixes:
 - Fixed GTX_extended_min_max filename typo #386
 - Fixed intersectRayTriangle to not do any unintentional backface culling
+- Fixed long long warnings when using C++98 on GCC and Clang #482
 
-#### [GLM 0.9.7.2](https://github.com/g-truc/glm/tree/0.9.7) - 2015-XX-XX
+##### Deprecation:
+- Removed GLM_FORCE_SIZE_FUNC define
+
+#### [GLM 0.9.7.4](https://github.com/g-truc/glm/releases/tag/0.9.7.4) - 2016-03-19
+##### Fixes:
+- Fixed asinh and atanh warning with C++98 STL #484
+- Fixed polar coordinates function latitude #485
+- Fixed outerProduct defintions and operator signatures for mat2x4 and vec4 #475
+- Fixed eulerAngles precision error, returns NaN  #451
+- Fixed undefined reference errors #489
+- Fixed missing GLM_PLATFORM_CYGWIN declaration #495
+- Fixed various undefined reference errors #490
+
+#### [GLM 0.9.7.3](https://github.com/g-truc/glm/releases/tag/0.9.7.3) - 2016-02-21
+##### Improvements:
+- Added AVX512 detection
+
+##### Fixes:
+- Fixed CMake policy warning
+- Fixed GCC 6.0 detection #477
+- Fixed Clang build on Windows #479
+- Fixed 64 bits constants warnings on GCC #463
+
+#### [GLM 0.9.7.2](https://github.com/g-truc/glm/releases/tag/0.9.7.2) - 2016-01-03
 ##### Fixes:
 - Fixed GTC_round floorMultiple/ceilMultiple #412
 - Fixed GTC_packing unpackUnorm3x10_1x2 #414
 - Fixed GTC_matrix_inverse affineInverse #192
+- Fixed ICC on Linux build errors #449
+- Fixed ldexp and frexp compilation errors
+- Fixed "Declaration shadows a field" warning #468
+- Fixed 'GLM_COMPILER_VC2005 is not defined' warning #468
+- Fixed various 'X is not defined' warnings #468
+- Fixed missing unary + operator #435
 - Fixed Cygwin build errors when using C++11 #405
 
 #### [GLM 0.9.7.1](https://github.com/g-truc/glm/releases/tag/0.9.7.1) - 2015-09-07
@@ -432,7 +464,7 @@ To build the manual, install the aforementioned dependencies and then enable the
 - Fixed isnan and isinf for CUDA compiler
 - Fixed GLM_FORCE_RADIANS on glm::perspective
 - Fixed GCC warnings
-- Fixed packDouble2x32 on XCode
+- Fixed packDouble2x32 on Xcode
 - Fixed mix for vec4 SSE implementation
 - Fixed 0x2013 dash character in comments that cause issue in Windows 
   Japanese mode

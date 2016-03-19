@@ -29,7 +29,6 @@
 /// @author Christophe Riccio
 ///////////////////////////////////////////////////////////////////////////////////
 
-#define GLM_STATIC_CONST_MEMBERS
 #include <glm/gtc/epsilon.hpp>
 #include <glm/matrix.hpp>
 #include <glm/vector_relational.hpp>
@@ -166,15 +165,6 @@ int test_ctr()
 	return Error;
 }
 
-int test_static_const() {
-	int Error(0);
-
-	Error += glm::mat3x3(1) == glm::mat3x3::IDENTITY ? 0 : 1;
-	Error += glm::mat3x3(0) == glm::mat3x3::ZERO ? 0 : 1;
-
-	return Error;
-}
-
 namespace cast
 {
 	template <typename genType>
@@ -214,13 +204,7 @@ int main()
 {
 	int Error = 0;
 
-#ifdef GLM_META_PROG_HELPERS
-		assert(glm::mat3::rows == glm::mat3::row_type::components);
-		assert(glm::mat3::cols == glm::mat3::col_type::components);
-#endif
-
 	Error += cast::test();
-	Error += test_static_const();
 	Error += test_ctr();
 	Error += test_mat3x3();
 	Error += test_operators();

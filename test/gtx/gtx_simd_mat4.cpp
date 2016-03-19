@@ -29,7 +29,6 @@
 /// @author Christophe Riccio
 ///////////////////////////////////////////////////////////////////////////////////
 
-#define GLM_STATIC_CONST_MEMBERS
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/quaternion.hpp>
@@ -253,27 +252,9 @@ int test_compute_gtx()
 	return 0;
 }
 
-int test_static_const() {
-	int Error(0);
-
-	Error += glm::mat4_cast(glm::simdMat4(static_cast<float>(1))) == glm::mat4_cast(glm::simdMat4::IDENTITY) ? 0 : 1;
-	Error += glm::mat4_cast(glm::simdMat4(static_cast<float>(0))) == glm::mat4_cast(glm::simdMat4::ZERO) ? 0 : 1;
-
-	return Error;
-}
-
 int main()
 {
 	int Error = 0;
-
-#ifdef GLM_META_PROG_HELPERS
-		assert(glm::simdMat4::rows == glm::simdMat4::row_type::components);
-		assert(glm::simdMat4::cols == glm::simdMat4::col_type::components);
-
-		assert(glm::simdMat4::components == glm::simdMat4::pure_type::components);
-		assert(glm::simdMat4::rows == glm::simdMat4::pure_row_type::components);
-		assert(glm::simdMat4::cols == glm::simdMat4::pure_col_type::components);
-#endif
 
 	std::vector<glm::mat4> Data(64 * 64 * 1);
 	for(std::size_t i = 0; i < Data.size(); ++i)
@@ -323,7 +304,6 @@ int main()
 
 	Error += test_compute_glm();
 	Error += test_compute_gtx();
-	Error += test_static_const();
 	float Det = glm::determinant(glm::simdMat4(1.0));
 	Error += Det == 1.0f ? 0 : 1;
 	

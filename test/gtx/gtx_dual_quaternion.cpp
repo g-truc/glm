@@ -209,10 +209,6 @@ int main()
 {
 	int Error(0);
 
-#ifdef GLM_META_PROG_HELPERS
-		assert(glm::dualquat::components == glm::dualquat().length());
-#endif
-
 	Error += test_dual_quat_ctr();
 	Error += test_dquat_type();
 	Error += test_scalars();
