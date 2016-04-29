@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////////////////////////////////
 /// OpenGL Mathematics (glm.g-truc.net)
 ///
-/// Copyright (c) 2005 - 2013 G-Truc Creation (www.g-truc.net)
+/// Copyright (c) 2005 - 2016 G-Truc Creation (www.g-truc.net)
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
 /// in the Software without restriction, including without limitation the rights
@@ -26,10 +26,11 @@
 ///
 /// @ref gtx_io
 /// @file glm/gtx/io.hpp
-/// @date 2013-11-22 / 2014-11-25
+/// @date 2013-11-22 / 2016-03-14
 /// @author Jan P Springer (regnirpsj@gmail.com)
 ///
 /// @see core (dependence)
+/// @see gtc_matrix_access (dependence)
 /// @see gtc_quaternion (dependence)
 ///
 /// @defgroup gtx_io GLM_GTX_io
@@ -41,7 +42,7 @@
 ///        based on howard hinnant's std::chrono io proposal
 ///        [http://home.roadrunner.com/~hinnant/bloomington/chrono_io.html]
 ///
-/// <glm/gtx/io.hpp> needs to be included to use these functionalities.
+///        <glm/gtx/io.hpp> needs to be included to use these functionalities.
 ///////////////////////////////////////////////////////////////////////////////////
 
 #pragma once
@@ -214,17 +215,9 @@ namespace glm
 	template <typename CTy, typename CTr, typename T, precision P>
 	GLM_FUNC_DECL std::basic_ostream<CTy,CTr>& operator<<(std::basic_ostream<CTy,CTr>&, tmat4x4<T,P> const&);
 
-	template <typename CTy, typename CTr, typename T, precision P>
-	GLM_FUNC_DECL std::basic_ostream<CTy,CTr> & operator<<(
-		std::basic_ostream<CTy,CTr> &,
-		std::pair<tmat4x4<T,P> const,
-		tmat4x4<T,P> const> const &);
-
-	template <typename CTy, typename CTr, typename T, precision P>
-	GLM_FUNC_DECL std::basic_ostream<CTy,CTr> & operator<<(
-		std::basic_ostream<CTy,CTr> &,
-		std::pair<tmat4x4<T,P>,
-		tmat4x4<T,P> > const &);
+  template <typename CTy, typename CTr, typename T, precision P>
+	GLM_FUNC_DECL std::basic_ostream<CTy,CTr> & operator<<(std::basic_ostream<CTy,CTr> &,
+                                                         std::pair<tmat4x4<T,P> const, tmat4x4<T,P> const> const &);
 
 	/// @}
 }//namespace glm

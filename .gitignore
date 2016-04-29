@@ -48,3 +48,7 @@ Makefile
 
 # Misc.
 *.log
+
+# local build(s)
+build*
+
