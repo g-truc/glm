@@ -83,7 +83,7 @@ glm::mat4 camera(float Translate, glm::vec2 const & Rotate)
 - Fixed intersectRayTriangle to not do any unintentional backface culling
 - Fixed long long warnings when using C++98 on GCC and Clang #482
 - Fixed sign with signed integer function on non-x86 architecture
-- Fixed strict aliaing warnings #473
+- Fixed strict aliasing warnings #473
 - Fixed missing vec1 overload to length2 and distance2 functions #431
 
 ##### Deprecation:
