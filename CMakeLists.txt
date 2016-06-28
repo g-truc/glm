@@ -161,14 +161,14 @@ if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
 	add_definitions(/FAs)
 endif()
 
-include_directories("${PROJECT_SOURCE_DIR}")
+include_directories("${PROJECT_SOURCE_DIR}/include")
 include_directories("${PROJECT_SOURCE_DIR}/test/external")
 
-add_subdirectory(glm)
+add_subdirectory(include/glm)
 add_subdirectory(test)
 
 set(GLM_INSTALL_CONFIGDIR "${CMAKE_INSTALL_LIBDIR}/cmake/glm")
-install(DIRECTORY glm DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+install(DIRECTORY include/glm DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
 write_basic_package_version_file(
     "${CMAKE_CURRENT_BINARY_DIR}/glmVersion.cmake"
@@ -203,7 +203,7 @@ if (NOT CMAKE_VERSION VERSION_LESS "3.0")
     add_library(glm INTERFACE)
     target_include_directories(glm INTERFACE
         $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
     )
     install(TARGETS glm EXPORT glmTargets)
 
