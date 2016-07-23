@@ -188,20 +188,6 @@ namespace detail
 		}
 	};
 
-#	if GLM_ARCH == GLM_ARCH_X86
-	template <typename T, precision P, template <typename, precision> class vecType, bool Aligned>
-	struct compute_sign<T, P, vecType, Aligned>
-	{
-		GLM_FUNC_QUALIFIER static vecType<T, P> call(vecType<T, P> const & x)
-		{
-			T const Shift(static_cast<T>(sizeof(T) * 8 - 1));
-			vecType<T, P> const y(vecType<typename make_unsigned<T>::type, P>(-x) >> typename make_unsigned<T>::type(Shift));
-
-			return (x >> Shift) | y;
-		}
-	};
-#	endif
-
 	template <typename T, precision P, template <typename, precision> class vecType, bool Aligned>
 	struct compute_floor
 	{
