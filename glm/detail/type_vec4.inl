@@ -163,12 +163,10 @@ namespace detail
 		{}
 #	endif//!GLM_HAS_DEFAULTED_FUNCTIONS
 
-#	if !GLM_HAS_DEFAULTED_FUNCTIONS
-		template <typename T, precision P>
-		GLM_FUNC_QUALIFIER GLM_CONSTEXPR tvec4<T, P>::tvec4(tvec4<T, P> const & v)
-			: x(v.x), y(v.y), z(v.z), w(v.w)
-		{}
-#	endif//!GLM_HAS_DEFAULTED_FUNCTIONS
+	template <typename T, precision P>
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR tvec4<T, P>::tvec4(tvec4<T, P> const & v)
+		: x(v.x), y(v.y), z(v.z), w(v.w)
+	{}
 
 	template <typename T, precision P>
 	template <precision Q>
@@ -346,17 +344,15 @@ namespace detail
 
 	// -- Unary arithmetic operators --
 
-#	if !GLM_HAS_DEFAULTED_FUNCTIONS
-		template <typename T, precision P>
-		GLM_FUNC_QUALIFIER tvec4<T, P>& tvec4<T, P>::operator=(tvec4<T, P> const & v)
-		{
-			this->x = v.x;
-			this->y = v.y;
-			this->z = v.z;
-			this->w = v.w;
-			return *this;
-		}
-#	endif//!GLM_HAS_DEFAULTED_FUNCTIONS
+	template <typename T, precision P>
+	GLM_FUNC_QUALIFIER tvec4<T, P>& tvec4<T, P>::operator=(tvec4<T, P> const & v)
+	{
+		this->x = v.x;
+		this->y = v.y;
+		this->z = v.z;
+		this->w = v.w;
+		return *this;
+	}
 
 	template <typename T, precision P>
 	template <typename U>

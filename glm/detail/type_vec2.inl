@@ -27,12 +27,10 @@ namespace glm
 		{}
 #	endif//!GLM_HAS_DEFAULTED_FUNCTIONS
 
-#	if !GLM_HAS_DEFAULTED_FUNCTIONS
-		template <typename T, precision P>
-		GLM_FUNC_QUALIFIER GLM_CONSTEXPR tvec2<T, P>::tvec2(tvec2<T, P> const & v)
-			: x(v.x), y(v.y)
-		{}
-#	endif//!GLM_HAS_DEFAULTED_FUNCTIONS
+	template <typename T, precision P>
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR tvec2<T, P>::tvec2(tvec2<T, P> const & v)
+		: x(v.x), y(v.y)
+	{}
 
 	template <typename T, precision P>
 	template <precision Q>
@@ -119,15 +117,13 @@ namespace glm
 
 	// -- Unary arithmetic operators --
 
-#	if !GLM_HAS_DEFAULTED_FUNCTIONS
-		template <typename T, precision P>
-		GLM_FUNC_QUALIFIER tvec2<T, P> & tvec2<T, P>::operator=(tvec2<T, P> const & v)
-		{
-			this->x = v.x;
-			this->y = v.y;
-			return *this;
-		}
-#	endif//!GLM_HAS_DEFAULTED_FUNCTIONS
+	template <typename T, precision P>
+	GLM_FUNC_QUALIFIER tvec2<T, P> & tvec2<T, P>::operator=(tvec2<T, P> const & v)
+	{
+		this->x = v.x;
+		this->y = v.y;
+		return *this;
+	}
 
 	template <typename T, precision P>
 	template <typename U>

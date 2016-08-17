@@ -84,7 +84,7 @@ namespace glm
 		// -- Implicit basic constructors --
 
 		GLM_FUNC_DECL GLM_CONSTEXPR tvec2() GLM_DEFAULT_CTOR;
-		GLM_FUNC_DECL GLM_CONSTEXPR tvec2(tvec2<T, P> const& v) GLM_DEFAULT;
+		GLM_FUNC_DECL GLM_CONSTEXPR tvec2(tvec2<T, P> const& v);
 		template <precision Q>
 		GLM_FUNC_DECL GLM_CONSTEXPR tvec2(tvec2<T, Q> const& v);
 
@@ -126,7 +126,7 @@ namespace glm
 
 		// -- Unary arithmetic operators --
 
-		GLM_FUNC_DECL tvec2<T, P>& operator=(tvec2<T, P> const & v) GLM_DEFAULT;
+		GLM_FUNC_DECL tvec2<T, P>& operator=(tvec2<T, P> const & v);
 
 		template <typename U>
 		GLM_FUNC_DECL tvec2<T, P>& operator=(tvec2<U, P> const & v);
