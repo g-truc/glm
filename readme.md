@@ -104,6 +104,7 @@ glm::mat4 camera(float Translate, glm::vec2 const & Rotate)
 - Fixed strict aliasing warnings #473
 - Fixed missing vec1 overload to length2 and distance2 functions #431
 - Fixed GLM test '/fp:fast' and '/Za' command-line options are incompatible
+- Fixed quaterion to mat3 cast function mat3_cast from GTC_quaternion #542
 
 ##### Deprecation:
 - Removed GLM_FORCE_SIZE_FUNC define
