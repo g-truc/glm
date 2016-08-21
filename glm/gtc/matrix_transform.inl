@@ -190,7 +190,7 @@ namespace glm
 		T bottom, T top
 	)
 	{
-		tmat4x4<T, defaultp> Result(1);
+		tmat4x4<T, defaultp> Result(T(1));
 		Result[0][0] = static_cast<T>(2) / (right - left);
 		Result[1][1] = static_cast<T>(2) / (top - bottom);
 		Result[2][2] = - static_cast<T>(1);
