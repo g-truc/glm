@@ -8,7 +8,7 @@ namespace glm
 		tvec3<T, P> const & v)
 	{
 		return translate(
-			tmat4x4<T, P>(1.0f), v);
+			tmat4x4<T, P>(T(1)), v);
 	}
 
 	template <typename T, precision P>
