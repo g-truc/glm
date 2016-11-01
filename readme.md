@@ -41,6 +41,35 @@ glm::mat4 camera(float Translate, glm::vec2 const & Rotate)
 }
 ```
 
+## Building the Manual
+
+We've provided a manual for GLM to get you familiar with some of its most notable functionality and design decisions.  A PDF copy is included in the repo itself, but if you'd like to contribute to the manual, you'll need the following to build it:
+
+- LaTeX
+    - On Windows, install [MiKTeX](http://miktex.org/).
+    - On Mac, install [MacTeX](https://tug.org/mactex/).
+    - On Linux, install the `texlive` package from your package manager.
+- The following LaTeX packages (all included with or available through the above distributions)
+    - [`adjustbox`](https://www.ctan.org/pkg/adjustbox)
+    - [`amsmath`](https://www.ctan.org/pkg/amsmath)
+    - [`cprotect`](https://www.ctan.org/pkg/cprotect)
+    - [`dirtytalk`](https://www.ctan.org/pkg/dirtytalk)
+    - [`fontenc`](https://www.ctan.org/pkg/fontenc)
+    - [`graphicx`](https://www.ctan.org/pkg/graphicx)
+    - [`hyperref`](https://www.ctan.org/pkg/hyperref)
+    - [`inputenc`](https://www.ctan.org/pkg/inputenc)
+    - [`lmodern`](http://www.tug.dk/FontCatalogue/lmodern/)
+    - [`minted`](https://www.ctan.org/pkg/minted)
+    - [`scrartcl`](https://www.ctan.org/pkg/scrartcl)
+    - [`wrapfig`](https://www.ctan.org/pkg/wrapfig)
+    - [`xcolor`](https://www.ctan.org/pkg/xcolor)
+- [Python](https://www.python.org/) version 2.7.9 or 3.4 or greater
+- [Pygments](http://pygments.org/)
+    - Install it with `pip install Pygments`
+- [CMake](https://cmake.org/), which is also needed to build GLM's tests, install GLM, etc.
+
+To build the manual, install the aforementioned dependencies and then enable the `GLM_BUILD_MANUAL_ENABLE` option within CMake, either on the command line with `-DGLM_BUILD_MANUAL_ENABLE:BOOL=True` or through your favorite GUI.  If all dependencies are available, you should be good to go (otherwise you will receive an error); the manual will be built as part of the default target, though it can also be built separately through the `manual` target.
+
 ## Project Health
 
 | Service | System | Compiler | Status |
