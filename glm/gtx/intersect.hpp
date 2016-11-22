@@ -44,6 +44,15 @@ namespace glm
 		typename genType::value_type & intersectionDistance);
 
 	//! Compute the intersection of a ray and a triangle.
+	//! Ray direction and plane normal must be unit length.
+	//! From GLM_GTX_intersect extension.
+	template <typename genType>
+	bool intersectRayPlane(
+		genType const & orig, genType const & dir,
+		genType const & planeOrig, genType const & planeNormal,
+		typename genType::value_type & intersectionDistance);
+
+	//! Compute the intersection of a ray and a triangle.
 	//! From GLM_GTX_intersect extension.
 	template <typename genType>
 	GLM_FUNC_DECL bool intersectRayTriangle(
