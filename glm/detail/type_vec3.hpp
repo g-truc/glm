@@ -36,6 +36,10 @@ namespace glm
 #				pragma clang diagnostic ignored "-Wgnu-anonymous-struct"
 #				pragma clang diagnostic ignored "-Wnested-anon-types"
 #			endif
+#			if GLM_COMPILER & GLM_COMPILER_VC
+#				pragma warning(push)
+#				pragma warning(disable: 4201)
+#			endif
 
 			union
 			{
@@ -55,7 +59,10 @@ namespace glm
 					_GLM_SWIZZLE3_4_MEMBERS(T, P, glm::tvec4, s, t, p)
 #				endif//GLM_SWIZZLE
 			};
-		
+
+#			if GLM_COMPILER & GLM_COMPILER_VC
+#				pragma warning(pop)
+#			endif
 #			if GLM_COMPILER & GLM_COMPILER_CLANG
 #				pragma clang diagnostic pop
 #			endif
