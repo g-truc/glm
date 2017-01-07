@@ -219,6 +219,23 @@ namespace detail
 		GLM_FUNC_DECL tvec3<T> swizzle(comp X, comp Y, comp Z) const;
 		GLM_FUNC_DECL tvec4<T> swizzle(comp X, comp Y, comp Z, comp W) const;
 		GLM_FUNC_DECL tref2<T> swizzle(comp X, comp Y);
+
+
+        //////////////////////////////////////
+		// Static constants
+
+        static const tvec2<T> zero;
+        static const tvec2<T> one;
+
+        static const tvec2<T> xpos;
+        static const tvec2<T> xneg;
+        static const tvec2<T> ypos;
+        static const tvec2<T> yneg;
+
+        static const tvec2<T> right;
+        static const tvec2<T> left;
+        static const tvec2<T> up;
+        static const tvec2<T> down;
 	};
 
 	template <typename T>

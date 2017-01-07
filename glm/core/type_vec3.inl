@@ -1118,5 +1118,28 @@ namespace detail
 		return tvec3<T>(this->x, this->y, this->z);
 	}
 
+
+
+    //////////////////////////////////////
+	// Static constants
+
+    template <typename T> const tvec3<T> tvec3<T>::zero     = tvec3<T>(T( 0), T( 0), T( 0));
+    template <typename T> const tvec3<T> tvec3<T>::one      = tvec3<T>(T( 1), T( 1), T( 1));
+
+    template <typename T> const tvec3<T> tvec3<T>::xpos     = tvec3<T>(T( 1), T( 0), T( 0));
+    template <typename T> const tvec3<T> tvec3<T>::xneg     = tvec3<T>(T(-1), T( 0), T( 0));
+    template <typename T> const tvec3<T> tvec3<T>::ypos     = tvec3<T>(T( 0), T( 1), T( 0));
+    template <typename T> const tvec3<T> tvec3<T>::yneg     = tvec3<T>(T( 0), T(-1), T( 0));
+    template <typename T> const tvec3<T> tvec3<T>::zpos     = tvec3<T>(T( 0), T( 0), T( 1));
+    template <typename T> const tvec3<T> tvec3<T>::zneg     = tvec3<T>(T( 0), T( 0), T(-1));
+
+    template <typename T> const tvec3<T> tvec3<T>::right    = tvec3<T>(T( 1), T( 0), T( 0));
+    template <typename T> const tvec3<T> tvec3<T>::left     = tvec3<T>(T(-1), T( 0), T( 0));
+    template <typename T> const tvec3<T> tvec3<T>::up       = tvec3<T>(T( 0), T( 1), T( 0));
+    template <typename T> const tvec3<T> tvec3<T>::down     = tvec3<T>(T( 0), T(-1), T( 0));
+    template <typename T> const tvec3<T> tvec3<T>::backward = tvec3<T>(T( 0), T( 0), T( 1));
+    template <typename T> const tvec3<T> tvec3<T>::forward  = tvec3<T>(T( 0), T( 0), T(-1));
+
+
 }//namespace detail
 }//namespace glm

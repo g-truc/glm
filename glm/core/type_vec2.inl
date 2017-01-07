@@ -994,5 +994,23 @@ namespace detail
 	{
 		return tvec2<T>(this->x, this->y);
 	}
+
+
+    //////////////////////////////////////
+	// Static constants
+
+    template <typename T> const tvec2<T> tvec2<T>::zero  = tvec2<T>(T( 0), T( 0));
+    template <typename T> const tvec2<T> tvec2<T>::one   = tvec2<T>(T( 1), T( 1));
+
+    template <typename T> const tvec2<T> tvec2<T>::xpos  = tvec2<T>(T( 1), T( 0));
+    template <typename T> const tvec2<T> tvec2<T>::xneg  = tvec2<T>(T(-1), T( 0));
+    template <typename T> const tvec2<T> tvec2<T>::ypos  = tvec2<T>(T( 0), T( 1));
+    template <typename T> const tvec2<T> tvec2<T>::yneg  = tvec2<T>(T( 0), T(-1));
+
+    template <typename T> const tvec2<T> tvec2<T>::right = tvec2<T>(T( 1), T( 0));
+    template <typename T> const tvec2<T> tvec2<T>::left  = tvec2<T>(T(-1), T( 0));
+    template <typename T> const tvec2<T> tvec2<T>::up    = tvec2<T>(T( 0), T( 1));
+    template <typename T> const tvec2<T> tvec2<T>::down  = tvec2<T>(T( 0), T(-1));
+
 }//namespace detail
 }//namespace glm
