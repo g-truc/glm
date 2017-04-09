@@ -4,8 +4,12 @@ if (NOT CMAKE_VERSION VERSION_LESS "3.1")
 	cmake_policy(SET CMP0054 NEW)
 endif()
 
-project(glm)
 set(GLM_VERSION "0.9.9")
+
+# On windows sets default install directory to C:\Program Files\glm-<version>
+set(GLM_PACKAGE_NAME glm-${GLM_VERSION})
+project(${GLM_PACKAGE_NAME})
+
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
@@ -171,9 +175,10 @@ include_directories("${PROJECT_SOURCE_DIR}/test/external")
 add_subdirectory(glm)
 add_subdirectory(test)
 
-set(GLM_INSTALL_CONFIGDIR "${CMAKE_INSTALL_LIBDIR}/cmake/glm")
+set(GLM_INSTALL_CONFIGDIR "${CMAKE_INSTALL_LIBDIR}/cmake/${GLM_PACKAGE_NAME}")
 if (GLM_INSTALL_ENABLE)
-	install(DIRECTORY glm DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+    # Now include dir will have glm version info allowing multiple installs in same install path
+	install(DIRECTORY glm DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${GLM_PACKAGE_NAME})
 endif()
 
 write_basic_package_version_file("${CMAKE_CURRENT_BINARY_DIR}/glmConfigVersion.cmake" VERSION ${GLM_VERSION} COMPATIBILITY AnyNewerVersion)
