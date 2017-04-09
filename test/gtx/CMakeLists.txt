@@ -1,3 +1,4 @@
+glmCreateTestGTC(gtx_angle)
 glmCreateTestGTC(gtx_associated_min_max)
 glmCreateTestGTC(gtx_closest_point)
 glmCreateTestGTC(gtx_color_encoding)
