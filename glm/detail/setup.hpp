@@ -765,12 +765,12 @@ namespace glm
 	namespace glm
 	{
 		template<typename T, std::size_t N>
-		constexpr std::size_t countof(T const (&)[N])
+		constexpr std::size_t _countof(T const (&)[N])
 		{
 			return N;
 		}
 	}//namespace glm
-#	define GLM_COUNTOF(arr) glm::countof(arr)
+#	define GLM_COUNTOF(arr) glm::_countof(arr)
 #elif defined(_MSC_VER)
 #	define GLM_COUNTOF(arr) _countof(arr)
 #else
