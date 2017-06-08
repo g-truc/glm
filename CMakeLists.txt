@@ -71,6 +71,9 @@ if(("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang") OR ("${CMAKE_CXX_COMPILER_ID}" 
 			add_definitions(-Wno-long-long)
 		endif()
 	endif()
+
+  add_definitions(-Wno-c++11-long-long)
+  # Literally hundreds of occurrences of this warning
 endif()
 
 option(GLM_TEST_ENABLE_LANG_EXTENSIONS "Enable language extensions" OFF)
