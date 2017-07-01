@@ -11,10 +11,10 @@
 #include "detail/type_mat.hpp"
 namespace glm
 {
-	template<typename T> struct is_vec {
+	template<typename X> struct is_vec {
 		template <length_t L, typename T, precision P, template <length_t, typename, precision> class vecType> static int8	test(vecType<L, T, P>*);
 		static int16	test(...);
-		enum { value = sizeof(test((T*)0)) == sizeof(int8) };
+		enum { value = sizeof(test((X*)0)) == sizeof(int8) };
 	};
 	template<bool B, typename T>	struct meta_if { typedef T type; };
 	template<typename T>			struct meta_if<false, T> {};
