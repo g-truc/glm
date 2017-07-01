@@ -152,7 +152,7 @@ namespace glm
 
 	template<typename T, precision P>
 	template<typename U>
-	GLM_FUNC_QUALIFIER vec<3, T, P> & vec<3, T, P>::operator+=(U scalar)
+	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR_VEC(vec, 3, T, P, U)  vec<3, T, P>::operator+=(U scalar)
 	{
 		this->x += static_cast<T>(scalar);
 		this->y += static_cast<T>(scalar);
@@ -182,7 +182,7 @@ namespace glm
 
 	template<typename T, precision P>
 	template<typename U>
-	GLM_FUNC_QUALIFIER vec<3, T, P> & vec<3, T, P>::operator-=(U scalar)
+	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR_VEC(vec, 3, T, P, U)  vec<3, T, P>::operator-=(U scalar)
 	{
 		this->x -= static_cast<T>(scalar);
 		this->y -= static_cast<T>(scalar);
@@ -212,7 +212,7 @@ namespace glm
 
 	template<typename T, precision P>
 	template<typename U>
-	GLM_FUNC_QUALIFIER vec<3, T, P> & vec<3, T, P>::operator*=(U scalar)
+	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR_VEC(vec, 3, T, P, U)  vec<3, T, P>::operator*=(U scalar)
 	{
 		this->x *= static_cast<T>(scalar);
 		this->y *= static_cast<T>(scalar);
@@ -242,7 +242,7 @@ namespace glm
 
 	template<typename T, precision P>
 	template<typename U>
-	GLM_FUNC_QUALIFIER vec<3, T, P> & vec<3, T, P>::operator/=(U v)
+	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR_VEC(vec, 3, T, P, U) vec<3, T, P>::operator/=(U v)
 	{
 		this->x /= static_cast<T>(v);
 		this->y /= static_cast<T>(v);
@@ -310,7 +310,7 @@ namespace glm
 
 	template<typename T, precision P>
 	template<typename U>
-	GLM_FUNC_QUALIFIER vec<3, T, P> & vec<3, T, P>::operator%=(U scalar)
+	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR_VEC(vec, 3, T, P, U)  vec<3, T, P>::operator%=(U scalar)
 	{
 		this->x %= scalar;
 		this->y %= scalar;
@@ -340,7 +340,7 @@ namespace glm
 
 	template<typename T, precision P>
 	template<typename U>
-	GLM_FUNC_QUALIFIER vec<3, T, P> & vec<3, T, P>::operator&=(U scalar)
+	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR_VEC(vec, 3, T, P, U)  vec<3, T, P>::operator&=(U scalar)
 	{
 		this->x &= scalar;
 		this->y &= scalar;
@@ -370,7 +370,7 @@ namespace glm
 
 	template<typename T, precision P>
 	template<typename U>
-	GLM_FUNC_QUALIFIER vec<3, T, P> & vec<3, T, P>::operator|=(U scalar)
+	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR_VEC(vec, 3, T, P, U)  vec<3, T, P>::operator|=(U scalar)
 	{
 		this->x |= scalar;
 		this->y |= scalar;
@@ -400,7 +400,7 @@ namespace glm
 
 	template<typename T, precision P>
 	template<typename U> 
-	GLM_FUNC_QUALIFIER vec<3, T, P> & vec<3, T, P>::operator^=(U scalar)
+	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR_VEC(vec, 3, T, P, U)  vec<3, T, P>::operator^=(U scalar)
 	{
 		this->x ^= scalar;
 		this->y ^= scalar;
@@ -430,7 +430,7 @@ namespace glm
 
 	template<typename T, precision P>
 	template<typename U> 
-	GLM_FUNC_QUALIFIER vec<3, T, P> & vec<3, T, P>::operator<<=(U scalar)
+	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR_VEC(vec, 3, T, P, U)  vec<3, T, P>::operator<<=(U scalar)
 	{
 		this->x <<= scalar;
 		this->y <<= scalar;
@@ -460,7 +460,7 @@ namespace glm
 
 	template<typename T, precision P>
 	template<typename U> 
-	GLM_FUNC_QUALIFIER vec<3, T, P> & vec<3, T, P>::operator>>=(U scalar)
+	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR_VEC(vec, 3, T, P, U)  vec<3, T, P>::operator>>=(U scalar)
 	{
 		this->x >>= static_cast<T>(scalar);
 		this->y >>= static_cast<T>(scalar);

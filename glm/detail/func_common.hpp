@@ -27,7 +27,7 @@ namespace glm
 	/// @see <a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/abs.xml">GLSL abs man page</a>
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.3 Common Functions</a>
 	template<typename genType>
-	GLM_FUNC_DECL genType abs(genType x);
+	GLM_FUNC_DECL GLM_ONLY_SCALAR(genType) abs(genType x);
 
 	template<length_t L, typename T, precision P, template<length_t, typename, precision> class vecType>
 	GLM_FUNC_DECL vecType<L, T, P> abs(vecType<L, T, P> const & x);
@@ -102,7 +102,7 @@ namespace glm
 	/// @see <a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/fract.xml">GLSL fract man page</a>
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.3 Common Functions</a>
 	template<typename genType>
-	GLM_FUNC_DECL genType fract(genType x);
+	GLM_FUNC_DECL GLM_ONLY_SCALAR(genType) fract(genType x);
 
 	template<length_t L, typename T, precision P, template<length_t, typename, precision> class vecType>
 	GLM_FUNC_DECL vecType<L, T, P> fract(vecType<L, T, P> const & x);
@@ -115,7 +115,7 @@ namespace glm
 	/// @see <a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/mod.xml">GLSL mod man page</a>
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.3 Common Functions</a>
 	template<typename genType>
-	GLM_FUNC_DECL genType mod(genType x, genType y);
+	GLM_FUNC_DECL GLM_ONLY_SCALAR(genType) mod(genType x, genType y);
 
 	template<length_t L, typename T, precision P, template<length_t, typename, precision> class vecType>
 	GLM_FUNC_DECL vecType<L, T, P> mod(vecType<L, T, P> const & x, T y);
@@ -133,7 +133,7 @@ namespace glm
 	/// @see <a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/modf.xml">GLSL modf man page</a>
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.3 Common Functions</a>
 	template<typename genType>
-	GLM_FUNC_DECL genType modf(genType x, genType & i);
+	GLM_FUNC_DECL GLM_ONLY_SCALAR(genType) modf(genType x, genType & i);
 
 	/// Returns y if y < x; otherwise, it returns x.
 	///
@@ -142,7 +142,7 @@ namespace glm
 	/// @see <a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/min.xml">GLSL min man page</a>
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.3 Common Functions</a>
 	template<typename genType>
-	GLM_FUNC_DECL genType min(genType x, genType y);
+	GLM_FUNC_DECL GLM_ONLY_SCALAR(genType) min(genType x, genType y);
 
 	template<length_t L, typename T, precision P, template<length_t, typename, precision> class vecType>
 	GLM_FUNC_DECL vecType<L, T, P> min(vecType<L, T, P> const & x, T y);
@@ -157,7 +157,7 @@ namespace glm
 	/// @see <a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/max.xml">GLSL max man page</a>
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.3 Common Functions</a>
 	template<typename genType>
-	GLM_FUNC_DECL genType max(genType x, genType y);
+	GLM_FUNC_DECL GLM_ONLY_SCALAR(genType) max(genType x, genType y);
 
 	template<length_t L, typename T, precision P, template<length_t, typename, precision> class vecType>
 	GLM_FUNC_DECL vecType<L, T, P> max(vecType<L, T, P> const & x, T y);
@@ -173,7 +173,7 @@ namespace glm
 	/// @see <a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/clamp.xml">GLSL clamp man page</a>
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.3 Common Functions</a>
 	template<typename genType>
-	GLM_FUNC_DECL genType clamp(genType x, genType minVal, genType maxVal);
+	GLM_FUNC_DECL GLM_ONLY_SCALAR(genType) clamp(genType x, genType minVal, genType maxVal);
 
 	template<length_t L, typename T, precision P, template<length_t, typename, precision> class vecType>
 	GLM_FUNC_DECL vecType<L, T, P> clamp(vecType<L, T, P> const & x, T minVal, T maxVal);
@@ -230,14 +230,14 @@ namespace glm
 	GLM_FUNC_DECL vecType<L, T, P> mix(vecType<L, T, P> const & x, vecType<L, T, P> const & y, U a);
 
 	template<typename genTypeT, typename genTypeU>
-	GLM_FUNC_DECL genTypeT mix(genTypeT x, genTypeT y, genTypeU a);
+	GLM_FUNC_DECL GLM_ONLY_SCALAR(genTypeT) mix(genTypeT x, genTypeT y, genTypeU a);
 
 	/// Returns 0.0 if x < edge, otherwise it returns 1.0 for each component of a genType.
 	/// 
 	/// @see <a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/step.xml">GLSL step man page</a>
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.3 Common Functions</a>
 	template<typename genType>
-	GLM_FUNC_DECL genType step(genType edge, genType x);
+	GLM_FUNC_DECL GLM_ONLY_SCALAR(genType) step(genType edge, genType x);
 
 	/// Returns 0.0 if x < edge, otherwise it returns 1.0.
 	/// 
@@ -268,7 +268,7 @@ namespace glm
 	/// @see <a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/smoothstep.xml">GLSL smoothstep man page</a>
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.3 Common Functions</a>
 	template<typename genType>
-	GLM_FUNC_DECL genType smoothstep(genType edge0, genType edge1, genType x);
+	GLM_FUNC_DECL GLM_ONLY_SCALAR(genType) smoothstep(genType edge0, genType edge1, genType x);
 
 	template<length_t L, typename T, precision P, template<length_t, typename, precision> class vecType>
 	GLM_FUNC_DECL vecType<L, T, P> smoothstep(T edge0, T edge1, vecType<L, T, P> const & x);
@@ -387,7 +387,7 @@ namespace glm
 	/// @see <a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/fma.xml">GLSL fma man page</a>
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.3 Common Functions</a>
 	template<typename genType>
-	GLM_FUNC_DECL genType fma(genType const & a, genType const & b, genType const & c);
+	GLM_FUNC_DECL GLM_ONLY_SCALAR(genType) fma(genType const & a, genType const & b, genType const & c);
 
 	/// Splits x into a floating-point significand in the range
 	/// [0.5, 1.0) and an integral exponent of two, such that:
@@ -404,7 +404,7 @@ namespace glm
 	/// @see <a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/frexp.xml">GLSL frexp man page</a>
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.3 Common Functions</a>
 	template<typename genType, typename genIType>
-	GLM_FUNC_DECL genType frexp(genType const & x, genIType & exp);
+	GLM_FUNC_DECL GLM_ONLY_SCALAR(genType) frexp(genType const & x, genIType & exp);
 
 	/// Builds a floating-point number from x and the
 	/// corresponding integral exponent of two in exp, returning:
@@ -418,7 +418,7 @@ namespace glm
 	/// @see <a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/ldexp.xml">GLSL ldexp man page</a>; 
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.3 Common Functions</a>
 	template<typename genType, typename genIType>
-	GLM_FUNC_DECL genType ldexp(genType const & x, genIType const & exp);
+	GLM_FUNC_DECL GLM_ONLY_SCALAR(genType) ldexp(genType const & x, genIType const & exp);
 
 	/// @}
 }//namespace glm

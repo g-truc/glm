@@ -12,7 +12,7 @@ namespace glm
 {
 	// min
 	template<typename genType>
-	GLM_FUNC_QUALIFIER genType min(genType x, genType y)
+	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR(genType) min(genType x, genType y)
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559 || std::numeric_limits<genType>::is_integer || GLM_UNRESTRICTED_GENTYPE, "'min' only accept floating-point or integer inputs");
 		return x < y ? x : y;
@@ -20,7 +20,7 @@ namespace glm
 
 	// max
 	template<typename genType>
-	GLM_FUNC_QUALIFIER genType max(genType x, genType y)
+	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR(genType) max(genType x, genType y)
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559 || std::numeric_limits<genType>::is_integer || GLM_UNRESTRICTED_GENTYPE, "'max' only accept floating-point or integer inputs");
 
@@ -40,7 +40,7 @@ namespace glm
 		using ::std::round;
 #	else
 		template<typename genType>
-		GLM_FUNC_QUALIFIER genType round(genType x)
+		GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR(genType) round(genType x)
 		{
 			GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559, "'round' only accept floating-point inputs");
 
@@ -53,7 +53,7 @@ namespace glm
 		using ::std::trunc;
 #	else
 		template<typename genType>
-		GLM_FUNC_QUALIFIER genType trunc(genType x)
+		GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR(genType) trunc(genType x)
 		{
 			GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559, "'trunc' only accept floating-point inputs");
 
@@ -306,7 +306,7 @@ namespace detail
 }//namespace detail
 
 	template<typename genFIType>
-	GLM_FUNC_QUALIFIER genFIType abs(genFIType x)
+	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR(genFIType) abs(genFIType x)
 	{
 		return detail::compute_abs<genFIType, std::numeric_limits<genFIType>::is_signed>::call(x);
 	}
@@ -320,7 +320,7 @@ namespace detail
 	// sign
 	// fast and works for any type
 	template<typename genFIType> 
-	GLM_FUNC_QUALIFIER genFIType sign(genFIType x)
+	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR(genFIType) sign(genFIType x)
 	{
 		GLM_STATIC_ASSERT(
 			std::numeric_limits<genFIType>::is_iec559 || (std::numeric_limits<genFIType>::is_signed && std::numeric_limits<genFIType>::is_integer),
@@ -365,7 +365,7 @@ namespace detail
 /*
 	// roundEven
 	template<typename genType>
-	GLM_FUNC_QUALIFIER genType roundEven(genType const& x)
+	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR(genType) roundEven(genType const& x)
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559, "'roundEven' only accept floating-point inputs");
 
@@ -375,7 +375,7 @@ namespace detail
 
 	// roundEven
 	template<typename genType>
-	GLM_FUNC_QUALIFIER genType roundEven(genType x)
+	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR(genType) roundEven(genType x)
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559, "'roundEven' only accept floating-point inputs");
 		
@@ -423,7 +423,7 @@ namespace detail
 
 	// fract
 	template<typename genType>
-	GLM_FUNC_QUALIFIER genType fract(genType x)
+	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR(genType) fract(genType x)
 	{
 		return fract(vec<1, genType>(x)).x;
 	}
@@ -437,7 +437,7 @@ namespace detail
 
 	// mod
 	template<typename genType>
-	GLM_FUNC_QUALIFIER genType mod(genType x, genType y)
+	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR(genType) mod(genType x, genType y)
 	{
 #		if GLM_COMPILER & GLM_COMPILER_CUDA
 			// Another Cuda compiler bug https://github.com/g-truc/glm/issues/530
@@ -462,7 +462,7 @@ namespace detail
 
 	// modf
 	template<typename genType>
-	GLM_FUNC_QUALIFIER genType modf(genType x, genType & i)
+	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR(genType) modf(genType x, genType & i)
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559, "'modf' only accept floating-point inputs");
 		return std::modf(x, &i);
@@ -540,7 +540,7 @@ namespace detail
 
 	// clamp
 	template<typename genType>
-	GLM_FUNC_QUALIFIER genType clamp(genType x, genType minVal, genType maxVal)
+	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR(genType) clamp(genType x, genType minVal, genType maxVal)
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559 || std::numeric_limits<genType>::is_integer || GLM_UNRESTRICTED_GENTYPE, "'clamp' only accept floating-point or integer inputs");
 		return min(max(x, minVal), maxVal);
@@ -561,7 +561,7 @@ namespace detail
 	}
 
 	template<typename genTypeT, typename genTypeU>
-	GLM_FUNC_QUALIFIER genTypeT mix(genTypeT x, genTypeT y, genTypeU a)
+	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR(genTypeT) mix(genTypeT x, genTypeT y, genTypeU a)
 	{
 		return detail::compute_mix<genTypeT, genTypeU>::call(x, y, a);
 	}
@@ -580,7 +580,7 @@ namespace detail
 
 	// step
 	template<typename genType>
-	GLM_FUNC_QUALIFIER genType step(genType edge, genType x)
+	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR(genType) step(genType edge, genType x)
 	{
 		return mix(static_cast<genType>(1), static_cast<genType>(0), glm::lessThan(x, edge));
 	}
@@ -599,7 +599,7 @@ namespace detail
 
 	// smoothstep
 	template<typename genType>
-	GLM_FUNC_QUALIFIER genType smoothstep(genType edge0, genType edge1, genType x)
+	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR(genType) smoothstep(genType edge0, genType edge1, genType x)
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559 || GLM_UNRESTRICTED_GENTYPE, "'smoothstep' only accept floating-point inputs");
 
@@ -739,13 +739,13 @@ namespace detail
 	}
 	
 	template<typename genType>
-	GLM_FUNC_QUALIFIER genType fma(genType const & a, genType const & b, genType const & c)
+	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR(genType) fma(genType const & a, genType const & b, genType const & c)
 	{
 		return a * b + c;
 	}
 
 	template<typename genType>
-	GLM_FUNC_QUALIFIER genType frexp(genType x, int & exp)
+	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR(genType) frexp(genType x, int & exp)
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559 || GLM_UNRESTRICTED_GENTYPE, "'frexp' only accept floating-point inputs");
 
@@ -794,7 +794,7 @@ namespace detail
 	}
 
 	template<typename genType>
-	GLM_FUNC_QUALIFIER genType ldexp(genType const & x, int const & exp)
+	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR(genType) ldexp(genType const & x, int const & exp)
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559 || GLM_UNRESTRICTED_GENTYPE, "'ldexp' only accept floating-point inputs");
 

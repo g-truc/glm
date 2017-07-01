@@ -17,7 +17,7 @@ namespace detail
 }//namespace detail
 
 	template<typename genType>
-	GLM_FUNC_QUALIFIER genType length2(genType x)
+	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR(genType) length2(genType x)
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559, "'length2' accepts only floating-point inputs");
 		return x * x;
@@ -31,7 +31,7 @@ namespace detail
 	}
 
 	template<typename T>
-	GLM_FUNC_QUALIFIER T distance2(T p0, T p1)
+	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR(T) distance2(T p0, T p1)
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'distance2' accepts only floating-point inputs");
 		return length2(p1 - p0);

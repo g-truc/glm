@@ -129,7 +129,7 @@ namespace detail
 
 	// length
 	template<typename genType>
-	GLM_FUNC_QUALIFIER genType length(genType x)
+	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR(genType) length(genType x)
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559, "'length' accepts only floating-point inputs");
 
@@ -146,7 +146,7 @@ namespace detail
 
 	// distance
 	template<typename genType>
-	GLM_FUNC_QUALIFIER genType distance(genType const & p0, genType const & p1)
+	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR(genType) distance(genType const & p0, genType const & p1)
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559, "'distance' accepts only floating-point inputs");
 
@@ -161,7 +161,7 @@ namespace detail
 
 	// dot
 	template<typename T>
-	GLM_FUNC_QUALIFIER T dot(T x, T y)
+	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR(T) dot(T x, T y)
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'dot' accepts only floating-point inputs");
 		return x * y;
@@ -190,7 +190,7 @@ namespace detail
 
 	// normalize
 	template<typename genType>
-	GLM_FUNC_QUALIFIER genType normalize(genType const & x)
+	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR(genType) normalize(genType const & x)
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559, "'normalize' accepts only floating-point inputs");
 
@@ -207,7 +207,7 @@ namespace detail
 
 	// faceforward
 	template<typename genType>
-	GLM_FUNC_QUALIFIER genType faceforward(genType const & N, genType const & I, genType const & Nref)
+	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR(genType) faceforward(genType const & N, genType const & I, genType const & Nref)
 	{
 		return dot(Nref, I) < static_cast<genType>(0) ? N : -N;
 	}
@@ -220,7 +220,7 @@ namespace detail
 
 	// reflect
 	template<typename genType>
-	GLM_FUNC_QUALIFIER genType reflect(genType const & I, genType const & N)
+	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR(genType) reflect(genType const & I, genType const & N)
 	{
 		return I - N * dot(N, I) * genType(2);
 	}
@@ -233,7 +233,7 @@ namespace detail
 
 	// refract
 	template<typename genType>
-	GLM_FUNC_QUALIFIER genType refract(genType const & I, genType const & N, genType eta)
+	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR(genType) refract(genType const & I, genType const & N, genType eta)
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559, "'refract' accepts only floating-point inputs");
 		genType const dotValue(dot(N, I));
