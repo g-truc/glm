@@ -19,7 +19,8 @@ namespace glm
 	template<bool B, typename T>	struct meta_if { typedef T type; };
 	template<typename T>			struct meta_if<false, T> {};
 #define GLM_ONLY_SCALAR(T)			typename meta_if<!is_vec<T>::value, T>::type
-#define GLM_ONLY_SCALAR2(V,L,T,P,U)	typename meta_if<!is_vec<U>::value, V<L,T,P> >::type &
+#define GLM_ONLY_SCALAR_VEC(V,L,T,P,U)	typename meta_if<!is_vec<U>::value, V<L,T,P> >::type &
+#define GLM_FUNC_DECL_ONLY_SCALAR(U)	GLM_FUNC_DECL typename meta_if<!is_vec<U>::value, vec>::type &
 }//namespace glm
 
 //////////////////////

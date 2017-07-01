@@ -365,7 +365,7 @@ namespace detail
 
 	template<typename T, precision P>
 	template<typename U>
-	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR2(vec, 4, T, P, U)  vec<4, T, P>::operator+=(U scalar)
+	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR_VEC(vec, 4, T, P, U)  vec<4, T, P>::operator+=(U scalar)
 	{
 		return (*this = detail::compute_vec4_add<T, P, detail::is_aligned<P>::value>::call(*this, vec<4, T, P>(scalar)));
 	}
@@ -386,7 +386,7 @@ namespace detail
 
 	template<typename T, precision P>
 	template<typename U>
-	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR2(vec, 4, T, P, U)  vec<4, T, P>::operator-=(U scalar)
+	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR_VEC(vec, 4, T, P, U)  vec<4, T, P>::operator-=(U scalar)
 	{
 		return (*this = detail::compute_vec4_sub<T, P, detail::is_aligned<P>::value>::call(*this, vec<4, T, P>(scalar)));
 	}
@@ -407,7 +407,7 @@ namespace detail
 
 	template<typename T, precision P>
 	template<typename U>
-	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR2(vec, 4, T, P, U)  vec<4, T, P>::operator*=(U scalar)
+	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR_VEC(vec, 4, T, P, U)  vec<4, T, P>::operator*=(U scalar)
 	{
 		return (*this = detail::compute_vec4_mul<T, P, detail::is_aligned<P>::value>::call(*this, vec<4, T, P>(scalar)));
 	}
@@ -428,7 +428,7 @@ namespace detail
 
 	template<typename T, precision P>
 	template<typename U>
-	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR2(vec, 4, T, P, U)  vec<4, T, P>::operator/=(U scalar)
+	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR_VEC(vec, 4, T, P, U)  vec<4, T, P>::operator/=(U scalar)
 	{
 		return (*this = detail::compute_vec4_div<T, P, detail::is_aligned<P>::value>::call(*this, vec<4, T, P>(scalar)));
 	}
@@ -489,7 +489,7 @@ namespace detail
 
 	template<typename T, precision P>
 	template<typename U>
-	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR2(vec, 4, T, P, U)  vec<4, T, P>::operator%=(U scalar)
+	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR_VEC(vec, 4, T, P, U)  vec<4, T, P>::operator%=(U scalar)
 	{
 		return (*this = detail::compute_vec4_mod<T, P, detail::is_aligned<P>::value>::call(*this, vec<4, T, P>(scalar)));
 	}
@@ -510,7 +510,7 @@ namespace detail
 
 	template<typename T, precision P>
 	template<typename U>
-	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR2(vec, 4, T, P, U)  vec<4, T, P>::operator&=(U scalar)
+	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR_VEC(vec, 4, T, P, U)  vec<4, T, P>::operator&=(U scalar)
 	{
 		return (*this = detail::compute_vec4_and<T, P, detail::is_int<T>::value, sizeof(T) * 8, detail::is_aligned<P>::value>::call(*this, vec<4, T, P>(scalar)));
 	}
@@ -531,7 +531,7 @@ namespace detail
 
 	template<typename T, precision P>
 	template<typename U>
-	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR2(vec, 4, T, P, U)  vec<4, T, P>::operator|=(U scalar)
+	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR_VEC(vec, 4, T, P, U)  vec<4, T, P>::operator|=(U scalar)
 	{
 		return (*this = detail::compute_vec4_or<T, P, detail::is_int<T>::value, sizeof(T) * 8, detail::is_aligned<P>::value>::call(*this, vec<4, T, P>(scalar)));
 	}
@@ -552,7 +552,7 @@ namespace detail
 
 	template<typename T, precision P>
 	template<typename U>
-	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR2(vec, 4, T, P, U)  vec<4, T, P>::operator^=(U scalar)
+	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR_VEC(vec, 4, T, P, U)  vec<4, T, P>::operator^=(U scalar)
 	{
 		return (*this = detail::compute_vec4_xor<T, P, detail::is_int<T>::value, sizeof(T) * 8, detail::is_aligned<P>::value>::call(*this, vec<4, T, P>(scalar)));
 	}
@@ -573,7 +573,7 @@ namespace detail
 
 	template<typename T, precision P>
 	template<typename U>
-	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR2(vec, 4, T, P, U)  vec<4, T, P>::operator<<=(U scalar)
+	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR_VEC(vec, 4, T, P, U)  vec<4, T, P>::operator<<=(U scalar)
 	{
 		return (*this = detail::compute_vec4_shift_left<T, P, detail::is_int<T>::value, sizeof(T) * 8, detail::is_aligned<P>::value>::call(*this, vec<4, T, P>(scalar)));
 	}
@@ -594,7 +594,7 @@ namespace detail
 
 	template<typename T, precision P>
 	template<typename U>
-	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR2(vec, 4, T, P, U)  vec<4, T, P>::operator>>=(U scalar)
+	GLM_FUNC_QUALIFIER GLM_ONLY_SCALAR_VEC(vec, 4, T, P, U)  vec<4, T, P>::operator>>=(U scalar)
 	{
 		return (*this = detail::compute_vec4_shift_right<T, P, detail::is_int<T>::value, sizeof(T) * 8, detail::is_aligned<P>::value>::call(*this, vec<4, T, P>(scalar)));
 	}
