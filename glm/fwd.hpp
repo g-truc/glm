@@ -9,6 +9,18 @@
 #include "detail/type_float.hpp"
 #include "detail/type_vec.hpp"
 #include "detail/type_mat.hpp"
+namespace glm
+{
+	template<typename T> struct is_vec {
+		template <length_t L, typename T, precision P, template <length_t, typename, precision> class vecType> static int8	test(vecType<L, T, P>*);
+		static int16	test(...);
+		enum { value = sizeof(test((T*)0)) == sizeof(int8) };
+	};
+	template<bool B, typename T>	struct meta_if { typedef T type; };
+	template<typename T>			struct meta_if<false, T> {};
+#define GLM_ONLY_SCALAR(T)			typename meta_if<!is_vec<T>::value, T>::type
+#define GLM_ONLY_SCALAR2(V,L,T,P,U)	typename meta_if<!is_vec<U>::value, V<L,T,P> >::type &
+}//namespace glm
 
 //////////////////////
 // GLM_GTC_quaternion
