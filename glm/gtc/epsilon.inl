@@ -11,7 +11,7 @@
 
 namespace glm
 {
-	template <>
+	template<>
 	GLM_FUNC_QUALIFIER bool epsilonEqual
 	(
 		float const & x,
@@ -22,7 +22,7 @@ namespace glm
 		return abs(x - y) < epsilon;
 	}
 
-	template <>
+	template<>
 	GLM_FUNC_QUALIFIER bool epsilonEqual
 	(
 		double const & x,
@@ -33,7 +33,7 @@ namespace glm
 		return abs(x - y) < epsilon;
 	}
 
-	template <>
+	template<>
 	GLM_FUNC_QUALIFIER bool epsilonNotEqual
 	(
 		float const & x,
@@ -44,7 +44,7 @@ namespace glm
 		return abs(x - y) >= epsilon;
 	}
 
-	template <>
+	template<>
 	GLM_FUNC_QUALIFIER bool epsilonNotEqual
 	(
 		double const & x,
@@ -55,71 +55,71 @@ namespace glm
 		return abs(x - y) >= epsilon;
 	}
 
-	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<bool, P> epsilonEqual
+	template<length_t L, typename T, precision P, template<length_t, typename, precision> class vecType>
+	GLM_FUNC_QUALIFIER vecType<L, bool, P> epsilonEqual
 	(
-		vecType<T, P> const & x,
-		vecType<T, P> const & y,
+		vecType<L, T, P> const& x,
+		vecType<L, T, P> const& y,
 		T const & epsilon
 	)
 	{
-		return lessThan(abs(x - y), vecType<T, P>(epsilon));
+		return lessThan(abs(x - y), vecType<L, T, P>(epsilon));
 	}
 
-	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<bool, P> epsilonEqual
+	template<length_t L, typename T, precision P, template<length_t, typename, precision> class vecType>
+	GLM_FUNC_QUALIFIER vecType<L, bool, P> epsilonEqual
 	(
-		vecType<T, P> const & x,
-		vecType<T, P> const & y,
-		vecType<T, P> const & epsilon
+		vecType<L, T, P> const& x,
+		vecType<L, T, P> const& y,
+		vecType<L, T, P> const& epsilon
 	)
 	{
-		return lessThan(abs(x - y), vecType<T, P>(epsilon));
+		return lessThan(abs(x - y), vecType<L, T, P>(epsilon));
 	}
 
-	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<bool, P> epsilonNotEqual
+	template<length_t L, typename T, precision P, template<length_t, typename, precision> class vecType>
+	GLM_FUNC_QUALIFIER vecType<L, bool, P> epsilonNotEqual
 	(
-		vecType<T, P> const & x,
-		vecType<T, P> const & y,
+		vecType<L, T, P> const& x,
+		vecType<L, T, P> const& y,
 		T const & epsilon
 	)
 	{
-		return greaterThanEqual(abs(x - y), vecType<T, P>(epsilon));
+		return greaterThanEqual(abs(x - y), vecType<L, T, P>(epsilon));
 	}
 
-	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<bool, P> epsilonNotEqual
+	template<length_t L, typename T, precision P, template<length_t, typename, precision> class vecType>
+	GLM_FUNC_QUALIFIER vecType<L, bool, P> epsilonNotEqual
 	(
-		vecType<T, P> const & x,
-		vecType<T, P> const & y,
-		vecType<T, P> const & epsilon
+		vecType<L, T, P> const& x,
+		vecType<L, T, P> const& y,
+		vecType<L, T, P> const& epsilon
 	)
 	{
-		return greaterThanEqual(abs(x - y), vecType<T, P>(epsilon));
+		return greaterThanEqual(abs(x - y), vecType<L, T, P>(epsilon));
 	}
 
-	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tvec4<bool, P> epsilonEqual
+	template<typename T, precision P>
+	GLM_FUNC_QUALIFIER vec<4, bool, P> epsilonEqual
 	(
 		tquat<T, P> const & x,
 		tquat<T, P> const & y,
 		T const & epsilon
 	)
 	{
-		tvec4<T, P> v(x.x - y.x, x.y - y.y, x.z - y.z, x.w - y.w);
-		return lessThan(abs(v), tvec4<T, P>(epsilon));
+		vec<4, T, P> v(x.x - y.x, x.y - y.y, x.z - y.z, x.w - y.w);
+		return lessThan(abs(v), vec<4, T, P>(epsilon));
 	}
 
-	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tvec4<bool, P> epsilonNotEqual
+	template<typename T, precision P>
+	GLM_FUNC_QUALIFIER vec<4, bool, P> epsilonNotEqual
 	(
 		tquat<T, P> const & x,
 		tquat<T, P> const & y,
 		T const & epsilon
 	)
 	{
-		tvec4<T, P> v(x.x - y.x, x.y - y.y, x.z - y.z, x.w - y.w);
-		return greaterThanEqual(abs(v), tvec4<T, P>(epsilon));
+		vec<4, T, P> v(x.x - y.x, x.y - y.y, x.z - y.z, x.w - y.w);
+		return greaterThanEqual(abs(v), vec<4, T, P>(epsilon));
 	}
 }//namespace glm

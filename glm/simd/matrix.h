@@ -410,7 +410,7 @@ GLM_FUNC_QUALIFIER glm_vec4 glm_mat4_determinant_lowp(glm_vec4 const m[4])
 	__m128 MulC = _mm_mul_ps(Swp2C, Swp3C);
 	__m128 SubF = _mm_sub_ps(_mm_movehl_ps(MulC, MulC), MulC);
 
-	//tvec4<T, P> DetCof(
+	//vec<4, T, P> DetCof(
 	//	+ (m[1][1] * SubFactor00 - m[1][2] * SubFactor01 + m[1][3] * SubFactor02),
 	//	- (m[1][0] * SubFactor00 - m[1][2] * SubFactor03 + m[1][3] * SubFactor04),
 	//	+ (m[1][0] * SubFactor01 - m[1][1] * SubFactor03 + m[1][3] * SubFactor05),
@@ -473,7 +473,7 @@ GLM_FUNC_QUALIFIER glm_vec4 glm_mat4_determinant(glm_vec4 const m[4])
 	__m128 MulC = _mm_mul_ps(Swp2C, Swp3C);
 	__m128 SubF = _mm_sub_ps(_mm_movehl_ps(MulC, MulC), MulC);
 
-	//tvec4<T, P> DetCof(
+	//vec<4, T, P> DetCof(
 	//	+ (m[1][1] * SubFactor00 - m[1][2] * SubFactor01 + m[1][3] * SubFactor02),
 	//	- (m[1][0] * SubFactor00 - m[1][2] * SubFactor03 + m[1][3] * SubFactor04),
 	//	+ (m[1][0] * SubFactor01 - m[1][1] * SubFactor03 + m[1][3] * SubFactor05),
@@ -962,7 +962,7 @@ GLM_FUNC_QUALIFIER void glm_mat4_rotate(__m128 const in[4], float Angle, float c
 	__m128 Sin0 = _mm_set_ss(s);
 	__m128 SinA = _mm_shuffle_ps(Sin0, Sin0, _MM_SHUFFLE(0, 0, 0, 0));
 
-	// tvec3<T, P> temp = (valType(1) - c) * axis;
+	// vec<3, T, P> temp = (valType(1) - c) * axis;
 	__m128 Temp0 = _mm_sub_ps(one, CosA);
 	__m128 Temp1 = _mm_mul_ps(Temp0, AxisC);
 	
@@ -1008,7 +1008,7 @@ GLM_FUNC_QUALIFIER void glm_mat4_rotate(__m128 const in[4], float Angle, float c
 	Result[2] = TmpC4;
 	Result[3] = _mm_set_ps(1, 0, 0, 0);
 
-	//tmat4x4<valType> Result(uninitialize);
+	//mat<4, 4, valType> Result;
 	//Result[0] = m[0] * Rotate[0][0] + m[1] * Rotate[0][1] + m[2] * Rotate[0][2];
 	//Result[1] = m[0] * Rotate[1][0] + m[1] * Rotate[1][1] + m[2] * Rotate[1][2];
 	//Result[2] = m[0] * Rotate[2][0] + m[1] * Rotate[2][1] + m[2] * Rotate[2][2];

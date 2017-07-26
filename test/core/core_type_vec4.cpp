@@ -37,6 +37,10 @@ int test_vec4_ctor()
 {
 	int Error = 0;
 
+#	if GLM_HAS_CONSTEXPR
+	constexpr glm::vec4 v(0.0f);
+#	endif
+
 	{
 		glm::ivec4 A(1, 2, 3, 4);
 		glm::ivec4 B(A);
@@ -322,6 +326,11 @@ int test_vec4_size()
 	Error += glm::vec4::length() == 4 ? 0 : 1;
 	Error += glm::dvec4::length() == 4 ? 0 : 1;
 
+#	if GLM_HAS_CONSTEXPR_PARTIAL
+	constexpr std::size_t Length = glm::vec4::length();
+	Error += Length == 4 ? 0 : 1;
+#	endif
+
 	return Error;
 }
 
@@ -541,8 +550,6 @@ int main()
 		printf("GNI\n");
 	}
 */
-	glm::vec4 v;
-	assert(v.length() == 4);
 
 #	ifdef NDEBUG
 		std::size_t const Size(1000000);

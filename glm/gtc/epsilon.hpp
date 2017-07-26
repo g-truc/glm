@@ -2,7 +2,6 @@
 /// @file glm/gtc/epsilon.hpp
 /// 
 /// @see core (dependence)
-/// @see gtc_half_float (dependence)
 /// @see gtc_quaternion (dependence)
 ///
 /// @defgroup gtc_epsilon GLM_GTC_epsilon
@@ -31,17 +30,17 @@ namespace glm
 	/// True if this expression is satisfied.
 	///
 	/// @see gtc_epsilon
-	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_DECL vecType<bool, P> epsilonEqual(
-		vecType<T, P> const & x,
-		vecType<T, P> const & y,
+	template<length_t L, typename T, precision P, template<length_t, typename, precision> class vecType>
+	GLM_FUNC_DECL vecType<L, bool, P> epsilonEqual(
+		vecType<L, T, P> const& x,
+		vecType<L, T, P> const& y,
 		T const & epsilon);
 
 	/// Returns the component-wise comparison of |x - y| < epsilon.
 	/// True if this expression is satisfied.
 	///
 	/// @see gtc_epsilon
-	template <typename genType>
+	template<typename genType>
 	GLM_FUNC_DECL bool epsilonEqual(
 		genType const & x,
 		genType const & y,
@@ -51,7 +50,7 @@ namespace glm
 	/// True if this expression is not satisfied.
 	///
 	/// @see gtc_epsilon
-	template <typename genType>
+	template<typename genType>
 	GLM_FUNC_DECL typename genType::boolType epsilonNotEqual(
 		genType const & x,
 		genType const & y,
@@ -61,7 +60,7 @@ namespace glm
 	/// True if this expression is not satisfied.
 	///
 	/// @see gtc_epsilon
-	template <typename genType>
+	template<typename genType>
 	GLM_FUNC_DECL bool epsilonNotEqual(
 		genType const & x,
 		genType const & y,

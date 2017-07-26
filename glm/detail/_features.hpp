@@ -251,9 +251,7 @@
 
 #if(GLM_COMPILER & GLM_COMPILER_GCC)
 
-#	if(GLM_COMPILER >= GLM_COMPILER_GCC43)
-#		define GLM_CXX11_STATIC_ASSERT
-#	endif
+#	define GLM_CXX11_STATIC_ASSERT
 
 #elif(GLM_COMPILER & GLM_COMPILER_CLANG)
 #	if(__has_feature(cxx_exceptions))

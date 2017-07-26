@@ -13,7 +13,7 @@
 #include <vector>
 
 
-template <typename genType>
+template<typename genType>
 void print(genType const & Mat0)
 {
 	printf("mat4(\n");
@@ -253,7 +253,7 @@ int perf_mul()
 
 namespace cast
 {
-	template <typename genType>
+	template<typename genType>
 	int entry()
 	{
 		int Error = 0;

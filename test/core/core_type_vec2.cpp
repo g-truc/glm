@@ -199,6 +199,10 @@ int test_vec2_ctor()
 {
 	int Error = 0;
 
+#	if GLM_HAS_CONSTEXPR
+	constexpr glm::vec2 v(0);
+#	endif
+
 	{
 		glm::vec2 A(1);
 		glm::vec2 B(A);
@@ -271,6 +275,11 @@ int test_vec2_size()
 	Error += glm::dvec2().length() == 2 ? 0 : 1;
 	Error += glm::vec2::length() == 2 ? 0 : 1;
 	Error += glm::dvec2::length() == 2 ? 0 : 1;
+
+#	if GLM_HAS_CONSTEXPR_PARTIAL
+		constexpr std::size_t Length = glm::vec2::length();
+		Error += Length == 2 ? 0 : 1;
+#	endif
 
 	return Error;
 }

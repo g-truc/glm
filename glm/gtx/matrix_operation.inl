@@ -3,87 +3,87 @@
 
 namespace glm
 {
-	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tmat2x2<T, P> diagonal2x2
+	template<typename T, precision P>
+	GLM_FUNC_QUALIFIER mat<2, 2, T, P> diagonal2x2
 	(
-		tvec2<T, P> const & v
+		vec<2, T, P> const & v
 	)
 	{
-		tmat2x2<T, P> Result(static_cast<T>(1));
+		mat<2, 2, T, P> Result(static_cast<T>(1));
 		Result[0][0] = v[0];
 		Result[1][1] = v[1];
 		return Result;
 	}
 
-	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tmat2x3<T, P> diagonal2x3
+	template<typename T, precision P>
+	GLM_FUNC_QUALIFIER mat<2, 3, T, P> diagonal2x3
 	(
-		tvec2<T, P> const & v
+		vec<2, T, P> const & v
 	)
 	{
-		tmat2x3<T, P> Result(static_cast<T>(1));
+		mat<2, 3, T, P> Result(static_cast<T>(1));
 		Result[0][0] = v[0];
 		Result[1][1] = v[1];
 		return Result;
 	}
 
-	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tmat2x4<T, P> diagonal2x4
+	template<typename T, precision P>
+	GLM_FUNC_QUALIFIER mat<2, 4, T, P> diagonal2x4
 	(
-		tvec2<T, P> const & v
+		vec<2, T, P> const & v
 	)
 	{
-		tmat2x4<T, P> Result(static_cast<T>(1));
+		mat<2, 4, T, P> Result(static_cast<T>(1));
 		Result[0][0] = v[0];
 		Result[1][1] = v[1];
 		return Result;
 	}
 
-	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tmat3x2<T, P> diagonal3x2
+	template<typename T, precision P>
+	GLM_FUNC_QUALIFIER mat<3, 2, T, P> diagonal3x2
 	(
-		tvec2<T, P> const & v
+		vec<2, T, P> const & v
 	)
 	{
-		tmat3x2<T, P> Result(static_cast<T>(1));
+		mat<3, 2, T, P> Result(static_cast<T>(1));
 		Result[0][0] = v[0];
 		Result[1][1] = v[1];
 		return Result;
 	}
 
-	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tmat3x3<T, P> diagonal3x3
+	template<typename T, precision P>
+	GLM_FUNC_QUALIFIER mat<3, 3, T, P> diagonal3x3
 	(
-		tvec3<T, P> const & v
+		vec<3, T, P> const & v
 	)
 	{
-		tmat3x3<T, P> Result(static_cast<T>(1));
-		Result[0][0] = v[0];
-		Result[1][1] = v[1];
-		Result[2][2] = v[2];
-		return Result;
-	}
-
-	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tmat3x4<T, P> diagonal3x4
-	(
-		tvec3<T, P> const & v
-	)
-	{
-		tmat3x4<T, P> Result(static_cast<T>(1));
+		mat<3, 3, T, P> Result(static_cast<T>(1));
 		Result[0][0] = v[0];
 		Result[1][1] = v[1];
 		Result[2][2] = v[2];
 		return Result;
 	}
 
-	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tmat4x4<T, P> diagonal4x4
+	template<typename T, precision P>
+	GLM_FUNC_QUALIFIER mat<3, 4, T, P> diagonal3x4
 	(
-		tvec4<T, P> const & v
+		vec<3, T, P> const & v
 	)
 	{
-		tmat4x4<T, P> Result(static_cast<T>(1));
+		mat<3, 4, T, P> Result(static_cast<T>(1));
+		Result[0][0] = v[0];
+		Result[1][1] = v[1];
+		Result[2][2] = v[2];
+		return Result;
+	}
+
+	template<typename T, precision P>
+	GLM_FUNC_QUALIFIER mat<4, 4, T, P> diagonal4x4
+	(
+		vec<4, T, P> const & v
+	)
+	{
+		mat<4, 4, T, P> Result(static_cast<T>(1));
 		Result[0][0] = v[0];
 		Result[1][1] = v[1];
 		Result[2][2] = v[2];
@@ -91,26 +91,26 @@ namespace glm
 		return Result;		
 	}
 
-	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tmat4x3<T, P> diagonal4x3
+	template<typename T, precision P>
+	GLM_FUNC_QUALIFIER mat<4, 3, T, P> diagonal4x3
 	(
-		tvec3<T, P> const & v
+		vec<3, T, P> const & v
 	)
 	{
-		tmat4x3<T, P> Result(static_cast<T>(1));
+		mat<4, 3, T, P> Result(static_cast<T>(1));
 		Result[0][0] = v[0];
 		Result[1][1] = v[1];
 		Result[2][2] = v[2];
 		return Result;		
 	}
 
-	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tmat4x2<T, P> diagonal4x2
+	template<typename T, precision P>
+	GLM_FUNC_QUALIFIER mat<4, 2, T, P> diagonal4x2
 	(
-		tvec2<T, P> const & v
+		vec<2, T, P> const & v
 	)
 	{
-		tmat4x2<T, P> Result(static_cast<T>(1));
+		mat<4, 2, T, P> Result(static_cast<T>(1));
 		Result[0][0] = v[0];
 		Result[1][1] = v[1];
 		return Result;		

@@ -38,6 +38,10 @@ int test_vec1_ctor()
 {
 	int Error = 0;
 
+#	if GLM_HAS_CONSTEXPR
+	constexpr glm::vec1 v(0);
+#	endif
+
 #	if GLM_HAS_TRIVIAL_QUERIES
 	//	Error += std::is_trivially_default_constructible<glm::vec1>::value ? 0 : 1;
 	//	Error += std::is_trivially_copy_assignable<glm::vec1>::value ? 0 : 1;
@@ -106,6 +110,11 @@ int test_vec1_size()
 	Error += glm::vec1::length() == 1 ? 0 : 1;
 	Error += glm::dvec1::length() == 1 ? 0 : 1;
 
+#	if GLM_HAS_CONSTEXPR_PARTIAL
+	constexpr std::size_t Length = glm::vec1::length();
+	Error += Length == 1 ? 0 : 1;
+#	endif
+
 	return Error;
 }
 
@@ -139,9 +148,6 @@ int test_vec1_operator_increment()
 int main()
 {
 	int Error = 0;
-
-	glm::vec1 v;
-	assert(v.length() == 1);
 
 	Error += test_vec1_size();
 	Error += test_vec1_ctor();

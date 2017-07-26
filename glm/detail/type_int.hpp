@@ -73,129 +73,129 @@ namespace detail
 		using std::make_unsigned;
 
 #	else//GLM_HAS_MAKE_SIGNED
-		template <typename genType>
+		template<typename genType>
 		struct make_signed
 		{};
 
-		template <>
+		template<>
 		struct make_signed<char>
 		{
 			typedef char type;
 		};
 
-		template <>
+		template<>
 		struct make_signed<short>
 		{
 			typedef short type;
 		};
 
-		template <>
+		template<>
 		struct make_signed<int>
 		{
 			typedef int type;
 		};
 
-		template <>
+		template<>
 		struct make_signed<long>
 		{
 			typedef long type;
 		};
 	
-		template <>
+		template<>
 		struct make_signed<unsigned char>
 		{
 			typedef char type;
 		};
 
-		template <>
+		template<>
 		struct make_signed<unsigned short>
 		{
 			typedef short type;
 		};
 
-		template <>
+		template<>
 		struct make_signed<unsigned int>
 		{
 			typedef int type;
 		};
 
-		template <>
+		template<>
 		struct make_signed<unsigned long>
 		{
 			typedef long type;
 		};
 
-		template <typename genType>
+		template<typename genType>
 		struct make_unsigned
 		{};
 
-		template <>
+		template<>
 		struct make_unsigned<char>
 		{
 			typedef unsigned char type;
 		};
 
-		template <>
+		template<>
 		struct make_unsigned<short>
 		{
 			typedef unsigned short type;
 		};
 
-		template <>
+		template<>
 		struct make_unsigned<int>
 		{
 			typedef unsigned int type;
 		};
 
-		template <>
+		template<>
 		struct make_unsigned<long>
 		{
 			typedef unsigned long type;
 		};
 
-		template <>
+		template<>
 		struct make_unsigned<unsigned char>
 		{
 			typedef unsigned char type;
 		};
 
-		template <>
+		template<>
 		struct make_unsigned<unsigned short>
 		{
 			typedef unsigned short type;
 		};
 
-		template <>
+		template<>
 		struct make_unsigned<unsigned int>
 		{
 			typedef unsigned int type;
 		};
 
-		template <>
+		template<>
 		struct make_unsigned<unsigned long>
 		{
 			typedef unsigned long type;
 		};
 
-		template <>
+		template<>
 		struct make_signed<long long>
 		{
 			typedef long long type;
 		};
 	
-		template <>
+		template<>
 		struct make_signed<unsigned long long>
 		{
 			typedef long long type;
 		};
 	
-		template <>
+		template<>
 		struct make_unsigned<long long>
 		{
 			typedef unsigned long long type;
 		};
 	
-		template <>
+		template<>
 		struct make_unsigned<unsigned long long>
 		{
 			typedef unsigned long long type;

@@ -3,7 +3,7 @@
 
 namespace glm
 {
-	template <typename genType> 
+	template<typename genType> 
 	GLM_FUNC_QUALIFIER genType angle
 	(
 		genType const & x,
@@ -14,11 +14,11 @@ namespace glm
 		return acos(clamp(dot(x, y), genType(-1), genType(1)));
 	}
 
-	template <typename T, precision P, template <typename, precision> class vecType> 
+	template<length_t L, typename T, precision P, template<length_t, typename, precision> class vecType>
 	GLM_FUNC_QUALIFIER T angle
 	(
-		vecType<T, P> const & x,
-		vecType<T, P> const & y
+		vecType<L, T, P> const& x,
+		vecType<L, T, P> const& y
 	)
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'angle' only accept floating-point inputs");
@@ -26,11 +26,11 @@ namespace glm
 	}
 
 	//! \todo epsilon is hard coded to 0.01
-	template <typename T, precision P>
+	template<typename T, precision P>
 	GLM_FUNC_QUALIFIER T orientedAngle
 	(
-		tvec2<T, P> const & x,
-		tvec2<T, P> const & y
+		vec<2, T, P> const & x,
+		vec<2, T, P> const & y
 	)
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'orientedAngle' only accept floating-point inputs");
@@ -42,12 +42,12 @@ namespace glm
 			return -Angle;
 	}
 
-	template <typename T, precision P>
+	template<typename T, precision P>
 	GLM_FUNC_QUALIFIER T orientedAngle
 	(
-		tvec3<T, P> const & x,
-		tvec3<T, P> const & y,
-		tvec3<T, P> const & ref
+		vec<3, T, P> const & x,
+		vec<3, T, P> const & y,
+		vec<3, T, P> const & ref
 	)
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'orientedAngle' only accept floating-point inputs");

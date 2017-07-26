@@ -344,7 +344,7 @@ namespace clamp_
 
 namespace mix_
 {
-	template <typename T, typename B>
+	template<typename T, typename B>
 	struct entry
 	{
 		T x;
@@ -514,7 +514,7 @@ namespace mix_
 
 namespace step_
 {
-	template <typename EDGE, typename VEC>
+	template<typename EDGE, typename VEC>
 	struct entry
 	{
 		EDGE edge;
@@ -817,7 +817,7 @@ namespace isinf_
 
 namespace sign
 {
-	template <typename genFIType> 
+	template<typename genFIType> 
 	GLM_FUNC_QUALIFIER genFIType sign_if(genFIType x)
 	{
 		GLM_STATIC_ASSERT(
@@ -834,7 +834,7 @@ namespace sign
 		return result;
 	}
 
-	template <typename genFIType> 
+	template<typename genFIType> 
 	GLM_FUNC_QUALIFIER genFIType sign_alu1(genFIType x)
 	{
 		GLM_STATIC_ASSERT(
@@ -844,7 +844,7 @@ namespace sign
 		return (x >> 31) | ((unsigned)-x >> 31);
 	}
 
-	template <typename genFIType> 
+	template<typename genFIType> 
 	GLM_FUNC_QUALIFIER genFIType sign_alu2(genFIType x)
 	{
 		GLM_STATIC_ASSERT(
@@ -854,7 +854,7 @@ namespace sign
 		return -((unsigned)x >> 31) | (-(unsigned)x >> 31);
 	}
 
-	template <typename genFIType> 
+	template<typename genFIType> 
 	GLM_FUNC_QUALIFIER genFIType sign_sub(genFIType x)
 	{
 		GLM_STATIC_ASSERT(
@@ -864,7 +864,7 @@ namespace sign
 		return ((unsigned)-x >> 31) - ((unsigned)x >> 31);
 	}
 
-	template <typename genFIType> 
+	template<typename genFIType> 
 	GLM_FUNC_QUALIFIER genFIType sign_cmp(genFIType x)
 	{
 		GLM_STATIC_ASSERT(
@@ -874,7 +874,7 @@ namespace sign
 		return (x > 0) - (x < 0);
 	}
 
-	template <typename genType>
+	template<typename genType>
 	struct type
 	{
 		genType		Value;

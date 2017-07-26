@@ -3,12 +3,12 @@
 
 namespace glm
 {
-	template <typename T, precision P>
+	template<typename T, precision P>
 	GLM_FUNC_QUALIFIER T mixedProduct
 	(
-		tvec3<T, P> const & v1,
-		tvec3<T, P> const & v2,
-		tvec3<T, P> const & v3
+		vec<3, T, P> const & v1,
+		vec<3, T, P> const & v2,
+		vec<3, T, P> const & v3
 	)
 	{
 		return dot(cross(v1, v2), v3);

@@ -18,7 +18,7 @@ int test_gauss_2d()
 
 	std::vector<float> Result(20);
 	for(std::size_t i = 0, n = Result.size(); i < n; ++i)
-		Result[i] = glm::gauss(glm::vec2(i) * 0.1f, glm::vec2(0.0f), glm::vec2(1.0f));
+		Result[i] = glm::gauss(glm::vec2(static_cast<float>(i)) * 0.1f, glm::vec2(0.0f), glm::vec2(1.0f));
 
 	return Error;
 }

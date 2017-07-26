@@ -112,7 +112,7 @@ GLM_FUNC_QUALIFIER glm_vec4 glm_vec4_round(glm_vec4 x)
 #	if GLM_ARCH & GLM_ARCH_SSE41_BIT
 		return _mm_round_ps(x, _MM_FROUND_TO_NEAREST_INT);
 #	else
-		glm_vec4 const sgn0 = _mm_castsi128_ps(_mm_set1_epi32(0x80000000));
+		glm_vec4 const sgn0 = _mm_castsi128_ps(_mm_set1_epi32(int(0x80000000)));
 		glm_vec4 const and0 = _mm_and_ps(sgn0, x);
 		glm_vec4 const or0 = _mm_or_ps(and0, _mm_set_ps1(8388608.0f));
 		glm_vec4 const add0 = glm_vec4_add(x, or0);
@@ -144,7 +144,7 @@ GLM_FUNC_QUALIFIER glm_vec4 glm_vec4_trunc(glm_vec4 x)
 //roundEven
 GLM_FUNC_QUALIFIER glm_vec4 glm_vec4_roundEven(glm_vec4 x)
 {
-	glm_vec4 const sgn0 = _mm_castsi128_ps(_mm_set1_epi32(0x80000000));
+	glm_vec4 const sgn0 = _mm_castsi128_ps(_mm_set1_epi32(int(0x80000000)));
 	glm_vec4 const and0 = _mm_and_ps(sgn0, x);
 	glm_vec4 const or0 = _mm_or_ps(and0, _mm_set_ps1(8388608.0f));
 	glm_vec4 const add0 = glm_vec4_add(x, or0);
@@ -220,7 +220,7 @@ GLM_FUNC_QUALIFIER glm_vec4 glm_vec4_nan(glm_vec4 x)
 {
 	glm_ivec4 const t1 = _mm_castps_si128(x);						// reinterpret as 32-bit integer
 	glm_ivec4 const t2 = _mm_sll_epi32(t1, _mm_cvtsi32_si128(1));	// shift out sign bit
-	glm_ivec4 const t3 = _mm_set1_epi32(0xFF000000);				// exponent mask
+	glm_ivec4 const t3 = _mm_set1_epi32(int(0xFF000000));				// exponent mask
 	glm_ivec4 const t4 = _mm_and_si128(t2, t3);						// exponent
 	glm_ivec4 const t5 = _mm_andnot_si128(t3, t2);					// fraction
 	glm_ivec4 const Equal = _mm_cmpeq_epi32(t3, t4);
@@ -234,7 +234,7 @@ GLM_FUNC_QUALIFIER glm_vec4 glm_vec4_inf(glm_vec4 x)
 {
 	glm_ivec4 const t1 = _mm_castps_si128(x);										// reinterpret as 32-bit integer
 	glm_ivec4 const t2 = _mm_sll_epi32(t1, _mm_cvtsi32_si128(1));					// shift out sign bit
-	return _mm_castsi128_ps(_mm_cmpeq_epi32(t2, _mm_set1_epi32(0xFF000000)));		// exponent is all 1s, fraction is 0
+	return _mm_castsi128_ps(_mm_cmpeq_epi32(t2, _mm_set1_epi32(int(0xFF000000))));		// exponent is all 1s, fraction is 0
 }
 
 #endif//GLM_ARCH & GLM_ARCH_SSE2_BIT

@@ -208,7 +208,7 @@ int test_inverse_simd()
 	return Error;
 }
 
-template <typename VEC3, typename MAT4>
+template<typename VEC3, typename MAT4>
 int test_inverse_perf(std::size_t Count, std::size_t Instance, char const * Message)
 {
 	std::vector<MAT4> TestInputs;

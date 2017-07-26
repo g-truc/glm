@@ -11,10 +11,11 @@
 /// 
 /// <glm/gtc/bitfield.hpp> need to be included to use these functionalities.
 
+#include "../detail/setup.hpp"
+
 #pragma once
 
 // Dependencies
-#include "../detail/setup.hpp"
 #include "../detail/precision.hpp"
 #include "../detail/type_int.hpp"
 #include "../detail/_vectorize.hpp"
@@ -32,62 +33,62 @@ namespace glm
 	/// Build a mask of 'count' bits
 	///
 	/// @see gtc_bitfield
-	template <typename genIUType>
+	template<typename genIUType>
 	GLM_FUNC_DECL genIUType mask(genIUType Bits);
 	
 	/// Build a mask of 'count' bits
 	///
 	/// @see gtc_bitfield
-	template <typename T, precision P, template <typename, precision> class vecIUType>
+	template<typename T, precision P, template<typename, precision> class vecIUType>
 	GLM_FUNC_DECL vecIUType<T, P> mask(vecIUType<T, P> const & v);
 
 	/// Rotate all bits to the right. All the bits dropped in the right side are inserted back on the left side.
 	///
 	/// @see gtc_bitfield
-	template <typename genIUType>
+	template<typename genIUType>
 	GLM_FUNC_DECL genIUType bitfieldRotateRight(genIUType In, int Shift);
 
 	/// Rotate all bits to the right. All the bits dropped in the right side are inserted back on the left side.
 	///
 	/// @see gtc_bitfield
-	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_DECL vecType<T, P> bitfieldRotateRight(vecType<T, P> const & In, int Shift);
+	template<length_t L, typename T, precision P, template<length_t, typename, precision> class vecType>
+	GLM_FUNC_DECL vecType<L, T, P> bitfieldRotateRight(vecType<L, T, P> const & In, int Shift);
 
 	/// Rotate all bits to the left. All the bits dropped in the left side are inserted back on the right side.
 	///
 	/// @see gtc_bitfield
-	template <typename genIUType>
+	template<typename genIUType>
 	GLM_FUNC_DECL genIUType bitfieldRotateLeft(genIUType In, int Shift);
 
 	/// Rotate all bits to the left. All the bits dropped in the left side are inserted back on the right side.
 	///
 	/// @see gtc_bitfield
-	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_DECL vecType<T, P> bitfieldRotateLeft(vecType<T, P> const & In, int Shift);
+	template<length_t L, typename T, precision P, template<length_t, typename, precision> class vecType>
+	GLM_FUNC_DECL vecType<L, T, P> bitfieldRotateLeft(vecType<L, T, P> const & In, int Shift);
 
 	/// Set to 1 a range of bits.
 	///
 	/// @see gtc_bitfield
-	template <typename genIUType>
+	template<typename genIUType>
 	GLM_FUNC_DECL genIUType bitfieldFillOne(genIUType Value, int FirstBit, int BitCount);
 
 	/// Set to 1 a range of bits.
 	///
 	/// @see gtc_bitfield
-	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_DECL vecType<T, P> bitfieldFillOne(vecType<T, P> const & Value, int FirstBit, int BitCount);
+	template<length_t L, typename T, precision P, template<length_t, typename, precision> class vecType>
+	GLM_FUNC_DECL vecType<L, T, P> bitfieldFillOne(vecType<L, T, P> const & Value, int FirstBit, int BitCount);
 
 	/// Set to 0 a range of bits.
 	///
 	/// @see gtc_bitfield
-	template <typename genIUType>
+	template<typename genIUType>
 	GLM_FUNC_DECL genIUType bitfieldFillZero(genIUType Value, int FirstBit, int BitCount);
 
 	/// Set to 0 a range of bits.
 	///
 	/// @see gtc_bitfield
-	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_DECL vecType<T, P> bitfieldFillZero(vecType<T, P> const & Value, int FirstBit, int BitCount);
+	template<length_t L, typename T, precision P, template<length_t, typename, precision> class vecType>
+	GLM_FUNC_DECL vecType<L, T, P> bitfieldFillZero(vecType<L, T, P> const & Value, int FirstBit, int BitCount);
 
 	/// Interleaves the bits of x and y.
 	/// The first bit is the first bit of x followed by the first bit of y.

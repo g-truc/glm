@@ -135,7 +135,7 @@ int test_quat_slerp()
 	float const Epsilon = 0.0001f;//glm::epsilon<float>();
 
 	float sqrt2 = sqrt(2.0f)/2.0f;
-	glm::quat id;
+	glm::quat id(static_cast<float>(1), static_cast<float>(0), static_cast<float>(0), static_cast<float>(0));
 	glm::quat Y90rot(sqrt2, 0.0f, sqrt2, 0.0f);
 	glm::quat Y180rot(0.0f, 0.0f, 1.0f, 0.0f);
 
@@ -211,16 +211,12 @@ int test_quat_mul()
 	glm::quat temp5 = glm::normalize(temp1 * temp2);
 	glm::vec3 temp6 = temp5 * glm::vec3(0.0, 1.0, 0.0) * glm::inverse(temp5);
 
-#	ifndef GLM_FORCE_NO_CTOR_INIT
-	{
-		glm::quat temp7;
+	glm::quat temp7(1.0f, glm::vec3(0.0, 1.0, 0.0));
 
-		temp7 *= temp5;
-		temp7 *= glm::inverse(temp5);
+	temp7 *= temp5;
+	temp7 *= glm::inverse(temp5);
 
-		Error += temp7 != glm::quat();
-	}
-#	endif
+	Error += temp7 != glm::quat(1.0f, glm::vec3(0.0, 1.0, 0.0));
 
 	return Error;
 }

@@ -1,3 +1,4 @@
+#define GLM_ENABLE_EXPERIMENTAL
 #include <glm/gtc/epsilon.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -89,6 +90,23 @@ int test_log()
 	return Error;
 }
 
+int test_quat_lookAt()
+{
+	int Error(0);
+
+	glm::vec3 eye(0.0f);
+	glm::vec3 center(1.1f, -2.0f, 3.1416f);
+	glm::vec3 up = glm::vec3(-0.17f, 7.23f, -1.744f);
+
+	glm::quat test_quat = glm::quatLookAt(center - eye, up);
+	glm::quat test_mat = glm::conjugate(glm::quat_cast(glm::lookAt(eye, center, up)));
+
+	Error += static_cast<int>(glm::abs(glm::length(test_quat) - 1.0f) > glm::epsilon<float>());
+	Error += static_cast<int>(glm::min(glm::length(test_quat + (-test_mat)), glm::length(test_quat + test_mat)) > glm::epsilon<float>());
+
+	return Error;
+}
+
 int main()
 {
 	int Error = 0;
@@ -97,6 +115,7 @@ int main()
 	Error += test_rotation();
 	Error += test_quat_fastMix();
 	Error += test_quat_shortMix();
+	Error += test_quat_lookAt();
 
 	return Error;
 }

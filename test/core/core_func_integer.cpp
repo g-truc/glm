@@ -15,7 +15,7 @@ enum result
 
 namespace bitfieldInsert
 {
-	template <typename genType, typename sizeType>
+	template<typename genType, typename sizeType>
 	struct type
 	{
 		genType		Base;
@@ -59,7 +59,7 @@ namespace bitfieldInsert
 
 namespace bitfieldExtract
 {
-	template <typename genType, typename sizeType>
+	template<typename genType, typename sizeType>
 	struct type
 	{
 		genType		Value;
@@ -151,26 +151,26 @@ namespace bitfieldReverse
 		return Result;
 	}
 */
-	template <typename T, glm::precision P, template <typename, glm::precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<T, P> bitfieldReverseLoop(vecType<T, P> const & v)
+	template<glm::length_t L, typename T, glm::precision P, template<glm::length_t, typename, glm::precision> class vecType>
+	GLM_FUNC_QUALIFIER vecType<L, T, P> bitfieldReverseLoop(vecType<L, T, P> const & v)
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_integer, "'bitfieldReverse' only accept integer values");
 
-		vecType<T, P> Result(0);
+		vecType<L, T, P> Result(0);
 		T const BitSize = static_cast<T>(sizeof(T) * 8);
 		for(T i = 0; i < BitSize; ++i)
 		{
-			vecType<T, P> const BitSet(v & (static_cast<T>(1) << i));
-			vecType<T, P> const BitFirst(BitSet >> i);
+			vecType<L, T, P> const BitSet(v & (static_cast<T>(1) << i));
+			vecType<L, T, P> const BitFirst(BitSet >> i);
 			Result |= BitFirst << (BitSize - 1 - i);
 		}
 		return Result;
 	}
 
-	template <typename T>
+	template<typename T>
 	GLM_FUNC_QUALIFIER T bitfieldReverseLoop(T v)
 	{
-		return bitfieldReverseLoop(glm::tvec1<T>(v)).x;
+		return bitfieldReverseLoop(glm::vec<1, T>(v)).x;
 	}
 
 	GLM_FUNC_QUALIFIER glm::uint32_t bitfieldReverseUint32(glm::uint32_t x)
@@ -194,30 +194,30 @@ namespace bitfieldReverse
 		return x;
 	}
 
-	template <bool EXEC = false>
+	template<bool EXEC = false>
 	struct compute_bitfieldReverseStep
 	{
-		template <typename T, glm::precision P, template <class, glm::precision> class vecType>
-		GLM_FUNC_QUALIFIER static vecType<T, P> call(vecType<T, P> const & v, T, T)
+		template<glm::length_t L, typename T, glm::precision P, template<glm::length_t, typename, glm::precision> class vecType>
+		GLM_FUNC_QUALIFIER static vecType<L, T, P> call(vecType<L, T, P> const & v, T, T)
 		{
 			return v;
 		}
 	};
 
-	template <>
+	template<>
 	struct compute_bitfieldReverseStep<true>
 	{
-		template <typename T, glm::precision P, template <class, glm::precision> class vecType>
-		GLM_FUNC_QUALIFIER static vecType<T, P> call(vecType<T, P> const & v, T Mask, T Shift)
+		template<glm::length_t L, typename T, glm::precision P, template<glm::length_t, typename, glm::precision> class vecType>
+		GLM_FUNC_QUALIFIER static vecType<L, T, P> call(vecType<L, T, P> const & v, T Mask, T Shift)
 		{
 			return (v & Mask) << Shift | (v & (~Mask)) >> Shift;
 		}
 	};
 
-	template <typename T, glm::precision P, template <typename, glm::precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<T, P> bitfieldReverseOps(vecType<T, P> const & v)
+	template<glm::length_t L, typename T, glm::precision P, template<glm::length_t, typename, glm::precision> class vecType>
+	GLM_FUNC_QUALIFIER vecType<L, T, P> bitfieldReverseOps(vecType<L, T, P> const & v)
 	{
-		vecType<T, P> x(v);
+		vecType<L, T, P> x(v);
 		x = compute_bitfieldReverseStep<sizeof(T) * 8 >=  2>::call(x, T(0x5555555555555555ull), static_cast<T>( 1));
 		x = compute_bitfieldReverseStep<sizeof(T) * 8 >=  4>::call(x, T(0x3333333333333333ull), static_cast<T>( 2));
 		x = compute_bitfieldReverseStep<sizeof(T) * 8 >=  8>::call(x, T(0x0F0F0F0F0F0F0F0Full), static_cast<T>( 4));
@@ -227,13 +227,13 @@ namespace bitfieldReverse
 		return x;
 	}
 
-	template <typename genType>
+	template<typename genType>
 	GLM_FUNC_QUALIFIER genType bitfieldReverseOps(genType x)
 	{
-		return bitfieldReverseOps(glm::tvec1<genType, glm::defaultp>(x)).x;
+		return bitfieldReverseOps(glm::vec<1, genType, glm::defaultp>(x)).x;
 	}
 
-	template <typename genType>
+	template<typename genType>
 	struct type
 	{
 		genType		Value;
@@ -256,14 +256,6 @@ namespace bitfieldReverse
 
 	typedef type<glm::uint64> typeU64;
 
-#if(((GLM_COMPILER & GLM_COMPILER_GCC) == GLM_COMPILER_GCC) && (GLM_COMPILER < GLM_COMPILER_GCC44))
-	typeU64 const Data64[] =
-	{
-		{0xf000000000000000LLU, 0x000000000000000fLLU, SUCCESS},
-		{0xffffffffffffffffLLU, 0xffffffffffffffffLLU, SUCCESS},
-		{0x0000000000000000LLU, 0x0000000000000000LLU, SUCCESS}
-	};
-#else
 	typeU64 const Data64[] =
 	{
 		{0x00000000000000ff, 0xff00000000000000, SUCCESS},
@@ -272,7 +264,6 @@ namespace bitfieldReverse
 		{0xffffffffffffffff, 0xffffffffffffffff, SUCCESS},
 		{0x0000000000000000, 0x0000000000000000, SUCCESS}
 	};
-#endif
 
 	int test32_bitfieldReverse()
 	{
@@ -538,7 +529,7 @@ namespace bitfieldReverse
 
 namespace findMSB
 {
-	template <typename genType, typename retType>
+	template<typename genType, typename retType>
 	struct type
 	{
 		genType		Value;
@@ -546,7 +537,7 @@ namespace findMSB
 	};
 
 #	if GLM_HAS_BITSCAN_WINDOWS
-		template <typename genIUType>
+		template<typename genIUType>
 		GLM_FUNC_QUALIFIER int findMSB_intrinsic(genIUType Value)
 		{
 			GLM_STATIC_ASSERT(std::numeric_limits<genIUType>::is_integer, "'findMSB' only accept integer values");
@@ -561,7 +552,7 @@ namespace findMSB
 #	endif//GLM_HAS_BITSCAN_WINDOWS
 
 #	if GLM_ARCH & GLM_ARCH_AVX && GLM_COMPILER & GLM_COMPILER_VC
-		template <typename genIUType>
+		template<typename genIUType>
 		GLM_FUNC_QUALIFIER int findMSB_avx(genIUType Value)
 		{
 			GLM_STATIC_ASSERT(std::numeric_limits<genIUType>::is_integer, "'findMSB' only accept integer values");
@@ -573,7 +564,7 @@ namespace findMSB
 		}
 #	endif//GLM_ARCH & GLM_ARCH_AVX && GLM_PLATFORM & GLM_PLATFORM_WINDOWS
 
-	template <typename genIUType>
+	template<typename genIUType>
 	GLM_FUNC_QUALIFIER int findMSB_095(genIUType Value)
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<genIUType>::is_integer, "'findMSB' only accept integer values");
@@ -597,7 +588,7 @@ namespace findMSB
 		}
 	}
 
-	template <typename genIUType>
+	template<typename genIUType>
 	GLM_FUNC_QUALIFIER int findMSB_nlz1(genIUType x)
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<genIUType>::is_integer, "'findMSB' only accept integer values");
@@ -927,7 +918,7 @@ namespace findMSB
 
 namespace findLSB
 {
-	template <typename genType, typename retType>
+	template<typename genType, typename retType>
 	struct type
 	{
 		genType		Value;
@@ -950,7 +941,7 @@ namespace findLSB
 	};
 
 #	if GLM_HAS_BITSCAN_WINDOWS
-		template <typename genIUType>
+		template<typename genIUType>
 		GLM_FUNC_QUALIFIER int findLSB_intrinsic(genIUType Value)
 		{
 			GLM_STATIC_ASSERT(std::numeric_limits<genIUType>::is_integer, "'findLSB' only accept integer values");
@@ -964,7 +955,7 @@ namespace findLSB
 		}
 #	endif
 
-	template <typename genIUType>
+	template<typename genIUType>
 	GLM_FUNC_QUALIFIER int findLSB_095(genIUType Value)
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<genIUType>::is_integer, "'findLSB' only accept integer values");
@@ -976,7 +967,7 @@ namespace findLSB
 		return Bit;
 	}
 
-	template <typename genIUType>
+	template<typename genIUType>
 	GLM_FUNC_QUALIFIER int findLSB_ntz2(genIUType x)
 	{
 		if(x == 0)
@@ -985,7 +976,7 @@ namespace findLSB
 		return glm::bitCount(~x & (x - static_cast<genIUType>(1)));
 	}
 
-	template <typename genIUType>
+	template<typename genIUType>
 	GLM_FUNC_QUALIFIER int findLSB_branchfree(genIUType x)
 	{
 		bool IsNull(x == 0);
@@ -1361,7 +1352,7 @@ namespace imulExtended
 
 namespace bitCount
 {
-	template <typename genType>
+	template<typename genType>
 	struct type
 	{
 		genType		Value;
@@ -1377,7 +1368,7 @@ namespace bitCount
 		{0x00000000,  0}
 	};
 
-	template <typename T>
+	template<typename T>
 	inline int bitCount_if(T v)
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_integer, "'bitCount' only accept integer values");
@@ -1391,7 +1382,7 @@ namespace bitCount
 		return Count;
 	}
 
-	template <typename T>
+	template<typename T>
 	inline int bitCount_vec(T v)
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_integer, "'bitCount' only accept integer values");
@@ -1404,43 +1395,43 @@ namespace bitCount
 		return Count;
 	}
 
-	template <bool EXEC = false>
+	template<bool EXEC = false>
 	struct compute_bitfieldBitCountStep
 	{
-		template <typename T, glm::precision P, template <class, glm::precision> class vecType>
-		GLM_FUNC_QUALIFIER static vecType<T, P> call(vecType<T, P> const & v, T, T)
+		template<glm::length_t L, typename T, glm::precision P, template<glm::length_t, typename, glm::precision> class vecType>
+		GLM_FUNC_QUALIFIER static vecType<L, T, P> call(vecType<L, T, P> const & v, T, T)
 		{
 			return v;
 		}
 	};
 
-	template <>
+	template<>
 	struct compute_bitfieldBitCountStep<true>
 	{
-		template <typename T, glm::precision P, template <class, glm::precision> class vecType>
-		GLM_FUNC_QUALIFIER static vecType<T, P> call(vecType<T, P> const & v, T Mask, T Shift)
+		template<glm::length_t L, typename T, glm::precision P, template<glm::length_t, typename, glm::precision> class vecType>
+		GLM_FUNC_QUALIFIER static vecType<L, T, P> call(vecType<L, T, P> const & v, T Mask, T Shift)
 		{
 			return (v & Mask) + ((v >> Shift) & Mask);
 		}
 	};
 
-	template <typename T, glm::precision P, template <typename, glm::precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<int, P> bitCount_bitfield(vecType<T, P> const & v)
+	template<glm::length_t L, typename T, glm::precision P, template<glm::length_t, typename, glm::precision> class vecType>
+	GLM_FUNC_QUALIFIER vecType<L, int, P> bitCount_bitfield(vecType<L, T, P> const & v)
 	{
-		vecType<typename glm::detail::make_unsigned<T>::type, P> x(*reinterpret_cast<vecType<typename glm::detail::make_unsigned<T>::type, P> const *>(&v));
+		vecType<L, typename glm::detail::make_unsigned<T>::type, P> x(*reinterpret_cast<vecType<L, typename glm::detail::make_unsigned<T>::type, P> const *>(&v));
 		x = compute_bitfieldBitCountStep<sizeof(T) * 8 >=  2>::call(x, typename glm::detail::make_unsigned<T>::type(0x5555555555555555ull), typename glm::detail::make_unsigned<T>::type( 1));
 		x = compute_bitfieldBitCountStep<sizeof(T) * 8 >=  4>::call(x, typename glm::detail::make_unsigned<T>::type(0x3333333333333333ull), typename glm::detail::make_unsigned<T>::type( 2));
 		x = compute_bitfieldBitCountStep<sizeof(T) * 8 >=  8>::call(x, typename glm::detail::make_unsigned<T>::type(0x0F0F0F0F0F0F0F0Full), typename glm::detail::make_unsigned<T>::type( 4));
 		x = compute_bitfieldBitCountStep<sizeof(T) * 8 >= 16>::call(x, typename glm::detail::make_unsigned<T>::type(0x00FF00FF00FF00FFull), typename glm::detail::make_unsigned<T>::type( 8));
 		x = compute_bitfieldBitCountStep<sizeof(T) * 8 >= 32>::call(x, typename glm::detail::make_unsigned<T>::type(0x0000FFFF0000FFFFull), typename glm::detail::make_unsigned<T>::type(16));
 		x = compute_bitfieldBitCountStep<sizeof(T) * 8 >= 64>::call(x, typename glm::detail::make_unsigned<T>::type(0x00000000FFFFFFFFull), typename glm::detail::make_unsigned<T>::type(32));
-		return vecType<int, P>(x);
+		return vecType<L, int, P>(x);
 	}
 
-	template <typename genType>
+	template<typename genType>
 	GLM_FUNC_QUALIFIER int bitCount_bitfield(genType x)
 	{
-		return bitCount_bitfield(glm::tvec1<genType, glm::defaultp>(x)).x;
+		return bitCount_bitfield(glm::vec<1, genType, glm::defaultp>(x)).x;
 	}
 
 	int perf(std::size_t Size)

@@ -81,7 +81,7 @@ int test_ctr()
 
 namespace cast
 {
-	template <typename genType>
+	template<typename genType>
 	int entry()
 	{
 		int Error = 0;

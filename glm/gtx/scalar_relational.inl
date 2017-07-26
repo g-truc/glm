@@ -3,7 +3,7 @@
 
 namespace glm
 {
-	template <typename T>
+	template<typename T>
 	GLM_FUNC_QUALIFIER bool lessThan
 	(
 		T const & x, 
@@ -13,7 +13,7 @@ namespace glm
 		return x < y;
 	}
 
-	template <typename T>
+	template<typename T>
 	GLM_FUNC_QUALIFIER bool lessThanEqual
 	(
 		T const & x, 
@@ -23,7 +23,7 @@ namespace glm
 		return x <= y;
 	}
 
-	template <typename T>
+	template<typename T>
 	GLM_FUNC_QUALIFIER bool greaterThan
 	(
 		T const & x, 
@@ -33,7 +33,7 @@ namespace glm
 		return x > y;
 	}
 
-	template <typename T>
+	template<typename T>
 	GLM_FUNC_QUALIFIER bool greaterThanEqual
 	(
 		T const & x, 
@@ -43,7 +43,7 @@ namespace glm
 		return x >= y;
 	}
 
-	template <typename T>
+	template<typename T>
 	GLM_FUNC_QUALIFIER bool equal
 	(
 		T const & x, 
@@ -53,7 +53,7 @@ namespace glm
 		return x == y;
 	}
 
-	template <typename T>
+	template<typename T>
 	GLM_FUNC_QUALIFIER bool notEqual
 	(
 		T const & x, 

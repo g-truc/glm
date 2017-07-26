@@ -19,7 +19,7 @@ namespace detail
 	template
 	<
 		typename VALTYPE, 
-		template <typename> class TYPE
+		template<typename> class TYPE
 	>
 	struct genType
 	{
@@ -65,14 +65,14 @@ namespace detail
 	template
 	<
 		typename VALTYPE, 
-		template <typename> class TYPE
+		template<typename> class TYPE
 	>
 	bool genType<VALTYPE, TYPE>::is_vector()
 	{
 		return true;
 	}
 /*
-	template <typename valTypeT, unsigned int colT, unsigned int rowT, profile proT = nice>
+	template<typename valTypeT, unsigned int colT, unsigned int rowT, profile proT = nice>
 	class base
 	{
 	public:
@@ -112,7 +112,7 @@ namespace detail
 
 		//////////////////////////////////////
 		// Conversions
-		template <typename vU, uint cU, uint rU, profile pU>
+		template<typename vU, uint cU, uint rU, profile pU>
 		explicit base(base<vU, cU, rU, pU> const & m);
 
 		//////////////////////////////////////
@@ -136,7 +136,7 @@ namespace detail
 	};
 */
 	
-	//template <typename T>
+	//template<typename T>
 	//struct traits
 	//{
 	//	static const bool is_signed = false;
@@ -148,28 +148,28 @@ namespace detail
 	//	static const bool is_genUType = false;
 	//};
 	
-	//template <>
+	//template<>
 	//struct traits<half>
 	//{
 	//	static const bool is_float = true;
 	//	static const bool is_genType = true;
 	//};
 	
-	//template <>
+	//template<>
 	//struct traits<float>
 	//{
 	//	static const bool is_float = true;
 	//	static const bool is_genType = true;
 	//};
 	
-	//template <>
+	//template<>
 	//struct traits<double>
 	//{
 	//	static const bool is_float = true;
 	//	static const bool is_genType = true;
 	//};
 	
-	//template <typename genType>
+	//template<typename genType>
 	//struct desc
 	//{
 	//	typedef genType							type;
@@ -186,7 +186,7 @@ namespace detail
 	//	static const typename size_type			value_size;
 	//};
 	
-	//template <typename genType>
+	//template<typename genType>
 	//const typename desc<genType>::size_type desc<genType>::value_size = genType::value_size();
 	
 }//namespace detail

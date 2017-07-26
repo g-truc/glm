@@ -31,10 +31,13 @@ namespace glm
 			defaultp = highp
 #		endif
 	};
-	
+
+	template<length_t L, typename T, precision P = defaultp> struct vec;
+	template<length_t C, length_t R, typename T, precision P = defaultp> struct mat;
+
 namespace detail
 {
-	template <glm::precision P>
+	template<glm::precision P>
 	struct is_aligned
 	{
 		static const bool value = false;

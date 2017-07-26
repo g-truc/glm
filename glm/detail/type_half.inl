@@ -46,7 +46,7 @@ namespace detail
 				//
 
 				detail::uif32 result;
-				result.i = (unsigned int)(s << 31);
+				result.i = static_cast<unsigned int>(s << 31);
 				return result.f;
 			}
 			else
@@ -74,7 +74,7 @@ namespace detail
 				//
 
 				uif32 result;
-				result.i = (unsigned int)((s << 31) | 0x7f800000);
+				result.i = static_cast<unsigned int>((s << 31) | 0x7f800000);
 				return result.f;
 			}
 			else
@@ -84,7 +84,7 @@ namespace detail
 				//
 
 				uif32 result;
-				result.i = (unsigned int)((s << 31) | 0x7f800000 | (m << 13));
+				result.i = static_cast<unsigned int>((s << 31) | 0x7f800000 | (m << 13));
 				return result.f;
 			}
 		}
@@ -101,15 +101,15 @@ namespace detail
 		//
 
 		uif32 Result;
-		Result.i = (unsigned int)((s << 31) | (e << 23) | m);
+		Result.i = static_cast<unsigned int>((s << 31) | (e << 23) | m);
 		return Result.f;
 	}
 
-	GLM_FUNC_QUALIFIER hdata toFloat16(float const & f)
+	GLM_FUNC_QUALIFIER hdata toFloat16(float const& f)
 	{
 		uif32 Entry;
 		Entry.f = f;
-		int i = (int)Entry.i;
+		int i = static_cast<int>(Entry.i);
 
 		//
 		// Our floating point number, f, is represented by the bit

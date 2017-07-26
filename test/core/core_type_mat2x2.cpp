@@ -61,7 +61,7 @@ int test_ctr()
 
 #if GLM_HAS_INITIALIZER_LISTS
 	glm::mat2x2 m0(
-		glm::vec2(0, 1), 
+		glm::vec2(0, 1),
 		glm::vec2(2, 3));
 
 	glm::mat2x2 m1{0, 1, 2, 3};
@@ -99,7 +99,7 @@ int test_ctr()
 
 namespace cast
 {
-	template <typename genType>
+	template<typename genType>
 	int entry()
 	{
 		int Error = 0;

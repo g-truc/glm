@@ -285,7 +285,7 @@ int main()
 	printf("pop9: %ld clocks\n", TimestampEnd - TimestampBeg);
 
 	if (errors == 0)
-		printf("Passed all %d cases.\n", sizeof(test)/8);
+		printf("Passed all %d cases.\n", static_cast<int>(sizeof(test)/8));
 
 #	endif//NDEBUG
 }

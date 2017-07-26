@@ -1,3 +1,4 @@
+#define GLM_ENABLE_EXPERIMENTAL
 #include <glm/gtx/common.hpp>
 #include <glm/gtc/integer.hpp>
 #include <glm/gtc/epsilon.hpp>
@@ -6,7 +7,7 @@
 
 namespace fmod_
 {
-	template <typename genType>
+	template<typename genType>
 	GLM_FUNC_QUALIFIER genType modTrunc(genType a, genType b)
 	{
 		return a - b * glm::trunc(a / b);

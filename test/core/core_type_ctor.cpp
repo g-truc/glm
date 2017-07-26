@@ -1,4 +1,3 @@
-#define GLM_FORCE_NO_CTOR_INIT
 #include <glm/glm.hpp>
 #include <glm/gtc/vec1.hpp>
 #include <glm/gtc/quaternion.hpp>
@@ -75,14 +74,6 @@ int test_vec3_ctor()
 int test_vec4_ctor()
 {
 	int Error = 0;
-
-#	ifndef GLM_FORCE_NO_CTOR_INIT
-	{
-		glm::vec4 A;
-		glm::vec4 B(0);
-		Error += glm::all(glm::equal(A, B)) ? 0 : 1;
-	}
-#	endif//GLM_FORCE_NO_CTOR_INIT
 
 #	if GLM_HAS_DEFAULTED_FUNCTIONS
 	{
@@ -316,7 +307,7 @@ int test_quat_ctor()
 {
 	int Error = 0;
 
-#	if GLM_HAS_DEFAULTED_FUNCTIONS && defined(GLM_FORCE_NO_CTOR_INIT)
+#	if GLM_HAS_DEFAULTED_FUNCTIONS
 	{
 		union pack
 		{

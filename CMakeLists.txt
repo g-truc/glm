@@ -5,7 +5,7 @@ if (NOT CMAKE_VERSION VERSION_LESS "3.1")
 endif()
 
 project(glm)
-set(GLM_VERSION "0.9.8")
+set(GLM_VERSION "0.9.9")
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
@@ -21,10 +21,12 @@ if(GLM_STATIC_LIBRARY_ENABLE)
 	message(STATUS "GLM is a header only library, no need to build it. Set the option GLM_STATIC_LIBRARY_ENABLE with ON to build an optional static library")
 endif()
 
-option(GLM_DYNAMIC_LIBRARY_ENABLE "GLM static library" OFF)
+option(GLM_DYNAMIC_LIBRARY_ENABLE "GLM dynamic library" OFF)
 if(GLM_DYNAMIC_LIBRARY_ENABLE)
 	message(STATUS "GLM is a header only library, no need to build it. Set the option GLM_DYNAMIC_LIBRARY_ENABLE with ON to build an optional dynamic library")
 endif()
+
+option(GLM_INSTALL_ENABLE "GLM install" ON)
 
 option(GLM_TEST_ENABLE "GLM test" OFF)
 if(NOT GLM_TEST_ENABLE)
@@ -95,6 +97,10 @@ else()
 	endif()
 endif()
 
+if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
+	add_definitions(/FAs)
+endif()
+
 option(GLM_TEST_ENABLE_SIMD_SSE2 "Enable SSE2 optimizations" OFF)
 option(GLM_TEST_ENABLE_SIMD_SSE3 "Enable SSE3 optimizations" OFF)
 option(GLM_TEST_ENABLE_SIMD_AVX "Enable AVX optimizations" OFF)
@@ -113,7 +119,7 @@ elseif(GLM_TEST_ENABLE_SIMD_AVX2)
 		add_definitions(-mavx2)
 	elseif(GLM_USE_INTEL)
 		add_definitions(/QxAVX2)
-	elseif(MSVC)
+	elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
 		add_definitions(/arch:AVX2)
 	endif()
 	message(STATUS "GLM: AVX2 instruction set")
@@ -122,7 +128,7 @@ elseif(GLM_TEST_ENABLE_SIMD_AVX)
 		add_definitions(-mavx)
 	elseif(GLM_USE_INTEL)
 		add_definitions(/QxAVX)
-	elseif(MSVC)
+	elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
 		add_definitions(/arch:AVX)
 	endif()
 	message(STATUS "GLM: AVX instruction set")
@@ -131,7 +137,7 @@ elseif(GLM_TEST_ENABLE_SIMD_SSE3)
 		add_definitions(-msse3)
 	elseif(GLM_USE_INTEL)
 		add_definitions(/QxSSE3)
-	elseif(MSVC AND NOT CMAKE_CL_64)
+	elseif(("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC") AND NOT CMAKE_CL_64)
 		add_definitions(/arch:SSE2) # VC doesn't support /arch:SSE3
 	endif()
 	message(STATUS "GLM: SSE3 instruction set")
@@ -140,7 +146,7 @@ elseif(GLM_TEST_ENABLE_SIMD_SSE2)
 		add_definitions(-msse2)
 	elseif(GLM_USE_INTEL)
 		add_definitions(/QxSSE2)
-	elseif(MSVC AND NOT CMAKE_CL_64)
+	elseif(("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC") AND NOT CMAKE_CL_64)
 		add_definitions(/arch:SSE2)
 	endif()
 	message(STATUS "GLM: SSE2 instruction set")
@@ -166,67 +172,50 @@ add_subdirectory(glm)
 add_subdirectory(test)
 
 set(GLM_INSTALL_CONFIGDIR "${CMAKE_INSTALL_LIBDIR}/cmake/glm")
-install(DIRECTORY glm DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+if (GLM_INSTALL_ENABLE)
+	install(DIRECTORY glm DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+endif()
 
-write_basic_package_version_file(
-    "${CMAKE_CURRENT_BINARY_DIR}/glmConfigVersion.cmake"
-    VERSION ${GLM_VERSION}
-    COMPATIBILITY AnyNewerVersion
-)
+write_basic_package_version_file("${CMAKE_CURRENT_BINARY_DIR}/glmConfigVersion.cmake" VERSION ${GLM_VERSION} COMPATIBILITY AnyNewerVersion)
 
 # build tree package config
-configure_file(
-    cmake/glmBuildConfig.cmake.in
-    glmConfig.cmake
-    @ONLY
-)
+configure_file(cmake/glmBuildConfig.cmake.in glmConfig.cmake @ONLY)
 
 # install tree package config
 configure_package_config_file(
-    cmake/glmConfig.cmake.in
-    ${GLM_INSTALL_CONFIGDIR}/glmConfig.cmake
-    INSTALL_DESTINATION ${GLM_INSTALL_CONFIGDIR}
-    PATH_VARS CMAKE_INSTALL_INCLUDEDIR
-    NO_CHECK_REQUIRED_COMPONENTS_MACRO
-)
+	cmake/glmConfig.cmake.in
+	${GLM_INSTALL_CONFIGDIR}/glmConfig.cmake
+	INSTALL_DESTINATION ${GLM_INSTALL_CONFIGDIR}
+	PATH_VARS CMAKE_INSTALL_INCLUDEDIR
+	NO_CHECK_REQUIRED_COMPONENTS_MACRO)
 
-install(
-    FILES 
-        "${CMAKE_CURRENT_BINARY_DIR}/${GLM_INSTALL_CONFIGDIR}/glmConfig.cmake"
-        "${CMAKE_CURRENT_BINARY_DIR}/glmConfigVersion.cmake"
-    DESTINATION ${GLM_INSTALL_CONFIGDIR}
-)
+if (GLM_INSTALL_ENABLE)
+	install(FILES
+		"${CMAKE_CURRENT_BINARY_DIR}/${GLM_INSTALL_CONFIGDIR}/glmConfig.cmake"
+		"${CMAKE_CURRENT_BINARY_DIR}/glmConfigVersion.cmake"
+		DESTINATION ${GLM_INSTALL_CONFIGDIR})
+endif()
 
 if (NOT CMAKE_VERSION VERSION_LESS "3.0")
-    add_library(glm INTERFACE)
-    target_include_directories(glm INTERFACE
-        $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
-    )
-    install(TARGETS glm EXPORT glmTargets)
+	add_library(glm INTERFACE)
+	target_include_directories(glm INTERFACE
+		$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+		$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)
+	install(TARGETS glm EXPORT glmTargets)
 
-    export(
-        EXPORT glmTargets
-        FILE "${CMAKE_CURRENT_BINARY_DIR}/glmTargets.cmake"
-    )
-    
-    install(
-        EXPORT glmTargets FILE glmTargets.cmake
-        DESTINATION ${GLM_INSTALL_CONFIGDIR}
-    )
+	export(EXPORT glmTargets FILE "${CMAKE_CURRENT_BINARY_DIR}/glmTargets.cmake")
+
+	if (GLM_INSTALL_ENABLE)
+		install(EXPORT glmTargets FILE glmTargets.cmake DESTINATION ${GLM_INSTALL_CONFIGDIR})
+	endif()
 endif()
 
 # build pkg-config file
-configure_file(
-    "./cmake/glm.pc.in"
-    "glm.pc"
-    @ONLY
-)
+configure_file("./cmake/glm.pc.in" "glm.pc" @ONLY)
 
 # install pkg-config file
-install(
-    FILES "${CMAKE_CURRENT_BINARY_DIR}/glm.pc"
-    DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig"
-)
+if (GLM_INSTALL_ENABLE)
+	install(FILES "${CMAKE_CURRENT_BINARY_DIR}/glm.pc" DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig")
+endif()
 
 export(PACKAGE glm)

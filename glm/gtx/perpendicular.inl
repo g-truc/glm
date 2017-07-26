@@ -3,7 +3,7 @@
 
 namespace glm
 {
-	template <typename vecType> 
+	template<typename vecType> 
 	GLM_FUNC_QUALIFIER vecType perp
 	(
 		vecType const & x, 

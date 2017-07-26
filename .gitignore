@@ -58,3 +58,9 @@ build*
 /buckaroo/
 .buckconfig.local
 BUCKAROO_DEPS
+
+# Visual Studio
+/.vs
+
+# CMake
+/CMakeSettings.json

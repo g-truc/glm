@@ -8,89 +8,89 @@
 namespace glm{
 namespace detail
 {
-	template <precision P>
-	struct compute_length<tvec4, float, P, true>
+	template<precision P>
+	struct compute_length<vec, 4, float, P, true>
 	{
-		GLM_FUNC_QUALIFIER static float call(tvec4<float, P> const & v)
+		GLM_FUNC_QUALIFIER static float call(vec<4, float, P> const & v)
 		{
 			return _mm_cvtss_f32(glm_vec4_length(v.data));
 		}
 	};
 
-	template <precision P>
-	struct compute_distance<tvec4, float, P, true>
+	template<precision P>
+	struct compute_distance<vec, 4, float, P, true>
 	{
-		GLM_FUNC_QUALIFIER static float call(tvec4<float, P> const & p0, tvec4<float, P> const & p1)
+		GLM_FUNC_QUALIFIER static float call(vec<4, float, P> const & p0, vec<4, float, P> const & p1)
 		{
 			return _mm_cvtss_f32(glm_vec4_distance(p0.data, p1.data));
 		}
 	};
 
-	template <precision P>
-	struct compute_dot<tvec4, float, P, true>
+	template<precision P>
+	struct compute_dot<vec<4, float, P>, float, true>
 	{
-		GLM_FUNC_QUALIFIER static float call(tvec4<float, P> const& x, tvec4<float, P> const& y)
+		GLM_FUNC_QUALIFIER static float call(vec<4, float, P> const& x, vec<4, float, P> const& y)
 		{
 			return _mm_cvtss_f32(glm_vec1_dot(x.data, y.data));
 		}
 	};
 
-	template <precision P>
+	template<precision P>
 	struct compute_cross<float, P, true>
 	{
-		GLM_FUNC_QUALIFIER static tvec3<float, P> call(tvec3<float, P> const & a, tvec3<float, P> const & b)
+		GLM_FUNC_QUALIFIER static vec<3, float, P> call(vec<3, float, P> const & a, vec<3, float, P> const & b)
 		{
 			__m128 const set0 = _mm_set_ps(0.0f, a.z, a.y, a.x);
 			__m128 const set1 = _mm_set_ps(0.0f, b.z, b.y, b.x);
 			__m128 const xpd0 = glm_vec4_cross(set0, set1);
 
-			tvec4<float, P> result(uninitialize);
-			result.data = xpd0;
-			return tvec3<float, P>(result);
+			vec<4, float, P> Result;
+			Result.data = xpd0;
+			return vec<3, float, P>(Result);
 		}
 	};
 
-	template <precision P>
-	struct compute_normalize<float, P, tvec4, true>
+	template<precision P>
+	struct compute_normalize<4, float, P, vec, true>
 	{
-		GLM_FUNC_QUALIFIER static tvec4<float, P> call(tvec4<float, P> const & v)
+		GLM_FUNC_QUALIFIER static vec<4, float, P> call(vec<4, float, P> const & v)
 		{
-			tvec4<float, P> result(uninitialize);
-			result.data = glm_vec4_normalize(v.data);
-			return result;
+			vec<4, float, P> Result;
+			Result.data = glm_vec4_normalize(v.data);
+			return Result;
 		}
 	};
 
-	template <precision P>
-	struct compute_faceforward<float, P, tvec4, true>
+	template<precision P>
+	struct compute_faceforward<4, float, P, vec, true>
 	{
-		GLM_FUNC_QUALIFIER static tvec4<float, P> call(tvec4<float, P> const& N, tvec4<float, P> const& I, tvec4<float, P> const& Nref)
+		GLM_FUNC_QUALIFIER static vec<4, float, P> call(vec<4, float, P> const& N, vec<4, float, P> const& I, vec<4, float, P> const& Nref)
 		{
-			tvec4<float, P> result(uninitialize);
-			result.data = glm_vec4_faceforward(N.data, I.data, Nref.data);
-			return result;
+			vec<4, float, P> Result;
+			Result.data = glm_vec4_faceforward(N.data, I.data, Nref.data);
+			return Result;
 		}
 	};
 
-	template <precision P>
-	struct compute_reflect<float, P, tvec4, true>
+	template<precision P>
+	struct compute_reflect<4, float, P, vec, true>
 	{
-		GLM_FUNC_QUALIFIER static tvec4<float, P> call(tvec4<float, P> const& I, tvec4<float, P> const& N)
+		GLM_FUNC_QUALIFIER static vec<4, float, P> call(vec<4, float, P> const& I, vec<4, float, P> const& N)
 		{
-			tvec4<float, P> result(uninitialize);
-			result.data = glm_vec4_reflect(I.data, N.data);
-			return result;
+			vec<4, float, P> Result;
+			Result.data = glm_vec4_reflect(I.data, N.data);
+			return Result;
 		}
 	};
 
-	template <precision P>
-	struct compute_refract<float, P, tvec4, true>
+	template<precision P>
+	struct compute_refract<4, float, P, vec, true>
 	{
-		GLM_FUNC_QUALIFIER static tvec4<float, P> call(tvec4<float, P> const& I, tvec4<float, P> const& N, float eta)
+		GLM_FUNC_QUALIFIER static vec<4, float, P> call(vec<4, float, P> const& I, vec<4, float, P> const& N, float eta)
 		{
-			tvec4<float, P> result(uninitialize);
-			result.data = glm_vec4_refract(I.data, N.data, _mm_set1_ps(eta));
-			return result;
+			vec<4, float, P> Result;
+			Result.data = glm_vec4_refract(I.data, N.data, _mm_set1_ps(eta));
+			return Result;
 		}
 	};
 }//namespace detail

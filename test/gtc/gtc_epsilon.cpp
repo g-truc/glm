@@ -25,7 +25,7 @@ int test_defined()
 	return 0;
 }
 
-template <typename T>
+template<typename T>
 int test_equal()
 {
 	int Error(0);

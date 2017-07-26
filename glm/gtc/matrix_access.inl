@@ -3,7 +3,7 @@
 
 namespace glm
 {
-	template <typename genType>
+	template<typename genType>
 	GLM_FUNC_QUALIFIER genType row
 	(
 		genType const & m,
@@ -19,7 +19,7 @@ namespace glm
 		return Result;
 	}
 
-	template <typename genType>
+	template<typename genType>
 	GLM_FUNC_QUALIFIER typename genType::row_type row
 	(
 		genType const & m,
@@ -34,7 +34,7 @@ namespace glm
 		return Result;
 	}
 
-	template <typename genType>
+	template<typename genType>
 	GLM_FUNC_QUALIFIER genType column
 	(
 		genType const & m,
@@ -49,7 +49,7 @@ namespace glm
 		return Result;
 	}
 
-	template <typename genType>
+	template<typename genType>
 	GLM_FUNC_QUALIFIER typename genType::col_type column
 	(
 		genType const & m,

@@ -15,6 +15,10 @@ int test_vec3_ctor()
 {
 	int Error = 0;
 
+#	if GLM_HAS_CONSTEXPR
+	constexpr glm::vec3 v(0);
+#	endif
+
 #	if GLM_HAS_TRIVIAL_QUERIES
 	//	Error += std::is_trivially_default_constructible<glm::vec3>::value ? 0 : 1;
 	//	Error += std::is_trivially_copy_assignable<glm::vec3>::value ? 0 : 1;
@@ -246,6 +250,11 @@ int test_vec3_size()
 	Error += glm::vec3::length() == 3 ? 0 : 1;
 	Error += glm::dvec3::length() == 3 ? 0 : 1;
 
+#	if GLM_HAS_CONSTEXPR_PARTIAL
+	constexpr std::size_t Length = glm::vec3::length();
+	Error += Length == 3 ? 0 : 1;
+#	endif
+
 	return Error;
 }
 
@@ -254,7 +263,7 @@ int test_vec3_swizzle3_2()
 	int Error = 0;
 
 	glm::vec3 v(1, 2, 3);
-	glm::vec2 u;
+	glm::vec2 u(0);
 
 #	if(GLM_LANG & GLM_LANG_CXXMS_FLAG)
 		// Can not assign a vec3 swizzle to a vec2
@@ -317,7 +326,7 @@ int test_vec3_swizzle3_3()
 	int Error = 0;
 
 	glm::vec3 v(1, 2, 3);
-	glm::vec3 u;
+	glm::vec3 u(0);
 
 #	if(GLM_LANG & GLM_LANG_CXXMS_FLAG)
 		u = v;          Error += (u.x == 1.0f && u.y == 2.0f && u.z == 3.0f) ? 0 : 1;
@@ -343,7 +352,7 @@ int test_vec3_swizzle_operators()
 {
 	int Error = 0;
 
-	glm::vec3 q, u, v;
+	glm::vec3 q(0), u, v;
 
 	u = glm::vec3(1, 2, 3);
 	v = glm::vec3(10, 20, 30);
@@ -400,9 +409,9 @@ int test_vec3_swizzle_functions()
 	r = glm::dot(glm::vec2(a.xy()), glm::vec2(b.yy()));       Error += (int(r) == 60) ? 0 : 1;
 
 	// vec3
-	glm::vec3 q, u, v;
-	u = glm::vec3(1, 2, 3);
-	v = glm::vec3(10, 20, 30);
+	glm::vec3 q(0);
+	glm::vec3 u = glm::vec3(1, 2, 3);
+	glm::vec3 v = glm::vec3(10, 20, 30);
 	r = glm::dot(u, v);                 Error += (int(r) == 140) ? 0 : 1;
 	r = glm::dot(u.xyz(), v.zyz());     Error += (int(r) == 160) ? 0 : 1;
 	r = glm::dot(u, v.zyx());           Error += (int(r) == 100) ? 0 : 1;
@@ -410,9 +419,8 @@ int test_vec3_swizzle_functions()
 	r = glm::dot(u.xy(), v.xy());       Error += (int(r) == 50) ? 0 : 1;
 
 	// vec4
-	glm::vec4 s, t;
-	s = glm::vec4(1, 2, 3, 4);
-	t = glm::vec4(10, 20, 30, 40);
+	glm::vec4 s = glm::vec4(1, 2, 3, 4);
+	glm::vec4 t = glm::vec4(10, 20, 30, 40);
 	r = glm::dot(s, t);                 Error += (int(r) == 300) ? 0 : 1;
 	r = glm::dot(s.xyzw(), t.xyzw());   Error += (int(r) == 300) ? 0 : 1;
 	r = glm::dot(s.xyz(), t.xyz());     Error += (int(r) == 140) ? 0 : 1;
@@ -477,9 +485,6 @@ int test_operator_increment()
 int main()
 {
 	int Error = 0;
-
-	glm::vec3 v;
-	assert(v.length() == 3);
 
 	Error += test_vec3_ctor();
 	Error += test_vec3_operators();

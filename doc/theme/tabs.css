@@ -1,12 +1,12 @@
 .tabs, .tabs2, .tabs3 {
-	background-image: -moz-linear-gradient(center top, #FFFFFF 0%, #FFFFFF 5%, #FFEEDD 95%, #FFEEDD);
-	background-image: -webkit-gradient(linear,center top,center bottom,from(#FFFFFF), color-stop(0.05,#FFFFFF), color-stop(0.05,#FFFFFF), color-stop(0.95,#FFEEDD), to(#FFEEDD));
-
-    /*background-image: url('tab_b.png');*/
+    background-image: -moz-linear-gradient(center top, #FFFFFF 0%, #FFFFFF 5%, #FFEEDD 95%, #FFEEDD);
+    background-image: -webkit-gradient(linear,center top,center bottom,from(#FFFFFF), color-stop(0.05,#FFFFFF), color-stop(0.05,#FFFFFF), color-stop(0.95,#FFF4F0), to(#FFF4F0));
     background-color:#FFF8F0;
+
     width: 100%;
     z-index: 101;
     font-size: 13px;
+    font-family: 'Lucida Grande',Geneva,Helvetica,Arial,sans-serif;
 }
 
 .tabs2 {
@@ -25,11 +25,9 @@
 .tablist li {
     float: left;
     display: table-cell;
+    background-image: -moz-linear-gradient(center top, #FFFFFF 0%, #FFFFFF 5%, #FFF4F0 95%, #FFF4F0);
+    background-image: -webkit-gradient(linear,center top,center bottom,from(#FFFFFF), color-stop(0.05,#FFFFFF), color-stop(0.05,#FFFFFF), color-stop(0.95,#FFF4F0), to(#FFF4F0));
 
-	background-image: -moz-linear-gradient(center top, #FFFFFF 0%, #FFFFFF 5%, #FFEEDD 95%, #FFEEDD);
-	background-image: -webkit-gradient(linear,center top,center bottom,from(#FFFFFF), color-stop(0.05,#FFFFFF), color-stop(0.05,#FFFFFF), color-stop(0.95,#FFEEDD), to(#FFEEDD));
-
-    /*background-image: url('tab_b.png');*/
     line-height: 36px;
     list-style: none;
 }
@@ -38,15 +36,13 @@
     display: block;
     padding: 0 20px;
     font-weight: bold;
+    background-image: -moz-linear-gradient(center top, #FFFFFF 0%, #FFFFFF 5%, #FFF4F0 95%, #FFF4F0);
+    background-image: -webkit-gradient(linear,center top,center bottom,from(#FFFFFF), color-stop(0.05,#FFFFFF), color-stop(0.05,#FFFFFF), color-stop(0.95,#FFF4F0), to(#FFF4F0));
 
-	background-image: -moz-linear-gradient(center top, #FFFFFF 0%, #FFFFFF 5%, #FFEEDD 95%, #FFEEDD);
-	background-image: -webkit-gradient(linear,center top,center bottom,from(#FFFFFF), color-stop(0.05,#FFFFFF), color-stop(0.05,#FFFFFF), color-stop(0.95,#FFEEDD), to(#FFEEDD));
-
-    /*background-image:url('tab_s.png');*/
     background-repeat:no-repeat;
     background-position:right;
-    color: #FF8000;
-    /*text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.9);*/
+    background-color:#FFF4F0;
+    color: #992600;
     text-decoration: none;
     outline: none;
 }
@@ -56,24 +52,18 @@
 }
 
 .tablist a:hover {
-	background-image: -moz-linear-gradient(center top, #FFFFFF 0%, #FFFFFF 5%, #FFEEDD 95%, #FFEEDD);
-	background-image: -webkit-gradient(linear,center top,center bottom,from(#FFFFFF), color-stop(0.05,#FFFFFF), color-stop(0.05,#FFFFFF), color-stop(0.95,#FFEEDD), to(#FFEEDD));
+    background-image: -moz-linear-gradient(center top, #FFFFFF 0%, #FFFFFF 5%, #FFF0F8 95%, #FFF0F8);
+    background-image: -webkit-gradient(linear,center top,center bottom,from(#FFFFFF), color-stop(0.05,#FFFFFF), color-stop(0.05,#FFFFFF), color-stop(0.95,#FFF8F0), to(#FF4000));
 
-    /*background-image: url('tab_h.png');*/
-    background-color:#FFFEFD;
-    background-repeat:repeat-x;
+    background-color:#FFF8F0;
     color: #FF8000;
-    /*text-shadow: 0px 1px 1px rgba(0, 0, 0, 1.0);*/
-    text-decoration:underline;
+    text-decoration: none;
 }
 
 .tablist li.current a {
-	background-image: -moz-linear-gradient(center top, #FFFFFF 0%, #FFFFFF 5%, #FFEEDD 95%, #FFEEDD);
-	background-image: -webkit-gradient(linear,center top,center bottom,from(#FFFFFF), color-stop(0.05,#FFFFFF), color-stop(0.05,#FFFFFF), color-stop(0.95,#FFEEDD), to(#FFEEDD));
+    background-image: -moz-linear-gradient(center top, #FFFFFF 0%, #FFFFFF 5%, #FFFCF8 95%, #FFFCF8);
+    background-image: -webkit-gradient(linear,center top,center bottom,from(#FFFFFF), color-stop(0.05,#FFFFFF), color-stop(0.05,#FFFFFF), color-stop(0.95,#FFFCF8), to(#FFFCF8));
 
-    /*background-image: url('tab_a.png');*/
-    background-color:#FFFEFD;
-    background-repeat:repeat-x;
-    color: #FF8000;
-    /*text-shadow: 0px 1px 1px rgba(0, 0, 0, 1.0);*/
+    background-color:#FFFCF8;
+    color: #992600;
 }
