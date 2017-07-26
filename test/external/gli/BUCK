@@ -1,0 +1,14 @@
+cxx_binary(
+  name = 'gli',
+  header_namespace = '',
+  headers = subdir_glob([
+    ('', '**/*.hpp'),
+    ('', '**/*.inl'),
+  ]),
+  srcs = glob([
+    '**/*.cpp',
+  ]),
+  deps = [
+    '//:glm',
+  ],
+)

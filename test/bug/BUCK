@@ -1,0 +1,9 @@
+cxx_binary(
+  name = 'bug',
+  srcs = [
+    'bug_ms_vec_static.cpp',
+  ],
+  deps = [
+    '//:glm',
+  ],
+)
