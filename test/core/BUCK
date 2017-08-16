@@ -1,0 +1,26 @@
+from os.path import splitext
+
+# cxx_binary(
+#   name = 'core_force_pure',
+#   srcs = [
+#     'core_force_pure.cpp',
+#   ],
+#   deps = [
+#     '//:glm',
+#   ],
+# )
+
+tests = glob([
+  '*.cpp',
+])
+
+for test in tests:
+  cxx_binary(
+    name = splitext(test)[0],
+    srcs = [
+      test,
+    ],
+    deps = [
+      '//:glm',
+    ],
+  )
