@@ -669,7 +669,7 @@ namespace detail
 		T biggestVal = sqrt(fourBiggestSquaredMinus1 + static_cast<T>(1)) * static_cast<T>(0.5);
 		T mult = static_cast<T>(0.25) / biggestVal;
 
-		tquat<T, Q> Result;
+		tquat<T, Q> Result = {};
 		switch(biggestIndex)
 		{
 		case 0:
