@@ -230,25 +230,23 @@ namespace glm
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER tquat<T, Q> quatLookAtRH(vec<3, T, Q> const& direction, vec<3, T, Q> const& up)
 	{
-		mat<3, 3, T, Q> Result;
+		mat<3, 3, T, Q> result;
+		result[2] = -direction;
+		result[0] = normalize(cross(up, Result[2]));
+		result[1] = cross(Result[2], Result[0]);
 
-		Result[2] = -direction;
-		Result[0] = normalize(cross(up, Result[2]));
-		Result[1] = cross(Result[2], Result[0]);
-
-		return quat_cast(Result);
+		return quat_cast(result);
 	}
 
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER tquat<T, Q> quatLookAtLH(vec<3, T, Q> const& direction, vec<3, T, Q> const& up)
 	{
-		mat<3, 3, T, Q> Result;
+		mat<3, 3, T, Q> result;
+		result[0] = normalize(cross(up, direction));
+		result[1] = cross(direction, result[0]);
+		result[2] = direction;
 
-		Result[2] = direction;
-		Result[0] = normalize(cross(up, Result[2]));
-		Result[1] = cross(Result[2], Result[0]);
-
-		return quat_cast(Result);
+		return quat_cast(result);
 	}
 
 }//namespace glm
