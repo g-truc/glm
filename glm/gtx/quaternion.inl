@@ -246,7 +246,7 @@ namespace glm
 
 		result[0] = normalize(cross(up, direction));
 		result[1] = cross(direction, result[0]);
-		result[2] = direction;			
+		result[2] = direction;
 
 		return quat_cast(result);
 	}
