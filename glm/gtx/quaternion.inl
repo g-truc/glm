@@ -232,11 +232,11 @@ namespace glm
 	{
 		mat<3, 3, T, Q> result;
 
-		result[0] = normalize(cross(direction, up));	// new right
-		result[1] = cross(result[0], direction);	// new up
-		result[2] = -direction;				// new forward
+		result[0] = normalize(cross(direction, up));
+		result[1] = cross(result[0], direction);
+		result[2] = -direction;
 
-		return quat_cast(Result);
+		return quat_cast(result);
 	}
 
 	template<typename T, qualifier Q>
@@ -244,9 +244,9 @@ namespace glm
 	{
 		mat<3, 3, T, Q> result;
 
-		result[0] = normalize(cross(up, direction));		// new right
-		result[1] = cross(direction, result[0]);		// new up
-		result[2] = direction;					// new forward			
+		result[0] = normalize(cross(up, direction));
+		result[1] = cross(direction, result[0]);
+		result[2] = direction;			
 
 		return quat_cast(result);
 	}
