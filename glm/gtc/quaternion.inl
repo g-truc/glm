@@ -308,6 +308,13 @@ namespace detail
 		return tquat<T, Q>(q) += p;
 	}
 
+
+	template<typename T, qualifier Q>
+	GLM_FUNC_QUALIFIER tquat<T, Q> operator-(tquat<T, Q> const& q, tquat<T, Q> const& p)
+	{
+		return tquat<T, Q>(q) -= p;
+	}
+
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER tquat<T, Q> operator*(tquat<T, Q> const& q, tquat<T, Q> const& p)
 	{

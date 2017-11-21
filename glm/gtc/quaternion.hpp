@@ -143,6 +143,9 @@ namespace glm
 	GLM_FUNC_DECL tquat<T, Q> operator+(tquat<T, Q> const& q, tquat<T, Q> const& p);
 
 	template<typename T, qualifier Q>
+	GLM_FUNC_DECL tquat<T, Q> operator-(tquat<T, Q> const& q, tquat<T, Q> const& p);
+
+	template<typename T, qualifier Q>
 	GLM_FUNC_DECL tquat<T, Q> operator*(tquat<T, Q> const& q, tquat<T, Q> const& p);
 
 	template<typename T, qualifier Q>
