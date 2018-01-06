@@ -702,7 +702,7 @@ namespace glm
 	///
 	/// @param eye Position of the camera
 	/// @param center Position where the camera is looking at
-	/// @param up Normalized up vector, how the camera is oriented. Typically (0, 0, 1)
+	/// @param up Normalized up vector, how the camera is oriented. Typically (0, 1, 0)
 	/// @see gtc_matrix_transform
 	/// @see - frustum(T const& left, T const& right, T const& bottom, T const& top, T const& nearVal, T const& farVal) frustum(T const& left, T const& right, T const& bottom, T const& top, T const& nearVal, T const& farVal)
 	template<typename T, qualifier Q>
@@ -713,7 +713,7 @@ namespace glm
 	///
 	/// @param eye Position of the camera
 	/// @param center Position where the camera is looking at
-	/// @param up Normalized up vector, how the camera is oriented. Typically (0, 0, 1)
+	/// @param up Normalized up vector, how the camera is oriented. Typically (0, 1, 0)
 	/// @see gtc_matrix_transform
 	/// @see - frustum(T const& left, T const& right, T const& bottom, T const& top, T const& nearVal, T const& farVal) frustum(T const& left, T const& right, T const& bottom, T const& top, T const& nearVal, T const& farVal)
 	/// @see <a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluLookAt.xml">gluLookAt man page</a> 

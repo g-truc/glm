@@ -101,12 +101,18 @@ int test_quat_lookAt()
 	glm::vec3 center(1.1f, -2.0f, 3.1416f);
 	glm::vec3 up(-0.17f, 7.23f, -1.744f);
 
-	glm::quat test_quat = glm::quatLookAt(glm::normalize(center - eye), up);
-	glm::quat test_mat = glm::conjugate(glm::quat_cast(glm::lookAt(eye, center, up)));
+	// Test left-handed implementation
+	glm::quat test_quat_LH = glm::quatLookAtLH(glm::normalize(center - eye), up);
+	glm::quat test_mat_LH = glm::conjugate(glm::quat_cast(glm::lookAtLH(eye, center, up)));
+	Error += static_cast<int>(glm::abs(glm::length(test_quat_LH) - 1.0f) > glm::epsilon<float>());
+	Error += static_cast<int>(glm::min(glm::length(test_quat_LH - test_mat_LH), glm::length(test_quat_LH + test_mat_LH)) > glm::epsilon<float>());
 
-	Error += static_cast<int>(glm::abs(glm::length(test_quat) - 1.0f) > glm::epsilon<float>());
-	Error += static_cast<int>(glm::min(glm::length(test_quat + (-test_mat)), glm::length(test_quat + test_mat)) > glm::epsilon<float>());
-
+	// Test right-handed implementation
+	glm::quat test_quat_RH = glm::quatLookAtRH(glm::normalize(center - eye), up);
+	glm::quat test_mat_RH = glm::conjugate(glm::quat_cast(glm::lookAtRH(eye, center, up)));
+	Error += static_cast<int>(glm::abs(glm::length(test_quat_RH) - 1.0f) > glm::epsilon<float>());
+	Error += static_cast<int>(glm::min(glm::length(test_quat_RH - test_mat_RH), glm::length(test_quat_RH + test_mat_RH)) > glm::epsilon<float>());
+	
 	return Error;
 }
 
