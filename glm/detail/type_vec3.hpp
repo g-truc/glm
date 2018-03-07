@@ -79,7 +79,20 @@ namespace glm
 
 		/// Return the count of components of the vector
 		typedef length_t length_type;
+
 		GLM_FUNC_DECL static length_type length(){return 3;}
+
+		// nTopology additions to match OpenMesh: normalize, vectorize, sqrnorm, norm
+		type& normalize() {
+			T invS = ((T)1) / norm();
+			x *= invS;
+			y *= invS;
+			z *= invS;
+			return *this;
+		}
+		type& vectorize(const T& _s) { x = _s; y = _s; z = _s; return *this; }
+		T sqrnorm() const { return x*x + y*y + z*z; }
+		T norm() const { return sqrt(sqrnorm()); }
 
 		GLM_FUNC_DECL T & operator[](length_type i);
 		GLM_FUNC_DECL T const & operator[](length_type i) const;
