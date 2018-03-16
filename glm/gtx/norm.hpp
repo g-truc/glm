@@ -17,6 +17,7 @@
 #include "../geometric.hpp"
 #include "../gtx/quaternion.hpp"
 
+#include "../experimental.hpp"
 #ifndef GLM_ENABLE_EXPERIMENTAL
 #	error "GLM: GLM_GTX_norm is an experimental extension and may change in the future. Use #define GLM_ENABLE_EXPERIMENTAL before including it, if you really want to use it."
 #endif

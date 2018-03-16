@@ -17,6 +17,7 @@
 #include "../mat3x3.hpp"
 #include "../vec2.hpp"
 
+#include "../experimental.hpp"
 #ifndef GLM_ENABLE_EXPERIMENTAL
 #	error "GLM: GLM_GTX_matrix_transform_2d is an experimental extension and may change in the future. Use #define GLM_ENABLE_EXPERIMENTAL before including it, if you really want to use it."
 #endif
