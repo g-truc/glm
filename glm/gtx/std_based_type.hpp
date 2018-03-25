@@ -17,6 +17,7 @@
 #include "../glm.hpp"
 #include <cstdlib>
 
+#include "../experimental.hpp"
 #ifndef GLM_ENABLE_EXPERIMENTAL
 #	error "GLM: GLM_GTX_std_based_type is an experimental extension and may change in the future. Use #define GLM_ENABLE_EXPERIMENTAL before including it, if you really want to use it."
 #endif

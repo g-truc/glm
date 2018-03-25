@@ -82,6 +82,11 @@ option(GLM_TEST_ENABLE_SIMD_AVX "Enable AVX optimizations" OFF)
 option(GLM_TEST_ENABLE_SIMD_AVX2 "Enable AVX2 optimizations" OFF)
 option(GLM_TEST_FORCE_PURE "Force 'pure' instructions" OFF)
 
+option(GLM_ENABLE_EXPERIMENTAL "Enable experimental GLM_GTX" OFF)
+configure_file(glm/experimental.hpp.in experimental.hpp @ONLY)
+include_directories(${CMAKE_BINARY_DIR}/glm)
+include_directories(${CMAKE_BINARY_DIR})
+
 if(GLM_TEST_FORCE_PURE)
 	add_definitions(-DGLM_FORCE_PURE)
 
@@ -166,7 +171,13 @@ option(GLM_INSTALL_ENABLE "GLM install" ON)
 
 set(GLM_INSTALL_CONFIGDIR "${CMAKE_INSTALL_LIBDIR}/cmake/glm")
 if (GLM_INSTALL_ENABLE)
-	install(DIRECTORY glm DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+	install(DIRECTORY glm
+		DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+		FILES_MATCHING
+			PATTERN "*.h"
+			PATTERN "*.hpp"
+			PATTERN "*.inl")
+	install(FILES "${CMAKE_CURRENT_BINARY_DIR}/experimental.hpp" DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/glm)
 endif()
 
 write_basic_package_version_file("${CMAKE_CURRENT_BINARY_DIR}/glmConfigVersion.cmake" VERSION ${GLM_VERSION} COMPATIBILITY AnyNewerVersion)

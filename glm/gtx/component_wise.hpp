@@ -18,6 +18,7 @@
 #include "../detail/setup.hpp"
 #include "../detail/qualifier.hpp"
 
+#include "../experimental.hpp"
 #ifndef GLM_ENABLE_EXPERIMENTAL
 #	error "GLM: GLM_GTX_component_wise is an experimental extension and may change in the future. Use #define GLM_ENABLE_EXPERIMENTAL before including it, if you really want to use it."
 #endif

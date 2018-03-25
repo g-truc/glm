@@ -43,6 +43,8 @@ source_group("SIMD Files" FILES ${SIMD_INLINE})
 source_group("SIMD Files" FILES ${SIMD_HEADER})
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/..)
+# make out-of tree builds find experimental.hpp
+include_directories(${CMAKE_BINARY_DIR}/glm)
 
 if(GLM_STATIC_LIBRARY_ENABLE OR GLM_DYNAMIC_LIBRARY_ENABLE)
 	if(GLM_STATIC_LIBRARY_ENABLE)

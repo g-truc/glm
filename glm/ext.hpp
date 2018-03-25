@@ -39,6 +39,7 @@
 #	include "./gtc/type_aligned.hpp"
 #endif
 
+#include "experimental.hpp"
 #ifdef GLM_ENABLE_EXPERIMENTAL
 #include "./gtx/associated_min_max.hpp"
 #include "./gtx/bit.hpp"
