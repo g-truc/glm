@@ -88,7 +88,7 @@ namespace glm
 	}
 
 	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER T const& vec<2, T, Q>::operator[](typename vec<2, T, Q>::length_type i) const
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR_CXX14 T const& vec<2, T, Q>::operator[](typename vec<2, T, Q>::length_type i) const
 	{
 		assert(i >= 0 && i < this->length());
 		return (&x)[i];
