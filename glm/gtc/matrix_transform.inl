@@ -322,20 +322,23 @@ namespace glm
 			return frustumRH_NO(left, right, bottom, top, nearVal, farVal);
 #		endif
 	}
-
+	//projection matrix code from Vulkan-CookBook
+	// Author:   Pawel Lapinski
+	// LinkedIn: https://www.linkedin.com/in/pawel-lapinski-84522329
 	template<typename T>
 	GLM_FUNC_QUALIFIER mat<4, 4, T, defaultp> perspectiveRH_ZO(T fovy, T aspect, T zNear, T zFar)
 	{
 		assert(abs(aspect - std::numeric_limits<T>::epsilon()) > static_cast<T>(0));
 
-		T const tanHalfFovy = tan(fovy / static_cast<T>(2));
+		T const f = static_cast<T>(1) / tan(static_cast<T>(0.5) * fovy);
 
 		mat<4, 4, T, defaultp> Result(static_cast<T>(0));
-		Result[0][0] = static_cast<T>(1) / (aspect * tanHalfFovy);
-		Result[1][1] = static_cast<T>(1) / (tanHalfFovy);
+		Result[0][0] = f / aspect;
+		Result[1][1] = -f;
 		Result[2][2] = zFar / (zNear - zFar);
 		Result[2][3] = - static_cast<T>(1);
-		Result[3][2] = -(zFar * zNear) / (zFar - zNear);
+		Result[3][2] = (zNear * zFar) / (zNear - zFar);
+
 		return Result;
 	}
 
