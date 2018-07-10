@@ -49,6 +49,10 @@ namespace glm
 #				pragma clang diagnostic ignored "-Wgnu-anonymous-struct"
 #				pragma clang diagnostic ignored "-Wnested-anon-types"
 #			endif
+#			if GLM_COMPILER & GLM_COMPILER_VC
+#				pragma warning(push)
+#				pragma warning(disable: 4201)  // nonstandard extension used : nameless struct/union
+#			endif
 
 			union
 			{
@@ -56,6 +60,9 @@ namespace glm
 				typename detail::storage<T, sizeof(T) * 4, detail::is_aligned<Q>::value>::type data;
 			};
 
+#			if GLM_COMPILER & GLM_COMPILER_VC
+#				pragma warning(pop)
+#			endif
 #			if GLM_COMPILER & GLM_COMPILER_CLANG
 #				pragma clang diagnostic pop
 #			endif
