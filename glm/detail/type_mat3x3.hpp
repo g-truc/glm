@@ -20,7 +20,6 @@ namespace glm
 		typedef mat<3, 3, T, Q> transpose_type;
 		typedef T value_type;
 
-	private:
 		col_type value[3];
 
 	public:
