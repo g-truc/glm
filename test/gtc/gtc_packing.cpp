@@ -86,12 +86,12 @@ int test_Half4x16()
 	int Error = 0;
 
 	std::vector<glm::vec4> Tests;
-	Tests.push_back(glm::vec4(1.0f));
-	Tests.push_back(glm::vec4(0.0f));
-	Tests.push_back(glm::vec4(2.0f));
-	Tests.push_back(glm::vec4(0.1f));
-	Tests.push_back(glm::vec4(0.5f));
-	Tests.push_back(glm::vec4(-0.9f));
+	Tests.emplace_back(1.0f);
+	Tests.emplace_back(0.0f);
+	Tests.emplace_back(2.0f);
+	Tests.emplace_back(0.1f);
+	Tests.emplace_back(0.5f);
+	Tests.emplace_back(-0.9f);
 
 	for(std::size_t i = 0; i < Tests.size(); ++i)
 	{
@@ -114,12 +114,12 @@ int test_I3x10_1x2()
 	int Error = 0;
 
 	std::vector<glm::ivec4> Tests;
-	Tests.push_back(glm::ivec4(0));
-	Tests.push_back(glm::ivec4(1));
-	Tests.push_back(glm::ivec4(-1));
-	Tests.push_back(glm::ivec4(2));
-	Tests.push_back(glm::ivec4(-2));
-	Tests.push_back(glm::ivec4(3));
+	Tests.emplace_back(0);
+	Tests.emplace_back(1);
+	Tests.emplace_back(-1);
+	Tests.emplace_back(2);
+	Tests.emplace_back(-2);
+	Tests.emplace_back(3);
 
 	for(std::size_t i = 0; i < Tests.size(); ++i)
 	{
@@ -138,12 +138,12 @@ int test_U3x10_1x2()
 	int Error = 0;
 
 	std::vector<glm::uvec4> Tests;
-	Tests.push_back(glm::uvec4(0));
-	Tests.push_back(glm::uvec4(1));
-	Tests.push_back(glm::uvec4(2));
-	Tests.push_back(glm::uvec4(3));
-	Tests.push_back(glm::uvec4(4));
-	Tests.push_back(glm::uvec4(5));
+	Tests.emplace_back(0);
+	Tests.emplace_back(1);
+	Tests.emplace_back(2);
+	Tests.emplace_back(3);
+	Tests.emplace_back(4);
+	Tests.emplace_back(5);
 
 	for(std::size_t i = 0; i < Tests.size(); ++i)
 	{
@@ -174,12 +174,12 @@ int test_Snorm3x10_1x2()
 	int Error = 0;
 
 	std::vector<glm::vec4> Tests;
-	Tests.push_back(glm::vec4(1.0f));
-	Tests.push_back(glm::vec4(0.0f));
-	Tests.push_back(glm::vec4(2.0f));
-	Tests.push_back(glm::vec4(0.1f));
-	Tests.push_back(glm::vec4(0.5f));
-	Tests.push_back(glm::vec4(0.9f));
+	Tests.emplace_back(1.0f);
+	Tests.emplace_back(0.0f);
+	Tests.emplace_back(2.0f);
+	Tests.emplace_back(0.1f);
+	Tests.emplace_back(0.5f);
+	Tests.emplace_back(0.9f);
 
 	for(std::size_t i = 0; i < Tests.size(); ++i)
 	{
@@ -199,12 +199,12 @@ int test_Unorm3x10_1x2()
 	int Error = 0;
 
 	std::vector<glm::vec4> Tests;
-	Tests.push_back(glm::vec4(1.0f));
-	Tests.push_back(glm::vec4(0.0f));
-	Tests.push_back(glm::vec4(2.0f));
-	Tests.push_back(glm::vec4(0.1f));
-	Tests.push_back(glm::vec4(0.5f));
-	Tests.push_back(glm::vec4(0.9f));
+	Tests.emplace_back(1.0f);
+	Tests.emplace_back(0.0f);
+	Tests.emplace_back(2.0f);
+	Tests.emplace_back(0.1f);
+	Tests.emplace_back(0.5f);
+	Tests.emplace_back(0.9f);
 
 	for(std::size_t i = 0; i < Tests.size(); ++i)
 	{
@@ -224,12 +224,12 @@ int test_F2x11_1x10()
 	int Error = 0;
 
 	std::vector<glm::vec3> Tests;
-	Tests.push_back(glm::vec3(1.0f));
-	Tests.push_back(glm::vec3(0.0f));
-	Tests.push_back(glm::vec3(2.0f));
-	Tests.push_back(glm::vec3(0.1f));
-	Tests.push_back(glm::vec3(0.5f));
-	Tests.push_back(glm::vec3(0.9f));
+	Tests.emplace_back(1.0f);
+	Tests.emplace_back(0.0f);
+	Tests.emplace_back(2.0f);
+	Tests.emplace_back(0.1f);
+	Tests.emplace_back(0.5f);
+	Tests.emplace_back(0.9f);
 
 	for(std::size_t i = 0; i < Tests.size(); ++i)
 	{
@@ -248,12 +248,12 @@ int test_F3x9_E1x5()
 	int Error = 0;
 
 	std::vector<glm::vec3> Tests;
-	Tests.push_back(glm::vec3(1.0f));
-	Tests.push_back(glm::vec3(0.0f));
-	Tests.push_back(glm::vec3(2.0f));
-	Tests.push_back(glm::vec3(0.1f));
-	Tests.push_back(glm::vec3(0.5f));
-	Tests.push_back(glm::vec3(0.9f));
+	Tests.emplace_back(1.0f);
+	Tests.emplace_back(0.0f);
+	Tests.emplace_back(2.0f);
+	Tests.emplace_back(0.1f);
+	Tests.emplace_back(0.5f);
+	Tests.emplace_back(0.9f);
 
 	for(std::size_t i = 0; i < Tests.size(); ++i)
 	{
@@ -288,10 +288,10 @@ int test_packUnorm1x16()
 	int Error = 0;
 
 	std::vector<glm::vec1> A;
-	A.push_back(glm::vec1(1.0f));
-	A.push_back(glm::vec1(0.5f));
-	A.push_back(glm::vec1(0.1f));
-	A.push_back(glm::vec1(0.0f));
+	A.emplace_back(1.0f);
+	A.emplace_back(0.5f);
+	A.emplace_back(0.1f);
+	A.emplace_back(0.0f);
 
 	for(std::size_t i = 0; i < A.size(); ++i)
 	{
@@ -310,10 +310,10 @@ int test_packSnorm1x16()
 	int Error = 0;
 
 	std::vector<glm::vec1> A;
-	A.push_back(glm::vec1( 1.0f));
-	A.push_back(glm::vec1( 0.0f));
-	A.push_back(glm::vec1(-0.5f));
-	A.push_back(glm::vec1(-0.1f));
+	A.emplace_back( 1.0f);
+	A.emplace_back( 0.0f);
+	A.emplace_back(-0.5f);
+	A.emplace_back(-0.1f);
 
 	for(std::size_t i = 0; i < A.size(); ++i)
 	{
@@ -331,9 +331,9 @@ int test_packUnorm2x16()
 	int Error = 0;
 
 	std::vector<glm::vec2> A;
-	A.push_back(glm::vec2(1.0f, 0.0f));
-	A.push_back(glm::vec2(0.5f, 0.7f));
-	A.push_back(glm::vec2(0.1f, 0.2f));
+	A.emplace_back(1.0f, 0.0f);
+	A.emplace_back(0.5f, 0.7f);
+	A.emplace_back(0.1f, 0.2f);
 
 	for(std::size_t i = 0; i < A.size(); ++i)
 	{
@@ -352,9 +352,9 @@ int test_packSnorm2x16()
 	int Error = 0;
 
 	std::vector<glm::vec2> A;
-	A.push_back(glm::vec2( 1.0f, 0.0f));
-	A.push_back(glm::vec2(-0.5f,-0.7f));
-	A.push_back(glm::vec2(-0.1f, 0.1f));
+	A.emplace_back( 1.0f, 0.0f);
+	A.emplace_back(-0.5f,-0.7f);
+	A.emplace_back(-0.1f, 0.1f);
 
 	for(std::size_t i = 0; i < A.size(); ++i)
 	{
@@ -373,10 +373,10 @@ int test_packUnorm4x16()
 	int Error = 0;
 
 	std::vector<glm::vec4> A;
-	A.push_back(glm::vec4(1.0f));
-	A.push_back(glm::vec4(0.5f));
-	A.push_back(glm::vec4(0.1f));
-	A.push_back(glm::vec4(0.0f));
+	A.emplace_back(1.0f);
+	A.emplace_back(0.5f);
+	A.emplace_back(0.1f);
+	A.emplace_back(0.0f);
 
 	for(std::size_t i = 0; i < A.size(); ++i)
 	{
@@ -395,9 +395,9 @@ int test_packSnorm4x16()
 	int Error = 0;
 
 	std::vector<glm::vec4> A;
-	A.push_back(glm::vec4( 1.0f, 0.0f, -0.5f, 0.5f));
-	A.push_back(glm::vec4(-0.3f,-0.7f,  0.3f, 0.7f));
-	A.push_back(glm::vec4(-0.1f, 0.1f, -0.2f, 0.2f));
+	A.emplace_back( 1.0f, 0.0f, -0.5f, 0.5f);
+	A.emplace_back(-0.3f,-0.7f,  0.3f, 0.7f);
+	A.emplace_back(-0.1f, 0.1f, -0.2f, 0.2f);
 
 	for(std::size_t i = 0; i < A.size(); ++i)
 	{
@@ -416,9 +416,9 @@ int test_packUnorm1x8()
 	int Error = 0;
 	
 	std::vector<glm::vec1> A;
-	A.push_back(glm::vec1(1.0f));
-	A.push_back(glm::vec1(0.5f));
-	A.push_back(glm::vec1(0.0f));
+	A.emplace_back(1.0f);
+	A.emplace_back(0.5f);
+	A.emplace_back(0.0f);
 	
 	for(std::size_t i = 0; i < A.size(); ++i)
 	{
@@ -437,9 +437,9 @@ int test_packSnorm1x8()
 	int Error = 0;
 	
 	std::vector<glm::vec1> A;
-	A.push_back(glm::vec1( 1.0f));
-	A.push_back(glm::vec1(-0.7f));
-	A.push_back(glm::vec1(-1.0f));
+	A.emplace_back( 1.0f);
+	A.emplace_back(-0.7f);
+	A.emplace_back(-1.0f);
 	
 	for(std::size_t i = 0; i < A.size(); ++i)
 	{
@@ -457,8 +457,8 @@ int test_packUnorm2x8()
 	int Error = 0;
 	
 	std::vector<glm::vec2> A;
-	A.push_back(glm::vec2(1.0f, 0.7f));
-	A.push_back(glm::vec2(0.5f, 0.1f));
+	A.emplace_back(1.0f, 0.7f);
+	A.emplace_back(0.5f, 0.1f);
 	
 	for(std::size_t i = 0; i < A.size(); ++i)
 	{
@@ -477,8 +477,8 @@ int test_packSnorm2x8()
 	int Error = 0;
 	
 	std::vector<glm::vec2> A;
-	A.push_back(glm::vec2( 1.0f, 0.0f));
-	A.push_back(glm::vec2(-0.7f,-0.1f));
+	A.emplace_back( 1.0f, 0.0f);
+	A.emplace_back(-0.7f,-0.1f);
 	
 	for(std::size_t i = 0; i < A.size(); ++i)
 	{
@@ -496,8 +496,8 @@ int test_packUnorm4x8()
 	int Error = 0;
 	
 	std::vector<glm::vec4> A;
-	A.push_back(glm::vec4(1.0f, 0.7f, 0.3f, 0.0f));
-	A.push_back(glm::vec4(0.5f, 0.1f, 0.2f, 0.3f));
+	A.emplace_back(1.0f, 0.7f, 0.3f, 0.0f);
+	A.emplace_back(0.5f, 0.1f, 0.2f, 0.3f);
 	
 	for(std::size_t i = 0; i < A.size(); ++i)
 	{
@@ -516,8 +516,8 @@ int test_packSnorm4x8()
 	int Error = 0;
 	
 	std::vector<glm::vec4> A;
-	A.push_back(glm::vec4( 1.0f, 0.0f,-0.5f,-1.0f));
-	A.push_back(glm::vec4(-0.7f,-0.1f, 0.1f, 0.7f));
+	A.emplace_back( 1.0f, 0.0f,-0.5f,-1.0f);
+	A.emplace_back(-0.7f,-0.1f, 0.1f, 0.7f);
 	
 	for(std::size_t i = 0; i < A.size(); ++i)
 	{
@@ -536,8 +536,8 @@ int test_packUnorm()
 	int Error = 0;
 
 	std::vector<glm::vec2> A;
-	A.push_back(glm::vec2(1.0f, 0.7f));
-	A.push_back(glm::vec2(0.5f, 0.1f));
+	A.emplace_back(1.0f, 0.7f);
+	A.emplace_back(0.5f, 0.1f);
 
 	for(std::size_t i = 0; i < A.size(); ++i)
 	{
@@ -556,9 +556,9 @@ int test_packSnorm()
 	int Error = 0;
 
 	std::vector<glm::vec2> A;
-	A.push_back(glm::vec2( 1.0f, 0.0f));
-	A.push_back(glm::vec2(-0.5f,-0.7f));
-	A.push_back(glm::vec2(-0.1f, 0.1f));
+	A.emplace_back( 1.0f, 0.0f);
+	A.emplace_back(-0.5f,-0.7f);
+	A.emplace_back(-0.1f, 0.1f);
 
 	for(std::size_t i = 0; i < A.size(); ++i)
 	{
@@ -577,8 +577,8 @@ int test_packUnorm2x4()
 	int Error = 0;
 
 	std::vector<glm::vec2> A;
-	A.push_back(glm::vec2(1.0f, 0.7f));
-	A.push_back(glm::vec2(0.5f, 0.0f));
+	A.emplace_back(1.0f, 0.7f);
+	A.emplace_back(0.5f, 0.0f);
 
 	for(std::size_t i = 0; i < A.size(); ++i)
 	{
@@ -597,8 +597,8 @@ int test_packUnorm4x4()
 	int Error = 0;
 
 	std::vector<glm::vec4> A;
-	A.push_back(glm::vec4(1.0f, 0.7f, 0.5f, 0.0f));
-	A.push_back(glm::vec4(0.5f, 0.1f, 0.0f, 1.0f));
+	A.emplace_back(1.0f, 0.7f, 0.5f, 0.0f);
+	A.emplace_back(0.5f, 0.1f, 0.0f, 1.0f);
 
 	for(std::size_t i = 0; i < A.size(); ++i)
 	{
@@ -617,8 +617,8 @@ int test_packUnorm3x5_1x1()
 	int Error = 0;
 
 	std::vector<glm::vec4> A;
-	A.push_back(glm::vec4(1.0f, 0.7f, 0.5f, 0.0f));
-	A.push_back(glm::vec4(0.5f, 0.1f, 0.0f, 1.0f));
+	A.emplace_back(1.0f, 0.7f, 0.5f, 0.0f);
+	A.emplace_back(0.5f, 0.1f, 0.0f, 1.0f);
 
 	for(std::size_t i = 0; i < A.size(); ++i)
 	{
@@ -637,8 +637,8 @@ int test_packUnorm1x5_1x6_1x5()
 	int Error = 0;
 
 	std::vector<glm::vec3> A;
-	A.push_back(glm::vec3(1.0f, 0.7f, 0.5f));
-	A.push_back(glm::vec3(0.5f, 0.1f, 0.0f));
+	A.emplace_back(1.0f, 0.7f, 0.5f);
+	A.emplace_back(0.5f, 0.1f, 0.0f);
 
 	for(std::size_t i = 0; i < A.size(); ++i)
 	{
@@ -657,8 +657,8 @@ int test_packUnorm2x3_1x2()
 	int Error = 0;
 
 	std::vector<glm::vec3> A;
-	A.push_back(glm::vec3(1.0f, 0.7f, 0.5f));
-	A.push_back(glm::vec3(0.5f, 0.1f, 0.0f));
+	A.emplace_back(1.0f, 0.7f, 0.5f);
+	A.emplace_back(0.5f, 0.1f, 0.0f);
 
 	for(std::size_t i = 0; i < A.size(); ++i)
 	{

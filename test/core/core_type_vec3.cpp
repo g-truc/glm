@@ -55,10 +55,10 @@ int test_vec3_ctor()
 
 	{
 		std::vector<glm::ivec3> Tests;
-		Tests.push_back(glm::ivec3(glm::ivec2(1, 2), 3));
-		Tests.push_back(glm::ivec3(1, glm::ivec2(2, 3)));
-		Tests.push_back(glm::ivec3(1, 2, 3));
-		Tests.push_back(glm::ivec3(glm::ivec4(1, 2, 3, 4)));
+		Tests.emplace_back(glm::ivec2(1, 2), 3);
+		Tests.emplace_back(1, glm::ivec2(2, 3));
+		Tests.emplace_back(1, 2, 3);
+		Tests.emplace_back(glm::ivec4(1, 2, 3, 4));
 
 		for(std::size_t i = 0; i < Tests.size(); ++i)
 			Error += Tests[i] == glm::ivec3(1, 2, 3) ? 0 : 1;

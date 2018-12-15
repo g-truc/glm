@@ -9,9 +9,9 @@ int test_packUnorm2x16()
 	int Error = 0;
 
 	std::vector<glm::vec2> A;
-	A.push_back(glm::vec2(1.0f, 0.0f));
-	A.push_back(glm::vec2(0.5f, 0.7f));
-	A.push_back(glm::vec2(0.1f, 0.2f));
+	A.emplace_back(1.0f, 0.0f);
+	A.emplace_back(0.5f, 0.7f);
+	A.emplace_back(0.1f, 0.2f);
 
 	for(std::size_t i = 0; i < A.size(); ++i)
 	{
@@ -30,9 +30,9 @@ int test_packSnorm2x16()
 	int Error = 0;
 
 	std::vector<glm::vec2> A;
-	A.push_back(glm::vec2( 1.0f, 0.0f));
-	A.push_back(glm::vec2(-0.5f,-0.7f));
-	A.push_back(glm::vec2(-0.1f, 0.1f));
+	A.emplace_back( 1.0f, 0.0f);
+	A.emplace_back(-0.5f,-0.7f);
+	A.emplace_back(-0.1f, 0.1f);
 
 	for(std::size_t i = 0; i < A.size(); ++i)
 	{
@@ -57,8 +57,8 @@ int test_packUnorm4x8()
 	Error += Packed == Ref ? 0 : 1;
 
 	std::vector<glm::vec4> A;
-	A.push_back(glm::vec4(1.0f, 0.7f, 0.3f, 0.0f));
-	A.push_back(glm::vec4(0.5f, 0.1f, 0.2f, 0.3f));
+	A.emplace_back(1.0f, 0.7f, 0.3f, 0.0f);
+	A.emplace_back(0.5f, 0.1f, 0.2f, 0.3f);
 	
 	for(std::size_t i = 0; i < A.size(); ++i)
 	{
@@ -77,8 +77,8 @@ int test_packSnorm4x8()
 	int Error = 0;
 	
 	std::vector<glm::vec4> A;
-	A.push_back(glm::vec4( 1.0f, 0.0f,-0.5f,-1.0f));
-	A.push_back(glm::vec4(-0.7f,-0.1f, 0.1f, 0.7f));
+	A.emplace_back( 1.0f, 0.0f,-0.5f,-1.0f);
+	A.emplace_back(-0.7f,-0.1f, 0.1f, 0.7f);
 	
 	for(std::size_t i = 0; i < A.size(); ++i)
 	{
@@ -102,9 +102,9 @@ int test_packHalf2x16()
 	A.push_back(glm::hvec2(glm::half(-1.1f), glm::half( 1.1f)));
 */
 	std::vector<glm::vec2> A;
-	A.push_back(glm::vec2( 1.0f, 2.0f));
-	A.push_back(glm::vec2(-1.0f,-2.0f));
-	A.push_back(glm::vec2(-1.1f, 1.1f));
+	A.emplace_back( 1.0f, 2.0f);
+	A.emplace_back(-1.0f,-2.0f);
+	A.emplace_back(-1.1f, 1.1f);
 
 	for(std::size_t i = 0; i < A.size(); ++i)
 	{
@@ -124,9 +124,9 @@ int test_packDouble2x32()
 	int Error = 0;
 	
 	std::vector<glm::uvec2> A;
-	A.push_back(glm::uvec2( 1, 2));
-	A.push_back(glm::uvec2(-1,-2));
-	A.push_back(glm::uvec2(-1000, 1100));
+	A.emplace_back( 1, 2);
+	A.emplace_back(-1,-2);
+	A.emplace_back(-1000, 1100);
 	
 	for(std::size_t i = 0; i < A.size(); ++i)
 	{

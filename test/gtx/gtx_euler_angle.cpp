@@ -171,15 +171,15 @@ namespace test_derivedEulerAngles
 
 		typedef std::pair<value,value> AngleAndAngleVelocity;
 		std::vector<AngleAndAngleVelocity> testPairs;
-		testPairs.push_back(AngleAndAngleVelocity(zeroAngle, zeroAngleVelocity));
-		testPairs.push_back(AngleAndAngleVelocity(zeroAngle, AngleVelocity));
-		testPairs.push_back(AngleAndAngleVelocity(zeroAngle, negativeAngleVelocity));
-		testPairs.push_back(AngleAndAngleVelocity(Angle, zeroAngleVelocity));
-		testPairs.push_back(AngleAndAngleVelocity(Angle, AngleVelocity));
-		testPairs.push_back(AngleAndAngleVelocity(Angle, negativeAngleVelocity));
-		testPairs.push_back(AngleAndAngleVelocity(negativeAngle, zeroAngleVelocity));
-		testPairs.push_back(AngleAndAngleVelocity(negativeAngle, AngleVelocity));
-		testPairs.push_back(AngleAndAngleVelocity(negativeAngle, negativeAngleVelocity));
+		testPairs.emplace_back(zeroAngle, zeroAngleVelocity);
+		testPairs.emplace_back(zeroAngle, AngleVelocity);
+		testPairs.emplace_back(zeroAngle, negativeAngleVelocity);
+		testPairs.emplace_back(Angle, zeroAngleVelocity);
+		testPairs.emplace_back(Angle, AngleVelocity);
+		testPairs.emplace_back(Angle, negativeAngleVelocity);
+		testPairs.emplace_back(negativeAngle, zeroAngleVelocity);
+		testPairs.emplace_back(negativeAngle, AngleVelocity);
+		testPairs.emplace_back(negativeAngle, negativeAngleVelocity);
 
 		for (size_t i = 0, size = testPairs.size(); i < size; ++i)
 		{
@@ -385,28 +385,28 @@ namespace test_eulerAngles
 		value const maxMidAngle(glm::pi<value>() * 0.5f);
 
 		std::vector<glm::vec3> testEulerAngles;
-		testEulerAngles.push_back(glm::vec3(1.046f, 0.52f, -0.785f));
-		testEulerAngles.push_back(glm::vec3(minAngle, minMidAngle, minAngle));
-		testEulerAngles.push_back(glm::vec3(minAngle, minMidAngle, maxAngle));
-		testEulerAngles.push_back(glm::vec3(minAngle, minMidAngle, maxAngleWithDelta));
-		testEulerAngles.push_back(glm::vec3(minAngle, maxMidAngle, minAngle));
-		testEulerAngles.push_back(glm::vec3(minAngle, maxMidAngle, maxAngle));
-		testEulerAngles.push_back(glm::vec3(minAngle, maxMidAngle, maxAngleWithDelta));
-		testEulerAngles.push_back(glm::vec3(maxAngle, minMidAngle, minAngle));
-		testEulerAngles.push_back(glm::vec3(maxAngle, minMidAngle, maxAngle));
-		testEulerAngles.push_back(glm::vec3(maxAngle, minMidAngle, maxAngleWithDelta));
-		testEulerAngles.push_back(glm::vec3(maxAngleWithDelta, minMidAngle, maxAngle));
-		testEulerAngles.push_back(glm::vec3(maxAngleWithDelta, minMidAngle, maxAngleWithDelta));
-		testEulerAngles.push_back(glm::vec3(maxAngle, maxMidAngle, minAngle));
-		testEulerAngles.push_back(glm::vec3(maxAngleWithDelta, maxMidAngle, minAngle));
-		testEulerAngles.push_back(glm::vec3(maxAngle, maxMidAngle, maxAngle));
-		testEulerAngles.push_back(glm::vec3(maxAngle, maxMidAngle, maxAngleWithDelta));
-		testEulerAngles.push_back(glm::vec3(maxAngleWithDelta, maxMidAngle, maxAngle));
-		testEulerAngles.push_back(glm::vec3(maxAngleWithDelta, maxMidAngle, maxAngleWithDelta));
-		testEulerAngles.push_back(glm::vec3(minAngle, 0.0f, minAngle));
-		testEulerAngles.push_back(glm::vec3(minAngle, 0.0f, maxAngle));
-		testEulerAngles.push_back(glm::vec3(maxAngle, maxAngle, minAngle));
-		testEulerAngles.push_back(glm::vec3(maxAngle, maxAngle, maxAngle));
+		testEulerAngles.emplace_back(1.046f, 0.52f, -0.785f);
+		testEulerAngles.emplace_back(minAngle, minMidAngle, minAngle);
+		testEulerAngles.emplace_back(minAngle, minMidAngle, maxAngle);
+		testEulerAngles.emplace_back(minAngle, minMidAngle, maxAngleWithDelta);
+		testEulerAngles.emplace_back(minAngle, maxMidAngle, minAngle);
+		testEulerAngles.emplace_back(minAngle, maxMidAngle, maxAngle);
+		testEulerAngles.emplace_back(minAngle, maxMidAngle, maxAngleWithDelta);
+		testEulerAngles.emplace_back(maxAngle, minMidAngle, minAngle);
+		testEulerAngles.emplace_back(maxAngle, minMidAngle, maxAngle);
+		testEulerAngles.emplace_back(maxAngle, minMidAngle, maxAngleWithDelta);
+		testEulerAngles.emplace_back(maxAngleWithDelta, minMidAngle, maxAngle);
+		testEulerAngles.emplace_back(maxAngleWithDelta, minMidAngle, maxAngleWithDelta);
+		testEulerAngles.emplace_back(maxAngle, maxMidAngle, minAngle);
+		testEulerAngles.emplace_back(maxAngleWithDelta, maxMidAngle, minAngle);
+		testEulerAngles.emplace_back(maxAngle, maxMidAngle, maxAngle);
+		testEulerAngles.emplace_back(maxAngle, maxMidAngle, maxAngleWithDelta);
+		testEulerAngles.emplace_back(maxAngleWithDelta, maxMidAngle, maxAngle);
+		testEulerAngles.emplace_back(maxAngleWithDelta, maxMidAngle, maxAngleWithDelta);
+		testEulerAngles.emplace_back(minAngle, 0.0f, minAngle);
+		testEulerAngles.emplace_back(minAngle, 0.0f, maxAngle);
+		testEulerAngles.emplace_back(maxAngle, maxAngle, minAngle);
+		testEulerAngles.emplace_back(maxAngle, maxAngle, maxAngle);
 
 		for (size_t i = 0, size = testEulerAngles.size(); i < size; ++i)
 		{
@@ -444,28 +444,28 @@ namespace test_extractsEulerAngles
 		value const maxMidAngle(glm::pi<value>() * 0.5f);
 
 		std::vector<glm::vec3> testEulerAngles;
-		testEulerAngles.push_back(glm::vec3(1.046f, 0.52f, -0.785f));
-		testEulerAngles.push_back(glm::vec3(minAngle, minMidAngle, minAngle));
-		testEulerAngles.push_back(glm::vec3(minAngle, minMidAngle, maxAngle));
-		testEulerAngles.push_back(glm::vec3(minAngle, minMidAngle, maxAngleWithDelta));
-		testEulerAngles.push_back(glm::vec3(minAngle, maxMidAngle, minAngle));
-		testEulerAngles.push_back(glm::vec3(minAngle, maxMidAngle, maxAngle));
-		testEulerAngles.push_back(glm::vec3(minAngle, maxMidAngle, maxAngleWithDelta));
-		testEulerAngles.push_back(glm::vec3(maxAngle, minMidAngle, minAngle));
-		testEulerAngles.push_back(glm::vec3(maxAngle, minMidAngle, maxAngle));
-		testEulerAngles.push_back(glm::vec3(maxAngle, minMidAngle, maxAngleWithDelta));
-		testEulerAngles.push_back(glm::vec3(maxAngleWithDelta, minMidAngle, maxAngle));
-		testEulerAngles.push_back(glm::vec3(maxAngleWithDelta, minMidAngle, maxAngleWithDelta));
-		testEulerAngles.push_back(glm::vec3(maxAngle, maxMidAngle, minAngle));
-		testEulerAngles.push_back(glm::vec3(maxAngleWithDelta, maxMidAngle, minAngle));
-		testEulerAngles.push_back(glm::vec3(maxAngle, maxMidAngle, maxAngle));
-		testEulerAngles.push_back(glm::vec3(maxAngle, maxMidAngle, maxAngleWithDelta));
-		testEulerAngles.push_back(glm::vec3(maxAngleWithDelta, maxMidAngle, maxAngle));
-		testEulerAngles.push_back(glm::vec3(maxAngleWithDelta, maxMidAngle, maxAngleWithDelta));
-		testEulerAngles.push_back(glm::vec3(minAngle, 0.0f, minAngle));
-		testEulerAngles.push_back(glm::vec3(minAngle, 0.0f, maxAngle));
-		testEulerAngles.push_back(glm::vec3(maxAngle, maxAngle, minAngle));
-		testEulerAngles.push_back(glm::vec3(maxAngle, maxAngle, maxAngle));
+		testEulerAngles.emplace_back(1.046f, 0.52f, -0.785f);
+		testEulerAngles.emplace_back(minAngle, minMidAngle, minAngle);
+		testEulerAngles.emplace_back(minAngle, minMidAngle, maxAngle);
+		testEulerAngles.emplace_back(minAngle, minMidAngle, maxAngleWithDelta);
+		testEulerAngles.emplace_back(minAngle, maxMidAngle, minAngle);
+		testEulerAngles.emplace_back(minAngle, maxMidAngle, maxAngle);
+		testEulerAngles.emplace_back(minAngle, maxMidAngle, maxAngleWithDelta);
+		testEulerAngles.emplace_back(maxAngle, minMidAngle, minAngle);
+		testEulerAngles.emplace_back(maxAngle, minMidAngle, maxAngle);
+		testEulerAngles.emplace_back(maxAngle, minMidAngle, maxAngleWithDelta);
+		testEulerAngles.emplace_back(maxAngleWithDelta, minMidAngle, maxAngle);
+		testEulerAngles.emplace_back(maxAngleWithDelta, minMidAngle, maxAngleWithDelta);
+		testEulerAngles.emplace_back(maxAngle, maxMidAngle, minAngle);
+		testEulerAngles.emplace_back(maxAngleWithDelta, maxMidAngle, minAngle);
+		testEulerAngles.emplace_back(maxAngle, maxMidAngle, maxAngle);
+		testEulerAngles.emplace_back(maxAngle, maxMidAngle, maxAngleWithDelta);
+		testEulerAngles.emplace_back(maxAngleWithDelta, maxMidAngle, maxAngle);
+		testEulerAngles.emplace_back(maxAngleWithDelta, maxMidAngle, maxAngleWithDelta);
+		testEulerAngles.emplace_back(minAngle, 0.0f, minAngle);
+		testEulerAngles.emplace_back(minAngle, 0.0f, maxAngle);
+		testEulerAngles.emplace_back(maxAngle, maxAngle, minAngle);
+		testEulerAngles.emplace_back(maxAngle, maxAngle, maxAngle);
 
 		for (size_t i = 0, size = testEulerAngles.size(); i < size; ++i)
 		{
