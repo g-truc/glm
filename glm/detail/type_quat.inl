@@ -1,6 +1,6 @@
-#include "../trigonometric.hpp"
-#include "../exponential.hpp"
-#include "../ext/quaternion_geometric.hpp"
+#include "glm/trigonometric.hpp"
+#include "glm/exponential.hpp"
+#include "glm/ext/quaternion_geometric.hpp"
 #include <limits>
 
 namespace glm{

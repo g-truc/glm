@@ -1,12 +1,12 @@
 /// @ref gtc_packing
 
-#include "../ext/scalar_relational.hpp"
-#include "../ext/vector_relational.hpp"
-#include "../common.hpp"
-#include "../vec2.hpp"
-#include "../vec3.hpp"
-#include "../vec4.hpp"
-#include "../detail/type_half.hpp"
+#include "glm/ext/scalar_relational.hpp"
+#include "glm/ext/vector_relational.hpp"
+#include "glm/common.hpp"
+#include "glm/vec2.hpp"
+#include "glm/vec3.hpp"
+#include "glm/vec4.hpp"
+#include "glm/detail/type_half.hpp"
 #include <cstring>
 #include <limits>
 

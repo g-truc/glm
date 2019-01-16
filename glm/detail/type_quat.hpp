@@ -14,14 +14,14 @@
 #pragma once
 
 // Dependency:
-#include "../detail/type_mat3x3.hpp"
-#include "../detail/type_mat4x4.hpp"
-#include "../detail/type_vec3.hpp"
-#include "../detail/type_vec4.hpp"
-#include "../ext/vector_relational.hpp"
-#include "../ext/quaternion_relational.hpp"
-#include "../gtc/constants.hpp"
-#include "../gtc/matrix_transform.hpp"
+#include "glm/detail/type_mat3x3.hpp"
+#include "glm/detail/type_mat4x4.hpp"
+#include "glm/detail/type_vec3.hpp"
+#include "glm/detail/type_vec4.hpp"
+#include "glm/ext/vector_relational.hpp"
+#include "glm/ext/quaternion_relational.hpp"
+#include "glm/gtc/constants.hpp"
+#include "glm/gtc/matrix_transform.hpp"
 
 namespace glm
 {

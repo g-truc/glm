@@ -13,7 +13,7 @@
 #pragma once
 
 // Dependencies
-#include "../detail/setup.hpp"
+#include "glm/detail/setup.hpp"
 
 #ifndef GLM_ENABLE_EXPERIMENTAL
 #	error "GLM: GLM_GTX_range is an experimental extension and may change in the future. Use #define GLM_ENABLE_EXPERIMENTAL before including it, if you really want to use it."
@@ -23,8 +23,8 @@
 #	error "GLM_GTX_range requires C++11 suppport or 'range for'"
 #endif
 
-#include "../gtc/type_ptr.hpp"
-#include "../gtc/vec1.hpp"
+#include "glm/gtc/type_ptr.hpp"
+#include "glm/gtc/vec1.hpp"
 
 namespace glm
 {

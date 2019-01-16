@@ -1,6 +1,6 @@
 /// @ref gtx_norm
 
-#include "../detail/qualifier.hpp"
+#include "glm/detail/qualifier.hpp"
 
 namespace glm{
 namespace detail

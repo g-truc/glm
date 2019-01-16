@@ -2,7 +2,7 @@
 /// @file glm/ext/matrix_double3x2.hpp
 
 #pragma once
-#include "../detail/type_mat3x2.hpp"
+#include "glm/detail/type_mat3x2.hpp"
 
 namespace glm
 {

@@ -1,6 +1,6 @@
 /// @ref core
 
-#include "./compute_vector_relational.hpp"
+#include "glm/detail/compute_vector_relational.hpp"
 
 namespace glm
 {

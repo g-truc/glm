@@ -1,6 +1,6 @@
 /// @ref gtc_round
 
-#include "../integer.hpp"
+#include "glm/integer.hpp"
 
 namespace glm{
 namespace detail

@@ -2,8 +2,8 @@
 /// @file glm/ext/vector_relational.inl
 
 // Dependency:
-#include "../ext/vector_relational.hpp"
-#include "../common.hpp"
+#include "glm/ext/vector_relational.hpp"
+#include "glm/common.hpp"
 
 namespace glm
 {

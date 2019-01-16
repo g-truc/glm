@@ -17,9 +17,9 @@
 #pragma once
 
 // Dependency:
-#include "../glm.hpp"
-#include "../gtc/constants.hpp"
-#include "../detail/qualifier.hpp"
+#include "glm/glm.hpp"
+#include "glm/gtc/constants.hpp"
+#include "glm/detail/qualifier.hpp"
 
 #ifndef GLM_ENABLE_EXPERIMENTAL
 #	error "GLM: GLM_GTX_easing is an experimental extension and may change in the future. Use #define GLM_ENABLE_EXPERIMENTAL before including it, if you really want to use it."

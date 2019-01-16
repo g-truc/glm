@@ -1,7 +1,7 @@
 /// @ref core
 /// @file glm/detail/func_common.inl
 
-#include "../vector_relational.hpp"
+#include "glm/vector_relational.hpp"
 #include "compute_common.hpp"
 #include "type_vec1.hpp"
 #include "type_vec2.hpp"

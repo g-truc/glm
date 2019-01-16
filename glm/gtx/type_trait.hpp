@@ -17,9 +17,9 @@
 #endif
 
 // Dependency:
-#include "../detail/qualifier.hpp"
-#include "../gtc/quaternion.hpp"
-#include "../gtx/dual_quaternion.hpp"
+#include "glm/detail/qualifier.hpp"
+#include "glm/gtc/quaternion.hpp"
+#include "glm/gtx/dual_quaternion.hpp"
 
 #if GLM_MESSAGES == GLM_ENABLE && !defined(GLM_EXT_INCLUDED)
 #	pragma message("GLM: GLM_GTX_type_trait extension included")

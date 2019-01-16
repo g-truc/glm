@@ -1,6 +1,6 @@
 /// @ref gtx_matrix_interpolation
 
-#include "../gtc/constants.hpp"
+#include "glm/gtc/constants.hpp"
 
 namespace glm
 {

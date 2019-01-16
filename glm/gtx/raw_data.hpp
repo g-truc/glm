@@ -13,8 +13,8 @@
 #pragma once
 
 // Dependencies
-#include "../ext/scalar_uint_sized.hpp"
-#include "../detail/setup.hpp"
+#include "glm/ext/scalar_uint_sized.hpp"
+#include "glm/detail/setup.hpp"
 
 #ifndef GLM_ENABLE_EXPERIMENTAL
 #	error "GLM: GLM_GTX_raw_data is an experimental extension and may change in the future. Use #define GLM_ENABLE_EXPERIMENTAL before including it, if you really want to use it."

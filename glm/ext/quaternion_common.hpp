@@ -21,11 +21,11 @@
 #pragma once
 
 // Dependency:
-#include "../ext/scalar_constants.hpp"
-#include "../ext/quaternion_geometric.hpp"
-#include "../common.hpp"
-#include "../trigonometric.hpp"
-#include "../exponential.hpp"
+#include "glm/ext/scalar_constants.hpp"
+#include "glm/ext/quaternion_geometric.hpp"
+#include "glm/common.hpp"
+#include "glm/trigonometric.hpp"
+#include "glm/exponential.hpp"
 #include <limits>
 
 #if GLM_MESSAGES == GLM_ENABLE && !defined(GLM_EXT_INCLUDED)

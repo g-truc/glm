@@ -15,8 +15,8 @@
 #pragma once
 
 // Dependency:
-#include "../glm.hpp"
-#include "../gtc/type_precision.hpp"
+#include "glm/glm.hpp"
+#include "glm/gtc/type_precision.hpp"
 
 #ifndef GLM_ENABLE_EXPERIMENTAL
 #	error "GLM: GLM_GTX_number_precision is an experimental extension and may change in the future. Use #define GLM_ENABLE_EXPERIMENTAL before including it, if you really want to use it."

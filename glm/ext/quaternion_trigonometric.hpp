@@ -18,8 +18,8 @@
 #pragma once
 
 // Dependency:
-#include "../trigonometric.hpp"
-#include "../exponential.hpp"
+#include "glm/trigonometric.hpp"
+#include "glm/exponential.hpp"
 #include "scalar_constants.hpp"
 #include "vector_relational.hpp"
 #include <limits>

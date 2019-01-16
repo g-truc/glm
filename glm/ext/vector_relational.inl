@@ -1,7 +1,7 @@
-#include "../vector_relational.hpp"
-#include "../common.hpp"
-#include "../detail/qualifier.hpp"
-#include "../detail/type_float.hpp"
+#include "glm/vector_relational.hpp"
+#include "glm/common.hpp"
+#include "glm/detail/qualifier.hpp"
+#include "glm/detail/type_float.hpp"
 
 namespace glm
 {

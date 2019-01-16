@@ -1,3 +1,3 @@
-#include "../geometric.hpp"
-#include "../trigonometric.hpp"
-#include "../matrix.hpp"
+#include "glm/geometric.hpp"
+#include "glm/trigonometric.hpp"
+#include "glm/matrix.hpp"

@@ -14,8 +14,8 @@
 #pragma once
 
 // Dependency:
-#include "../glm.hpp"
-#include "../gtx/vector_query.hpp"
+#include "glm/glm.hpp"
+#include "glm/gtx/vector_query.hpp"
 #include <limits>
 
 #ifndef GLM_ENABLE_EXPERIMENTAL

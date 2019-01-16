@@ -1,8 +1,8 @@
 /// @ref gtx_common
 
 #include <cmath>
-#include "../gtc/epsilon.hpp"
-#include "../gtc/constants.hpp"
+#include "glm/gtc/epsilon.hpp"
+#include "glm/gtc/constants.hpp"
 
 namespace glm{
 namespace detail

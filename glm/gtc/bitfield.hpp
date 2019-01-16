@@ -11,15 +11,15 @@
 ///
 /// Allow to perform bit operations on integer values
 
-#include "../detail/setup.hpp"
+#include "glm/detail/setup.hpp"
 
 #pragma once
 
 // Dependencies
-#include "../ext/scalar_int_sized.hpp"
-#include "../ext/scalar_uint_sized.hpp"
-#include "../detail/qualifier.hpp"
-#include "../detail/_vectorize.hpp"
+#include "glm/ext/scalar_int_sized.hpp"
+#include "glm/ext/scalar_uint_sized.hpp"
+#include "glm/detail/qualifier.hpp"
+#include "glm/detail/_vectorize.hpp"
 #include "type_precision.hpp"
 #include <limits>
 

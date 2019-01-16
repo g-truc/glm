@@ -1,7 +1,7 @@
-#include "../geometric.hpp"
-#include "../exponential.hpp"
-#include "../trigonometric.hpp"
-#include "../detail/type_vec1.hpp"
+#include "glm/geometric.hpp"
+#include "glm/exponential.hpp"
+#include "glm/trigonometric.hpp"
+#include "glm/detail/type_vec1.hpp"
 #include <cstdlib>
 #include <ctime>
 #include <cassert>

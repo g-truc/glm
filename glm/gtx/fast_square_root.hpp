@@ -15,9 +15,9 @@
 #pragma once
 
 // Dependency:
-#include "../common.hpp"
-#include "../exponential.hpp"
-#include "../geometric.hpp"
+#include "glm/common.hpp"
+#include "glm/exponential.hpp"
+#include "glm/geometric.hpp"
 
 #ifndef GLM_ENABLE_EXPERIMENTAL
 #	error "GLM: GLM_GTX_fast_square_root is an experimental extension and may change in the future. Use #define GLM_ENABLE_EXPERIMENTAL before including it, if you really want to use it."

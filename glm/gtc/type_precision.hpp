@@ -14,22 +14,22 @@
 #pragma once
 
 // Dependency:
-#include "../gtc/quaternion.hpp"
-#include "../gtc/vec1.hpp"
-#include "../ext/scalar_int_sized.hpp"
-#include "../ext/scalar_uint_sized.hpp"
-#include "../detail/type_vec2.hpp"
-#include "../detail/type_vec3.hpp"
-#include "../detail/type_vec4.hpp"
-#include "../detail/type_mat2x2.hpp"
-#include "../detail/type_mat2x3.hpp"
-#include "../detail/type_mat2x4.hpp"
-#include "../detail/type_mat3x2.hpp"
-#include "../detail/type_mat3x3.hpp"
-#include "../detail/type_mat3x4.hpp"
-#include "../detail/type_mat4x2.hpp"
-#include "../detail/type_mat4x3.hpp"
-#include "../detail/type_mat4x4.hpp"
+#include "glm/gtc/quaternion.hpp"
+#include "glm/gtc/vec1.hpp"
+#include "glm/ext/scalar_int_sized.hpp"
+#include "glm/ext/scalar_uint_sized.hpp"
+#include "glm/detail/type_vec2.hpp"
+#include "glm/detail/type_vec3.hpp"
+#include "glm/detail/type_vec4.hpp"
+#include "glm/detail/type_mat2x2.hpp"
+#include "glm/detail/type_mat2x3.hpp"
+#include "glm/detail/type_mat2x4.hpp"
+#include "glm/detail/type_mat3x2.hpp"
+#include "glm/detail/type_mat3x3.hpp"
+#include "glm/detail/type_mat3x4.hpp"
+#include "glm/detail/type_mat4x2.hpp"
+#include "glm/detail/type_mat4x3.hpp"
+#include "glm/detail/type_mat4x4.hpp"
 
 #if GLM_MESSAGES == GLM_ENABLE && !defined(GLM_EXT_INCLUDED)
 #	pragma message("GLM: GLM_GTC_type_precision extension included")

@@ -16,10 +16,10 @@
 // Dependency:
 #include <cfloat>
 #include <limits>
-#include "../glm.hpp"
-#include "../geometric.hpp"
-#include "../gtx/closest_point.hpp"
-#include "../gtx/vector_query.hpp"
+#include "glm/glm.hpp"
+#include "glm/geometric.hpp"
+#include "glm/gtx/closest_point.hpp"
+#include "glm/gtx/vector_query.hpp"
 
 #ifndef GLM_ENABLE_EXPERIMENTAL
 #	error "GLM: GLM_GTX_closest_point is an experimental extension and may change in the future. Use #define GLM_ENABLE_EXPERIMENTAL before including it, if you really want to use it."

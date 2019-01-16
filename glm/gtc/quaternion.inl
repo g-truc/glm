@@ -1,6 +1,6 @@
-#include "../trigonometric.hpp"
-#include "../geometric.hpp"
-#include "../exponential.hpp"
+#include "glm/trigonometric.hpp"
+#include "glm/geometric.hpp"
+#include "glm/exponential.hpp"
 #include "epsilon.hpp"
 #include <limits>
 

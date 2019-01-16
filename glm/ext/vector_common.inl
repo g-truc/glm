@@ -1,4 +1,4 @@
-#include "../detail/_vectorize.hpp"
+#include "glm/detail/_vectorize.hpp"
 
 namespace glm
 {

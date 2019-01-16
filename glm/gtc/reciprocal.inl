@@ -1,6 +1,6 @@
 /// @ref gtc_reciprocal
 
-#include "../trigonometric.hpp"
+#include "glm/trigonometric.hpp"
 #include <limits>
 
 namespace glm

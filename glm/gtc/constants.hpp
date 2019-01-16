@@ -13,7 +13,7 @@
 #pragma once
 
 // Dependencies
-#include "../ext/scalar_constants.hpp"
+#include "glm/ext/scalar_constants.hpp"
 
 #if GLM_MESSAGES == GLM_ENABLE && !defined(GLM_EXT_INCLUDED)
 #	pragma message("GLM: GLM_GTC_constants extension included")

@@ -1,5 +1,5 @@
-#include "../exponential.hpp"
-#include "../common.hpp"
+#include "glm/exponential.hpp"
+#include "glm/common.hpp"
 
 namespace glm{
 namespace detail

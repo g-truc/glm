@@ -1,7 +1,7 @@
 /// @ref gtx_matrix_decompose
 
-#include "../gtc/constants.hpp"
-#include "../gtc/epsilon.hpp"
+#include "glm/gtc/constants.hpp"
+#include "glm/gtc/epsilon.hpp"
 
 namespace glm{
 namespace detail

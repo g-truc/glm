@@ -5,8 +5,8 @@
 /// software is freely granted, provided that this notice
 /// is preserved.
 
-#include "../detail/type_float.hpp"
-#include "../ext/scalar_constants.hpp"
+#include "glm/detail/type_float.hpp"
+#include "glm/ext/scalar_constants.hpp"
 #include <cmath>
 #include <cfloat>
 

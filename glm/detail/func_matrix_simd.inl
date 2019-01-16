@@ -1,8 +1,8 @@
 #if GLM_ARCH & GLM_ARCH_SSE2_BIT
 
 #include "type_mat4x4.hpp"
-#include "../geometric.hpp"
-#include "../simd/matrix.h"
+#include "glm/geometric.hpp"
+#include "glm/simd/matrix.h"
 #include <cstring>
 
 namespace glm{

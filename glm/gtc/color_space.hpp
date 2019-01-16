@@ -14,11 +14,11 @@
 #pragma once
 
 // Dependencies
-#include "../detail/setup.hpp"
-#include "../detail/qualifier.hpp"
-#include "../exponential.hpp"
-#include "../vec3.hpp"
-#include "../vec4.hpp"
+#include "glm/detail/setup.hpp"
+#include "glm/detail/qualifier.hpp"
+#include "glm/exponential.hpp"
+#include "glm/vec3.hpp"
+#include "glm/vec4.hpp"
 #include <limits>
 
 #if GLM_MESSAGES == GLM_ENABLE && !defined(GLM_EXT_INCLUDED)

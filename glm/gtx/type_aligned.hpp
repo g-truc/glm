@@ -14,8 +14,8 @@
 #pragma once
 
 // Dependency:
-#include "../gtc/type_precision.hpp"
-#include "../gtc/quaternion.hpp"
+#include "glm/gtc/type_precision.hpp"
+#include "glm/gtc/quaternion.hpp"
 
 #ifndef GLM_ENABLE_EXPERIMENTAL
 #	error "GLM: GLM_GTX_type_aligned is an experimental extension and may change in the future. Use #define GLM_ENABLE_EXPERIMENTAL before including it, if you really want to use it."

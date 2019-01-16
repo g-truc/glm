@@ -14,7 +14,7 @@
 #pragma once
 
 // Dependency:
-#include "../glm.hpp"
+#include "glm/glm.hpp"
 #include <cstdlib>
 
 #ifndef GLM_ENABLE_EXPERIMENTAL

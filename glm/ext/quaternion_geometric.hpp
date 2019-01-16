@@ -15,9 +15,9 @@
 #pragma once
 
 // Dependency:
-#include "../geometric.hpp"
-#include "../exponential.hpp"
-#include "../ext/vector_relational.hpp"
+#include "glm/geometric.hpp"
+#include "glm/exponential.hpp"
+#include "glm/ext/vector_relational.hpp"
 
 #if GLM_MESSAGES == GLM_ENABLE && !defined(GLM_EXT_INCLUDED)
 #	pragma message("GLM: GLM_EXT_quaternion_geometric extension included")

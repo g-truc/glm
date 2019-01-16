@@ -18,9 +18,9 @@
 #pragma once
 
 // Dependency:
-#include "../common.hpp"
-#include "../trigonometric.hpp"
-#include "../geometric.hpp"
+#include "glm/common.hpp"
+#include "glm/trigonometric.hpp"
+#include "glm/geometric.hpp"
 
 #if GLM_MESSAGES == GLM_ENABLE && !defined(GLM_EXT_INCLUDED)
 #	pragma message("GLM: GLM_EXT_quaternion_transform extension included")

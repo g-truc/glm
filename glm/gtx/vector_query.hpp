@@ -13,7 +13,7 @@
 #pragma once
 
 // Dependency:
-#include "../glm.hpp"
+#include "glm/glm.hpp"
 #include <cfloat>
 #include <limits>
 

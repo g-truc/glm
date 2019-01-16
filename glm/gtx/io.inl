@@ -3,8 +3,8 @@
 
 #include <iomanip>                  // std::fixed, std::setfill<>, std::setprecision, std::right, std::setw
 #include <ostream>                  // std::basic_ostream<>
-#include "../gtc/matrix_access.hpp" // glm::col, glm::row
-#include "../gtx/type_trait.hpp"    // glm::type<>
+#include "glm/gtc/matrix_access.hpp" // glm::col, glm::row
+#include "glm/gtx/type_trait.hpp"    // glm::type<>
 
 namespace glm{
 namespace io

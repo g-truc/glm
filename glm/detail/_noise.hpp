@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../common.hpp"
+#include "glm/common.hpp"
 
 namespace glm{
 namespace detail

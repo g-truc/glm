@@ -2,7 +2,7 @@
 /// @file glm/ext/vector_bool3.hpp
 
 #pragma once
-#include "../detail/type_vec3.hpp"
+#include "glm/detail/type_vec3.hpp"
 
 namespace glm
 {

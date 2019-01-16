@@ -13,12 +13,12 @@
 #pragma once
 
 // Dependencies
-#include "../mat4x4.hpp"
-#include "../vec3.hpp"
-#include "../vec4.hpp"
-#include "../geometric.hpp"
-#include "../gtc/quaternion.hpp"
-#include "../gtc/matrix_transform.hpp"
+#include "glm/mat4x4.hpp"
+#include "glm/vec3.hpp"
+#include "glm/vec4.hpp"
+#include "glm/geometric.hpp"
+#include "glm/gtc/quaternion.hpp"
+#include "glm/gtc/matrix_transform.hpp"
 
 #ifndef GLM_ENABLE_EXPERIMENTAL
 #	error "GLM: GLM_GTX_matrix_decompose is an experimental extension and may change in the future. Use #define GLM_ENABLE_EXPERIMENTAL before including it, if you really want to use it."
