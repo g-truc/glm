@@ -26,7 +26,7 @@ namespace glm
 		// -- Accesses --
 
 		typedef length_t length_type;
-		GLM_FUNC_DECL static GLM_CONSTEXPR length_type length() { return 2; }
+		GLM_FUNC_DECL static GLM_NON_MATH_CONSTEXPR length_type length() { return 2; }
 
 		GLM_FUNC_DECL col_type & operator[](length_type i);
 		GLM_FUNC_DECL GLM_CONSTEXPR col_type const& operator[](length_type i) const;
