@@ -64,7 +64,7 @@ static int test_relational()
 template <typename genType>
 static int test_constexpr()
 {
-#	if GLM_HAS_CONSTEXPR
+#	if GLM_CONFIG_NON_MATH_CONSTEXP
 		static_assert(genType::length() == 1, "GLM: Failed constexpr");
 #	endif
 

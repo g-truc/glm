@@ -96,7 +96,7 @@ static int test_ctor()
 {
 	int Error = 0;
 
-#	if GLM_HAS_CONSTEXPR
+#	if GLM_CONFIG_CONSTEXP
 	{
 		constexpr glm::aligned_ivec4 v(1);
 
@@ -123,7 +123,7 @@ static int test_ctor()
 		Error += v.z == 1 ? 0 : 1;
 		Error += v.w == 1 ? 0 : 1;
 	}
-#	endif//GLM_HAS_CONSTEXPR
+#	endif//GLM_CONFIG_CONSTEXP
 
 	return Error;
 }

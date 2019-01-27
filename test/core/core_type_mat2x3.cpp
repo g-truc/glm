@@ -121,7 +121,7 @@ int test_size()
 
 int test_constexpr()
 {
-#if GLM_HAS_CONSTEXPR
+#if GLM_CONFIG_NON_MATH_CONSTEXP
 	static_assert(glm::mat2x3::length() == 2, "GLM: Failed constexpr");
 #endif
 
