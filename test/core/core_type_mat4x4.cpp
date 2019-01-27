@@ -173,8 +173,11 @@ static int test_size()
 
 static int test_constexpr()
 {
-#if GLM_HAS_CONSTEXPR
+#ifdef GLM_NON_MATH_CONSTEXPR
 	static_assert(glm::mat4::length() == 4, "GLM: Failed constexpr");
+#endif
+
+#ifdef GLM_CONSTEXPR
 	constexpr glm::mat4 A(1.f);
 	constexpr glm::mat4 B(1.f);
 	constexpr glm::bvec4 C = glm::equal(A, B, 0.01f);
