@@ -286,19 +286,6 @@
 		((GLM_COMPILER & GLM_COMPILER_VC) && (GLM_COMPILER >= GLM_COMPILER_VC15))))
 #endif
 
-#if GLM_HAS_CONSTEXPR
-#	if (GLM_ARCH & GLM_ARCH_SIMD_BIT) // Compiler SIMD intrinsics don't support constexpr...
-#		define GLM_CONSTEXPR
-#	else
-#		define GLM_CONSTEXPR constexpr
-#	endif
-
-#	define GLM_NON_MATH_CONSTEXPR constexpr
-#else
-#	define GLM_CONSTEXPR
-#	define GLM_NON_MATH_CONSTEXPR
-#endif
-
 //
 #if GLM_LANG & GLM_LANG_CXX11_FLAG
 #	define GLM_HAS_ASSIGNABLE 1
@@ -542,7 +529,16 @@ namespace glm
 // constexpr
 
 #if GLM_HAS_CONSTEXPR
-#	define GLM_CONFIG_CONSTEXP GLM_ENABLE
+#	if (GLM_ARCH & GLM_ARCH_SIMD_BIT) // Compiler SIMD intrinsics don't support constexpr...
+#		define GLM_CONFIG_CONSTEXP GLM_DISABLE
+#		define GLM_CONSTEXPR
+#	else
+#		define GLM_CONFIG_CONSTEXP GLM_ENABLE
+#		define GLM_CONSTEXPR constexpr
+#	endif
+
+#	define GLM_CONFIG_NON_MATH_CONSTEXP GLM_ENABLE
+#	define GLM_NON_MATH_CONSTEXPR constexpr
 
 	namespace glm
 	{
@@ -555,10 +551,18 @@ namespace glm
 #	define GLM_COUNTOF(arr) glm::countof(arr)
 #elif defined(_MSC_VER)
 #	define GLM_CONFIG_CONSTEXP GLM_DISABLE
+#	define GLM_CONSTEXPR
+
+#	define GLM_CONFIG_NON_MATH_CONSTEXP GLM_DISABLE
+#	define GLM_NON_MATH_CONSTEXPR
 
 #	define GLM_COUNTOF(arr) _countof(arr)
 #else
 #	define GLM_CONFIG_CONSTEXP GLM_DISABLE
+#	define GLM_CONSTEXPR
+
+#	define GLM_CONFIG_NON_MATH_CONSTEXP GLM_DISABLE
+#	define GLM_NON_MATH_CONSTEXPR
 
 #	define GLM_COUNTOF(arr) sizeof(arr) / sizeof(arr[0])
 #endif
