@@ -146,11 +146,11 @@ static int test_swizzle()
 
 static int test_constexpr()
 {
-#ifdef GLM_NON_MATH_CONSTEXPR
+#if GLM_CONFIG_NON_MATH_CONSTEXP
 	static_assert(glm::vec1::length() == 1, "GLM: Failed constexpr");
 #endif
 
-#ifdef GLM_CONSTEXPR
+#if GLM_CONFIG_CONSTEXP
 	static_assert(glm::vec1(1.0f).x > 0.0f, "GLM: Failed constexpr");
 #endif
 

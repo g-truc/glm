@@ -76,7 +76,7 @@ static int test_vec1_size()
 	Error += glm::vec1::length() == 1 ? 0 : 1;
 	Error += glm::dvec1::length() == 1 ? 0 : 1;
 
-	GLM_CONSTEXPR std::size_t Length = glm::vec1::length();
+	GLM_NON_MATH_CONSTEXPR std::size_t Length = glm::vec1::length();
 	Error += Length == 1 ? 0 : 1;
 
 	return Error;
@@ -134,8 +134,11 @@ static int test_bvec1_ctor()
 
 static int test_constexpr()
 {
-#if GLM_HAS_CONSTEXPR
+#if GLM_CONFIG_NON_MATH_CONSTEXP
 	static_assert(glm::vec1::length() == 1, "GLM: Failed constexpr");
+#endif
+
+#if GLM_CONFIG_CONSTEXP
 	static_assert(glm::vec1(1.0f).x > 0.0f, "GLM: Failed constexpr");
 #endif
 

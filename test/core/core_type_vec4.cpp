@@ -750,11 +750,11 @@ static int test_inheritance()
 
 static int test_constexpr()
 {
-#ifdef GLM_NON_MATH_CONSTEXPR
+#if GLM_CONFIG_NON_MATH_CONSTEXP
 	static_assert(glm::vec4::length() == 4, "GLM: Failed constexpr");
 #endif
 
-#ifdef GLM_CONSTEXPR
+#if GLM_CONFIG_CONSTEXP
 	static_assert(glm::vec4(1.0f).x > 0.0f, "GLM: Failed constexpr");
 	static_assert(glm::vec4(1.0f, -1.0f, -1.0f, -1.0f).x > 0.0f, "GLM: Failed constexpr");
 	static_assert(glm::vec4(1.0f, -1.0f, -1.0f, -1.0f).y < 0.0f, "GLM: Failed constexpr");
