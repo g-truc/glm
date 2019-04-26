@@ -242,7 +242,7 @@ int ntz11 (unsigned int n) {
    };
    unsigned int k;
    n = n & (-n);        /* isolate lsb */
-   printf("n = %d\n", n);
+   std::printf("n = %d\n", n);
 #if defined(SLOW_MUL)
    k = (n << 11) - n;
    k = (k <<  2) + k;
@@ -257,7 +257,7 @@ int ntz11 (unsigned int n) {
 int errors;
 void error(int x, int y) {
    errors = errors + 1;
-   printf("Error for x = %08x, got %d\n", x, y);
+   std::printf("Error for x = %08x, got %d\n", x, y);
 }
 
 int main()
@@ -287,7 +287,7 @@ int main()
 		if (ntz1(test[i]) != test[i+1]) error(test[i], ntz1(test[i]));}
 	TimestampEnd = std::clock();
 
-	printf("ntz1: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
+	std::printf("ntz1: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
 
 	TimestampBeg = std::clock();
 	for (std::size_t k = 0; k < Count; ++k)
@@ -295,7 +295,7 @@ int main()
 		if (ntz2(test[i]) != test[i+1]) error(test[i], ntz2(test[i]));}
 	TimestampEnd = std::clock();
 
-	printf("ntz2: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
+	std::printf("ntz2: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
 
 	TimestampBeg = std::clock();
 	for (std::size_t k = 0; k < Count; ++k)
@@ -303,7 +303,7 @@ int main()
 		if (ntz3(test[i]) != test[i+1]) error(test[i], ntz3(test[i]));}
 	TimestampEnd = std::clock();
 
-	printf("ntz3: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
+	std::printf("ntz3: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
 
 	TimestampBeg = std::clock();
 	for (std::size_t k = 0; k < Count; ++k)
@@ -311,7 +311,7 @@ int main()
 		if (ntz4(test[i]) != test[i+1]) error(test[i], ntz4(test[i]));}
 	TimestampEnd = std::clock();
 
-	printf("ntz4: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
+	std::printf("ntz4: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
 
 	TimestampBeg = std::clock();
 	for (std::size_t k = 0; k < Count; ++k)
@@ -319,7 +319,7 @@ int main()
 		if (ntz4a(test[i]) != test[i+1]) error(test[i], ntz4a(test[i]));}
 	TimestampEnd = std::clock();
 
-	printf("ntz4a: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
+	std::printf("ntz4a: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
 
 	TimestampBeg = std::clock();
 	for(std::size_t k = 0; k < Count; ++k)
@@ -333,7 +333,7 @@ int main()
 	}
 	TimestampEnd = std::clock();
 
-	printf("ntz5: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
+	std::printf("ntz5: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
 
 	TimestampBeg = std::clock();
 	for (std::size_t k = 0; k < Count; ++k)
@@ -341,7 +341,7 @@ int main()
 		if (ntz6(test[i]) != test[i+1]) error(test[i], ntz6(test[i]));}
 	TimestampEnd = std::clock();
 
-	printf("ntz6: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
+	std::printf("ntz6: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
 
 	TimestampBeg = std::clock();
 	for (std::size_t k = 0; k < Count; ++k)
@@ -349,7 +349,7 @@ int main()
 		if (ntz6a(test[i]) != test[i+1]) error(test[i], ntz6a(test[i]));}
 	TimestampEnd = std::clock();
 
-	printf("ntz6a: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
+	std::printf("ntz6a: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
 
 	TimestampBeg = std::clock();
 	for (std::size_t k = 0; k < Count; ++k)
@@ -357,7 +357,7 @@ int main()
 		if (ntz7(test[i]) != test[i+1]) error(test[i], ntz7(test[i]));}
 	TimestampEnd = std::clock();
 
-	printf("ntz7: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
+	std::printf("ntz7: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
 
 	TimestampBeg = std::clock();
 	for (std::size_t k = 0; k < Count; ++k)
@@ -365,7 +365,7 @@ int main()
 		if (ntz7_christophe(test[i]) != test[i+1]) error(test[i], ntz7(test[i]));}
 	TimestampEnd = std::clock();
 
-	printf("ntz7_christophe: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
+	std::printf("ntz7_christophe: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
 
 	TimestampBeg = std::clock();
 	for (std::size_t k = 0; k < Count; ++k)
@@ -373,7 +373,7 @@ int main()
 		if (ntz8(test[i]) != test[i+1]) error(test[i], ntz8(test[i]));}
 	TimestampEnd = std::clock();
 
-	printf("ntz8: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
+	std::printf("ntz8: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
 
 	TimestampBeg = std::clock();
 	for (std::size_t k = 0; k < Count; ++k)
@@ -381,7 +381,7 @@ int main()
 		if (ntz8a(test[i]) != test[i+1]) error(test[i], ntz8a(test[i]));}
 	TimestampEnd = std::clock();
 
-	printf("ntz8a: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
+	std::printf("ntz8a: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
 
 	TimestampBeg = std::clock();
 	for (std::size_t k = 0; k < Count; ++k)
@@ -389,7 +389,7 @@ int main()
 		if (ntz9(test[i]) != test[i+1]) error(test[i], ntz9(test[i]));}
 	TimestampEnd = std::clock();
 
-	printf("ntz9: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
+	std::printf("ntz9: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
 
 	TimestampBeg = std::clock();
 	for (std::size_t k = 0; k < Count; ++k)
@@ -397,10 +397,10 @@ int main()
 		if (ntz10(test[i]) != test[i+1]) error(test[i], ntz10(test[i]));}
 	TimestampEnd = std::clock();
 
-	printf("ntz10: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
+	std::printf("ntz10: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
 
 	if (errors == 0)
-		printf("Passed all %d cases.\n", static_cast<int>(sizeof(test)/8));
+		std::printf("Passed all %d cases.\n", static_cast<int>(sizeof(test)/8));
 
 #	endif//NDEBUG
 }

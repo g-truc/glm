@@ -15,46 +15,46 @@ void print_bits(float const& s)
 
 	uif.f = s;
 
-	printf("f32: ");
+	std::printf("f32: ");
 	for(std::size_t j = sizeof(s) * 8; j > 0; --j)
 	{
 		if(j == 23 || j == 31)
-			printf(" ");
-		printf("%d", (uif.i & (1 << (j - 1))) ? 1 : 0);
+			std::printf(" ");
+		std::printf("%d", (uif.i & (1 << (j - 1))) ? 1 : 0);
 	}
 }
 
 void print_10bits(glm::uint const& s)
 {
-	printf("10b: ");
+	std::printf("10b: ");
 	for(std::size_t j = 10; j > 0; --j)
 	{
 		if(j == 5)
-			printf(" ");
-		printf("%d", (s & (1 << (j - 1))) ? 1 : 0);
+			std::printf(" ");
+		std::printf("%d", (s & (1 << (j - 1))) ? 1 : 0);
 	}
 }
 
 void print_11bits(glm::uint const& s)
 {
-	printf("11b: ");
+	std::printf("11b: ");
 	for(std::size_t j = 11; j > 0; --j)
 	{
 		if(j == 6)
-			printf(" ");
-		printf("%d", (s & (1 << (j - 1))) ? 1 : 0);
+			std::printf(" ");
+		std::printf("%d", (s & (1 << (j - 1))) ? 1 : 0);
 	}
 }
 
 void print_value(float const& s)
 {
-	printf("%2.5f, ", static_cast<double>(s));
+	std::printf("%2.5f, ", static_cast<double>(s));
 	print_bits(s);
-	printf(", ");
+	std::printf(", ");
 //	print_11bits(detail::floatTo11bit(s));
-//	printf(", ");
+//	std::printf(", ");
 //	print_10bits(detail::floatTo10bit(s));
-	printf("\n");
+	std::printf("\n");
 }
 
 int test_Half1x16()

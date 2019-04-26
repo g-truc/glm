@@ -50,10 +50,10 @@ static int comp_vec2_mul_mat2(std::size_t Samples)
 	packedVecType const Scale(0.01, 0.02);
 
 	std::vector<packedVecType> SISD;
-	printf("- SISD: %d us\n", launch_vec_mul_mat<packedMatType, packedVecType>(SISD, Transform, Scale, Samples));
+	std::printf("- SISD: %d us\n", launch_vec_mul_mat<packedMatType, packedVecType>(SISD, Transform, Scale, Samples));
 
 	std::vector<alignedVecType> SIMD;
-	printf("- SIMD: %d us\n", launch_vec_mul_mat<alignedMatType, alignedVecType>(SIMD, Transform, Scale, Samples));
+	std::printf("- SIMD: %d us\n", launch_vec_mul_mat<alignedMatType, alignedVecType>(SIMD, Transform, Scale, Samples));
 
 	for(std::size_t i = 0; i < Samples; ++i)
 	{
@@ -76,10 +76,10 @@ static int comp_vec3_mul_mat3(std::size_t Samples)
 	packedVecType const Scale(0.01, 0.02, 0.05);
 
 	std::vector<packedVecType> SISD;
-	printf("- SISD: %d us\n", launch_vec_mul_mat<packedMatType, packedVecType>(SISD, Transform, Scale, Samples));
+	std::printf("- SISD: %d us\n", launch_vec_mul_mat<packedMatType, packedVecType>(SISD, Transform, Scale, Samples));
 
 	std::vector<alignedVecType> SIMD;
-	printf("- SIMD: %d us\n", launch_vec_mul_mat<alignedMatType, alignedVecType>(SIMD, Transform, Scale, Samples));
+	std::printf("- SIMD: %d us\n", launch_vec_mul_mat<alignedMatType, alignedVecType>(SIMD, Transform, Scale, Samples));
 
 	for(std::size_t i = 0; i < Samples; ++i)
 	{
@@ -102,10 +102,10 @@ static int comp_vec4_mul_mat4(std::size_t Samples)
 	packedVecType const Scale(0.01, 0.02, 0.03, 0.05);
 
 	std::vector<packedVecType> SISD;
-	printf("- SISD: %d us\n", launch_vec_mul_mat<packedMatType, packedVecType>(SISD, Transform, Scale, Samples));
+	std::printf("- SISD: %d us\n", launch_vec_mul_mat<packedMatType, packedVecType>(SISD, Transform, Scale, Samples));
 
 	std::vector<alignedVecType> SIMD;
-	printf("- SIMD: %d us\n", launch_vec_mul_mat<alignedMatType, alignedVecType>(SIMD, Transform, Scale, Samples));
+	std::printf("- SIMD: %d us\n", launch_vec_mul_mat<alignedMatType, alignedVecType>(SIMD, Transform, Scale, Samples));
 
 	for(std::size_t i = 0; i < Samples; ++i)
 	{
@@ -123,22 +123,22 @@ int main()
 	
 	int Error = 0;
 
-	printf("vec2 * mat2:\n");
+	std::printf("vec2 * mat2:\n");
 	Error += comp_vec2_mul_mat2<glm::mat2, glm::vec2, glm::aligned_mat2, glm::aligned_vec2>(Samples);
 	
-	printf("dvec2 * dmat2:\n");
+	std::printf("dvec2 * dmat2:\n");
 	Error += comp_vec2_mul_mat2<glm::dmat2, glm::dvec2,glm::aligned_dmat2, glm::aligned_dvec2>(Samples);
 
-	printf("vec3 * mat3:\n");
+	std::printf("vec3 * mat3:\n");
 	Error += comp_vec3_mul_mat3<glm::mat3, glm::vec3, glm::aligned_mat3, glm::aligned_vec3>(Samples);
 	
-	printf("dvec3 * dmat3:\n");
+	std::printf("dvec3 * dmat3:\n");
 	Error += comp_vec3_mul_mat3<glm::dmat3, glm::dvec3, glm::aligned_dmat3, glm::aligned_dvec3>(Samples);
 
-	printf("vec4 * mat4:\n");
+	std::printf("vec4 * mat4:\n");
 	Error += comp_vec4_mul_mat4<glm::mat4, glm::vec4, glm::aligned_mat4, glm::aligned_vec4>(Samples);
 	
-	printf("dvec4 * dmat4:\n");
+	std::printf("dvec4 * dmat4:\n");
 	Error += comp_vec4_mul_mat4<glm::dmat4, glm::dvec4, glm::aligned_dmat4, glm::aligned_dvec4>(Samples);
 
 	return Error;

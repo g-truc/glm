@@ -68,7 +68,7 @@ namespace log2_
 
 			std::clock_t End = clock();
 
-			printf("glm::log2<int>: %d clocks\n", static_cast<int>(End - Begin));
+			std::printf("glm::log2<int>: %d clocks\n", static_cast<int>(End - Begin));
 		}
 
 		{
@@ -82,7 +82,7 @@ namespace log2_
 
 			std::clock_t End = clock();
 
-			printf("glm::log2<ivec4>: %d clocks\n", static_cast<int>(End - Begin));
+			std::printf("glm::log2<ivec4>: %d clocks\n", static_cast<int>(End - Begin));
 		}
 
 #		if GLM_HAS_BITSCAN_WINDOWS
@@ -104,7 +104,7 @@ namespace log2_
 
 			std::clock_t End = clock();
 
-			printf("glm::log2<ivec4> inlined: %d clocks\n", static_cast<int>(End - Begin));
+			std::printf("glm::log2<ivec4> inlined: %d clocks\n", static_cast<int>(End - Begin));
 		}
 
 
@@ -124,7 +124,7 @@ namespace log2_
 
 			std::clock_t End = clock();
 
-			printf("glm::log2<ivec4> inlined no cast: %d clocks\n", static_cast<int>(End - Begin));
+			std::printf("glm::log2<ivec4> inlined no cast: %d clocks\n", static_cast<int>(End - Begin));
 		}
 
 
@@ -144,7 +144,7 @@ namespace log2_
 
 			std::clock_t End = clock();
 
-			printf("glm::log2<ivec4> reinterpret: %d clocks\n", static_cast<int>(End - Begin));
+			std::printf("glm::log2<ivec4> reinterpret: %d clocks\n", static_cast<int>(End - Begin));
 		}
 #		endif//GLM_HAS_BITSCAN_WINDOWS
 
@@ -159,7 +159,7 @@ namespace log2_
 
 			std::clock_t End = clock();
 
-			printf("glm::log2<float>: %d clocks\n", static_cast<int>(End - Begin));
+			std::printf("glm::log2<float>: %d clocks\n", static_cast<int>(End - Begin));
 		}
 
 		{
@@ -173,7 +173,7 @@ namespace log2_
 
 			std::clock_t End = clock();
 
-			printf("glm::log2<vec4>: %d clocks\n", static_cast<int>(End - Begin));
+			std::printf("glm::log2<vec4>: %d clocks\n", static_cast<int>(End - Begin));
 		}
 
 		return Error;

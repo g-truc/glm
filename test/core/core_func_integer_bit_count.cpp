@@ -1,13 +1,13 @@
 // This has the programs for computing the number of 1-bits
 // in a word, or byte, etc.
 // Max line length is 57, to fit in hacker.book.
-#include <stdio.h>
+#include <cstdio>
 #include <stdlib.h>     //To define "exit", req'd by XLC.
 #include <ctime>
 
 unsigned rotatel(unsigned x, int n)
 {
-	if (static_cast<unsigned>(n) > 63) {printf("rotatel, n out of range.\n"); exit(1);}
+	if (static_cast<unsigned>(n) > 63) {std::printf("rotatel, n out of range.\n"); exit(1);}
 	return (x << n) | (x >> (32 - n));
 }
 
@@ -171,7 +171,7 @@ int errors;
 void error(int x, int y)
 {
 	errors = errors + 1;
-	printf("Error for x = %08x, got %08x\n", x, y);
+	std::printf("Error for x = %08x, got %08x\n", x, y);
 }
 
 int main()
@@ -199,7 +199,7 @@ int main()
 		if (pop0(test[i]) != test[i+1]) error(test[i], pop0(test[i]));}
 	TimestampEnd = std::clock();
 
-	printf("pop0: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
+	std::printf("pop0: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
 
 	TimestampBeg = std::clock();
 	for (std::size_t k = 0; k < Count; ++k)
@@ -207,7 +207,7 @@ int main()
 		if (pop1(test[i]) != test[i+1]) error(test[i], pop1(test[i]));}
 	TimestampEnd = std::clock();
 
-	printf("pop1: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
+	std::printf("pop1: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
 
 	TimestampBeg = std::clock();
 	for (std::size_t k = 0; k < Count; ++k)
@@ -215,7 +215,7 @@ int main()
 		if (pop2(test[i]) != test[i+1]) error(test[i], pop2(test[i]));}
 	TimestampEnd = std::clock();
 
-	printf("pop2: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
+	std::printf("pop2: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
 
 	TimestampBeg = std::clock();
 	for (std::size_t k = 0; k < Count; ++k)
@@ -223,7 +223,7 @@ int main()
 		if (pop3(test[i]) != test[i+1]) error(test[i], pop3(test[i]));}
 	TimestampEnd = std::clock();
 
-	printf("pop3: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
+	std::printf("pop3: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
 
 	TimestampBeg = std::clock();
 	for (std::size_t k = 0; k < Count; ++k)
@@ -231,7 +231,7 @@ int main()
 		if (pop4(test[i]) != test[i+1]) error(test[i], pop4(test[i]));}
 	TimestampEnd = std::clock();
 
-	printf("pop4: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
+	std::printf("pop4: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
 
 	TimestampBeg = std::clock();
 	for (std::size_t k = 0; k < Count; ++k)
@@ -239,7 +239,7 @@ int main()
 		if (pop5(test[i]) != test[i+1]) error(test[i], pop5(test[i]));}
 	TimestampEnd = std::clock();
 
-	printf("pop5: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
+	std::printf("pop5: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
 
 	TimestampBeg = std::clock();
 	for (std::size_t k = 0; k < Count; ++k)
@@ -247,7 +247,7 @@ int main()
 		if (pop5a(test[i]) != test[i+1]) error(test[i], pop5a(test[i]));}
 	TimestampEnd = std::clock();
 
-	printf("pop5a: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
+	std::printf("pop5a: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
 
 	TimestampBeg = std::clock();
 	for (std::size_t k = 0; k < Count; ++k)
@@ -255,7 +255,7 @@ int main()
 		if (pop6(test[i]) != test[i+1]) error(test[i], pop6(test[i]));}
 	TimestampEnd = std::clock();
 
-	printf("pop6: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
+	std::printf("pop6: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
 
 	TimestampBeg = std::clock();
 	for (std::size_t k = 0; k < Count; ++k)
@@ -264,7 +264,7 @@ int main()
 		if (pop7(test[i]) != test[i+1]) error(test[i], pop7(test[i]));}
 	TimestampEnd = std::clock();
 
-	printf("pop7: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
+	std::printf("pop7: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
 
 	TimestampBeg = std::clock();
 	for (std::size_t k = 0; k < Count; ++k)
@@ -273,7 +273,7 @@ int main()
 		if (pop8(test[i]) != test[i+1]) error(test[i], pop8(test[i]));}
 	TimestampEnd = std::clock();
 
-	printf("pop8: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
+	std::printf("pop8: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
 
 	TimestampBeg = std::clock();
 	for (std::size_t k = 0; k < Count; ++k)
@@ -282,10 +282,10 @@ int main()
 		if (pop9(test[i]) != test[i+1]) error(test[i], pop9(test[i]));}
 	TimestampEnd = std::clock();
 
-	printf("pop9: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
+	std::printf("pop9: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
 
 	if (errors == 0)
-		printf("Passed all %d cases.\n", static_cast<int>(sizeof(test)/8));
+		std::printf("Passed all %d cases.\n", static_cast<int>(sizeof(test)/8));
 
 #	endif//NDEBUG
 }

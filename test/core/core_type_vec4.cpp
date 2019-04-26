@@ -799,7 +799,7 @@ int main()
 
 		glm::ivec4 const g2 = *reinterpret_cast<glm::ivec4 const* const>(&f2);
 
-		printf("GNI\n");
+		std::printf("GNI\n");
 	}
 
 	{
@@ -819,7 +819,7 @@ int main()
 
 		glm::uvec4 const g2 = *reinterpret_cast<glm::uvec4 const* const>(&f2);
 
-		printf("GNI\n");
+		std::printf("GNI\n");
 	}
 */
 
