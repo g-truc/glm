@@ -2,12 +2,12 @@
 // in a word, or byte, etc.
 // Max line length is 57, to fit in hacker.book.
 #include <cstdio>
-#include <stdlib.h>     //To define "exit", req'd by XLC.
+#include <cstdlib>     //To define "exit", req'd by XLC.
 #include <ctime>
 
 unsigned rotatel(unsigned x, int n)
 {
-	if (static_cast<unsigned>(n) > 63) {std::printf("rotatel, n out of range.\n"); exit(1);}
+	if (static_cast<unsigned>(n) > 63) {std::printf("rotatel, n out of range.\n"); std::exit(1);}
 	return (x << n) | (x >> (32 - n));
 }
 
