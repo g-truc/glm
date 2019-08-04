@@ -12,8 +12,8 @@ include(CMakePackageConfigHelpers)
 enable_testing()
 
 option(GLM_QUIET "No CMake Message" OFF)
-option(BUILD_SHARED_LIBS "Build shared library" ON)
-option(BUILD_STATIC_LIBS "Build static library" ON)
+option(BUILD_SHARED_LIBS "Build shared library" OFF)
+option(BUILD_STATIC_LIBS "Build static library" OFF)
 option(GLM_TEST_ENABLE_CXX_98 "Enable C++ 98" OFF)
 option(GLM_TEST_ENABLE_CXX_11 "Enable C++ 11" OFF)
 option(GLM_TEST_ENABLE_CXX_14 "Enable C++ 14" OFF)
@@ -212,15 +212,42 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 
 	add_compile_options(-Werror -Weverything)
 	add_compile_options(-Wno-c++98-compat -Wno-c++98-compat-pedantic -Wno-c++11-long-long -Wno-padded -Wno-gnu-anonymous-struct -Wno-nested-anon-types)
-	add_compile_options(-Wno-undefined-reinterpret-cast -Wno-sign-conversion -Wno-unused-variable -Wno-missing-prototypes -Wno-unreachable-code -Wno-missing-variable-declarations -Wno-sign-compare -Wno-global-constructors -Wno-unused-macros -Wno-format-nonliteral)
+	add_compile_options(-Wno-undefined-reinterpret-cast -Wno-sign-conversion -Wno-unused-variable
+			-Wno-missing-prototypes -Wno-unreachable-code -Wno-missing-variable-declarations -Wno-sign-compare
+			-Wno-global-constructors -Wno-unused-macros -Wno-format-nonliteral
+			-Wno-unknown-warning-option # helps with CI
+			)
+	add_compile_options(
+			-Wno-error=reorder
+			-Wno-error=documentation
+			-Wno-error=conversion
+			-Wno-error=implicit-int-conversion
+			)
 
 elseif(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
 	if(NOT GLM_QUIET)
 		message("GLM: GCC - ${CMAKE_CXX_COMPILER_ID} compiler")
 	endif()
 
+	add_compile_options(-Werror -Wall -Wextra)
 	add_compile_options(-O2)
 	add_compile_options(-Wno-long-long)
+	add_compile_options(
+			-Wno-error=unused-variable
+			-Wno-error=unused-but-set-variable
+			-Wno-error=reorder
+			-Wno-error=sign-compare
+			-Wno-error=sequence-point
+			-Wno-error=uninitialized -Wno-error=maybe-uninitialized #FIXME: use of uninitialized variables results in UB
+			-Wno-error=strict-aliasing
+			)
+
+	if(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER_EQUAL 6.0)
+		add_compile_options(-Wno-error=shift-negative-value)
+	endif()
+	if(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER_EQUAL 8.0)
+		add_compile_options(-Wno-error=class-memaccess)
+	endif()
 
 elseif(CMAKE_CXX_COMPILER_ID MATCHES "Intel")
 	if(NOT GLM_QUIET)
@@ -237,59 +264,14 @@ elseif(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
 	add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 endif()
 
-include_directories("${PROJECT_SOURCE_DIR}")
-
 add_subdirectory(glm)
 add_subdirectory(test)
-
-set(GLM_INSTALL_CONFIGDIR "${CMAKE_INSTALL_LIBDIR}/cmake/glm")
-install(DIRECTORY glm DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
-
-
-# CMake automatically adds an architecture compatibility check to make sure
-# 32 and 64 bit code is not accidentally mixed. For a header-only library this
-# is not required. The check can be disabled by temporarily unsetting
-# CMAKE_SIZEOF_VOID_P. In CMake 3.14 and later this can be achieved more cleanly
-# with write_basic_package_version_file(ARCH_INDEPENDENT).
-# TODO: Use this once a newer CMake can be required.
-set(GLM_SIZEOF_VOID_P ${CMAKE_SIZEOF_VOID_P})
-unset(CMAKE_SIZEOF_VOID_P)
-write_basic_package_version_file("${CMAKE_CURRENT_BINARY_DIR}/glmConfigVersion.cmake" VERSION ${GLM_VERSION} COMPATIBILITY AnyNewerVersion)
-set(CMAKE_SIZEOF_VOID_P ${GLM_SIZEOF_VOID_P})
-
-# build tree package config
-configure_file(cmake/glmBuildConfig.cmake.in glmConfig.cmake @ONLY)
-
-# install tree package config
-configure_package_config_file(
-	cmake/glmConfig.cmake.in
-	${GLM_INSTALL_CONFIGDIR}/glmConfig.cmake
-	INSTALL_DESTINATION ${GLM_INSTALL_CONFIGDIR}
-	PATH_VARS CMAKE_INSTALL_INCLUDEDIR
-	NO_CHECK_REQUIRED_COMPONENTS_MACRO)
-
-install(FILES
-	"${CMAKE_CURRENT_BINARY_DIR}/${GLM_INSTALL_CONFIGDIR}/glmConfig.cmake"
-	"${CMAKE_CURRENT_BINARY_DIR}/glmConfigVersion.cmake"
-	DESTINATION ${GLM_INSTALL_CONFIGDIR})
-
-add_library(glm INTERFACE)
-target_include_directories(glm INTERFACE
-	$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
-	$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)
-install(TARGETS glm EXPORT glmTargets)
-
-export(EXPORT glmTargets FILE "${CMAKE_CURRENT_BINARY_DIR}/glmTargets.cmake")
-
-install(EXPORT glmTargets FILE glmTargets.cmake DESTINATION ${GLM_INSTALL_CONFIGDIR})
 
 # build pkg-config file
 configure_file("./cmake/glm.pc.in" "glm.pc" @ONLY)
 
 # install pkg-config file
-install(FILES "${CMAKE_CURRENT_BINARY_DIR}/glm.pc" DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig")
-
-export(PACKAGE glm)
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/glm.pc DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
 
 if(NOT TARGET uninstall)
 	configure_file(
