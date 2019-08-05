@@ -178,7 +178,7 @@ namespace detail
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<genIUType>::is_integer, "'prevPowerOfTwo' only accept integer inputs");
 
-		return isPowerOfTwo(value) ? value : static_cast<genIUType>(1) << findMSB(value);
+		return isPowerOfTwo(value) ? value : static_cast<genIUType>(1 << findMSB(value));
 	}
 
 	template<typename genIUType>

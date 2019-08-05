@@ -57,7 +57,7 @@ namespace glm
 
 	/// Higher multiple number of Source.
 	///
-	/// @tparam genType Floating-point or integer scalar or vector types.
+	/// @tparam genIUType Floating-point or integer scalar or vector types.
 	///
 	/// @param v Source value to which is applied the function
 	/// @param Multiple Must be a null or positive value
@@ -68,7 +68,7 @@ namespace glm
 
 	/// Lower multiple number of Source.
 	///
-	/// @tparam genType Floating-point or integer scalar or vector types.
+	/// @tparam genIUType Floating-point or integer scalar or vector types.
 	///
 	/// @param v Source value to which is applied the function
 	/// @param Multiple Must be a null or positive value

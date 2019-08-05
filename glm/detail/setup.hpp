@@ -710,6 +710,12 @@ namespace detail
 		typedef unsigned char type;
 	};
 
+    template<>
+    struct make_unsigned<signed char>
+    {
+        typedef unsigned char type;
+    };
+
 	template<>
 	struct make_unsigned<short>
 	{
