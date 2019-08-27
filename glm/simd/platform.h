@@ -235,10 +235,11 @@
 
 // User defines: GLM_FORCE_PURE GLM_FORCE_INTRINSICS GLM_FORCE_SSE2 GLM_FORCE_SSE3 GLM_FORCE_AVX GLM_FORCE_AVX2 GLM_FORCE_AVX2
 
-#define GLM_ARCH_MIPS_BIT	(0x10000000)
-#define GLM_ARCH_PPC_BIT	(0x20000000)
-#define GLM_ARCH_ARM_BIT	(0x40000000)
-#define GLM_ARCH_X86_BIT	(0x80000000)
+#define GLM_ARCH_MIPS_BIT	  (0x10000000)
+#define GLM_ARCH_PPC_BIT	  (0x20000000)
+#define GLM_ARCH_ARM_BIT	  (0x40000000)
+#define GLM_ARCH_ARMV8_BIT  (0x01000000)
+#define GLM_ARCH_X86_BIT	  (0x80000000)
 
 #define GLM_ARCH_SIMD_BIT	(0x00001000)
 
@@ -263,6 +264,7 @@
 #define GLM_ARCH_AVX		(GLM_ARCH_AVX_BIT | GLM_ARCH_SSE42)
 #define GLM_ARCH_AVX2		(GLM_ARCH_AVX2_BIT | GLM_ARCH_AVX)
 #define GLM_ARCH_ARM		(GLM_ARCH_ARM_BIT)
+#define GLM_ARCH_ARMV8		(GLM_ARCH_NEON_BIT | GLM_ARCH_SIMD_BIT | GLM_ARCH_ARM | GLM_ARCH_ARMV8_BIT)
 #define GLM_ARCH_NEON		(GLM_ARCH_NEON_BIT | GLM_ARCH_SIMD_BIT | GLM_ARCH_ARM)
 #define GLM_ARCH_MIPS		(GLM_ARCH_MIPS_BIT)
 #define GLM_ARCH_PPC		(GLM_ARCH_PPC_BIT)
@@ -270,7 +272,11 @@
 #if defined(GLM_FORCE_ARCH_UNKNOWN) || defined(GLM_FORCE_PURE)
 #	define GLM_ARCH GLM_ARCH_UNKNOWN
 #elif defined(GLM_FORCE_NEON)
-#	define GLM_ARCH (GLM_ARCH_NEON)
+#	if __ARM_ARCH >= 8
+#		define GLM_ARCH (GLM_ARCH_ARMV8)
+#	else
+#		define GLM_ARCH (GLM_ARCH_NEON)
+#	endif
 #	define GLM_FORCE_INTRINSICS
 #elif defined(GLM_FORCE_AVX2)
 #	define GLM_ARCH (GLM_ARCH_AVX2)
@@ -313,9 +319,14 @@
 #		define GLM_ARCH (GLM_ARCH_SSE2)
 #	elif defined(__i386__)
 #		define GLM_ARCH (GLM_ARCH_X86)
+#	elif defined(__ARM_ARCH) && (__ARM_ARCH >= 8)
+#		define GLM_ARCH (GLM_ARCH_ARMV8)
+#warning "ARM v8"
 #	elif defined(__ARM_NEON)
+#warning "ARM NEON"
 #		define GLM_ARCH (GLM_ARCH_ARM | GLM_ARCH_NEON)
 #	elif defined(__arm__ ) || defined(_M_ARM)
+#warning "ARM v6"
 #		define GLM_ARCH (GLM_ARCH_ARM)
 #	elif defined(__mips__ )
 #		define GLM_ARCH (GLM_ARCH_MIPS)
@@ -355,6 +366,8 @@
 #	include <pmmintrin.h>
 #elif GLM_ARCH & GLM_ARCH_SSE2_BIT
 #	include <emmintrin.h>
+#elif GLM_ARCH & GLM_ARCH_NEON_BIT
+#	include <arm_neon.h>
 #endif//GLM_ARCH
 
 #if GLM_ARCH & GLM_ARCH_SSE2_BIT
@@ -379,4 +392,10 @@
 #if GLM_ARCH & GLM_ARCH_AVX2_BIT
 	typedef __m256i			glm_i64vec4;
 	typedef __m256i			glm_u64vec4;
+#endif
+
+#if GLM_ARCH & GLM_ARCH_NEON_BIT
+	typedef float32x4_t			glm_f32vec4;
+	typedef int32x4_t			glm_i32vec4;
+	typedef uint32x4_t			glm_u32vec4;
 #endif
