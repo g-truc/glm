@@ -462,7 +462,7 @@ namespace detail
 
 #endif//GLM_ARCH & GLM_ARCH_SSE2_BIT
 
-#if GLM_ARCH & GLM_ARCH_NEON_BIT
+#if 0 // GLM_ARCH & GLM_ARCH_NEON_BIT
 namespace glm {
 namespace detail {
 
