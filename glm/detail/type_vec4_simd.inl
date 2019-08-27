@@ -462,7 +462,7 @@ namespace detail
 
 #endif//GLM_ARCH & GLM_ARCH_SSE2_BIT
 
-#if 0 // GLM_ARCH & GLM_ARCH_NEON_BIT
+#if GLM_ARCH & GLM_ARCH_NEON_BIT
 namespace glm {
 namespace detail {
 
@@ -505,6 +505,7 @@ namespace detail {
 		}
 	};
 
+#if 0
 	template<qualifier Q>
 	struct compute_vec4_sub<float, Q, true>
 	{
@@ -687,10 +688,11 @@ namespace detail {
 			return !compute_vec4_equal<int, Q, false, 32, true>::call(v1, v2);
 		}
 	};
+#endif
 
 }//namespace detail
 
-#if !GLM_CONFIG_XYZW_ONLY
+#if 0 // !GLM_CONFIG_XYZW_ONLY
 	template<>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, float, aligned_lowp>::vec(float _s) :
 		data(vdupq_n_f32(_s))
