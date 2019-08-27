@@ -623,7 +623,6 @@ namespace detail {
 		}
 	};
 
-#ifdef __aarch64__
 	template<qualifier Q>
 	struct compute_vec4_equal<uint, Q, false, 32, true>
 	{
@@ -688,7 +687,6 @@ namespace detail {
 			return !compute_vec4_equal<int, Q, false, 32, true>::call(v1, v2);
 		}
 	};
-#endif
 
 }//namespace detail
 
