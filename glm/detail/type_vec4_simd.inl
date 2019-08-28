@@ -505,7 +505,6 @@ namespace detail {
 		}
 	};
 
-#if 0
 	template<qualifier Q>
 	struct compute_vec4_sub<float, Q, true>
 	{
@@ -688,6 +687,7 @@ namespace detail {
 			return !compute_vec4_equal<int, Q, false, 32, true>::call(v1, v2);
 		}
 	};
+#if 0
 #endif
 
 }//namespace detail
