@@ -692,7 +692,6 @@ namespace detail {
 
 }//namespace detail
 
-#if 0 // !GLM_CONFIG_XYZW_ONLY
 	template<>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, float, aligned_lowp>::vec(float _s) :
 		data(vdupq_n_f32(_s))
@@ -744,6 +743,7 @@ namespace detail {
 		data(rhs.data)
 	{}
 
+#if 0 // !GLM_CONFIG_XYZW_ONLY
 	template<>
 	template<>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, float, aligned_highp>::vec(const vec<4, int, aligned_highp>& rhs) :
