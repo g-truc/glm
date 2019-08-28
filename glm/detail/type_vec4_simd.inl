@@ -743,7 +743,8 @@ namespace detail {
 		data(rhs.data)
 	{}
 
-#if 0 // !GLM_CONFIG_XYZW_ONLY
+#if !GLM_CONFIG_XYZW_ONLY
+#if 1
 	template<>
 	template<>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, float, aligned_highp>::vec(const vec<4, int, aligned_highp>& rhs) :
@@ -767,7 +768,7 @@ namespace detail {
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, float, aligned_mediump>::vec(int _x, int _y, int _z, int _w) :
 		data(vcvtq_f32_s32(vec<4, int, aligned_mediump>(_x, _y, _z, _w).data))
 	{}
-
+#else
 
 	template<>
 	template<>
@@ -793,6 +794,7 @@ namespace detail {
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, float, aligned_highp>::vec(uint _x, uint _y, uint _z, uint _w) :
 		data(vcvtq_f32_u32(vec<4, uint, aligned_highp>(_x, _y, _z, _w).data))
 	{}
+#endif
 
 #endif
 }//namespace glm
