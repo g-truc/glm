@@ -5,6 +5,8 @@ function(glmCreateTestGTC NAME)
 	add_test(
 		NAME ${SAMPLE_NAME}
 		COMMAND $<TARGET_FILE:${SAMPLE_NAME}> )
+		
+	target_link_libraries(${SAMPLE_NAME} PRIVATE glm::glm_static)
 endfunction()
 
 if(GLM_TEST_ENABLE)

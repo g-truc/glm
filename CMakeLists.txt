@@ -232,8 +232,6 @@ elseif(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
 	add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 endif()
 
-include_directories("${PROJECT_SOURCE_DIR}")
-
 add_subdirectory(glm)
 add_subdirectory(test)
 
