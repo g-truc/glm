@@ -29,7 +29,7 @@ Thanks for contributing to the project by [submitting issues](https://github.com
 #include <glm/mat4x4.hpp> // glm::mat4
 #include <glm/ext/matrix_transform.hpp> // glm::translate, glm::rotate, glm::scale
 #include <glm/ext/matrix_clip_space.hpp> // glm::perspective
-#include <glm/ext/constants.hpp> // glm::pi
+#include <glm/ext/scalar_constants.hpp> // glm::pi
 
 glm::mat4 camera(float Translate, glm::vec2 const& Rotate)
 {
@@ -52,6 +52,10 @@ glm::mat4 camera(float Translate, glm::vec2 const& Rotate)
 | [AppVeyor](https://ci.appveyor.com/project/Groovounet/glm)| Windows 32 and 64 | Visual Studio 2013, Visual Studio 2015, Visual Studio 2017 | [![AppVeyor](https://ci.appveyor.com/api/projects/status/32r7s2skrgm9ubva?svg=true)](https://ci.appveyor.com/project/Groovounet/glm)
 
 ## Release notes
+
+### [GLM 0.9.9.9](https://github.com/g-truc/glm/commits/master) - 2020-XX-XX
+#### Fixes:
+- Fixed incorrect assertion for min and max #1009
 
 ### [GLM 0.9.9.8](https://github.com/g-truc/glm/releases/tag/0.9.9.8) - 2020-04-13
 #### Features:

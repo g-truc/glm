@@ -3,14 +3,14 @@
 #include <cassert>
 #include <cstddef>
 
-#define GLM_VERSION_MAJOR			0
-#define GLM_VERSION_MINOR			9
-#define GLM_VERSION_PATCH			9
-#define GLM_VERSION_REVISION		8
-#define GLM_VERSION					998
-#define GLM_VERSION_MESSAGE			"GLM: version 0.9.9.8"
+#define GLM_VERSION_MAJOR 0
+#define GLM_VERSION_MINOR 9
+#define GLM_VERSION_PATCH 9
+#define GLM_VERSION_REVISION 9
+#define GLM_VERSION 999
+#define GLM_VERSION_MESSAGE "GLM: version 0.9.9.9"
 
-#define GLM_SETUP_INCLUDED			GLM_VERSION
+#define GLM_SETUP_INCLUDED GLM_VERSION
 
 ///////////////////////////////////////////////////////////////////////////////////
 // Active states
