@@ -24,11 +24,9 @@ namespace glm
 	}
 
 	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER qua<T, Q> angleAxis(T const& angle, vec<3, T, Q> const& v)
+	GLM_FUNC_QUALIFIER qua<T, Q> angleAxis(T angle, vec<3, T, Q> const& v)
 	{
-		T const a(angle);
-		T const s = glm::sin(a * static_cast<T>(0.5));
-
-		return qua<T, Q>(glm::cos(a * static_cast<T>(0.5)), v * s);
+		T const a(angle * static_cast<T>(0.5));
+		return qua<T, Q>(glm::cos(a), v * glm::sin(a));
 	}
 }//namespace glm
