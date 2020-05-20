@@ -99,7 +99,7 @@ namespace glm
 	///
 	/// @param eye Position of the camera
 	/// @param center Position where the camera is looking at
-	/// @param up Normalized up vector, how the camera is oriented. Typically (0, 0, 1)
+	/// @param up Normalized up vector, how the camera is oriented. Typically (0, 1, 0)
 	///
 	/// @tparam T A floating-point scalar type
 	/// @tparam Q A value from qualifier enum
@@ -113,7 +113,7 @@ namespace glm
 	///
 	/// @param eye Position of the camera
 	/// @param center Position where the camera is looking at
-	/// @param up Normalized up vector, how the camera is oriented. Typically (0, 0, 1)
+	/// @param up Normalized up vector, how the camera is oriented. Typically (0, 1, 0)
 	///
 	/// @tparam T A floating-point scalar type
 	/// @tparam Q A value from qualifier enum
@@ -127,7 +127,7 @@ namespace glm
 	///
 	/// @param eye Position of the camera
 	/// @param center Position where the camera is looking at
-	/// @param up Normalized up vector, how the camera is oriented. Typically (0, 0, 1)
+	/// @param up Normalized up vector, how the camera is oriented. Typically (0, 1, 0)
 	///
 	/// @tparam T A floating-point scalar type
 	/// @tparam Q A value from qualifier enum
