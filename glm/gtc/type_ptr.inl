@@ -61,6 +61,10 @@ namespace glm
 		return &(m[0].x);
 	}
 
+	// BUG:
+	// Incorrect behavior when defined GLM_FORCE_DEFAULT_ALIGNED_GENTYPES
+	// mat3 pointer contains aligment bytes
+
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER T* value_ptr(mat<3, 3, T, Q>& m)
 	{
