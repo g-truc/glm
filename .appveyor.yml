@@ -51,8 +51,8 @@ matrix:
 
 before_build:
   - ps: |
-      mkdir build
-      cd build
+      mkdir build_appveyor
+      cd build_appveyor
 
       if ("$env:APPVEYOR_JOB_NAME" -match "Image: Visual Studio 2013") {
           $env:generator="Visual Studio 12 2013"
