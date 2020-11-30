@@ -1,6 +1,16 @@
+#define GLM_CONFIG_UNRESTRICTED_GENTYPE
+
 #include <glm/ext/vector_integer.hpp>
 #include <glm/ext/scalar_int_sized.hpp>
 #include <glm/ext/scalar_uint_sized.hpp>
+#include <glm/ext/vector_int1.hpp>
+#include <glm/ext/vector_int2.hpp>
+#include <glm/ext/vector_int3.hpp>
+#include <glm/ext/vector_int4.hpp>
+#include <glm/ext/vector_bool1.hpp>
+#include <glm/ext/vector_bool2.hpp>
+#include <glm/ext/vector_bool3.hpp>
+#include <glm/ext/vector_bool4.hpp>
 #include <vector>
 #include <ctime>
 #include <cstdio>
@@ -532,6 +542,161 @@ namespace findNSB
 	}
 }//namespace findNSB
 
+template<typename T, typename B>
+struct test_mix_entry
+{
+	T x;
+	T y;
+	B a;
+	T Result;
+};
+
+static int test_mix()
+{
+	test_mix_entry<int, bool> const TestBool[] =
+	{
+		{0, 1, false, 0},
+		{0, 1, true, 1},
+		{-1, 1, false, -1},
+		{-1, 1, true, 1}
+	};
+
+	test_mix_entry<int, int> const TestInt[] =
+	{
+		{0, 1, 0, 0},
+		{0, 1, 1, 1},
+		{-1, 1, 0, -1},
+		{-1, 1, 1, 1}
+	};
+
+	test_mix_entry<glm::ivec2, bool> const TestVec2Bool[] =
+	{
+		{glm::ivec2(0), glm::ivec2(1), false, glm::ivec2(0)},
+		{glm::ivec2(0), glm::ivec2(1), true, glm::ivec2(1)},
+		{glm::ivec2(-1), glm::ivec2(1), false, glm::ivec2(-1)},
+		{glm::ivec2(-1), glm::ivec2(1), true, glm::ivec2(1)}
+	};
+
+	test_mix_entry<glm::ivec2, glm::bvec2> const TestBVec2[] =
+	{
+		{glm::ivec2(0), glm::ivec2(1), glm::bvec2(false), glm::ivec2(0)},
+		{glm::ivec2(0), glm::ivec2(1), glm::bvec2(true), glm::ivec2(1)},
+		{glm::ivec2(-1), glm::ivec2(1), glm::bvec2(false), glm::ivec2(-1)},
+		{glm::ivec2(-1), glm::ivec2(1), glm::bvec2(true), glm::ivec2(1)},
+		{glm::ivec2(-1), glm::ivec2(1), glm::bvec2(true, false), glm::ivec2(1, -1)}
+	};
+
+	test_mix_entry<glm::ivec3, bool> const TestVec3Bool[] =
+	{
+		{glm::ivec3(0), glm::ivec3(1), false, glm::ivec3(0)},
+		{glm::ivec3(0), glm::ivec3(1), true, glm::ivec3(1)},
+		{glm::ivec3(-1), glm::ivec3(1), false, glm::ivec3(-1)},
+		{glm::ivec3(-1), glm::ivec3(1), true, glm::ivec3(1)}
+	};
+
+	test_mix_entry<glm::ivec3, glm::bvec3> const TestBVec3[] =
+	{
+		{glm::ivec3(0), glm::ivec3(1), glm::bvec3(false), glm::ivec3(0)},
+		{glm::ivec3(0), glm::ivec3(1), glm::bvec3(true), glm::ivec3(1)},
+		{glm::ivec3(-1), glm::ivec3(1), glm::bvec3(false), glm::ivec3(-1)},
+		{glm::ivec3(-1), glm::ivec3(1), glm::bvec3(true), glm::ivec3(1)},
+		{glm::ivec3(1, 2, 3), glm::ivec3(4, 5, 6), glm::bvec3(true, false, true), glm::ivec3(4, 2, 6)}
+	};
+
+	test_mix_entry<glm::ivec4, bool> const TestVec4Bool[] = 
+	{
+		{glm::ivec4(0), glm::ivec4(1), false, glm::ivec4(0)},
+		{glm::ivec4(0), glm::ivec4(1), true, glm::ivec4(1)},
+		{glm::ivec4(-1), glm::ivec4(1), false, glm::ivec4(-1)},
+		{glm::ivec4(-1), glm::ivec4(1), true, glm::ivec4(1)}
+	};
+
+	test_mix_entry<glm::ivec4, glm::bvec4> const TestBVec4[] = 
+	{
+		{glm::ivec4(0, 0, 1, 1), glm::ivec4(2, 2, 3, 3), glm::bvec4(false, true, false, true), glm::ivec4(0, 2, 1, 3)},
+		{glm::ivec4(0), glm::ivec4(1), glm::bvec4(true), glm::ivec4(1)},
+		{glm::ivec4(-1), glm::ivec4(1), glm::bvec4(false), glm::ivec4(-1)},
+		{glm::ivec4(-1), glm::ivec4(1), glm::bvec4(true), glm::ivec4(1)},
+		{glm::ivec4(1, 2, 3, 4), glm::ivec4(5, 6, 7, 8), glm::bvec4(true, false, true, false), glm::ivec4(5, 2, 7, 4)}
+	};
+
+	int Error = 0;
+
+	// Float with bool
+	{
+		for(std::size_t i = 0; i < sizeof(TestBool) / sizeof(test_mix_entry<int, bool>); ++i)
+		{
+			int const Result = glm::mix(TestBool[i].x, TestBool[i].y, TestBool[i].a);
+			Error += Result == TestBool[i].Result ? 0 : 1;
+		}
+	}
+
+	// Float with float
+	{
+		for(std::size_t i = 0; i < sizeof(TestInt) / sizeof(test_mix_entry<int, int>); ++i)
+		{
+			int const Result = glm::mix(TestInt[i].x, TestInt[i].y, TestInt[i].a);
+			Error += Result == TestInt[i].Result ? 0 : 1;
+		}
+	}
+
+	// vec2 with bool
+	{
+		for(std::size_t i = 0; i < sizeof(TestVec2Bool) / sizeof(test_mix_entry<glm::ivec2, bool>); ++i)
+		{
+			glm::ivec2 const Result = glm::mix(TestVec2Bool[i].x, TestVec2Bool[i].y, TestVec2Bool[i].a);
+			Error += glm::all(glm::equal(Result, TestVec2Bool[i].Result)) ? 0 : 1;
+		}
+	}
+
+	// vec2 with bvec2
+	{
+		for(std::size_t i = 0; i < sizeof(TestBVec2) / sizeof(test_mix_entry<glm::ivec2, glm::bvec2>); ++i)
+		{
+			glm::ivec2 const Result = glm::mix(TestBVec2[i].x, TestBVec2[i].y, TestBVec2[i].a);
+			Error += glm::all(glm::equal(Result, TestBVec2[i].Result)) ? 0 : 1;
+		}
+	}
+
+	// vec3 with bool
+	{
+		for(std::size_t i = 0; i < sizeof(TestVec3Bool) / sizeof(test_mix_entry<glm::ivec3, bool>); ++i)
+		{
+			glm::ivec3 const Result = glm::mix(TestVec3Bool[i].x, TestVec3Bool[i].y, TestVec3Bool[i].a);
+			Error += glm::all(glm::equal(Result, TestVec3Bool[i].Result)) ? 0 : 1;
+		}
+	}
+
+	// vec3 with bvec3
+	{
+		for(std::size_t i = 0; i < sizeof(TestBVec3) / sizeof(test_mix_entry<glm::ivec3, glm::bvec3>); ++i)
+		{
+			glm::ivec3 const Result = glm::mix(TestBVec3[i].x, TestBVec3[i].y, TestBVec3[i].a);
+			Error += glm::all(glm::equal(Result, TestBVec3[i].Result)) ? 0 : 1;
+		}
+	}
+
+	// vec4 with bool
+	{
+		for(std::size_t i = 0; i < sizeof(TestVec4Bool) / sizeof(test_mix_entry<glm::ivec4, bool>); ++i)
+		{
+			glm::ivec4 const Result = glm::mix(TestVec4Bool[i].x, TestVec4Bool[i].y, TestVec4Bool[i].a);
+			Error += glm::all(glm::equal(Result, TestVec4Bool[i].Result)) ? 0 : 1;
+		}
+	}
+
+	// vec4 with bvec4
+	{
+		for(std::size_t i = 0; i < sizeof(TestBVec4) / sizeof(test_mix_entry<glm::ivec4, glm::bvec4>); ++i)
+		{
+			glm::ivec4 const Result = glm::mix(TestBVec4[i].x, TestBVec4[i].y, TestBVec4[i].a);
+			Error += glm::all(glm::equal(Result, TestBVec4[i].Result)) ? 0 : 1;
+		}
+	}
+
+	return Error;
+}
+
 int main()
 {
 	int Error = 0;
@@ -542,6 +707,8 @@ int main()
 	Error += prevMultiple::test();
 	Error += nextMultiple::test();
 	Error += findNSB::test();
+
+	Error += test_mix();
 
 	return Error;
 }
