@@ -1,4 +1,4 @@
-#define GLM_CONFIG_UNRESTRICTED_GENTYPE
+#define GLM_FORCE_UNRESTRICTED_GENTYPE
 
 #include <glm/ext/vector_integer.hpp>
 #include <glm/ext/scalar_int_sized.hpp>
