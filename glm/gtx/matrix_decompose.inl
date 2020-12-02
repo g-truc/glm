@@ -174,10 +174,10 @@ namespace detail
 
 			root = sqrt(Row[i][i] - Row[j][j] - Row[k][k] + static_cast<T>(1.0));
 
-			Orientation[i] = static_cast<T>(0.5) * root;
+			Orientation[i + 1] = static_cast<T>(0.5) * root;
 			root = static_cast<T>(0.5) / root;
-			Orientation[j] = root * (Row[i][j] + Row[j][i]);
-			Orientation[k] = root * (Row[i][k] + Row[k][i]);
+			Orientation[j + 1] = root * (Row[i][j] + Row[j][i]);
+			Orientation[k + 1] = root * (Row[i][k] + Row[k][i]);
 			Orientation.w = root * (Row[j][k] - Row[k][j]);
 		} // End if <= 0
 
