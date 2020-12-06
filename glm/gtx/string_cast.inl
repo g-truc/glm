@@ -18,7 +18,7 @@ namespace detail
 		typedef double value_type;
 	};
 
-	GLM_FUNC_QUALIFIER std::string format(const char* msg, ...)
+	GLM_CUDA_FUNC_DECL static std::string format(const char* msg, ...)
 	{
 		std::size_t const STRING_BUFFER(4096);
 		char text[STRING_BUFFER];
