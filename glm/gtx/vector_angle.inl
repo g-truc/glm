@@ -1,5 +1,7 @@
 /// @ref gtx_vector_angle
 
+#include "compatibility.hpp" // glm::atan2
+
 namespace glm
 {
 	template<typename genType>
@@ -20,12 +22,21 @@ namespace glm
 		return acos(clamp(dot(x, y), T(-1), T(1)));
 	}
 
+	template<length_t L, typename T>
+	GLM_FUNC_QUALIFIER T angle(vec<L, T, highp> const& x, vec<L, T, highp> const& y)
+	{
+		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'angle' only accept floating-point inputs");
+		const glm::vec<L, T, highp> xyl = x * length(y);
+		const glm::vec<L, T, highp> yxl = y * length(x);
+		return static_cast<T>(2) * glm::atan2<T, highp>(length(xyl - yxl), length(xyl + yxl));
+	}
+
 	//! \todo epsilon is hard coded to 0.01
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER T orientedAngle(vec<2, T, Q> const& x, vec<2, T, Q> const& y)
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'orientedAngle' only accept floating-point inputs");
-		T const Angle(acos(clamp(dot(x, y), T(-1), T(1))));
+		T const Angle = angle(x, y);
 
 		if(all(epsilonEqual(y, glm::rotate(x, Angle), T(0.0001))))
 			return Angle;
@@ -38,7 +49,7 @@ namespace glm
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'orientedAngle' only accept floating-point inputs");
 
-		T const Angle(acos(clamp(dot(x, y), T(-1), T(1))));
+		T const Angle = angle(x, y);
 		return mix(Angle, -Angle, dot(ref, cross(x, y)) < T(0));
 	}
 }//namespace glm
