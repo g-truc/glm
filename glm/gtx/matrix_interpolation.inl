@@ -79,7 +79,9 @@ namespace glm
 			s = static_cast<T>(1);
 		T const angleCos = (m[0][0] + m[1][1] + m[2][2] - static_cast<T>(1)) * static_cast<T>(0.5);
 		if(abs(angleCos - static_cast<T>(1)) < epsilon)
-			angle = pi<T>() * static_cast<T>(0.25);
+			angle = static_cast<T>(0.0);
+		else if(abs(angleCos + static_cast<T>(1)) < epsilon)
+			angle = pi<T>();
 		else
 			angle = acos(angleCos);
 		axis.x = (m[1][2] - m[2][1]) / s;
