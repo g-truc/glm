@@ -89,7 +89,7 @@ namespace detail
 	{
 		static qua<float, Q> call(qua<float, Q> const& q, qua<float, Q> const& p)
 		{
-			vec<4, float, Q> Result;
+			qua<float, Q> Result;
 			Result.data = _mm_sub_ps(q.data, p.data);
 			return Result;
 		}
@@ -177,7 +177,7 @@ namespace detail
 			uuv = _mm_mul_ps(uuv, two);
 
 			vec<4, float, Q> Result;
-			Result.data = _mm_add_ps(v.Data, _mm_add_ps(uv, uuv));
+			Result.data = _mm_add_ps(v.data, _mm_add_ps(uv, uuv));
 			return Result;
 		}
 	};
