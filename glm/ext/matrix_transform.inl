@@ -150,4 +150,16 @@ namespace glm
             return lookAtRH(eye, center, up);
 #       endif
 	}
+
+	template<typename T, qualifier Q>
+	GLM_FUNC_DECL mat<3, 3, T, Q> viewSpaceNormal(glm::mat4 modelViewMatrix)
+	{
+		return transpose(inverse(modelViewMatrix));
+	}
+
+	template<typename T, qualifier Q>
+	GLM_FUNC_DECL mat<3, 3, T, Q> worldSpaceNormal(glm::mat4 modelMatrix)
+	{
+		return transpose(inverse(modelMatrix));
+	}
 }//namespace glm
