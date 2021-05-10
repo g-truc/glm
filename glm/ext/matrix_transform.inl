@@ -152,9 +152,9 @@ namespace glm
 	}
 
 	template<typename T, qualifier Q>
-	GLM_FUNC_DECL mat<3, 3, T, Q> viewSpaceNormal(glm::mat4 modelViewMatrix)
+	GLM_FUNC_DECL mat<3, 3, T, Q> viewSpaceNormal(glm::mat4 modelMatrix, glm::mat4 viewMatrix)
 	{
-		return transpose(inverse(modelViewMatrix));
+		return transpose(inverse(modelMatrix * viewMatrix));
 	}
 
 	template<typename T, qualifier Q>

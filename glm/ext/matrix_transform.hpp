@@ -140,14 +140,15 @@ namespace glm
 
 	/// Constructs a normal matrix for view space lighting calculations.
 	/// 
-	/// @param modelViewMatrix A 4x4 model matrix multiplied by a 4x4 view matrix. (model * view)
+	/// @param modelMatrix A 4x4 model matrix
+	/// @param viewMatrix A 4x4 view matrix
 	/// 
 	/// @tparam T A floating-point scalar type
 	/// @tparam Q A value from qualifier enum
 	/// 
 	/// @see <a href="https://www.lighthouse3d.com/tutorials/glsl-12-tutorial/the-normal-matrix/">Normal matrix explanation</a>
 	template<typename T, qualifier Q>
-	GLM_FUNC_DECL mat<3, 3, T, Q> viewSpaceNormal(glm::mat4 modelViewMatrix);
+	GLM_FUNC_DECL mat<3, 3, T, Q> viewSpaceNormal(glm::mat4 modelMatrix, glm::mat4 viewMatrix);
 
 	/// Constructs a normal matrix for world space lighting calculations.
 	/// 
