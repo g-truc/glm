@@ -53,13 +53,13 @@ static int test_worldSpaceNormal()
 {
 	int Error = 0;
 
-	glm::vec4 N(0, 1, 0, 0);
+	glm::vec3 N(0, 1, 0);
 	glm::mat4 M(1.0f);
-	glm::vec4 correctDir = N;
+	glm::vec3 correctDir = N;
 
 	M = glm::scale(M, glm::vec3(2.2, 1, 1)); //apply non uniform scale
 
-	Error += (M * N == correctDir) ? 0 : 1; //If the normal direction is the same after the normal matrix application, it is correct.
+	Error += (glm::worldSpaceNormal(M) * N == correctDir) ? 0 : 1; //If the normal direction is the same after the normal matrix application, it is correct.
 
 	return Error;
 }
