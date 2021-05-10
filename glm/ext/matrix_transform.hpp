@@ -148,7 +148,7 @@ namespace glm
 	/// 
 	/// @see <a href="https://www.lighthouse3d.com/tutorials/glsl-12-tutorial/the-normal-matrix/">Normal matrix explanation</a>
 	template<typename T, qualifier Q>
-	GLM_FUNC_DECL mat<3, 3, T, Q> viewSpaceNormal(glm::mat4 modelMatrix, glm::mat4 viewMatrix);
+	GLM_FUNC_DECL mat<3, 3, T, Q> viewSpaceNormal(mat<4, 4, T, Q> modelMatrix, mat<4, 4, T, Q> viewMatrix);
 
 	/// Constructs a normal matrix for world space lighting calculations.
 	/// 
@@ -159,7 +159,7 @@ namespace glm
 	/// 
 	/// @see <a href="https://www.lighthouse3d.com/tutorials/glsl-12-tutorial/the-normal-matrix/">Normal matrix explanation</a>
 	template<typename T, qualifier Q>
-	GLM_FUNC_DECL mat<3, 3, T, Q> worldSpaceNormal(glm::mat4 modelMatrix);
+	GLM_FUNC_DECL mat<3, 3, T, Q> worldSpaceNormal(mat<4, 4, T, Q> modelMatrix);
 	/// @}
 }//namespace glm
 

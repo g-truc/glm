@@ -49,6 +49,39 @@ static int test_rotate()
 	return Error;
 }
 
+static int test_worldSpaceNormal() 
+{
+	int Error = 0;
+
+	glm::vec4 N(0, 1, 0, 0);
+	glm::mat4 M(1.0f);
+	glm::vec4 correctDir = N;
+
+	M = glm::scale(M, glm::vec3(2.2, 1, 1)); //apply non uniform scale
+
+	Error += (M * N == correctDir) ? 0 : 1; //If the normal direction is the same after the normal matrix application, it is correct.
+
+	return Error;
+}
+
+
+static int test_viewSpaceNormal() 
+{
+	int Error = 0;
+
+	glm::vec3 N(0, 1, 1);
+	glm::mat4 M(1.0f);
+	glm::vec3 correctDir = N;
+
+	M = glm::scale(M, glm::vec3(2.2, 1, 1)); //apply non uniform scale
+
+	glm::mat4 V = glm::inverse(M); //view matrix is defined by inverse of model matrix
+
+	Error += (glm::viewSpaceNormal(M, V) * N == correctDir) ? 0 : 1; //If the normal direction is the same after the normal matrix application, it is correct.
+
+	return Error;
+}
+
 int main()
 {
 	int Error = 0;
@@ -56,6 +89,8 @@ int main()
 	Error += test_translate();
 	Error += test_scale();
 	Error += test_rotate();
+	Error += test_worldSpaceNormal();
+	Error += test_viewSpaceNormal();
 
 	return Error;
 }
