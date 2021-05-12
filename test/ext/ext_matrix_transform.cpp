@@ -53,11 +53,11 @@ static int test_rotate()
 //Workaround for floating point accuracy errors.
 bool vec3_approxEqual(glm::vec3 one, glm::vec3 two)
 {
-	double epsilon = 0.000001f;
+	float epsilon = 0.000001f;
 
-	bool xEqual = abs(one.x - two.x) < epsilon;
-	bool yEqual = abs(one.y - two.y) < epsilon;
-	bool zEqual = abs(one.z - two.z) < epsilon;
+	bool xEqual = std::fabs(one.x - two.x) < epsilon;
+	bool yEqual = std::fabs(one.y - two.y) < epsilon;
+	bool zEqual = std::fabs(one.z - two.z) < epsilon;
 
 	return xEqual && yEqual && zEqual;
 }
