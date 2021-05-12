@@ -49,6 +49,19 @@ static int test_rotate()
 	return Error;
 }
 
+//Compares two vectors to check if they are equal
+//Workaround for floating point accuracy errors.
+bool vec3_approxEqual(glm::vec3 one, glm::vec3 two)
+{
+	double epsilon = 0.000001f;
+
+	bool xEqual = abs(one.x - two.x) < epsilon;
+	bool yEqual = abs(one.y - two.y) < epsilon;
+	bool zEqual = abs(one.z - two.z) < epsilon;
+
+	return xEqual && yEqual && zEqual;
+}
+
 static int test_worldSpaceNormal() 
 {
 	int Error = 0;
@@ -59,7 +72,7 @@ static int test_worldSpaceNormal()
 
 	M = glm::scale(M, glm::vec3(2.2, 1, 1)); //apply non uniform scale
 
-	Error += (glm::worldSpaceNormal(M) * N == correctDir) ? 0 : 1; //If the normal direction is the same after the normal matrix application, it is correct.
+	Error += vec3_approxEqual(glm::worldSpaceNormal(M) * N, correctDir) ? 0 : 1; //If the normal direction is the same after the normal matrix application, it is correct.
 
 	return Error;
 }
@@ -69,15 +82,15 @@ static int test_viewSpaceNormal()
 {
 	int Error = 0;
 
-	glm::vec3 N(0, 1, 1);
+	glm::vec4 N(0, 1, 1, 0);
 	glm::mat4 M(1.0f);
-	glm::vec3 correctDir = N;
+	glm::vec4 correctDir = N;
 
-	M = glm::scale(M, glm::vec3(2.2, 1, 1)); //apply non uniform scale
+	M = glm::scale(M, glm::vec3(5, 1, 1)); //apply non uniform scale
 
 	glm::mat4 V = glm::inverse(M); //view matrix is defined by inverse of model matrix
 
-	Error += (glm::viewSpaceNormal(M, V) * N == correctDir) ? 0 : 1; //If the normal direction is the same after the normal matrix application, it is correct.
+	Error += vec3_approxEqual((M * V) * N, correctDir) ? 0 : 1; //If the normal direction is the same after the normal matrix application, it is correct.
 
 	return Error;
 }
