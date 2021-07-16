@@ -138,6 +138,28 @@ namespace glm
 	GLM_FUNC_DECL mat<4, 4, T, Q> lookAt(
 		vec<3, T, Q> const& eye, vec<3, T, Q> const& center, vec<3, T, Q> const& up);
 
+	/// Constructs a normal matrix for view space lighting calculations.
+	/// 
+	/// @param modelMatrix A 4x4 model matrix
+	/// @param viewMatrix A 4x4 view matrix
+	/// 
+	/// @tparam T A floating-point scalar type
+	/// @tparam Q A value from qualifier enum
+	/// 
+	/// @see <a href="https://www.lighthouse3d.com/tutorials/glsl-12-tutorial/the-normal-matrix/">Normal matrix explanation</a>
+	template<typename T, qualifier Q>
+	GLM_FUNC_DECL mat<3, 3, T, Q> viewSpaceNormal(mat<4, 4, T, Q> modelMatrix, mat<4, 4, T, Q> viewMatrix);
+
+	/// Constructs a normal matrix for world space lighting calculations.
+	/// 
+	/// @param modelMatrix A 4x4 model matrix
+	/// 
+	/// @tparam T A floating-point scalar type
+	/// @tparam Q A value from qualifier enum
+	/// 
+	/// @see <a href="https://www.lighthouse3d.com/tutorials/glsl-12-tutorial/the-normal-matrix/">Normal matrix explanation</a>
+	template<typename T, qualifier Q>
+	GLM_FUNC_DECL mat<3, 3, T, Q> worldSpaceNormal(mat<4, 4, T, Q> modelMatrix);
 	/// @}
 }//namespace glm
 
