@@ -26,7 +26,7 @@ namespace glm
 	}
 
 	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER qua<T, Q> lerp(qua<T, Q> const& x, qua<T, Q> const& y, T a)
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q> lerp(qua<T, Q> const& x, qua<T, Q> const& y, T a)
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'lerp' only accept floating-point inputs");
 
@@ -110,13 +110,13 @@ namespace glm
     }
 
 	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER qua<T, Q> conjugate(qua<T, Q> const& q)
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q> conjugate(qua<T, Q> const& q)
 	{
 		return qua<T, Q>(q.w, -q.x, -q.y, -q.z);
 	}
 
 	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER qua<T, Q> inverse(qua<T, Q> const& q)
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q> inverse(qua<T, Q> const& q)
 	{
 		return conjugate(q) / dot(q, q);
 	}

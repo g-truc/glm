@@ -61,7 +61,7 @@ namespace glm
 	/// @see - translate(vec<3, T, Q> const& v)
 	/// @see <a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/glTranslate.xml">glTranslate man page</a>
 	template<typename T, qualifier Q>
-	GLM_FUNC_DECL mat<4, 4, T, Q> translate(
+	GLM_FUNC_DECL GLM_CONSTEXPR mat<4, 4, T, Q> translate(
 		mat<4, 4, T, Q> const& m, vec<3, T, Q> const& v);
 
 	/// Builds a rotation 4 * 4 matrix created from an axis vector and an angle.

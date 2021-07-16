@@ -112,7 +112,7 @@ namespace glm
 	///
 	/// @see ext_quaternion_relational
 	template<typename T, qualifier Q>
-	GLM_FUNC_DECL vec<4, bool, Q> lessThan(qua<T, Q> const& x, qua<T, Q> const& y);
+	GLM_FUNC_DECL GLM_CONSTEXPR vec<4, bool, Q> lessThan(qua<T, Q> const& x, qua<T, Q> const& y);
 
 	/// Returns the component-wise comparison of result x <= y.
 	///
@@ -121,7 +121,7 @@ namespace glm
 	///
 	/// @see ext_quaternion_relational
 	template<typename T, qualifier Q>
-	GLM_FUNC_DECL vec<4, bool, Q> lessThanEqual(qua<T, Q> const& x, qua<T, Q> const& y);
+	GLM_FUNC_DECL GLM_CONSTEXPR vec<4, bool, Q> lessThanEqual(qua<T, Q> const& x, qua<T, Q> const& y);
 
 	/// Returns the component-wise comparison of result x > y.
 	///
@@ -130,7 +130,7 @@ namespace glm
 	///
 	/// @see ext_quaternion_relational
 	template<typename T, qualifier Q>
-	GLM_FUNC_DECL vec<4, bool, Q> greaterThan(qua<T, Q> const& x, qua<T, Q> const& y);
+	GLM_FUNC_DECL GLM_CONSTEXPR vec<4, bool, Q> greaterThan(qua<T, Q> const& x, qua<T, Q> const& y);
 
 	/// Returns the component-wise comparison of result x >= y.
 	///
@@ -139,7 +139,7 @@ namespace glm
 	///
 	/// @see ext_quaternion_relational
 	template<typename T, qualifier Q>
-	GLM_FUNC_DECL vec<4, bool, Q> greaterThanEqual(qua<T, Q> const& x, qua<T, Q> const& y);
+	GLM_FUNC_DECL GLM_CONSTEXPR vec<4, bool, Q> greaterThanEqual(qua<T, Q> const& x, qua<T, Q> const& y);
 
 	/// Build a look at quaternion based on the default handedness.
 	///

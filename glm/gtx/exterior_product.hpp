@@ -37,7 +37,7 @@ namespace glm
 	///
 	/// @see <a href="https://en.wikipedia.org/wiki/Exterior_algebra#Cross_and_triple_products">Exterior product</a>
 	template<typename T, qualifier Q>
-	GLM_FUNC_DECL T cross(vec<2, T, Q> const& v, vec<2, T, Q> const& u);
+	GLM_FUNC_DECL GLM_CONSTEXPR T cross(vec<2, T, Q> const& v, vec<2, T, Q> const& u);
 
 	/// @}
 } //namespace glm

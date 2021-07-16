@@ -43,7 +43,7 @@ namespace glm
 	///
 	/// @see gtx_quaternion
 	template<typename T, qualifier Q>
-	GLM_FUNC_DECL vec<3, T, Q> cross(
+	GLM_FUNC_DECL GLM_CONSTEXPR vec<3, T, Q> cross(
 		qua<T, Q> const& q,
 		vec<3, T, Q> const& v);
 
@@ -51,7 +51,7 @@ namespace glm
 	///
 	/// @see gtx_quaternion
 	template<typename T, qualifier Q>
-	GLM_FUNC_DECL vec<3, T, Q> cross(
+	GLM_FUNC_DECL GLM_CONSTEXPR vec<3, T, Q> cross(
 		vec<3, T, Q> const& v,
 		qua<T, Q> const& q);
 
