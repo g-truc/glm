@@ -18,9 +18,9 @@ namespace detail
 		{
 			mat<4, 4, float, Q> Result;
 			glm_mat4_matrixCompMult(
-				*static_cast<glm_vec4 const (*)[4]>(&x[0].data),
-				*static_cast<glm_vec4 const (*)[4]>(&y[0].data),
-				*static_cast<glm_vec4(*)[4]>(&Result[0].data));
+			        &x[0].data,
+			        &y[0].data,
+			        &Result[0].data);
 			return Result;
 		}
 	};

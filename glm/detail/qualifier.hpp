@@ -144,7 +144,6 @@ namespace detail
 		typedef glm_u64vec2 type;
 	};
 #	endif
-
 #	if (GLM_ARCH & GLM_ARCH_AVX_BIT)
 	template<>
 	struct storage<4, double, true>

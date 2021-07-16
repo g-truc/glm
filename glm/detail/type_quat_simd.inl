@@ -14,10 +14,10 @@ namespace detail
 			// SSE2 STATS: 11 shuffle, 8 mul, 8 add
 			// SSE4 STATS: 3 shuffle, 4 mul, 4 dpps
 
-			__m128 const mul0 = _mm_mul_ps(q1.Data, _mm_shuffle_ps(q2.Data, q2.Data, _MM_SHUFFLE(0, 1, 2, 3)));
-			__m128 const mul1 = _mm_mul_ps(q1.Data, _mm_shuffle_ps(q2.Data, q2.Data, _MM_SHUFFLE(1, 0, 3, 2)));
-			__m128 const mul2 = _mm_mul_ps(q1.Data, _mm_shuffle_ps(q2.Data, q2.Data, _MM_SHUFFLE(2, 3, 0, 1)));
-			__m128 const mul3 = _mm_mul_ps(q1.Data, q2.Data);
+			__m128 const mul0 = _mm_mul_ps(q1.data, _mm_shuffle_ps(q2.data, q2.data, _MM_SHUFFLE(0, 1, 2, 3)));
+			__m128 const mul1 = _mm_mul_ps(q1.data, _mm_shuffle_ps(q2.data, q2.data, _MM_SHUFFLE(1, 0, 3, 2)));
+			__m128 const mul2 = _mm_mul_ps(q1.data, _mm_shuffle_ps(q2.data, q2.data, _MM_SHUFFLE(2, 3, 0, 1)));
+			__m128 const mul3 = _mm_mul_ps(q1.data, q2.data);
 
 #			if GLM_ARCH & GLM_ARCH_SSE41_BIT
 				__m128 const add0 = _mm_dp_ps(mul0, _mm_set_ps(1.0f, -1.0f,  1.0f,  1.0f), 0xff);
@@ -89,7 +89,7 @@ namespace detail
 	{
 		static qua<float, Q> call(qua<float, Q> const& q, qua<float, Q> const& p)
 		{
-			vec<4, float, Q> Result;
+			qua<float, Q> Result;
 			Result.data = _mm_sub_ps(q.data, p.data);
 			return Result;
 		}
@@ -177,7 +177,7 @@ namespace detail
 			uuv = _mm_mul_ps(uuv, two);
 
 			vec<4, float, Q> Result;
-			Result.data = _mm_add_ps(v.Data, _mm_add_ps(uv, uuv));
+			Result.data = _mm_add_ps(v.data, _mm_add_ps(uv, uuv));
 			return Result;
 		}
 	};
@@ -185,4 +185,3 @@ namespace detail
 }//namespace glm
 
 #endif//GLM_ARCH & GLM_ARCH_SSE2_BIT
-
