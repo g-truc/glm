@@ -125,8 +125,8 @@ namespace glm
 		mat<4, 4, T, defaultp> Result(0);
 		Result[0][0] = (static_cast<T>(2) * nearVal) / (right - left);
 		Result[1][1] = (static_cast<T>(2) * nearVal) / (top - bottom);
-		Result[2][0] = (right + left) / (right - left);
-		Result[2][1] = (top + bottom) / (top - bottom);
+		Result[2][0] = -(right + left) / (right - left);
+		Result[2][1] = -(top + bottom) / (top - bottom);
 		Result[2][2] = farVal / (farVal - nearVal);
 		Result[2][3] = static_cast<T>(1);
 		Result[3][2] = -(farVal * nearVal) / (farVal - nearVal);
@@ -139,8 +139,8 @@ namespace glm
 		mat<4, 4, T, defaultp> Result(0);
 		Result[0][0] = (static_cast<T>(2) * nearVal) / (right - left);
 		Result[1][1] = (static_cast<T>(2) * nearVal) / (top - bottom);
-		Result[2][0] = (right + left) / (right - left);
-		Result[2][1] = (top + bottom) / (top - bottom);
+		Result[2][0] = -(right + left) / (right - left);
+		Result[2][1] = -(top + bottom) / (top - bottom);
 		Result[2][2] = (farVal + nearVal) / (farVal - nearVal);
 		Result[2][3] = static_cast<T>(1);
 		Result[3][2] = - (static_cast<T>(2) * farVal * nearVal) / (farVal - nearVal);
