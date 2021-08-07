@@ -22,7 +22,7 @@ namespace detail
 		GLM_FUNC_QUALIFIER static vec<1, uint8, P> call()
 		{
 			return vec<1, uint8, P>(
-				std::rand() % std::numeric_limits<uint8>::max());
+				static_cast<uint8>(std::rand()) % std::numeric_limits<uint8>::max());
 		}
 	};
 
@@ -32,8 +32,8 @@ namespace detail
 		GLM_FUNC_QUALIFIER static vec<2, uint8, P> call()
 		{
 			return vec<2, uint8, P>(
-				std::rand() % std::numeric_limits<uint8>::max(),
-				std::rand() % std::numeric_limits<uint8>::max());
+				static_cast<uint8>(std::rand()) % std::numeric_limits<uint8>::max(),
+				static_cast<uint8>(std::rand()) % std::numeric_limits<uint8>::max());
 		}
 	};
 
@@ -43,9 +43,9 @@ namespace detail
 		GLM_FUNC_QUALIFIER static vec<3, uint8, P> call()
 		{
 			return vec<3, uint8, P>(
-				std::rand() % std::numeric_limits<uint8>::max(),
-				std::rand() % std::numeric_limits<uint8>::max(),
-				std::rand() % std::numeric_limits<uint8>::max());
+				static_cast<uint8>(std::rand()) % std::numeric_limits<uint8>::max(),
+				static_cast<uint8>(std::rand()) % std::numeric_limits<uint8>::max(),
+				static_cast<uint8>(std::rand()) % std::numeric_limits<uint8>::max());
 		}
 	};
 
@@ -55,10 +55,10 @@ namespace detail
 		GLM_FUNC_QUALIFIER static vec<4, uint8, P> call()
 		{
 			return vec<4, uint8, P>(
-				std::rand() % std::numeric_limits<uint8>::max(),
-				std::rand() % std::numeric_limits<uint8>::max(),
-				std::rand() % std::numeric_limits<uint8>::max(),
-				std::rand() % std::numeric_limits<uint8>::max());
+				static_cast<uint8>(std::rand()) % std::numeric_limits<uint8>::max(),
+				static_cast<uint8>(std::rand()) % std::numeric_limits<uint8>::max(),
+				static_cast<uint8>(std::rand()) % std::numeric_limits<uint8>::max(),
+				static_cast<uint8>(std::rand()) % std::numeric_limits<uint8>::max());
 		}
 	};
 

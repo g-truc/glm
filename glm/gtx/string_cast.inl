@@ -28,7 +28,9 @@ namespace detail
 			return std::string();
 
 		va_start(list, msg);
-#		if (GLM_COMPILER & GLM_COMPILER_VC)
+#		if ((GLM_COMPILER & GLM_COMPILER_VC) ||                \
+		    ((GLM_PLATFORM & GLM_PLATFORM_WINDOWS) &&          \
+		     (GLM_COMPILER & GLM_COMPILER_CLANG)))
 			vsprintf_s(text, STRING_BUFFER, msg, list);
 #		else//
 			std::vsprintf(text, msg, list);
