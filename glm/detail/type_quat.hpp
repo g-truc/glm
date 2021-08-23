@@ -93,7 +93,11 @@ namespace glm
 
 		// -- Explicit basic constructors --
 
-		GLM_FUNC_DECL GLM_CONSTEXPR qua(T s, vec<3, T, Q> const& v);
+#		ifdef GLM_FORCE_QUAT_DATA_XYZW
+		    GLM_FUNC_DECL GLM_CONSTEXPR qua(vec<3, T, Q> const& v, T s);
+#		else
+		    GLM_FUNC_DECL GLM_CONSTEXPR qua(T s, vec<3, T, Q> const& v);
+#		endif
 
 #		ifdef GLM_FORCE_QUAT_DATA_XYZW
 		GLM_FUNC_DECL GLM_CONSTEXPR qua(T x, T y, T z, T w);
