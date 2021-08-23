@@ -32,6 +32,10 @@ namespace glm
 		T const a(angle);
 		T const s = glm::sin(a * static_cast<T>(0.5));
 
-		return qua<T, Q>(glm::cos(a * static_cast<T>(0.5)), v * s);
+#       ifdef GLM_FORCE_QUAT_DATA_XYZW
+		    return qua<T, Q>(v * s, glm::cos(a * static_cast<T>(0.5)));
+#       else
+		    return qua<T, Q>(glm::cos(a * static_cast<T>(0.5)), v * s);
+#       endif
 	}
 }//namespace glm

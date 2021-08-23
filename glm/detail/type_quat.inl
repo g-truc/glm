@@ -18,7 +18,7 @@ namespace detail
 	{
 		GLM_FUNC_QUALIFIER GLM_CONSTEXPR static T call(qua<T, Q> const& a, qua<T, Q> const& b)
 		{
-			vec<4, T, Q> tmp(a.w * b.w, a.x * b.x, a.y * b.y, a.z * b.z);
+			vec<4, T, Q> tmp(GLM_QUAT_LAYOUT(a.w * b.w, a.x * b.x, a.y * b.y, a.z * b.z));
 			return (tmp.x + tmp.y) + (tmp.z + tmp.w);
 		}
 	};
@@ -28,7 +28,7 @@ namespace detail
 	{
 		GLM_FUNC_QUALIFIER GLM_CONSTEXPR static qua<T, Q> call(qua<T, Q> const& q, qua<T, Q> const& p)
 		{
-			return qua<T, Q>(q.w + p.w, q.x + p.x, q.y + p.y, q.z + p.z);
+			return qua<T, Q>(GLM_QUAT_LAYOUT(q.w + p.w, q.x + p.x, q.y + p.y, q.z + p.z));
 		}
 	};
 
@@ -37,7 +37,7 @@ namespace detail
 	{
 		GLM_FUNC_QUALIFIER GLM_CONSTEXPR static qua<T, Q> call(qua<T, Q> const& q, qua<T, Q> const& p)
 		{
-			return qua<T, Q>(q.w - p.w, q.x - p.x, q.y - p.y, q.z - p.z);
+			return qua<T, Q>(GLM_QUAT_LAYOUT(q.w - p.w, q.x - p.x, q.y - p.y, q.z - p.z));
 		}
 	};
 
@@ -46,7 +46,7 @@ namespace detail
 	{
 		GLM_FUNC_QUALIFIER GLM_CONSTEXPR static qua<T, Q> call(qua<T, Q> const& q, T s)
 		{
-			return qua<T, Q>(q.w * s, q.x * s, q.y * s, q.z * s);
+			return qua<T, Q>(GLM_QUAT_LAYOUT(q.w * s, q.x * s, q.y * s, q.z * s));
 		}
 	};
 
@@ -55,7 +55,7 @@ namespace detail
 	{
 		GLM_FUNC_QUALIFIER GLM_CONSTEXPR static qua<T, Q> call(qua<T, Q> const& q, T s)
 		{
-			return qua<T, Q>(q.w / s, q.x / s, q.y / s, q.z / s);
+			return qua<T, Q>(GLM_QUAT_LAYOUT(q.w / s, q.x / s, q.y / s, q.z / s));
 		}
 	};
 
@@ -132,12 +132,13 @@ namespace detail
 	// -- Explicit basic constructors --
 
 	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q>::qua(T s, vec<3, T, Q> const& v)
-#		ifdef GLM_FORCE_QUAT_DATA_XYZW
+#   ifdef GLM_FORCE_QUAT_DATA_XYZW
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q>::qua(vec<3, T, Q> const& v, T s)
 			: x(v.x), y(v.y), z(v.z), w(s)
-#		else
+#	else
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q>::qua(T s, vec<3, T, Q> const& v)
 			: w(s), x(v.x), y(v.y), z(v.z)
-#		endif
+#	endif
 	{}
 
 	template <typename T, qualifier Q>
@@ -201,7 +202,7 @@ namespace detail
 			t = cross(u, v);
 		}
 
-		*this = normalize(qua<T, Q>(real_part, t.x, t.y, t.z));
+		*this = normalize(qua<T, Q>(GLM_QUAT_LAYOUT(real_part, t.x, t.y, t.z)));
 	}
 
 	template<typename T, qualifier Q>
@@ -320,7 +321,7 @@ namespace detail
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q> operator-(qua<T, Q> const& q)
 	{
-		return qua<T, Q>(-q.w, -q.x, -q.y, -q.z);
+		return qua<T, Q>(GLM_QUAT_LAYOUT(-q.w, -q.x, -q.y, -q.z));
 	}
 
 	// -- Binary operators --
@@ -374,8 +375,7 @@ namespace detail
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q> operator*(qua<T, Q> const& q, T const& s)
 	{
-		return qua<T, Q>(
-			q.w * s, q.x * s, q.y * s, q.z * s);
+		return qua<T, Q>(GLM_QUAT_LAYOUT(q.w * s, q.x * s, q.y * s, q.z * s));
 	}
 
 	template<typename T, qualifier Q>
@@ -387,8 +387,7 @@ namespace detail
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q> operator/(qua<T, Q> const& q, T const& s)
 	{
-		return qua<T, Q>(
-			q.w / s, q.x / s, q.y / s, q.z / s);
+		return qua<T, Q>(GLM_QUAT_LAYOUT(q.w / s, q.x / s, q.y / s, q.z / s));
 	}
 
 	// -- Boolean operators --
