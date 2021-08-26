@@ -3,18 +3,13 @@
 
 #pragma once
 
-#ifdef GLM_FORCE_QUAT_DATA_XYZW
-#define GLM_QUAT_LAYOUT(w, x, y, z) x, y, z, w
-#else
-#define GLM_QUAT_LAYOUT(w, x, y, z) w, x, y, z
-#endif
-
 // Dependency:
 #include "../detail/type_mat3x3.hpp"
 #include "../detail/type_mat4x4.hpp"
 #include "../detail/type_vec3.hpp"
 #include "../detail/type_vec4.hpp"
 #include "../ext/vector_relational.hpp"
+#include "../ext/quaternion_layout.hpp"
 #include "../ext/quaternion_relational.hpp"
 #include "../gtc/constants.hpp"
 #include "../gtc/matrix_transform.hpp"

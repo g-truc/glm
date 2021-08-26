@@ -1,3 +1,5 @@
+#include "quaternion_layout.hpp"
+
 namespace glm
 {
 	template<typename T, qualifier Q>
