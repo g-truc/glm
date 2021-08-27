@@ -1,4 +1,5 @@
 #include "scalar_constants.hpp"
+#include "quaternion_layout.hpp"
 
 namespace glm
 {
