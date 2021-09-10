@@ -319,13 +319,13 @@ namespace detail
 
 	// sign
 	// fast and works for any type
-	template <typename genFIType>
+	template <typename genFIType> 
 	GLM_FUNC_QUALIFIER genFIType sign(genFIType x)
 	{
 		GLM_STATIC_ASSERT(
 			std::numeric_limits<genFIType>::is_iec559 || (std::numeric_limits<genFIType>::is_signed && std::numeric_limits<genFIType>::is_integer),
 			"'sign' only accept signed inputs");
-
+		
 		return detail::compute_sign<genFIType, defaultp, tvec1, std::numeric_limits<genFIType>::is_iec559, highp>::call(tvec1<genFIType>(x)).x;
 	}
 
@@ -378,7 +378,7 @@ namespace detail
 	GLM_FUNC_QUALIFIER genType roundEven(genType x)
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559, "'roundEven' only accept floating-point inputs");
-
+		
 		int Integer = static_cast<int>(x);
 		genType IntegerPart = static_cast<genType>(Integer);
 		genType FractionalPart = fract(x);
@@ -391,7 +391,7 @@ namespace detail
 		{
 			return IntegerPart;
 		}
-		else if(x <= static_cast<genType>(0)) // Work around...
+		else if(x <= static_cast<genType>(0)) // Work around... 
 		{
 			return IntegerPart - static_cast<genType>(1);
 		}
@@ -571,7 +571,7 @@ namespace detail
 	{
 		return detail::compute_mix_scalar<T, U, P, vecType, detail::is_aligned<P>::value>::call(x, y, a);
 	}
-
+	
 	template <typename T, typename U, precision P, template <typename, precision> class vecType>
 	GLM_FUNC_QUALIFIER vecType<T, P> mix(vecType<T, P> const & x, vecType<T, P> const & y, vecType<U, P> const & a)
 	{
@@ -620,18 +620,9 @@ namespace detail
 	}
 
 #	if GLM_HAS_CXX11_STL
-		#	if GLM_GCC_OVERRIDE
-				template<typename genType>
-				GLM_FUNC_QUALIFIER bool isnan(genType x)
-				{
-						GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559, "'isnan' only accept floating-point inputs");
-						return __isnan(x) != 0;
-				}
-		#	else
-				using std::isnan;
-		#	endif
+		using std::isnan;
 #	else
-		template <typename genType>
+		template <typename genType> 
 		GLM_FUNC_QUALIFIER bool isnan(genType x)
 		{
 			GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559, "'isnan' only accept floating-point inputs");
@@ -667,7 +658,7 @@ namespace detail
 #	if GLM_HAS_CXX11_STL
 		using std::isinf;
 #	else
-		template <typename genType>
+		template <typename genType> 
 		GLM_FUNC_QUALIFIER bool isinf(genType x)
 		{
 			GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559, "'isinf' only accept floating-point inputs");
@@ -746,7 +737,7 @@ namespace detail
 	{
 		return reinterpret_cast<vecType<float, P>&>(const_cast<vecType<uint, P>&>(v));
 	}
-
+	
 	template <typename genType>
 	GLM_FUNC_QUALIFIER genType fma(genType const & a, genType const & b, genType const & c)
 	{
