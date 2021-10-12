@@ -206,7 +206,7 @@ elseif(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
 		message("GLM: GCC - ${CMAKE_CXX_COMPILER_ID} compiler")
 	endif()
 
-	add_compile_options(-O2)
+	add_compile_options(-O0)
 	add_compile_options(-Wno-long-long)
 
 elseif(CMAKE_CXX_COMPILER_ID MATCHES "Intel")
