@@ -99,7 +99,7 @@ namespace glm
 
 		// -- Explicit basic constructors --
 
-		GLM_FUNC_DECL GLM_CONSTEXPR explicit vec(T scalar);
+		GLM_FUNC_DECL GLM_CONSTEXPR vec(T _x);
 
 		// -- Conversion vector constructors --
 

@@ -31,8 +31,8 @@ namespace glm
 	// -- Explicit basic constructors --
 
 	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<1, T, Q>::vec(T scalar)
-		: x(scalar)
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<1, T, Q>::vec(T _x)
+		: x(_x)
 	{}
 
 	// -- Conversion vector constructors --
