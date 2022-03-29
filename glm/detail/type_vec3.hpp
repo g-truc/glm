@@ -12,6 +12,7 @@
 #	endif
 #endif //GLM_SWIZZLE == GLM_SWIZZLE_ENABLED
 #include <cstddef>
+#include <cmath>
 
 namespace glm
 {
