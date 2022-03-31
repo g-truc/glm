@@ -1,0 +1,88 @@
+cc_defaults {
+    name: "glm_defaults",
+    cflags: [
+        "-DLOG_TAG=\"glm\"",
+    ],
+    local_include_dirs:[
+        "glm"
+    ],
+    export_include_dirs:[
+        "."
+    ],
+    exclude_srcs:[
+        "cmake",
+        "doc",
+        "test",
+        "util",
+        "Android.bp",
+        "CMakeLists.txt",
+        "copying.txt",
+        "manual.md",
+        "readme.md"
+    ],
+    srcs: [
+        ":root_files",
+        ":core_files",
+        ":ext_files",
+        ":gtc_files",
+        ":gtx_files",
+        ":simd_files",
+    ],
+    shared_libs: [
+        "liblog",
+        "libutils"
+    ],
+}
+filegroup {
+    name: "root_files",
+    srcs: [
+        "glm/*.cpp",
+    ],
+}
+filegroup {
+    name: "core_files",
+    srcs: [
+        "glm/detail/*.cpp",
+        
+    ],
+}
+filegroup {
+    name: "ext_files",
+    srcs: [
+        "glm/ext/*.cpp",
+    ],
+}
+filegroup {
+    name: "gtc_files",
+    srcs: [
+        "glm/gtc/*.cpp",
+    ],
+}
+filegroup {
+    name: "gtx_files",
+    srcs: [
+        "glm/gtx/*.cpp",
+    ],
+}
+filegroup {
+    name: "simd_files",
+    srcs: [
+        "glm/simd/*.cpp",
+    ],
+}
+filegroup {
+    name: "include_files",
+    srcs:[
+        "glm/**/*.hpp",
+        "glm/**/*.inl"
+    ]
+}
+cc_library_static {
+    name: "libglm_static",
+    defaults: ["glm_defaults",],  
+}
+cc_library_shared {
+    name: "libglm_shared",
+    defaults: ["glm_defaults",],
+    
+}
