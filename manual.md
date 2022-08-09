@@ -1,6 +1,6 @@
 ![Alt](./doc/manual/logo-mini.png "GLM Logo")
 
-# GLM 0.9.9 Manual
+# GLM 1.0.0 Manual
 
 ![Alt](./doc/manual/g-truc.png "G-Truc Logo")
 
