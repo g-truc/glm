@@ -474,11 +474,6 @@
 #define GLM_SWIZZLE_OPERATOR		1
 #define GLM_SWIZZLE_FUNCTION		2
 
-#if defined(GLM_SWIZZLE)
-#	pragma message("GLM: GLM_SWIZZLE is deprecated, use GLM_FORCE_SWIZZLE instead.")
-#	define GLM_FORCE_SWIZZLE
-#endif
-
 #if defined(GLM_FORCE_SWIZZLE) && (GLM_LANG & GLM_LANG_CXXMS_FLAG) && !defined(GLM_FORCE_XYZW_ONLY)
 #	define GLM_CONFIG_SWIZZLE GLM_SWIZZLE_OPERATOR
 #elif defined(GLM_FORCE_SWIZZLE)
