@@ -3,12 +3,24 @@
 #include <cassert>
 #include <cstddef>
 
-#define GLM_VERSION_MAJOR 0
-#define GLM_VERSION_MINOR 9
-#define GLM_VERSION_PATCH 9
-#define GLM_VERSION_REVISION 9
-#define GLM_VERSION 999
-#define GLM_VERSION_MESSAGE "GLM: version 0.9.9.9"
+#define GLM_STRINGIFY2(x) #x
+#define GLM_STRINGIFY(x) GLM_STRINGIFY2(x)
+
+///////////////////////////////////////////////////////////////////////////////////
+// Version macros
+
+#define GLM_MAKE_VERSION(major, minor, patch) (((major) << 22) | ((minor) << 12) | ((patch)))
+#define GLM_GET_VERSION_MAJOR(version) ((version) >> 22)
+#define GLM_GET_VERSION_MINOR(version) (((version) >> 12) & 0x3FF)
+#define GLM_GET_VERSION_PATCH(version) ((version) & 0xFFF)
+
+
+#define GLM_VERSION_MAJOR 1
+#define GLM_VERSION_MINOR 0
+#define GLM_VERSION_PATCH 0
+#define GLM_VERSION GLM_MAKE_VERSION(GLM_VERSION_MAJOR, GLM_VERSION_MINOR, GLM_VERSION_PATCH)
+#define GLM_VERSION_MESSAGE "GLM: version " GLM_STRINGIFY(GLM_VERSION_MAJOR) "." GLM_STRINGIFY(GLM_VERSION_MINOR) "." GLM_STRINGIFY(GLM_VERSION_PATCH)
+
 
 #define GLM_SETUP_INCLUDED GLM_VERSION
 
