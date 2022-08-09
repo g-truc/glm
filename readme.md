@@ -53,7 +53,16 @@ glm::mat4 camera(float Translate, glm::vec2 const& Rotate)
 
 ## Release notes
 
-### [GLM 0.9.9.9](https://github.com/g-truc/glm/releases/tag/0.9.9.9) - 2020-XX-XX
+### [GLM 1.0.0](https://github.com/g-trunc/glm/releases/tag/1.0.0) - 2022-XX-XX
+#### Improvements:
+- Change versioning format to major.minor.patch.
+- Change versioning macros to support numbers >= 10.
+
+#### Deprecation:
+- Remove deprecated `GLM_SWIZZLE` macro.
+- Remove deprecated `glm::powerOfTwo*` functions from `glm/gtx/bits.hpp`.
+
+### [GLM 0.9.9.9](https://github.com/g-truc/glm/releases/tag/0.9.9.9) - 2022-XX-XX
 #### Features:
 - Added *GLM_EXT_scalar_reciprocal* with tests
 - Added *GLM_EXT_vector_reciprocal* with tests
