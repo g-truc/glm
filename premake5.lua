@@ -15,3 +15,13 @@ project "glm"
   {
 	 "GLM_ENABLE_EXPERIMENTAL"
   }
+  
+  includedirs
+  {
+  	"./",
+  }
+  
+  buildoptions
+  {
+  }
+
