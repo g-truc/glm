@@ -16,17 +16,18 @@ set(GLM_VERSION ${GLM_VERSION_MAJOR}.${GLM_VERSION_MINOR}.${GLM_VERSION_PATCH}.$
 project(glm VERSION ${GLM_VERSION} LANGUAGES CXX)
 message(STATUS "GLM: Version " ${GLM_VERSION})
 
+include(GNUInstallDirs)
+
 add_subdirectory(glm)
 add_library(glm::glm ALIAS glm)
 
 if(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_SOURCE_DIR})
 
-	include(CPack)
 	install(DIRECTORY glm DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} PATTERN "CMakeLists.txt" EXCLUDE)
-	install(EXPORT glm FILE glmConfig.cmake DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/glm NAMESPACE glm::)
+	install(EXPORT glm FILE glmConfig.cmake DESTINATION ${CMAKE_INSTALL_DATADIR}/cmake/glm NAMESPACE glm::)
 	include(CMakePackageConfigHelpers)
 	write_basic_package_version_file("glmConfigVersion.cmake" COMPATIBILITY AnyNewerVersion)
-	install(FILES ${CMAKE_CURRENT_BINARY_DIR}/glmConfigVersion.cmake DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/glm)
+	install(FILES ${CMAKE_CURRENT_BINARY_DIR}/glmConfigVersion.cmake DESTINATION ${CMAKE_INSTALL_DATADIR}/cmake/glm)
 
 	include(CTest)
 	if(BUILD_TESTING)
