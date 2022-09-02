@@ -33,8 +33,7 @@ CMakeFiles
 cmake_install.cmake
 install_manifest.txt
 *.cmake
-!glmConfig.cmake
-!glmConfig-version.cmake
+!/cmake/JoinPaths.cmake
 # ^ May need to add future .cmake files as exceptions
 
 # Test logs

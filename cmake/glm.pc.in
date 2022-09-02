@@ -1,0 +1,8 @@
+prefix=@CMAKE_INSTALL_PREFIX@
+includedir=@PKGCONFIG_INCLUDEDIR@
+
+Name: GLM
+Description: OpenGL Mathematics
+URL: https://glm.g-truc.net
+Version: @GLM_VERSION@
+Cflags: -I${includedir}

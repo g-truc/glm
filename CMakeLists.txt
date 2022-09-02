@@ -29,6 +29,14 @@ if(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_SOURCE_DIR})
 	write_basic_package_version_file("glmConfigVersion.cmake" COMPATIBILITY AnyNewerVersion)
 	install(FILES ${CMAKE_CURRENT_BINARY_DIR}/glmConfigVersion.cmake DESTINATION ${CMAKE_INSTALL_DATADIR}/cmake/glm)
 
+	include(cmake/JoinPaths.cmake) # can be replaced by cmake_path(APPEND) in CMake 3.20
+	join_paths(PKGCONFIG_INCLUDEDIR "\${prefix}" "${CMAKE_INSTALL_INCLUDEDIR}")
+	configure_file("cmake/glm.pc.in" "glm.pc" @ONLY)
+	install(
+		FILES "${CMAKE_CURRENT_BINARY_DIR}/glm.pc"
+		DESTINATION "${CMAKE_INSTALL_DATADIR}/pkgconfig"
+	)
+
 	include(CTest)
 	if(BUILD_TESTING)
 		add_subdirectory(test)
