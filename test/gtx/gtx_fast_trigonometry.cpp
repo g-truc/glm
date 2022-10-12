@@ -19,6 +19,9 @@ namespace fastCos
 	{
 		const float begin = -glm::pi<float>();
 		const float end = glm::pi<float>();
+		
+		// this is unused. so next two for loops are not used too
+		// we have similar things like this in line 56, 82, 108, 135 and 158
 		float result = 0.f;
 
 		const std::clock_t timestamp1 = std::clock();
