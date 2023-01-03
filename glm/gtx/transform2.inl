@@ -108,7 +108,7 @@ namespace glm
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER mat<4, 4, T, Q> scaleBias(T scale, T bias)
 	{
-		mat<4, 4, T, Q> result;
+		mat<4, 4, T, Q> result(T(0));
 		result[3] = vec<4, T, Q>(vec<3, T, Q>(bias), static_cast<T>(1));
 		result[0][0] = scale;
 		result[1][1] = scale;
