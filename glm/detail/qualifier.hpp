@@ -197,8 +197,8 @@ namespace detail
 	struct genTypeTrait
 	{};
 
-	template <length_t C, length_t R, typename T>
-	struct genTypeTrait<mat<C, R, T> >
+	template <length_t C, length_t R, typename T, qualifier Q>
+	struct genTypeTrait<mat<C, R, T, Q>>
 	{
 		static const genTypeEnum GENTYPE = GENTYPE_MAT;
 	};
