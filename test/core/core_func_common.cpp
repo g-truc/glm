@@ -14,6 +14,10 @@
 #include <cmath>
 #include <ctime>
 
+/* @lunarg-christophe this is a test
+
+*/
+
 // This file has divisions by zero to test isnan
 #if GLM_COMPILER & GLM_COMPILER_VC
 #	pragma warning(disable : 4723)
