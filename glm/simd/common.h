@@ -117,7 +117,10 @@ GLM_FUNC_QUALIFIER glm_vec4 glm_vec4_round(glm_vec4 x)
 		glm_vec4 const or0 = _mm_or_ps(and0, _mm_set_ps1(8388608.0f));
 		glm_vec4 const add0 = glm_vec4_add(x, or0);
 		glm_vec4 const sub0 = glm_vec4_sub(add0, or0);
-		return sub0;
+		glm_vec4 const abs0 = glm_vec4_abs(x);  // keep values too large for a fraction unchanged
+		glm_vec4 const cmp = _mm_cmple_ps(abs0, _mm_set_ps1(8388608.0f));
+		glm_vec4 const xor0 = _mm_xor_ps(_mm_and_ps(cmp, sub0), _mm_andnot_ps(cmp, x));
+		return xor0;
 #	endif
 }
 
@@ -140,17 +143,6 @@ GLM_FUNC_QUALIFIER glm_vec4 glm_vec4_trunc(glm_vec4 x)
 	return glm_vec4();
 }
 */
-
-//roundEven
-GLM_FUNC_QUALIFIER glm_vec4 glm_vec4_roundEven(glm_vec4 x)
-{
-	glm_vec4 const sgn0 = _mm_castsi128_ps(_mm_set1_epi32(int(0x80000000)));
-	glm_vec4 const and0 = _mm_and_ps(sgn0, x);
-	glm_vec4 const or0 = _mm_or_ps(and0, _mm_set_ps1(8388608.0f));
-	glm_vec4 const add0 = glm_vec4_add(x, or0);
-	glm_vec4 const sub0 = glm_vec4_sub(add0, or0);
-	return sub0;
-}
 
 GLM_FUNC_QUALIFIER glm_vec4 glm_vec4_ceil(glm_vec4 x)
 {
