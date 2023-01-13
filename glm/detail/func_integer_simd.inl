@@ -14,15 +14,17 @@ namespace detail
 
 			__m128i const set1 = _mm_set1_epi32(static_cast<int>(Mask));
 			__m128i const and1 = _mm_and_si128(set0, set1);
-			__m128i const sft1 = _mm_slli_epi32(and1, Shift);
+			__m128i const sft1 = _mm_slli_epi32(and1, static_cast<int>(Shift));
 
 			__m128i const set2 = _mm_andnot_si128(set0, _mm_set1_epi32(-1));
 			__m128i const and2 = _mm_and_si128(set0, set2);
-			__m128i const sft2 = _mm_srai_epi32(and2, Shift);
+			__m128i const sft2 = _mm_srai_epi32(and2, static_cast<int>(Shift));
 
 			__m128i const or0 = _mm_or_si128(sft1, sft2);
 
-			return or0;
+			vec<4, uint, Q> Result;
+			Result.data = or0;
+			return Result;
 		}
 	};
 
@@ -35,11 +37,13 @@ namespace detail
 
 			__m128i const set1 = _mm_set1_epi32(static_cast<int>(Mask));
 			__m128i const and0 = _mm_and_si128(set0, set1);
-			__m128i const sft0 = _mm_slli_epi32(set0, Shift);
+			__m128i const sft0 = _mm_slli_epi32(set0, static_cast<int>(Shift));
 			__m128i const and1 = _mm_and_si128(sft0, set1);
 			__m128i const add0 = _mm_add_epi32(and0, and1);
 
-			return add0;
+			vec<4, uint, Q> Result;
+			Result.data = add0;
+			return Result;
 		}
 	};
 }//namespace detail
