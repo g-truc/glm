@@ -7,8 +7,8 @@
 namespace glm{
 namespace detail
 {
-	template <typename T>
-	struct genTypeTrait<qua<T> >
+	template <typename T, qualifier Q>
+	struct genTypeTrait<qua<T, Q>>
 	{
 		static const genTypeEnum GENTYPE = GENTYPE_QUAT;
 	};
