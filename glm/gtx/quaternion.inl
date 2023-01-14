@@ -8,7 +8,7 @@ namespace glm
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q> quat_identity()
 	{
-		return qua<T, Q>(static_cast<T>(1), static_cast<T>(0), static_cast<T>(0), static_cast<T>(0));
+		return qua<T, Q>(GLM_QUAT_LAYOUT(static_cast<T>(1), static_cast<T>(0), static_cast<T>(0), static_cast<T>(0)));
 	}
 
 	template<typename T, qualifier Q>
@@ -105,11 +105,11 @@ namespace glm
 			k1 = sin((static_cast<T>(0) + a) * fAngle) * fOneOverSin;
 		}
 
-		return qua<T, Q>(
+		return qua<T, Q>(GLM_QUAT_LAYOUT(
 			k0 * x.w + k1 * y2.w,
 			k0 * x.x + k1 * y2.x,
 			k0 * x.y + k1 * y2.y,
-			k0 * x.z + k1 * y2.z);
+			k0 * x.z + k1 * y2.z));
 	}
 
 	template<typename T, qualifier Q>
@@ -150,10 +150,10 @@ namespace glm
 		T s = sqrt((T(1) + cosTheta) * static_cast<T>(2));
 		T invs = static_cast<T>(1) / s;
 
-		return qua<T, Q>(
+		return qua<T, Q>(GLM_QUAT_LAYOUT(
 			s * static_cast<T>(0.5f),
 			rotationAxis.x * invs,
 			rotationAxis.y * invs,
-			rotationAxis.z * invs);
+			rotationAxis.z * invs));
 	}
 }//namespace glm

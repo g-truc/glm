@@ -1,3 +1,5 @@
+#include "quaternion_layout.hpp"
+
 namespace glm
 {
 	template<typename T, qualifier Q>
@@ -18,19 +20,19 @@ namespace glm
 	{
 		T len = length(q);
 		if(len <= static_cast<T>(0)) // Problem
-			return qua<T, Q>(static_cast<T>(1), static_cast<T>(0), static_cast<T>(0), static_cast<T>(0));
+			return qua<T, Q>(GLM_QUAT_LAYOUT(static_cast<T>(1), static_cast<T>(0), static_cast<T>(0), static_cast<T>(0)));
 		T oneOverLen = static_cast<T>(1) / len;
-		return qua<T, Q>(q.w * oneOverLen, q.x * oneOverLen, q.y * oneOverLen, q.z * oneOverLen);
+		return qua<T, Q>(GLM_QUAT_LAYOUT(q.w * oneOverLen, q.x * oneOverLen, q.y * oneOverLen, q.z * oneOverLen));
 	}
 
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER qua<T, Q> cross(qua<T, Q> const& q1, qua<T, Q> const& q2)
 	{
-		return qua<T, Q>(
+		return qua<T, Q>(GLM_QUAT_LAYOUT(
 			q1.w * q2.w - q1.x * q2.x - q1.y * q2.y - q1.z * q2.z,
 			q1.w * q2.x + q1.x * q2.w + q1.y * q2.z - q1.z * q2.y,
 			q1.w * q2.y + q1.y * q2.w + q1.z * q2.x - q1.x * q2.z,
-			q1.w * q2.z + q1.z * q2.w + q1.x * q2.y - q1.y * q2.x);
+			q1.w * q2.z + q1.z * q2.w + q1.x * q2.y - q1.y * q2.x));
 	}
 }//namespace glm
 

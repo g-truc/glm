@@ -219,8 +219,8 @@ namespace glm
 	GLM_FUNC_QUALIFIER tdualquat<T, Q> dual_quat_identity()
 	{
 		return tdualquat<T, Q>(
-			qua<T, Q>(static_cast<T>(1), static_cast<T>(0), static_cast<T>(0), static_cast<T>(0)),
-			qua<T, Q>(static_cast<T>(0), static_cast<T>(0), static_cast<T>(0), static_cast<T>(0)));
+			qua<T, Q>(GLM_QUAT_LAYOUT(static_cast<T>(1), static_cast<T>(0), static_cast<T>(0), static_cast<T>(0))),
+			qua<T, Q>(GLM_QUAT_LAYOUT(static_cast<T>(0), static_cast<T>(0), static_cast<T>(0), static_cast<T>(0))));
 	}
 
 	template<typename T, qualifier Q>
@@ -295,8 +295,8 @@ namespace glm
 	GLM_FUNC_QUALIFIER tdualquat<T, Q> dualquat_cast(mat<2, 4, T, Q> const& x)
 	{
 		return tdualquat<T, Q>(
-			qua<T, Q>( x[0].w, x[0].x, x[0].y, x[0].z ),
-			qua<T, Q>( x[1].w, x[1].x, x[1].y, x[1].z ));
+			qua<T, Q>(GLM_QUAT_LAYOUT(x[0].w, x[0].x, x[0].y, x[0].z)),
+			qua<T, Q>(GLM_QUAT_LAYOUT(x[1].w, x[1].x, x[1].y, x[1].z)));
 	}
 
 	template<typename T, qualifier Q>
