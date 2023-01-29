@@ -105,14 +105,14 @@ GLM_FUNC_QUALIFIER __m128 glm_vec4_refract(glm_vec4 I, glm_vec4 N, glm_vec4 eta)
 	glm_vec4 const dot0 = glm_vec4_dot(N, I);
 	glm_vec4 const mul0 = _mm_mul_ps(eta, eta);
 	glm_vec4 const mul1 = _mm_mul_ps(dot0, dot0);
-	glm_vec4 const sub0 = _mm_sub_ps(_mm_set1_ps(1.0f), mul0);
-	glm_vec4 const sub1 = _mm_sub_ps(_mm_set1_ps(1.0f), mul1);
-	glm_vec4 const mul2 = _mm_mul_ps(sub0, sub1);
+	glm_vec4 const sub0 = _mm_sub_ps(_mm_set1_ps(1.0f), mul1);
+	glm_vec4 const mul2 = _mm_mul_ps(mul0, sub0);
+	glm_vec4 const sub1 = _mm_sub_ps(_mm_set1_ps(1.0f), mul2);
 
-	if(_mm_movemask_ps(_mm_cmplt_ss(mul2, _mm_set1_ps(0.0f))) == 0)
+	if(_mm_movemask_ps(_mm_cmplt_ps(sub1, _mm_set1_ps(0.0f))) == 0x0F)
 		return _mm_set1_ps(0.0f);
 
-	glm_vec4 const sqt0 = _mm_sqrt_ps(mul2);
+	glm_vec4 const sqt0 = _mm_sqrt_ps(sub1);
 	glm_vec4 const mad0 = glm_vec4_fma(eta, dot0, sqt0);
 	glm_vec4 const mul4 = _mm_mul_ps(mad0, N);
 	glm_vec4 const mul5 = _mm_mul_ps(eta, I);
