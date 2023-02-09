@@ -53,7 +53,7 @@ target_include_directories(glm INTERFACE
 
 install(TARGETS glm EXPORT glm)
 
-if(BUILD_STATIC_LIBS)
+if(NOT BUILD_SHARED_LIBS)
 add_library(glm_static STATIC ${ROOT_TEXT} ${ROOT_MD} ${ROOT_NAT}
 	${ROOT_SOURCE}    ${ROOT_INLINE}    ${ROOT_HEADER}
 	${CORE_SOURCE}    ${CORE_INLINE}    ${CORE_HEADER}
