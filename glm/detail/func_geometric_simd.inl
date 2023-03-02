@@ -152,6 +152,18 @@ namespace detail
 #endif
 
 			float32x4_t vd = vrsqrteq_f32(p);
+
+			// Zero vrsqrteq_f32(0) == +infinity
+			uint32x4_t const inf = vdupq_n_u32(0x7F800000);
+			uint32x4_t const eq0 = vceqq_u32(inf, vreinterpretq_u32_f32(vd));
+			uint32x4_t const and0 = vandq_u32(vmvnq_u32(eq0), vreinterpretq_u32_f32(vd));
+
+			// Two Newton-Raphson iterations for reciprocal sqrt
+			vd = vreinterpretq_f32_u32(and0);
+			vd = vmulq_f32(vd, vrsqrtsq_f32(vmulq_f32(vd, vd), p));
+			vd = vmulq_f32(vd, vrsqrtsq_f32(vmulq_f32(vd, vd), p));
+
+			// Normalize
 			vec<4, float, Q> Result;
 			Result.data = vmulq_f32(v.data, vd);
 			return Result;
