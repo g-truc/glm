@@ -206,7 +206,7 @@ GLM_FUNC_QUALIFIER glm_vec4 glm_vec4_smoothstep(glm_vec4 edge0, glm_vec4 edge1, 
 {
 	glm_vec4 const sub0 = glm_vec4_sub(x, edge0);
 	glm_vec4 const sub1 = glm_vec4_sub(edge1, edge0);
-	glm_vec4 const div0 = glm_vec4_sub(sub0, sub1);
+	glm_vec4 const div0 = glm_vec4_div(sub0, sub1);
 	glm_vec4 const clp0 = glm_vec4_clamp(div0, _mm_setzero_ps(), _mm_set1_ps(1.0f));
 	glm_vec4 const mul0 = glm_vec4_mul(_mm_set1_ps(2.0f), clp0);
 	glm_vec4 const sub2 = glm_vec4_sub(_mm_set1_ps(3.0f), mul0);
