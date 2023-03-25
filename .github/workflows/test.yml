@@ -1,0 +1,78 @@
+name: GLM tests
+
+on: [push]
+
+jobs:
+  test:
+    name: "${{ matrix.os}} ${{ matrix.cxx }} C++:${{ matrix.std }}"
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        cxx: [g++, clang++]
+        std: [11, 14, 17]
+        os: [ubuntu-latest, macos-latest]
+
+        exclude:
+          - os: macos-latest
+            cxx: g++
+
+    env:
+      CXX: ${{ matrix.cxx }}
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Tool versions
+        run: |
+          ${CXX} --version
+          cmake --version
+
+      - name: Standard build
+        uses: ./.github/actions/build-and-test
+        with:
+          build_dir: build
+          std: ${{ matrix.std }}
+
+      - name: SSE3 build
+        uses: ./.github/actions/build-and-test
+        with:
+          build_dir: build_sse3
+          std: ${{ matrix.std }}
+          sse3: ON
+
+      - name: AVX build
+        uses: ./.github/actions/build-and-test
+        with:
+          build_dir: build_avx
+          std: ${{ matrix.std }}
+          avx: ON
+
+      - name: Pure build
+        uses: ./.github/actions/build-and-test
+        with:
+          build_dir: build_pure
+          std: ${{ matrix.std }}
+          pure: ON
+
+      - name: Lang extensions build
+        uses: ./.github/actions/build-and-test
+        with:
+          build_dir: build_lang_extensions
+          std: ${{ matrix.std }}
+          lang_extensions: ON
+
+      - name: release build
+        uses: ./.github/actions/build-and-test
+        with:
+          build_dir: build_release
+          std: ${{ matrix.std }}
+          build_type: Release
+
+      - name: Test installing and using GLM
+        run: |
+          cmake --build build --target install
+          mkdir build_test_cmake
+          cmake -DCMAKE_PREFIX_PATH=$RUNNER_TEMP/install -S ./test/cmake -B build_test_cmake
+          cmake --build build_test_cmake
+          ./build_test_cmake/test_find_glm

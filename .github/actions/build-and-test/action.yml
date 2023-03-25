@@ -1,0 +1,49 @@
+name: Build and test
+
+inputs:
+  build_dir:
+    description: "The build dir to use"
+    required: true
+  std:
+    description: "The C++ standard to use"
+    required: true
+  build_type:
+    description: "The build type to use"
+    default: Debug
+  sse3:
+    description: "Whether to enable sse3"
+    default: OFF
+  avx:
+    description: "Whether to enable avx"
+    default: OFF
+  pure:
+    description: "Whether to enable pure"
+    default: OFF
+  lang_extensions:
+    description: "Whether to enable lang extensions"
+    default: OFF
+
+runs:
+  using: "composite"
+  steps:
+    - name: Build GLM
+      shell: bash
+      run: |
+        mkdir -p ${{ inputs.build_dir }}
+
+        cmake -DCMAKE_INSTALL_PREFIX=$RUNNER_TEMP/install \
+              -DCMAKE_BUILD_TYPE=${{ inputs.build_type }} \
+              -DGLM_TEST_ENABLE=ON \
+              -DGLM_TEST_ENABLE_CXX_${{ inputs.std}}=ON \
+              -DGLM_TEST_ENABLE_SIMD_SSE3=${{ inputs.sse3 }} \
+              -DGLM_TEST_ENABLE_SIMD_AVX=${{ inputs.avx }} \
+              -DGLM_TEST_FORCE_PURE=${{ inputs.pure }} \
+              -DGLM_TEST_ENABLE_LANG_EXTENSIONS=${{ inputs.lang_extensions }} \
+              -S . \
+              -B ${{ inputs.build_dir }}
+        cmake --build ${{ inputs.build_dir }} --parallel 2
+
+    - name: Run tests
+      shell: bash
+      run:
+        ctest --test-dir ${{ inputs.build_dir }} --output-on-failure --parallel 4

@@ -52,7 +52,7 @@ Makefile
 *.log
 
 # local build(s)
-build*
+/build*
 
 /.vs
 /.vscode

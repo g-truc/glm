@@ -198,8 +198,9 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 	endif()
 
 	add_compile_options(-Werror -Weverything)
+	add_compile_options(-Wno-unknown-warning-option)
 	add_compile_options(-Wno-c++98-compat -Wno-c++98-compat-pedantic -Wno-c++11-long-long -Wno-padded -Wno-gnu-anonymous-struct -Wno-nested-anon-types)
-    add_compile_options(-Wno-undefined-reinterpret-cast -Wno-sign-conversion -Wno-unused-variable -Wno-missing-prototypes -Wno-unreachable-code -Wno-missing-variable-declarations -Wno-sign-compare -Wno-global-constructors -Wno-unused-macros -Wno-format-nonliteral -Wno-float-equal)
+        add_compile_options(-Wno-undefined-reinterpret-cast -Wno-sign-conversion -Wno-unused-variable -Wno-missing-prototypes -Wno-unreachable-code -Wno-missing-variable-declarations -Wno-sign-compare -Wno-global-constructors -Wno-unused-macros -Wno-format-nonliteral -Wno-float-equal -Wno-unused-but-set-variable -Wno-invalid-utf8 -Wno-newline-eof -Wno-implicit-int-float-conversion -Wno-reserved-identifier -Wno-undef -Wno-unsafe-buffer-usage -Wno-float-conversion)
 
 elseif(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
 	if(NOT GLM_QUIET)

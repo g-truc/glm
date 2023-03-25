@@ -48,7 +48,7 @@ glm::mat4 camera(float Translate, glm::vec2 const& Rotate)
 
 | Service | System | Compiler | Status |
 | ------- | ------ | -------- | ------ |
-| [Travis CI](https://travis-ci.org/g-truc/glm)| MacOSX, Linux 64 bits | Clang 3.6, Clang 5.0, GCC 4.9, GCC 7.3 | [![Travis CI](https://travis-ci.org/g-truc/glm.svg?branch=master)](https://travis-ci.org/g-truc/glm)
+| [GitHub actions](https://github.com/g-truc/glm/actions)| MacOSX, Linux 64 bits | Clang 14, GCC 11 | [![GLM tests](https://github.com/g-truc/glm/actions/workflows/test.yml/badge.svg?event=push)](https://github.com/g-truc/glm/actions/workflows/test.yml)
 | [AppVeyor](https://ci.appveyor.com/project/Groovounet/glm)| Windows 32 and 64 | Visual Studio 2013, Visual Studio 2015, Visual Studio 2017 | [![AppVeyor](https://ci.appveyor.com/api/projects/status/32r7s2skrgm9ubva?svg=true)](https://ci.appveyor.com/project/Groovounet/glm)
 
 ## Release notes
