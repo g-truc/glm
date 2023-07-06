@@ -10,21 +10,21 @@ namespace glm {
 
 
 	template<length_t D, typename T, qualifier Q>
-	GLM_INLINE mat<D, D, T, Q> computeCovarianceMatrix(vec<D, T, Q> const* v, size_t n)
+	GLM_FUNC_QUALIFIER mat<D, D, T, Q> computeCovarianceMatrix(vec<D, T, Q> const* v, size_t n)
 	{
 		return computeCovarianceMatrix<D, T, Q, vec<D, T, Q> const*>(v, v + n);
 	}
 
 
 	template<length_t D, typename T, qualifier Q>
-	GLM_INLINE mat<D, D, T, Q> computeCovarianceMatrix(vec<D, T, Q> const* v, size_t n, vec<D, T, Q> const& c)
+	GLM_FUNC_QUALIFIER mat<D, D, T, Q> computeCovarianceMatrix(vec<D, T, Q> const* v, size_t n, vec<D, T, Q> const& c)
 	{
 		return computeCovarianceMatrix<D, T, Q, vec<D, T, Q> const*>(v, v + n, c);
 	}
 
 
 	template<length_t D, typename T, qualifier Q, typename I>
-	GLM_FUNC_DECL mat<D, D, T, Q> computeCovarianceMatrix(I const& b, I const& e)
+	GLM_FUNC_QUALIFIER mat<D, D, T, Q> computeCovarianceMatrix(I const& b, I const& e)
 	{
 		glm::mat<D, D, T, Q> m(0);
 
@@ -45,7 +45,7 @@ namespace glm {
 
 
 	template<length_t D, typename T, qualifier Q, typename I>
-	GLM_FUNC_DECL mat<D, D, T, Q> computeCovarianceMatrix(I const& b, I const& e, vec<D, T, Q> const& c)
+	GLM_FUNC_QUALIFIER mat<D, D, T, Q> computeCovarianceMatrix(I const& b, I const& e, vec<D, T, Q> const& c)
 	{
 		glm::mat<D, D, T, Q> m(0);
 		glm::vec<D, T, Q> v;
@@ -69,13 +69,13 @@ namespace glm {
 	{
 
 		template<typename T>
-		GLM_INLINE T transferSign(T const& v, T const& s)
+		GLM_FUNC_QUALIFIER static T transferSign(T const& v, T const& s)
 		{
 			return ((s) >= 0 ? glm::abs(v) : -glm::abs(v));
 		}
 
 		template<typename T>
-		GLM_INLINE T pythag(T const& a, T const& b) {
+		GLM_FUNC_QUALIFIER static T pythag(T const& a, T const& b) {
 			static const T epsilon = static_cast<T>(0.0000001);
 			T absa = glm::abs(a);
 			T absb = glm::abs(b);
@@ -93,7 +93,7 @@ namespace glm {
 	}
 
 	template<length_t D, typename T, qualifier Q>
-	GLM_FUNC_DECL unsigned int findEigenvaluesSymReal
+	GLM_FUNC_QUALIFIER unsigned int findEigenvaluesSymReal
 	(
 		mat<D, D, T, Q> const& covarMat,
 		vec<D, T, Q>& outEigenvalues,
@@ -281,7 +281,7 @@ namespace glm {
 	}
 
 	template<typename T, qualifier Q>
-	GLM_INLINE void sortEigenvalues(vec<2, T, Q>& eigenvalues, mat<2, 2, T, Q>& eigenvectors)
+	GLM_FUNC_QUALIFIER void sortEigenvalues(vec<2, T, Q>& eigenvalues, mat<2, 2, T, Q>& eigenvectors)
 	{
 		if (eigenvalues[0] < eigenvalues[1])
 		{
@@ -291,7 +291,7 @@ namespace glm {
 	}
 
 	template<typename T, qualifier Q>
-	GLM_INLINE void sortEigenvalues(vec<3, T, Q>& eigenvalues, mat<3, 3, T, Q>& eigenvectors)
+	GLM_FUNC_QUALIFIER void sortEigenvalues(vec<3, T, Q>& eigenvalues, mat<3, 3, T, Q>& eigenvectors)
 	{
 		if (eigenvalues[0] < eigenvalues[1])
 		{
@@ -311,7 +311,7 @@ namespace glm {
 	}
 
 	template<typename T, qualifier Q>
-	GLM_INLINE void sortEigenvalues(vec<4, T, Q>& eigenvalues, mat<4, 4, T, Q>& eigenvectors)
+	GLM_FUNC_QUALIFIER void sortEigenvalues(vec<4, T, Q>& eigenvalues, mat<4, 4, T, Q>& eigenvectors)
 	{
 		if (eigenvalues[0] < eigenvalues[2])
 		{

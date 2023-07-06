@@ -9,7 +9,7 @@
 ///
 /// Include <glm/gtx/quaternion.hpp> to use the features of this extension.
 ///
-/// Extented quaternion types and functions
+/// Extended quaternion types and functions
 
 #pragma once
 
@@ -110,28 +110,28 @@ namespace glm
 	///
 	/// @see gtx_quaternion
 	template<typename T, qualifier Q>
-	GLM_FUNC_DECL mat<3, 3, T, Q> toMat3(
+	GLM_FUNC_QUALIFIER mat<3, 3, T, Q> toMat3(
 		qua<T, Q> const& x){return mat3_cast(x);}
 
 	/// Converts a quaternion to a 4 * 4 matrix.
 	///
 	/// @see gtx_quaternion
 	template<typename T, qualifier Q>
-	GLM_FUNC_DECL mat<4, 4, T, Q> toMat4(
+	GLM_FUNC_QUALIFIER mat<4, 4, T, Q> toMat4(
 		qua<T, Q> const& x){return mat4_cast(x);}
 
 	/// Converts a 3 * 3 matrix to a quaternion.
 	///
 	/// @see gtx_quaternion
 	template<typename T, qualifier Q>
-	GLM_FUNC_DECL qua<T, Q> toQuat(
+	GLM_FUNC_QUALIFIER qua<T, Q> toQuat(
 		mat<3, 3, T, Q> const& x){return quat_cast(x);}
 
 	/// Converts a 4 * 4 matrix to a quaternion.
 	///
 	/// @see gtx_quaternion
 	template<typename T, qualifier Q>
-	GLM_FUNC_DECL qua<T, Q> toQuat(
+	GLM_FUNC_QUALIFIER qua<T, Q> toQuat(
 		mat<4, 4, T, Q> const& x){return quat_cast(x);}
 
 	/// Quaternion interpolation using the rotation short path.

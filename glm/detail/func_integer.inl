@@ -270,7 +270,7 @@ namespace detail
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_integer, "'bitfieldInsert' only accept integer values");
 
-		T const Mask = static_cast<T>(detail::mask(Bits) << Offset);
+		T const Mask = detail::mask(static_cast<T>(Bits)) << Offset;
 		return (Base & ~Mask) | ((Insert << static_cast<T>(Offset)) & Mask);
 	}
 

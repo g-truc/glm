@@ -1,5 +1,5 @@
 /// @ref ext_matrix_uint2x4_sized
-/// @file glm/ext/matrixu_uint2x4_sized.hpp
+/// @file glm/ext/matrix_uint2x4_sized.hpp
 ///
 /// @see core (dependence)
 ///

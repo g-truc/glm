@@ -25,6 +25,9 @@
 
 namespace glm
 {
+	/// @addtogroup ext_vector_ulp
+	/// @{
+
 	/// Return the next ULP value(s) after the input value(s).
 	///
 	/// @tparam L Integer between 1 and 4 included that qualify the dimension of the vector

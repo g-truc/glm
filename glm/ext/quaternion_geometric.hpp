@@ -8,7 +8,7 @@
 ///
 /// Include <glm/ext/quaternion_geometric.hpp> to use the features of this extension.
 ///
-/// @see core_geometric
+/// @see core_func_geometric
 /// @see ext_quaternion_float
 /// @see ext_quaternion_double
 

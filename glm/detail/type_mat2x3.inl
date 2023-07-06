@@ -217,14 +217,14 @@ namespace glm
 	// -- Accesses --
 
 	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER typename mat<2, 3, T, Q>::col_type & mat<2, 3, T, Q>::operator[](typename mat<2, 3, T, Q>::length_type i)
+	GLM_FUNC_QUALIFIER typename mat<2, 3, T, Q>::col_type & mat<2, 3, T, Q>::operator[](typename mat<2, 3, T, Q>::length_type i) GLM_NOEXCEPT
 	{
 		assert(i < this->length());
 		return this->value[i];
 	}
 
 	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR typename mat<2, 3, T, Q>::col_type const& mat<2, 3, T, Q>::operator[](typename mat<2, 3, T, Q>::length_type i) const
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR typename mat<2, 3, T, Q>::col_type const& mat<2, 3, T, Q>::operator[](typename mat<2, 3, T, Q>::length_type i) const GLM_NOEXCEPT
 	{
 		assert(i < this->length());
 		return this->value[i];

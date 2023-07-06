@@ -7,7 +7,7 @@
 /// @defgroup gtx_normalize_dot GLM_GTX_normalize_dot
 /// @ingroup gtx
 ///
-/// Include <glm/gtx/normalized_dot.hpp> to use the features of this extension.
+/// Include <glm/gtx/normalize_dot.hpp> to use the features of this extension.
 ///
 /// Dot product of vectors that need to be normalize with a single square root.
 

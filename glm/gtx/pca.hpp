@@ -33,7 +33,7 @@
 /// 
 /// glm::sortEigenvalues(evals, evecs);
 /// 
-/// // ... now evecs[0] points in the direction (symmetric) of the largest spatial distribuion within ptData
+/// // ... now evecs[0] points in the direction (symmetric) of the largest spatial distribution within ptData
 /// ```
 
 #pragma once
@@ -57,11 +57,14 @@ namespace glm {
 
 	/// Compute a covariance matrix form an array of relative coordinates `v` (e.g., relative to the center of gravity of the object)
 	/// @param v Points to a memory holding `n` times vectors
+	/// @param n Number of points in v
 	template<length_t D, typename T, qualifier Q>
 	GLM_INLINE mat<D, D, T, Q> computeCovarianceMatrix(vec<D, T, Q> const* v, size_t n);
 
 	/// Compute a covariance matrix form an array of absolute coordinates `v` and a precomputed center of gravity `c`
 	/// @param v Points to a memory holding `n` times vectors
+	/// @param n Number of points in v
+	/// @param c Precomputed center of gravity
 	template<length_t D, typename T, qualifier Q>
 	GLM_INLINE mat<D, D, T, Q> computeCovarianceMatrix(vec<D, T, Q> const* v, size_t n, vec<D, T, Q> const& c);
 
@@ -78,9 +81,10 @@ namespace glm {
 	/// Assuming the provided covariance matrix `covarMat` is symmetric and real-valued, this function find the `D` Eigenvalues of the matrix, and also provides the corresponding Eigenvectors.
 	/// Note: the data in `outEigenvalues` and `outEigenvectors` are in matching order, i.e. `outEigenvector[i]` is the Eigenvector of the Eigenvalue `outEigenvalue[i]`.
 	/// This is a numeric implementation to find the Eigenvalues, using 'QL decomposition` (variant of QR decomposition: https://en.wikipedia.org/wiki/QR_decomposition).
-	/// @param covarMat A symmetric, real-valued covariance matrix, e.g. computed from `computeCovarianceMatrix`.
-	/// @param outEigenvalues Vector to receive the found eigenvalues
-	/// @param outEigenvectors Matrix to receive the found eigenvectors corresponding to the found eigenvalues, as column vectors
+	///
+	/// @param[in] covarMat A symmetric, real-valued covariance matrix, e.g. computed from computeCovarianceMatrix
+	/// @param[out] outEigenvalues Vector to receive the found eigenvalues
+	/// @param[out] outEigenvectors Matrix to receive the found eigenvectors corresponding to the found eigenvalues, as column vectors
 	/// @return The number of eigenvalues found, usually D if the precondition of the covariance matrix is met.
 	template<length_t D, typename T, qualifier Q>
 	GLM_FUNC_DECL unsigned int findEigenvaluesSymReal
@@ -93,17 +97,17 @@ namespace glm {
 	/// Sorts a group of Eigenvalues&Eigenvectors, for largest Eigenvalue to smallest Eigenvalue.
 	/// The data in `outEigenvalues` and `outEigenvectors` are assumed to be matching order, i.e. `outEigenvector[i]` is the Eigenvector of the Eigenvalue `outEigenvalue[i]`.
 	template<typename T, qualifier Q>
-	GLM_INLINE void sortEigenvalues(vec<2, T, Q>& eigenvalues, mat<2, 2, T, Q>& eigenvectors);
+	GLM_FUNC_DECL void sortEigenvalues(vec<2, T, Q>& eigenvalues, mat<2, 2, T, Q>& eigenvectors);
 
 	/// Sorts a group of Eigenvalues&Eigenvectors, for largest Eigenvalue to smallest Eigenvalue.
 	/// The data in `outEigenvalues` and `outEigenvectors` are assumed to be matching order, i.e. `outEigenvector[i]` is the Eigenvector of the Eigenvalue `outEigenvalue[i]`.
 	template<typename T, qualifier Q>
-	GLM_INLINE void sortEigenvalues(vec<3, T, Q>& eigenvalues, mat<3, 3, T, Q>& eigenvectors);
+	GLM_FUNC_DECL void sortEigenvalues(vec<3, T, Q>& eigenvalues, mat<3, 3, T, Q>& eigenvectors);
 
 	/// Sorts a group of Eigenvalues&Eigenvectors, for largest Eigenvalue to smallest Eigenvalue.
 	/// The data in `outEigenvalues` and `outEigenvectors` are assumed to be matching order, i.e. `outEigenvector[i]` is the Eigenvector of the Eigenvalue `outEigenvalue[i]`.
 	template<typename T, qualifier Q>
-	GLM_INLINE void sortEigenvalues(vec<4, T, Q>& eigenvalues, mat<4, 4, T, Q>& eigenvectors);
+	GLM_FUNC_DECL void sortEigenvalues(vec<4, T, Q>& eigenvalues, mat<4, 4, T, Q>& eigenvectors);
 
 	/// @}
 }//namespace glm

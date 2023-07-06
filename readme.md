@@ -723,14 +723,14 @@ glm::mat4 camera(float Translate, glm::vec2 const& Rotate)
 - Increased static_assert coverage
 - Replaced GLM traits by STL traits when possible
 - Allowed including individual core feature
-- Increased unit tests completness
+- Increased unit tests completeness
 - Added creating of a quaternion from two vectors
 - Added C++11 initializer lists
 - Fixed umulExtended and imulExtended implementations for vector types (#76)
 - Fixed CUDA coverage for GTC extensions
 - Added GTX_io extension
 - Improved GLM messages enabled when defining GLM_MESSAGES
-- Hidden matrix _inverse function implementation detail into private section
+- Hidden matrix_inverse function implementation detail into private section
 
 ---
 ### [GLM 0.9.4.6](https://github.com/g-truc/glm/releases/tag/0.9.4.6) - 2013-09-20
@@ -890,7 +890,7 @@ generation distribution
 ---
 ### [GLM 0.9.2.7](https://github.com/g-truc/glm/releases/tag/0.9.2.7) - 2011-10-24
 - Added more swizzling constructors
-- Added missing none-squared matrix products
+- Added missing non-squared matrix products
 
 ---
 ### [GLM 0.9.2.6](https://github.com/g-truc/glm/releases/tag/0.9.2.6) - 2011-10-01
@@ -1219,7 +1219,7 @@ generation distribution
 ### GLM 0.2 - 2005-05-05
 - Improve adaptative from GLSL.
 - Add experimental extensions based on OpenGL extension process.
-- Fixe bugs.
+- Fixed bugs.
 
 ---
 ### GLM 0.1 - 2005-02-21

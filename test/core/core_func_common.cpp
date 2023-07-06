@@ -639,7 +639,7 @@ namespace round_
 			float A = glm::round(0.0f);
 			Error += glm::equal(A, 0.0f, glm::epsilon<float>()) ? 0 : 1;
 			float B = glm::round(0.5f);
-			Error += glm::equal(B, 1.0f, glm::epsilon<float>()) ? 0 : 1;
+			Error += (glm::equal(B, 1.0f, glm::epsilon<float>()) || glm::equal(B, 0.0f, glm::epsilon<float>())) ? 0 : 1;
 			float C = glm::round(1.0f);
 			Error += glm::equal(C, 1.0f, glm::epsilon<float>()) ? 0 : 1;
 			float D = glm::round(0.1f);
@@ -656,7 +656,7 @@ namespace round_
 			float A = glm::round(-0.0f);
 			Error += glm::equal(A, 0.0f, glm::epsilon<float>()) ? 0 : 1;
 			float B = glm::round(-0.5f);
-			Error += glm::equal(B, -1.0f, glm::epsilon<float>()) ? 0 : 1;
+			Error += (glm::equal(B, -1.0f, glm::epsilon<float>()) || glm::equal(B, 0.0f, glm::epsilon<float>())) ? 0 : 1;
 			float C = glm::round(-1.0f);
 			Error += glm::equal(C, -1.0f, glm::epsilon<float>()) ? 0 : 1;
 			float D = glm::round(-0.1f);

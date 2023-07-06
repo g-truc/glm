@@ -3,7 +3,7 @@
 ///
 /// @see core (dependence)
 ///
-/// @defgroup gtc_reciprocal GLM_EXT_vector_reciprocal
+/// @defgroup ext_vector_reciprocal GLM_EXT_vector_reciprocal
 /// @ingroup ext
 ///
 /// Include <glm/ext/vector_reciprocal.hpp> to use the features of this extension.

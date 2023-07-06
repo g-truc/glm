@@ -577,7 +577,20 @@ namespace detail {
 		static vec<4, float, Q> call(vec<4, float, Q> const& a, vec<4, float, Q> const& b)
 		{
 			vec<4, float, Q> Result;
+#if GLM_ARCH & GLM_ARCH_ARMV8_BIT
 			Result.data = vdivq_f32(a.data, b.data);
+#else
+			/* Arm assembler reference:
+			 *
+			 * The Newton-Raphson iteration: x[n+1] = x[n] * (2 - d * x[n])
+			 * converges to (1/d) if x0 is the result of VRECPE applied to d.
+			 *
+			 * Note: The precision usually improves with two interactions, but more than two iterations are not helpful. */
+			float32x4_t x = vrecpeq_f32(b.data);
+			x = vmulq_f32(vrecpsq_f32(b.data, x), x);
+			x = vmulq_f32(vrecpsq_f32(b.data, x), x);
+			Result.data = vmulq_f32(a.data, x);
+#endif
 			return Result;
 		}
 	};

@@ -26,6 +26,9 @@
 
 namespace glm
 {
+	/// @addtogroup gtc_ulp
+	/// @{
+
 	/// Return the next ULP value(s) after the input value(s).
 	///
 	/// @tparam genType A floating-point scalar type.

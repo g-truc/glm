@@ -9,7 +9,7 @@
 ///
 /// Include <glm/gtx/associated_min_max.hpp> to use the features of this extension.
 ///
-/// @brief Min and max functions that return associated values not the compared onces.
+/// @brief Min and max functions that return associated values not the compared ones.
 
 #pragma once
 

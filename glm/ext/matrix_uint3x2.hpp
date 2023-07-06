@@ -3,7 +3,7 @@
 ///
 /// @see core (dependence)
 ///
-/// @defgroup ext_matrix_int3x2 GLM_EXT_matrix_uint3x2
+/// @defgroup ext_matrix_uint3x2 GLM_EXT_matrix_uint3x2
 /// @ingroup ext
 ///
 /// Include <glm/ext/matrix_uint3x2.hpp> to use the features of this extension.
