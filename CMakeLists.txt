@@ -7,5 +7,5 @@ target_include_directories(glm INTERFACE .)
 target_compile_definitions(glm INTERFACE GLM_FORCE_SIZE_FUNC)
 
 if(NTOP_GLM_GCC_OVERRIDES)
-  add_definitions(-DGLM_GCC_OVERRIDE)
+  target_compile_definitions(glm INTERFACE -DGLM_GCC_OVERRIDE)
 endif()

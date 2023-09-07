@@ -665,7 +665,16 @@ namespace detail
 	}
 
 #	if GLM_HAS_CXX11_STL
-		using std::isinf;
+		#	if GLM_GCC_OVERRIDE
+				template<typename genType>
+				GLM_FUNC_QUALIFIER bool isinf(genType x)
+				{
+						GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559, "'isinf' only accept floating-point inputs");
+						return __isinf(x) != 0;
+				}
+		#	else
+			  using std::isinf;
+		#	endif
 #	else
 		template <typename genType>
 		GLM_FUNC_QUALIFIER bool isinf(genType x)
