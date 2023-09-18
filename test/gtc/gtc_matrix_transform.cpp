@@ -1,12 +1,70 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/constants.hpp>
 #include <glm/ext/matrix_relational.hpp>
+#include <glm/ext/scalar_relational.hpp>
 
 int test_perspective()
 {
 	int Error = 0;
 
-	glm::mat4 Projection = glm::perspective(glm::pi<float>() * 0.25f, 4.0f / 3.0f, 0.1f, 100.0f);
+	const float Near = 0.1f;
+	const float Far = 100.0f;
+	const float Eps = glm::epsilon<float>();
+
+	glm::mat4 Projection = glm::perspective(glm::pi<float>() * 0.25f, 4.0f / 3.0f, Near, Far);
+
+	Projection = glm::perspectiveLH_ZO(glm::pi<float>() * 0.25f, 4.0f / 3.0f, Near, Far);
+	{
+		glm::vec4 N = Projection * glm::vec4{0.f, 0.f, Near, 1.f};
+		glm::vec4 F = Projection * glm::vec4{0.f, 0.f, Far, 1.f};
+		N /= N.w;
+		F /= F.w;
+		Error += glm::notEqual(N.z, 0.f, Eps);
+		Error += glm::notEqual(F.z, 1.f, Eps);
+	}
+
+	Projection = glm::perspectiveLH_NO(glm::pi<float>() * 0.25f, 4.0f / 3.0f, Near, Far);
+	{
+		glm::vec4 N = Projection * glm::vec4{0.f, 0.f, Near, 1.f};
+		glm::vec4 F = Projection * glm::vec4{0.f, 0.f, Far, 1.f};
+		N /= N.w;
+		F /= F.w;
+		Error += glm::notEqual(N.z, -1.f, Eps);
+		Error += glm::notEqual(F.z, 1.f, Eps);
+	}
+
+	return Error;
+}
+
+int test_infinitePerspective()
+{
+	int Error = 0;
+
+	const float Near = 0.1f;
+	const float Inf = 1.0e+10f;
+	const float Eps = glm::epsilon<float>();
+
+	glm::mat4 Projection = glm::infinitePerspective(glm::pi<float>() * 0.25f, 4.0f / 3.0f, Near);
+
+	Projection = glm::infinitePerspectiveLH_ZO(glm::pi<float>() * 0.25f, 4.0f / 3.0f, Near);
+	{
+		glm::vec4 N = Projection * glm::vec4{0.f, 0.f, Near, 1.f};
+		glm::vec4 F = Projection * glm::vec4{0.f, 0.f, Inf, 1.f};
+		N /= N.w;
+		F /= F.w;
+		Error += glm::notEqual(N.z, 0.f, Eps);
+		Error += glm::notEqual(F.z, 1.f, Eps);
+	}
+
+	Projection = glm::infinitePerspectiveLH_NO(glm::pi<float>() * 0.25f, 4.0f / 3.0f, Near);
+	{
+		glm::vec4 N = Projection * glm::vec4{0.f, 0.f, Near, 1.f};
+		glm::vec4 F = Projection * glm::vec4{0.f, 0.f, Inf, 1.f};
+		N /= N.w;
+		F /= F.w;
+		Error += glm::notEqual(N.z, -1.f, Eps);
+		Error += glm::notEqual(F.z, 1.f, Eps);
+	}
 
 	return Error;
 }
@@ -50,6 +108,7 @@ int main()
 	Error += test_tweakedInfinitePerspective();
 	Error += test_pick();
 	Error += test_perspective();
+	Error += test_infinitePerspective();
 
 	return Error;
 }
