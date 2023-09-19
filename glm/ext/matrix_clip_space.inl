@@ -483,7 +483,7 @@ namespace glm
 	}
 
 	template<typename T>
-	GLM_FUNC_QUALIFIER mat<4, 4, T, defaultp> infinitePerspectiveRH(T fovy, T aspect, T zNear)
+	GLM_FUNC_QUALIFIER mat<4, 4, T, defaultp> infinitePerspectiveRH_NO(T fovy, T aspect, T zNear)
 	{
 		T const range = tan(fovy / static_cast<T>(2)) * zNear;
 		T const left = -range * aspect;
@@ -497,6 +497,24 @@ namespace glm
 		Result[2][2] = - static_cast<T>(1);
 		Result[2][3] = - static_cast<T>(1);
 		Result[3][2] = - static_cast<T>(2) * zNear;
+		return Result;
+	}
+	
+	template<typename T>
+	GLM_FUNC_QUALIFIER mat<4, 4, T, defaultp> infinitePerspectiveRH_ZO(T fovy, T aspect, T zNear)
+	{
+		T const range = tan(fovy / static_cast<T>(2)) * zNear;
+		T const left = -range * aspect;
+		T const right = range * aspect;
+		T const bottom = -range;
+		T const top = range;
+
+		mat<4, 4, T, defaultp> Result(static_cast<T>(0));
+		Result[0][0] = (static_cast<T>(2) * zNear) / (right - left);
+		Result[1][1] = (static_cast<T>(2) * zNear) / (top - bottom);
+		Result[2][2] = - static_cast<T>(1);
+		Result[2][3] = - static_cast<T>(1);
+		Result[3][2] = - zNear;
 		return Result;
 	}
 
@@ -543,8 +561,10 @@ namespace glm
 			return infinitePerspectiveLH_ZO(fovy, aspect, zNear);
 #		elif GLM_CONFIG_CLIP_CONTROL == GLM_CLIP_CONTROL_LH_NO
 			return infinitePerspectiveLH_NO(fovy, aspect, zNear);
-#		else
-			return infinitePerspectiveRH(fovy, aspect, zNear);
+#		elif GLM_CONFIG_CLIP_CONTROL == GLM_CLIP_CONTROL_RH_ZO
+			return infinitePerspectiveRH_ZO(fovy, aspect, zNear);
+#		elif GLM_CONFIG_CLIP_CONTROL == GLM_CLIP_CONTROL_RH_NO
+			return infinitePerspectiveRH_NO(fovy, aspect, zNear);
 #		endif
 	}
 
