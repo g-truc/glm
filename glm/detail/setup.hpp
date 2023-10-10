@@ -584,48 +584,6 @@
 #endif
 
 ///////////////////////////////////////////////////////////////////////////////////
-// SYCL
-
-#if GLM_COMPILER==GLM_COMPILER_SYCL
-
-#include <CL/sycl.hpp>
-#include <limits>
-
-namespace glm {
-namespace std {
-	// Import SYCL's functions into the namespace glm::std to force their usages.
-	// It's important to use the math built-in function (sin, exp, ...)
-	// of SYCL instead the std ones.
-	using namespace cl::sycl;
-
-	///////////////////////////////////////////////////////////////////////////////
-	// Import some "harmless" std's stuffs used by glm into
-	// the new glm::std namespace.
-	template<typename T>
-	using numeric_limits = ::std::numeric_limits<T>;
-
-	using ::std::size_t;
-
-	using ::std::uint8_t;
-	using ::std::uint16_t;
-	using ::std::uint32_t;
-	using ::std::uint64_t;
-
-	using ::std::int8_t;
-	using ::std::int16_t;
-	using ::std::int32_t;
-	using ::std::int64_t;
-
-	using ::std::make_unsigned;
-	///////////////////////////////////////////////////////////////////////////////
-} //namespace std
-} //namespace glm
-
-#endif
-
-///////////////////////////////////////////////////////////////////////////////////
-
-///////////////////////////////////////////////////////////////////////////////////
 // Length type: all length functions returns a length_t type.
 // When GLM_FORCE_SIZE_T_LENGTH is defined, length_t is a typedef of size_t otherwise
 // length_t is a typedef of int like GLSL defines it.
