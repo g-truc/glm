@@ -7,7 +7,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        std: [98, 11, 17]
+        std: [98, 11, 14, 17, 20]
         config: [Debug, Release]
 
     steps:
@@ -53,7 +53,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        std: [98, 11, 17]
+        std: [98, 11, 14, 17, 20]
         config: [Debug, Release]
 
     steps:
@@ -101,7 +101,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        std: [98, 11, 17]
+        std: [98, 11, 14, 17, 20]
         config: [Debug, Release]
 
     steps:
