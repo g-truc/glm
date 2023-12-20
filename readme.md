@@ -45,19 +45,19 @@ glm::mat4 camera(float Translate, glm::vec2 const& Rotate)
 
 ## Project Health
 
-| Service | System | Compiler | Status |
-| ------- | ------ | -------- | ------ |
-| [Travis CI](https://travis-ci.org/g-truc/glm)| MacOSX, Linux 64 bits | Clang 3.6, Clang 5.0, GCC 4.9, GCC 7.3 | [![Travis CI](https://travis-ci.org/g-truc/glm.svg?branch=master)](https://travis-ci.org/g-truc/glm)
-| [AppVeyor](https://ci.appveyor.com/project/Groovounet/glm)| Windows 32 and 64 | Visual Studio 2013, Visual Studio 2015, Visual Studio 2017 | [![AppVeyor](https://ci.appveyor.com/api/projects/status/32r7s2skrgm9ubva?svg=true)](https://ci.appveyor.com/project/Groovounet/glm)
+| Service | Status |
+| ------ - | ------ |
+| [GitHub actions](https://github.com/g-truc/glm/actions)| [![GLM tests](https://github.com/g-truc/glm/actions/workflows/test.yml/badge.svg?event=push)](https://github.com/g-truc/glm/actions/workflows/c.i.yml)
 
 ## Release notes
 
-### [GLM 0.9.9.9](https://github.com/g-truc/glm/releases/tag/0.9.9.9) - 2020-XX-XX
+### [GLM 0.9.9.9](https://github.com/g-truc/glm/releases/tag/0.9.9.9) - 2024-01-XX
 #### Features:
 - Added *GLM_EXT_scalar_reciprocal* with tests
 - Added *GLM_EXT_vector_reciprocal* with tests
 - Added `glm::iround` and `glm::uround` to *GLM_EXT_scalar_common* and *GLM_EXT_vector_common*
 - Added *GLM_EXT_matrix_integer* with tests
+- Added Github Actions
 
 #### Improvements:
 - Added `constexpr` qualifier for `cross` product #1040
