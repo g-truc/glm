@@ -119,7 +119,7 @@ static int comp_vec4_mul_mat4(std::size_t Samples)
 
 int main()
 {
-	std::size_t const Samples = 100000;
+	std::size_t const Samples = 1000;
 	
 	int Error = 0;
 

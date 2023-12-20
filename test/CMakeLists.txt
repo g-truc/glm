@@ -47,7 +47,7 @@ endif()
 
 option(GLM_TEST_ENABLE_LANG_EXTENSIONS "Enable language extensions" OFF)
 
-option(GLM_DISABLE_AUTO_DETECTION "Enable language extensions" OFF)
+option(GLM_DISABLE_AUTO_DETECTION "Disable platform, compiler, arch and C++ language detection" OFF)
 
 if(GLM_DISABLE_AUTO_DETECTION)
 	add_definitions(-DGLM_FORCE_PLATFORM_UNKNOWN -DGLM_FORCE_COMPILER_UNKNOWN -DGLM_FORCE_ARCH_UNKNOWN -DGLM_FORCE_CXX_UNKNOWN)
