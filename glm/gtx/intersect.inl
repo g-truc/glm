@@ -45,7 +45,7 @@ namespace glm
 
 		vec<3, T, Q> Perpendicular(0);
 
-		if(det > std::numeric_limits<T>::epsilon())
+		if (det > static_cast<T>(0))
 		{
 			// calculate distance from vert0 to ray origin
 			vec<3, T, Q> const dist = orig - vert0;
@@ -63,7 +63,7 @@ namespace glm
 			if((baryPosition.y < static_cast<T>(0)) || ((baryPosition.x + baryPosition.y) > det))
 				return false;
 		}
-		else if(det < -std::numeric_limits<T>::epsilon())
+		else if(det < static_cast<T>(0))
 		{
 			// calculate distance from vert0 to ray origin
 			vec<3, T, Q> const dist = orig - vert0;
