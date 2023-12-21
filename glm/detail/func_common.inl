@@ -662,7 +662,7 @@ namespace detail
 		return Result;
 	}
 
-	GLM_FUNC_QUALIFIER int floatBitsToInt(float const& v)
+	GLM_FUNC_QUALIFIER int floatBitsToInt(float v)
 	{
 		union
 		{
@@ -678,10 +678,10 @@ namespace detail
 	template<length_t L, qualifier Q>
 	GLM_FUNC_QUALIFIER vec<L, int, Q> floatBitsToInt(vec<L, float, Q> const& v)
 	{
-		return reinterpret_cast<vec<L, int, Q>&>(const_cast<vec<L, float, Q>&>(v));
+		return detail::functor1<vec, L, int, float, Q>::call(floatBitsToInt, v);
 	}
 
-	GLM_FUNC_QUALIFIER uint floatBitsToUint(float const& v)
+	GLM_FUNC_QUALIFIER uint floatBitsToUint(float v)
 	{
 		union
 		{
@@ -697,7 +697,7 @@ namespace detail
 	template<length_t L, qualifier Q>
 	GLM_FUNC_QUALIFIER vec<L, uint, Q> floatBitsToUint(vec<L, float, Q> const& v)
 	{
-		return reinterpret_cast<vec<L, uint, Q>&>(const_cast<vec<L, float, Q>&>(v));
+		return detail::functor1<vec, L, uint, float, Q>::call(floatBitsToUint, v);
 	}
 
 	GLM_FUNC_QUALIFIER float intBitsToFloat(int const& v)
@@ -716,10 +716,10 @@ namespace detail
 	template<length_t L, qualifier Q>
 	GLM_FUNC_QUALIFIER vec<L, float, Q> intBitsToFloat(vec<L, int, Q> const& v)
 	{
-		return reinterpret_cast<vec<L, float, Q>&>(const_cast<vec<L, int, Q>&>(v));
+		return detail::functor1<vec, L, float, int, Q>::call(intBitsToFloat, v);
 	}
 
-	GLM_FUNC_QUALIFIER float uintBitsToFloat(uint const& v)
+	GLM_FUNC_QUALIFIER float uintBitsToFloat(uint v)
 	{
 		union
 		{
