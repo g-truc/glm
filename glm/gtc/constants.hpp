@@ -42,7 +42,7 @@ namespace glm
 	/// Return unit-circle circumference, or pi * 2.
 	/// @see gtc_constants
 	template<typename genType>
-	GLM_FUNC_DECL GLM_CONSTEXPR genType tau() { return glm::two_pi<genType>(); }
+	GLM_FUNC_DECL GLM_CONSTEXPR genType tau();
 
 	/// Return square root of pi.
 	/// @see gtc_constants
