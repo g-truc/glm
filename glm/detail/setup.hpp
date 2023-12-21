@@ -948,9 +948,9 @@ namespace detail
 #		pragma message (GLM_STR(GLM_VERSION_MESSAGE))
 
 	// Report C++ language
-#	if (GLM_LANG & GLM_LANG_CXX2A_FLAG) && (GLM_LANG & GLM_LANG_EXT)
-#		pragma message("GLM: C++ 2A with extensions")
-#	elif (GLM_LANG & GLM_LANG_CXX2A_FLAG)
+#	if (GLM_LANG & GLM_LANG_CXX20_FLAG) && (GLM_LANG & GLM_LANG_EXT)
+#		pragma message("GLM: C++ 20 with extensions")
+#	elif (GLM_LANG & GLM_LANG_CXX20_FLAG)
 #		pragma message("GLM: C++ 2A")
 #	elif (GLM_LANG & GLM_LANG_CXX17_FLAG) && (GLM_LANG & GLM_LANG_EXT)
 #		pragma message("GLM: C++ 17 with extensions")
