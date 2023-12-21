@@ -39,35 +39,6 @@ static int test_min()
 }
 
 template <typename T>
-static int test_min_nan()
-{
-	int Error = 0;
-
-	T const B = static_cast<T>(1);
-	T const N = static_cast<T>(GLM_NAN(T));
-	Error += glm::isnan(glm::min(N, B)) ? 0 : 1;
-	Error += !glm::isnan(glm::min(B, N)) ? 0 : 1;
-
-	T const C = static_cast<T>(2);
-	Error += glm::isnan(glm::min(N, B, C)) ? 0 : 1;
-	Error += !glm::isnan(glm::min(B, N, C)) ? 0 : 1;
-	Error += !glm::isnan(glm::min(C, N, B)) ? 0 : 1;
-	Error += !glm::isnan(glm::min(C, B, N)) ? 0 : 1;
-	Error += !glm::isnan(glm::min(B, C, N)) ? 0 : 1;
-	Error += glm::isnan(glm::min(N, C, B)) ? 0 : 1;
-
-	T const D = static_cast<T>(3);
-	Error += !glm::isnan(glm::min(D, N, B, C)) ? 0 : 1;
-	Error += !glm::isnan(glm::min(B, D, N, C)) ? 0 : 1;
-	Error += !glm::isnan(glm::min(C, N, D, B)) ? 0 : 1;
-	Error += !glm::isnan(glm::min(C, B, D, N)) ? 0 : 1;
-	Error += !glm::isnan(glm::min(B, C, N, D)) ? 0 : 1;
-	Error += glm::isnan(glm::min(N, C, B, D)) ? 0 : 1;
-
-	return Error;
-}
-
-template <typename T>
 static int test_max()
 {
 	int Error = 0;
@@ -92,6 +63,36 @@ static int test_max()
 	Error += glm::equal(glm::max(C, B, D, N), D, glm::epsilon<T>()) ? 0 : 1;
 	Error += glm::equal(glm::max(B, C, N, D), D, glm::epsilon<T>()) ? 0 : 1;
 	Error += glm::equal(glm::max(N, C, B, D), D, glm::epsilon<T>()) ? 0 : 1;
+
+	return Error;
+}
+
+#if ((GLM_LANG & GLM_LANG_CXX11_FLAG) || (GLM_COMPILER & GLM_COMPILER_VC))
+template <typename T>
+static int test_min_nan()
+{
+	int Error = 0;
+
+	T const B = static_cast<T>(1);
+	T const N = static_cast<T>(GLM_NAN(T));
+	Error += glm::isnan(glm::min(N, B)) ? 0 : 1;
+	Error += !glm::isnan(glm::min(B, N)) ? 0 : 1;
+
+	T const C = static_cast<T>(2);
+	Error += glm::isnan(glm::min(N, B, C)) ? 0 : 1;
+	Error += !glm::isnan(glm::min(B, N, C)) ? 0 : 1;
+	Error += !glm::isnan(glm::min(C, N, B)) ? 0 : 1;
+	Error += !glm::isnan(glm::min(C, B, N)) ? 0 : 1;
+	Error += !glm::isnan(glm::min(B, C, N)) ? 0 : 1;
+	Error += glm::isnan(glm::min(N, C, B)) ? 0 : 1;
+
+	T const D = static_cast<T>(3);
+	Error += !glm::isnan(glm::min(D, N, B, C)) ? 0 : 1;
+	Error += !glm::isnan(glm::min(B, D, N, C)) ? 0 : 1;
+	Error += !glm::isnan(glm::min(C, N, D, B)) ? 0 : 1;
+	Error += !glm::isnan(glm::min(C, B, D, N)) ? 0 : 1;
+	Error += !glm::isnan(glm::min(B, C, N, D)) ? 0 : 1;
+	Error += glm::isnan(glm::min(N, C, B, D)) ? 0 : 1;
 
 	return Error;
 }
@@ -182,6 +183,7 @@ static int test_fmax()
 
 	return Error;
 }
+#endif//
 
 static int test_clamp()
 {
@@ -334,11 +336,15 @@ int main()
 
 	Error += test_min<float>();
 	Error += test_min<double>();
-	Error += test_min_nan<float>();
-	Error += test_min_nan<double>();
+
 
 	Error += test_max<float>();
 	Error += test_max<double>();
+
+#if ((GLM_LANG & GLM_LANG_CXX11_FLAG) || (GLM_COMPILER & GLM_COMPILER_VC))
+	Error += test_min_nan<float>();
+	Error += test_min_nan<double>();
+
 	Error += test_max_nan<float>();
 	Error += test_max_nan<double>();
 
@@ -347,6 +353,7 @@ int main()
 
 	Error += test_fmax<float>();
 	Error += test_fmax<double>();
+#endif//
 
 	Error += test_clamp();
 	Error += test_repeat();
