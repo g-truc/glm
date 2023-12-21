@@ -47,7 +47,7 @@ glm::mat4 camera(float Translate, glm::vec2 const& Rotate)
 
 | Service | Status |
 | ------- | ------ |
-| [GitHub actions](https://github.com/g-truc/glm/actions)| [![GLM tests](https://github.com/g-truc/glm/actions/workflows/test.yml/badge.svg?event=push)](https://github.com/g-truc/glm/actions/workflows/c.i.yml)
+| [GitHub actions](https://github.com/g-truc/glm/actions)| [![.github/workflows/ci.yml](https://github.com/g-truc/glm/actions/workflows/ci.yml/badge.svg)](https://github.com/g-truc/glm/actions/workflows/ci.yml)
 
 ## Release notes
 
