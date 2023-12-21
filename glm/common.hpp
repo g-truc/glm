@@ -404,7 +404,7 @@ namespace glm
 	///
 	/// @see <a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/floatBitsToInt.xml">GLSL floatBitsToInt man page</a>
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.3 Common Functions</a>
-	GLM_FUNC_DECL int floatBitsToInt(float const& v);
+	GLM_FUNC_DECL int floatBitsToInt(float v);
 
 	/// Returns a signed integer value representing
 	/// the encoding of a floating-point value. The floatingpoint

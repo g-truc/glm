@@ -700,7 +700,7 @@ namespace detail
 		return detail::functor1<vec, L, uint, float, Q>::call(floatBitsToUint, v);
 	}
 
-	GLM_FUNC_QUALIFIER float intBitsToFloat(int const& v)
+	GLM_FUNC_QUALIFIER float intBitsToFloat(int v)
 	{
 		union
 		{
