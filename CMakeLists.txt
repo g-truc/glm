@@ -16,30 +16,58 @@ set(GLM_VERSION ${GLM_VERSION_MAJOR}.${GLM_VERSION_MINOR}.${GLM_VERSION_PATCH}.$
 project(glm VERSION ${GLM_VERSION} LANGUAGES CXX)
 message(STATUS "GLM: Version " ${GLM_VERSION})
 
+set(GLM_IS_MASTER_PROJECT OFF)
+if (${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_SOURCE_DIR})
+	set(GLM_IS_MASTER_PROJECT ON)
+endif()
+
+option(GLM_BUILD_LIBRARY "Build dynamic/static library" ON)
+option(GLM_BUILD_TESTS "Build the test programs" ${GLM_IS_MASTER_PROJECT})
+option(GLM_BUILD_INSTALL "Generate the install target" ${GLM_IS_MASTER_PROJECT})
+
+include(GNUInstallDirs)
+
 add_subdirectory(glm)
-add_library(glm::glm ALIAS glm)
 
-if(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_SOURCE_DIR})
-
-	include(CPack)
-	install(DIRECTORY glm DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} PATTERN "CMakeLists.txt" EXCLUDE)
-	install(EXPORT glm FILE glmConfig.cmake DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/glm NAMESPACE glm::)
-	include(CMakePackageConfigHelpers)
-	write_basic_package_version_file("glmConfigVersion.cmake" COMPATIBILITY AnyNewerVersion)
-	install(FILES ${CMAKE_CURRENT_BINARY_DIR}/glmConfigVersion.cmake DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/glm)
-
+if (GLM_BUILD_TESTS)
 	include(CTest)
-	if(BUILD_TESTING)
-		add_subdirectory(test)
-	endif()
+	add_subdirectory(test)
+endif()
 
-endif(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_SOURCE_DIR})
+if (GLM_BUILD_INSTALL)
+	include(CPack)
 
-if (NOT TARGET uninstall)
-configure_file(cmake/cmake_uninstall.cmake.in
-               cmake_uninstall.cmake IMMEDIATE @ONLY)
+	install(TARGETS glm-header-only glm EXPORT glm)
+	install(
+		DIRECTORY glm
+		DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
+		PATTERN "CMakeLists.txt" EXCLUDE
+	)
+	install(
+		EXPORT glm
+		NAMESPACE glm::
+		DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/glm"
+		FILE glmConfig.cmake
+	)
+	include(CMakePackageConfigHelpers)
+	write_basic_package_version_file(
+		"${CMAKE_CURRENT_BINARY_DIR}/glmConfigVersion.cmake"
+		COMPATIBILITY AnyNewerVersion
+	)
+	install(
+		FILES "${CMAKE_CURRENT_BINARY_DIR}/glmConfigVersion.cmake"
+		DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/glm"
+	)
 
-add_custom_target(uninstall
-                  "${CMAKE_COMMAND}" -P
-                  "${CMAKE_BINARY_DIR}/cmake_uninstall.cmake")
+	configure_file(
+		"${CMAKE_CURRENT_SOURCE_DIR}/cmake/cmake_uninstall.cmake.in"
+		"${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake"
+		IMMEDIATE @ONLY
+	)
+
+	add_custom_target(
+		uninstall
+		"${CMAKE_COMMAND}" -P
+		"${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake"
+	)
 endif()
