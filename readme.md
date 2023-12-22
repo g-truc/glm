@@ -49,6 +49,40 @@ glm::mat4 camera(float Translate, glm::vec2 const& Rotate)
 | ------- | ------ |
 | [GitHub actions](https://github.com/g-truc/glm/actions)| [![.github/workflows/ci.yml](https://github.com/g-truc/glm/actions/workflows/ci.yml/badge.svg)](https://github.com/g-truc/glm/actions/workflows/ci.yml)
 
+## Build and Install
+
+```shell
+cd /path/to/glm
+cmake \
+    -DGLM_BUILD_TESTS=OFF \
+    -DBUILD_SHARED_LIBS=OFF \
+    -B build .
+cmake --build build -- all
+cmake --build build -- install
+```
+
+Passing `-DBUILD_SHARED_LIBS=ON` to build shared library
+
+And then in your `CMakeLists.txt`:
+
+```cmake
+find_package(glm CONFIG REQUIRED)
+target_link_libraries(main PRIVATE glm::glm)
+```
+
+If your perfer to use header-only version of GLM
+
+```cmake
+find_package(glm CONFIG REQUIRED)
+target_link_libraries(main PRIVATE glm::glm-header-only)
+```
+
+## Vcpkg
+
+```shell
+vcpkg install glm
+```
+
 ## Release notes
 
 ### [GLM 0.9.9.9](https://github.com/g-truc/glm/releases/tag/0.9.9.9) - 2024-01-XX
