@@ -127,6 +127,24 @@ namespace detail
 	};
 
 	template<>
+	struct storage<3, float, true>
+	{
+		typedef glm_f32vec4 type;
+	};
+
+	template<>
+	struct storage<3, int, true>
+	{
+		typedef glm_i32vec4 type;
+	};
+
+	template<>
+	struct storage<3, unsigned int, true>
+	{
+		typedef glm_i32vec4 type;
+	};
+
+	template<>
 	struct storage<2, double, true>
 	{
 		typedef glm_f64vec2 type;
@@ -143,13 +161,38 @@ namespace detail
 	{
 		typedef glm_u64vec2 type;
 	};
-#	endif
-#	if (GLM_ARCH & GLM_ARCH_AVX_BIT)
+
+
+	template<>
+	struct storage<3, detail::uint64, true>
+	{
+		typedef glm_u64vec2 type;
+	};
+
 	template<>
 	struct storage<4, double, true>
 	{
+#	if (GLM_ARCH & GLM_ARCH_AVX_BIT)
 		typedef glm_f64vec4 type;
+#	else
+		struct type
+		{
+			glm_f64vec2 data[2];
+			GLM_CONSTEXPR glm_f64vec2 getv(int i) const {
+				return data[i];
+			}
+			GLM_CONSTEXPR void setv(int i, const glm_f64vec2& v) {
+				data[i] = v;
+			}
+		};
+#	endif
 	};
+
+
+	template<>
+	struct storage<3, double, true> : public storage<4, double, true>
+	{};
+	
 #	endif
 
 #	if (GLM_ARCH & GLM_ARCH_AVX2_BIT)
@@ -174,16 +217,37 @@ namespace detail
 	};
 
 	template<>
+	struct storage<3, float, true> : public storage<4, float, true>
+	{};
+
+	template<>
 	struct storage<4, int, true>
 	{
 		typedef glm_i32vec4 type;
 	};
 
 	template<>
+	struct storage<3, int, true> : public storage<4, int, true>
+	{};
+
+	template<>
 	struct storage<4, unsigned int, true>
 	{
 		typedef glm_u32vec4 type;
 	};
+
+	template<>
+	struct storage<3, unsigned int, true> : public storage<4, unsigned int, true>
+	{};
+
+	template<>
+	struct storage<3, double, true>
+	{
+		typedef struct alignas(4 * sizeof(double)) type {
+			double data[4];
+		} type;
+	};
+
 #	endif
 
 	enum genTypeEnum

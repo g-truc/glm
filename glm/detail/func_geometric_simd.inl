@@ -36,17 +36,35 @@ namespace detail
 	};
 
 	template<qualifier Q>
+	struct compute_dot<vec<3, float, Q>, float, true>
+	{
+		GLM_FUNC_QUALIFIER static float call(vec<3, float, Q> const& a, vec<3, float, Q> const& b)
+		{
+			vec<4, float, Q> aa = xyz0(a);
+			vec<4, float, Q> bb = xyz0(b);
+			return _mm_cvtss_f32(glm_vec1_dot(aa.data, bb.data));
+		}
+	};
+
+	template<qualifier Q>
 	struct compute_cross<float, Q, true>
 	{
 		GLM_FUNC_QUALIFIER static vec<3, float, Q> call(vec<3, float, Q> const& a, vec<3, float, Q> const& b)
 		{
-			__m128 const set0 = _mm_set_ps(0.0f, a.z, a.y, a.x);
-			__m128 const set1 = _mm_set_ps(0.0f, b.z, b.y, b.x);
-			__m128 const xpd0 = glm_vec4_cross(set0, set1);
+			vec<4, float, Q> aa = xyzz(a);
+			vec<4, float, Q> bb = xyzz(b);
+			__m128 const xpd0 = glm_vec4_cross(aa.data, bb.data);
 
-			vec<4, float, Q> Result;
+			vec<3, float, Q> Result;
 			Result.data = xpd0;
-			return vec<3, float, Q>(Result);
+			return Result;
+		}
+
+		GLM_FUNC_QUALIFIER static vec<4, float, Q> call(vec<4, float, Q> const& a, vec<4, float, Q> const& b)
+		{
+			vec<4, float, Q> Result;
+			Result.data = glm_vec4_cross(a.data, b.data);
+			return Result;
 		}
 	};
 

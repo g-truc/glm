@@ -21,6 +21,11 @@ namespace glm
 		typedef T value_type;
 		typedef vec<4, T, Q> type;
 		typedef vec<4, bool, Q> bool_type;
+		
+		enum is_aligned
+		{
+			value = detail::is_aligned<Q>::value
+		};
 
 		// -- Data --
 
@@ -235,13 +240,13 @@ namespace glm
 			}
 
 			template<int E0, int E1, int E2>
-			GLM_FUNC_DECL GLM_CONSTEXPR vec(detail::_swizzle<3, T, Q, E0, E1, E2, -1> const& v, T const& w)
+			GLM_FUNC_DECL GLM_CONSTEXPR vec(detail::_swizzle<3, T, Q, E0, E1, E2, 3> const& v, T const& w)
 			{
 				*this = vec<4, T, Q>(v(), w);
 			}
 
 			template<int E0, int E1, int E2>
-			GLM_FUNC_DECL GLM_CONSTEXPR vec(T const& x, detail::_swizzle<3, T, Q, E0, E1, E2, -1> const& v)
+			GLM_FUNC_DECL GLM_CONSTEXPR vec(T const& x, detail::_swizzle<3, T, Q, E0, E1, E2, 3> const& v)
 			{
 				*this = vec<4, T, Q>(x, v());
 			}
@@ -324,6 +329,7 @@ namespace glm
 		template<typename U>
 		GLM_FUNC_DECL GLM_CONSTEXPR vec<4, T, Q> & operator>>=(vec<4, U, Q> const& v);
 	};
+
 
 	// -- Unary operators --
 

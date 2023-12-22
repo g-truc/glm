@@ -1,4 +1,7 @@
+#ifndef GLM_FORCE_PURE
 #define GLM_FORCE_DEFAULT_ALIGNED_GENTYPES
+#endif
+
 #include <glm/glm.hpp>
 
 #if GLM_CONFIG_ALIGNED_GENTYPES == GLM_ENABLE

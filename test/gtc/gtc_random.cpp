@@ -1,4 +1,6 @@
+#ifndef GLM_FORCE_PURE
 #define GLM_FORCE_DEFAULT_ALIGNED_GENTYPES
+#endif
 #include <glm/gtc/random.hpp>
 #include <glm/gtc/epsilon.hpp>
 #include <glm/gtc/type_precision.hpp>
