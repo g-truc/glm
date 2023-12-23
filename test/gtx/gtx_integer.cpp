@@ -1,34 +1,4 @@
-///////////////////////////////////////////////////////////////////////////////////
-/// OpenGL Mathematics (glm.g-truc.net)
-///
-/// Copyright (c) 2005 - 2015 G-Truc Creation (www.g-truc.net)
-/// Permission is hereby granted, free of charge, to any person obtaining a copy
-/// of this software and associated documentation files (the "Software"), to deal
-/// in the Software without restriction, including without limitation the rights
-/// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-/// copies of the Software, and to permit persons to whom the Software is
-/// furnished to do so, subject to the following conditions:
-/// 
-/// The above copyright notice and this permission notice shall be included in
-/// all copies or substantial portions of the Software.
-/// 
-/// Restrictions:
-///		By making use of the Software for military purposes, you choose to make
-///		a Bunny unhappy.
-/// 
-/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-/// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-/// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-/// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-/// THE SOFTWARE.
-///
-/// @file test/gtx/gtx_integer.cpp
-/// @date 2011-10-11 / 2014-11-25
-/// @author Christophe Riccio
-///////////////////////////////////////////////////////////////////////////////////
-
+#define GLM_ENABLE_EXPERIMENTAL
 #include <glm/exponential.hpp>
 #include <glm/gtc/epsilon.hpp>
 #include <glm/gtx/integer.hpp>
@@ -63,10 +33,10 @@ int test_log2()
 		Error += glm::abs(double(A) - B) <= 24 ? 0 : 1;
 		assert(!Error);
 
-		printf("Log2(%d) error A=%d, B=%d\n", 1 << i, A, B);
+		std::printf("Log2(%d) error A=%d, B=%d\n", 1 << i, A, B);
 	}
 
-	printf("log2 error=%d\n", Error);
+	std::printf("log2 error=%d\n", Error);
 
 	return Error;
 }
@@ -82,6 +52,47 @@ int test_nlz()
 	return Error;
 }
 
+int test_pow_uint()
+{
+	int Error = 0;
+
+	glm::uint const p0 = glm::pow(2u, 0u);
+	Error += p0 == 1u ? 0 : 1;
+
+	glm::uint const p1 = glm::pow(2u, 1u);
+	Error += p1 == 2u ? 0 : 1;
+
+	glm::uint const p2 = glm::pow(2u, 2u);
+	Error += p2 == 4u ? 0 : 1;
+
+	return Error;
+}
+
+int test_pow_int()
+{
+	int Error = 0;
+
+	int const p0 = glm::pow(2, 0u);
+	Error += p0 == 1 ? 0 : 1;
+
+	int const p1 = glm::pow(2, 1u);
+	Error += p1 == 2 ? 0 : 1;
+
+	int const p2 = glm::pow(2, 2u);
+	Error += p2 == 4 ? 0 : 1;
+
+	int const p0n = glm::pow(-2, 0u);
+	Error += p0n == -1 ? 0 : 1;
+
+	int const p1n = glm::pow(-2, 1u);
+	Error += p1n == -2 ? 0 : 1;
+
+	int const p2n = glm::pow(-2, 2u);
+	Error += p2n == 4 ? 0 : 1;
+
+	return Error;
+}
+
 int main()
 {
 	int Error = 0;
@@ -89,6 +100,8 @@ int main()
 	Error += test_nlz();
 //	Error += test_floor_log2();
 	Error += test_log2();
+	Error += test_pow_uint();
+	Error += test_pow_int();
 
 	return Error;
 }

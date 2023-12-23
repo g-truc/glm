@@ -1,33 +1,3 @@
-///////////////////////////////////////////////////////////////////////////////////
-/// OpenGL Mathematics (glm.g-truc.net)
-///
-/// Copyright (c) 2005 - 2015 G-Truc Creation (www.g-truc.net)
-/// Permission is hereby granted, free of charge, to any person obtaining a copy
-/// of this software and associated documentation files (the "Software"), to deal
-/// in the Software without restriction, including without limitation the rights
-/// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-/// copies of the Software, and to permit persons to whom the Software is
-/// furnished to do so, subject to the following conditions:
-/// 
-/// The above copyright notice and this permission notice shall be included in
-/// all copies or substantial portions of the Software.
-/// 
-/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-/// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-/// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-/// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-/// THE SOFTWARE.
-///
-/// @file test/gtc/gtc_round.cpp
-/// @date 2014-11-03 / 2014-11-03
-/// @author Christophe Riccio
-///
-/// @see core (dependence)
-/// @see gtc_round (dependence)
-///////////////////////////////////////////////////////////////////////////////////
-
 #include <glm/gtc/round.hpp>
 #include <glm/gtc/type_precision.hpp>
 #include <glm/gtc/vec1.hpp>
@@ -38,7 +8,7 @@
 
 namespace isPowerOfTwo
 {
-	template <typename genType>
+	template<typename genType>
 	struct type
 	{
 		genType		Value;
@@ -176,7 +146,7 @@ namespace isPowerOfTwo
 
 namespace ceilPowerOfTwo_advanced
 {
-	template <typename genIUType>
+	template<typename genIUType>
 	GLM_FUNC_QUALIFIER genIUType highestBitValue(genIUType Value)
 	{
 		genIUType tmp = Value;
@@ -189,13 +159,13 @@ namespace ceilPowerOfTwo_advanced
 		return result;
 	}
 
-	template <typename genType>
+	template<typename genType>
 	GLM_FUNC_QUALIFIER genType ceilPowerOfTwo_loop(genType value)
 	{
 		return glm::isPowerOfTwo(value) ? value : highestBitValue(value) << 1;
 	}
 
-	template <typename genType>
+	template<typename genType>
 	struct type
 	{
 		genType		Value;
@@ -277,8 +247,8 @@ namespace ceilPowerOfTwo_advanced
 
 		std::clock_t Timestramp2 = std::clock();
 
-		std::printf("ceilPowerOfTwo_loop: %d clocks\n", static_cast<unsigned int>(Timestramp1 - Timestramp0));
-		std::printf("glm::ceilPowerOfTwo: %d clocks\n", static_cast<unsigned int>(Timestramp2 - Timestramp1));
+		std::printf("ceilPowerOfTwo_loop: %d clocks\n", static_cast<int>(Timestramp1 - Timestramp0));
+		std::printf("glm::ceilPowerOfTwo: %d clocks\n", static_cast<int>(Timestramp2 - Timestramp1));
 
 		return Error;
 	}
@@ -362,7 +332,7 @@ namespace ceilPowerOfTwo
 
 namespace floorMultiple
 {
-	template <typename genType>
+	template<typename genType>
 	struct type
 	{
 		genType		Source;
@@ -402,7 +372,7 @@ namespace floorMultiple
 
 namespace ceilMultiple
 {
-	template <typename genType>
+	template<typename genType>
 	struct type
 	{
 		genType		Source;

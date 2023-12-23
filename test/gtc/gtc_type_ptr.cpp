@@ -1,35 +1,7 @@
-///////////////////////////////////////////////////////////////////////////////////
-/// OpenGL Mathematics (glm.g-truc.net)
-///
-/// Copyright (c) 2005 - 2015 G-Truc Creation (www.g-truc.net)
-/// Permission is hereby granted, free of charge, to any person obtaining a copy
-/// of this software and associated documentation files (the "Software"), to deal
-/// in the Software without restriction, including without limitation the rights
-/// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-/// copies of the Software, and to permit persons to whom the Software is
-/// furnished to do so, subject to the following conditions:
-/// 
-/// The above copyright notice and this permission notice shall be included in
-/// all copies or substantial portions of the Software.
-/// 
-/// Restrictions:
-///		By making use of the Software for military purposes, you choose to make
-///		a Bunny unhappy.
-/// 
-/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-/// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-/// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-/// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-/// THE SOFTWARE.
-///
-/// @file test/gtc/gtc_type_ptr.cpp
-/// @date 2010-09-16 / 2014-11-25
-/// @author Christophe Riccio
-///////////////////////////////////////////////////////////////////////////////////
-
 #include <glm/gtc/type_ptr.hpp>
+#include <glm/gtc/vec1.hpp>
+#include <glm/gtc/constants.hpp>
+#include <glm/ext/vector_relational.hpp>
 
 int test_value_ptr_vec()
 {
@@ -268,10 +240,90 @@ int test_make_pointer_vec()
 	return Error;
 }
 
+int test_make_vec1()
+{
+	int Error = 0;
+
+	glm::ivec1 const v1 = glm::make_vec1(glm::ivec1(2));
+	Error += v1 == glm::ivec1(2) ? 0 : 1;
+
+	glm::ivec1 const v2 = glm::make_vec1(glm::ivec2(2));
+	Error += v2 == glm::ivec1(2) ? 0 : 1;
+
+	glm::ivec1 const v3 = glm::make_vec1(glm::ivec3(2));
+	Error += v3 == glm::ivec1(2) ? 0 : 1;
+
+	glm::ivec1 const v4 = glm::make_vec1(glm::ivec4(2));
+	Error += v3 == glm::ivec1(2) ? 0 : 1;
+
+	return Error;
+}
+
+int test_make_vec2()
+{
+	int Error = 0;
+
+	glm::ivec2 const v1 = glm::make_vec2(glm::ivec1(2));
+	Error += v1 == glm::ivec2(2, 0) ? 0 : 1;
+
+	glm::ivec2 const v2 = glm::make_vec2(glm::ivec2(2));
+	Error += v2 == glm::ivec2(2, 2) ? 0 : 1;
+
+	glm::ivec2 const v3 = glm::make_vec2(glm::ivec3(2));
+	Error += v3 == glm::ivec2(2, 2) ? 0 : 1;
+
+	glm::ivec2 const v4 = glm::make_vec2(glm::ivec4(2));
+	Error += v3 == glm::ivec2(2, 2) ? 0 : 1;
+
+	return Error;
+}
+
+int test_make_vec3()
+{
+	int Error = 0;
+
+	glm::ivec3 const v1 = glm::make_vec3(glm::ivec1(2));
+	Error += v1 == glm::ivec3(2, 0, 0) ? 0 : 1;
+
+	glm::ivec3 const v2 = glm::make_vec3(glm::ivec2(2));
+	Error += v2 == glm::ivec3(2, 2, 0) ? 0 : 1;
+
+	glm::ivec3 const v3 = glm::make_vec3(glm::ivec3(2));
+	Error += v3 == glm::ivec3(2, 2, 2) ? 0 : 1;
+
+	glm::ivec3 const v4 = glm::make_vec3(glm::ivec4(2));
+	Error += v3 == glm::ivec3(2, 2, 2) ? 0 : 1;
+
+	return Error;
+}
+
+int test_make_vec4()
+{
+	int Error = 0;
+
+	glm::ivec4 const v1 = glm::make_vec4(glm::ivec1(2));
+	Error += v1 == glm::ivec4(2, 0, 0, 1) ? 0 : 1;
+
+	glm::ivec4 const v2 = glm::make_vec4(glm::ivec2(2));
+	Error += v2 == glm::ivec4(2, 2, 0, 1) ? 0 : 1;
+
+	glm::ivec4 const v3 = glm::make_vec4(glm::ivec3(2));
+	Error += v3 == glm::ivec4(2, 2, 2, 1) ? 0 : 1;
+
+	glm::ivec4 const v4 = glm::make_vec4(glm::ivec4(2));
+	Error += v4 == glm::ivec4(2, 2, 2, 2) ? 0 : 1;
+
+	return Error;
+}
+
 int main()
 {
 	int Error = 0;
 
+	Error += test_make_vec1();
+	Error += test_make_vec2();
+	Error += test_make_vec3();
+	Error += test_make_vec4();
 	Error += test_make_pointer_vec();
 	Error += test_make_pointer_mat();
 	Error += test_value_ptr_vec();

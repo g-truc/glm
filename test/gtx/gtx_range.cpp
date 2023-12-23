@@ -1,75 +1,75 @@
-///////////////////////////////////////////////////////////////////////////////////
-/// OpenGL Mathematics (glm.g-truc.net)
-///
-/// Copyright (c) 2005 - 2015 G-Truc Creation (www.g-truc.net)
-/// Permission is hereby granted, free of charge, to any person obtaining a copy
-/// of this software and associated documentation files (the "Software"), to deal
-/// in the Software without restriction, including without limitation the rights
-/// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-/// copies of the Software, and to permit persons to whom the Software is
-/// furnished to do so, subject to the following conditions:
-/// 
-/// The above copyright notice and this permission notice shall be included in
-/// all copies or substantial portions of the Software.
-/// 
-/// Restrictions:
-///		By making use of the Software for military purposes, you choose to make
-///		a Bunny unhappy.
-/// 
-/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-/// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-/// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-/// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-/// THE SOFTWARE.
-///
-/// @file test/gtx/gtx_range.cpp
-/// @date 2014-09-19 / 2014-11-25
-/// @author Christophe Riccio
-///////////////////////////////////////////////////////////////////////////////////
-
+#define GLM_ENABLE_EXPERIMENTAL
+#include <glm/gtc/constants.hpp>
+#include <glm/ext/scalar_relational.hpp>
+#include <glm/ext/vector_relational.hpp>
 #include <glm/glm.hpp>
-#include <glm/gtc/epsilon.hpp>
 
 #if GLM_HAS_RANGE_FOR
 
 #include <glm/gtx/range.hpp>
 
-int testVec()
+int test_vec()
 {
-	int Error(0);
-	glm::vec3 v(1, 2, 3);
+	int Error = 0;
 
-	int count = 0;
-	for(float x : v){ count++; }
-	Error += count == 3 ? 0 : 1;
+	{
+		glm::ivec3 const v(1, 2, 3);
 
-	for(float& x : v){ x = 0; }
-	Error += glm::all(glm::equal(v, glm::vec3(0, 0, 0))) ? 0 : 1;
+		int count = 0;
+		glm::ivec3 Result(0);
+		for(int x : v)
+		{
+			Result[count] = x;
+			count++;
+		}
+		Error += count == 3 ? 0 : 1;
+		Error += v == Result ? 0 : 1;
+	}
+
+	{
+		glm::ivec3 v(1, 2, 3);
+		for(int& x : v)
+			x = 0;
+		Error += glm::all(glm::equal(v, glm::ivec3(0))) ? 0 : 1;
+	}
+
 	return Error;
 }
 
-int testMat()
+int test_mat()
 {
-	int Error(0);
-	glm::mat4x3 m(1);
+	int Error = 0;
 
-	int count = 0;
-	for(float x : m){ count++; }
-	Error += count == 12 ? 0 : 1;
+	{
+		glm::mat4x3 m(1.0f);
 
-	for(float& x : m){ x = 0; }
-	glm::vec4 v(1, 1, 1, 1);
-	Error += glm::all(glm::equal(m*v, glm::vec3(0, 0, 0))) ? 0 : 1;
+		int count = 0;
+		float Sum = 0.0f;
+		for(float x : m)
+		{
+			count++;
+			Sum += x;
+		}
+		Error += count == 12 ? 0 : 1;
+		Error += glm::equal(Sum, 3.0f, 0.001f) ? 0 : 1;
+	}
+
+	{
+		glm::mat4x3 m(1.0f);
+
+		for (float& x : m) { x = 0; }
+		glm::vec4 v(1, 1, 1, 1);
+		Error += glm::all(glm::equal(m*v, glm::vec3(0, 0, 0), glm::epsilon<float>())) ? 0 : 1;
+	}
+
 	return Error;
 }
 
 int main()
 {
-	int Error(0);
-	Error += testVec();
-	Error += testMat();
+	int Error = 0;
+	Error += test_vec();
+	Error += test_mat();
 	return Error;
 }
 

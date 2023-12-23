@@ -1,12 +1,11 @@
 /// @ref gtx_bit
-/// @file glm/gtx/bit.inl
 
 namespace glm
 {
 	///////////////////
 	// highestBitValue
 
-	template <typename genIUType>
+	template<typename genIUType>
 	GLM_FUNC_QUALIFIER genIUType highestBitValue(genIUType Value)
 	{
 		genIUType tmp = Value;
@@ -19,46 +18,61 @@ namespace glm
 		return result;
 	}
 
-	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<T, P> highestBitValue(vecType<T, P> const & v)
+	template<length_t L, typename T, qualifier Q>
+	GLM_FUNC_QUALIFIER vec<L, T, Q> highestBitValue(vec<L, T, Q> const& v)
 	{
-		return detail::functor1<T, T, P, vecType>::call(highestBitValue, v);
+		return detail::functor1<vec, L, T, T, Q>::call(highestBitValue, v);
+	}
+
+	///////////////////
+	// lowestBitValue
+
+	template<typename genIUType>
+	GLM_FUNC_QUALIFIER genIUType lowestBitValue(genIUType Value)
+	{
+		return (Value & (~Value + 1));
+	}
+
+	template<length_t L, typename T, qualifier Q>
+	GLM_FUNC_QUALIFIER vec<L, T, Q> lowestBitValue(vec<L, T, Q> const& v)
+	{
+		return detail::functor1<vec, L, T, T, Q>::call(lowestBitValue, v);
 	}
 
 	///////////////////
 	// powerOfTwoAbove
 
-	template <typename genType>
+	template<typename genType>
 	GLM_FUNC_QUALIFIER genType powerOfTwoAbove(genType value)
 	{
 		return isPowerOfTwo(value) ? value : highestBitValue(value) << 1;
 	}
 
-	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<T, P> powerOfTwoAbove(vecType<T, P> const & v)
+	template<length_t L, typename T, qualifier Q>
+	GLM_FUNC_QUALIFIER vec<L, T, Q> powerOfTwoAbove(vec<L, T, Q> const& v)
 	{
-		return detail::functor1<T, T, P, vecType>::call(powerOfTwoAbove, v);
+		return detail::functor1<vec, L, T, T, Q>::call(powerOfTwoAbove, v);
 	}
 
 	///////////////////
 	// powerOfTwoBelow
 
-	template <typename genType>
+	template<typename genType>
 	GLM_FUNC_QUALIFIER genType powerOfTwoBelow(genType value)
 	{
 		return isPowerOfTwo(value) ? value : highestBitValue(value);
 	}
 
-	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<T, P> powerOfTwoBelow(vecType<T, P> const & v)
+	template<length_t L, typename T, qualifier Q>
+	GLM_FUNC_QUALIFIER vec<L, T, Q> powerOfTwoBelow(vec<L, T, Q> const& v)
 	{
-		return detail::functor1<T, T, P, vecType>::call(powerOfTwoBelow, v);
+		return detail::functor1<vec, L, T, T, Q>::call(powerOfTwoBelow, v);
 	}
 
 	/////////////////////
 	// powerOfTwoNearest
 
-	template <typename genType>
+	template<typename genType>
 	GLM_FUNC_QUALIFIER genType powerOfTwoNearest(genType value)
 	{
 		if(isPowerOfTwo(value))
@@ -69,10 +83,10 @@ namespace glm
 		return (next - value) < (value - prev) ? next : prev;
 	}
 
-	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<T, P> powerOfTwoNearest(vecType<T, P> const & v)
+	template<length_t L, typename T, qualifier Q>
+	GLM_FUNC_QUALIFIER vec<L, T, Q> powerOfTwoNearest(vec<L, T, Q> const& v)
 	{
-		return detail::functor1<T, T, P, vecType>::call(powerOfTwoNearest, v);
+		return detail::functor1<vec, L, T, T, Q>::call(powerOfTwoNearest, v);
 	}
 
 }//namespace glm

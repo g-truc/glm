@@ -1,15 +1,14 @@
 /// @ref gtx_matrix_cross_product
-/// @file glm/gtx/matrix_cross_product.inl
 
 namespace glm
 {
-	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tmat3x3<T, P> matrixCross3
+	template<typename T, qualifier Q>
+	GLM_FUNC_QUALIFIER mat<3, 3, T, Q> matrixCross3
 	(
-		tvec3<T, P> const & x
+		vec<3, T, Q> const& x
 	)
 	{
-		tmat3x3<T, P> Result(T(0));
+		mat<3, 3, T, Q> Result(T(0));
 		Result[0][1] = x.z;
 		Result[1][0] = -x.z;
 		Result[0][2] = -x.y;
@@ -19,13 +18,13 @@ namespace glm
 		return Result;
 	}
 
-	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tmat4x4<T, P> matrixCross4
+	template<typename T, qualifier Q>
+	GLM_FUNC_QUALIFIER mat<4, 4, T, Q> matrixCross4
 	(
-		tvec3<T, P> const & x
+		vec<3, T, Q> const& x
 	)
 	{
-		tmat4x4<T, P> Result(T(0));
+		mat<4, 4, T, Q> Result(T(0));
 		Result[0][1] = x.z;
 		Result[1][0] = -x.z;
 		Result[0][2] = -x.y;

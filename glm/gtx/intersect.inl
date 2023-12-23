@@ -1,73 +1,103 @@
 /// @ref gtx_intersect
-/// @file glm/gtx/intersect.inl
 
 namespace glm
 {
-	template <typename genType>
+	template<typename genType>
 	GLM_FUNC_QUALIFIER bool intersectRayPlane
 	(
-		genType const & orig, genType const & dir,
-		genType const & planeOrig, genType const & planeNormal,
+		genType const& orig, genType const& dir,
+		genType const& planeOrig, genType const& planeNormal,
 		typename genType::value_type & intersectionDistance
 	)
 	{
 		typename genType::value_type d = glm::dot(dir, planeNormal);
 		typename genType::value_type Epsilon = std::numeric_limits<typename genType::value_type>::epsilon();
 
-		if(d < Epsilon)
+		if(glm::abs(d) > Epsilon)  // if dir and planeNormal are not perpendicular
 		{
-			intersectionDistance = glm::dot(planeOrig - orig, planeNormal) / d;
-			return true;
+			typename genType::value_type const tmp_intersectionDistance = 	glm::dot(planeOrig - orig, planeNormal) / d;
+			if (tmp_intersectionDistance > static_cast<typename genType::value_type>(0)) { // allow only intersections
+				intersectionDistance = tmp_intersectionDistance;
+				return true;
+			}
 		}
 
 		return false;
 	}
 
-	template <typename genType>
+	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER bool intersectRayTriangle
 	(
-		genType const & orig, genType const & dir,
-		genType const & v0, genType const & v1, genType const & v2,
-		genType & baryPosition
+		vec<3, T, Q> const& orig, vec<3, T, Q> const& dir,
+		vec<3, T, Q> const& vert0, vec<3, T, Q> const& vert1, vec<3, T, Q> const& vert2,
+		vec<2, T, Q>& baryPosition, T& distance
 	)
 	{
-		genType e1 = v1 - v0;
-		genType e2 = v2 - v0;
+		// find vectors for two edges sharing vert0
+		vec<3, T, Q> const edge1 = vert1 - vert0;
+		vec<3, T, Q> const edge2 = vert2 - vert0;
 
-		genType p = glm::cross(dir, e2);
+		// begin calculating determinant - also used to calculate U parameter
+		vec<3, T, Q> const p = glm::cross(dir, edge2);
 
-		typename genType::value_type a = glm::dot(e1, p);
+		// if determinant is near zero, ray lies in plane of triangle
+		T const det = glm::dot(edge1, p);
 
-		typename genType::value_type Epsilon = std::numeric_limits<typename genType::value_type>::epsilon();
-		if(a < Epsilon && a > -Epsilon)
-			return false;
+		vec<3, T, Q> Perpendicular(0);
 
-		typename genType::value_type f = typename genType::value_type(1.0f) / a;
+		if (det > static_cast<T>(0))
+		{
+			// calculate distance from vert0 to ray origin
+			vec<3, T, Q> const dist = orig - vert0;
 
-		genType s = orig - v0;
-		baryPosition.x = f * glm::dot(s, p);
-		if(baryPosition.x < typename genType::value_type(0.0f))
-			return false;
-		if(baryPosition.x > typename genType::value_type(1.0f))
-			return false;
+			// calculate U parameter and test bounds
+			baryPosition.x = glm::dot(dist, p);
+			if(baryPosition.x < static_cast<T>(0) || baryPosition.x > det)
+				return false;
 
-		genType q = glm::cross(s, e1);
-		baryPosition.y = f * glm::dot(dir, q);
-		if(baryPosition.y < typename genType::value_type(0.0f))
-			return false;
-		if(baryPosition.y + baryPosition.x > typename genType::value_type(1.0f))
-			return false;
+			// prepare to test V parameter
+			Perpendicular = glm::cross(dist, edge1);
 
-		baryPosition.z = f * glm::dot(e2, q);
+			// calculate V parameter and test bounds
+			baryPosition.y = glm::dot(dir, Perpendicular);
+			if((baryPosition.y < static_cast<T>(0)) || ((baryPosition.x + baryPosition.y) > det))
+				return false;
+		}
+		else if(det < static_cast<T>(0))
+		{
+			// calculate distance from vert0 to ray origin
+			vec<3, T, Q> const dist = orig - vert0;
 
-		return baryPosition.z >= typename genType::value_type(0.0f);
+			// calculate U parameter and test bounds
+			baryPosition.x = glm::dot(dist, p);
+			if((baryPosition.x > static_cast<T>(0)) || (baryPosition.x < det))
+				return false;
+
+			// prepare to test V parameter
+			Perpendicular = glm::cross(dist, edge1);
+
+			// calculate V parameter and test bounds
+			baryPosition.y = glm::dot(dir, Perpendicular);
+			if((baryPosition.y > static_cast<T>(0)) || (baryPosition.x + baryPosition.y < det))
+				return false;
+		}
+		else
+			return false; // ray is parallel to the plane of the triangle
+
+		T inv_det = static_cast<T>(1) / det;
+
+		// calculate distance, ray intersects triangle
+		distance = glm::dot(edge2, Perpendicular) * inv_det;
+		baryPosition *= inv_det;
+
+		return true;
 	}
 
-	template <typename genType>
+	template<typename genType>
 	GLM_FUNC_QUALIFIER bool intersectLineTriangle
 	(
-		genType const & orig, genType const & dir,
-		genType const & vert0, genType const & vert1, genType const & vert2,
+		genType const& orig, genType const& dir,
+		genType const& vert0, genType const& vert1, genType const& vert2,
 		genType & position
 	)
 	{
@@ -76,36 +106,36 @@ namespace glm
 		genType edge1 = vert1 - vert0;
 		genType edge2 = vert2 - vert0;
 
-		genType pvec = cross(dir, edge2);
+		genType Perpendicular = cross(dir, edge2);
 
-		float det = dot(edge1, pvec);
+		typename genType::value_type det = dot(edge1, Perpendicular);
 
 		if (det > -Epsilon && det < Epsilon)
 			return false;
-		float inv_det = typename genType::value_type(1) / det;
+		typename genType::value_type inv_det = typename genType::value_type(1) / det;
 
-		genType tvec = orig - vert0;
+		genType Tangent = orig - vert0;
 
-		position.y = dot(tvec, pvec) * inv_det;
+		position.y = dot(Tangent, Perpendicular) * inv_det;
 		if (position.y < typename genType::value_type(0) || position.y > typename genType::value_type(1))
 			return false;
 
-		genType qvec = cross(tvec, edge1);
+		genType Cotangent = cross(Tangent, edge1);
 
-		position.z = dot(dir, qvec) * inv_det;
+		position.z = dot(dir, Cotangent) * inv_det;
 		if (position.z < typename genType::value_type(0) || position.y + position.z > typename genType::value_type(1))
 			return false;
 
-		position.x = dot(edge2, qvec) * inv_det;
+		position.x = dot(edge2, Cotangent) * inv_det;
 
 		return true;
 	}
 
-	template <typename genType>
+	template<typename genType>
 	GLM_FUNC_QUALIFIER bool intersectRaySphere
 	(
-		genType const & rayStarting, genType const & rayNormalizedDirection,
-		genType const & sphereCenter, const typename genType::value_type sphereRadiusSquered,
+		genType const& rayStarting, genType const& rayNormalizedDirection,
+		genType const& sphereCenter, const typename genType::value_type sphereRadiusSquared,
 		typename genType::value_type & intersectionDistance
 	)
 	{
@@ -113,20 +143,20 @@ namespace glm
 		genType diff = sphereCenter - rayStarting;
 		typename genType::value_type t0 = dot(diff, rayNormalizedDirection);
 		typename genType::value_type dSquared = dot(diff, diff) - t0 * t0;
-		if( dSquared > sphereRadiusSquered )
+		if( dSquared > sphereRadiusSquared )
 		{
 			return false;
 		}
-		typename genType::value_type t1 = sqrt( sphereRadiusSquered - dSquared );
+		typename genType::value_type t1 = sqrt( sphereRadiusSquared - dSquared );
 		intersectionDistance = t0 > t1 + Epsilon ? t0 - t1 : t0 + t1;
 		return intersectionDistance > Epsilon;
 	}
 
-	template <typename genType>
+	template<typename genType>
 	GLM_FUNC_QUALIFIER bool intersectRaySphere
 	(
-		genType const & rayStarting, genType const & rayNormalizedDirection,
-		genType const & sphereCenter, const typename genType::value_type sphereRadius,
+		genType const& rayStarting, genType const& rayNormalizedDirection,
+		genType const& sphereCenter, const typename genType::value_type sphereRadius,
 		genType & intersectionPosition, genType & intersectionNormal
 	)
 	{
@@ -140,12 +170,12 @@ namespace glm
 		return false;
 	}
 
-	template <typename genType>
+	template<typename genType>
 	GLM_FUNC_QUALIFIER bool intersectLineSphere
 	(
-		genType const & point0, genType const & point1,
-		genType const & sphereCenter, typename genType::value_type sphereRadius,
-		genType & intersectionPoint1, genType & intersectionNormal1, 
+		genType const& point0, genType const& point1,
+		genType const& sphereCenter, typename genType::value_type sphereRadius,
+		genType & intersectionPoint1, genType & intersectionNormal1,
 		genType & intersectionPoint2, genType & intersectionNormal2
 	)
 	{

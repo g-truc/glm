@@ -1,43 +1,12 @@
-///////////////////////////////////////////////////////////////////////////////////
-/// OpenGL Mathematics (glm.g-truc.net)
-///
-/// Copyright (c) 2005 - 2015 G-Truc Creation (www.g-truc.net)
-/// Permission is hereby granted, free of charge, to any person obtaining a copy
-/// of this software and associated documentation files (the "Software"), to deal
-/// in the Software without restriction, including without limitation the rights
-/// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-/// copies of the Software, and to permit persons to whom the Software is
-/// furnished to do so, subject to the following conditions:
-/// 
-/// The above copyright notice and this permission notice shall be included in
-/// all copies or substantial portions of the Software.
-/// 
-/// Restrictions:
-///		By making use of the Software for military purposes, you choose to make
-///		a Bunny unhappy.
-/// 
-/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-/// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-/// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-/// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-/// THE SOFTWARE.
-///
-/// @file test/core/core_vector_relational.cpp
-/// @date 2011-01-15 / 2014-11-25
-/// @author Christophe Riccio
-///////////////////////////////////////////////////////////////////////////////////
-
 #include <glm/vec2.hpp>
 #include <glm/vec3.hpp>
 #include <glm/vec4.hpp>
 #include <glm/vector_relational.hpp>
 #include <glm/gtc/vec1.hpp>
 
-int test_not()
+static int test_not()
 {
-	int Error(0);
+	int Error = 0;
 
 	{
 		glm::bvec1 v(false);
@@ -62,11 +31,149 @@ int test_not()
 	return Error;
 }
 
+static int test_less()
+{
+	int Error = 0;
+
+	{
+		glm::vec2 const A(1, 2);
+		glm::vec2 const B(2, 3);
+		Error += glm::all(glm::lessThan(A, B)) ? 0: 1;
+		Error += glm::all(glm::lessThanEqual(A, B)) ? 0: 1;
+	}
+
+	{
+		glm::vec3 const A(1, 2, 3);
+		glm::vec3 const B(2, 3, 4);
+		Error += glm::all(glm::lessThan(A, B)) ? 0: 1;
+		Error += glm::all(glm::lessThanEqual(A, B)) ? 0: 1;
+	}
+
+	{
+		glm::vec4 const A(1, 2, 3, 4);
+		glm::vec4 const B(2, 3, 4, 5);
+		Error += glm::all(glm::lessThan(A, B)) ? 0: 1;
+		Error += glm::all(glm::lessThanEqual(A, B)) ? 0: 1;
+	}
+
+	{
+		glm::ivec2 const A(1, 2);
+		glm::ivec2 const B(2, 3);
+		Error += glm::all(glm::lessThan(A, B)) ? 0: 1;
+
+		glm::ivec2 const C(1, 3);
+		Error += glm::all(glm::lessThanEqual(A, C)) ? 0: 1;
+	}
+
+	{
+		glm::ivec3 const A(1, 2, 3);
+		glm::ivec3 const B(2, 3, 4);
+		Error += glm::all(glm::lessThan(A, B)) ? 0: 1;
+
+		glm::ivec3 const C(1, 3, 4);
+		Error += glm::all(glm::lessThanEqual(A, C)) ? 0: 1;
+	}
+
+	{
+		glm::ivec4 const A(1, 2, 3, 4);
+		glm::ivec4 const B(2, 3, 4, 5);
+		Error += glm::all(glm::lessThan(A, B)) ? 0: 1;
+
+		glm::ivec4 const C(1, 3, 4, 5);
+		Error += glm::all(glm::lessThanEqual(A, C)) ? 0: 1;
+	}
+
+	return Error;
+}
+
+static int test_greater()
+{
+	int Error = 0;
+
+	{
+		glm::vec2 const A(1, 2);
+		glm::vec2 const B(2, 3);
+		Error += glm::all(glm::greaterThan(B, A)) ? 0: 1;
+		Error += glm::all(glm::greaterThanEqual(B, A)) ? 0: 1;
+	}
+
+	{
+		glm::vec3 const A(1, 2, 3);
+		glm::vec3 const B(2, 3, 4);
+		Error += glm::all(glm::greaterThan(B, A)) ? 0: 1;
+		Error += glm::all(glm::greaterThanEqual(B, A)) ? 0: 1;
+	}
+
+	{
+		glm::vec4 const A(1, 2, 3, 4);
+		glm::vec4 const B(2, 3, 4, 5);
+		Error += glm::all(glm::greaterThan(B, A)) ? 0: 1;
+		Error += glm::all(glm::greaterThanEqual(B, A)) ? 0: 1;
+	}
+
+	{
+		glm::ivec2 const A(1, 2);
+		glm::ivec2 const B(2, 3);
+		Error += glm::all(glm::greaterThan(B, A)) ? 0: 1;
+
+		glm::ivec2 const C(1, 3);
+		Error += glm::all(glm::greaterThanEqual(C, A)) ? 0: 1;
+	}
+
+	{
+		glm::ivec3 const A(1, 2, 3);
+		glm::ivec3 const B(2, 3, 4);
+		Error += glm::all(glm::greaterThan(B, A)) ? 0: 1;
+
+		glm::ivec3 const C(1, 3, 4);
+		Error += glm::all(glm::greaterThanEqual(C, A)) ? 0: 1;
+	}
+
+	{
+		glm::ivec4 const A(1, 2, 3, 4);
+		glm::ivec4 const B(2, 3, 4, 5);
+		Error += glm::all(glm::greaterThan(B, A)) ? 0: 1;
+
+		glm::ivec4 const C(1, 3, 4, 5);
+		Error += glm::all(glm::greaterThanEqual(C, A)) ? 0: 1;
+	}
+
+	return Error;
+}
+
+static int test_equal()
+{
+	int Error = 0;
+
+	{
+		glm::ivec2 const A(1, 2);
+		glm::ivec2 const B(1, 2);
+		Error += glm::all(glm::equal(B, A)) ? 0: 1;
+	}
+
+	{
+		glm::ivec3 const A(1, 2, 3);
+		glm::ivec3 const B(1, 2, 3);
+		Error += glm::all(glm::equal(B, A)) ? 0: 1;
+	}
+
+	{
+		glm::ivec4 const A(1, 2, 3, 4);
+		glm::ivec4 const B(1, 2, 3, 4);
+		Error += glm::all(glm::equal(B, A)) ? 0: 1;
+	}
+
+	return Error;
+}
+
 int main()
 {
-	int Error(0);
+	int Error = 0;
 
 	Error += test_not();
+	Error += test_less();
+	Error += test_greater();
+	Error += test_equal();
 
 	return Error;
 }

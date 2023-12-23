@@ -1,34 +1,3 @@
-///////////////////////////////////////////////////////////////////////////////////
-/// OpenGL Mathematics (glm.g-truc.net)
-///
-/// Copyright (c) 2005 - 2015 G-Truc Creation (www.g-truc.net)
-/// Permission is hereby granted, free of charge, to any person obtaining a copy
-/// of this software and associated documentation files (the "Software"), to deal
-/// in the Software without restriction, including without limitation the rights
-/// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-/// copies of the Software, and to permit persons to whom the Software is
-/// furnished to do so, subject to the following conditions:
-/// 
-/// The above copyright notice and this permission notice shall be included in
-/// all copies or substantial portions of the Software.
-/// 
-/// Restrictions:
-///		By making use of the Software for military purposes, you choose to make
-///		a Bunny unhappy.
-/// 
-/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-/// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-/// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-/// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-/// THE SOFTWARE.
-///
-/// @file test/gtc/gtc_color.cpp
-/// @date 2015-02-10 / 2015-02-10
-/// @author Christophe Riccio
-///////////////////////////////////////////////////////////////////////////////////
-
 #include <glm/gtc/color_space.hpp>
 #include <glm/gtc/epsilon.hpp>
 #include <glm/gtc/constants.hpp>
@@ -67,15 +36,43 @@ namespace srgb
 			Error += glm::all(glm::epsilonEqual(ColorSourceRGBA, ColorRGB, 0.00001f)) ? 0 : 1;
 		}
 
+		glm::vec4 const ColorSourceGNI = glm::vec4(107, 107, 104, 131) / glm::vec4(255);
+
+		{
+			glm::vec4 const ColorGNA = glm::convertSRGBToLinear(ColorSourceGNI) * glm::vec4(255);
+			glm::vec4 const ColorGNE = glm::convertLinearToSRGB(ColorSourceGNI) * glm::vec4(255);
+			glm::vec4 const ColorSRGB = glm::convertLinearToSRGB(ColorSourceGNI);
+			glm::vec4 const ColorRGB = glm::convertSRGBToLinear(ColorSRGB);
+			Error += glm::all(glm::epsilonEqual(ColorSourceGNI, ColorRGB, 0.00001f)) ? 0 : 1;
+		}
+
 		return Error;
 	}
 }//namespace srgb
+
+namespace srgb_lowp
+{
+	int test()
+	{
+		int Error(0);
+
+		for(float Color = 0.0f; Color < 1.0f; Color += 0.01f)
+		{
+			glm::highp_vec3 const HighpSRGB = glm::convertLinearToSRGB(glm::highp_vec3(Color));
+			glm::lowp_vec3 const LowpSRGB = glm::convertLinearToSRGB(glm::lowp_vec3(Color));
+			Error += glm::all(glm::epsilonEqual(glm::abs(HighpSRGB - glm::highp_vec3(LowpSRGB)), glm::highp_vec3(0), 0.1f)) ? 0 : 1;
+		}
+
+		return Error;
+	}
+}//namespace srgb_lowp
 
 int main()
 {
 	int Error(0);
 
 	Error += srgb::test();
+	Error += srgb_lowp::test();
 
 	return Error;
 }

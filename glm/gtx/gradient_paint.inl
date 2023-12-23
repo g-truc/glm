@@ -1,19 +1,18 @@
 /// @ref gtx_gradient_paint
-/// @file glm/gtx/gradient_paint.inl
 
 namespace glm
 {
-	template <typename T, precision P>
+	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER T radialGradient
 	(
-		tvec2<T, P> const & Center,
-		T const & Radius,
-		tvec2<T, P> const & Focal,
-		tvec2<T, P> const & Position
+		vec<2, T, Q> const& Center,
+		T const& Radius,
+		vec<2, T, Q> const& Focal,
+		vec<2, T, Q> const& Position
 	)
 	{
-		tvec2<T, P> F = Focal - Center;
-		tvec2<T, P> D = Position - Focal;
+		vec<2, T, Q> F = Focal - Center;
+		vec<2, T, Q> D = Position - Focal;
 		T Radius2 = pow2(Radius);
 		T Fx2 = pow2(F.x);
 		T Fy2 = pow2(F.y);
@@ -23,15 +22,15 @@ namespace glm
 		return Numerator / Denominator;
 	}
 
-	template <typename T, precision P>
+	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER T linearGradient
 	(
-		tvec2<T, P> const & Point0,
-		tvec2<T, P> const & Point1,
-		tvec2<T, P> const & Position
+		vec<2, T, Q> const& Point0,
+		vec<2, T, Q> const& Point1,
+		vec<2, T, Q> const& Position
 	)
 	{
-		tvec2<T, P> Dist = Point1 - Point0;
+		vec<2, T, Q> Dist = Point1 - Point0;
 		return (Dist.x * (Position.x - Point0.x) + Dist.y * (Position.y - Point0.y)) / glm::dot(Dist, Dist);
 	}
 }//namespace glm

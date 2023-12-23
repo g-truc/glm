@@ -1,44 +1,14 @@
-///////////////////////////////////////////////////////////////////////////////////
-/// OpenGL Mathematics (glm.g-truc.net)
-///
-/// Copyright (c) 2005 - 2015 G-Truc Creation (www.g-truc.net)
-/// Permission is hereby granted, free of charge, to any person obtaining a copy
-/// of this software and associated documentation files (the "Software"), to deal
-/// in the Software without restriction, including without limitation the rights
-/// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-/// copies of the Software, and to permit persons to whom the Software is
-/// furnished to do so, subject to the following conditions:
-/// 
-/// The above copyright notice and this permission notice shall be included in
-/// all copies or substantial portions of the Software.
-/// 
-/// Restrictions:
-///		By making use of the Software for military purposes, you choose to make
-///		a Bunny unhappy.
-/// 
-/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-/// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-/// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-/// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-/// THE SOFTWARE.
-///
-/// @file test/core/core_type_ctor.cpp
-/// @date 2015-07-25 / 2015-07-25
-/// @author Christophe Riccio
-///////////////////////////////////////////////////////////////////////////////////
-
-#define GLM_FORCE_NO_CTOR_INIT
-#include <glm/glm.hpp>
 #include <glm/gtc/vec1.hpp>
 #include <glm/gtc/quaternion.hpp>
+#include <glm/gtc/constants.hpp>
+#include <glm/ext/vector_relational.hpp>
+#include <glm/glm.hpp>
 
-int test_vec1_ctor()
+static int test_vec1_ctor()
 {
 	int Error = 0;
 
-#	if GLM_HAS_DEFAULTED_FUNCTIONS
+#	if GLM_CONFIG_DEFAULTED_FUNCTIONS == GLM_ENABLE
 	{
 		union pack
 		{
@@ -52,16 +22,16 @@ int test_vec1_ctor()
 		B.f = glm::vec1(1);
 		Error += glm::all(glm::equal(B.i, glm::ivec1(1065353216))) ? 0 : 1;
 	}
-#	endif//GLM_HAS_DEFAULTED_FUNCTIONS
+#	endif//GLM_CONFIG_DEFAULTED_FUNCTIONS == GLM_ENABLE
 
 	return Error;
 }
 
-int test_vec2_ctor()
+static int test_vec2_ctor()
 {
 	int Error = 0;
 
-#	if GLM_HAS_DEFAULTED_FUNCTIONS
+#	if GLM_CONFIG_DEFAULTED_FUNCTIONS == GLM_ENABLE
 	{
 		union pack
 		{
@@ -75,16 +45,16 @@ int test_vec2_ctor()
 		B.f = glm::vec2(1);
 		Error += glm::all(glm::equal(B.i, glm::ivec2(1065353216))) ? 0 : 1;
 	}
-#	endif//GLM_HAS_DEFAULTED_FUNCTIONS
+#	endif
 
 	return Error;
 }
 
-int test_vec3_ctor()
+static int test_vec3_ctor()
 {
 	int Error = 0;
 
-#	if GLM_HAS_DEFAULTED_FUNCTIONS
+#	if GLM_CONFIG_DEFAULTED_FUNCTIONS == GLM_ENABLE
 	{
 		union pack
 		{
@@ -98,24 +68,16 @@ int test_vec3_ctor()
 		B.f = glm::vec3(1);
 		Error += glm::all(glm::equal(B.i, glm::ivec3(1065353216))) ? 0 : 1;
 	}
-#	endif//GLM_HAS_DEFAULTED_FUNCTIONS
+#	endif
 
 	return Error;
 }
 
-int test_vec4_ctor()
+static int test_vec4_ctor()
 {
 	int Error = 0;
 
-#	ifndef GLM_FORCE_NO_CTOR_INIT
-	{
-		glm::vec4 A;
-		glm::vec4 B(0);
-		Error += glm::all(glm::equal(A, B)) ? 0 : 1;
-	}
-#	endif//GLM_FORCE_NO_CTOR_INIT
-
-#	if GLM_HAS_DEFAULTED_FUNCTIONS
+#	if GLM_CONFIG_DEFAULTED_FUNCTIONS == GLM_ENABLE
 	{
 		union pack
 		{
@@ -129,16 +91,16 @@ int test_vec4_ctor()
 		B.f = glm::vec4(1);
 		Error += glm::all(glm::equal(B.i, glm::ivec4(1065353216))) ? 0 : 1;
 	}
-#	endif//GLM_HAS_DEFAULTED_FUNCTIONS
+#	endif
 
 	return Error;
 }
 
-int test_mat2x2_ctor()
+static int test_mat2x2_ctor()
 {
 	int Error = 0;
 
-#	if GLM_HAS_DEFAULTED_FUNCTIONS
+#	if GLM_LANG & GLM_LANG_CXX11_FLAG
 	{
 		union pack
 		{
@@ -147,21 +109,21 @@ int test_mat2x2_ctor()
 		} A, B;
 
 		A.f = glm::mat2x2(0);
-		Error += glm::all(glm::equal(A.i[0], glm::vec2(0))) ? 0 : 1;
+		Error += glm::all(glm::equal(A.i[0], glm::vec2(0), glm::epsilon<float>())) ? 0 : 1;
 
 		B.f = glm::mat2x2(1);
-		Error += glm::all(glm::equal(B.i[0], glm::vec2(1, 0))) ? 0 : 1;
+		Error += glm::all(glm::equal(B.i[0], glm::vec2(1, 0), glm::epsilon<float>())) ? 0 : 1;
 	}
-#	endif//GLM_HAS_DEFAULTED_FUNCTIONS
+#	endif//GLM_LANG & GLM_LANG_CXX11_FLAG
 
 	return Error;
 }
 
-int test_mat2x3_ctor()
+static int test_mat2x3_ctor()
 {
 	int Error = 0;
 
-#	if GLM_HAS_DEFAULTED_FUNCTIONS
+#	if GLM_LANG & GLM_LANG_CXX11_FLAG
 	{
 		union pack
 		{
@@ -170,21 +132,21 @@ int test_mat2x3_ctor()
 		} A, B;
 
 		A.f = glm::mat2x3(0);
-		Error += glm::all(glm::equal(A.i[0], glm::vec3(0))) ? 0 : 1;
+		Error += glm::all(glm::equal(A.i[0], glm::vec3(0), glm::epsilon<float>())) ? 0 : 1;
 
 		B.f = glm::mat2x3(1);
-		Error += glm::all(glm::equal(B.i[0], glm::vec3(1, 0, 0))) ? 0 : 1;
+		Error += glm::all(glm::equal(B.i[0], glm::vec3(1, 0, 0), glm::epsilon<float>())) ? 0 : 1;
 	}
-#	endif//GLM_HAS_DEFAULTED_FUNCTIONS
+#	endif//GLM_LANG & GLM_LANG_CXX11_FLAG
 
 	return Error;
 }
 
-int test_mat2x4_ctor()
+static int test_mat2x4_ctor()
 {
 	int Error = 0;
 
-#	if GLM_HAS_DEFAULTED_FUNCTIONS
+#	if GLM_LANG & GLM_LANG_CXX11_FLAG
 	{
 		union pack
 		{
@@ -193,21 +155,23 @@ int test_mat2x4_ctor()
 		} A, B;
 
 		A.f = glm::mat2x4(0);
-		Error += glm::all(glm::equal(A.i[0], glm::vec4(0))) ? 0 : 1;
+		glm::vec4 const C(0, 0, 0, 0);
+		Error += glm::all(glm::equal(A.i[0], C, glm::epsilon<float>())) ? 0 : 1;
 
 		B.f = glm::mat2x4(1);
-		Error += glm::all(glm::equal(B.i[0], glm::vec4(1, 0, 0, 0))) ? 0 : 1;
+		glm::vec4 const D(1, 0, 0, 0);
+		Error += glm::all(glm::equal(B.i[0], D, glm::epsilon<float>())) ? 0 : 1;
 	}
-#	endif//GLM_HAS_DEFAULTED_FUNCTIONS
+#	endif//GLM_LANG & GLM_LANG_CXX11_FLAG
 
 	return Error;
 }
 
-int test_mat3x2_ctor()
+static int test_mat3x2_ctor()
 {
 	int Error = 0;
 
-#	if GLM_HAS_DEFAULTED_FUNCTIONS
+#	if GLM_LANG & GLM_LANG_CXX11_FLAG
 	{
 		union pack
 		{
@@ -216,21 +180,21 @@ int test_mat3x2_ctor()
 		} A, B;
 
 		A.f = glm::mat3x2(0);
-		Error += glm::all(glm::equal(A.i[0], glm::vec2(0))) ? 0 : 1;
+		Error += glm::all(glm::equal(A.i[0], glm::vec2(0), glm::epsilon<float>())) ? 0 : 1;
 
 		B.f = glm::mat3x2(1);
-		Error += glm::all(glm::equal(B.i[0], glm::vec2(1, 0))) ? 0 : 1;
+		Error += glm::all(glm::equal(B.i[0], glm::vec2(1, 0), glm::epsilon<float>())) ? 0 : 1;
 	}
-#	endif//GLM_HAS_DEFAULTED_FUNCTIONS
+#	endif//GLM_LANG & GLM_LANG_CXX11_FLAG
 
 	return Error;
 }
 
-int test_mat3x3_ctor()
+static int test_mat3x3_ctor()
 {
 	int Error = 0;
 
-#	if GLM_HAS_DEFAULTED_FUNCTIONS
+#	if GLM_LANG & GLM_LANG_CXX11_FLAG
 	{
 		union pack
 		{
@@ -239,21 +203,21 @@ int test_mat3x3_ctor()
 		} A, B;
 
 		A.f = glm::mat3x3(0);
-		Error += glm::all(glm::equal(A.i[0], glm::vec3(0))) ? 0 : 1;
+		Error += glm::all(glm::equal(A.i[0], glm::vec3(0), glm::epsilon<float>())) ? 0 : 1;
 
 		B.f = glm::mat3x3(1);
-		Error += glm::all(glm::equal(B.i[0], glm::vec3(1, 0, 0))) ? 0 : 1;
+		Error += glm::all(glm::equal(B.i[0], glm::vec3(1, 0, 0), glm::epsilon<float>())) ? 0 : 1;
 	}
-#	endif//GLM_HAS_DEFAULTED_FUNCTIONS
+#	endif//GLM_LANG & GLM_LANG_CXX11_FLAG
 
 	return Error;
 }
 
-int test_mat3x4_ctor()
+static int test_mat3x4_ctor()
 {
 	int Error = 0;
 
-#	if GLM_HAS_DEFAULTED_FUNCTIONS
+#	if GLM_LANG & GLM_LANG_CXX11_FLAG
 	{
 		union pack
 		{
@@ -262,21 +226,21 @@ int test_mat3x4_ctor()
 		} A, B;
 
 		A.f = glm::mat3x4(0);
-		Error += glm::all(glm::equal(A.i[0], glm::vec4(0))) ? 0 : 1;
+		Error += glm::all(glm::equal(A.i[0], glm::vec4(0), glm::epsilon<float>())) ? 0 : 1;
 
 		B.f = glm::mat3x4(1);
-		Error += glm::all(glm::equal(B.i[0], glm::vec4(1, 0, 0, 0))) ? 0 : 1;
+		Error += glm::all(glm::equal(B.i[0], glm::vec4(1, 0, 0, 0), glm::epsilon<float>())) ? 0 : 1;
 	}
-#	endif//GLM_HAS_DEFAULTED_FUNCTIONS
+#	endif//GLM_LANG & GLM_LANG_CXX11_FLAG
 
 	return Error;
 }
 
-int test_mat4x2_ctor()
+static int test_mat4x2_ctor()
 {
 	int Error = 0;
 
-#	if GLM_HAS_DEFAULTED_FUNCTIONS
+#	if GLM_LANG & GLM_LANG_CXX11_FLAG
 	{
 		union pack
 		{
@@ -285,21 +249,21 @@ int test_mat4x2_ctor()
 		} A, B;
 
 		A.f = glm::mat4x2(0);
-		Error += glm::all(glm::equal(A.i[0], glm::vec2(0))) ? 0 : 1;
+		Error += glm::all(glm::equal(A.i[0], glm::vec2(0), glm::epsilon<float>())) ? 0 : 1;
 
 		B.f = glm::mat4x2(1);
-		Error += glm::all(glm::equal(B.i[0], glm::vec2(1, 0))) ? 0 : 1;
+		Error += glm::all(glm::equal(B.i[0], glm::vec2(1, 0), glm::epsilon<float>())) ? 0 : 1;
 	}
-#	endif//GLM_HAS_DEFAULTED_FUNCTIONS
+#	endif//GLM_LANG & GLM_LANG_CXX11_FLAG
 
 	return Error;
 }
 
-int test_mat4x3_ctor()
+static int test_mat4x3_ctor()
 {
 	int Error = 0;
 
-#	if GLM_HAS_DEFAULTED_FUNCTIONS
+#	if GLM_LANG & GLM_LANG_CXX11_FLAG
 	{
 		union pack
 		{
@@ -308,21 +272,21 @@ int test_mat4x3_ctor()
 		} A, B;
 
 		A.f = glm::mat4x3(0);
-		Error += glm::all(glm::equal(A.i[0], glm::vec3(0))) ? 0 : 1;
+		Error += glm::all(glm::equal(A.i[0], glm::vec3(0), glm::epsilon<float>())) ? 0 : 1;
 
 		B.f = glm::mat4x3(1);
-		Error += glm::all(glm::equal(B.i[0], glm::vec3(1, 0, 0))) ? 0 : 1;
+		Error += glm::all(glm::equal(B.i[0], glm::vec3(1, 0, 0), glm::epsilon<float>())) ? 0 : 1;
 	}
-#	endif//GLM_HAS_DEFAULTED_FUNCTIONS
+#	endif//GLM_LANG & GLM_LANG_CXX11_FLAG
 
 	return Error;
 }
 
-int test_mat4x4_ctor()
+static int test_mat4x4_ctor()
 {
 	int Error = 0;
 
-#	if GLM_HAS_DEFAULTED_FUNCTIONS
+#	if GLM_LANG & GLM_LANG_CXX11_FLAG
 	{
 		union pack
 		{
@@ -331,21 +295,21 @@ int test_mat4x4_ctor()
 		} A, B;
 
 		A.f = glm::mat4(0);
-		Error += glm::all(glm::equal(A.i[0], glm::vec4(0))) ? 0 : 1;
+		Error += glm::all(glm::equal(A.i[0], glm::vec4(0), glm::epsilon<float>())) ? 0 : 1;
 
 		B.f = glm::mat4(1);
-		Error += glm::all(glm::equal(B.i[0], glm::vec4(1, 0, 0, 0))) ? 0 : 1;
+		Error += glm::all(glm::equal(B.i[0], glm::vec4(1, 0, 0, 0), glm::epsilon<float>())) ? 0 : 1;
 	}
-#	endif//GLM_HAS_DEFAULTED_FUNCTIONS
+#	endif//GLM_LANG & GLM_LANG_CXX11_FLAG
 
 	return Error;
 }
 
-int test_quat_ctor()
+static int test_quat_ctor()
 {
 	int Error = 0;
 
-#	if GLM_HAS_DEFAULTED_FUNCTIONS && defined(GLM_FORCE_NO_CTOR_INIT)
+#	if GLM_LANG & GLM_LANG_CXX11_FLAG
 	{
 		union pack
 		{
@@ -354,12 +318,12 @@ int test_quat_ctor()
 		} A, B;
 
 		A.f = glm::quat(0, 0, 0, 0);
-		Error += glm::all(glm::equal(A.i, glm::quat(0, 0, 0, 0))) ? 0 : 1;
+		Error += glm::all(glm::equal(A.i, glm::quat(0, 0, 0, 0), glm::epsilon<float>())) ? 0 : 1;
 
 		B.f = glm::quat(1, 1, 1, 1);
-		Error += glm::all(glm::equal(B.i, glm::quat(1, 1, 1, 1))) ? 0 : 1;
+		Error += glm::all(glm::equal(B.i, glm::quat(1, 1, 1, 1), glm::epsilon<float>())) ? 0 : 1;
 	}
-#	endif//GLM_HAS_DEFAULTED_FUNCTIONS
+#	endif//GLM_LANG & GLM_LANG_CXX11_FLAG
 
 	return Error;
 }

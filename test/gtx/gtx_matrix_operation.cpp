@@ -1,39 +1,86 @@
-///////////////////////////////////////////////////////////////////////////////////
-/// OpenGL Mathematics (glm.g-truc.net)
-///
-/// Copyright (c) 2005 - 2015 G-Truc Creation (www.g-truc.net)
-/// Permission is hereby granted, free of charge, to any person obtaining a copy
-/// of this software and associated documentation files (the "Software"), to deal
-/// in the Software without restriction, including without limitation the rights
-/// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-/// copies of the Software, and to permit persons to whom the Software is
-/// furnished to do so, subject to the following conditions:
-/// 
-/// The above copyright notice and this permission notice shall be included in
-/// all copies or substantial portions of the Software.
-/// 
-/// Restrictions:
-///		By making use of the Software for military purposes, you choose to make
-///		a Bunny unhappy.
-/// 
-/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-/// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-/// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-/// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-/// THE SOFTWARE.
-///
-/// @file test/gtx/gtx_matrix_operation.cpp
-/// @date 2013-10-25 / 2014-11-25
-/// @author Christophe Riccio
-///////////////////////////////////////////////////////////////////////////////////
-
+#define GLM_ENABLE_EXPERIMENTAL
+#include <glm/glm.hpp>
+#include <glm/gtc/epsilon.hpp>
 #include <glm/gtx/matrix_operation.hpp>
+#include <limits>
+
+int test_adjugate()
+{
+	int Error = 0;
+
+	const float epsilon = std::numeric_limits<float>::epsilon();
+
+	// mat2
+	const glm::mat2 m2(
+		2, 3,
+		1, 5
+	);
+
+	const glm::mat2 eam2(
+		5, -3,
+		-1, 2
+	);
+
+	const glm::mat2 am2 = glm::adjugate(m2);
+
+	Error += glm::all(glm::bvec2(
+		glm::all(glm::epsilonEqual(am2[0], eam2[0], epsilon)),
+		glm::all(glm::epsilonEqual(am2[1], eam2[1], epsilon))
+	)) ? 0 : 1;
+
+	// mat3
+	const glm::mat3 m3(
+		2, 3, 3,
+		1, 5, 4,
+		4, 6, 8
+	);
+
+	const glm::mat3 eam3(
+		16, -6, -3,
+		8, 4, -5,
+		-14, 0, 7
+	);
+
+	const glm::mat3 am3 = glm::adjugate(m3);
+
+	Error += glm::all(glm::bvec3(
+		glm::all(glm::epsilonEqual(am3[0], eam3[0], epsilon)),
+		glm::all(glm::epsilonEqual(am3[1], eam3[1], epsilon)),
+		glm::all(glm::epsilonEqual(am3[2], eam3[2], epsilon))
+	)) ? 0 : 1;
+
+	// mat4
+	const glm::mat4 m4(
+		2, 3, 3, 1,
+		1, 5, 4, 3,
+		4, 6, 8, 5,
+		-2, -3, -3, 4
+	);
+
+	const glm::mat4 eam4(
+		97, -30, -15, 17,
+		45, 20, -25, 5,
+		-91, 0, 35, -21,
+		14, 0, 0, 14
+	);
+
+	const glm::mat4 am4 = glm::adjugate(m4);
+
+	Error += glm::all(glm::bvec4(
+		glm::all(glm::epsilonEqual(am4[0], eam4[0], epsilon)),
+		glm::all(glm::epsilonEqual(am4[1], eam4[1], epsilon)),
+		glm::all(glm::epsilonEqual(am4[2], eam4[2], epsilon)),
+		glm::all(glm::epsilonEqual(am4[3], eam4[3], epsilon))
+	)) ? 0 : 1;
+
+	return Error;
+}
 
 int main()
 {
-	int Error(0);
+	int Error = 0;
+
+	Error += test_adjugate();
 
 	return Error;
 }

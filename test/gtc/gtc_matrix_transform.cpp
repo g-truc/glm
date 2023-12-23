@@ -1,42 +1,110 @@
-///////////////////////////////////////////////////////////////////////////////////
-/// OpenGL Mathematics (glm.g-truc.net)
-///
-/// Copyright (c) 2005 - 2015 G-Truc Creation (www.g-truc.net)
-/// Permission is hereby granted, free of charge, to any person obtaining a copy
-/// of this software and associated documentation files (the "Software"), to deal
-/// in the Software without restriction, including without limitation the rights
-/// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-/// copies of the Software, and to permit persons to whom the Software is
-/// furnished to do so, subject to the following conditions:
-/// 
-/// The above copyright notice and this permission notice shall be included in
-/// all copies or substantial portions of the Software.
-/// 
-/// Restrictions:
-///		By making use of the Software for military purposes, you choose to make
-///		a Bunny unhappy.
-/// 
-/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-/// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-/// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-/// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-/// THE SOFTWARE.
-///
-/// @file test/gtc/gtc_matrix_transform.cpp
-/// @date 2010-09-16 / 2014-11-25
-/// @author Christophe Riccio
-///////////////////////////////////////////////////////////////////////////////////
-
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/constants.hpp>
+#include <glm/ext/matrix_relational.hpp>
+#include <glm/ext/scalar_relational.hpp>
 
 int test_perspective()
 {
 	int Error = 0;
 
-	glm::mat4 Projection = glm::perspective(glm::pi<float>() * 0.25f, 4.0f / 3.0f, 0.1f, 100.0f);
+	const float Near = 0.1f;
+	const float Far = 100.0f;
+	const float Eps = glm::epsilon<float>();
+
+	glm::mat4 Projection = glm::perspective(glm::pi<float>() * 0.25f, 4.0f / 3.0f, Near, Far);
+
+	Projection = glm::perspectiveLH_ZO(glm::pi<float>() * 0.25f, 4.0f / 3.0f, Near, Far);
+	{
+		glm::vec4 N = Projection * glm::vec4(0.f, 0.f, Near, 1.f);
+		glm::vec4 F = Projection * glm::vec4(0.f, 0.f, Far, 1.f);
+		N /= N.w;
+		F /= F.w;
+		Error += glm::notEqual(N.z, 0.f, Eps);
+		Error += glm::notEqual(F.z, 1.f, Eps);
+	}
+
+	Projection = glm::perspectiveLH_NO(glm::pi<float>() * 0.25f, 4.0f / 3.0f, Near, Far);
+	{
+		glm::vec4 N = Projection * glm::vec4(0.f, 0.f, Near, 1.f);
+		glm::vec4 F = Projection * glm::vec4(0.f, 0.f, Far, 1.f);
+		N /= N.w;
+		F /= F.w;
+		Error += glm::notEqual(N.z, -1.f, Eps);
+		Error += glm::notEqual(F.z, 1.f, Eps);
+	}
+	
+	Projection = glm::perspectiveRH_ZO(glm::pi<float>() * 0.25f, 4.0f / 3.0f, Near, Far);
+	{
+		glm::vec4 N = Projection * glm::vec4(0.f, 0.f, -Near, 1.f);
+		glm::vec4 F = Projection * glm::vec4(0.f, 0.f, -Far, 1.f);
+		N /= N.w;
+		F /= F.w;
+		Error += glm::notEqual(N.z, 0.f, Eps);
+		Error += glm::notEqual(F.z, 1.f, Eps);
+	}
+
+	Projection = glm::perspectiveRH_NO(glm::pi<float>() * 0.25f, 4.0f / 3.0f, Near, Far);
+	{
+		glm::vec4 N = Projection * glm::vec4(0.f, 0.f, -Near, 1.f);
+		glm::vec4 F = Projection * glm::vec4(0.f, 0.f, -Far, 1.f);
+		N /= N.w;
+		F /= F.w;
+		Error += glm::notEqual(N.z, -1.f, Eps);
+		Error += glm::notEqual(F.z, 1.f, Eps);
+	}
+
+	return Error;
+}
+
+int test_infinitePerspective()
+{
+	int Error = 0;
+
+	const float Near = 0.1f;
+	const float Inf = 1.0e+10f;
+	const float Eps = glm::epsilon<float>();
+
+	glm::mat4 Projection = glm::infinitePerspective(glm::pi<float>() * 0.25f, 4.0f / 3.0f, Near);
+
+	Projection = glm::infinitePerspectiveLH_ZO(glm::pi<float>() * 0.25f, 4.0f / 3.0f, Near);
+	{
+		glm::vec4 N = Projection * glm::vec4(0.f, 0.f, Near, 1.f);
+		glm::vec4 F = Projection * glm::vec4(0.f, 0.f, Inf, 1.f);
+		N /= N.w;
+		F /= F.w;
+		Error += glm::notEqual(N.z, 0.f, Eps);
+		Error += glm::notEqual(F.z, 1.f, Eps);
+	}
+
+	Projection = glm::infinitePerspectiveLH_NO(glm::pi<float>() * 0.25f, 4.0f / 3.0f, Near);
+	{
+		glm::vec4 N = Projection * glm::vec4(0.f, 0.f, Near, 1.f);
+		glm::vec4 F = Projection * glm::vec4(0.f, 0.f, Inf, 1.f);
+		N /= N.w;
+		F /= F.w;
+		Error += glm::notEqual(N.z, -1.f, Eps);
+		Error += glm::notEqual(F.z, 1.f, Eps);
+	}
+
+	Projection = glm::infinitePerspectiveRH_ZO(glm::pi<float>() * 0.25f, 4.0f / 3.0f, Near);
+	{
+		glm::vec4 N = Projection * glm::vec4(0.f, 0.f, -Near, 1.f);
+		glm::vec4 F = Projection * glm::vec4(0.f, 0.f, -Inf, 1.f);
+		N /= N.w;
+		F /= F.w;
+		Error += glm::notEqual(N.z, 0.f, Eps);
+		Error += glm::notEqual(F.z, 1.f, Eps);
+	}
+
+	Projection = glm::infinitePerspectiveRH_NO(glm::pi<float>() * 0.25f, 4.0f / 3.0f, Near);
+	{
+		glm::vec4 N = Projection * glm::vec4(0.f, 0.f, -Near, 1.f);
+		glm::vec4 F = Projection * glm::vec4(0.f, 0.f, -Inf, 1.f);
+		N /= N.w;
+		F /= F.w;
+		Error += glm::notEqual(N.z, -1.f, Eps);
+		Error += glm::notEqual(F.z, 1.f, Eps);
+	}
 
 	return Error;
 }
@@ -80,6 +148,7 @@ int main()
 	Error += test_tweakedInfinitePerspective();
 	Error += test_pick();
 	Error += test_perspective();
+	Error += test_infinitePerspective();
 
 	return Error;
 }

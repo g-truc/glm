@@ -1,44 +1,13 @@
-///////////////////////////////////////////////////////////////////////////////////
-/// OpenGL Mathematics (glm.g-truc.net)
-///
-/// Copyright (c) 2005 - 2015 G-Truc Creation (www.g-truc.net)
-/// Permission is hereby granted, free of charge, to any person obtaining a copy
-/// of this software and associated documentation files (the "Software"), to deal
-/// in the Software without restriction, including without limitation the rights
-/// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-/// copies of the Software, and to permit persons to whom the Software is
-/// furnished to do so, subject to the following conditions:
-/// 
-/// The above copyright notice and this permission notice shall be included in
-/// all copies or substantial portions of the Software.
-/// 
-/// Restrictions:
-///		By making use of the Software for military purposes, you choose to make
-///		a Bunny unhappy.
-/// 
-/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-/// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-/// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-/// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-/// THE SOFTWARE.
-///
-/// @file test/core/func_integer_bit_count.cpp
-/// @date 2011-01-15 / 2014-11-25
-/// @author Christophe Riccio
-///////////////////////////////////////////////////////////////////////////////////
-
 // This has the programs for computing the number of 1-bits
 // in a word, or byte, etc.
 // Max line length is 57, to fit in hacker.book.
-#include <stdio.h>
-#include <stdlib.h>     //To define "exit", req'd by XLC.
+#include <cstdio>
+#include <cstdlib>     //To define "exit", req'd by XLC.
 #include <ctime>
 
 unsigned rotatel(unsigned x, int n)
 {
-	if ((unsigned)n > 63) {printf("rotatel, n out of range.\n"); exit(1);}
+	if (static_cast<unsigned>(n) > 63) { std::printf("rotatel, n out of range.\n"); std::exit(1);}
 	return (x << n) | (x >> (32 - n));
 }
 
@@ -195,14 +164,14 @@ int pop9(unsigned x)
 	y = y & 0x1111111111111111ULL;
 	y = y * 0x1111111111111111ULL;
 	y = y >> 60;
-	return y;
+	return static_cast<int>(y);
 }
 
 int errors;
 void error(int x, int y)
 {
 	errors = errors + 1;
-	printf("Error for x = %08x, got %08x\n", x, y);
+	std::printf("Error for x = %08x, got %08x\n", x, y);
 }
 
 int main()
@@ -230,7 +199,7 @@ int main()
 		if (pop0(test[i]) != test[i+1]) error(test[i], pop0(test[i]));}
 	TimestampEnd = std::clock();
 
-	printf("pop0: %ld clocks\n", TimestampEnd - TimestampBeg);
+	std::printf("pop0: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
 
 	TimestampBeg = std::clock();
 	for (std::size_t k = 0; k < Count; ++k)
@@ -238,7 +207,7 @@ int main()
 		if (pop1(test[i]) != test[i+1]) error(test[i], pop1(test[i]));}
 	TimestampEnd = std::clock();
 
-	printf("pop1: %ld clocks\n", TimestampEnd - TimestampBeg);
+	std::printf("pop1: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
 
 	TimestampBeg = std::clock();
 	for (std::size_t k = 0; k < Count; ++k)
@@ -246,7 +215,7 @@ int main()
 		if (pop2(test[i]) != test[i+1]) error(test[i], pop2(test[i]));}
 	TimestampEnd = std::clock();
 
-	printf("pop2: %ld clocks\n", TimestampEnd - TimestampBeg);
+	std::printf("pop2: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
 
 	TimestampBeg = std::clock();
 	for (std::size_t k = 0; k < Count; ++k)
@@ -254,7 +223,7 @@ int main()
 		if (pop3(test[i]) != test[i+1]) error(test[i], pop3(test[i]));}
 	TimestampEnd = std::clock();
 
-	printf("pop3: %ld clocks\n", TimestampEnd - TimestampBeg);
+	std::printf("pop3: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
 
 	TimestampBeg = std::clock();
 	for (std::size_t k = 0; k < Count; ++k)
@@ -262,7 +231,7 @@ int main()
 		if (pop4(test[i]) != test[i+1]) error(test[i], pop4(test[i]));}
 	TimestampEnd = std::clock();
 
-	printf("pop4: %ld clocks\n", TimestampEnd - TimestampBeg);
+	std::printf("pop4: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
 
 	TimestampBeg = std::clock();
 	for (std::size_t k = 0; k < Count; ++k)
@@ -270,7 +239,7 @@ int main()
 		if (pop5(test[i]) != test[i+1]) error(test[i], pop5(test[i]));}
 	TimestampEnd = std::clock();
 
-	printf("pop5: %ld clocks\n", TimestampEnd - TimestampBeg);
+	std::printf("pop5: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
 
 	TimestampBeg = std::clock();
 	for (std::size_t k = 0; k < Count; ++k)
@@ -278,7 +247,7 @@ int main()
 		if (pop5a(test[i]) != test[i+1]) error(test[i], pop5a(test[i]));}
 	TimestampEnd = std::clock();
 
-	printf("pop5a: %ld clocks\n", TimestampEnd - TimestampBeg);
+	std::printf("pop5a: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
 
 	TimestampBeg = std::clock();
 	for (std::size_t k = 0; k < Count; ++k)
@@ -286,7 +255,7 @@ int main()
 		if (pop6(test[i]) != test[i+1]) error(test[i], pop6(test[i]));}
 	TimestampEnd = std::clock();
 
-	printf("pop6: %ld clocks\n", TimestampEnd - TimestampBeg);
+	std::printf("pop6: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
 
 	TimestampBeg = std::clock();
 	for (std::size_t k = 0; k < Count; ++k)
@@ -295,7 +264,7 @@ int main()
 		if (pop7(test[i]) != test[i+1]) error(test[i], pop7(test[i]));}
 	TimestampEnd = std::clock();
 
-	printf("pop7: %ld clocks\n", TimestampEnd - TimestampBeg);
+	std::printf("pop7: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
 
 	TimestampBeg = std::clock();
 	for (std::size_t k = 0; k < Count; ++k)
@@ -304,7 +273,7 @@ int main()
 		if (pop8(test[i]) != test[i+1]) error(test[i], pop8(test[i]));}
 	TimestampEnd = std::clock();
 
-	printf("pop8: %ld clocks\n", TimestampEnd - TimestampBeg);
+	std::printf("pop8: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
 
 	TimestampBeg = std::clock();
 	for (std::size_t k = 0; k < Count; ++k)
@@ -313,10 +282,10 @@ int main()
 		if (pop9(test[i]) != test[i+1]) error(test[i], pop9(test[i]));}
 	TimestampEnd = std::clock();
 
-	printf("pop9: %ld clocks\n", TimestampEnd - TimestampBeg);
+	std::printf("pop9: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
 
 	if (errors == 0)
-		printf("Passed all %d cases.\n", sizeof(test)/8);
+		std::printf("Passed all %d cases.\n", static_cast<int>(sizeof(test)/8));
 
 #	endif//NDEBUG
 }

@@ -1,22 +1,21 @@
 /// @ref gtx_fast_exponential
-/// @file glm/gtx/fast_exponential.inl
 
 namespace glm
 {
 	// fastPow:
-	template <typename genType>
+	template<typename genType>
 	GLM_FUNC_QUALIFIER genType fastPow(genType x, genType y)
 	{
 		return exp(y * log(x));
 	}
 
-	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<T, P> fastPow(vecType<T, P> const & x, vecType<T, P> const & y)
+	template<length_t L, typename T, qualifier Q>
+	GLM_FUNC_QUALIFIER vec<L, T, Q> fastPow(vec<L, T, Q> const& x, vec<L, T, Q> const& y)
 	{
 		return exp(y * log(x));
 	}
 
-	template <typename T>
+	template<typename T>
 	GLM_FUNC_QUALIFIER T fastPow(T x, int y)
 	{
 		T f = static_cast<T>(1);
@@ -25,10 +24,10 @@ namespace glm
 		return f;
 	}
 
-	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<T, P> fastPow(vecType<T, P> const & x, vecType<int, P> const & y)
+	template<length_t L, typename T, qualifier Q>
+	GLM_FUNC_QUALIFIER vec<L, T, Q> fastPow(vec<L, T, Q> const& x, vec<L, int, Q> const& y)
 	{
-		vecType<T, P> Result(uninitialize);
+		vec<L, T, Q> Result;
 		for(length_t i = 0, n = x.length(); i < n; ++i)
 			Result[i] = fastPow(x[i], y[i]);
 		return Result;
@@ -36,7 +35,7 @@ namespace glm
 
 	// fastExp
 	// Note: This function provides accurate results only for value between -1 and 1, else avoid it.
-	template <typename T>
+	template<typename T>
 	GLM_FUNC_QUALIFIER T fastExp(T x)
 	{
 		// This has a better looking and same performance in release mode than the following code. However, in debug mode it's slower.
@@ -81,14 +80,14 @@ namespace glm
 	}
 	*/
 
-	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<T, P> fastExp(vecType<T, P> const & x)
+	template<length_t L, typename T, qualifier Q>
+	GLM_FUNC_QUALIFIER vec<L, T, Q> fastExp(vec<L, T, Q> const& x)
 	{
-		return detail::functor1<T, T, P, vecType>::call(fastExp, x);
+		return detail::functor1<vec, L, T, T, Q>::call(fastExp, x);
 	}
 
 	// fastLog
-	template <typename genType>
+	template<typename genType>
 	GLM_FUNC_QUALIFIER genType fastLog(genType x)
 	{
 		return std::log(x);
@@ -103,35 +102,35 @@ namespace glm
 	}
 	*/
 
-	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<T, P> fastLog(vecType<T, P> const & x)
+	template<length_t L, typename T, qualifier Q>
+	GLM_FUNC_QUALIFIER vec<L, T, Q> fastLog(vec<L, T, Q> const& x)
 	{
-		return detail::functor1<T, T, P, vecType>::call(fastLog, x);
+		return detail::functor1<vec, L, T, T, Q>::call(fastLog, x);
 	}
 
 	//fastExp2, ln2 = 0.69314718055994530941723212145818f
-	template <typename genType>
+	template<typename genType>
 	GLM_FUNC_QUALIFIER genType fastExp2(genType x)
 	{
-		return fastExp(0.69314718055994530941723212145818f * x);
+		return fastExp(static_cast<genType>(0.69314718055994530941723212145818) * x);
 	}
 
-	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<T, P> fastExp2(vecType<T, P> const & x)
+	template<length_t L, typename T, qualifier Q>
+	GLM_FUNC_QUALIFIER vec<L, T, Q> fastExp2(vec<L, T, Q> const& x)
 	{
-		return detail::functor1<T, T, P, vecType>::call(fastExp2, x);
+		return detail::functor1<vec, L, T, T, Q>::call(fastExp2, x);
 	}
 
 	// fastLog2, ln2 = 0.69314718055994530941723212145818f
-	template <typename genType>
+	template<typename genType>
 	GLM_FUNC_QUALIFIER genType fastLog2(genType x)
 	{
-		return fastLog(x) / 0.69314718055994530941723212145818f;
+		return fastLog(x) / static_cast<genType>(0.69314718055994530941723212145818);
 	}
 
-	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<T, P> fastLog2(vecType<T, P> const & x)
+	template<length_t L, typename T, qualifier Q>
+	GLM_FUNC_QUALIFIER vec<L, T, Q> fastLog2(vec<L, T, Q> const& x)
 	{
-		return detail::functor1<T, T, P, vecType>::call(fastLog2, x);
+		return detail::functor1<vec, L, T, T, Q>::call(fastLog2, x);
 	}
 }//namespace glm

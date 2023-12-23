@@ -1,19 +1,18 @@
 /// @ref gtx_closest_point
-/// @file glm/gtx/closest_point.inl
 
 namespace glm
 {
-	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tvec3<T, P> closestPointOnLine
+	template<typename T, qualifier Q>
+	GLM_FUNC_QUALIFIER vec<3, T, Q> closestPointOnLine
 	(
-		tvec3<T, P> const & point,
-		tvec3<T, P> const & a,
-		tvec3<T, P> const & b
+		vec<3, T, Q> const& point,
+		vec<3, T, Q> const& a,
+		vec<3, T, Q> const& b
 	)
 	{
 		T LineLength = distance(a, b);
-		tvec3<T, P> Vector = point - a;
-		tvec3<T, P> LineDirection = (b - a) / LineLength;
+		vec<3, T, Q> Vector = point - a;
+		vec<3, T, Q> LineDirection = (b - a) / LineLength;
 
 		// Project Vector to LineDirection to get the distance of point from a
 		T Distance = dot(Vector, LineDirection);
@@ -22,18 +21,18 @@ namespace glm
 		if(Distance >= LineLength) return b;
 		return a + LineDirection * Distance;
 	}
-	
-	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tvec2<T, P> closestPointOnLine
+
+	template<typename T, qualifier Q>
+	GLM_FUNC_QUALIFIER vec<2, T, Q> closestPointOnLine
 	(
-		tvec2<T, P> const & point,
-		tvec2<T, P> const & a,
-		tvec2<T, P> const & b
+		vec<2, T, Q> const& point,
+		vec<2, T, Q> const& a,
+		vec<2, T, Q> const& b
 	)
 	{
 		T LineLength = distance(a, b);
-		tvec2<T, P> Vector = point - a;
-		tvec2<T, P> LineDirection = (b - a) / LineLength;
+		vec<2, T, Q> Vector = point - a;
+		vec<2, T, Q> LineDirection = (b - a) / LineLength;
 
 		// Project Vector to LineDirection to get the distance of point from a
 		T Distance = dot(Vector, LineDirection);
@@ -42,5 +41,5 @@ namespace glm
 		if(Distance >= LineLength) return b;
 		return a + LineDirection * Distance;
 	}
-	
+
 }//namespace glm

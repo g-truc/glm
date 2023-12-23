@@ -1,34 +1,4 @@
-///////////////////////////////////////////////////////////////////////////////////
-/// OpenGL Mathematics (glm.g-truc.net)
-///
-/// Copyright (c) 2005 - 2015 G-Truc Creation (www.g-truc.net)
-/// Permission is hereby granted, free of charge, to any person obtaining a copy
-/// of this software and associated documentation files (the "Software"), to deal
-/// in the Software without restriction, including without limitation the rights
-/// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-/// copies of the Software, and to permit persons to whom the Software is
-/// furnished to do so, subject to the following conditions:
-/// 
-/// The above copyright notice and this permission notice shall be included in
-/// all copies or substantial portions of the Software.
-/// 
-/// Restrictions:
-///		By making use of the Software for military purposes, you choose to make
-///		a Bunny unhappy.
-/// 
-/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-/// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-/// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-/// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-/// THE SOFTWARE.
-///
-/// @file test/gtx/gtx_common.cpp
-/// @date 2014-09-08 / 2014-11-25
-/// @author Christophe Riccio
-///////////////////////////////////////////////////////////////////////////////////
-
+#define GLM_ENABLE_EXPERIMENTAL
 #include <glm/gtx/common.hpp>
 #include <glm/gtc/integer.hpp>
 #include <glm/gtc/epsilon.hpp>
@@ -37,7 +7,7 @@
 
 namespace fmod_
 {
-	template <typename genType>
+	template<typename genType>
 	GLM_FUNC_QUALIFIER genType modTrunc(genType a, genType b)
 	{
 		return a - b * glm::trunc(a / b);
@@ -136,13 +106,44 @@ namespace fmod_
 
 int test_isdenormal()
 {
-	int Error(0);
+	int Error = 0;
 
 	bool A = glm::isdenormal(1.0f);
+	Error += !A ? 0 : 1;
+
 	glm::bvec1 B = glm::isdenormal(glm::vec1(1.0f));
+	Error += !glm::any(B) ? 0 : 1;
+
 	glm::bvec2 C = glm::isdenormal(glm::vec2(1.0f));
+	Error += !glm::any(C) ? 0 : 1;
+
 	glm::bvec3 D = glm::isdenormal(glm::vec3(1.0f));
+	Error += !glm::any(D) ? 0 : 1;
+
 	glm::bvec4 E = glm::isdenormal(glm::vec4(1.0f));
+	Error += !glm::any(E) ? 0 : 1;
+
+	return Error;
+}
+
+int test_openBounded()
+{
+	int Error = 0;
+
+	Error += glm::all(glm::openBounded(glm::ivec2(2), glm::ivec2(1), glm::ivec2(3))) ? 0 : 1;
+	Error += !glm::all(glm::openBounded(glm::ivec2(1), glm::ivec2(1), glm::ivec2(3))) ? 0 : 1;
+	Error += !glm::all(glm::openBounded(glm::ivec2(3), glm::ivec2(1), glm::ivec2(3))) ? 0 : 1;
+
+	return Error;
+}
+
+int test_closeBounded()
+{
+	int Error = 0;
+
+	Error += glm::all(glm::closeBounded(glm::ivec2(2), glm::ivec2(1), glm::ivec2(3))) ? 0 : 1;
+	Error += glm::all(glm::closeBounded(glm::ivec2(1), glm::ivec2(1), glm::ivec2(3))) ? 0 : 1;
+	Error += glm::all(glm::closeBounded(glm::ivec2(3), glm::ivec2(1), glm::ivec2(3))) ? 0 : 1;
 
 	return Error;
 }
@@ -153,6 +154,8 @@ int main()
 
 	Error += test_isdenormal();
 	Error += ::fmod_::test();
+	Error += test_openBounded();
+	Error += test_closeBounded();
 
 	return Error;
 }

@@ -6,9 +6,9 @@
 /// @defgroup gtx_matrix_decompose GLM_GTX_matrix_decompose
 /// @ingroup gtx
 ///
-/// @brief Decomposes a model matrix to translations, rotation and scale components
+/// Include <glm/gtx/matrix_decompose.hpp> to use the features of this extension.
 ///
-/// <glm/gtx/matrix_decompose.hpp> need to be included to use these functionalities.
+/// Decomposes a model matrix to translations, rotation and scale components
 
 #pragma once
 
@@ -20,8 +20,12 @@
 #include "../gtc/quaternion.hpp"
 #include "../gtc/matrix_transform.hpp"
 
-#if(defined(GLM_MESSAGES) && !defined(GLM_EXT_INCLUDED))
-#	pragma message("GLM: GLM_GTX_matrix_decompose extension included")
+#if GLM_MESSAGES == GLM_ENABLE && !defined(GLM_EXT_INCLUDED)
+#	ifndef GLM_ENABLE_EXPERIMENTAL
+#		pragma message("GLM: GLM_GTX_matrix_decompose is an experimental extension and may change in the future. Use #define GLM_ENABLE_EXPERIMENTAL before including it, if you really want to use it.")
+#	else
+#		pragma message("GLM: GLM_GTX_matrix_decompose extension included")
+#	endif
 #endif
 
 namespace glm
@@ -29,12 +33,18 @@ namespace glm
 	/// @addtogroup gtx_matrix_decompose
 	/// @{
 
-	/// Decomposes a model matrix to translations, rotation and scale components 
+	/// Decomposes a model matrix to translations, rotation and scale components
 	/// @see gtx_matrix_decompose
-	template <typename T, precision P>
+	template<typename T, qualifier Q>
 	GLM_FUNC_DECL bool decompose(
-		tmat4x4<T, P> const & modelMatrix,
-		tvec3<T, P> & scale, tquat<T, P> & orientation, tvec3<T, P> & translation, tvec3<T, P> & skew, tvec4<T, P> & perspective);
+		mat<4, 4, T, Q> const& modelMatrix,
+		vec<3, T, Q> & scale, qua<T, Q> & orientation, vec<3, T, Q> & translation, vec<3, T, Q> & skew, vec<4, T, Q> & perspective);
+
+	// Recomposes a model matrix from a previously-decomposed matrix
+	template <typename T, qualifier Q>
+	GLM_FUNC_DECL mat<4, 4, T, Q> recompose(
+		vec<3, T, Q> const& scale, qua<T, Q> const& orientation, vec<3, T, Q> const& translation,
+		vec<3, T, Q> const& skew, vec<4, T, Q> const& perspective);
 
 	/// @}
 }//namespace glm

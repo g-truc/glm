@@ -8,9 +8,9 @@
 /// @defgroup gtx_vector_angle GLM_GTX_vector_angle
 /// @ingroup gtx
 ///
-/// @brief Compute angle between vectors
+/// Include <glm/gtx/vector_angle.hpp> to use the features of this extension.
 ///
-/// <glm/gtx/vector_angle.hpp> need to be included to use these functionalities.
+/// Compute angle between vectors
 
 #pragma once
 
@@ -20,8 +20,12 @@
 #include "../gtx/quaternion.hpp"
 #include "../gtx/rotate_vector.hpp"
 
-#if(defined(GLM_MESSAGES) && !defined(GLM_EXT_INCLUDED))
-#	pragma message("GLM: GLM_GTX_vector_angle extension included")
+#if GLM_MESSAGES == GLM_ENABLE && !defined(GLM_EXT_INCLUDED)
+#	ifndef GLM_ENABLE_EXPERIMENTAL
+#		pragma message("GLM: GLM_GTX_vector_angle is an experimental extension and may change in the future. Use #define GLM_ENABLE_EXPERIMENTAL before including it, if you really want to use it.")
+#	else
+#		pragma message("GLM: GLM_GTX_vector_angle extension included")
+#	endif
 #endif
 
 namespace glm
@@ -32,27 +36,20 @@ namespace glm
 	//! Returns the absolute angle between two vectors.
 	//! Parameters need to be normalized.
 	/// @see gtx_vector_angle extension.
-	template <typename vecType>
-	GLM_FUNC_DECL typename vecType::value_type angle(
-		vecType const & x, 
-		vecType const & y);
+	template<length_t L, typename T, qualifier Q>
+	GLM_FUNC_DECL T angle(vec<L, T, Q> const& x, vec<L, T, Q> const& y);
 
 	//! Returns the oriented angle between two 2d vectors.
 	//! Parameters need to be normalized.
 	/// @see gtx_vector_angle extension.
-	template <typename T, precision P>
-	GLM_FUNC_DECL T orientedAngle(
-		tvec2<T, P> const & x,
-		tvec2<T, P> const & y);
+	template<typename T, qualifier Q>
+	GLM_FUNC_DECL T orientedAngle(vec<2, T, Q> const& x, vec<2, T, Q> const& y);
 
 	//! Returns the oriented angle between two 3d vectors based from a reference axis.
 	//! Parameters need to be normalized.
 	/// @see gtx_vector_angle extension.
-	template <typename T, precision P>
-	GLM_FUNC_DECL T orientedAngle(
-		tvec3<T, P> const & x,
-		tvec3<T, P> const & y,
-		tvec3<T, P> const & ref);
+	template<typename T, qualifier Q>
+	GLM_FUNC_DECL T orientedAngle(vec<3, T, Q> const& x, vec<3, T, Q> const& y, vec<3, T, Q> const& ref);
 
 	/// @}
 }// namespace glm

@@ -1,219 +1,86 @@
-///////////////////////////////////////////////////////////////////////////////////
-/// OpenGL Mathematics (glm.g-truc.net)
-///
-/// Copyright (c) 2005 - 2015 G-Truc Creation (www.g-truc.net)
-/// Permission is hereby granted, free of charge, to any person obtaining a copy
-/// of this software and associated documentation files (the "Software"), to deal
-/// in the Software without restriction, including without limitation the rights
-/// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-/// copies of the Software, and to permit persons to whom the Software is
-/// furnished to do so, subject to the following conditions:
-/// 
-/// The above copyright notice and this permission notice shall be included in
-/// all copies or substantial portions of the Software.
-/// 
-/// Restrictions:
-///		By making use of the Software for military purposes, you choose to make
-///		a Bunny unhappy.
-/// 
-/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-/// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-/// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-/// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-/// THE SOFTWARE.
-///
-/// @file test/gtc/gtc_noise.cpp
-/// @date 2011-04-21 / 2014-11-25
-/// @author Christophe Riccio
-///////////////////////////////////////////////////////////////////////////////////
-
+#define GLM_ENABLE_EXPERIMENTAL
 #include <glm/gtc/noise.hpp>
-#include <gli/gli.hpp>
-#include <gli/gtx/loader.hpp>
+#include <glm/gtc/type_precision.hpp>
+#include <glm/gtx/raw_data.hpp>
 
-int test_simplex()
+static int test_simplex_float()
 {
-	std::size_t const Size = 256;
+	int Error = 0;
 
-	{
-		std::vector<glm::byte> ImageData(Size * Size * 3);
-		
-		for(std::size_t y = 0; y < Size; ++y)
-		for(std::size_t x = 0; x < Size; ++x)
-		{
-			ImageData[(x + y * Size) * 3 + 0] = glm::byte(glm::simplex(glm::vec2(x / 64.f, y / 64.f)) * 128.f + 127.f);
-			ImageData[(x + y * Size) * 3 + 1] = ImageData[(x + y * Size) * 3 + 0];
-			ImageData[(x + y * Size) * 3 + 2] = ImageData[(x + y * Size) * 3 + 0];
-		}
+	glm::u8vec4 const PixelSimplex2D(glm::byte(glm::abs(glm::simplex(glm::vec2(0.f, 0.f))) * 255.f));
+	glm::u8vec4 const PixelSimplex3D(glm::byte(glm::abs(glm::simplex(glm::vec3(0.f, 0.f, 0.f))) * 255.f));
+	glm::u8vec4 const PixelSimplex4D(glm::byte(glm::abs(glm::simplex(glm::vec4(0.f, 0.f, 0.f, 0.f))) * 255.f));
 
-		gli::texture2D Texture(1);
-		Texture[0] = gli::image2D(glm::uvec2(Size), gli::RGB8U);
-		memcpy(Texture[0].data(), &ImageData[0], ImageData.size());
-		gli::saveDDS9(Texture, "texture_simplex2d_256.dds");
-	}
-
-	{
-		std::vector<glm::byte> ImageData(Size * Size * 3);
-		
-		for(std::size_t y = 0; y < Size; ++y)
-		for(std::size_t x = 0; x < Size; ++x)
-		{
-			ImageData[(x + y * Size) * 3 + 0] = glm::byte(glm::simplex(glm::vec3(x / 64.f, y / 64.f, 0.5f)) * 128.f + 127.f);
-			ImageData[(x + y * Size) * 3 + 1] = ImageData[(x + y * Size) * 3 + 0];
-			ImageData[(x + y * Size) * 3 + 2] = ImageData[(x + y * Size) * 3 + 0];
-		}
-
-		gli::texture2D Texture(1);
-		Texture[0] = gli::image2D(glm::uvec2(Size), gli::RGB8U);
-		memcpy(Texture[0].data(), &ImageData[0], ImageData.size());
-		gli::saveDDS9(Texture, "texture_simplex3d_256.dds");
-	}
-	
-	{
-		std::vector<glm::byte> ImageData(Size * Size * 3);
-		
-		for(std::size_t y = 0; y < Size; ++y)
-		for(std::size_t x = 0; x < Size; ++x)
-		{
-			ImageData[(x + y * Size) * 3 + 0] = glm::byte(glm::simplex(glm::vec4(x / 64.f, y / 64.f, 0.5f, 0.5f)) * 128.f + 127.f);
-			ImageData[(x + y * Size) * 3 + 1] = ImageData[(x + y * Size) * 3 + 0];
-			ImageData[(x + y * Size) * 3 + 2] = ImageData[(x + y * Size) * 3 + 0];
-		}
-
-		gli::texture2D Texture(1);
-		Texture[0] = gli::image2D(glm::uvec2(Size), gli::RGB8U);
-		memcpy(Texture[0].data(), &ImageData[0], ImageData.size());
-		gli::saveDDS9(Texture, "texture_simplex4d_256.dds");
-	}
-
-	return 0;
+	return Error;
 }
 
-int test_perlin()
+static int test_simplex_double()
 {
-	std::size_t const Size = 256;
+	int Error = 0;
 
-	{
-		std::vector<glm::byte> ImageData(Size * Size * 3);
-		
-		for(std::size_t y = 0; y < Size; ++y)
-		for(std::size_t x = 0; x < Size; ++x)
-		{
-			ImageData[(x + y * Size) * 3 + 0] = glm::byte(glm::perlin(glm::vec2(x / 64.f, y / 64.f)) * 128.f + 127.f);
-			ImageData[(x + y * Size) * 3 + 1] = ImageData[(x + y * Size) * 3 + 0];
-			ImageData[(x + y * Size) * 3 + 2] = ImageData[(x + y * Size) * 3 + 0];
-		}
+	glm::u8vec4 const PixelSimplex2D(glm::byte(glm::abs(glm::simplex(glm::dvec2(0.f, 0.f))) * 255.));
+	glm::u8vec4 const PixelSimplex3D(glm::byte(glm::abs(glm::simplex(glm::dvec3(0.f, 0.f, 0.f))) * 255.));
+	glm::u8vec4 const PixelSimplex4D(glm::byte(glm::abs(glm::simplex(glm::dvec4(0.f, 0.f, 0.f, 0.f))) * 255.));
 
-		gli::texture2D Texture(1);
-		Texture[0] = gli::image2D(glm::uvec2(Size), gli::RGB8U);
-		memcpy(Texture[0].data(), &ImageData[0], ImageData.size());
-		gli::saveDDS9(Texture, "texture_perlin2d_256.dds");
-	}
-
-	{
-		std::vector<glm::byte> ImageData(Size * Size * 3);
-		
-		for(std::size_t y = 0; y < Size; ++y)
-		for(std::size_t x = 0; x < Size; ++x)
-		{
-			ImageData[(x + y * Size) * 3 + 0] = glm::byte(glm::perlin(glm::vec3(x / 64.f, y / 64.f, 0.5f)) * 128.f + 127.f);
-			ImageData[(x + y * Size) * 3 + 1] = ImageData[(x + y * Size) * 3 + 0];
-			ImageData[(x + y * Size) * 3 + 2] = ImageData[(x + y * Size) * 3 + 0];
-		}
-
-		gli::texture2D Texture(1);
-		Texture[0] = gli::image2D(glm::uvec2(Size), gli::RGB8U);
-		memcpy(Texture[0].data(), &ImageData[0], ImageData.size());
-		gli::saveDDS9(Texture, "texture_perlin3d_256.dds");
-	}
-	
-	{
-		std::vector<glm::byte> ImageData(Size * Size * 3);
-		
-		for(std::size_t y = 0; y < Size; ++y)
-		for(std::size_t x = 0; x < Size; ++x)
-		{
-			ImageData[(x + y * Size) * 3 + 0] = glm::byte(glm::perlin(glm::vec4(x / 64.f, y / 64.f, 0.5f, 0.5f)) * 128.f + 127.f);
-			ImageData[(x + y * Size) * 3 + 1] = ImageData[(x + y * Size) * 3 + 0];
-			ImageData[(x + y * Size) * 3 + 2] = ImageData[(x + y * Size) * 3 + 0];
-		}
-
-		gli::texture2D Texture(1);
-		Texture[0] = gli::image2D(glm::uvec2(Size), gli::RGB8U);
-		memcpy(Texture[0].data(), &ImageData[0], ImageData.size());
-		gli::saveDDS9(Texture, "texture_perlin4d_256.dds");
-	}
-
-	return 0;
+	return Error;
 }
 
-int test_perlin_pedioric()
+static int test_perlin_float()
 {
-	std::size_t const Size = 256;
+	int Error = 0;
 
-	{
-		std::vector<glm::byte> ImageData(Size * Size * 3);
-		
-		for(std::size_t y = 0; y < Size; ++y)
-		for(std::size_t x = 0; x < Size; ++x)
-		{
-			ImageData[(x + y * Size) * 3 + 0] = glm::byte(glm::perlin(glm::vec2(x / 64.f, y / 64.f), glm::vec2(2.0f)) * 128.f + 127.f);
-			ImageData[(x + y * Size) * 3 + 1] = ImageData[(x + y * Size) * 3 + 0];
-			ImageData[(x + y * Size) * 3 + 2] = ImageData[(x + y * Size) * 3 + 0];
-		}
+	glm::u8vec4 const PixelPerlin2D(glm::byte(glm::abs(glm::perlin(glm::vec2(0.f, 0.f))) * 255.f));
+	glm::u8vec4 const PixelPerlin3D(glm::byte(glm::abs(glm::perlin(glm::vec3(0.f, 0.f, 0.f))) * 255.f));
+	glm::u8vec4 const PixelPerlin4D(glm::byte(glm::abs(glm::perlin(glm::vec4(0.f, 0.f, 0.f, 0.f))) * 255.f));
 
-		gli::texture2D Texture(1);
-		Texture[0] = gli::image2D(glm::uvec2(Size), gli::RGB8U);
-		memcpy(Texture[0].data(), &ImageData[0], ImageData.size());
-		gli::saveDDS9(Texture, "texture_perlin_pedioric_2d_256.dds");
-	}
+	return Error;
+}
 
-	{
-		std::vector<glm::byte> ImageData(Size * Size * 3);
-		
-		for(std::size_t y = 0; y < Size; ++y)
-		for(std::size_t x = 0; x < Size; ++x)
-		{
-			ImageData[(x + y * Size) * 3 + 0] = glm::byte(glm::perlin(glm::vec3(x / 64.f, y / 64.f, 0.5f), glm::vec3(2.0f)) * 128.f + 127.f);
-			ImageData[(x + y * Size) * 3 + 1] = ImageData[(x + y * Size) * 3 + 0];
-			ImageData[(x + y * Size) * 3 + 2] = ImageData[(x + y * Size) * 3 + 0];
-		}
+static int test_perlin_double()
+{
+	int Error = 0;
 
-		gli::texture2D Texture(1);
-		Texture[0] = gli::image2D(glm::uvec2(Size), gli::RGB8U);
-		memcpy(Texture[0].data(), &ImageData[0], ImageData.size());
-		gli::saveDDS9(Texture, "texture_perlin_pedioric_3d_256.dds");
-	}
-	
-	{
-		std::vector<glm::byte> ImageData(Size * Size * 3);
-		
-		for(std::size_t y = 0; y < Size; ++y)
-		for(std::size_t x = 0; x < Size; ++x)
-		{
-			ImageData[(x + y * Size) * 3 + 0] = glm::byte(glm::perlin(glm::vec4(x / 64.f, y / 64.f, 0.5f, 0.5f), glm::vec4(2.0f)) * 128.f + 127.f);
-			ImageData[(x + y * Size) * 3 + 1] = ImageData[(x + y * Size) * 3 + 0];
-			ImageData[(x + y * Size) * 3 + 2] = ImageData[(x + y * Size) * 3 + 0];
-		}
+	glm::u8vec4 const PixelPerlin2D(glm::byte(glm::abs(glm::perlin(glm::dvec2(0.f, 0.f))) * 255.));
+	glm::u8vec4 const PixelPerlin3D(glm::byte(glm::abs(glm::perlin(glm::dvec3(0.f, 0.f, 0.f))) * 255.));
+	glm::u8vec4 const PixelPerlin4D(glm::byte(glm::abs(glm::perlin(glm::dvec4(0.f, 0.f, 0.f, 0.f))) * 255.));
 
-		gli::texture2D Texture(1);
-		Texture[0] = gli::image2D(glm::uvec2(Size), gli::RGB8U);
-		memcpy(Texture[0].data(), &ImageData[0], ImageData.size());
-		gli::saveDDS9(Texture, "texture_perlin_pedioric_4d_256.dds");
-	}
+	return Error;
+}
 
-	return 0;
+static int test_perlin_pedioric_float()
+{
+	int Error = 0;
+
+	glm::u8vec4 const PixelPeriodic2D(glm::byte(glm::abs(glm::perlin(glm::vec2(0.f, 0.f), glm::vec2(2.0f))) * 255.f));
+	glm::u8vec4 const PixelPeriodic3D(glm::byte(glm::abs(glm::perlin(glm::vec3(0.f, 0.f, 0.f), glm::vec3(2.0f))) * 255.f));
+	glm::u8vec4 const PixelPeriodic4D(glm::byte(glm::abs(glm::perlin(glm::vec4(0.f, 0.f, 0.f, 0.f), glm::vec4(2.0f))) * 255.f));
+
+	return Error;
+}
+
+static int test_perlin_pedioric_double()
+{
+	int Error = 0;
+
+	glm::u8vec4 const PixelPeriodic2D(glm::byte(glm::abs(glm::perlin(glm::dvec2(0.f, 0.f), glm::dvec2(2.0))) * 255.));
+	glm::u8vec4 const PixelPeriodic3D(glm::byte(glm::abs(glm::perlin(glm::dvec3(0.f, 0.f, 0.f), glm::dvec3(2.0))) * 255.));
+	glm::u8vec4 const PixelPeriodic4D(glm::byte(glm::abs(glm::perlin(glm::dvec4(0.f, 0.f, 0.f, 0.f), glm::dvec4(2.0))) * 255.));
+
+	return Error;
 }
 
 int main()
 {
 	int Error = 0;
 
-	Error += test_simplex();
-	Error += test_perlin();
-	Error += test_perlin_pedioric();
+	Error += test_simplex_float();
+	Error += test_simplex_double();
+
+	Error += test_perlin_float();
+	Error += test_perlin_double();
+
+	Error += test_perlin_pedioric_float();
+	Error += test_perlin_pedioric_double();
 
 	return Error;
 }

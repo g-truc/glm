@@ -6,17 +6,21 @@
 /// @defgroup gtx_closest_point GLM_GTX_closest_point
 /// @ingroup gtx
 ///
-/// @brief Find the point on a straight line which is the closet of a point.
+/// Include <glm/gtx/closest_point.hpp> to use the features of this extension.
 ///
-/// <glm/gtx/closest_point.hpp> need to be included to use these functionalities.
+/// Find the point on a straight line which is the closet of a point.
 
 #pragma once
 
 // Dependency:
 #include "../glm.hpp"
 
-#if(defined(GLM_MESSAGES) && !defined(GLM_EXT_INCLUDED))
-#	pragma message("GLM: GLM_GTX_closest_point extension included")
+#if GLM_MESSAGES == GLM_ENABLE && !defined(GLM_EXT_INCLUDED)
+#	ifndef GLM_ENABLE_EXPERIMENTAL
+#		pragma message("GLM: GLM_GTX_closest_point is an experimental extension and may change in the future. Use #define GLM_ENABLE_EXPERIMENTAL before including it, if you really want to use it.")
+#	else
+#		pragma message("GLM: GLM_GTX_closest_point extension included")
+#	endif
 #endif
 
 namespace glm
@@ -24,20 +28,20 @@ namespace glm
 	/// @addtogroup gtx_closest_point
 	/// @{
 
-	/// Find the point on a straight line which is the closet of a point. 
+	/// Find the point on a straight line which is the closet of a point.
 	/// @see gtx_closest_point
-	template <typename T, precision P>
-	GLM_FUNC_DECL tvec3<T, P> closestPointOnLine(
-		tvec3<T, P> const & point,
-		tvec3<T, P> const & a, 
-		tvec3<T, P> const & b);
-	
-	/// 2d lines work as well	
-	template <typename T, precision P>
-	GLM_FUNC_DECL tvec2<T, P> closestPointOnLine(
-		tvec2<T, P> const & point,
-		tvec2<T, P> const & a, 
-		tvec2<T, P> const & b);	
+	template<typename T, qualifier Q>
+	GLM_FUNC_DECL vec<3, T, Q> closestPointOnLine(
+		vec<3, T, Q> const& point,
+		vec<3, T, Q> const& a,
+		vec<3, T, Q> const& b);
+
+	/// 2d lines work as well
+	template<typename T, qualifier Q>
+	GLM_FUNC_DECL vec<2, T, Q> closestPointOnLine(
+		vec<2, T, Q> const& point,
+		vec<2, T, Q> const& a,
+		vec<2, T, Q> const& b);
 
 	/// @}
 }// namespace glm

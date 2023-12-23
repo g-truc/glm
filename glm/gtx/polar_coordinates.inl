@@ -1,34 +1,33 @@
 /// @ref gtx_polar_coordinates
-/// @file glm/gtx/polar_coordinates.inl
 
 namespace glm
 {
-	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tvec3<T, P> polar
+	template<typename T, qualifier Q>
+	GLM_FUNC_QUALIFIER vec<3, T, Q> polar
 	(
-		tvec3<T, P> const & euclidean
+		vec<3, T, Q> const& euclidean
 	)
 	{
 		T const Length(length(euclidean));
-		tvec3<T, P> const tmp(euclidean / Length);
+		vec<3, T, Q> const tmp(euclidean / Length);
 		T const xz_dist(sqrt(tmp.x * tmp.x + tmp.z * tmp.z));
 
-		return tvec3<T, P>(
+		return vec<3, T, Q>(
 			asin(tmp.y),	// latitude
 			atan(tmp.x, tmp.z),		// longitude
 			xz_dist);				// xz distance
 	}
 
-	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tvec3<T, P> euclidean
+	template<typename T, qualifier Q>
+	GLM_FUNC_QUALIFIER vec<3, T, Q> euclidean
 	(
-		tvec2<T, P> const & polar
+		vec<2, T, Q> const& polar
 	)
 	{
 		T const latitude(polar.x);
 		T const longitude(polar.y);
 
-		return tvec3<T, P>(
+		return vec<3, T, Q>(
 			cos(latitude) * sin(longitude),
 			sin(latitude),
 			cos(latitude) * cos(longitude));

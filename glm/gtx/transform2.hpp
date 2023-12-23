@@ -7,9 +7,9 @@
 /// @defgroup gtx_transform2 GLM_GTX_transform2
 /// @ingroup gtx
 ///
-/// @brief Add extra transformation matrices
+/// Include <glm/gtx/transform2.hpp> to use the features of this extension.
 ///
-/// <glm/gtx/transform2.hpp> need to be included to use these functionalities.
+/// Add extra transformation matrices
 
 #pragma once
 
@@ -17,8 +17,12 @@
 #include "../glm.hpp"
 #include "../gtx/transform.hpp"
 
-#if(defined(GLM_MESSAGES) && !defined(GLM_EXT_INCLUDED))
-#	pragma message("GLM: GLM_GTX_transform2 extension included")
+#if GLM_MESSAGES == GLM_ENABLE && !defined(GLM_EXT_INCLUDED)
+#	ifndef GLM_ENABLE_EXPERIMENTAL
+#		pragma message("GLM: GLM_GTX_transform2 is an experimental extension and may change in the future. Use #define GLM_ENABLE_EXPERIMENTAL before including it, if you really want to use it.")
+#	else
+#		pragma message("GLM: GLM_GTX_transform2 extension included")
+#	endif
 #endif
 
 namespace glm
@@ -28,78 +32,56 @@ namespace glm
 
 	//! Transforms a matrix with a shearing on X axis.
 	//! From GLM_GTX_transform2 extension.
-	template <typename T, precision P>
-	GLM_FUNC_DECL tmat3x3<T, P> shearX2D(
-		tmat3x3<T, P> const & m, 
-		T y);
+	template<typename T, qualifier Q>
+	GLM_FUNC_DECL mat<3, 3, T, Q> shearX2D(mat<3, 3, T, Q> const& m, T y);
 
 	//! Transforms a matrix with a shearing on Y axis.
 	//! From GLM_GTX_transform2 extension.
-	template <typename T, precision P> 
-	GLM_FUNC_DECL tmat3x3<T, P> shearY2D(
-		tmat3x3<T, P> const & m, 
-		T x);
+	template<typename T, qualifier Q>
+	GLM_FUNC_DECL mat<3, 3, T, Q> shearY2D(mat<3, 3, T, Q> const& m, T x);
 
 	//! Transforms a matrix with a shearing on X axis
 	//! From GLM_GTX_transform2 extension.
-	template <typename T, precision P> 
-	GLM_FUNC_DECL tmat4x4<T, P> shearX3D(
-		const tmat4x4<T, P> & m,
-		T y, 
-		T z);
+	template<typename T, qualifier Q>
+	GLM_FUNC_DECL mat<4, 4, T, Q> shearX3D(mat<4, 4, T, Q> const& m, T y, T z);
 
 	//! Transforms a matrix with a shearing on Y axis.
 	//! From GLM_GTX_transform2 extension.
-	template <typename T, precision P> 
-	GLM_FUNC_DECL tmat4x4<T, P> shearY3D(
-		const tmat4x4<T, P> & m, 
-		T x, 
-		T z);
+	template<typename T, qualifier Q>
+	GLM_FUNC_DECL mat<4, 4, T, Q> shearY3D(mat<4, 4, T, Q> const& m, T x, T z);
 
-	//! Transforms a matrix with a shearing on Z axis. 
+	//! Transforms a matrix with a shearing on Z axis.
 	//! From GLM_GTX_transform2 extension.
-	template <typename T, precision P> 
-	GLM_FUNC_DECL tmat4x4<T, P> shearZ3D(
-		const tmat4x4<T, P> & m, 
-		T x, 
-		T y);
+	template<typename T, qualifier Q>
+	GLM_FUNC_DECL mat<4, 4, T, Q> shearZ3D(mat<4, 4, T, Q> const& m, T x, T y);
 
-	//template <typename T> GLM_FUNC_QUALIFIER tmat4x4<T, P> shear(const tmat4x4<T, P> & m, shearPlane, planePoint, angle)
+	//template<typename T> GLM_FUNC_QUALIFIER mat<4, 4, T, Q> shear(const mat<4, 4, T, Q> & m, shearPlane, planePoint, angle)
 	// Identity + tan(angle) * cross(Normal, OnPlaneVector)     0
 	// - dot(PointOnPlane, normal) * OnPlaneVector              1
 
 	// Reflect functions seem to don't work
-	//template <typename T> tmat3x3<T, P> reflect2D(const tmat3x3<T, P> & m, const tvec3<T, P>& normal){return reflect2DGTX(m, normal);}									//!< \brief Build a reflection matrix (from GLM_GTX_transform2 extension)
-	//template <typename T> tmat4x4<T, P> reflect3D(const tmat4x4<T, P> & m, const tvec3<T, P>& normal){return reflect3DGTX(m, normal);}									//!< \brief Build a reflection matrix (from GLM_GTX_transform2 extension)
-		
-	//! Build planar projection matrix along normal axis.
-	//! From GLM_GTX_transform2 extension.
-	template <typename T, precision P> 
-	GLM_FUNC_DECL tmat3x3<T, P> proj2D(
-		const tmat3x3<T, P> & m, 
-		const tvec3<T, P>& normal);
+	//template<typename T> mat<3, 3, T, Q> reflect2D(const mat<3, 3, T, Q> & m, const vec<3, T, Q>& normal){return reflect2DGTX(m, normal);}									//!< \brief Build a reflection matrix (from GLM_GTX_transform2 extension)
+	//template<typename T> mat<4, 4, T, Q> reflect3D(const mat<4, 4, T, Q> & m, const vec<3, T, Q>& normal){return reflect3DGTX(m, normal);}									//!< \brief Build a reflection matrix (from GLM_GTX_transform2 extension)
 
 	//! Build planar projection matrix along normal axis.
 	//! From GLM_GTX_transform2 extension.
-	template <typename T, precision P> 
-	GLM_FUNC_DECL tmat4x4<T, P> proj3D(
-		const tmat4x4<T, P> & m, 
-		const tvec3<T, P>& normal);
+	template<typename T, qualifier Q>
+	GLM_FUNC_DECL mat<3, 3, T, Q> proj2D(mat<3, 3, T, Q> const& m, vec<3, T, Q> const& normal);
 
-	//! Build a scale bias matrix. 
+	//! Build planar projection matrix along normal axis.
 	//! From GLM_GTX_transform2 extension.
-	template <typename valType, precision P> 
-	GLM_FUNC_DECL tmat4x4<valType, P> scaleBias(
-		valType scale, 
-		valType bias);
+	template<typename T, qualifier Q>
+	GLM_FUNC_DECL mat<4, 4, T, Q> proj3D(mat<4, 4, T, Q> const & m, vec<3, T, Q> const& normal);
 
 	//! Build a scale bias matrix.
 	//! From GLM_GTX_transform2 extension.
-	template <typename valType, precision P> 
-	GLM_FUNC_DECL tmat4x4<valType, P> scaleBias(
-		tmat4x4<valType, P> const & m, 
-		valType scale, 
-		valType bias);
+	template<typename T, qualifier Q>
+	GLM_FUNC_DECL mat<4, 4, T, Q> scaleBias(T scale, T bias);
+
+	//! Build a scale bias matrix.
+	//! From GLM_GTX_transform2 extension.
+	template<typename T, qualifier Q>
+	GLM_FUNC_DECL mat<4, 4, T, Q> scaleBias(mat<4, 4, T, Q> const& m, T scale, T bias);
 
 	/// @}
 }// namespace glm

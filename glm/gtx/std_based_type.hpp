@@ -7,8 +7,9 @@
 /// @defgroup gtx_std_based_type GLM_GTX_std_based_type
 /// @ingroup gtx
 ///
-/// @brief Adds vector types based on STL value types.
-/// <glm/gtx/std_based_type.hpp> need to be included to use these functionalities.
+/// Include <glm/gtx/std_based_type.hpp> to use the features of this extension.
+///
+/// Adds vector types based on STL value types.
 
 #pragma once
 
@@ -16,8 +17,12 @@
 #include "../glm.hpp"
 #include <cstdlib>
 
-#if(defined(GLM_MESSAGES) && !defined(GLM_EXT_INCLUDED))
-#	pragma message("GLM: GLM_GTX_std_based_type extension included")
+#if GLM_MESSAGES == GLM_ENABLE && !defined(GLM_EXT_INCLUDED)
+#	ifndef GLM_ENABLE_EXPERIMENTAL
+#		pragma message("GLM: GLM_GTX_std_based_type is an experimental extension and may change in the future. Use #define GLM_ENABLE_EXPERIMENTAL before including it, if you really want to use it.")
+#	else
+#		pragma message("GLM: GLM_GTX_std_based_type extension included")
+#	endif
 #endif
 
 namespace glm
@@ -27,35 +32,35 @@ namespace glm
 
 	/// Vector type based of one std::size_t component.
 	/// @see GLM_GTX_std_based_type
-	typedef tvec1<std::size_t, defaultp>		size1;
+	typedef vec<1, std::size_t, defaultp>		size1;
 
 	/// Vector type based of two std::size_t components.
 	/// @see GLM_GTX_std_based_type
-	typedef tvec2<std::size_t, defaultp>		size2;
+	typedef vec<2, std::size_t, defaultp>		size2;
 
 	/// Vector type based of three std::size_t components.
 	/// @see GLM_GTX_std_based_type
-	typedef tvec3<std::size_t, defaultp>		size3;
+	typedef vec<3, std::size_t, defaultp>		size3;
 
 	/// Vector type based of four std::size_t components.
 	/// @see GLM_GTX_std_based_type
-	typedef tvec4<std::size_t, defaultp>		size4;
+	typedef vec<4, std::size_t, defaultp>		size4;
 
 	/// Vector type based of one std::size_t component.
 	/// @see GLM_GTX_std_based_type
-	typedef tvec1<std::size_t, defaultp>		size1_t;
+	typedef vec<1, std::size_t, defaultp>		size1_t;
 
 	/// Vector type based of two std::size_t components.
 	/// @see GLM_GTX_std_based_type
-	typedef tvec2<std::size_t, defaultp>		size2_t;
+	typedef vec<2, std::size_t, defaultp>		size2_t;
 
 	/// Vector type based of three std::size_t components.
 	/// @see GLM_GTX_std_based_type
-	typedef tvec3<std::size_t, defaultp>		size3_t;
+	typedef vec<3, std::size_t, defaultp>		size3_t;
 
 	/// Vector type based of four std::size_t components.
 	/// @see GLM_GTX_std_based_type
-	typedef tvec4<std::size_t, defaultp>		size4_t;
+	typedef vec<4, std::size_t, defaultp>		size4_t;
 
 	/// @}
 }//namespace glm

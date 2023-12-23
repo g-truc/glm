@@ -1,34 +1,4 @@
-///////////////////////////////////////////////////////////////////////////////////
-/// OpenGL Mathematics (glm.g-truc.net)
-///
-/// Copyright (c) 2005 - 2012 G-Truc Creation (www.g-truc.net)
-/// Permission is hereby granted, free of charge, to any person obtaining a copy
-/// of this software and associated documentation files (the "Software"), to deal
-/// in the Software without restriction, including without limitation the rights
-/// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-/// copies of the Software, and to permit persons to whom the Software is
-/// furnished to do so, subject to the following conditions:
-/// 
-/// The above copyright notice and this permission notice shall be included in
-/// all copies or substantial portions of the Software.
-/// 
-/// Restrictions:
-///		By making use of the Software for military purposes, you choose to make
-///		a Bunny unhappy.
-/// 
-/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-/// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-/// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-/// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-/// THE SOFTWARE.
-///
-/// @file test/gtx/gtx_string_cast.cpp
-/// @date 2011-09-01 / 2014-11-25
-/// @author Christophe Riccio
-///////////////////////////////////////////////////////////////////////////////////
-
+#define GLM_ENABLE_EXPERIMENTAL
 #include <glm/glm.hpp>
 #include <glm/gtx/string_cast.hpp>
 #include <limits>
@@ -147,11 +117,37 @@ int test_string_cast_matrix()
 	return Error;
 }
 
+int test_string_cast_quaternion()
+{
+	int Error = 0;
+
+	glm::quat Q0 = glm::quat(1.0f, 2.0f, 3.0f, 4.0f);
+	std::string S0 = glm::to_string(Q0);
+	Error += S0 != std::string("quat(1.000000, {2.000000, 3.000000, 4.000000})") ? 1 : 0;
+
+	return Error;
+
+}
+
+int test_string_cast_dual_quaternion()
+{
+	int Error = 0;
+
+	glm::dualquat Q0 = glm::dualquat(glm::quat(1.0f, 2.0f, 3.0f, 4.0f), glm::quat(5.0f, 6.0f, 7.0f, 8.0f));
+	std::string S0 = glm::to_string(Q0);
+	Error += S0 != std::string("dualquat((1.000000, {2.000000, 3.000000, 4.000000}), (5.000000, {6.000000, 7.000000, 8.000000}))") ? 1 : 0;
+
+	return Error;
+}
+
 int main()
 {
 	int Error = 0;
+
 	Error += test_string_cast_vector();
 	Error += test_string_cast_matrix();
+	Error += test_string_cast_quaternion();
+	Error += test_string_cast_dual_quaternion();
 
 	return Error;
 }

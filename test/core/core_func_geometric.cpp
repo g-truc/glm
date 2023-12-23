@@ -1,38 +1,14 @@
-///////////////////////////////////////////////////////////////////////////////////
-/// OpenGL Mathematics (glm.g-truc.net)
-///
-/// Copyright (c) 2005 - 2015 G-Truc Creation (www.g-truc.net)
-/// Permission is hereby granted, free of charge, to any person obtaining a copy
-/// of this software and associated documentation files (the "Software"), to deal
-/// in the Software without restriction, including without limitation the rights
-/// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-/// copies of the Software, and to permit persons to whom the Software is
-/// furnished to do so, subject to the following conditions:
-/// 
-/// The above copyright notice and this permission notice shall be included in
-/// all copies or substantial portions of the Software.
-/// 
-/// Restrictions:
-///		By making use of the Software for military purposes, you choose to make
-///		a Bunny unhappy.
-/// 
-/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-/// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-/// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-/// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-/// THE SOFTWARE.
-///
-/// @file test/core/func_geometric.cpp
-/// @date 2011-01-15 / 2011-09-13
-/// @author Christophe Riccio
-///////////////////////////////////////////////////////////////////////////////////
-
 #include <glm/geometric.hpp>
-#include <glm/vector_relational.hpp>
-#include <glm/gtc/epsilon.hpp>
-#include <glm/gtc/vec1.hpp>
+#include <glm/trigonometric.hpp>
+#include <glm/ext/scalar_relational.hpp>
+#include <glm/ext/vector_relational.hpp>
+#include <glm/ext/vector_float1.hpp>
+#include <glm/ext/vector_float2.hpp>
+#include <glm/ext/vector_float3.hpp>
+#include <glm/ext/vector_float4.hpp>
+#include <glm/ext/vector_double2.hpp>
+#include <glm/ext/vector_double3.hpp>
+#include <glm/ext/vector_double4.hpp>
 #include <limits>
 
 namespace length
@@ -118,6 +94,13 @@ namespace normalize
 		glm::vec3 Normalize1 = glm::normalize(glm::vec3(1, 0, 0));
 		glm::vec3 Normalize2 = glm::normalize(glm::vec3(2, 0, 0));
 
+		glm::vec3 Normalize3 = glm::normalize(glm::vec3(-0.6, 0.7, -0.5));
+
+		glm::vec3 ro = glm::vec3(glm::cos(5.f) * 3.f, 2.f, glm::sin(5.f) * 3.f);
+		glm::vec3 w = glm::normalize(glm::vec3(0, -0.2f, 0) - ro);
+		glm::vec3 u = glm::normalize(glm::cross(w, glm::vec3(0, 1, 0)));
+		glm::vec3 v = glm::cross(u, w);
+
 		int Error = 0;
 
 		Error += glm::all(glm::lessThan(glm::abs(Normalize1 - glm::vec3(1, 0, 0)), glm::vec3(std::numeric_limits<float>::epsilon()))) ? 0 : 1;
@@ -154,14 +137,14 @@ namespace reflect
 			glm::vec2 A(1.0f,-1.0f);
 			glm::vec2 B(0.0f, 1.0f);
 			glm::vec2 C = glm::reflect(A, B);
-			Error += C == glm::vec2(1.0, 1.0) ? 0 : 1;
+			Error += glm::all(glm::equal(C, glm::vec2(1.0, 1.0), 0.0001f)) ? 0 : 1;
 		}
 
 		{
 			glm::dvec2 A(1.0f,-1.0f);
 			glm::dvec2 B(0.0f, 1.0f);
 			glm::dvec2 C = glm::reflect(A, B);
-			Error += C == glm::dvec2(1.0, 1.0) ? 0 : 1;
+			Error += glm::all(glm::equal(C, glm::dvec2(1.0, 1.0), 0.0001)) ? 0 : 1;
 		}
 
 		return Error;
@@ -178,21 +161,21 @@ namespace refract
 			float A(-1.0f);
 			float B(1.0f);
 			float C = glm::refract(A, B, 0.5f);
-			Error += C == -1.0f ? 0 : 1;
+			Error += glm::equal(C, -1.0f, 0.0001f) ? 0 : 1;
 		}
 
 		{
 			glm::vec2 A(0.0f,-1.0f);
 			glm::vec2 B(0.0f, 1.0f);
 			glm::vec2 C = glm::refract(A, B, 0.5f);
-			Error += glm::all(glm::epsilonEqual(C, glm::vec2(0.0, -1.0), 0.0001f)) ? 0 : 1;
+			Error += glm::all(glm::equal(C, glm::vec2(0.0, -1.0), 0.0001f)) ? 0 : 1;
 		}
 
 		{
 			glm::dvec2 A(0.0f,-1.0f);
 			glm::dvec2 B(0.0f, 1.0f);
 			glm::dvec2 C = glm::refract(A, B, 0.5);
-			Error += C == glm::dvec2(0.0, -1.0) ? 0 : 1;
+			Error += glm::all(glm::equal(C, glm::dvec2(0.0, -1.0), 0.0001)) ? 0 : 1;
 		}
 
 		return Error;
