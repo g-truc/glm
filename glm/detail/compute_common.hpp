@@ -16,7 +16,7 @@ namespace detail
 		GLM_FUNC_QUALIFIER GLM_CONSTEXPR static genFIType call(genFIType x)
 		{
 			GLM_STATIC_ASSERT(
-				std::numeric_limits<genFIType>::is_iec559 || GLM_FORCE_UNRESTRICTED_FLOAT || std::numeric_limits<genFIType>::is_signed,
+				std::numeric_limits<genFIType>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT || std::numeric_limits<genFIType>::is_signed,
 				"'abs' only accept floating-point and integer scalar or vector inputs");
 
 			return x >= genFIType(0) ? x : -x;
