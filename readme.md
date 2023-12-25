@@ -92,6 +92,7 @@ vcpkg install glm
 - Added `glm::iround` and `glm::uround` to *GLM_EXT_scalar_common* and *GLM_EXT_vector_common*
 - Added *GLM_EXT_matrix_integer* with tests
 - Added Github Actions
+- Added GLM_FORCE_UNRESTRICTED_FLOAT to prevent static asserts when using other scalar types with function expecting floats. 
 
 #### Improvements:
 - Added `constexpr` qualifier for `cross` product #1040

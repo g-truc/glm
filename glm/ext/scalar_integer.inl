@@ -26,7 +26,7 @@ namespace detail
 	{
 		GLM_FUNC_QUALIFIER static vec<L, T, Q> call(vec<L, T, Q> const& x)
 		{
-			GLM_STATIC_ASSERT(!std::numeric_limits<T>::is_iec559, "'ceilPowerOfTwo' only accept integer scalar or vector inputs");
+			GLM_STATIC_ASSERT(!std::numeric_limits<T>::is_iec559 || GLM_FORCE_UNRESTRICTED_FLOAT, "'ceilPowerOfTwo' only accept integer scalar or vector inputs");
 
 			vec<L, T, Q> const Sign(sign(x));
 
@@ -48,7 +48,7 @@ namespace detail
 	{
 		GLM_FUNC_QUALIFIER static vec<L, T, Q> call(vec<L, T, Q> const& x)
 		{
-			GLM_STATIC_ASSERT(!std::numeric_limits<T>::is_iec559, "'ceilPowerOfTwo' only accept integer scalar or vector inputs");
+			GLM_STATIC_ASSERT(!std::numeric_limits<T>::is_iec559 || GLM_FORCE_UNRESTRICTED_FLOAT, "'ceilPowerOfTwo' only accept integer scalar or vector inputs");
 
 			vec<L, T, Q> v(x);
 

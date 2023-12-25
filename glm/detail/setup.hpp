@@ -529,6 +529,17 @@
 #endif
 
 ///////////////////////////////////////////////////////////////////////////////////
+// Allows using any scaler as float
+
+// #define GLM_FORCE_UNRESTRICTED_FLOAT
+
+#ifdef GLM_FORCE_UNRESTRICTED_FLOAT
+#	define GLM_CONFIG_UNRESTRICTED_FLOAT GLM_ENABLE
+#else
+#	define GLM_CONFIG_UNRESTRICTED_FLOAT GLM_DISABLE
+#endif
+
+///////////////////////////////////////////////////////////////////////////////////
 // Clip control, define GLM_FORCE_DEPTH_ZERO_TO_ONE before including GLM
 // to use a clip space between 0 to 1.
 // Coordinate system, define GLM_FORCE_LEFT_HANDED before including GLM

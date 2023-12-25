@@ -25,7 +25,7 @@ namespace detail
 	{
 		GLM_FUNC_QUALIFIER static vec<L, T, Q> call(vec<L, T, Q> const& v)
 		{
-			GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'log2' only accept floating-point inputs. Include <glm/gtc/integer.hpp> for integer inputs.");
+			GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559 || GLM_FORCE_UNRESTRICTED_FLOAT, "'log2' only accept floating-point inputs. Include <glm/gtc/integer.hpp> for integer inputs.");
 
 			return detail::functor1<vec, L, T, T, Q>::call(log2, v);
 		}
@@ -97,7 +97,7 @@ namespace detail
 	template<typename genType>
 	GLM_FUNC_QUALIFIER genType exp2(genType x)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559, "'exp2' only accept floating-point inputs");
+		GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559 || GLM_FORCE_UNRESTRICTED_FLOAT, "'exp2' only accept floating-point inputs");
 
 		return std::exp(static_cast<genType>(0.69314718055994530941723212145818) * x);
 	}
@@ -127,7 +127,7 @@ namespace detail
 	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER vec<L, T, Q> sqrt(vec<L, T, Q> const& x)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'sqrt' only accept floating-point inputs");
+		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559 || GLM_FORCE_UNRESTRICTED_FLOAT, "'sqrt' only accept floating-point inputs");
 		return detail::compute_sqrt<L, T, Q, detail::is_aligned<Q>::value>::call(x);
 	}
 
@@ -141,7 +141,7 @@ namespace detail
 	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER vec<L, T, Q> inversesqrt(vec<L, T, Q> const& x)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'inversesqrt' only accept floating-point inputs");
+		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559 || GLM_FORCE_UNRESTRICTED_FLOAT, "'inversesqrt' only accept floating-point inputs");
 		return detail::compute_inversesqrt<L, T, Q, detail::is_aligned<Q>::value>::call(x);
 	}
 }//namespace glm

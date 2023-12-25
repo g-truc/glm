@@ -8,7 +8,7 @@ namespace glm
 	template<typename genType>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR genType radians(genType degrees)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559, "'radians' only accept floating-point input");
+		GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559 || GLM_FORCE_UNRESTRICTED_FLOAT, "'radians' only accept floating-point input");
 
 		return degrees * static_cast<genType>(0.01745329251994329576923690768489);
 	}
@@ -23,7 +23,7 @@ namespace glm
 	template<typename genType>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR genType degrees(genType radians)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559, "'degrees' only accept floating-point input");
+		GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559 || GLM_FORCE_UNRESTRICTED_FLOAT, "'degrees' only accept floating-point input");
 
 		return radians * static_cast<genType>(57.295779513082320876798154814105);
 	}
@@ -83,7 +83,7 @@ namespace glm
 	template<typename genType>
 	GLM_FUNC_QUALIFIER genType atan(genType y, genType x)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559, "'atan' only accept floating-point input");
+		GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559 || GLM_FORCE_UNRESTRICTED_FLOAT, "'atan' only accept floating-point input");
 
 		return ::std::atan2(y, x);
 	}
@@ -136,7 +136,7 @@ namespace glm
 		template<typename genType>
 		GLM_FUNC_QUALIFIER genType asinh(genType x)
 		{
-			GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559, "'asinh' only accept floating-point input");
+			GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559 || GLM_FORCE_UNRESTRICTED_FLOAT, "'asinh' only accept floating-point input");
 
 			return (x < static_cast<genType>(0) ? static_cast<genType>(-1) : (x > static_cast<genType>(0) ? static_cast<genType>(1) : static_cast<genType>(0))) * log(std::abs(x) + sqrt(static_cast<genType>(1) + x * x));
 		}
@@ -155,7 +155,7 @@ namespace glm
 		template<typename genType>
 		GLM_FUNC_QUALIFIER genType acosh(genType x)
 		{
-			GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559, "'acosh' only accept floating-point input");
+			GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559 || GLM_FORCE_UNRESTRICTED_FLOAT, "'acosh' only accept floating-point input");
 
 			if(x < static_cast<genType>(1))
 				return static_cast<genType>(0);
@@ -176,7 +176,7 @@ namespace glm
 		template<typename genType>
 		GLM_FUNC_QUALIFIER genType atanh(genType x)
 		{
-			GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559, "'atanh' only accept floating-point input");
+			GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559 || GLM_FORCE_UNRESTRICTED_FLOAT, "'atanh' only accept floating-point input");
 
 			if(std::abs(x) >= static_cast<genType>(1))
 				return 0;
