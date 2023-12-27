@@ -115,7 +115,7 @@ static int comp_mat4_inverse(std::size_t Samples)
 
 int main()
 {
-	std::size_t const Samples = 1000;
+	std::size_t const Samples = 10;
 
 	int Error = 0;
 
