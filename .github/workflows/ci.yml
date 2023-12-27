@@ -21,6 +21,8 @@ jobs:
             toolkit: v143
           - os: windows-latest
             toolkit: v140
+          - os: windows-latest
+            std: 20
 
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
@@ -99,6 +101,9 @@ jobs:
         os: [ubuntu-latest, ubuntu-20.04]
         std: [98, 11, 14, 17, 20]
         config: [Debug, Release]
+        exclude:
+          - os: ubuntu-20.04
+            std: 20
 
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
@@ -172,6 +177,9 @@ jobs:
         os: [macos-latest, macos-11]
         std: [98, 11, 14, 17, 20]
         config: [Debug, Release]
+        exclude:
+          - os: macos-11
+            std: 20
 
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
