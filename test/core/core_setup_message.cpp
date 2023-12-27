@@ -40,6 +40,9 @@ int test_compiler()
 		case GLM_COMPILER_VC16:
 			std::printf("Visual C++ 16 - 2019\n");
 			break;
+		case GLM_COMPILER_VC17:
+			std::printf("Visual C++ 17 - 2022\n");
+			break;
 		default:
 			std::printf("Visual C++ version not detected\n");
 			Error += 1;
@@ -74,6 +77,24 @@ int test_compiler()
 		case GLM_COMPILER_GCC8:
 			std::printf("GCC 8\n");
 			break;
+		case GLM_COMPILER_GCC9:
+			std::printf("GCC 9\n");
+			break;
+		case GLM_COMPILER_GCC10:
+			std::printf("GCC 10\n");
+			break;
+		case GLM_COMPILER_GCC11:
+			std::printf("GCC 11\n");
+			break;
+		case GLM_COMPILER_GCC12:
+			std::printf("GCC 12\n");
+			break;
+		case GLM_COMPILER_GCC13:
+			std::printf("GCC 13\n");
+			break;
+		case GLM_COMPILER_GCC14:
+			std::printf("GCC 14\n");
+			break;
 		default:
 			std::printf("GCC version not detected\n");
 			Error += 1;
@@ -106,14 +127,53 @@ int test_compiler()
 		case GLM_COMPILER_CLANG39:
 			std::printf("Clang 3.9\n");
 			break;
-		case GLM_COMPILER_CLANG40:
-			std::printf("Clang 4.0\n");
+		case GLM_COMPILER_CLANG4:
+			std::printf("Clang 4\n");
 			break;
-		case GLM_COMPILER_CLANG41:
-			std::printf("Clang 4.1\n");
+		case GLM_COMPILER_CLANG5:
+			std::printf("Clang 5\n");
 			break;
-		case GLM_COMPILER_CLANG42:
-			std::printf("Clang 4.2\n");
+		case GLM_COMPILER_CLANG6:
+			std::printf("Clang 6\n");
+			break;
+		case GLM_COMPILER_CLANG7:
+			std::printf("Clang 7\n");
+			break;
+		case GLM_COMPILER_CLANG8:
+			std::printf("Clang 8\n");
+			break;
+		case GLM_COMPILER_CLANG9:
+			std::printf("Clang 9\n");
+			break;
+		case GLM_COMPILER_CLANG10:
+			std::printf("Clang 10\n");
+			break;
+		case GLM_COMPILER_CLANG11:
+			std::printf("Clang 11\n");
+			break;
+		case GLM_COMPILER_CLANG12:
+			std::printf("Clang 12\n");
+			break;
+		case GLM_COMPILER_CLANG13:
+			std::printf("Clang 13\n");
+			break;
+		case GLM_COMPILER_CLANG14:
+			std::printf("Clang 14\n");
+			break;
+		case GLM_COMPILER_CLANG15:
+			std::printf("Clang 15\n");
+			break;
+		case GLM_COMPILER_CLANG16:
+			std::printf("Clang 16\n");
+			break;
+		case GLM_COMPILER_CLANG17:
+			std::printf("Clang 17\n");
+			break;
+		case GLM_COMPILER_CLANG18:
+			std::printf("Clang 18\n");
+			break;
+		case GLM_COMPILER_CLANG19:
+			std::printf("Clang 19\n");
 			break;
 		default:
 			std::printf("LLVM version not detected\n");
@@ -131,10 +191,19 @@ int test_compiler()
 			std::printf("ICC 15 - 2015\n");
 			break;
 		case GLM_COMPILER_INTEL16:
-			std::printf("ICC 16 - 2017\n");
+			std::printf("ICC 16 - 2015\n");
 			break;
 		case GLM_COMPILER_INTEL17:
-			std::printf("ICC 17 - 20XX\n");
+			std::printf("ICC 17 - 2016\n");
+			break;
+		case GLM_COMPILER_INTEL18:
+			std::printf("ICC 18 - 2017\n");
+			break;
+		case GLM_COMPILER_INTEL19:
+			std::printf("ICC 19 - 2018\n");
+			break;
+		case GLM_COMPILER_INTEL21:
+			std::printf("ICC 21 - 2021\n");
 			break;
 		default:
 			std::printf("Intel compiler version not detected\n");
