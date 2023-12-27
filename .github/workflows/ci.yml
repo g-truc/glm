@@ -13,9 +13,9 @@ jobs:
       fail-fast: false
       matrix:
         os: [windows-latest, windows-2019]
+        toolkit: [v140, v141, v142, v143]
         std: [98, 11, 14, 17, 20]
         config: [Debug, Release]
-        toolkit: [v140, v141, v142, v143]
         exclude:
           - os: windows-2019
             toolkit: v143
@@ -71,7 +71,7 @@ jobs:
         run: |
           cmake -S. -B ./build_avx1_std -T ${{matrix.toolkit}} -DGLM_TEST_ENABLE_SIMD_AVX=ON -DGLM_TEST_ENABLE_CXX_${{matrix.std}}=ON
           cmake --build ./build_avx1_std --config ${{matrix.config}}
-          ctest --verbose -C ${{matrix.config}} --test-dir ./build_avx1_stl
+          ctest --verbose -C ${{matrix.config}} --test-dir ./build_avx1_std
 
       - name: Run with GLM_TEST_ENABLE_SIMD_AVX and language extensions
         run: |
