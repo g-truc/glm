@@ -7,14 +7,14 @@ on:
     types: [opened, edited, reopened]
 
 jobs:
-  build_and_test:
+  test:
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
+        os: [ubuntu-latest, ubuntu-20.04, macos-latest, macos-11, windows-latest, windows-2019]
         std: [98, 11, 14, 17, 20]
         config: [Debug, Release]
-        os: [ubuntu-latest, ubuntu-20.04, macos-latest, macos-11, windows-latest, windows-2019]
 
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
@@ -30,7 +30,10 @@ jobs:
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - name: CMake Version
         run: cmake --version
-      - run: cmake -S. -B ./build_auto
+      - name: Run with automagic detection
+        run: cmake -S. -B ./build_auto
+        run: ctest --verbose -C ${{matrix.config}} --test-dir ./build_auto
+      - run: cmake --build ./build_auto --config ${{matrix.config}}
       - run: cmake -S. -B ./build_pure_std -DGLM_TEST_FORCE_PURE=ON -DGLM_TEST_ENABLE_CXX_${{matrix.std}}=ON
       - run: cmake -S. -B ./build_pure_ext -DGLM_TEST_FORCE_PURE=ON -DGLM_TEST_ENABLE_CXX_${{matrix.std}}=ON -DGLM_TEST_ENABLE_LANG_EXTENSIONS=ON
       - run: cmake -S. -B ./build_sse2_std -DGLM_TEST_ENABLE_SIMD_SSE2=ON -DGLM_TEST_ENABLE_CXX_${{matrix.std}}=ON
@@ -39,7 +42,6 @@ jobs:
       - run: cmake -S. -B ./build_avx1_ext -DGLM_TEST_ENABLE_SIMD_AVX=ON -DGLM_TEST_ENABLE_CXX_${{matrix.std}}=ON -DGLM_TEST_ENABLE_LANG_EXTENSIONS=ON
       - run: cmake -S. -B ./build_avx2_std -DGLM_TEST_ENABLE_SIMD_AVX2=ON -DGLM_TEST_ENABLE_CXX_${{matrix.std}}=ON
       - run: cmake -S. -B ./build_avx2_ext -DGLM_TEST_ENABLE_SIMD_AVX2=ON -DGLM_TEST_ENABLE_CXX_${{matrix.std}}=ON -DGLM_TEST_ENABLE_LANG_EXTENSIONS=ON
-      - run: cmake --build ./build_auto --config ${{matrix.config}}
       - run: cmake --build ./build_pure_std --config ${{matrix.config}}
       - run: cmake --build ./build_pure_ext --config ${{matrix.config}}
       - run: cmake --build ./build_sse2_std --config ${{matrix.config}}
@@ -48,7 +50,6 @@ jobs:
       - run: cmake --build ./build_avx1_ext --config ${{matrix.config}}
       - run: cmake --build ./build_avx2_std --config ${{matrix.config}}
       - run: cmake --build ./build_avx2_ext --config ${{matrix.config}}
-      - run: ctest --verbose -C ${{matrix.config}} --test-dir ./build_auto
       - run: ctest --verbose -C ${{matrix.config}} --test-dir ./build_pure_std
       - run: ctest --verbose -C ${{matrix.config}} --test-dir ./build_pure_ext
       - run: ctest --verbose -C ${{matrix.config}} --test-dir ./build_sse2_std
