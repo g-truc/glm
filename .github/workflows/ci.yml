@@ -39,7 +39,7 @@ jobs:
       - name: Run with GLM_TEST_FORCE_PURE
         run: 
           cmake -S. -B ./build_pure_std -T v143 -DGLM_TEST_FORCE_PURE=ON -DGLM_TEST_ENABLE_CXX_${{matrix.std}}=ON | 
-          cmake --build ./build_auto --config ${{matrix.config}} | 
+          cmake --build ./build_pure_std --config ${{matrix.config}} | 
           ctest --verbose -C ${{matrix.config}} --test-dir ./build_pure_std
       - name: Run with GLM_TEST_FORCE_PURE and language extensions
         run: 
@@ -112,7 +112,7 @@ jobs:
       - name: Run with GLM_TEST_FORCE_PURE
         run: 
           cmake -S. -B ./build_pure_std -DGLM_TEST_FORCE_PURE=ON -DGLM_TEST_ENABLE_CXX_${{matrix.std}}=ON | 
-          cmake --build ./build_auto --config ${{matrix.config}} | 
+          cmake --build ./build_pure_std --config ${{matrix.config}} | 
           ctest --verbose -C ${{matrix.config}} --test-dir ./build_pure_std
       - name: Run with GLM_TEST_FORCE_PURE and language extensions
         run: 
@@ -185,7 +185,7 @@ jobs:
       - name: Run with GLM_TEST_FORCE_PURE
         run: 
           cmake -S. -B ./build_pure_std -DGLM_TEST_FORCE_PURE=ON -DGLM_TEST_ENABLE_CXX_${{matrix.std}}=ON | 
-          cmake --build ./build_auto --config ${{matrix.config}} | 
+          cmake --build ./build_pure_std --config ${{matrix.config}} | 
           ctest --verbose -C ${{matrix.config}} --test-dir ./build_pure_std
       - name: Run with GLM_TEST_FORCE_PURE and language extensions
         run: 
