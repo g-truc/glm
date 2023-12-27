@@ -18,9 +18,9 @@ jobs:
         toolkit: [v140, v141, v142, v143]
         exclude:
           - os: windows-2019
-            version: v143
+            toolkit: v143
           - os: windows-latest
-            version: v140
+            toolkit: v140
 
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
