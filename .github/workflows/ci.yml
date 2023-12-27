@@ -31,9 +31,10 @@ jobs:
       - name: CMake Version
         run: cmake --version
       - name: Run with automagic detection
-        run: cmake -S. -B ./build_auto
-        run: ctest --verbose -C ${{matrix.config}} --test-dir ./build_auto
-      - run: cmake --build ./build_auto --config ${{matrix.config}}
+        run: 
+          cmake -S. -B ./build_auto | 
+          ctest --verbose -C ${{matrix.config}} --test-dir ./build_auto |
+          cmake --build ./build_auto --config ${{matrix.config}}
       - run: cmake -S. -B ./build_pure_std -DGLM_TEST_FORCE_PURE=ON -DGLM_TEST_ENABLE_CXX_${{matrix.std}}=ON
       - run: cmake -S. -B ./build_pure_ext -DGLM_TEST_FORCE_PURE=ON -DGLM_TEST_ENABLE_CXX_${{matrix.std}}=ON -DGLM_TEST_ENABLE_LANG_EXTENSIONS=ON
       - run: cmake -S. -B ./build_sse2_std -DGLM_TEST_ENABLE_SIMD_SSE2=ON -DGLM_TEST_ENABLE_CXX_${{matrix.std}}=ON
