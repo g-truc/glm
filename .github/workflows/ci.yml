@@ -25,7 +25,7 @@ jobs:
             toolkit: v140
           - os: windows-latest
             toolkit: v141
-          - os: windows-latest
+          - os: windows-2019
             std: 20
 
     steps:
