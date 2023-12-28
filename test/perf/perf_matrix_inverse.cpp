@@ -4,6 +4,7 @@
 #include <glm/ext/matrix_double4x4.hpp>
 #include <glm/ext/matrix_relational.hpp>
 #include <glm/ext/vector_float4.hpp>
+
 #if GLM_CONFIG_SIMD == GLM_ENABLE
 #include <glm/gtc/type_aligned.hpp>
 #include <vector>

@@ -86,6 +86,7 @@ else()
 endif()
 
 option(GLM_TEST_ENABLE "Build unit tests" ON)
+option(GLM_PERF_TEST_ENABLE "Build perf tests" OFF)
 option(GLM_TEST_ENABLE_SIMD_SSE2 "Enable SSE2 optimizations" OFF)
 option(GLM_TEST_ENABLE_SIMD_SSE3 "Enable SSE3 optimizations" OFF)
 option(GLM_TEST_ENABLE_SIMD_SSSE3 "Enable SSSE3 optimizations" OFF)
@@ -244,5 +245,7 @@ if(GLM_TEST_ENABLE)
 	add_subdirectory(gtx)
 	add_subdirectory(perf)
 endif()
-
+if(GLM_PERF_TEST_ENABLE)
+	add_subdirectory(perf)
+endif()
 
