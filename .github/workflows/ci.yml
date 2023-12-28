@@ -27,6 +27,12 @@ jobs:
             toolkit: v141
           - os: windows-2019
             std: 20
+          - os: windows-2019
+            toolkit: v140
+            std: 17
+          - os: windows-2019
+            toolkit: v140
+            std: 14
 
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
