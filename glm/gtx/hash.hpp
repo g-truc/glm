@@ -44,7 +44,7 @@
 #pragma message("GLM_GTX_hash requires C++11 standard library support")
 #endif
 
-#if 0 && GLM_LANG & GLM_LANG_CXX11
+#if GLM_LANG & GLM_LANG_CXX11
 #define GLM_GTX_hash 1
 #include <functional>
 
