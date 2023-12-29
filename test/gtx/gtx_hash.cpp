@@ -1,7 +1,7 @@
+#if __cplusplus >= 201103L
 #define GLM_ENABLE_EXPERIMENTAL
 #include <glm/gtx/hash.hpp>
 
-#if defined(GLM_GTX_hash) && __cplusplus >= 201103L
 #include <unordered_map>
 
 int test_compile()
@@ -46,16 +46,23 @@ int test_compile()
 
     return Error > 0 ? 0 : 1;
 }
-#endif//defined(GLM_GTX_hash) && __cplusplus >= 201103L
 
 int main()
 {
     int Error = 0;
 
-#if defined(GLM_GTX_hash) && __cplusplus >= 201103L
     Error += test_compile();
-#endif//
 
     return Error;
 }
+
+#else
+
+int main()
+{
+    return 0;
+}
+
+#endif// __cplusplus >= 201103L
+
 
