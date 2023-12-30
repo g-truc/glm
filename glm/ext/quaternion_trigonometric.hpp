@@ -35,6 +35,8 @@ namespace glm
 
 	/// Returns the quaternion rotation angle.
 	///
+	/// @param x A normalized quaternion.
+	///
 	/// @tparam T A floating-point scalar type
 	/// @tparam Q A value from qualifier enum
 	template<typename T, qualifier Q>
