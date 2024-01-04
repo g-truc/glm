@@ -427,6 +427,10 @@ namespace nextMultiple
 		return Result > 0 ? 0 : 1;
 	}
 
+#if GLM_COMPILER & GLM_COMPILER_VC
+#	pragma warning(push)
+#	pragma warning(disable : 4146)
+#endif
 	template <typename T>
 	GLM_FUNC_QUALIFIER T nextMultipleNeg(T Source, T Multiple)
 	{
@@ -438,6 +442,9 @@ namespace nextMultiple
 		else
 			return Source + (-Source % Multiple);
 	}
+#if(GLM_COMPILER & GLM_COMPILER_VC)
+#	pragma warning(pop)
+#endif
 
 	int perf_nextMultipleNeg(glm::uint Samples)
 	{

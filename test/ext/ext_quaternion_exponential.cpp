@@ -11,7 +11,7 @@
 #include <glm/ext/scalar_constants.hpp>
 
 template <typename quaType, typename vecType>
-int test_log()
+static int test_log()
 {
 	typedef typename quaType::value_type T;
 	
@@ -30,7 +30,7 @@ int test_log()
 }
 
 template <typename quaType, typename vecType>
-int test_pow()
+static int test_pow()
 {
 	typedef typename quaType::value_type T;
 	

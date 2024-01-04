@@ -3,8 +3,17 @@
 #include <glm/gtc/vec1.hpp>
 #include <vector>
 
+#if GLM_COMPILER & GLM_COMPILER_CLANG
+#	pragma clang diagnostic push
+#	pragma clang diagnostic ignored "-Wglobal-constructors"
+#endif
+
 static glm::vec1 g1;
 static glm::vec1 g2(1);
+
+#if GLM_COMPILER & GLM_COMPILER_CLANG
+#	pragma clang diagnostic pop
+#endif
 
 static int test_vec1_operators()
 {
@@ -76,7 +85,7 @@ static int test_vec1_size()
 	Error += glm::vec1::length() == 1 ? 0 : 1;
 	Error += glm::dvec1::length() == 1 ? 0 : 1;
 
-	GLM_CONSTEXPR std::size_t Length = glm::vec1::length();
+	GLM_CONSTEXPR glm::length_t Length = glm::vec1::length();
 	Error += Length == 1 ? 0 : 1;
 
 	return Error;

@@ -54,7 +54,7 @@ namespace fmax_
 		Error += glm::equal(A0.x, 1.0f, glm::epsilon<float>()) ? 0 : 1;
 
 		glm::vec1 A1 = glm::fmax(glm::vec1(Zero_f / 0.0f), glm::vec1(1));
-		Error += glm::equal(A0.x, 1.0f, glm::epsilon<float>()) ? 0 : 1;
+		Error += glm::equal(A1.x, 1.0f, glm::epsilon<float>()) ? 0 : 1;
 
 		glm::vec2 B0 = glm::fmax(glm::vec2(1), glm::vec2(1));
 		glm::vec2 B1 = glm::fmax(glm::vec2(1), 1.0f);

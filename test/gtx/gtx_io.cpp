@@ -1,7 +1,7 @@
-#define GLM_ENABLE_EXPERIMENTAL
 #include <glm/glm.hpp>
 #if GLM_LANG & GLM_LANG_CXXMS_FLAG
 #include <glm/gtc/type_precision.hpp>
+#define GLM_ENABLE_EXPERIMENTAL
 #include <glm/gtx/io.hpp>
 #include <iostream>
 #include <sstream>
@@ -10,7 +10,7 @@
 namespace
 {
 	template<typename CTy, typename CTr>
-	std::basic_ostream<CTy,CTr>& operator<<(std::basic_ostream<CTy,CTr>& os, glm::qualifier const& a)
+	static std::basic_ostream<CTy,CTr>& operator<<(std::basic_ostream<CTy,CTr>& os, glm::qualifier const& a)
 	{
 		typename std::basic_ostream<CTy,CTr>::sentry const cerberus(os);
 
@@ -32,7 +32,7 @@ namespace
 	}
 
 	template<typename U, glm::qualifier P, typename T, typename CTy, typename CTr>
-	std::basic_string<CTy> type_name(std::basic_ostream<CTy,CTr>&, T const&)
+	static std::basic_string<CTy> type_name(std::basic_ostream<CTy,CTr>&, T const&)
 	{
 		std::basic_ostringstream<CTy,CTr> ostr;
 
@@ -58,7 +58,7 @@ namespace
 } // namespace {
 
 template<typename T, glm::qualifier P, typename OS>
-int test_io_quat(OS& os)
+static int test_io_quat(OS& os)
 {
 	os << '\n' << typeid(OS).name() << '\n';
 
@@ -82,7 +82,7 @@ int test_io_quat(OS& os)
 }
 
 template<typename T, glm::qualifier P, typename OS>
-int test_io_vec(OS& os)
+static int test_io_vec(OS& os)
 {
 	os << '\n' << typeid(OS).name() << '\n';
 
@@ -105,7 +105,7 @@ int test_io_vec(OS& os)
 }
 
 template<typename T, glm::qualifier P, typename OS>
-int test_io_mat(OS& os, glm::io::order_type otype)
+static int test_io_mat(OS& os, glm::io::order_type otype)
 {
 	os << '\n' << typeid(OS).name() << '\n';
 

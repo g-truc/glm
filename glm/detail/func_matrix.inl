@@ -9,7 +9,7 @@ namespace detail
 	{
 		GLM_FUNC_QUALIFIER static mat<C, R, T, Q> call(mat<C, R, T, Q> const& x, mat<C, R, T, Q> const& y)
 		{
-			mat<C, R, T, Q> Result;
+			mat<C, R, T, Q> Result(1);
 			for(length_t i = 0; i < Result.length(); ++i)
 				Result[i] = x[i] * y[i];
 			return Result;
@@ -30,7 +30,7 @@ namespace detail
 	struct compute_outerProduct {
 		GLM_FUNC_QUALIFIER static typename detail::outerProduct_trait<DA, DB, T, Q>::type call(vec<DA, T, Q> const& c, vec<DB, T, Q> const& r)
 		{
-			typename detail::outerProduct_trait<DA, DB, T, Q>::type m;
+			typename detail::outerProduct_trait<DA, DB, T, Q>::type m(0);
 			for(length_t i = 0; i < m.length(); ++i)
 				m[i] = c * r[i];
 			return m;
@@ -56,7 +56,7 @@ namespace detail
 	{
 		GLM_FUNC_QUALIFIER static mat<2, 2, T, Q> call(mat<2, 2, T, Q> const& m)
 		{
-			mat<2, 2, T, Q> Result;
+			mat<2, 2, T, Q> Result(1);
 			Result[0][0] = m[0][0];
 			Result[0][1] = m[1][0];
 			Result[1][0] = m[0][1];
@@ -70,7 +70,7 @@ namespace detail
 	{
 		GLM_FUNC_QUALIFIER static mat<3, 2, T, Q> call(mat<2, 3, T, Q> const& m)
 		{
-			mat<3,2, T, Q> Result;
+			mat<3,2, T, Q> Result(1);
 			Result[0][0] = m[0][0];
 			Result[0][1] = m[1][0];
 			Result[1][0] = m[0][1];
@@ -86,7 +86,7 @@ namespace detail
 	{
 		GLM_FUNC_QUALIFIER static mat<4, 2, T, Q> call(mat<2, 4, T, Q> const& m)
 		{
-			mat<4, 2, T, Q> Result;
+			mat<4, 2, T, Q> Result(1);
 			Result[0][0] = m[0][0];
 			Result[0][1] = m[1][0];
 			Result[1][0] = m[0][1];
@@ -104,7 +104,7 @@ namespace detail
 	{
 		GLM_FUNC_QUALIFIER static mat<2, 3, T, Q> call(mat<3, 2, T, Q> const& m)
 		{
-			mat<2, 3, T, Q> Result;
+			mat<2, 3, T, Q> Result(1);
 			Result[0][0] = m[0][0];
 			Result[0][1] = m[1][0];
 			Result[0][2] = m[2][0];
@@ -120,7 +120,7 @@ namespace detail
 	{
 		GLM_FUNC_QUALIFIER static mat<3, 3, T, Q> call(mat<3, 3, T, Q> const& m)
 		{
-			mat<3, 3, T, Q> Result;
+			mat<3, 3, T, Q> Result(1);
 			Result[0][0] = m[0][0];
 			Result[0][1] = m[1][0];
 			Result[0][2] = m[2][0];
@@ -141,7 +141,7 @@ namespace detail
 	{
 		GLM_FUNC_QUALIFIER static mat<4, 3, T, Q> call(mat<3, 4, T, Q> const& m)
 		{
-			mat<4, 3, T, Q> Result;
+			mat<4, 3, T, Q> Result(1);
 			Result[0][0] = m[0][0];
 			Result[0][1] = m[1][0];
 			Result[0][2] = m[2][0];
@@ -163,7 +163,7 @@ namespace detail
 	{
 		GLM_FUNC_QUALIFIER static mat<2, 4, T, Q> call(mat<4, 2, T, Q> const& m)
 		{
-			mat<2, 4, T, Q> Result;
+			mat<2, 4, T, Q> Result(1);
 			Result[0][0] = m[0][0];
 			Result[0][1] = m[1][0];
 			Result[0][2] = m[2][0];
@@ -181,7 +181,7 @@ namespace detail
 	{
 		GLM_FUNC_QUALIFIER static mat<3, 4, T, Q> call(mat<4, 3, T, Q> const& m)
 		{
-			mat<3, 4, T, Q> Result;
+			mat<3, 4, T, Q> Result(1);
 			Result[0][0] = m[0][0];
 			Result[0][1] = m[1][0];
 			Result[0][2] = m[2][0];
@@ -203,7 +203,7 @@ namespace detail
 	{
 		GLM_FUNC_QUALIFIER static mat<4, 4, T, Q> call(mat<4, 4, T, Q> const& m)
 		{
-			mat<4, 4, T, Q> Result;
+			mat<4, 4, T, Q> Result(1);
 			Result[0][0] = m[0][0];
 			Result[0][1] = m[1][0];
 			Result[0][2] = m[2][0];

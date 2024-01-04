@@ -7,7 +7,7 @@
 #include <glm/glm.hpp>
 #include <vector>
 
-int test_quat_angle()
+static int test_quat_angle()
 {
 	int Error = 0;
 
@@ -39,7 +39,7 @@ int test_quat_angle()
 	return Error;
 }
 
-int test_quat_angleAxis()
+static int test_quat_angleAxis()
 {
 	int Error = 0;
 
@@ -56,7 +56,7 @@ int test_quat_angleAxis()
 	return Error;
 }
 
-int test_quat_mix()
+static int test_quat_mix()
 {
 	int Error = 0;
 
@@ -73,7 +73,7 @@ int test_quat_mix()
 	return Error;
 }
 
-int test_quat_normalize()
+static int test_quat_normalize()
 {
 	int Error(0);
 
@@ -99,7 +99,7 @@ int test_quat_normalize()
 	return Error;
 }
 
-int test_quat_euler()
+static int test_quat_euler()
 {
 	int Error = 0;
 
@@ -124,7 +124,7 @@ int test_quat_euler()
 	return Error;
 }
 
-int test_quat_slerp()
+static int test_quat_slerp()
 {
 	int Error = 0;
 
@@ -148,6 +148,7 @@ int test_quat_slerp()
 	// Testing standard, easy case
 	// Must be 45 degrees rotation on Y : 0 0.38 0 0.92
 	glm::quat Y45rot1 = glm::slerp(id, Y90rot, 0.5f);
+	Error += glm::all(glm::equal(Y45rot1, glm::quat(0.924f, 0.0f, 0.383f, 0.0f), 0.01f)) ? 0 : 1;
 
 	// Testing reverse case
 	// Must be 45 degrees rotation on Y : 0 0.38 0 0.92
@@ -181,6 +182,7 @@ int test_quat_slerp()
 	// Testing almost equal quaternions (this test should pass through the linear interpolation)
 	// Must be 0 0.00X 0 0.99999
 	glm::quat almostid = glm::slerp(id, glm::angleAxis(0.1f, glm::vec3(0.0f, 1.0f, 0.0f)), 0.5f);
+	Error += glm::all(glm::equal(almostid, glm::quat(1.0f, 0.0f, 0.0f, 0.0f), 0.1f)) ? 0 : 1;
 
 	// Testing quaternions with opposite sign
 	{
@@ -194,7 +196,7 @@ int test_quat_slerp()
 	return Error;
 }
 
-int test_quat_slerp_spins()
+static int test_quat_slerp_spins()
 {
     int Error = 0;
 
@@ -295,9 +297,11 @@ static int test_mul()
 
 	glm::vec3 transformed0 = (temp1 * glm::vec3(0.0, 1.0, 0.0) * glm::inverse(temp1));
 	glm::vec3 temp4 = temp2 * transformed0 * glm::inverse(temp2);
+	Error += glm::all(glm::equal(temp4, glm::vec3(0.0f, -0.28f, -0.96f), 0.01f)) ? 0 : 1;
 
 	glm::quat temp5 = glm::normalize(temp1 * temp2);
 	glm::vec3 temp6 = temp5 * glm::vec3(0.0, 1.0, 0.0) * glm::inverse(temp5);
+	Error += glm::all(glm::equal(temp6, glm::vec3(-0.48f, 0.36f, -0.8f), 0.01f)) ? 0 : 1;
 
 	glm::quat temp7(1.0f, glm::vec3(0.0, 1.0, 0.0));
 
@@ -309,7 +313,7 @@ static int test_mul()
 	return Error;
 }
 
-int test_identity()
+static int test_identity()
 {
 	int Error = 0;
 

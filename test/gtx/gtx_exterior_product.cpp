@@ -1,3 +1,4 @@
+#define GLM_ENABLE_EXPERIMENTAL
 #include <glm/gtx/exterior_product.hpp>
 #include <glm/gtc/epsilon.hpp>
 #include <glm/vec2.hpp>

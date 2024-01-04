@@ -11,9 +11,19 @@
 #include <ctime>
 #include <vector>
 
+#if GLM_COMPILER & GLM_COMPILER_CLANG
+#	pragma clang diagnostic push
+#	pragma clang diagnostic ignored "-Wglobal-constructors"
+#	pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+
 static glm::vec4 g1;
 static glm::vec4 g2(1);
 static glm::vec4 g3(1, 1, 1, 1);
+
+#if GLM_COMPILER & GLM_COMPILER_CLANG
+#	pragma clang diagnostic pop
+#endif
 
 template <int Value>
 struct mask
@@ -484,9 +494,9 @@ static int test_swizzle_partial()
 {
 	int Error = 0;
 
+#	if GLM_CONFIG_SWIZZLE == GLM_SWIZZLE_OPERATOR
 	glm::vec4 const A(1, 2, 3, 4);
 
-#	if GLM_CONFIG_SWIZZLE == GLM_SWIZZLE_OPERATOR
 	{
 		glm::vec4 B(A.xy, A.zw);
 		Error += glm::all(glm::equal(A, B, glm::epsilon<float>())) ? 0 : 1;

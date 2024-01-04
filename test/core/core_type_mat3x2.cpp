@@ -13,26 +13,42 @@
 #include <glm/mat4x4.hpp>
 #include <vector>
 
-static bool test_operators()
+static int test_operators()
 {
+	int Error = 0;
+
 	glm::mat3x2 l(1.0f);
 	glm::mat3x2 m(1.0f);
 	glm::vec3 u(1.0f);
 	glm::vec2 v(1.0f);
+
 	float x = 1.0f;
 	glm::vec2 a = m * u;
+	Error += glm::all(glm::equal(a, glm::vec2(1.0f), glm::epsilon<float>())) ? 0 : 1;
+
 	glm::vec3 b = v * m;
-	glm::mat3x2 n = x / m;
+	Error += glm::all(glm::equal(b, glm::vec3(v, 0.0f), glm::epsilon<float>())) ? 0 : 1;
+
+	glm::mat3x2 n0(1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f);
+	glm::mat3x2 n = x / n0;
+	Error += glm::all(glm::equal(n, n0, glm::epsilon<float>())) ? 0 : 1;
+
 	glm::mat3x2 o = m / x;
+	Error += glm::all(glm::equal(o, m, glm::epsilon<float>())) ? 0 : 1;
+
 	glm::mat3x2 p = x * m;
+	Error += glm::all(glm::equal(p, m, glm::epsilon<float>())) ? 0 : 1;
+
 	glm::mat3x2 q = m * x;
 	bool R = glm::any(glm::notEqual(m, q, glm::epsilon<float>()));
 	bool S = glm::all(glm::equal(m, l, glm::epsilon<float>()));
 
-	return (S && !R) ? 0 : 1;
+	Error += (S && !R) ? 0 : 1;
+
+	return Error;
 }
 
-int test_ctr()
+static int test_ctr()
 {
 	int Error(0);
 
@@ -78,7 +94,7 @@ int test_ctr()
 namespace cast
 {
 	template<typename genType>
-	int entry()
+	static int entry()
 	{
 		int Error = 0;
 
@@ -91,7 +107,7 @@ namespace cast
 		return Error;
 	}
 
-	int test()
+	static int test()
 	{
 		int Error = 0;
 		
@@ -125,11 +141,16 @@ static int test_size()
 
 static int test_constexpr()
 {
+	int Error = 0;
+
 #if GLM_HAS_CONSTEXPR
 	static_assert(glm::mat3x2::length() == 3, "GLM: Failed constexpr");
+
+	constexpr glm::mat3x2 const Z(1.0f);
+	Error += glm::all(glm::equal(Z, glm::mat3x2(1.0f), glm::epsilon<float>())) ? 0 : 1;
 #endif
 
-	return 0;
+	return Error;
 }
 
 int main()

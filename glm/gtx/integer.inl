@@ -141,13 +141,13 @@ namespace detail
 		return x - y * (x / y);
 	}
 
-#if(GLM_COMPILER & (GLM_COMPILER_VC | GLM_COMPILER_GCC))
+//#if(GLM_COMPILER & (GLM_COMPILER_VC | GLM_COMPILER_GCC))
 
 	GLM_FUNC_QUALIFIER unsigned int nlz(unsigned int x)
 	{
-		return 31u - findMSB(x);
+		return 31u - static_cast<unsigned int>(findMSB(x));
 	}
-
+/*
 #else
 
 	// Hackers Delight: http://www.hackersdelight.org/HDcode/nlz.c.txt
@@ -181,5 +181,5 @@ namespace detail
 	}
 
 #endif//(GLM_COMPILER)
-
+*/
 }//namespace glm

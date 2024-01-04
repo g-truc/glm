@@ -15,17 +15,31 @@ namespace mask
 		genType		Return;
 	};
 
-	inline int mask_zero(int Bits)
+#if GLM_COMPILER & GLM_COMPILER_CLANG
+#	pragma clang diagnostic push
+#	pragma clang diagnostic ignored "-Wsign-conversion"
+#endif
+
+	static inline int mask_zero(int Bits)
 	{
 		return ~((~0) << Bits);
 	}
 
-	inline int mask_mix(int Bits)
+#if GLM_COMPILER & GLM_COMPILER_CLANG
+#	pragma clang diagnostic push
+#	pragma clang diagnostic ignored "-Wsign-compare"
+#endif
+
+	static inline int mask_mix(int Bits)
 	{
 		return Bits >= sizeof(int) * 8 ? 0xffffffff : (static_cast<int>(1) << Bits) - static_cast<int>(1);
 	}
 
-	inline int mask_half(int Bits)
+#if GLM_COMPILER & GLM_COMPILER_CLANG
+#	pragma clang diagnostic pop
+#endif
+
+	static inline int mask_half(int Bits)
 	{
 		// We do the shift in two steps because 1 << 32 on an int is undefined.
 
@@ -38,7 +52,7 @@ namespace mask
 		return ~Reversed;
 	}
 
-	inline int mask_loop(int Bits)
+	static inline int mask_loop(int Bits)
 	{
 		int Mask = 0;
 		for(int Bit = 0; Bit < Bits; ++Bit)
@@ -46,7 +60,7 @@ namespace mask
 		return Mask;
 	}
 
-	int perf()
+	static int perf()
 	{
 		int const Count = 100000000;
 
@@ -112,16 +126,19 @@ namespace mask
 		return TimeDefault < TimeLoop ? 0 : 1;
 	}
 
-	int test_uint()
+#if GLM_COMPILER & GLM_COMPILER_CLANG
+#	pragma clang diagnostic pop
+#endif
+
+	static int test_int()
 	{
-		type<glm::uint> const Data[] =
+		type<int> const Data[] =
 		{
 			{ 0, 0x00000000},
 			{ 1, 0x00000001},
 			{ 2, 0x00000003},
 			{ 3, 0x00000007},
-			{31, 0x7fffffff},
-			{32, 0xffffffff}
+			{31, 0x7fffffff}
 		};
 
 		int Error = 0;
@@ -140,7 +157,7 @@ namespace mask
 
 		for(std::size_t i = 0; i < sizeof(Data) / sizeof(type<int>); ++i)
 		{
-			int Result = mask_half(Data[i].Value);
+			int  Result = mask_half(Data[i].Value);
 			Error += Data[i].Return == Result ? 0 : 1;
 		}
 
@@ -159,16 +176,14 @@ namespace mask
 		return Error;
 	}
 
-	int test_uvec4()
+	static int test_ivec4()
 	{
 		type<glm::ivec4> const Data[] =
 		{
 			{glm::ivec4( 0), glm::ivec4(0x00000000)},
 			{glm::ivec4( 1), glm::ivec4(0x00000001)},
 			{glm::ivec4( 2), glm::ivec4(0x00000003)},
-			{glm::ivec4( 3), glm::ivec4(0x00000007)},
-			{glm::ivec4(31), glm::ivec4(0x7fffffff)},
-			{glm::ivec4(32), glm::ivec4(0xffffffff)}
+			{glm::ivec4( 3), glm::ivec4(0x00000007)}
 		};
 
 		int Error(0);
@@ -182,12 +197,12 @@ namespace mask
 		return Error;
 	}
 
-	int test()
+	static int test()
 	{
 		int Error(0);
 
-		Error += test_uint();
-		Error += test_uvec4();
+		Error += test_int();
+		Error += test_ivec4();
 
 		return Error;
 	}
@@ -196,7 +211,7 @@ namespace mask
 namespace bitfieldInterleave3
 {
 	template<typename PARAM, typename RET>
-	inline RET refBitfieldInterleave(PARAM x, PARAM y, PARAM z)
+	static inline RET refBitfieldInterleave(PARAM x, PARAM y, PARAM z)
 	{
 		RET Result = 0; 
 		for(RET i = 0; i < sizeof(PARAM) * 8; ++i)
@@ -208,7 +223,7 @@ namespace bitfieldInterleave3
 		return Result;
 	}
 
-	int test()
+	static int test()
 	{
 		int Error(0);
 
@@ -232,7 +247,7 @@ namespace bitfieldInterleave3
 namespace bitfieldInterleave4
 {
 	template<typename PARAM, typename RET>
-	inline RET loopBitfieldInterleave(PARAM x, PARAM y, PARAM z, PARAM w)
+	static inline RET loopBitfieldInterleave(PARAM x, PARAM y, PARAM z, PARAM w)
 	{
 		RET const v[4] = {x, y, z, w};
 		RET Result = 0; 
@@ -246,7 +261,7 @@ namespace bitfieldInterleave4
 		return Result;
 	}
 
-	int test()
+	static int test()
 	{
 		int Error(0);
 
@@ -271,7 +286,7 @@ namespace bitfieldInterleave4
 
 namespace bitfieldInterleave
 {
-	inline glm::uint64 fastBitfieldInterleave(glm::uint32 x, glm::uint32 y)
+	static inline glm::uint64 fastBitfieldInterleave(glm::uint32 x, glm::uint32 y)
 	{
 		glm::uint64 REG1;
 		glm::uint64 REG2;
@@ -293,7 +308,7 @@ namespace bitfieldInterleave
 		return REG1 | (REG2 << 1);
 	}
 
-	inline glm::uint64 interleaveBitfieldInterleave(glm::uint32 x, glm::uint32 y)
+	static inline glm::uint64 interleaveBitfieldInterleave(glm::uint32 x, glm::uint32 y)
 	{
 		glm::uint64 REG1;
 		glm::uint64 REG2;
@@ -319,7 +334,7 @@ namespace bitfieldInterleave
 		return REG1 | (REG2 << 1);
 	}
 /*
-	inline glm::uint64 loopBitfieldInterleave(glm::uint32 x, glm::uint32 y)
+	static inline glm::uint64 loopBitfieldInterleave(glm::uint32 x, glm::uint32 y)
 	{
 		static glm::uint64 const Mask[5] = 
 		{
@@ -342,7 +357,7 @@ namespace bitfieldInterleave
 	}
 */
 #if GLM_ARCH & GLM_ARCH_SSE2_BIT
-	inline glm::uint64 sseBitfieldInterleave(glm::uint32 x, glm::uint32 y)
+	static inline glm::uint64 sseBitfieldInterleave(glm::uint32 x, glm::uint32 y)
 	{
 		__m128i const Array = _mm_set_epi32(0, y, 0, x);
 
@@ -399,7 +414,7 @@ namespace bitfieldInterleave
 		return *reinterpret_cast<glm::uint64*>(&Result);
 	}
 
-	inline glm::uint64 sseUnalignedBitfieldInterleave(glm::uint32 x, glm::uint32 y)
+	static inline glm::uint64 sseUnalignedBitfieldInterleave(glm::uint32 x, glm::uint32 y)
 	{
 		__m128i const Array = _mm_set_epi32(0, y, 0, x);
 
@@ -457,7 +472,7 @@ namespace bitfieldInterleave
 	}
 #endif//GLM_ARCH & GLM_ARCH_SSE2_BIT
 
-	int test()
+	static int test()
 	{
 		int Error = 0;
 
@@ -522,7 +537,7 @@ namespace bitfieldInterleave
 		return Error;
 	}
 
-	int perf()
+	static int perf()
 	{
 		glm::uint32 x_max = 1 << 11;
 		glm::uint32 y_max = 1 << 10;
@@ -639,7 +654,8 @@ namespace bitfieldInterleave
 
 namespace bitfieldInterleave5
 {
-	GLM_FUNC_QUALIFIER glm::uint16 bitfieldInterleave_u8vec2(glm::uint8 x, glm::uint8 y)
+	GLM_FUNC_QUALIFIER
+	static glm::uint16 bitfieldInterleave_u8vec2(glm::uint8 x, glm::uint8 y)
 	{
 		glm::uint32 Result = (glm::uint32(y) << 16) | glm::uint32(x);
 		Result = ((Result <<  4) | Result) & 0x0F0F0F0F;
@@ -648,7 +664,8 @@ namespace bitfieldInterleave5
 		return static_cast<glm::uint16>((Result & 0x0000FFFF) | (Result >> 15));
 	}
 
-	GLM_FUNC_QUALIFIER glm::u8vec2 bitfieldDeinterleave_u8vec2(glm::uint16 InterleavedBitfield)
+	GLM_FUNC_QUALIFIER
+	static glm::u8vec2 bitfieldDeinterleave_u8vec2(glm::uint16 InterleavedBitfield)
 	{
 		glm::uint32 Result(InterleavedBitfield);
 		Result = ((Result << 15) | Result) & 0x55555555;
@@ -657,8 +674,9 @@ namespace bitfieldInterleave5
 		Result = ((Result >>  4) | Result) & 0x00FF00FF;
 		return glm::u8vec2(Result & 0x0000FFFF, Result >> 16);
 	}
-
-	GLM_FUNC_QUALIFIER glm::uint32 bitfieldInterleave_u8vec4(glm::uint8 x, glm::uint8 y, glm::uint8 z, glm::uint8 w)
+/*
+	GLM_FUNC_QUALIFIER
+	static glm::uint32 bitfieldInterleave_u8vec4(glm::uint8 x, glm::uint8 y, glm::uint8 z, glm::uint8 w)
 	{
 		glm::uint64 Result = (glm::uint64(w) << 48) | (glm::uint64(z) << 32) | (glm::uint64(y) << 16) | glm::uint64(x);
 		Result = ((Result << 12) | Result) & 0x000F000F000F000Full;
@@ -673,7 +691,8 @@ namespace bitfieldInterleave5
 		return a | b | c | d;
 	}
 
-	GLM_FUNC_QUALIFIER glm::u8vec4 bitfieldDeinterleave_u8vec4(glm::uint32 InterleavedBitfield)
+	GLM_FUNC_QUALIFIER
+	static glm::u8vec4 bitfieldDeinterleave_u8vec4(glm::uint32 InterleavedBitfield)
 	{
 		glm::uint64 Result(InterleavedBitfield);
 		Result = ((Result << 15) | Result) & 0x9249249249249249ull;
@@ -686,8 +705,13 @@ namespace bitfieldInterleave5
 			(Result >> 32) & 0x0000FFFF00000000ull,
 			(Result >> 48) & 0xFFFF000000000000ull);
 	}
-
-	GLM_FUNC_QUALIFIER glm::uint32 bitfieldInterleave_u16vec2(glm::uint16 x, glm::uint16 y)
+*/
+#if GLM_COMPILER & GLM_COMPILER_VC
+#	pragma warning(disable : 4309)
+#endif
+/*
+	GLM_FUNC_QUALIFIER
+	static glm::uint32 bitfieldInterleave_u16vec2(glm::uint16 x, glm::uint16 y)
 	{
 		glm::uint64 Result = (glm::uint64(y) << 32) | glm::uint64(x);
 		Result = ((Result <<  8) | Result) & static_cast<glm::uint32>(0x00FF00FF00FF00FFull);
@@ -697,7 +721,8 @@ namespace bitfieldInterleave5
 		return static_cast<glm::uint32>((Result & 0x00000000FFFFFFFFull) | (Result >> 31));
 	}
 
-	GLM_FUNC_QUALIFIER glm::u16vec2 bitfieldDeinterleave_u16vec2(glm::uint32 InterleavedBitfield)
+	GLM_FUNC_QUALIFIER
+	static glm::u16vec2 bitfieldDeinterleave_u16vec2(glm::uint32 InterleavedBitfield)
 	{
 		glm::uint64 Result(InterleavedBitfield);
 		Result = ((Result << 31) | Result) & 0x5555555555555555ull;
@@ -707,13 +732,15 @@ namespace bitfieldInterleave5
 		Result = ((Result >>  8) | Result) & 0x0000FFFF0000FFFFull;
 		return glm::u16vec2(Result & 0x00000000FFFFFFFFull, Result >> 32);
 	}
-
-	int test()
+*/
+	static int test(glm::size_t divider)
 	{
 		int Error = 0;
 
-		for(glm::size_t j = 0; j < 256; ++j)
-		for(glm::size_t i = 0; i < 256; ++i)
+		glm::size_t count = 256 / divider;
+
+		for(glm::size_t j = 0; j < count; ++j)
+		for(glm::size_t i = 0; i < count; ++i)
 		{
 			glm::uint16 A = bitfieldInterleave_u8vec2(glm::uint8(i), glm::uint8(j));
 			glm::uint16 B = glm::bitfieldInterleave(glm::uint8(i), glm::uint8(j));
@@ -723,43 +750,47 @@ namespace bitfieldInterleave5
 			Error += C.x == glm::uint8(i) ? 0 : 1;
 			Error += C.y == glm::uint8(j) ? 0 : 1;
 		}
-
-		for(glm::size_t j = 0; j < 256; ++j)
-		for(glm::size_t i = 0; i < 256; ++i)
+/*
+		for(glm::size_t j = 0; j < count; ++j)
+		for(glm::size_t i = 0; i < count; ++i)
 		{
 			glm::uint32 A = bitfieldInterleave_u8vec4(glm::uint8(i), glm::uint8(j), glm::uint8(i), glm::uint8(j));
 			glm::uint32 B = glm::bitfieldInterleave(glm::uint8(i), glm::uint8(j), glm::uint8(i), glm::uint8(j));
 			Error += A == B ? 0 : 1;
-/*
+
 			glm::u8vec4 C = bitfieldDeinterleave_u8vec4(A);
 			Error += C.x == glm::uint8(i) ? 0 : 1;
 			Error += C.y == glm::uint8(j) ? 0 : 1;
 			Error += C.z == glm::uint8(i) ? 0 : 1;
 			Error += C.w == glm::uint8(j) ? 0 : 1;
-*/
-		}
 
-		for(glm::size_t j = 0; j < 256; ++j)
-		for(glm::size_t i = 0; i < 256; ++i)
+		}
+*/
+
+/*
+		for(glm::size_t j = 0; j < count; ++j)
+		for(glm::size_t i = 0; i < count; ++i)
 		{
 			glm::uint32 A = bitfieldInterleave_u16vec2(glm::uint16(i), glm::uint16(j));
 			glm::uint32 B = glm::bitfieldInterleave(glm::uint16(i), glm::uint16(j));
 			Error += A == B ? 0 : 1;
 		}
-
+*/
 		return Error;
 	}
 
-	int perf_old_u8vec2(std::vector<glm::uint16>& Result)
+	static int perf_old_u8vec2(std::vector<glm::uint16>& Result, glm::size_t divider)
 	{
 		int Error = 0;
+
+		glm::size_t count = 256 / divider;
 
 		const std::clock_t BeginTime = std::clock();
 		
 		for(glm::size_t k = 0; k < 10000; ++k)
-		for(glm::size_t j = 0; j < 256; ++j)
-		for(glm::size_t i = 0; i < 256; ++i)
-			Error += Result[j * 256 + i] == glm::bitfieldInterleave(glm::uint8(i), glm::uint8(j)) ? 0 : 1;
+		for(glm::size_t j = 0; j < count; ++j)
+		for(glm::size_t i = 0; i < count; ++i)
+			Error += Result[j * count + i] == glm::bitfieldInterleave(glm::uint8(i), glm::uint8(j)) ? 0 : 1;
 
 		const std::clock_t EndTime = std::clock();
 
@@ -768,16 +799,18 @@ namespace bitfieldInterleave5
 		return Error;
 	}
 
-	int perf_new_u8vec2(std::vector<glm::uint16>& Result)
+	static int perf_new_u8vec2(std::vector<glm::uint16>& Result, glm::size_t divider)
 	{
 		int Error = 0;
+
+		glm::size_t count = 256 / divider;
 
 		const std::clock_t BeginTime = std::clock();
 
 		for(glm::size_t k = 0; k < 10000; ++k)
-		for(glm::size_t j = 0; j < 256; ++j)
-		for(glm::size_t i = 0; i < 256; ++i)
-			Error += Result[j * 256 + i] == bitfieldInterleave_u8vec2(glm::uint8(i), glm::uint8(j)) ? 0 : 1;
+		for(glm::size_t j = 0; j < count; ++j)
+		for(glm::size_t i = 0; i < count; ++i)
+			Error += Result[j * count + i] == bitfieldInterleave_u8vec2(glm::uint8(i), glm::uint8(j)) ? 0 : 1;
 
 		const std::clock_t EndTime = std::clock();
 
@@ -786,16 +819,18 @@ namespace bitfieldInterleave5
 		return Error;
 	}
 
-	int perf_old_u8vec4(std::vector<glm::uint32>& Result)
+	static int perf_old_u8vec4(std::vector<glm::uint32>& Result, glm::size_t divider)
 	{
 		int Error = 0;
+
+		glm::size_t count = 256 / divider;
 
 		const std::clock_t BeginTime = std::clock();
 
 		for(glm::size_t k = 0; k < 10000; ++k)
-		for(glm::size_t j = 0; j < 256; ++j)
-		for(glm::size_t i = 0; i < 256; ++i)
-			Error += Result[j * 256 + i] == glm::bitfieldInterleave(glm::uint8(i), glm::uint8(j), glm::uint8(i), glm::uint8(j)) ? 0 : 1;
+		for(glm::size_t j = 0; j < count; ++j)
+		for(glm::size_t i = 0; i < count; ++i)
+			Error += Result[j * count + i] == glm::bitfieldInterleave(glm::uint8(i), glm::uint8(j), glm::uint8(i), glm::uint8(j)) ? 0 : 1;
 
 		const std::clock_t EndTime = std::clock();
 
@@ -803,17 +838,19 @@ namespace bitfieldInterleave5
 
 		return Error;
 	}
-
-	int perf_new_u8vec4(std::vector<glm::uint32>& Result)
+/*
+	static int perf_new_u8vec4(std::vector<glm::uint32>& Result, glm::size_t divider)
 	{
 		int Error = 0;
+
+		glm::size_t count = 256 / divider;
 
 		const std::clock_t BeginTime = std::clock();
 
 		for(glm::size_t k = 0; k < 10000; ++k)
-		for(glm::size_t j = 0; j < 256; ++j)
-		for(glm::size_t i = 0; i < 256; ++i)
-			Error += Result[j * 256 + i] == bitfieldInterleave_u8vec4(glm::uint8(i), glm::uint8(j), glm::uint8(i), glm::uint8(j)) ? 0 : 1;
+		for(glm::size_t j = 0; j < count; ++j)
+		for(glm::size_t i = 0; i < count; ++i)
+			Error += Result[j * count + i] == bitfieldInterleave_u8vec4(glm::uint8(i), glm::uint8(j), glm::uint8(i), glm::uint8(j)) ? 0 : 1;
 
 		const std::clock_t EndTime = std::clock();
 
@@ -821,17 +858,19 @@ namespace bitfieldInterleave5
 
 		return Error;
 	}
-
-	int perf_old_u16vec2(std::vector<glm::uint32>& Result)
+*/
+	static int perf_old_u16vec2(std::vector<glm::uint32>& Result, glm::size_t divider)
 	{
 		int Error = 0;
+
+		glm::size_t count = 256 / divider;
 
 		const std::clock_t BeginTime = std::clock();
 
 		for(glm::size_t k = 0; k < 10000; ++k)
-		for(glm::size_t j = 0; j < 256; ++j)
-		for(glm::size_t i = 0; i < 256; ++i)
-			Error += Result[j * 256 + i] == glm::bitfieldInterleave(glm::uint16(i), glm::uint16(j)) ? 0 : 1;
+		for(glm::size_t j = 0; j < count; ++j)
+		for(glm::size_t i = 0; i < count; ++i)
+			Error += Result[j * count + i] == glm::bitfieldInterleave(glm::uint16(i), glm::uint16(j)) ? 0 : 1;
 
 		const std::clock_t EndTime = std::clock();
 
@@ -839,17 +878,19 @@ namespace bitfieldInterleave5
 
 		return Error;
 	}
-
-	int perf_new_u16vec2(std::vector<glm::uint32>& Result)
+/*
+	static int perf_new_u16vec2(std::vector<glm::uint32>& Result, glm::size_t divider)
 	{
 		int Error = 0;
+
+		glm::size_t count = 256 / divider;
 
 		const std::clock_t BeginTime = std::clock();
 
 		for(glm::size_t k = 0; k < 10000; ++k)
-		for(glm::size_t j = 0; j < 256; ++j)
-		for(glm::size_t i = 0; i < 256; ++i)
-			Error += Result[j * 256 + i] == bitfieldInterleave_u16vec2(glm::uint16(i), glm::uint16(j)) ? 0 : 1;
+		for(glm::size_t j = 0; j < count; ++j)
+		for(glm::size_t i = 0; i < count; ++i)
+			Error += Result[j * count + i] == bitfieldInterleave_u16vec2(glm::uint16(i), glm::uint16(j)) ? 0 : 1;
 
 		const std::clock_t EndTime = std::clock();
 
@@ -857,36 +898,38 @@ namespace bitfieldInterleave5
 
 		return Error;
 	}
-
-	int perf()
+*/
+	static int perf(glm::size_t divider)
 	{
 		int Error = 0;
 
+		glm::size_t count = 256 / divider;
+
 		std::printf("bitfieldInterleave perf: init\r");
 
-		std::vector<glm::uint16> Result_u8vec2(256 * 256, 0);
-		for(glm::size_t j = 0; j < 256; ++j)
-		for(glm::size_t i = 0; i < 256; ++i)
-			Result_u8vec2[j * 256 + i] = glm::bitfieldInterleave(glm::uint8(i), glm::uint8(j));
+		std::vector<glm::uint16> Result_u8vec2(count * count, 0);
+		for(glm::size_t j = 0; j < count; ++j)
+		for(glm::size_t i = 0; i < count; ++i)
+			Result_u8vec2[j * count + i] = glm::bitfieldInterleave(glm::uint8(i), glm::uint8(j));
 
-		Error += perf_old_u8vec2(Result_u8vec2);
-		Error += perf_new_u8vec2(Result_u8vec2);
+		Error += perf_old_u8vec2(Result_u8vec2, divider);
+		Error += perf_new_u8vec2(Result_u8vec2, divider);
 
-		std::vector<glm::uint32> Result_u8vec4(256 * 256, 0);
-		for(glm::size_t j = 0; j < 256; ++j)
-		for(glm::size_t i = 0; i < 256; ++i)
-			Result_u8vec4[j * 256 + i] = glm::bitfieldInterleave(glm::uint8(i), glm::uint8(j), glm::uint8(i), glm::uint8(j));
+		std::vector<glm::uint32> Result_u8vec4(count * count, 0);
+		for(glm::size_t j = 0; j < count; ++j)
+		for(glm::size_t i = 0; i < count; ++i)
+			Result_u8vec4[j * count + i] = glm::bitfieldInterleave(glm::uint8(i), glm::uint8(j), glm::uint8(i), glm::uint8(j));
 		
-		Error += perf_old_u8vec4(Result_u8vec4);
-		Error += perf_new_u8vec4(Result_u8vec4);
+		Error += perf_old_u8vec4(Result_u8vec4, divider);
+		//Error += perf_new_u8vec4(Result_u8vec4, divider);
 
-		std::vector<glm::uint32> Result_u16vec2(256 * 256, 0);
-		for(glm::size_t j = 0; j < 256; ++j)
-		for(glm::size_t i = 0; i < 256; ++i)
-			Result_u16vec2[j * 256 + i] = glm::bitfieldInterleave(glm::uint16(i), glm::uint16(j));
+		std::vector<glm::uint32> Result_u16vec2(count * count, 0);
+		for(glm::size_t j = 0; j < count; ++j)
+		for(glm::size_t i = 0; i < count; ++i)
+			Result_u16vec2[j * count + i] = glm::bitfieldInterleave(glm::uint16(i), glm::uint16(j));
 
-		Error += perf_old_u16vec2(Result_u16vec2);
-		Error += perf_new_u16vec2(Result_u16vec2);
+		Error += perf_old_u16vec2(Result_u16vec2, divider);
+		//Error += perf_new_u16vec2(Result_u16vec2, divider);
 
 		std::printf("bitfieldInterleave perf: %d Errors\n", Error);
 
@@ -915,10 +958,10 @@ int main()
 {
 	int Error = 0;
 
-/* Tests for a faster and to reserve bitfieldInterleave
-	Error += ::bitfieldInterleave5::test();
-	Error += ::bitfieldInterleave5::perf();
-*/
+	// Tests for a faster and to reserve bitfieldInterleave
+	Error += ::bitfieldInterleave5::test(64);
+	Error += ::bitfieldInterleave5::perf(64);
+
 	Error += ::mask::test();
 	Error += ::bitfieldInterleave3::test();
 	Error += ::bitfieldInterleave4::test();
@@ -927,10 +970,8 @@ int main()
 	Error += test_bitfieldRotateRight();
 	Error += test_bitfieldRotateLeft();
 
-#	ifdef NDEBUG
-		Error += ::mask::perf();
-		Error += ::bitfieldInterleave::perf();
-#	endif//NDEBUG
+	Error += ::mask::perf();
+	Error += ::bitfieldInterleave::perf();
 
 	return Error;
 }

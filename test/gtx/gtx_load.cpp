@@ -1,8 +1,8 @@
-#define GLM_ENABLE_EXPERIMENTAL
 #include <glm/glm.hpp>
 /*
 #if GLM_CONFIG_SIMD == GLM_ENABLE
 
+#define GLM_ENABLE_EXPERIMENTAL
 #include <glm/gtx/common.hpp>
 #include <glm/gtc/integer.hpp>
 #include <glm/gtc/epsilon.hpp>

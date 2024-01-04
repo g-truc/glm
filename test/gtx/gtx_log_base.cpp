@@ -6,7 +6,7 @@
 
 namespace test_log
 {
-	int run()
+	static int run()
 	{
 		int Error = 0;
 

@@ -976,13 +976,16 @@ static int test_fvec_conversion()
 
 	{
 		glm::highp_vec4 a = glm::vec4(1, 2, 3, 4);
+		Error += glm::all(glm::equal(a, glm::vec4(1, 2, 3, 4), glm::epsilon<float>())) ? 0 : 1;
+
 		glm::mediump_vec4 b = glm::vec4(1, 2, 3, 4);
 		glm::lowp_vec4 c = b;
 		glm::mediump_vec4 d = c;
+		Error += glm::all(glm::equal(b, d, glm::epsilon<float>())) ? 0 : 1;
+
 		glm::lowp_ivec4 e = glm::ivec4(d);
 		glm::lowp_ivec3 f = glm::ivec3(e);
-
-		Error += glm::all(glm::equal(b, d, glm::epsilon<float>())) ? 0 : 1;
+		Error += glm::all(glm::equal(f, glm::lowp_ivec3(1, 2, 3))) ? 0 : 1;
 	}
 
 	return Error;

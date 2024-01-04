@@ -1,5 +1,7 @@
 /// @ref gtx_color_space
 
+#include <glm/ext/scalar_relational.hpp>
+
 namespace glm
 {
 	template<typename T, qualifier Q>
@@ -8,7 +10,7 @@ namespace glm
 		vec<3, T, Q> hsv = hsvColor;
 		vec<3, T, Q> rgbColor;
 
-		if(hsv.y == static_cast<T>(0))
+		if(equal(hsv.y, static_cast<T>(0), epsilon<T>()))
 			// achromatic (grey)
 			rgbColor = vec<3, T, Q>(hsv.z);
 		else
@@ -69,15 +71,15 @@ namespace glm
 
 		hsv.z = Max;
 
-		if(Max != static_cast<T>(0))
+		if(!equal(Max, static_cast<T>(0), epsilon<T>()))
 		{
 			hsv.y = Delta / hsv.z;
 			T h = static_cast<T>(0);
 
-			if(rgbColor.r == Max)
+			if(equal(rgbColor.r, Max, epsilon<T>()))
 				// between yellow & magenta
 				h = static_cast<T>(0) + T(60) * (rgbColor.g - rgbColor.b) / Delta;
-			else if(rgbColor.g == Max)
+			else if(equal(rgbColor.g, Max, epsilon<T>()))
 				// between cyan & yellow
 				h = static_cast<T>(120) + T(60) * (rgbColor.b - rgbColor.r) / Delta;
 			else

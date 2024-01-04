@@ -4,7 +4,7 @@
 #include <glm/gtc/epsilon.hpp>
 
 template <glm::length_t C, glm::length_t R, typename T, glm::qualifier Q>
-int test_qr(glm::mat<C, R, T, Q> m)
+static int test_qr(glm::mat<C, R, T, Q> m)
 {
 	int Error = 0;
 
@@ -41,7 +41,7 @@ int test_qr(glm::mat<C, R, T, Q> m)
 }
 
 template <glm::length_t C, glm::length_t R, typename T, glm::qualifier Q>
-int test_rq(glm::mat<C, R, T, Q> m)
+static int test_rq(glm::mat<C, R, T, Q> m)
 {
 	int Error = 0;
 

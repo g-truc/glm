@@ -8,8 +8,8 @@ namespace detail
 	struct _swizzle_base0
 	{
 	protected:
-		GLM_FUNC_QUALIFIER T& elem(size_t i){ return (reinterpret_cast<T*>(_buffer))[i]; }
-		GLM_FUNC_QUALIFIER T const& elem(size_t i) const{ return (reinterpret_cast<const T*>(_buffer))[i]; }
+		GLM_FUNC_QUALIFIER T& elem(int i){ return (reinterpret_cast<T*>(_buffer))[i]; }
+		GLM_FUNC_QUALIFIER T const& elem(int i) const{ return (reinterpret_cast<const T*>(_buffer))[i]; }
 
 		// Use an opaque buffer to *ensure* the compiler doesn't call a constructor.
 		// The size 1 buffer is assumed to aligned to the actual members so that the

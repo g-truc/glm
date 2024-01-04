@@ -55,51 +55,51 @@ jobs:
           cmake --build ./build_auto --config ${{matrix.config}}
           ctest --verbose -C ${{matrix.config}} --test-dir ./build_auto
 
-      - name: Run with GLM_TEST_FORCE_PURE
+      - name: Run with GLM_FORCE_PURE
         run: |
-          cmake -S. -B ./build_pure_std -T ${{matrix.toolkit}} -DGLM_TEST_FORCE_PURE=ON -DGLM_TEST_ENABLE_CXX_${{matrix.std}}=ON
+          cmake -S. -B ./build_pure_std -T ${{matrix.toolkit}} -DGLM_FORCE_PURE=ON -DGLM_ENABLE_CXX_${{matrix.std}}=ON
           cmake --build ./build_pure_std --config ${{matrix.config}}
           ctest --verbose -C ${{matrix.config}} --test-dir ./build_pure_std
 
-      - name: Run with GLM_TEST_FORCE_PURE and language extensions
+      - name: Run with GLM_FORCE_PURE and language extensions
         run: |
-          cmake -S. -B ./build_pure_ext -T ${{matrix.toolkit}} -DGLM_TEST_FORCE_PURE=ON -DGLM_TEST_ENABLE_CXX_${{matrix.std}}=ON -DGLM_TEST_ENABLE_LANG_EXTENSIONS=ON
+          cmake -S. -B ./build_pure_ext -T ${{matrix.toolkit}} -DGLM_FORCE_PURE=ON -DGLM_ENABLE_CXX_${{matrix.std}}=ON -DGLM_ENABLE_LANG_EXTENSIONS=ON
           cmake --build ./build_pure_ext --config ${{matrix.config}}
           ctest --verbose -C ${{matrix.config}} --test-dir ./build_pure_ext
 
-      - name: Run with GLM_TEST_ENABLE_SIMD_SSE2
+      - name: Run with GLM_ENABLE_SIMD_SSE2
         run: |
-          cmake -S. -B ./build_sse2_std -T ${{matrix.toolkit}} -DGLM_TEST_FORCE_PURE=ON -DGLM_TEST_ENABLE_CXX_${{matrix.std}}=ON
+          cmake -S. -B ./build_sse2_std -T ${{matrix.toolkit}} -DGLM_FORCE_PURE=ON -DGLM_ENABLE_CXX_${{matrix.std}}=ON
           cmake --build ./build_sse2_std --config ${{matrix.config}}
           ctest --verbose -C ${{matrix.config}} --test-dir ./build_sse2_std
 
-      - name: Run with GLM_TEST_ENABLE_SIMD_SSE2 and language extensions
+      - name: Run with GLM_ENABLE_SIMD_SSE2 and language extensions
         run: |
-          cmake -S. -B ./build_sse2_ext -T ${{matrix.toolkit}} -DGLM_TEST_ENABLE_SIMD_SSE2=ON -DGLM_TEST_ENABLE_CXX_${{matrix.std}}=ON -DGLM_TEST_ENABLE_LANG_EXTENSIONS=ON
+          cmake -S. -B ./build_sse2_ext -T ${{matrix.toolkit}} -DGLM_ENABLE_SIMD_SSE2=ON -DGLM_ENABLE_CXX_${{matrix.std}}=ON -DGLM_ENABLE_LANG_EXTENSIONS=ON
           cmake --build ./build_sse2_ext --config ${{matrix.config}}
           ctest --verbose -C ${{matrix.config}} --test-dir ./build_sse2_ext
 
-      - name: Run with GLM_TEST_ENABLE_SIMD_AVX
+      - name: Run with GLM_ENABLE_SIMD_AVX
         run: |
-          cmake -S. -B ./build_avx1_std -T ${{matrix.toolkit}} -DGLM_TEST_ENABLE_SIMD_AVX=ON -DGLM_TEST_ENABLE_CXX_${{matrix.std}}=ON
+          cmake -S. -B ./build_avx1_std -T ${{matrix.toolkit}} -DGLM_ENABLE_SIMD_AVX=ON -DGLM_ENABLE_CXX_${{matrix.std}}=ON
           cmake --build ./build_avx1_std --config ${{matrix.config}}
           ctest --verbose -C ${{matrix.config}} --test-dir ./build_avx1_std
 
-      - name: Run with GLM_TEST_ENABLE_SIMD_AVX and language extensions
+      - name: Run with GLM_ENABLE_SIMD_AVX and language extensions
         run: |
-          cmake -S. -B ./build_avx1_ext -T ${{matrix.toolkit}} -DGLM_TEST_ENABLE_SIMD_AVX=ON -DGLM_TEST_ENABLE_CXX_${{matrix.std}}=ON -DGLM_TEST_ENABLE_LANG_EXTENSIONS=ON
+          cmake -S. -B ./build_avx1_ext -T ${{matrix.toolkit}} -DGLM_ENABLE_SIMD_AVX=ON -DGLM_ENABLE_CXX_${{matrix.std}}=ON -DGLM_ENABLE_LANG_EXTENSIONS=ON
           cmake --build ./build_avx1_ext --config ${{matrix.config}}
           ctest --verbose -C ${{matrix.config}} --test-dir ./build_avx1_ext
 
-      - name: Run with GLM_TEST_ENABLE_SIMD_AVX2
+      - name: Run with GLM_ENABLE_SIMD_AVX2
         run: |
-          cmake -S. -B ./build_avx2_std -T ${{matrix.toolkit}} -DGLM_TEST_ENABLE_SIMD_AVX2=ON -DGLM_TEST_ENABLE_CXX_${{matrix.std}}=ON
+          cmake -S. -B ./build_avx2_std -T ${{matrix.toolkit}} -DGLM_ENABLE_SIMD_AVX2=ON -DGLM_ENABLE_CXX_${{matrix.std}}=ON
           cmake --build ./build_avx2_std --config ${{matrix.config}} 
           ctest --verbose -C ${{matrix.config}} --test-dir ./build_avx2_std
 
-      - name: Run with GLM_TEST_ENABLE_SIMD_AVX2 and language extensions
+      - name: Run with GLM_ENABLE_SIMD_AVX2 and language extensions
         run: |
-          cmake -S. -B ./build_avx2_ext -T ${{matrix.toolkit}} -DGLM_TEST_ENABLE_SIMD_AVX2=ON -DGLM_TEST_ENABLE_CXX_${{matrix.std}}=ON -DGLM_TEST_ENABLE_LANG_EXTENSIONS=ON
+          cmake -S. -B ./build_avx2_ext -T ${{matrix.toolkit}} -DGLM_ENABLE_SIMD_AVX2=ON -DGLM_ENABLE_CXX_${{matrix.std}}=ON -DGLM_ENABLE_LANG_EXTENSIONS=ON
           cmake --build ./build_avx2_ext --config ${{matrix.config}}
           ctest --verbose -C ${{matrix.config}} --test-dir ./build_avx2_ext
 
@@ -135,47 +135,47 @@ jobs:
           cmake --build ./build_auto --config ${{matrix.config}}
           ctest --verbose -C ${{matrix.config}} --test-dir ./build_auto
 
-      - name: Run with GLM_TEST_FORCE_PURE
+      - name: Run with GLM_FORCE_PURE
         run: |
-          cmake -S. -B ./build_pure_std -DGLM_TEST_FORCE_PURE=ON -DGLM_TEST_ENABLE_CXX_${{matrix.std}}=ON
+          cmake -S. -B ./build_pure_std -DGLM_FORCE_PURE=ON -DGLM_ENABLE_CXX_${{matrix.std}}=ON
           cmake --build ./build_pure_std --config ${{matrix.config}}
           ctest --verbose -C ${{matrix.config}} --test-dir ./build_pure_std
-      - name: Run with GLM_TEST_FORCE_PURE and language extensions
+      - name: Run with GLM_FORCE_PURE and language extensions
         run: |
-          cmake -S. -B ./build_pure_ext -DGLM_TEST_FORCE_PURE=ON -DGLM_TEST_ENABLE_CXX_${{matrix.std}}=ON -DGLM_TEST_ENABLE_LANG_EXTENSIONS=ON
+          cmake -S. -B ./build_pure_ext -DGLM_FORCE_PURE=ON -DGLM_ENABLE_CXX_${{matrix.std}}=ON -DGLM_ENABLE_LANG_EXTENSIONS=ON
           cmake --build ./build_pure_ext --config ${{matrix.config}}
           ctest --verbose -C ${{matrix.config}} --test-dir ./build_pure_ext
 
-      - name: Run with GLM_TEST_ENABLE_SIMD_SSE2
+      - name: Run with GLM_ENABLE_SIMD_SSE2
         run: |
-          cmake -S. -B ./build_sse2_std -DGLM_TEST_FORCE_PURE=ON -DGLM_TEST_ENABLE_CXX_${{matrix.std}}=ON
+          cmake -S. -B ./build_sse2_std -DGLM_FORCE_PURE=ON -DGLM_ENABLE_CXX_${{matrix.std}}=ON
           cmake --build ./build_sse2_std --config ${{matrix.config}}
           ctest --verbose -C ${{matrix.config}} --test-dir ./build_sse2_std
-      - name: Run with GLM_TEST_ENABLE_SIMD_SSE2 and language extensions
+      - name: Run with GLM_ENABLE_SIMD_SSE2 and language extensions
         run: |
-          cmake -S. -B ./build_sse2_ext -DGLM_TEST_ENABLE_SIMD_SSE2=ON -DGLM_TEST_ENABLE_CXX_${{matrix.std}}=ON -DGLM_TEST_ENABLE_LANG_EXTENSIONS=ON
+          cmake -S. -B ./build_sse2_ext -DGLM_ENABLE_SIMD_SSE2=ON -DGLM_ENABLE_CXX_${{matrix.std}}=ON -DGLM_ENABLE_LANG_EXTENSIONS=ON
           cmake --build ./build_sse2_ext --config ${{matrix.config}}
           ctest --verbose -C ${{matrix.config}} --test-dir ./build_sse2_ext
 
-      - name: Run with GLM_TEST_ENABLE_SIMD_AVX
+      - name: Run with GLM_ENABLE_SIMD_AVX
         run: |
-          cmake -S. -B ./build_avx1_std -DGLM_TEST_ENABLE_SIMD_AVX=ON -DGLM_TEST_ENABLE_CXX_${{matrix.std}}=ON
+          cmake -S. -B ./build_avx1_std -DGLM_ENABLE_SIMD_AVX=ON -DGLM_ENABLE_CXX_${{matrix.std}}=ON
           cmake --build ./build_avx1_std --config ${{matrix.config}}
           ctest --verbose -C ${{matrix.config}} --test-dir ./build_avx1_std
-      - name: Run with GLM_TEST_ENABLE_SIMD_AVX and language extensions
+      - name: Run with GLM_ENABLE_SIMD_AVX and language extensions
         run: |
-          cmake -S. -B ./build_avx1_ext -DGLM_TEST_ENABLE_SIMD_AVX=ON -DGLM_TEST_ENABLE_CXX_${{matrix.std}}=ON -DGLM_TEST_ENABLE_LANG_EXTENSIONS=ON
+          cmake -S. -B ./build_avx1_ext -DGLM_ENABLE_SIMD_AVX=ON -DGLM_ENABLE_CXX_${{matrix.std}}=ON -DGLM_ENABLE_LANG_EXTENSIONS=ON
           cmake --build ./build_avx1_ext --config ${{matrix.config}}
           ctest --verbose -C ${{matrix.config}} --test-dir ./build_avx1_ext
 
-      - name: Run with GLM_TEST_ENABLE_SIMD_AVX2
+      - name: Run with GLM_ENABLE_SIMD_AVX2
         run: |
-          cmake -S. -B ./build_avx2_std -DGLM_TEST_ENABLE_SIMD_AVX2=ON -DGLM_TEST_ENABLE_CXX_${{matrix.std}}=ON
+          cmake -S. -B ./build_avx2_std -DGLM_ENABLE_SIMD_AVX2=ON -DGLM_ENABLE_CXX_${{matrix.std}}=ON
           cmake --build ./build_avx2_std --config ${{matrix.config}}
           ctest --verbose -C ${{matrix.config}} --test-dir ./build_avx2_std
-      - name: Run with GLM_TEST_ENABLE_SIMD_AVX2 and language extensions
+      - name: Run with GLM_ENABLE_SIMD_AVX2 and language extensions
         run: |
-          cmake -S. -B ./build_avx2_ext -DGLM_TEST_ENABLE_SIMD_AVX2=ON -DGLM_TEST_ENABLE_CXX_${{matrix.std}}=ON -DGLM_TEST_ENABLE_LANG_EXTENSIONS=ON
+          cmake -S. -B ./build_avx2_ext -DGLM_ENABLE_SIMD_AVX2=ON -DGLM_ENABLE_CXX_${{matrix.std}}=ON -DGLM_ENABLE_LANG_EXTENSIONS=ON
           cmake --build ./build_avx2_ext --config ${{matrix.config}}
           ctest --verbose -C ${{matrix.config}} --test-dir ./build_avx2_ext
 
@@ -211,38 +211,36 @@ jobs:
           cmake --build ./build_auto --config ${{matrix.config}}
           ctest --verbose -C ${{matrix.config}} --test-dir ./build_auto
 
-      - name: Run with GLM_TEST_FORCE_PURE
+      - name: Run with GLM_FORCE_PURE
         run: |
-          cmake -S. -B ./build_pure_std -DGLM_TEST_FORCE_PURE=ON -DGLM_TEST_ENABLE_CXX_${{matrix.std}}=ON
+          cmake -S. -B ./build_pure_std -DGLM_FORCE_PURE=ON -DGLM_ENABLE_CXX_${{matrix.std}}=ON
           cmake --build ./build_pure_std --config ${{matrix.config}}
           ctest --verbose -C ${{matrix.config}} --test-dir ./build_pure_std
-      - name: Run with GLM_TEST_FORCE_PURE and language extensions
+      - name: Run with GLM_FORCE_PURE and language extensions
         run: |
-          cmake -S. -B ./build_pure_ext -DGLM_TEST_FORCE_PURE=ON -DGLM_TEST_ENABLE_CXX_${{matrix.std}}=ON -DGLM_TEST_ENABLE_LANG_EXTENSIONS=ON
+          cmake -S. -B ./build_pure_ext -DGLM_FORCE_PURE=ON -DGLM_ENABLE_CXX_${{matrix.std}}=ON -DGLM_ENABLE_LANG_EXTENSIONS=ON
           cmake --build ./build_pure_ext --config ${{matrix.config}}
           ctest --verbose -C ${{matrix.config}} --test-dir ./build_pure_ext
 
-      - name: Run with GLM_TEST_ENABLE_SIMD_SSE2
+      - name: Run with GLM_ENABLE_SIMD_SSE2
         run: |
-          cmake -S. -B ./build_sse2_std -DGLM_TEST_FORCE_PURE=ON -DGLM_TEST_ENABLE_CXX_${{matrix.std}}=ON
+          cmake -S. -B ./build_sse2_std -DGLM_FORCE_PURE=ON -DGLM_ENABLE_CXX_${{matrix.std}}=ON
           cmake --build ./build_sse2_std --config ${{matrix.config}}
           ctest --verbose -C ${{matrix.config}} --test-dir ./build_sse2_std
-      - name: Run with GLM_TEST_ENABLE_SIMD_SSE2 and language extensions
+      - name: Run with GLM_ENABLE_SIMD_SSE2 and language extensions
         run: |
-          cmake -S. -B ./build_sse2_ext -DGLM_TEST_ENABLE_SIMD_SSE2=ON -DGLM_TEST_ENABLE_CXX_${{matrix.std}}=ON -DGLM_TEST_ENABLE_LANG_EXTENSIONS=ON
+          cmake -S. -B ./build_sse2_ext -DGLM_ENABLE_SIMD_SSE2=ON -DGLM_ENABLE_CXX_${{matrix.std}}=ON -DGLM_ENABLE_LANG_EXTENSIONS=ON
           cmake --build ./build_sse2_ext --config ${{matrix.config}}
           ctest --verbose -C ${{matrix.config}} --test-dir ./build_sse2_ext
 
-      - name: Run with GLM_TEST_ENABLE_SIMD_AVX
+      - name: Run with GLM_ENABLE_SIMD_AVX
         run: |
-          cmake -S. -B ./build_avx1_std -DGLM_TEST_ENABLE_SIMD_AVX=ON -DGLM_TEST_ENABLE_CXX_${{matrix.std}}=ON
+          cmake -S. -B ./build_avx1_std -DGLM_ENABLE_SIMD_AVX=ON -DGLM_ENABLE_CXX_${{matrix.std}}=ON
           cmake --build ./build_avx1_std --config ${{matrix.config}}
           ctest --verbose -C ${{matrix.config}} --test-dir ./build_avx1_std
-      - name: Run with GLM_TEST_ENABLE_SIMD_AVX and language extensions
+      - name: Run with GLM_ENABLE_SIMD_AVX and language extensions
         run: |
-          cmake -S. -B ./build_avx1_ext -DGLM_TEST_ENABLE_SIMD_AVX=ON -DGLM_TEST_ENABLE_CXX_${{matrix.std}}=ON -DGLM_TEST_ENABLE_LANG_EXTENSIONS=ON
+          cmake -S. -B ./build_avx1_ext -DGLM_ENABLE_SIMD_AVX=ON -DGLM_ENABLE_CXX_${{matrix.std}}=ON -DGLM_ENABLE_LANG_EXTENSIONS=ON
           cmake --build ./build_avx1_ext --config ${{matrix.config}}
           ctest --verbose -C ${{matrix.config}} --test-dir ./build_avx1_ext
-
-
  

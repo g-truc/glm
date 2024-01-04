@@ -4,7 +4,7 @@
 #include <glm/gtx/matrix_operation.hpp>
 #include <limits>
 
-int test_adjugate()
+static int test_adjugate()
 {
 	int Error = 0;
 

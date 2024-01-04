@@ -12,25 +12,25 @@ static int test_comp()
 	int Error = 0;
 
 	{
-		glm::ivec1 const A(1);
+		glm::ivec1 A(1);
 		Error += A.x == 1 ? 0 : 1;
 	}
 
 	{
-		glm::ivec2 const A(1, 2);
+		glm::ivec2 A(1, 2);
 		Error += A.x == 1 ? 0 : 1;
 		Error += A.y == 2 ? 0 : 1;
 	}
 
 	{
-		glm::ivec3 const A(1, 2, 3);
+		glm::ivec3 A(1, 2, 3);
 		Error += A.x == 1 ? 0 : 1;
 		Error += A.y == 2 ? 0 : 1;
 		Error += A.z == 3 ? 0 : 1;
 	}
 
 	{
-		glm::ivec4 const A(1, 2, 3, 4);
+		glm::ivec4 A(1, 2, 3, 4);
 		Error += A.x == 1 ? 0 : 1;
 		Error += A.y == 2 ? 0 : 1;
 		Error += A.z == 3 ? 0 : 1;

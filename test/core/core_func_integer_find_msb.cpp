@@ -3,9 +3,11 @@
 #include <cstdlib>     // To define "exit", req'd by XLC.
 #include <ctime>
 
+#ifdef NDEBUG
+
 #define LE 1            // 1 for little-endian, 0 for big-endian.
 
-int pop(unsigned x) {
+static int pop(unsigned x) {
    x = x - ((x >> 1) & 0x55555555);
    x = (x & 0x33333333) + ((x >> 2) & 0x33333333);
    x = (x + (x >> 4)) & 0x0F0F0F0F;
@@ -14,7 +16,7 @@ int pop(unsigned x) {
    return x >> 24;
 }
 
-int nlz1(unsigned x) {
+static int nlz1(unsigned x) {
    int n;
 
    if (x == 0) return(32);
@@ -27,7 +29,7 @@ int nlz1(unsigned x) {
    return n;
 }
 
-int nlz1a(unsigned x) {
+static int nlz1a(unsigned x) {
    int n;
 
 /* if (x == 0) return(32); */
@@ -42,7 +44,7 @@ int nlz1a(unsigned x) {
 }
 // On basic Risc, 12 to 20 instructions.
 
-int nlz2(unsigned x) {
+static int nlz2(unsigned x) {
    unsigned y;
    int n;
 
@@ -57,7 +59,7 @@ int nlz2(unsigned x) {
 
 // As above but coded as a loop for compactness:
 // 23 to 33 basic Risc instructions.
-int nlz2a(unsigned x) {
+static int nlz2a(unsigned x) {
    unsigned y;
    int n, c;
 
@@ -70,7 +72,7 @@ int nlz2a(unsigned x) {
    return n - x;
 }
 
-int nlz3(int x) {
+static int nlz3(int x) {
    int y, n;
 
    n = 0;
@@ -83,7 +85,12 @@ L: if (x < 0) return n;
    goto L;
 }
 
-int nlz4(unsigned x) {
+#if GLM_COMPILER & GLM_COMPILER_VC
+#	pragma warning(push)
+#	pragma warning(disable : 4146)
+#endif
+
+static int nlz4(unsigned x) {
    int y, m, n;
 
    y = -(x >> 16);      // If left half of x is 0,
@@ -111,7 +118,11 @@ int nlz4(unsigned x) {
    return n + 2 - m;
 }
 
-int nlz5(unsigned x) {
+#if(GLM_COMPILER & GLM_COMPILER_VC)
+#	pragma warning(pop)
+#endif
+
+static int nlz5(unsigned x) {
    int pop(unsigned x);
 
    x = x | (x >> 1);
@@ -138,7 +149,7 @@ gcc/AIX, and gcc/NT, at some optimization levels.
    BTW, these programs use the "anonymous union" feature of C++, not
 available in C. */
 
-int nlz6(unsigned k)
+static int nlz6(unsigned k)
 {
 	union {
 		unsigned asInt[2];
@@ -151,7 +162,7 @@ int nlz6(unsigned k)
 	return n;
 }
 
-int nlz7(unsigned k)
+static int nlz7(unsigned k)
 {
 	union {
 		unsigned asInt[2];
@@ -174,7 +185,7 @@ int nlz7(unsigned k)
                         FFFFFF80 <= k <= FFFFFFFF.
    For k = 0 it gives 158, and for the other values it is too low by 1. */
 
-int nlz8(unsigned k)
+static int nlz8(unsigned k)
 {
 	union {
 		unsigned asInt;
@@ -196,7 +207,7 @@ expressions (see "Using and Porting GNU CC", by Richard M. Stallman
 possibility that the macro argument will conflict with one of its local
 variables, e.g., NLZ(k). */
 
-int nlz9(unsigned k)
+static int nlz9(unsigned k)
 {
 	union {
 		unsigned asInt;
@@ -230,7 +241,7 @@ multiplication expanded into shifts and adds, but the table size is
 getting a bit large). */
 
 #define u 99
-int nlz10(unsigned x)
+static int nlz10(unsigned x)
 {
 	static char table[64] =
 		{32,31, u,16, u,30, 3, u,  15, u, u, u,29,10, 2, u,
@@ -250,7 +261,7 @@ int nlz10(unsigned x)
 /* Harley's algorithm with multiply expanded.
 19 elementary ops plus an indexed load. */
 
-int nlz10a(unsigned x)
+static int nlz10a(unsigned x)
 {
 	static char table[64] =
 		{32,31, u,16, u,30, 3, u,  15, u, u, u,29,10, 2, u,
@@ -274,7 +285,7 @@ int nlz10a(unsigned x)
 17 elementary ops plus an indexed load, if the machine
 has "and not." */
 
-int nlz10b(unsigned x)
+static int nlz10b(unsigned x)
 {
 	static char table[64] =
 		{32,20,19, u, u,18, u, 7,  10,17, u, u,14, u, 6, u,
@@ -295,16 +306,19 @@ int nlz10b(unsigned x)
 }
 
 int errors;
-void error(int x, int y)
+static void error(int x, int y)
 {
 	errors = errors + 1;
 	std::printf("Error for x = %08x, got %d\n", x, y);
 }
 
+#if defined(_MSC_VER)
+#	pragma warning(push)
+#	pragma warning(disable: 4389)  // nonstandard extension used : nameless struct/union
+#endif
+
 int main()
 {
-#	ifdef NDEBUG
-
 	int i, n;
 	static unsigned test[] = {0,32, 1,31, 2,30, 3,30, 4,29, 5,29, 6,29,
 		7,29, 8,28, 9,28, 16,27, 32,26, 64,25, 128,24, 255,24, 256,23,
@@ -435,6 +449,17 @@ int main()
 
 	if (errors == 0)
 		std::printf("Passed all %d cases.\n", static_cast<int>(sizeof(test)/8));
-
-#	endif//NDEBUG
 }
+
+#if defined(_MSC_VER)
+#	pragma warning(pop)
+#endif
+
+#else
+
+int main()
+{
+	return 0;
+}
+
+#endif//NDEBUG

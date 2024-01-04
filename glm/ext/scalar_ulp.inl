@@ -10,9 +10,13 @@
 #include <cmath>
 #include <cfloat>
 
-#if(GLM_COMPILER & GLM_COMPILER_VC)
+#if GLM_COMPILER & GLM_COMPILER_VC
 #	pragma warning(push)
 #	pragma warning(disable : 4127)
+#elif GLM_COMPILER & GLM_COMPILER_CLANG
+#	pragma clang diagnostic push
+#	pragma clang diagnostic ignored "-Wsign-conversion"
+#	pragma clang diagnostic ignored "-Wpadded"
 #endif
 
 typedef union
@@ -44,13 +48,13 @@ typedef union
 	do {									\
 		ieee_float_shape_type gf_u;			\
 		gf_u.value = (d);					\
-		(i) = gf_u.word;					\
+		(i) = static_cast<int>(gf_u.word);	\
 	} while (0)
 
 #define GLM_SET_FLOAT_WORD(d,i)				\
 	do {									\
 		ieee_float_shape_type sf_u;			\
-		sf_u.word = (i);					\
+		sf_u.word = static_cast<unsigned int>(i);	\
 		(d) = sf_u.value;					\
 	} while (0)
 
@@ -182,8 +186,10 @@ namespace detail
 }//namespace detail
 }//namespace glm
 
-#if(GLM_COMPILER & GLM_COMPILER_VC)
+#if GLM_COMPILER & GLM_COMPILER_VC
 #	pragma warning(pop)
+#elif GLM_COMPILER & GLM_COMPILER_CLANG
+#	pragma clang diagnostic pop
 #endif
 
 namespace glm

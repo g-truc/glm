@@ -3,12 +3,6 @@
 #include <glm/ext/scalar_relational.hpp>
 #include <glm/common.hpp>
 
-#if ((GLM_LANG & GLM_LANG_CXX11_FLAG) || (GLM_COMPILER & GLM_COMPILER_VC))
-#	define GLM_NAN(T) NAN
-#else
-#	define GLM_NAN(T) (static_cast<T>(0.0f) / static_cast<T>(0.0f))
-#endif
-
 template <typename T>
 static int test_min()
 {
@@ -74,7 +68,7 @@ static int test_min_nan()
 	int Error = 0;
 
 	T const B = static_cast<T>(1);
-	T const N = static_cast<T>(GLM_NAN(T));
+	T const N = static_cast<T>(NAN);
 	Error += glm::isnan(glm::min(N, B)) ? 0 : 1;
 	Error += !glm::isnan(glm::min(B, N)) ? 0 : 1;
 
@@ -103,7 +97,7 @@ static int test_max_nan()
 	int Error = 0;
 
 	T const B = static_cast<T>(1);
-	T const N = static_cast<T>(GLM_NAN(T));
+	T const N = static_cast<T>(NAN);
 	Error += glm::isnan(glm::max(N, B)) ? 0 : 1;
 	Error += !glm::isnan(glm::max(B, N)) ? 0 : 1;
 
@@ -132,7 +126,7 @@ static int test_fmin()
 	int Error = 0;
 
 	T const B = static_cast<T>(1);
-	T const N = static_cast<T>(GLM_NAN(T));
+	T const N = static_cast<T>(NAN);
 	Error += glm::equal(glm::fmin(N, B), B, glm::epsilon<T>()) ? 0 : 1;
 	Error += glm::equal(glm::fmin(B, N), B, glm::epsilon<T>()) ? 0 : 1;
 
@@ -161,7 +155,7 @@ static int test_fmax()
 	int Error = 0;
 
 	T const B = static_cast<T>(1);
-	T const N = static_cast<T>(GLM_NAN(T));
+	T const N = static_cast<T>(NAN);
 	Error += glm::equal(glm::fmax(N, B), B, glm::epsilon<T>()) ? 0 : 1;
 	Error += glm::equal(glm::fmax(B, N), B, glm::epsilon<T>()) ? 0 : 1;
 
@@ -183,7 +177,7 @@ static int test_fmax()
 
 	return Error;
 }
-#endif//
+#endif//((GLM_LANG & GLM_LANG_CXX11_FLAG) || (GLM_COMPILER & GLM_COMPILER_VC))
 
 static int test_clamp()
 {

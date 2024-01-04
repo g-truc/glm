@@ -1,3 +1,4 @@
+#define GLM_ENABLE_EXPERIMENTAL
 #include <glm/gtx/color_encoding.hpp>
 #include <glm/gtc/color_space.hpp>
 #include <glm/gtc/epsilon.hpp>
@@ -5,7 +6,7 @@
 
 namespace srgb
 {
-	int test()
+	static int test()
 	{
 		int Error(0);
 

@@ -44,7 +44,7 @@ static int test_ivec2_swizzle()
 	return Error;
 }
 
-int test_ivec3_swizzle()
+static int test_ivec3_swizzle()
 {
 	int Error = 0;
 
@@ -109,7 +109,7 @@ int test_ivec3_swizzle()
 	return Error;
 }
 
-int test_ivec4_swizzle()
+static int test_ivec4_swizzle()
 {
 	int Error = 0;
 
@@ -127,7 +127,7 @@ int test_ivec4_swizzle()
 	return Error;
 }
 
-int test_vec4_swizzle()
+static int test_vec4_swizzle()
 {
 	int Error = 0;
 

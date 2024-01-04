@@ -3,7 +3,7 @@
 #include <glm/gtc/quaternion.hpp>
 #include <glm/vector_relational.hpp>
 
-int test_defined()
+static int test_defined()
 {
 	glm::epsilonEqual(glm::vec2(), glm::vec2(), glm::vec2());
 	glm::epsilonEqual(glm::vec3(), glm::vec3(), glm::vec3());
@@ -27,7 +27,7 @@ int test_defined()
 }
 
 template<typename T>
-int test_equal()
+static int test_equal()
 {
 	int Error(0);
 	

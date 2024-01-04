@@ -93,7 +93,7 @@ static int test_ctr()
 	glm::mat4 const m1{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
 
 	glm::mat4 const m2{
-		{0, 1, 2, 3},
+		V,
 		{4, 5, 6, 7},
 		{8, 9, 10, 11},
 		{12, 13, 14, 15}};
@@ -173,15 +173,20 @@ static int test_size()
 
 static int test_constexpr()
 {
+	int Error = 0;
+
 #if GLM_HAS_CONSTEXPR
 	static_assert(glm::mat4::length() == 4, "GLM: Failed constexpr");
 	constexpr glm::mat4 A(1.f);
 	constexpr glm::mat4 B(1.f);
 	constexpr glm::bvec4 C = glm::equal(A, B, 0.01f);
 	static_assert(glm::all(C), "GLM: Failed constexpr");
+
+	constexpr glm::mat4 const Z(1.0f);
+	Error += glm::all(glm::equal(Z, glm::mat4(1.0f), glm::epsilon<float>())) ? 0 : 1;
 #endif
 
-	return 0;
+	return Error;
 }
 
 int main()

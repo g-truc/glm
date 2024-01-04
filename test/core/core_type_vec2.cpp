@@ -10,9 +10,19 @@
 #	include <type_traits>
 #endif
 
+#if GLM_COMPILER & GLM_COMPILER_CLANG
+#	pragma clang diagnostic push
+#	pragma clang diagnostic ignored "-Wglobal-constructors"
+#	pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+
 static glm::ivec2 g1;
 static glm::ivec2 g2(1);
 static glm::ivec2 g3(1, 1);
+
+#if GLM_COMPILER & GLM_COMPILER_CLANG
+#	pragma clang diagnostic pop
+#endif
 
 static int test_operators()
 {
@@ -224,7 +234,7 @@ static int test_ctor()
 	{
 		glm::vec2 a{ 0, 1 };
 		std::vector<glm::vec2> v = {
-			{0, 1},
+			a,
 			{4, 5},
 			{8, 9}};
 	}
@@ -232,7 +242,7 @@ static int test_ctor()
 	{
 		glm::dvec2 a{ 0, 1 };
 		std::vector<glm::dvec2> v = {
-			{0, 1},
+			a,
 			{4, 5},
 			{8, 9}};
 	}
@@ -240,11 +250,22 @@ static int test_ctor()
 
 	{
 		glm::vec2 A = glm::vec2(2.0f);
+		Error += glm::all(glm::equal(A, glm::vec2(2.0f), glm::epsilon<float>())) ? 0 : 1;
+
 		glm::vec2 B = glm::vec2(2.0f, 3.0f);
+		Error += glm::all(glm::equal(B, glm::vec2(2.0f, 3.0f), glm::epsilon<float>())) ? 0 : 1;
+
 		glm::vec2 C = glm::vec2(2.0f, 3.0);
+		Error += glm::all(glm::equal(C, glm::vec2(2.0f, 3.0f), glm::epsilon<float>())) ? 0 : 1;
+
 		//glm::vec2 D = glm::dvec2(2.0); // Build error TODO: What does the specification says?
+
+
 		glm::vec2 E(glm::dvec2(2.0));
+		Error += glm::all(glm::equal(E, glm::vec2(2.0f), glm::epsilon<float>())) ? 0 : 1;
+
 		glm::vec2 F(glm::ivec2(2));
+		Error += glm::all(glm::equal(F, glm::vec2(2.0f), glm::epsilon<float>())) ? 0 : 1;
 	}
 
 	{
@@ -301,7 +322,7 @@ static int test_size()
 	Error += glm::vec2::length() == 2 ? 0 : 1;
 	Error += glm::dvec2::length() == 2 ? 0 : 1;
 
-	GLM_CONSTEXPR std::size_t Length = glm::vec2::length();
+	GLM_CONSTEXPR glm::length_t Length = glm::vec2::length();
 	Error += Length == 2 ? 0 : 1;
 
 	return Error;

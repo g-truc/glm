@@ -3,7 +3,7 @@
 #include <glm/gtx/vector_angle.hpp>
 #include <limits>
 
-int test_angle()
+static int test_angle()
 {
 	int Error = 0;
 	
@@ -17,7 +17,7 @@ int test_angle()
 	return Error;
 }
 
-int test_orientedAngle_vec2()
+static int test_orientedAngle_vec2()
 {
 	int Error = 0;
 	
@@ -31,7 +31,7 @@ int test_orientedAngle_vec2()
 	return Error;
 }
 
-int test_orientedAngle_vec3()
+static int test_orientedAngle_vec3()
 {
 	int Error = 0;
 	

@@ -93,7 +93,7 @@ namespace detail
 	{
 		GLM_FUNC_QUALIFIER GLM_CONSTEXPR static vec<L, T, Q> call(vec<L, T, Q> const& x, vec<L, T, Q> const& y, vec<L, bool, Q> const& a)
 		{
-			vec<L, T, Q> Result;
+			vec<L, T, Q> Result(0);
 			for(length_t i = 0; i < x.length(); ++i)
 				Result[i] = a[i] ? y[i] : x[i];
 			return Result;
@@ -614,7 +614,7 @@ namespace detail
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'isnan' only accept floating-point inputs");
 
-		vec<L, bool, Q> Result;
+		vec<L, bool, Q> Result(0);
 		for (length_t l = 0; l < v.length(); ++l)
 			Result[l] = glm::isnan(v[l]);
 		return Result;
@@ -656,7 +656,7 @@ namespace detail
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'isinf' only accept floating-point inputs");
 
-		vec<L, bool, Q> Result;
+		vec<L, bool, Q> Result(0);
 		for (length_t l = 0; l < v.length(); ++l)
 			Result[l] = glm::isinf(v[l]);
 		return Result;
@@ -761,7 +761,7 @@ namespace detail
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'frexp' only accept floating-point inputs");
 
-		vec<L, T, Q> Result;
+		vec<L, T, Q> Result(0);
 		for (length_t l = 0; l < v.length(); ++l)
 			Result[l] = std::frexp(v[l], &exp[l]);
 		return Result;
@@ -780,7 +780,7 @@ namespace detail
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'ldexp' only accept floating-point inputs");
 
-		vec<L, T, Q> Result;
+		vec<L, T, Q> Result(0);
 		for (length_t l = 0; l < v.length(); ++l)
 			Result[l] = std::ldexp(v[l], exp[l]);
 		return Result;

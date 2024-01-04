@@ -15,16 +15,6 @@
 
 namespace glm
 {
-	template<typename T, qualifier Q>
-	struct qua
-	{
-		// -- Implementation detail --
-
-		typedef qua<T, Q> type;
-		typedef T value_type;
-
-		// -- Data --
-
 #		if GLM_SILENT_WARNINGS == GLM_ENABLE
 #			if GLM_COMPILER & GLM_COMPILER_GCC
 #				pragma GCC diagnostic push
@@ -38,6 +28,16 @@ namespace glm
 #				pragma warning(disable: 4201)  // nonstandard extension used : nameless struct/union
 #			endif
 #		endif
+
+	template<typename T, qualifier Q>
+	struct qua
+	{
+		// -- Implementation detail --
+
+		typedef qua<T, Q> type;
+		typedef T value_type;
+
+		// -- Data --
 
 #		if GLM_LANG & GLM_LANG_CXXMS_FLAG
 			union
@@ -55,16 +55,6 @@ namespace glm
 				T w, x, y, z;
 #			else
 				T x, y, z, w;
-#			endif
-#		endif
-
-#		if GLM_SILENT_WARNINGS == GLM_ENABLE
-#			if GLM_COMPILER & GLM_COMPILER_CLANG
-#				pragma clang diagnostic pop
-#			elif GLM_COMPILER & GLM_COMPILER_GCC
-#				pragma GCC diagnostic pop
-#			elif GLM_COMPILER & GLM_COMPILER_VC
-#				pragma warning(pop)
 #			endif
 #		endif
 
@@ -138,6 +128,16 @@ namespace glm
 		template<typename U>
 		GLM_FUNC_DECL GLM_CONSTEXPR qua<T, Q>& operator/=(U s);
 	};
+
+#		if GLM_SILENT_WARNINGS == GLM_ENABLE
+#			if GLM_COMPILER & GLM_COMPILER_CLANG
+#				pragma clang diagnostic pop
+#			elif GLM_COMPILER & GLM_COMPILER_GCC
+#				pragma GCC diagnostic pop
+#			elif GLM_COMPILER & GLM_COMPILER_VC
+#				pragma warning(pop)
+#			endif
+#		endif
 
 	// -- Unary bit operators --
 

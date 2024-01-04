@@ -179,9 +179,16 @@ namespace detail
 //		return ((floatTo11bit(x) & ((1 << 11) - 1)) << 0) |  ((floatTo11bit(y) & ((1 << 11) - 1)) << 11) | ((floatTo10bit(z) & ((1 << 10) - 1)) << 22);
 //	}
 
+#if GLM_SILENT_WARNINGS == GLM_ENABLE
+#	if defined(__clang__)
+#		pragma clang diagnostic push
+#		pragma clang diagnostic ignored "-Wpadded"
+#	endif
+#endif
+
 	union u3u3u2
 	{
-		struct
+		struct Data
 		{
 			uint x : 3;
 			uint y : 3;
@@ -192,7 +199,7 @@ namespace detail
 
 	union u4u4
 	{
-		struct
+		struct Data
 		{
 			uint x : 4;
 			uint y : 4;
@@ -202,7 +209,7 @@ namespace detail
 
 	union u4u4u4u4
 	{
-		struct
+		struct Data
 		{
 			uint x : 4;
 			uint y : 4;
@@ -214,7 +221,7 @@ namespace detail
 
 	union u5u6u5
 	{
-		struct
+		struct Data
 		{
 			uint x : 5;
 			uint y : 6;
@@ -225,7 +232,7 @@ namespace detail
 
 	union u5u5u5u1
 	{
-		struct
+		struct Data
 		{
 			uint x : 5;
 			uint y : 5;
@@ -235,9 +242,15 @@ namespace detail
 		uint16 pack;
 	};
 
+#if GLM_SILENT_WARNINGS == GLM_ENABLE
+#	if defined(__clang__)
+#		pragma clang diagnostic pop
+#	endif
+#endif
+
 	union u10u10u10u2
 	{
-		struct
+		struct Data
 		{
 			uint x : 10;
 			uint y : 10;
@@ -249,7 +262,7 @@ namespace detail
 
 	union i10i10i10i2
 	{
-		struct
+		struct Data
 		{
 			int x : 10;
 			int y : 10;
@@ -261,7 +274,7 @@ namespace detail
 
 	union u9u9u9e5
 	{
-		struct
+		struct Data
 		{
 			uint x : 9;
 			uint y : 9;
@@ -347,7 +360,7 @@ namespace detail
 		{
 			i16vec4 Unpack;
 			memcpy(&Unpack, &v, sizeof(Unpack));
-			return vec<4, float, Q>(detail::toFloat32(v.x), detail::toFloat32(v.y), detail::toFloat32(v.z), detail::toFloat32(v.w));
+			return vec<4, float, Q>(detail::toFloat32(Unpack.x), detail::toFloat32(Unpack.y), detail::toFloat32(Unpack.z), detail::toFloat32(Unpack.w));
 		}
 	};
 }//namespace detail

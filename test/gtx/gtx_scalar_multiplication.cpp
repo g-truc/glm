@@ -1,9 +1,10 @@
-#define GLM_ENABLE_EXPERIMENTAL
 #include <glm/gtc/constants.hpp>
 #include <glm/ext/vector_relational.hpp>
 #include <glm/glm.hpp>
 
 #if GLM_HAS_TEMPLATE_ALIASES && !(GLM_COMPILER & GLM_COMPILER_GCC)
+
+#define GLM_ENABLE_EXPERIMENTAL
 #include <glm/gtx/scalar_multiplication.hpp>
 
 int main()

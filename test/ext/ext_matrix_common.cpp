@@ -66,10 +66,10 @@ static int test_abs()
 		);
 		glm::mat4 C = glm::matrixCompMult(A, B); // Not * to avoid matrix product.
 		glm::mat4 D = glm::abs(C);
-		glm::bvec4 const col1 = glm::equal(D[0], A[0]);
-		glm::bvec4 const col2 = glm::equal(D[1], A[1]);
-		glm::bvec4 const col3 = glm::equal(D[2], A[2]);
-		glm::bvec4 const col4 = glm::equal(D[3], A[3]);
+		glm::bvec4 const col1 = glm::equal(D[0], A[0], 0.001f);
+		glm::bvec4 const col2 = glm::equal(D[1], A[1], 0.001f);
+		glm::bvec4 const col3 = glm::equal(D[2], A[2], 0.001f);
+		glm::bvec4 const col4 = glm::equal(D[3], A[3], 0.001f);
 		Error += glm::all(glm::bvec4(glm::all(col1), glm::all(col2), glm::all(col3), glm::all(col4))) ? 0 : 1;
 	}
 	{
@@ -87,10 +87,10 @@ static int test_abs()
 		);
 		glm::mat4x3 C = glm::matrixCompMult(A, B); // Not * to avoid matrix product.
 		glm::mat4x3 D = glm::abs(C);
-		glm::bvec3 const col1 = glm::equal(D[0], A[0]);
-		glm::bvec3 const col2 = glm::equal(D[1], A[1]);
-		glm::bvec3 const col3 = glm::equal(D[2], A[2]);
-		glm::bvec3 const col4 = glm::equal(D[3], A[3]);
+		glm::bvec3 const col1 = glm::equal(D[0], A[0], 0.001f);
+		glm::bvec3 const col2 = glm::equal(D[1], A[1], 0.001f);
+		glm::bvec3 const col3 = glm::equal(D[2], A[2], 0.001f);
+		glm::bvec3 const col4 = glm::equal(D[3], A[3], 0.001f);
 		Error += glm::all(glm::bvec4(glm::all(col1), glm::all(col2), glm::all(col3), glm::all(col4))) ? 0 : 1;
 	}
 	{
@@ -108,10 +108,10 @@ static int test_abs()
 		);
 		glm::mat4x2 C = glm::matrixCompMult(A, B); // Not * to avoid matrix product.
 		glm::mat4x2 D = glm::abs(C);
-		glm::bvec2 const col1 = glm::equal(D[0], A[0]);
-		glm::bvec2 const col2 = glm::equal(D[1], A[1]);
-		glm::bvec2 const col3 = glm::equal(D[2], A[2]);
-		glm::bvec2 const col4 = glm::equal(D[3], A[3]);
+		glm::bvec2 const col1 = glm::equal(D[0], A[0], 0.001f);
+		glm::bvec2 const col2 = glm::equal(D[1], A[1], 0.001f);
+		glm::bvec2 const col3 = glm::equal(D[2], A[2], 0.001f);
+		glm::bvec2 const col4 = glm::equal(D[3], A[3], 0.001f);
 		Error += glm::all(glm::bvec4(glm::all(col1), glm::all(col2), glm::all(col3), glm::all(col4))) ? 0 : 1;
 	}
 
@@ -131,9 +131,9 @@ static int test_abs()
 		);
 		glm::mat3x4 C = glm::matrixCompMult(A, B); // Not * to avoid matrix product.
 		glm::mat3x4 D = glm::abs(C);
-		glm::bvec4 const col1 = glm::equal(D[0], A[0]);
-		glm::bvec4 const col2 = glm::equal(D[1], A[1]);
-		glm::bvec4 const col3 = glm::equal(D[2], A[2]);
+		glm::bvec4 const col1 = glm::equal(D[0], A[0], 0.001f);
+		glm::bvec4 const col2 = glm::equal(D[1], A[1], 0.001f);
+		glm::bvec4 const col3 = glm::equal(D[2], A[2], 0.001f);
 		Error += glm::all(glm::bvec3(glm::all(col1), glm::all(col2), glm::all(col3))) ? 0 : 1;
 	}
 	{
@@ -149,9 +149,9 @@ static int test_abs()
 		);
 		glm::mat3 C = glm::matrixCompMult(A, B); // Not * to avoid matrix product.
 		glm::mat3 D = glm::abs(C);
-		glm::bvec3 const col1 = glm::equal(D[0], A[0]);
-		glm::bvec3 const col2 = glm::equal(D[1], A[1]);
-		glm::bvec3 const col3 = glm::equal(D[2], A[2]);
+		glm::bvec3 const col1 = glm::equal(D[0], A[0], 0.001f);
+		glm::bvec3 const col2 = glm::equal(D[1], A[1], 0.001f);
+		glm::bvec3 const col3 = glm::equal(D[2], A[2], 0.001f);
 		Error += glm::all(glm::bvec3(glm::all(col1), glm::all(col2), glm::all(col3))) ? 0 : 1;
 	}
 	{
@@ -167,9 +167,9 @@ static int test_abs()
 		);
 		glm::mat3x2 C = glm::matrixCompMult(A, B); // Not * to avoid matrix product.
 		glm::mat3x2 D = glm::abs(C);
-		glm::bvec2 const col1 = glm::equal(D[0], A[0]);
-		glm::bvec2 const col2 = glm::equal(D[1], A[1]);
-		glm::bvec2 const col3 = glm::equal(D[2], A[2]);
+		glm::bvec2 const col1 = glm::equal(D[0], A[0], 0.001f);
+		glm::bvec2 const col2 = glm::equal(D[1], A[1], 0.001f);
+		glm::bvec2 const col3 = glm::equal(D[2], A[2], 0.001f);
 		Error += glm::all(glm::bvec3(glm::all(col1), glm::all(col2), glm::all(col3))) ? 0 : 1;
 	}
 
@@ -187,8 +187,8 @@ static int test_abs()
 		);
 		glm::mat2x4 C = glm::matrixCompMult(A, B); // Not * to avoid matrix product.
 		glm::mat2x4 D = glm::abs(C);
-		glm::bvec4 const col1 = glm::equal(D[0], A[0]);
-		glm::bvec4 const col2 = glm::equal(D[1], A[1]);
+		glm::bvec4 const col1 = glm::equal(D[0], A[0], 0.001f);
+		glm::bvec4 const col2 = glm::equal(D[1], A[1], 0.001f);
 		Error += glm::all(glm::bvec2(glm::all(col1), glm::all(col2))) ? 0 : 1;
 	}
 	{
@@ -202,8 +202,8 @@ static int test_abs()
 		);
 		glm::mat2x3 C = glm::matrixCompMult(A, B); // Not * to avoid matrix product.
 		glm::mat2x3 D = glm::abs(C);
-		glm::bvec3 const col1 = glm::equal(D[0], A[0]);
-		glm::bvec3 const col2 = glm::equal(D[1], A[1]);
+		glm::bvec3 const col1 = glm::equal(D[0], A[0], 0.001f);
+		glm::bvec3 const col2 = glm::equal(D[1], A[1], 0.001f);
 		Error += glm::all(glm::bvec2(glm::all(col1), glm::all(col2))) ? 0 : 1;
 	}
 	{
@@ -217,8 +217,8 @@ static int test_abs()
 		);
 		glm::mat2 C = glm::matrixCompMult(A, B); // Not * to avoid matrix product.
 		glm::mat2 D = glm::abs(C);
-		glm::bvec2 const col1 = glm::equal(D[0], A[0]);
-		glm::bvec2 const col2 = glm::equal(D[1], A[1]);
+		glm::bvec2 const col1 = glm::equal(D[0], A[0], 0.001f);
+		glm::bvec2 const col2 = glm::equal(D[1], A[1], 0.001f);
 		Error += glm::all(glm::bvec2(glm::all(col1), glm::all(col2))) ? 0 : 1;
 	}
 

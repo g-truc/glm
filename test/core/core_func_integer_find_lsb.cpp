@@ -3,19 +3,9 @@
 #include <cstdlib>     //To define "exit", req'd by XLC.
 #include <ctime>
 
-int nlz(unsigned x)
-{
-	int pop(unsigned x);
+#ifdef NDEBUG
 
-	x = x | (x >> 1);
-	x = x | (x >> 2);
-	x = x | (x >> 4);
-	x = x | (x >> 8);
-	x = x | (x >>16);
-	return pop(~x);
-}
-
-int pop(unsigned x)
+static int pop(unsigned x)
 {
 	x = x - ((x >> 1) & 0x55555555);
 	x = (x & 0x33333333) + ((x >> 2) & 0x33333333);
@@ -25,17 +15,27 @@ int pop(unsigned x)
 	return x >> 24;
 }
 
-int ntz1(unsigned x)
+static int nlz(unsigned x)
+{
+	x = x | (x >> 1);
+	x = x | (x >> 2);
+	x = x | (x >> 4);
+	x = x | (x >> 8);
+	x = x | (x >> 16);
+	return pop(~x);
+}
+
+static int ntz1(unsigned x)
 {
 	return 32 - nlz(~x & (x-1));
 }
 
-int ntz2(unsigned x)
+static int ntz2(unsigned x)
 {
 	return pop(~x & (x - 1));
 }
 
-int ntz3(unsigned x)
+static int ntz3(unsigned x)
 {
 	int n;
 
@@ -48,7 +48,7 @@ int ntz3(unsigned x)
 	return n - (x & 1);
 }
 
-int ntz4(unsigned x)
+static int ntz4(unsigned x)
 {
 	unsigned y;
 	int n;
@@ -63,7 +63,7 @@ int ntz4(unsigned x)
 	return n;
 }
 
-int ntz4a(unsigned x)
+static int ntz4a(unsigned x)
 {
 	unsigned y;
 	int n;
@@ -78,7 +78,7 @@ int ntz4a(unsigned x)
 	return n;
 }
 
-int ntz5(char x)
+static int ntz5(char x)
 {
 	if (x & 15) {
 		if (x & 3) {
@@ -97,7 +97,7 @@ int ntz5(char x)
 	else return 8;
 }
 
-int ntz6(unsigned x)
+static int ntz6(unsigned x)
 {
 	int n;
 
@@ -111,7 +111,7 @@ int ntz6(unsigned x)
 	return n;			// return n;
 }
 
-int ntz6a(unsigned x)
+static int ntz6a(unsigned x)
 {
 	int n = 32;
 
@@ -138,7 +138,12 @@ execute in only 10 cycles on a machine with sufficient parallelism.
 useful parallelism on most machines (the assignments to y, bz, and b4
 could then all run in parallel). */
 
-int ntz7(unsigned x)
+#if GLM_COMPILER & GLM_COMPILER_VC
+#	pragma warning(push)
+#	pragma warning(disable : 4146)
+#endif
+
+static int ntz7(unsigned x)
 {
 	unsigned y, bz, b4, b3, b2, b1, b0;
 
@@ -152,12 +157,18 @@ int ntz7(unsigned x)
 	return bz + b4 + b3 + b2 + b1 + b0;
 }
 
-// This file has divisions by zero to test isnan
-#if GLM_COMPILER & GLM_COMPILER_VC
-#	pragma warning(disable : 4800)
+#if(GLM_COMPILER & GLM_COMPILER_VC)
+#	pragma warning(pop)
 #endif
 
-int ntz7_christophe(unsigned x)
+// This file has divisions by zero to test isnan
+#if GLM_COMPILER & GLM_COMPILER_VC
+#	pragma warning(push)
+#	pragma warning(disable : 4800)
+#	pragma warning(disable : 4146)
+#endif
+
+static int ntz7_christophe(unsigned x)
 {
 	unsigned y, bz, b4, b3, b2, b1, b0;
 
@@ -177,7 +188,7 @@ entries marked "u" are unused. 6 ops including a
 multiply, plus an indexed load. */
 
 #define u 99
-int ntz8(unsigned x)
+static int ntz8(unsigned x)
 {
 	static char table[64] =
 		{32, 0, 1,12, 2, 6, u,13,   3, u, 7, u, u, u, u,14,
@@ -192,7 +203,7 @@ int ntz8(unsigned x)
 /* Seal's algorithm with multiply expanded.
 9 elementary ops plus an indexed load. */
 
-int ntz8a(unsigned x)
+static int ntz8a(unsigned x)
 {
 	static char table[64] =
 		{32, 0, 1,12, 2, 6, u,13,   3, u, 7, u, u, u, u,14,
@@ -210,7 +221,7 @@ int ntz8a(unsigned x)
 /* Reiser's algorithm. Three ops including a "remainder,"
 plus an indexed load. */
 
-int ntz9(unsigned x)
+static int ntz9(unsigned x)
 {
 	static char table[37] = {
 		32,  0,  1, 26,  2, 23, 27,
@@ -228,7 +239,7 @@ table. The de Bruijn sequence used here is
 obtained from Danny Dube's October 3, 1997, posting in
 comp.compression.research. Thanks to Norbert Juffa for this reference. */
 
-int ntz10(unsigned x) {
+static int ntz10(unsigned x) {
 
    static char table[32] =
      { 0, 1, 2,24, 3,19, 6,25,  22, 4,20,10,16, 7,12,26,
@@ -242,7 +253,7 @@ int ntz10(unsigned x) {
 /* Norbert Juffa's code, answer to exercise 1 of Chapter 5 (2nd ed). */
 
 #define SLOW_MUL
-int ntz11 (unsigned int n) {
+static int ntz11(unsigned int n) {
 
    static unsigned char tab[32] =
    {   0,  1,  2, 24,  3, 19, 6,  25,
@@ -264,16 +275,23 @@ int ntz11 (unsigned int n) {
    return n ? tab[k>>27] : 32;
 }
 
+#if(GLM_COMPILER & GLM_COMPILER_VC)
+#	pragma warning(pop)
+#endif
+
 int errors;
-void error(int x, int y) {
+static void error(int x, int y) {
    errors = errors + 1;
    std::printf("Error for x = %08x, got %d\n", x, y);
 }
 
+#if defined(_MSC_VER)
+#	pragma warning(push)
+#	pragma warning(disable: 4389)  // nonstandard extension used : nameless struct/union
+#endif
+
 int main()
 {
-#	ifdef NDEBUG
-
 	int i, m, n;
 	static unsigned test[] = {0,32, 1,0, 2,1, 3,0, 4,2, 5,0, 6,1,  7,0,
 		8,3, 9,0, 16,4, 32,5, 64,6, 128,7, 255,0, 256,8, 512,9, 1024,10,
@@ -409,8 +427,28 @@ int main()
 
 	std::printf("ntz10: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
 
+	TimestampBeg = std::clock();
+	for (std::size_t k = 0; k < Count; ++k)
+		for (i = 0; i < n; i += 2) {
+			if (ntz11(test[i]) != test[i + 1]) error(test[i], ntz11(test[i]));
+		}
+	TimestampEnd = std::clock();
+
+	std::printf("ntz11: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
+
 	if (errors == 0)
 		std::printf("Passed all %d cases.\n", static_cast<int>(sizeof(test)/8));
-
-#	endif//NDEBUG
 }
+
+#if defined(_MSC_VER)
+#	pragma warning(pop)
+#endif
+
+#else
+
+int main()
+{
+	return 0;
+}
+
+#endif//NDEBUG

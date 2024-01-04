@@ -3,7 +3,7 @@
 #include <glm/gtc/epsilon.hpp>
 #include <glm/gtx/intersect.hpp>
 
-int test_intersectRayPlane()
+static int test_intersectRayPlane()
 {
 	int Error = 0;
 	glm::vec3 const PlaneOrigin(0, 0, 1);
@@ -36,7 +36,7 @@ int test_intersectRayPlane()
 	return Error;
 }
 
-int test_intersectRayTriangle()
+static int test_intersectRayTriangle()
 {
 	int Error = 0;
 
@@ -57,7 +57,7 @@ int test_intersectRayTriangle()
 	return Error;
 }
 
-int test_intersectLineTriangle()
+static int test_intersectLineTriangle()
 {
 	int Error = 0;
 

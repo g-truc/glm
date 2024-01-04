@@ -1,9 +1,10 @@
-#define GLM_ENABLE_EXPERIMENTAL
 #include <glm/glm.hpp>
+
+#define GLM_ENABLE_EXPERIMENTAL
 #include <glm/gtx/string_cast.hpp>
 #include <limits>
 
-int test_string_cast_vector()
+static int test_string_cast_vector()
 {
 	int Error = 0;
 
@@ -106,7 +107,7 @@ int test_string_cast_vector()
 	return Error;
 }
 
-int test_string_cast_matrix()
+static int test_string_cast_matrix()
 {
 	int Error = 0;
 	
@@ -117,7 +118,7 @@ int test_string_cast_matrix()
 	return Error;
 }
 
-int test_string_cast_quaternion()
+static int test_string_cast_quaternion()
 {
 	int Error = 0;
 
@@ -129,7 +130,7 @@ int test_string_cast_quaternion()
 
 }
 
-int test_string_cast_dual_quaternion()
+static int test_string_cast_dual_quaternion()
 {
 	int Error = 0;
 

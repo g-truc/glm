@@ -10,6 +10,11 @@
 #include <random>
 #endif
 
+#if GLM_COMPILER & GLM_COMPILER_CLANG
+#	pragma clang diagnostic push
+#	pragma clang diagnostic ignored "-Wsign-conversion"
+#endif
+
 template<typename T>
 T myEpsilon();
 template<>
@@ -18,7 +23,7 @@ template<>
 GLM_INLINE GLM_CONSTEXPR double myEpsilon<double>() { return 0.000001; }
 
 template<glm::length_t D, typename T, glm::qualifier Q>
-bool vectorEpsilonEqual(glm::vec<D, T, Q> const& a, glm::vec<D, T, Q> const& b, T epsilon)
+static bool vectorEpsilonEqual(glm::vec<D, T, Q> const& a, glm::vec<D, T, Q> const& b, T epsilon)
 {
 	for (int c = 0; c < D; ++c)
 		if (!glm::epsilonEqual(a[c], b[c], epsilon))
@@ -35,7 +40,7 @@ bool vectorEpsilonEqual(glm::vec<D, T, Q> const& a, glm::vec<D, T, Q> const& b, 
 }
 
 template<glm::length_t D, typename T, glm::qualifier Q>
-bool matrixEpsilonEqual(glm::mat<D, D, T, Q> const& a, glm::mat<D, D, T, Q> const& b, T epsilon)
+static bool matrixEpsilonEqual(glm::mat<D, D, T, Q> const& a, glm::mat<D, D, T, Q> const& b, T epsilon)
 {
 	for (int c = 0; c < D; ++c)
 		for (int r = 0; r < D; ++r)
@@ -59,7 +64,7 @@ GLM_INLINE bool sameSign(T const& a, T const& b)
 }
 
 template<typename T>
-T failReport(T line)
+static T failReport(T line)
 {
 	fprintf(stderr, "Failed in line %d\n", static_cast<int>(line));
 	return line;
@@ -74,7 +79,7 @@ namespace agarose
 	// Fills `outTestData` with hard-coded atom positions from 1AGA
 	// The fourth coordinate is randomized
 	template<typename vec>
-	void fillTestData(std::vector<vec>& outTestData)
+	static void fillTestData(std::vector<vec>& outTestData)
 	{
 		// x,y,z coordinates copied from RCSB PDB file of 1AGA
 		// w coordinate randomized with standard normal distribution
@@ -337,7 +342,7 @@ namespace agarose
 
 // Compute center of gravity
 template<typename vec>
-vec computeCenter(const std::vector<vec>& testData)
+static vec computeCenter(const std::vector<vec>& testData)
 {
 	double c[4];
 	std::fill(c, c + vec::length(), 0.0);
@@ -355,7 +360,7 @@ vec computeCenter(const std::vector<vec>& testData)
 
 // Test sorting of Eigenvalue&Eigenvector lists. Use exhaustive search.
 template<glm::length_t D, typename T, glm::qualifier Q>
-int testEigenvalueSort()
+static int testEigenvalueSort()
 {
 	// Test input data: four arbitrary values
 	static const glm::vec<D, T, Q> refVal(
@@ -438,7 +443,7 @@ int testEigenvalueSort()
 
 // Test covariance matrix creation functions
 template<glm::length_t D, typename T, glm::qualifier Q>
-int testCovar(
+static int testCovar(
 #if GLM_HAS_CXX11_STL == 1
 	glm::length_t dataSize, unsigned int randomEngineSeed
 #else // GLM_HAS_CXX11_STL == 1
@@ -501,7 +506,7 @@ int testCovar(
 
 // Computes eigenvalues and eigenvectors from well-known covariance matrix
 template<glm::length_t D, typename T, glm::qualifier Q>
-int testEigenvectors(T epsilon)
+static int testEigenvectors(T epsilon)
 {
 	typedef glm::vec<D, T, Q> vec;
 	typedef glm::mat<D, D, T, Q> mat;
@@ -536,7 +541,7 @@ int testEigenvectors(T epsilon)
 // - a uniformly sampled block
 // - reconstruct main axes
 // - check order of eigenvalues equals order of extends of block in direction of main axes
-int smokeTest()
+static int smokeTest()
 {
 	using glm::vec3;
 	using glm::mat3;
@@ -551,8 +556,8 @@ int smokeTest()
 	mat3 covar = glm::computeCovarianceMatrix(pts.data(), pts.size());
 	mat3 eVec;
 	vec3 eVal;
-	int eCnt = glm::findEigenvaluesSymReal(covar, eVal, eVec);
-	if(eCnt != 3)
+	unsigned int eCnt = glm::findEigenvaluesSymReal(covar, eVal, eVec);
+	if(eCnt != 3u)
 		return failReport(__LINE__);
 
 	// sort eVec by decending eVal
@@ -583,7 +588,7 @@ int smokeTest()
 }
 
 #if GLM_HAS_CXX11_STL == 1
-int rndTest(unsigned int randomEngineSeed)
+static int rndTest(unsigned int randomEngineSeed)
 {
 	std::default_random_engine rndEng(randomEngineSeed);
 	std::normal_distribution<double> normalDist;
@@ -632,8 +637,8 @@ int rndTest(unsigned int randomEngineSeed)
 	glm::dmat3 covarMat = glm::computeCovarianceMatrix(ptData.data(), ptData.size(), center);
 	glm::dvec3 evals;
 	glm::dmat3 evecs;
-	int evcnt = glm::findEigenvaluesSymReal(covarMat, evals, evecs);
-	if(evcnt != 3)
+	unsigned int evcnt = glm::findEigenvaluesSymReal(covarMat, evals, evecs);
+	if(evcnt != 3u)
 		return failReport(__LINE__);
 	glm::sortEigenvalues(evals, evecs);
 
@@ -722,3 +727,7 @@ int main()
 
 	return error;
 }
+
+#if GLM_COMPILER & GLM_COMPILER_CLANG
+#	pragma clang diagnostic pop
+#endif

@@ -221,6 +221,11 @@ namespace detail
 	}
 }//namespace detail
 
+#if GLM_COMPILER & GLM_COMPILER_CLANG
+#	pragma clang diagnostic push
+#	pragma clang diagnostic ignored "-Wsign-compare"
+#endif
+
 	template<typename genIUType>
 	GLM_FUNC_QUALIFIER genIUType mask(genIUType Bits)
 	{
@@ -228,6 +233,10 @@ namespace detail
 
 		return Bits >= sizeof(genIUType) * 8 ? ~static_cast<genIUType>(0) : (static_cast<genIUType>(1) << Bits) - static_cast<genIUType>(1);
 	}
+
+#if GLM_COMPILER & GLM_COMPILER_CLANG
+#	pragma clang diagnostic pop
+#endif
 
 	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER vec<L, T, Q> mask(vec<L, T, Q> const& v)

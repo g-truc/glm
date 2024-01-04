@@ -7,7 +7,7 @@
 
 namespace compNormalize
 {
-	int run()
+	static int run()
 	{
 		int Error(0);
 
@@ -61,7 +61,7 @@ namespace compNormalize
 
 namespace compScale
 {
-	int run()
+	static int run()
 	{
 		int Error(0);
 

@@ -16,7 +16,7 @@
 
 using namespace glm;
 
-int test_matrixCompMult()
+static int test_matrixCompMult()
 {
 	int Error(0);
 
@@ -86,25 +86,50 @@ int test_matrixCompMult()
 	return Error;
 }
 
-int test_outerProduct()
+static int test_outerProduct()
 {
-	{ glm::mat2 m = glm::outerProduct(glm::vec2(1.0f), glm::vec2(1.0f)); }
-	{ glm::mat3 m = glm::outerProduct(glm::vec3(1.0f), glm::vec3(1.0f)); }
-	{ glm::mat4 m = glm::outerProduct(glm::vec4(1.0f), glm::vec4(1.0f)); }
+	int Error = 0;
 
-	{ glm::mat2x3 m = glm::outerProduct(glm::vec3(1.0f), glm::vec2(1.0f)); }
-	{ glm::mat2x4 m = glm::outerProduct(glm::vec4(1.0f), glm::vec2(1.0f)); }
+	glm::mat2 m0 = glm::outerProduct(glm::vec2(1.0f), glm::vec2(1.0f));
+	glm::mat2 n0(1, 1, 1, 1);
+	Error += all(equal(m0, n0, epsilon<float>())) ? 0 : 1;
 
-	{ glm::mat3x2 m = glm::outerProduct(glm::vec2(1.0f), glm::vec3(1.0f)); }
-	{ glm::mat3x4 m = glm::outerProduct(glm::vec4(1.0f), glm::vec3(1.0f)); }
-  
-	{ glm::mat4x2 m = glm::outerProduct(glm::vec2(1.0f), glm::vec4(1.0f)); }
-	{ glm::mat4x3 m = glm::outerProduct(glm::vec3(1.0f), glm::vec4(1.0f)); }
+	glm::mat3 m1 = glm::outerProduct(glm::vec3(1.0f), glm::vec3(1.0f));
+	glm::mat3 n1(1, 1, 1, 1, 1, 1, 1, 1, 1);
+	Error += all(equal(m1, n1, epsilon<float>())) ? 0 : 1;
 
-	return 0;
+	glm::mat4 m2 = glm::outerProduct(glm::vec4(1.0f), glm::vec4(1.0f));
+	glm::mat4 n2(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
+	Error += all(equal(m2, n2, epsilon<float>())) ? 0 : 1;
+
+	glm::mat2x3 m3 = glm::outerProduct(glm::vec3(1.0f), glm::vec2(1.0f));
+	glm::mat2x3 n3(1, 1, 1, 1, 1, 1);
+	Error += all(equal(m3, n3, epsilon<float>())) ? 0 : 1;
+
+	glm::mat2x4 m4 = glm::outerProduct(glm::vec4(1.0f), glm::vec2(1.0f));
+	glm::mat2x4 n4(1, 1, 1, 1, 1, 1, 1, 1);
+	Error += all(equal(m4, n4, epsilon<float>())) ? 0 : 1;
+
+	glm::mat3x2 m5 = glm::outerProduct(glm::vec2(1.0f), glm::vec3(1.0f));
+	glm::mat3x2 n5(1, 1, 1, 1, 1, 1);
+	Error += all(equal(m5, n5, epsilon<float>())) ? 0 : 1;
+
+	glm::mat3x4 m6 = glm::outerProduct(glm::vec4(1.0f), glm::vec3(1.0f));
+	glm::mat3x4 n6(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
+	Error += all(equal(m6, n6, epsilon<float>())) ? 0 : 1;
+
+	glm::mat4x2 m7 = glm::outerProduct(glm::vec2(1.0f), glm::vec4(1.0f));
+	glm::mat4x2 n7(1, 1, 1, 1, 1, 1, 1, 1);
+	Error += all(equal(m7, n7, epsilon<float>())) ? 0 : 1;
+
+	glm::mat4x3 m8 = glm::outerProduct(glm::vec3(1.0f), glm::vec4(1.0f));
+	glm::mat4x3 n8(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
+	Error += all(equal(m8, n8, epsilon<float>())) ? 0 : 1;
+
+	return Error;
 }
 
-int test_transpose()
+static int test_transpose()
 {
 	int Error(0);
 
@@ -174,14 +199,14 @@ int test_transpose()
 	return Error;
 }
 
-int test_determinant()
+static int test_determinant()
 {
 
 
 	return 0;
 }
 
-int test_inverse()
+static int test_inverse()
 {
 	int Error = 0;
 
@@ -221,7 +246,7 @@ int test_inverse()
 	return Error;
 }
 
-int test_inverse_simd()
+static int test_inverse_simd()
 {
 	int Error = 0;
 
@@ -240,7 +265,7 @@ int test_inverse_simd()
 	return Error;
 }
 
-int test_shearing()
+static int test_shearing()
 {
     int Error = 0;
 
@@ -320,7 +345,7 @@ int test_shearing()
 }
 
 template<typename VEC3, typename MAT4>
-int test_inverse_perf(std::size_t Count, std::size_t Instance, char const * Message)
+static int test_inverse_perf(std::size_t Count, std::size_t Instance, char const * Message)
 {
 	std::vector<MAT4> TestInputs;
 	TestInputs.resize(Count);

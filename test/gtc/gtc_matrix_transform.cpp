@@ -3,7 +3,7 @@
 #include <glm/ext/matrix_relational.hpp>
 #include <glm/ext/scalar_relational.hpp>
 
-int test_perspective()
+static int test_perspective()
 {
 	int Error = 0;
 
@@ -56,7 +56,7 @@ int test_perspective()
 	return Error;
 }
 
-int test_infinitePerspective()
+static int test_infinitePerspective()
 {
 	int Error = 0;
 
@@ -109,33 +109,40 @@ int test_infinitePerspective()
 	return Error;
 }
 
-int test_pick()
+static int test_pick()
 {
 	int Error = 0;
 
 	glm::mat4 Pick = glm::pickMatrix(glm::vec2(1, 2), glm::vec2(3, 4), glm::ivec4(0, 0, 320, 240));
+	Error += !glm::all(glm::notEqual(Pick, glm::mat4(2.0), 0.001f));
 
 	return Error;
 }
 
-int test_tweakedInfinitePerspective()
+static int test_tweakedInfinitePerspective()
 {
 	int Error = 0;
 
 	glm::mat4 ProjectionA = glm::tweakedInfinitePerspective(45.f, 640.f/480.f, 1.0f);
 	glm::mat4 ProjectionB = glm::tweakedInfinitePerspective(45.f, 640.f/480.f, 1.0f, 0.001f);
 
+	Error += !glm::all(glm::notEqual(ProjectionA, glm::mat4(1.0), 0.001f));
+	Error += !glm::all(glm::notEqual(ProjectionB, glm::mat4(1.0), 0.001f));
 
 	return Error;
 }
 
-int test_translate()
+static int test_translate()
 {
 	int Error = 0;
 
 	glm::lowp_vec3 v(1.0);
 	glm::lowp_mat4 m(0);
 	glm::lowp_mat4 t = glm::translate(m, v);
+
+	glm::bvec4 b = glm::notEqual(t, glm::lowp_mat4(1.0), 0.001f);
+
+	Error += !glm::all(b);
 
 	return Error;
 }

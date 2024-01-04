@@ -223,6 +223,11 @@ namespace bitfieldReverse
 		}
 	};
 
+#		if GLM_COMPILER & GLM_COMPILER_VC
+#			pragma warning(push)
+#			pragma warning(disable : 4309)
+#		endif
+
 	template<glm::length_t L, typename T, glm::qualifier Q>
 	GLM_FUNC_QUALIFIER glm::vec<L, T, Q> bitfieldReverseOps(glm::vec<L, T, Q> const& v)
 	{
@@ -236,11 +241,20 @@ namespace bitfieldReverse
 		return x;
 	}
 
+#		if GLM_COMPILER & GLM_COMPILER_VC
+#			pragma warning(pop)
+#		endif
+
 	template<typename genType>
 	GLM_FUNC_QUALIFIER genType bitfieldReverseOps(genType x)
 	{
 		return bitfieldReverseOps(glm::vec<1, genType, glm::defaultp>(x)).x;
 	}
+
+#if GLM_COMPILER & GLM_COMPILER_CLANG
+#	pragma clang diagnostic push
+#	pragma clang diagnostic ignored "-Wpadded"
+#endif
 
 	template<typename genType>
 	struct type
@@ -249,6 +263,10 @@ namespace bitfieldReverse
 		genType		Return;
 		result		Result;
 	};
+
+#if GLM_COMPILER & GLM_COMPILER_CLANG
+#	pragma clang diagnostic pop
+#endif
 
 	typedef type<glm::uint> typeU32;
 
@@ -1423,6 +1441,11 @@ namespace bitCount
 		}
 	};
 
+#		if GLM_COMPILER & GLM_COMPILER_VC
+#			pragma warning(push)
+#			pragma warning(disable : 4309)
+#		endif
+
 	template<glm::length_t L, typename T, glm::qualifier Q>
 	static glm::vec<L, int, Q> bitCount_bitfield(glm::vec<L, T, Q> const& v)
 	{
@@ -1435,6 +1458,10 @@ namespace bitCount
 		x = compute_bitfieldBitCountStep<sizeof(T) * 8 >= 64>::call(x, static_cast<typename glm::detail::make_unsigned<T>::type>(0x00000000FFFFFFFFull), static_cast<typename glm::detail::make_unsigned<T>::type>(32));
 		return glm::vec<L, int, Q>(x);
 	}
+
+#		if GLM_COMPILER & GLM_COMPILER_VC
+#			pragma warning(pop)
+#		endif
 
 	template<typename genType>
 	static int bitCount_bitfield(genType x)

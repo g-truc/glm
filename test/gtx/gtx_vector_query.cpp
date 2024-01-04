@@ -4,7 +4,7 @@
 #include <glm/vec4.hpp>
 #include <glm/gtx/vector_query.hpp>
 
-int test_areCollinear()
+static int test_areCollinear()
 {
 	int Error(0);
 
@@ -26,7 +26,7 @@ int test_areCollinear()
 	return Error;
 }
 
-int test_areOrthogonal()
+static int test_areOrthogonal()
 {
 	int Error(0);
 	
@@ -36,7 +36,7 @@ int test_areOrthogonal()
 	return Error;
 }
 
-int test_isNormalized()
+static int test_isNormalized()
 {
 	int Error(0);
 	
@@ -46,7 +46,7 @@ int test_isNormalized()
 	return Error;
 }
 
-int test_isNull()
+static int test_isNull()
 {
 	int Error(0);
 	
@@ -56,7 +56,7 @@ int test_isNull()
 	return Error;
 }
 
-int test_areOrthonormal()
+static int test_areOrthonormal()
 {
 	int Error(0);
 

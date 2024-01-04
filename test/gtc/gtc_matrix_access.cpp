@@ -11,7 +11,7 @@
 #include <glm/mat4x3.hpp>
 #include <glm/mat4x4.hpp>
 
-int test_mat2x2_row_set()
+static int test_mat2x2_row_set()
 {
 	int Error = 0;
 
@@ -26,7 +26,7 @@ int test_mat2x2_row_set()
 	return Error;
 }
 
-int test_mat2x2_col_set()
+static int test_mat2x2_col_set()
 {
 	int Error = 0;
 
@@ -41,7 +41,7 @@ int test_mat2x2_col_set()
 	return Error;
 }
 
-int test_mat2x3_row_set()
+static int test_mat2x3_row_set()
 {
 	int Error = 0;
 
@@ -58,7 +58,7 @@ int test_mat2x3_row_set()
 	return Error;
 }
 
-int test_mat2x3_col_set()
+static int test_mat2x3_col_set()
 {
 	int Error = 0;
 
@@ -73,7 +73,7 @@ int test_mat2x3_col_set()
 	return Error;
 }
 
-int test_mat2x4_row_set()
+static int test_mat2x4_row_set()
 {
 	int Error = 0;
 
@@ -92,7 +92,7 @@ int test_mat2x4_row_set()
 	return Error;
 }
 
-int test_mat2x4_col_set()
+static int test_mat2x4_col_set()
 {
 	int Error = 0;
 
@@ -107,7 +107,7 @@ int test_mat2x4_col_set()
 	return Error;
 }
 
-int test_mat3x2_row_set()
+static int test_mat3x2_row_set()
 {
 	int Error = 0;
 
@@ -122,7 +122,7 @@ int test_mat3x2_row_set()
 	return Error;
 }
 
-int test_mat3x2_col_set()
+static int test_mat3x2_col_set()
 {
 	int Error = 0;
 
@@ -139,7 +139,7 @@ int test_mat3x2_col_set()
 	return Error;
 }
 
-int test_mat3x3_row_set()
+static int test_mat3x3_row_set()
 {
 	int Error = 0;
 
@@ -156,7 +156,7 @@ int test_mat3x3_row_set()
 	return Error;
 }
 
-int test_mat3x3_col_set()
+static int test_mat3x3_col_set()
 {
 	int Error = 0;
 
@@ -173,7 +173,7 @@ int test_mat3x3_col_set()
 	return Error;
 }
 
-int test_mat3x4_row_set()
+static int test_mat3x4_row_set()
 {
 	int Error = 0;
 
@@ -192,7 +192,7 @@ int test_mat3x4_row_set()
 	return Error;
 }
 
-int test_mat3x4_col_set()
+static int test_mat3x4_col_set()
 {
 	int Error = 0;
 
@@ -209,7 +209,7 @@ int test_mat3x4_col_set()
 	return Error;
 }
 
-int test_mat4x2_row_set()
+static int test_mat4x2_row_set()
 {
 	int Error = 0;
 
@@ -224,7 +224,7 @@ int test_mat4x2_row_set()
 	return Error;
 }
 
-int test_mat4x2_col_set()
+static int test_mat4x2_col_set()
 {
 	int Error = 0;
 
@@ -243,7 +243,7 @@ int test_mat4x2_col_set()
 	return Error;
 }
 
-int test_mat4x3_row_set()
+static int test_mat4x3_row_set()
 {
 	int Error = 0;
 
@@ -260,7 +260,7 @@ int test_mat4x3_row_set()
 	return Error;
 }
 
-int test_mat4x3_col_set()
+static int test_mat4x3_col_set()
 {
 	int Error = 0;
 
@@ -279,7 +279,7 @@ int test_mat4x3_col_set()
 	return Error;
 }
 
-int test_mat4x4_row_set()
+static int test_mat4x4_row_set()
 {
 	int Error = 0;
 
@@ -298,7 +298,7 @@ int test_mat4x4_row_set()
 	return Error;
 }
 
-int test_mat4x4_col_set()
+static int test_mat4x4_col_set()
 {
 	int Error = 0;
 
@@ -317,7 +317,7 @@ int test_mat4x4_col_set()
 	return Error;
 }
 
-int test_mat4x4_row_get()
+static int test_mat4x4_row_get()
 {
 	int Error = 0;
 
@@ -335,7 +335,7 @@ int test_mat4x4_row_get()
 	return Error;
 }
 
-int test_mat4x4_col_get()
+static int test_mat4x4_col_get()
 {
 	int Error = 0;
 

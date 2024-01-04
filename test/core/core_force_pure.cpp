@@ -3,6 +3,7 @@
 #endif//GLM_FORCE_PURE
 #define GLM_FORCE_DEFAULT_ALIGNED_GENTYPES
 #define GLM_FORCE_SWIZZLE
+#include <glm/ext/scalar_constants.hpp>
 #include <glm/ext/vector_relational.hpp>
 #include <glm/vector_relational.hpp>
 #include <glm/vec2.hpp>
@@ -35,18 +36,28 @@ static int test_vec4_ctor()
 #if GLM_HAS_INITIALIZER_LISTS
 	{
 		glm::vec4 a{ 0, 1, 2, 3 };
+		Error += glm::all(glm::equal(a, glm::vec4(0, 1, 2, 3), glm::epsilon<float>())) ? 0 : 1;
+
 		std::vector<glm::vec4> v = {
 			{0, 1, 2, 3},
 			{4, 5, 6, 7},
 			{8, 9, 0, 1}};
+		Error += glm::all(glm::equal(v[0], glm::vec4(0, 1, 2, 3), glm::epsilon<float>())) ? 0 : 1;
+		Error += glm::all(glm::equal(v[1], glm::vec4(4, 5, 6, 7), glm::epsilon<float>())) ? 0 : 1;
+		Error += glm::all(glm::equal(v[2], glm::vec4(8, 9, 0, 1), glm::epsilon<float>())) ? 0 : 1;
 	}
 
 	{
 		glm::dvec4 a{ 0, 1, 2, 3 };
+		Error += glm::all(glm::equal(a, glm::dvec4(0, 1, 2, 3), glm::epsilon<double>())) ? 0 : 1;
+
 		std::vector<glm::dvec4> v = {
 			{0, 1, 2, 3},
 			{4, 5, 6, 7},
 			{8, 9, 0, 1}};
+		Error += glm::all(glm::equal(v[0], glm::dvec4(0, 1, 2, 3), glm::epsilon<double>())) ? 0 : 1;
+		Error += glm::all(glm::equal(v[1], glm::dvec4(4, 5, 6, 7), glm::epsilon<double>())) ? 0 : 1;
+		Error += glm::all(glm::equal(v[2], glm::dvec4(8, 9, 0, 1), glm::epsilon<double>())) ? 0 : 1;
 	}
 #endif
 
@@ -141,19 +152,19 @@ static int test_bvec4_ctor()
 {
 	int Error = 0;
 
-	glm::bvec4 const A(true);
-	glm::bvec4 const B(true);
-	glm::bvec4 const C(false);
-	glm::bvec4 const D = A && B;
-	glm::bvec4 const E = A && C;
-	glm::bvec4 const F = A || C;
+	glm::bvec4 A(true);
+	glm::bvec4 B(true);
+	glm::bvec4 C(false);
+	glm::bvec4 D = A && B;
+	glm::bvec4 E = A && C;
+	glm::bvec4 F = A || C;
 
-	Error += D == glm::bvec4(true) ? 0 : 1;
-	Error += E == glm::bvec4(false) ? 0 : 1;
-	Error += F == glm::bvec4(true) ? 0 : 1;
+	Error += (D == A) ? 0 : 1;
+	Error += (E == C) ? 0 : 1;
+	Error += (F == A) ? 0 : 1;
 
-	bool const G = A == C;
-	bool const H = A != C;
+	bool G = A == C;
+	bool H = A != C;
 
 	Error += !G ? 0 : 1;
 	Error += H ? 0 : 1;
@@ -302,17 +313,15 @@ static int test_vec4_equal()
 	int Error = 0;
 
 	{
-		glm::uvec4 const A(1, 2, 3, 4);
-		glm::uvec4 const B(1, 2, 3, 4);
-		Error += A == B ? 0 : 1;
-		Error += A != B ? 1 : 0;
+		glm::uvec4 A(1, 2, 3, 4);
+		Error += (A == glm::uvec4(1, 2, 3, 4)) ? 0 : 1;
+		Error += (A != glm::uvec4(1, 2, 3, 4)) ? 1 : 0;
 	}
 
 	{
-		glm::ivec4 const A(1, 2, 3, 4);
-		glm::ivec4 const B(1, 2, 3, 4);
-		Error += A == B ? 0 : 1;
-		Error += A != B ? 1 : 0;
+		glm::ivec4 A(1, 2, 3, 4);
+		Error += (A == glm::ivec4(1, 2, 3, 4)) ? 0 : 1;
+		Error += (A != glm::ivec4(1, 2, 3, 4)) ? 1 : 0;
 	}
 
 	return Error;

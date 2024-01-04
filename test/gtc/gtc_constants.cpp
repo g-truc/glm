@@ -1,6 +1,6 @@
 #include <glm/gtc/constants.hpp>
 
-int test_epsilon()
+static int test_epsilon()
 {
 	int Error = 0;
 
