@@ -89,7 +89,7 @@ namespace glm
 
 		GLM_FUNC_DECL GLM_CONSTEXPR qua(T s, vec<3, T, Q> const& v);
 
-#		ifdef GLM_FORCE_QUAT_CTOR_XYZW
+#		ifdef GLM_FORCE_QUAT_DATA_XYZW
 		GLM_FUNC_DECL GLM_CONSTEXPR qua(T x, T y, T z, T w);
 #		else
 		GLM_FUNC_DECL GLM_CONSTEXPR qua(T w, T x, T y, T z);
