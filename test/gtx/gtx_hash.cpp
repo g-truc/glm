@@ -1,4 +1,10 @@
 #if __cplusplus >= 201103L
+
+#if GLM_COMPILER & GLM_COMPILER_CLANG
+#	pragma clang diagnostic push
+#	pragma clang diagnostic ignored "-Wfloat-equal"
+#endif
+
 #define GLM_ENABLE_EXPERIMENTAL
 #include <glm/gtx/hash.hpp>
 
@@ -17,11 +23,6 @@ static int test_compile()
     Error += ++map_vec3[glm::ivec3(0)];
     std::unordered_map<glm::ivec4, int> map_vec4;
     Error += ++map_vec4[glm::ivec4(0)];
-
-#if GLM_COMPILER & GLM_COMPILER_CLANG
-#	pragma clang diagnostic push
-#	pragma clang diagnostic ignored "-Wfloat-equal"
-#endif
 
     // Quaternion types
     std::unordered_map<glm::quat, int> map_quat;
@@ -49,10 +50,6 @@ static int test_compile()
     std::unordered_map<glm::mat4x4, int> map_mat4x4;
     Error += ++map_mat4x4[glm::mat4x4(0.0f)];
 
-#if GLM_COMPILER & GLM_COMPILER_CLANG
-#	pragma clang diagnostic pop
-#endif
-
     return Error > 0 ? 0 : 1;
 }
 
@@ -64,6 +61,10 @@ int main()
 
     return Error;
 }
+
+#if GLM_COMPILER & GLM_COMPILER_CLANG
+#	pragma clang diagnostic pop
+#endif
 
 #else
 
