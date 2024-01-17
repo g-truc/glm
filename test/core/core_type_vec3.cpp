@@ -42,7 +42,7 @@ static int test_vec3_ctor()
 	{
 		glm::vec3 a{ 0, 1, 2 };
 		std::vector<glm::vec3> v = {
-			{0, 1, 2},
+			a,
 			{4, 5, 6},
 			{8, 9, 0}};
 	}
@@ -50,7 +50,7 @@ static int test_vec3_ctor()
 	{
 		glm::dvec3 a{ 0, 1, 2 };
 		std::vector<glm::dvec3> v = {
-			{0, 1, 2},
+			a,
 			{4, 5, 6},
 			{8, 9, 0}};
 	}
@@ -70,8 +70,9 @@ static int test_vec3_ctor()
 		Tests.push_back(glm::ivec3(1, 2, 3));
 		Tests.push_back(glm::ivec3(glm::ivec4(1, 2, 3, 4)));
 
-		for(std::size_t i = 0; i < Tests.size(); ++i)
+		for (std::size_t i = 0; i < Tests.size(); ++i) {
 			Error += Tests[i] == glm::ivec3(1, 2, 3) ? 0 : 1;
+		}
 	}
 
 	{
@@ -139,19 +140,19 @@ static int test_bvec3_ctor()
 {
 	int Error = 0;
 
-	glm::bvec3 const A(true);
-	glm::bvec3 const B(true);
-	glm::bvec3 const C(false);
-	glm::bvec3 const D = A && B;
-	glm::bvec3 const E = A && C;
-	glm::bvec3 const F = A || C;
+	glm::bvec3 A(true);
+	glm::bvec3 B(true);
+	glm::bvec3 C(false);
+	glm::bvec3 D = A && B;
+	glm::bvec3 E = A && C;
+	glm::bvec3 F = A || C;
 
 	Error += D == glm::bvec3(true) ? 0 : 1;
 	Error += E == glm::bvec3(false) ? 0 : 1;
 	Error += F == glm::bvec3(true) ? 0 : 1;
 
-	bool const G = A == C;
-	bool const H = A != C;
+	bool G = A == C;
+	bool H = A != C;
 	Error += !G ? 0 : 1;
 	Error += H ? 0 : 1;
 
