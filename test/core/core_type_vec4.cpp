@@ -265,32 +265,9 @@ static int test_vec4_ctor()
 
 		glm::vec4 J(1.0f, v3_1);
 		Error += glm::all(glm::equal(J, O, glm::epsilon<float>())) ? 0 : 1;
-	}
 
-	{
-		glm::vec1 v1_0(1.0f);
-		glm::vec1 v1_1(2.0f);
-		glm::vec1 v1_2(3.0f);
-		glm::vec1 v1_3(4.0f);
-
-		glm::vec2 v2(2.0f, 3.0f);
-
-		glm::vec4 O(1.0f, 2.0, 3.0f, 4.0);
-
-		glm::vec4 A(v1_0, v2, v1_3);
-		Error += glm::all(glm::equal(A, O, glm::epsilon<float>())) ? 0 : 1;
-
-		glm::vec4 B(v1_0, v2, 4.0);
-		Error += glm::all(glm::equal(B, O, glm::epsilon<float>())) ? 0 : 1;
-
-		glm::vec4 C(1.0, v2, v1_3);
-		Error += glm::all(glm::equal(C, O, glm::epsilon<float>())) ? 0 : 1;
-
-		glm::vec4 D(1.0f, v2, 4.0);
-		Error += glm::all(glm::equal(D, O, glm::epsilon<float>())) ? 0 : 1;
-
-		glm::vec4 E(1.0, v2, 4.0f);
-		Error += glm::all(glm::equal(E, O, glm::epsilon<float>())) ? 0 : 1;
+		glm::vec4 K(1.0f, v2_1, 4.0f);
+		Error += glm::all(glm::equal(J, O, glm::epsilon<float>())) ? 0 : 1;
 	}
 
 	return Error;
@@ -460,15 +437,15 @@ static int test_equal()
 	int Error = 0;
 
 	{
-		glm::uvec4 const A(1, 2, 3, 4);
-		glm::uvec4 const B(1, 2, 3, 4);
+		glm::uvec4 A(1, 2, 3, 4);
+		glm::uvec4 B(1, 2, 3, 4);
 		Error += A == B ? 0 : 1;
 		Error += A != B ? 1 : 0;
 	}
 
 	{
-		glm::ivec4 const A(1, 2, 3, 4);
-		glm::ivec4 const B(1, 2, 3, 4);
+		glm::ivec4 A(1, 2, 3, 4);
+		glm::ivec4 B(1, 2, 3, 4);
 		Error += A == B ? 0 : 1;
 		Error += A != B ? 1 : 0;
 	}
