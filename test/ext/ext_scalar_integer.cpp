@@ -622,6 +622,11 @@ namespace nextMultiple
 
 namespace findNSB
 {
+#if GLM_COMPILER & GLM_COMPILER_CLANG
+#	pragma clang diagnostic push
+#	pragma clang diagnostic ignored "-Wpadded"
+#endif
+
 	template<typename T>
 	struct type
 	{
@@ -629,6 +634,10 @@ namespace findNSB
 		int SignificantBitCount;
 		int Return;
 	};
+
+#if GLM_COMPILER & GLM_COMPILER_CLANG
+#	pragma clang diagnostic pop
+#endif
 
 	template <typename T>
 	static int run()
