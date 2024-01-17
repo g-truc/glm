@@ -6,6 +6,7 @@
 #if GLM_COMPILER & GLM_COMPILER_CLANG
 #	pragma clang diagnostic push
 #	pragma clang diagnostic ignored "-Wglobal-constructors"
+#	pragma clang diagnostic ignored "-Wunused-variable"
 #endif
 
 static glm::vec1 g1;
