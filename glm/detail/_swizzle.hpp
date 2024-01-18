@@ -113,12 +113,12 @@ namespace detail
 			_apply_op(that, op_div());
 		}
 
-		GLM_FUNC_QUALIFIER T& operator[](size_t i)
+		GLM_FUNC_QUALIFIER T& operator[](int i)
 		{
 			const int offset_dst[4] = { E0, E1, E2, E3 };
 			return this->elem(offset_dst[i]);
 		}
-		GLM_FUNC_QUALIFIER T operator[](size_t i) const
+		GLM_FUNC_QUALIFIER T operator[](int i) const
 		{
 			const int offset_dst[4] = { E0, E1, E2, E3 };
 			return this->elem(offset_dst[i]);
@@ -147,7 +147,7 @@ namespace detail
 
 		GLM_FUNC_QUALIFIER _swizzle_base2& operator= (Stub const&) { return *this; }
 
-		GLM_FUNC_QUALIFIER T operator[]  (size_t i) const
+		GLM_FUNC_QUALIFIER T operator[]  (int i) const
 		{
 			const int offset_dst[4] = { E0, E1, E2, E3 };
 			return this->elem(offset_dst[i]);

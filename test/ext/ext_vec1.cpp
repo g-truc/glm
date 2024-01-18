@@ -123,19 +123,19 @@ static int test_bvec1_ctor()
 {
 	int Error = 0;
 
-	glm::bvec1 const A(true);
-	glm::bvec1 const B(true);
-	glm::bvec1 const C(false);
-	glm::bvec1 const D = A && B;
-	glm::bvec1 const E = A && C;
-	glm::bvec1 const F = A || C;
+	glm::bvec1 A(true);
+	glm::bvec1 B(true);
+	glm::bvec1 C(false);
+	glm::bvec1 D = A && B;
+	glm::bvec1 E = A && C;
+	glm::bvec1 F = A || C;
 
 	Error += D == glm::bvec1(true) ? 0 : 1;
 	Error += E == glm::bvec1(false) ? 0 : 1;
 	Error += F == glm::bvec1(true) ? 0 : 1;
 
-	bool const G = A == C;
-	bool const H = A != C;
+	bool G = A == C;
+	bool H = A != C;
 	Error += !G ? 0 : 1;
 	Error += H ? 0 : 1;
 
