@@ -18,7 +18,7 @@ namespace detail
 
 			__m128i const set2 = _mm_andnot_si128(set0, _mm_set1_epi32(-1));
 			__m128i const and2 = _mm_and_si128(set0, set2);
-			__m128i const sft2 = _mm_srai_epi32(and2, Shift);
+			__m128i const sft2 = _mm_srai_epi32(and2, static_cast<int>(Shift));
 
 			__m128i const or0 = _mm_or_si128(sft1, sft2);
 
