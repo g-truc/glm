@@ -411,7 +411,17 @@ namespace bitfieldInterleave
 	
 		__m128i Result;
 		_mm_store_si128(&Result, Reg1);
+
+#if GLM_COMPILER & GLM_COMPILER_CLANG
+#	pragma clang diagnostic push
+#	pragma clang diagnostic ignored "-Wundefined-reinterpret-cast"
+#endif
+
 		return *reinterpret_cast<glm::uint64*>(&Result);
+
+#if GLM_COMPILER & GLM_COMPILER_CLANG
+#	pragma clang diagnostic pop
+#endif
 	}
 
 	static inline glm::uint64 sseUnalignedBitfieldInterleave(glm::uint32 x, glm::uint32 y)
@@ -468,7 +478,17 @@ namespace bitfieldInterleave
 
 		__m128i Result;
 		_mm_store_si128(&Result, Reg1);
+
+#if GLM_COMPILER & GLM_COMPILER_CLANG
+#	pragma clang diagnostic push
+#	pragma clang diagnostic ignored "-Wundefined-reinterpret-cast"
+#endif
+
 		return *reinterpret_cast<glm::uint64*>(&Result);
+
+#if GLM_COMPILER & GLM_COMPILER_CLANG
+#	pragma clang diagnostic pop
+#endif
 	}
 #endif//GLM_ARCH & GLM_ARCH_SSE2_BIT
 
