@@ -1,5 +1,7 @@
 #if __cplusplus >= 201103L
 
+#include <glm/glm.hpp>
+
 #if GLM_COMPILER & GLM_COMPILER_CLANG
 #	pragma clang diagnostic push
 #	pragma clang diagnostic ignored "-Wfloat-equal"
