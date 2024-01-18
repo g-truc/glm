@@ -167,11 +167,11 @@ namespace detail
 			{
 				io::basic_state_saver<CTy> const bss(os);
 
-				os << std::fixed << std::right << std::setprecision(fmt.precision) << std::setfill(fmt.space) << fmt.delim_left;
+				os << std::fixed << std::right << std::setprecision(static_cast<std::streamsize>(fmt.precision)) << std::setfill(fmt.space) << fmt.delim_left;
 
 				for(length_t i(0); i < components; ++i)
 				{
-					os << std::setw(fmt.width) << a[i];
+					os << std::setw(static_cast<int>(fmt.width)) << a[i];
 					if(components-1 != i)
 						os << fmt.separator;
 				}
