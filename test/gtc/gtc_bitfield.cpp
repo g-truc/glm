@@ -359,7 +359,7 @@ namespace bitfieldInterleave
 #if GLM_ARCH & GLM_ARCH_SSE2_BIT
 	static inline glm::uint64 sseBitfieldInterleave(glm::uint32 x, glm::uint32 y)
 	{
-		__m128i const Array = _mm_set_epi32(0, y, 0, x);
+		__m128i const Array = _mm_set_epi32(0, static_cast<int>(y), 0, static_cast<int>(x));
 
 		__m128i const Mask4 = _mm_set1_epi32(0x0000FFFF);
 		__m128i const Mask3 = _mm_set1_epi32(0x00FF00FF);
@@ -416,7 +416,7 @@ namespace bitfieldInterleave
 
 	static inline glm::uint64 sseUnalignedBitfieldInterleave(glm::uint32 x, glm::uint32 y)
 	{
-		__m128i const Array = _mm_set_epi32(0, y, 0, x);
+		__m128i const Array = _mm_set_epi32(0, static_cast<int>(y), 0, static_cast<int>(x));
 
 		__m128i const Mask4 = _mm_set1_epi32(0x0000FFFF);
 		__m128i const Mask3 = _mm_set1_epi32(0x00FF00FF);

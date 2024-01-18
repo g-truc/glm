@@ -72,12 +72,21 @@ static int test_vec3_aligned()
 	std::size_t const Size1 = sizeof(Struct1);
 	Error += Size1 == 48 ? 0 : 1;
 
+#if GLM_COMPILER & GLM_COMPILER_CLANG
+#	pragma clang diagnostic push
+#	pragma clang diagnostic ignored "-Wpadded"
+#endif
+
 	struct Struct2
 	{
 		glm::vec4 A;
 		glm::vec3 B;
 		float C;
 	};
+
+#if GLM_COMPILER & GLM_COMPILER_CLANG
+#	pragma clang diagnostic pop
+#endif
 
 	std::size_t const Size2 = sizeof(Struct2);
 	Error += Size2 == 48 ? 0 : 1;
