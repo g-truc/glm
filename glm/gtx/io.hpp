@@ -29,6 +29,12 @@
 #	pragma message("GLM: GLM_GTX_io extension included")
 #endif
 
+#if GLM_COMPILER & GLM_COMPILER_CLANG
+#	pragma clang diagnostic push
+#	pragma clang diagnostic ignored "-Wpadded"
+#	pragma clang diagnostic ignored "-Wshorten-64-to-32"
+#endif
+
 #include <iosfwd>  // std::basic_ostream<> (fwd)
 #include <locale>  // std::locale, std::locale::facet, std::locale::id
 #include <utility> // std::pair<>
@@ -197,3 +203,8 @@ namespace glm
 }//namespace glm
 
 #include "io.inl"
+
+#if GLM_COMPILER & GLM_COMPILER_CLANG
+#	pragma clang diagnostic pop
+#endif
+
