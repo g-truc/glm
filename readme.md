@@ -83,6 +83,26 @@ target_link_libraries(main PRIVATE glm::glm-header-only)
 vcpkg install glm
 ```
 
+## CMake using FetchContent
+You can add glm to your CMake project to be built together.
+
+Add to the `CMakeLists.txt` file:
+```cmake
+cmake_minimum_required(VERSION 3.11) # FetchContent is new in version 3.11.
+
+include(FetchContent)
+
+FetchContent_Declare(
+	glm
+	GIT_REPOSITORY	https://github.com/g-truc/glm.git
+	GIT_TAG 	bf71a834948186f4097caa076cd2663c69a10e1e #refs/tags/0.9.9.8
+)
+
+FetchContent_MakeAvailable(glm)
+
+target_link_libraries(main PRIVATE glm::glm)
+```
+
 ## Release notes
 
 ### [GLM 0.9.9.9](https://github.com/g-truc/glm/releases/tag/0.9.9.9) - 2024-01-XX
