@@ -327,7 +327,6 @@ namespace test_eulerAngleZY
 		float const AngleY(glm::pi<float>() * 0.5f);
 		float const AngleZ(glm::pi<float>() * 0.25f);
 
-		glm::vec3 const axisX(1.0f, 0.0f, 0.0f);
 		glm::vec3 const axisY(0.0f, 1.0f, 0.0f);
 		glm::vec3 const axisZ(0.0f, 0.0f, 1.0f);
 
