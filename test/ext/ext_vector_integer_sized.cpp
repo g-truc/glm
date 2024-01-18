@@ -65,7 +65,6 @@ static int test_operators()
 	}
 
 	{
-		genType A(0);
 		genType B(1);
 		genType C(2);
 
