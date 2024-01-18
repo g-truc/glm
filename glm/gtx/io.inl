@@ -6,6 +6,13 @@
 #include "../gtc/matrix_access.hpp" // glm::col, glm::row
 #include "../gtx/type_trait.hpp"    // glm::type<>
 
+#if GLM_COMPILER & GLM_COMPILER_CLANG
+#	pragma clang diagnostic push
+#	pragma clang diagnostic ignored "-Wpadded"
+#	pragma clang diagnostic ignored "-Wshorten-64-to-32"
+#	pragma clang diagnostic ignored "-Wglobal-constructors"
+#endif
+
 namespace glm{
 namespace io
 {
@@ -438,3 +445,8 @@ namespace detail
 		return detail::print_matrix_pair_on(os, a);
 	}
 }//namespace glm
+
+#if GLM_COMPILER & GLM_COMPILER_CLANG
+#	pragma clang diagnostic pop
+#endif
+

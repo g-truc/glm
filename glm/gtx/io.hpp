@@ -33,6 +33,7 @@
 #	pragma clang diagnostic push
 #	pragma clang diagnostic ignored "-Wpadded"
 #	pragma clang diagnostic ignored "-Wshorten-64-to-32"
+#	pragma clang diagnostic ignored "-Wglobal-constructors"
 #endif
 
 #include <iosfwd>  // std::basic_ostream<> (fwd)
@@ -202,9 +203,8 @@ namespace glm
 	/// @}
 }//namespace glm
 
-#include "io.inl"
-
 #if GLM_COMPILER & GLM_COMPILER_CLANG
 #	pragma clang diagnostic pop
 #endif
 
+#include "io.inl"
