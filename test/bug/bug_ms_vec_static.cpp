@@ -18,6 +18,11 @@ struct vec2
 #	pragma warning(push)
 #	pragma warning(disable: 4201)  // nonstandard extension used : nameless struct/union
 #endif
+#if GLM_COMPILER & GLM_COMPILER_CLANG
+#	pragma clang diagnostic push
+#	pragma clang diagnostic ignored "-Wgnu-anonymous-struct"
+#	pragma clang diagnostic ignored "-Wnested-anon-types"
+#endif
 
 	union
 	{
@@ -25,6 +30,9 @@ struct vec2
 		struct { _swizzle xx; };
 	};
 
+#if GLM_COMPILER & GLM_COMPILER_CLANG
+#	pragma clang diagnostic pop
+#endif
 #if defined(_MSC_VER)
 #	pragma warning(pop)
 #endif
