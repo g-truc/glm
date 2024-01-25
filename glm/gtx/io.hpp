@@ -123,14 +123,14 @@ namespace glm
 		{
 			unsigned value;
 
-			GLM_FUNC_DECL explicit precision(unsigned);
+			GLM_FUNC_DECL explicit precision(unsigned = 3);
 		};
 
 		struct width
 		{
 			unsigned value;
 
-			GLM_FUNC_DECL explicit width(unsigned);
+			GLM_FUNC_DECL explicit width(unsigned = 0);
 		};
 
 		template<typename CTy>
@@ -138,7 +138,7 @@ namespace glm
 		{
 			CTy value[3];
 
-			GLM_FUNC_DECL explicit delimeter(CTy /* left */, CTy /* right */, CTy /* separator */ = ',');
+			GLM_FUNC_DECL explicit delimeter(CTy /* left */ = "[", CTy /* right */ = "]", CTy /* separator */ = ',');
 		};
 
 		template<typename CTy>
@@ -146,14 +146,14 @@ namespace glm
 		{
 			CTy value[2];
 
-			GLM_FUNC_DECL explicit filler(CTy /* Space */ = ' ', CTy /* Newline */ = '\n');
+			GLM_FUNC_DECL explicit filler(CTy /* space */ = ' ', CTy /* newline */ = '\n');
 		};
 
 		struct order
 		{
 			order_type value;
 
-			GLM_FUNC_DECL explicit order(order_type);
+			GLM_FUNC_DECL explicit order(order_type = column_major);
 		};
 
 		// functions, inlined (inline)
