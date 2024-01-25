@@ -199,7 +199,7 @@ namespace detail
 				{
 					os << std::setw(static_cast<int>(fmt.width)) << a[i];
 					if(components-1 != i)
-						os << fmt.separator;
+						os << fmt.separator << fmt.space;
 				}
 
 				os << fmt.delim_right;
