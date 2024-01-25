@@ -95,6 +95,14 @@ namespace io
 		value[2] = c;
 	}
 
+    template<typename CTy>
+    GLM_FUNC_QUALIFIER filler<CTy>::filler(CTy a, CTy b)
+        : value()
+    {
+        value[0] = a;
+        value[1] = b;
+    }
+
 	GLM_FUNC_QUALIFIER order::order(order_type a)
 		: value(a)
 	{}
@@ -144,6 +152,17 @@ namespace io
 		fmt.delim_left  = a.value[0];
 		fmt.delim_right = a.value[1];
 		fmt.separator   = a.value[2];
+
+		return os;
+	}
+
+	template<typename CTy, typename CTr>
+	GLM_FUNC_QUALIFIER  std::basic_ostream<CTy, CTr>& operator<<(std::basic_ostream<CTy, CTr>& os, filler<CTy> const& a)
+	{
+		format_punct<CTy> & fmt(const_cast<format_punct<CTy>&>(get_facet<format_punct<CTy> >(os)));
+
+		fmt.space  = a.value[0];
+		fmt.newline = a.value[1];
 
 		return os;
 	}

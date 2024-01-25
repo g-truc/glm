@@ -141,6 +141,14 @@ namespace glm
 			GLM_FUNC_DECL explicit delimeter(CTy /* left */, CTy /* right */, CTy /* separator */ = ',');
 		};
 
+		template<typename CTy>
+		struct filler
+		{
+			CTy value[2];
+
+			GLM_FUNC_DECL explicit filler(CTy /* Space */ = ' ', CTy /* Newline */ = '\n');
+		};
+
 		struct order
 		{
 			order_type value;
@@ -163,6 +171,8 @@ namespace glm
 		std::basic_ostream<CTy, CTr>& operator<<(std::basic_ostream<CTy, CTr>&, width const&);
 		template<typename CTy, typename CTr>
 		std::basic_ostream<CTy, CTr>& operator<<(std::basic_ostream<CTy, CTr>&, delimeter<CTy> const&);
+		template<typename CTy, typename CTr>
+		std::basic_ostream<CTy, CTr>& operator<<(std::basic_ostream<CTy, CTr>&, filler<CTy> const&);
 		template<typename CTy, typename CTr>
 		std::basic_ostream<CTy, CTr>& operator<<(std::basic_ostream<CTy, CTr>&, order const&);
 	}//namespace io
