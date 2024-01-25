@@ -105,12 +105,71 @@ namespace compScale
 	}
 }// compScale
 
+namespace fcompMax
+{
+	static int run()
+	{
+		int Error(0);
+
+		{
+            float const A = glm::fcompMax(glm::vec4(NAN, 0.2f, 0.5f, 1.0f));
+
+			Error += A == 1.0f ? 0 : 1;
+		}
+
+        {
+            float const A = glm::fcompMax(glm::vec4(2.0f, NAN, 0.3f, 0.7f));
+
+			Error += A == 2.0f ? 0 : 1;
+		}
+
+        {
+            float const A = glm::fcompMax(glm::vec4(NAN, NAN, NAN, NAN));
+
+			Error += std::isnan(A) ? 0 : 1;
+		}
+
+		return Error;
+	}
+}// fcompMax
+
+namespace fcompMin
+{
+	static int run()
+	{
+		int Error(0);
+
+		{
+            float const A = glm::fcompMin(glm::vec4(NAN, 0.2f, 0.5f, 1.0f));
+
+			Error += A == 0.2f ? 0 : 1;
+		}
+
+        {
+            float const A = glm::fcompMin(glm::vec4(2.0f, NAN, 0.3f, 0.7f));
+
+			Error += A == 0.3f ? 0 : 1;
+		}
+
+        {
+            float const A = glm::fcompMin(glm::vec4(NAN, NAN, NAN, NAN));
+
+			Error += std::isnan(A) ? 0 : 1;
+		}
+
+
+		return Error;
+	}
+}// fcompMin
+
 int main()
 {
 	int Error(0);
 
 	Error += compNormalize::run();
 	Error += compScale::run();
+	Error += fcompMax::run();
+	Error += fcompMin::run();
 
 	return Error;
 }
