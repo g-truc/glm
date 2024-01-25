@@ -61,6 +61,16 @@ namespace glm
 	template<typename genType>
 	GLM_FUNC_DECL typename genType::value_type compMax(genType const& v);
 
+    /// Find the minimum float between single vector components.
+	/// @see gtx_component_wise
+	template<typename genType>
+	GLM_FUNC_DECL typename genType::value_type fcompMin(genType const& v);
+
+	/// Find the maximum float between single vector components.
+	/// @see gtx_component_wise
+	template<typename genType>
+	GLM_FUNC_DECL typename genType::value_type fcompMax(genType const& v);
+
 	/// @}
 }//namespace glm
 
