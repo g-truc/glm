@@ -266,7 +266,7 @@ namespace detail
 
 			if(fmt.formatted)
 			{
-				os << fmt.newline << fmt.delim_left;
+				os << /*fmt.newline <<*/ fmt.delim_left;
 
 				switch(fmt.order)
 				{
@@ -409,7 +409,7 @@ namespace detail
 
 			if(fmt.formatted)
 			{
-				os << fmt.newline << fmt.delim_left;
+				os << /*fmt.newline <<*/ fmt.delim_left;
 
 				switch(fmt.order)
 				{
