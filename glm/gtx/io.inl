@@ -21,7 +21,7 @@ namespace io
 		: std::locale::facet(a)
 		, formatted(true)
 		, precision(3)
-		, width(1 + 4 + 1 + precision)
+		, width(4 + 1 + precision)
 		, separator(',')
 		, delim_left('[')
 		, delim_right(']')
