@@ -64,6 +64,7 @@ namespace glm
 			char_type  separator;
 			char_type  delim_left;
 			char_type  delim_right;
+            char_type  fill;
 			char_type  space;
 			char_type  newline;
 			order_type order;
@@ -144,9 +145,9 @@ namespace glm
 		template<typename CTy>
 		struct filler
 		{
-			CTy value[2];
+            CTy value[3];
 
-			GLM_FUNC_DECL explicit filler(CTy /* space */ = ' ', CTy /* newline */ = '\n');
+            GLM_FUNC_DECL explicit filler(CTy /* fill */ = ' ', CTy /* space */ = ' ', CTy /* newline */ = '\n');
 		};
 
 		struct order

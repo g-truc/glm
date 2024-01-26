@@ -25,6 +25,7 @@ namespace io
 		, separator(',')
 		, delim_left('[')
 		, delim_right(']')
+		, fill(' ')
 		, space(' ')
 		, newline('\n')
 		, order(column_major)
@@ -39,6 +40,7 @@ namespace io
 		, separator(a.separator)
 		, delim_left(a.delim_left)
 		, delim_right(a.delim_right)
+		, fill(a.fill)
 		, space(a.space)
 		, newline(a.newline)
 		, order(a.order)
@@ -96,11 +98,12 @@ namespace io
 	}
 
     template<typename CTy>
-    GLM_FUNC_QUALIFIER filler<CTy>::filler(CTy a, CTy b)
+    GLM_FUNC_QUALIFIER filler<CTy>::filler(CTy a, CTy b, CTy c)
         : value()
     {
         value[0] = a;
         value[1] = b;
+        value[2] = c;
     }
 
 	GLM_FUNC_QUALIFIER order::order(order_type a)
@@ -161,8 +164,9 @@ namespace io
 	{
 		format_punct<CTy> & fmt(const_cast<format_punct<CTy>&>(get_facet<format_punct<CTy> >(os)));
 
-		fmt.space  = a.value[0];
-		fmt.newline = a.value[1];
+		fmt.fill  = a.value[0];
+		fmt.space  = a.value[1];
+		fmt.newline = a.value[2];
 
 		return os;
 	}
@@ -193,7 +197,7 @@ namespace detail
 			{
 				io::basic_state_saver<CTy> const bss(os);
 
-				os << std::fixed << std::right << std::setprecision(static_cast<std::streamsize>(fmt.precision)) << std::setfill(fmt.space) << fmt.delim_left;
+				os << std::fixed << std::right << std::setprecision(static_cast<std::streamsize>(fmt.precision)) << std::setfill(fmt.fill) << fmt.delim_left;
 
 				for(length_t i(0); i < components; ++i)
 				{
