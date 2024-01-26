@@ -67,6 +67,7 @@ namespace glm
             char_type  fill;
 			char_type  space;
 			char_type  newline;
+			char_type  firstline;
 			order_type order;
 
 			GLM_FUNC_DECL explicit format_punct(size_t a = 0);
@@ -131,7 +132,7 @@ namespace glm
 		{
 			unsigned value;
 
-			GLM_FUNC_DECL explicit width(unsigned = 0);
+			GLM_FUNC_DECL explicit width(unsigned = 8);
 		};
 
 		template<typename CTy>
@@ -145,9 +146,8 @@ namespace glm
 		template<typename CTy>
 		struct filler
 		{
-            CTy value[3];
-
-            GLM_FUNC_DECL explicit filler(CTy /* fill */ = ' ', CTy /* space */ = ' ', CTy /* newline */ = '\n');
+			CTy value[4];
+			GLM_FUNC_DECL explicit filler(CTy /* fill */ = ' ', CTy /* space */ = ' ', CTy /* newline */ = '\n', CTy /* firstline */ = '\n');
 		};
 
 		struct order

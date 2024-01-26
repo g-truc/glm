@@ -28,6 +28,7 @@ namespace io
 		, fill(' ')
 		, space(' ')
 		, newline('\n')
+		, firstline('\n')
 		, order(column_major)
 	{}
 
@@ -43,6 +44,7 @@ namespace io
 		, fill(a.fill)
 		, space(a.space)
 		, newline(a.newline)
+		, firstline(a.firstline)
 		, order(a.order)
 	{}
 
@@ -97,14 +99,15 @@ namespace io
 		value[2] = c;
 	}
 
-    template<typename CTy>
-    GLM_FUNC_QUALIFIER filler<CTy>::filler(CTy a, CTy b, CTy c)
-        : value()
-    {
-        value[0] = a;
-        value[1] = b;
-        value[2] = c;
-    }
+	template<typename CTy>
+	GLM_FUNC_QUALIFIER filler<CTy>::filler(CTy a, CTy b, CTy c, CTy d)
+		: value()
+	{
+		value[0] = a;
+		value[1] = b;
+		value[2] = c;
+		value[3] = d;
+	}
 
 	GLM_FUNC_QUALIFIER order::order(order_type a)
 		: value(a)
@@ -167,6 +170,7 @@ namespace io
 		fmt.fill  = a.value[0];
 		fmt.space  = a.value[1];
 		fmt.newline = a.value[2];
+		fmt.firstline = a.value[3];
 
 		return os;
 	}
@@ -270,7 +274,8 @@ namespace detail
 
 			if(fmt.formatted)
 			{
-				os << /*fmt.newline <<*/ fmt.delim_left;
+				if (fmt.firstline != '\0') os << fmt.firstline;
+				os << fmt.delim_left;
 
 				switch(fmt.order)
 				{
@@ -413,7 +418,8 @@ namespace detail
 
 			if(fmt.formatted)
 			{
-				os << /*fmt.newline <<*/ fmt.delim_left;
+				if (fmt.firstline != '\0') os << fmt.firstline;
+				os << fmt.delim_left;
 
 				switch(fmt.order)
 				{
