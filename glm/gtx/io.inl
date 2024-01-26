@@ -116,6 +116,7 @@ namespace io
 	template<typename FTy, typename CTy, typename CTr>
 	GLM_FUNC_QUALIFIER FTy const& get_facet(std::basic_ios<CTy, CTr>& ios)
 	{
+		// Destruction handled by locale (0 passed as default argument in the constructor)
 		if(!std::has_facet<FTy>(ios.getloc()))
 			ios.imbue(std::locale(ios.getloc(), new FTy));
 
@@ -133,6 +134,44 @@ namespace io
 	GLM_FUNC_QUALIFIER std::basic_ios<CTy, CTr>& unformatted(std::basic_ios<CTy, CTr>& ios)
 	{
 		const_cast<format_punct<CTy>&>(get_facet<format_punct<CTy> >(ios)).formatted = false;
+		return ios;
+	}
+
+	template<typename CTy, typename CTr>
+	GLM_FUNC_QUALIFIER std::basic_ios<CTy, CTr>& reset(std::basic_ios<CTy, CTr>& ios)
+	{
+		// could leverage on the default constructor, but requires additional memory allocation
+		//ios.imbue(std::locale(ios.getloc(), new format_punct<CTy>));
+		//return ios;
+
+		format_punct<CTy> & fmt(const_cast<format_punct<CTy>&>(get_facet<format_punct<CTy> >(ios)));
+
+		fmt.formatted = true;
+		fmt.precision = 3;
+		fmt.width = 4 + 1 + fmt.precision;
+		fmt.separator = ',';
+		fmt.delim_left = '[';
+		fmt.delim_right = ']';
+		fmt.fill = ' ';
+		fmt.space = ' ';
+		fmt.newline = '\n';
+		fmt.firstline = '\n';
+		fmt.order = column_major;
+
+		return ios;
+	}
+
+	template<typename CTy, typename CTr>
+	GLM_FUNC_QUALIFIER std::basic_ios<CTy, CTr>& compressed(std::basic_ios<CTy, CTr>& ios)
+	{
+		format_punct<CTy> & fmt(const_cast<format_punct<CTy>&>(get_facet<format_punct<CTy> >(ios)));
+
+		fmt.formatted = true;
+		fmt.width = 0;
+		//fmt.space = ' ';
+		fmt.newline = ',';
+		fmt.firstline = '\0';
+
 		return ios;
 	}
 

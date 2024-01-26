@@ -166,6 +166,11 @@ namespace glm
 		template<typename FTy, typename CTy, typename CTr>
 		std::basic_ios<CTy,CTr>& unformatted(std::basic_ios<CTy,CTr>&);
 
+        template<typename FTy, typename CTy, typename CTr>
+		std::basic_ios<CTy,CTr>& reset(std::basic_ios<CTy,CTr>&);
+        template<typename FTy, typename CTy, typename CTr>
+		std::basic_ios<CTy,CTr>& compressed(std::basic_ios<CTy,CTr>&);
+
 		template<typename CTy, typename CTr>
 		std::basic_ostream<CTy, CTr>& operator<<(std::basic_ostream<CTy, CTr>&, precision const&);
 		template<typename CTy, typename CTr>
