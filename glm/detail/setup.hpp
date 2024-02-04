@@ -614,8 +614,10 @@
 
 #ifdef GLM_FORCE_SIZE_T_LENGTH
 #	define GLM_CONFIG_LENGTH_TYPE		GLM_LENGTH_SIZE_T
+#	define GLM_ASSERT_LENGTH(l, max) (assert ((l) < (max)))
 #else
 #	define GLM_CONFIG_LENGTH_TYPE		GLM_LENGTH_INT
+#	define GLM_ASSERT_LENGTH(l, max) (assert ((l) >= 0 && (l) < (max)))
 #endif
 
 namespace glm
