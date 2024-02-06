@@ -1,5 +1,6 @@
 /// @ref gtx_component_wise
 
+#include "../ext/scalar_common.hpp"
 #include <limits>
 #include <cmath>
 
@@ -126,21 +127,21 @@ namespace detail
 		return Result;
 	}
 
-    template<length_t L, typename T, qualifier Q, typename = typename std::enable_if<std::is_floating_point<T>::value, T>::type>
+    template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER T fcompMin(vec<L, T, Q> const& v)
 	{
 		T Result(v[0]);
 		for(length_t i = 1, n = v.length(); i < n; ++i)
-			Result = std::fmin(Result, v[i]);
+			Result = fmin(Result, v[i]);
 		return Result;
 	}
 
-	template<length_t L, typename T, qualifier Q, typename = typename std::enable_if<std::is_floating_point<T>::value, T>::type>
+	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER T fcompMax(vec<L, T, Q> const& v)
 	{
 		T Result(v[0]);
 		for(length_t i = 1, n = v.length(); i < n; ++i)
-			Result = std::fmax(Result, v[i]);
+			Result = fmax(Result, v[i]);
 		return Result;
 	}
 }//namespace glm

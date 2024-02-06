@@ -3,6 +3,8 @@
 #include <glm/gtc/type_precision.hpp>
 #include <glm/gtc/epsilon.hpp>
 #include <glm/gtc/constants.hpp>
+#include <glm/ext/scalar_relational.hpp>
+#include <glm/ext/scalar_constants.hpp>
 #include <limits>
 
 namespace compNormalize
@@ -105,6 +107,7 @@ namespace compScale
 	}
 }// compScale
 
+#if ((GLM_LANG & GLM_LANG_CXX11_FLAG) || (GLM_COMPILER & GLM_COMPILER_VC))
 namespace fcompMax
 {
 	static int run()
@@ -114,13 +117,13 @@ namespace fcompMax
 		{
             float const A = glm::fcompMax(glm::vec4(NAN, 0.2f, 0.5f, 1.0f));
 
-			Error += A == 1.0f ? 0 : 1;
+			Error += glm::equal(A, 1.0f, glm::epsilon<float>()) ? 0 : 1;
 		}
 
         {
             float const A = glm::fcompMax(glm::vec4(2.0f, NAN, 0.3f, 0.7f));
 
-			Error += A == 2.0f ? 0 : 1;
+			Error += glm::equal(A, 2.0f, glm::epsilon<float>()) ? 0 : 1;
 		}
 
         {
@@ -142,13 +145,13 @@ namespace fcompMin
 		{
             float const A = glm::fcompMin(glm::vec4(NAN, 0.2f, 0.5f, 1.0f));
 
-			Error += A == 0.2f ? 0 : 1;
+			Error += glm::equal(A, 0.2f, glm::epsilon<float>()) ? 0 : 1;
 		}
 
         {
             float const A = glm::fcompMin(glm::vec4(2.0f, NAN, 0.3f, 0.7f));
 
-			Error += A == 0.3f ? 0 : 1;
+			Error += glm::equal(A, 0.3f, glm::epsilon<float>()) ? 0 : 1;
 		}
 
         {
@@ -161,6 +164,7 @@ namespace fcompMin
 		return Error;
 	}
 }// fcompMin
+#endif//((GLM_LANG & GLM_LANG_CXX11_FLAG) || (GLM_COMPILER & GLM_COMPILER_VC))
 
 int main()
 {
@@ -168,8 +172,11 @@ int main()
 
 	Error += compNormalize::run();
 	Error += compScale::run();
+
+#if ((GLM_LANG & GLM_LANG_CXX11_FLAG) || (GLM_COMPILER & GLM_COMPILER_VC))
 	Error += fcompMax::run();
 	Error += fcompMin::run();
+#endif//((GLM_LANG & GLM_LANG_CXX11_FLAG) || (GLM_COMPILER & GLM_COMPILER_VC))
 
 	return Error;
 }
