@@ -164,23 +164,23 @@ static int ntz7(unsigned x)
 // This file has divisions by zero to test isnan
 #if GLM_COMPILER & GLM_COMPILER_VC
 #	pragma warning(push)
-#	pragma warning(disable : 4800)
 #	pragma warning(disable : 4146)
 #endif
-
+/*
 static int ntz7_christophe(unsigned x)
 {
 	unsigned y, bz, b4, b3, b2, b1, b0;
 
 	y = x & -x;               // Isolate rightmost 1-bit.
-	bz = unsigned(!bool(y));           // 1 if y = 0.
-	b4 = unsigned(!bool(y & 0x0000FFFF)) * 16;
-	b3 = unsigned(!bool(y & 0x00FF00FF)) * 8;
-	b2 = unsigned(!bool(y & 0x0F0F0F0F)) * 4;
-	b1 = unsigned(!bool(y & 0x33333333)) * 2;
-	b0 = unsigned(!bool(y & 0x55555555)) * 1;
+	bz = static_cast<unsigned>(!static_cast<bool>(y));           // 1 if y = 0.
+	b4 = static_cast<unsigned>(!static_cast<bool>(y & 0x0000FFFF)) * 16;
+	b3 = static_cast<unsigned>(!static_cast<bool>(y & 0x00FF00FF)) * 8;
+	b2 = static_cast<unsigned>(!static_cast<bool>(y & 0x0F0F0F0F)) * 4;
+	b1 = static_cast<unsigned>(!static_cast<bool>(y & 0x33333333)) * 2;
+	b0 = static_cast<unsigned>(!static_cast<bool>(y & 0x55555555)) * 1;
 	return bz + b4 + b3 + b2 + b1 + b0;
 }
+*/
 
 /* Below is David Seal's algorithm, found at
 http://www.ciphersbyritter.com/NEWS4/BITCT.HTM Table
@@ -386,7 +386,7 @@ int main()
 	TimestampEnd = std::clock();
 
 	std::printf("ntz7: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
-
+/*
 	TimestampBeg = std::clock();
 	for (std::size_t k = 0; k < Count; ++k)
 	for (i = 0; i < n; i += 2) {
@@ -394,7 +394,7 @@ int main()
 	TimestampEnd = std::clock();
 
 	std::printf("ntz7_christophe: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
-
+*/
 	TimestampBeg = std::clock();
 	for (std::size_t k = 0; k < Count; ++k)
 	for (i = 0; i < n; i += 2) {

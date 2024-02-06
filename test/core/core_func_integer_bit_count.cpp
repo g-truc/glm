@@ -5,6 +5,8 @@
 #include <cstdlib>     //To define "exit", req'd by XLC.
 #include <ctime>
 
+#include <glm/glm.hpp>
+
 #ifdef NDEBUG
 
 #if GLM_COMPILER & GLM_COMPILER_CLANG
