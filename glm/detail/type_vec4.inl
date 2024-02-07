@@ -361,13 +361,8 @@ namespace detail
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR T& vec<4, T, Q>::operator[](typename vec<4, T, Q>::length_type i)
 	{
-<<<<<<< HEAD
 		GLM_ASSERT_LENGTH(i, this->length());
 		switch(i)
-=======
-		assert(i >= 0 && i < this->length());
-		switch (i)
->>>>>>> 5c1da05b (Simd improvement)
 		{
 		default:
 		case 0:
@@ -384,13 +379,8 @@ namespace detail
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR T const& vec<4, T, Q>::operator[](typename vec<4, T, Q>::length_type i) const
 	{
-<<<<<<< HEAD
 		GLM_ASSERT_LENGTH(i, this->length());
 		switch(i)
-=======
-		assert(i >= 0 && i < this->length());
-		switch (i)
->>>>>>> 5c1da05b (Simd improvement)
 		{
 		default:
 		case 0:

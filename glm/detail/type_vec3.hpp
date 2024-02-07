@@ -37,6 +37,7 @@ namespace glm
 #				pragma clang diagnostic push
 #				pragma clang diagnostic ignored "-Wgnu-anonymous-struct"
 #				pragma clang diagnostic ignored "-Wnested-anon-types"
+#				pragma clang diagnostic ignored "-Wpadded"
 #			elif GLM_COMPILER & GLM_COMPILER_VC
 #				pragma warning(push)
 #				pragma warning(disable: 4201)  // nonstandard extension used : nameless struct/union

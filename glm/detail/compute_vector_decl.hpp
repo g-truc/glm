@@ -99,7 +99,7 @@ namespace glm {
 			GLM_FUNC_QUALIFIER GLM_CONSTEXPR static vec<L, T, Q> call(vec<L, T, Q> const& a, vec<L, T, Q> const& b)
 			{
 				vec<L, T, Q> v(a);
-				for (int i = 0; i < L; ++i)
+				for (length_t i = 0; i < L; ++i)
 					v[i] &= static_cast<T>(b[i]);
 				return v;
 			}
@@ -111,7 +111,7 @@ namespace glm {
 			GLM_FUNC_QUALIFIER GLM_CONSTEXPR static vec<L, T, Q> call(vec<L, T, Q> const& a, vec<L, T, Q> const& b)
 			{
 				vec<L, T, Q> v(a);
-				for (int i = 0; i < L; ++i)
+				for (length_t i = 0; i < L; ++i)
 					v[i] |= static_cast<T>(b[i]);
 				return v;
 			}
@@ -123,7 +123,7 @@ namespace glm {
 			GLM_FUNC_QUALIFIER GLM_CONSTEXPR static vec<L, T, Q> call(vec<L, T, Q> const& a, vec<L, T, Q> const& b)
 			{
 				vec<L, T, Q> v(a);
-				for (int i = 0; i < L; ++i)
+				for (length_t i = 0; i < L; ++i)
 					v[i] ^= static_cast<T>(b[i]);
 				return v;
 			}
@@ -135,7 +135,7 @@ namespace glm {
 			GLM_FUNC_QUALIFIER GLM_CONSTEXPR static vec<L, T, Q> call(vec<L, T, Q> const& a, vec<L, T, Q> const& b)
 			{
 				vec<L, T, Q> v(a);
-				for (int i = 0; i < L; ++i)
+				for (length_t i = 0; i < L; ++i)
 					v[i] <<= static_cast<T>(b[i]);
 				return v;
 			}
@@ -147,7 +147,7 @@ namespace glm {
 			GLM_FUNC_QUALIFIER GLM_CONSTEXPR static vec<L, T, Q> call(vec<L, T, Q> const& a, vec<L, T, Q> const& b)
 			{
 				vec<L, T, Q> v(a);
-				for (int i = 0; i < L; ++i)
+				for (length_t i = 0; i < L; ++i)
 					v[i] >>= static_cast<T>(b[i]);
 				return v;
 			}
@@ -159,7 +159,7 @@ namespace glm {
 			GLM_FUNC_QUALIFIER GLM_CONSTEXPR static bool call(vec<L, T, Q> const& v1, vec<L, T, Q> const& v2)
 			{
 				bool b = true;
-				for (int i = 0; i < L; ++i)
+				for (length_t i = 0; i < L; ++i)
 					b = b && detail::compute_equal<T, std::numeric_limits<T>::is_iec559>::call(v1.x, v2.x);
 				return b;
 			}
@@ -180,7 +180,7 @@ namespace glm {
 			GLM_FUNC_QUALIFIER GLM_CONSTEXPR static vec<L, T, Q> call(vec<L, T, Q> const& a)
 			{
 				vec<L, T, Q> v(a);
-				for (int i = 0; i < L; ++i)
+				for (length_t i = 0; i < L; ++i)
 					v[i] = ~v[i];
 				return v;
 			}

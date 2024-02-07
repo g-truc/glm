@@ -2,122 +2,6 @@ option(GLM_QUIET "No CMake Message" OFF)
 
 option(GLM_TEST_ENABLE "Build unit tests" ON)
 option(GLM_PERF_TEST_ENABLE "Build perf tests" OFF)
-<<<<<<< HEAD
-=======
-option(GLM_TEST_ENABLE_SIMD_SSE2 "Enable SSE2 optimizations" OFF)
-option(GLM_TEST_ENABLE_SIMD_SSE3 "Enable SSE3 optimizations" OFF)
-option(GLM_TEST_ENABLE_SIMD_SSSE3 "Enable SSSE3 optimizations" OFF)
-option(GLM_TEST_ENABLE_SIMD_SSE4_1 "Enable SSE 4.1 optimizations" OFF)
-option(GLM_TEST_ENABLE_SIMD_SSE4_2 "Enable SSE 4.2 optimizations" OFF)
-option(GLM_TEST_ENABLE_SIMD_AVX "Enable AVX optimizations" OFF)
-option(GLM_TEST_ENABLE_SIMD_AVX2 "Enable AVX2 optimizations" OFF)
-option(GLM_TEST_ENABLE_SIMD_NEON "Enable ARM NEON optimizations" OFF)
-option(GLM_TEST_ENABLE_SIMD_FMA "Enable FMA optimizations" OFF)
-option(GLM_TEST_FORCE_PURE "Force 'pure' instructions" OFF)
-
-if(GLM_TEST_FORCE_PURE)
-	add_definitions(-DGLM_FORCE_PURE)
-
-	if(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
-		add_compile_options(-mfpmath=387)
-	endif()
-	message(STATUS "GLM: No SIMD instruction set")
-
-elseif(GLM_TEST_ENABLE_SIMD_AVX2)
-	add_definitions(-DGLM_FORCE_INTRINSICS)
-
-	if((CMAKE_CXX_COMPILER_ID MATCHES "GNU") OR (CMAKE_CXX_COMPILER_ID MATCHES "Clang"))
-		add_compile_options(-mavx2)
-	elseif(CMAKE_CXX_COMPILER_ID MATCHES "Intel")
-		add_compile_options(/QxAVX2)
-	elseif(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
-		add_compile_options(/arch:AVX2)
-	endif()
-	message(STATUS "GLM: AVX2 instruction set")
-
-elseif(GLM_TEST_ENABLE_SIMD_AVX)
-	add_definitions(-DGLM_FORCE_INTRINSICS)
-
-	if((CMAKE_CXX_COMPILER_ID MATCHES "GNU") OR (CMAKE_CXX_COMPILER_ID MATCHES "Clang"))
-		add_compile_options(-mavx)
-	elseif(CMAKE_CXX_COMPILER_ID MATCHES "Intel")
-		add_compile_options(/QxAVX)
-	elseif(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
-		add_compile_options(/arch:AVX)
-	endif()
-	message(STATUS "GLM: AVX instruction set")
-
-elseif(GLM_TEST_ENABLE_SIMD_SSE4_2)
-	add_definitions(-DGLM_FORCE_INTRINSICS)
-
-	if((CMAKE_CXX_COMPILER_ID MATCHES "GNU") OR (CMAKE_CXX_COMPILER_ID MATCHES "Clang"))
-		add_compile_options(-msse4.2)
-	elseif(CMAKE_CXX_COMPILER_ID MATCHES "Intel")
-		add_compile_options(/QxSSE4.2)
-	elseif((CMAKE_CXX_COMPILER_ID MATCHES "MSVC") AND NOT CMAKE_CL_64)
-		add_compile_options(/arch:SSE2) # VC doesn't support SSE4.2
-	endif()
-	message(STATUS "GLM: SSE4.2 instruction set")
-
-elseif(GLM_TEST_ENABLE_SIMD_SSE4_1)
-	add_definitions(-DGLM_FORCE_INTRINSICS)
-
-	if((CMAKE_CXX_COMPILER_ID MATCHES "GNU") OR (CMAKE_CXX_COMPILER_ID MATCHES "Clang"))
-		add_compile_options(-msse4.1)
-	elseif(CMAKE_CXX_COMPILER_ID MATCHES "Intel")
-		add_compile_options(/QxSSE4.1)
-	elseif((CMAKE_CXX_COMPILER_ID MATCHES "MSVC") AND NOT CMAKE_CL_64)
-		add_compile_options(/arch:SSE2) # VC doesn't support SSE4.1
-	endif()
-	message(STATUS "GLM: SSE4.1 instruction set")
-
-elseif(GLM_TEST_ENABLE_SIMD_SSSE3)
-	add_definitions(-DGLM_FORCE_INTRINSICS)
-
-	if((CMAKE_CXX_COMPILER_ID MATCHES "GNU") OR (CMAKE_CXX_COMPILER_ID MATCHES "Clang"))
-		add_compile_options(-mssse3)
-	elseif(CMAKE_CXX_COMPILER_ID MATCHES "Intel")
-		add_compile_options(/QxSSSE3)
-	elseif((CMAKE_CXX_COMPILER_ID MATCHES "MSVC") AND NOT CMAKE_CL_64)
-		add_compile_options(/arch:SSE2) # VC doesn't support SSSE3
-	endif()
-	message(STATUS "GLM: SSSE3 instruction set")
-
-elseif(GLM_TEST_ENABLE_SIMD_SSE3)
-	add_definitions(-DGLM_FORCE_INTRINSICS)
-
-	if((CMAKE_CXX_COMPILER_ID MATCHES "GNU") OR (CMAKE_CXX_COMPILER_ID MATCHES "Clang"))
-		add_compile_options(-msse3)
-	elseif(CMAKE_CXX_COMPILER_ID MATCHES "Intel")
-		add_compile_options(/QxSSE3)
-	elseif((CMAKE_CXX_COMPILER_ID MATCHES "MSVC") AND NOT CMAKE_CL_64)
-		add_compile_options(/arch:SSE2) # VC doesn't support SSE3
-	endif()
-	message(STATUS "GLM: SSE3 instruction set")
-
-elseif(GLM_TEST_ENABLE_SIMD_SSE2)
-	add_definitions(-DGLM_FORCE_INTRINSICS)
-
-	if((CMAKE_CXX_COMPILER_ID MATCHES "GNU") OR (CMAKE_CXX_COMPILER_ID MATCHES "Clang"))
-		add_compile_options(-msse2)
-	elseif(CMAKE_CXX_COMPILER_ID MATCHES "Intel")
-		add_compile_options(/QxSSE2)
-	elseif((CMAKE_CXX_COMPILER_ID MATCHES "MSVC") AND NOT CMAKE_CL_64)
-		add_compile_options(/arch:SSE2)
-	endif()
-	message(STATUS "GLM: SSE2 instruction set")
-elseif(GLM_TEST_ENABLE_SIMD_NEON)
-	add_definitions(-DGLM_FORCE_NEON)
-	message(STATUS "GLM: ARM NEON instruction set")
-endif()
-
-if (GLM_TEST_ENABLE_SIMD_FMA)
-	add_definitions(-DGLM_FORCE_FMA)
-	if((CMAKE_CXX_COMPILER_ID MATCHES "GNU") OR (CMAKE_CXX_COMPILER_ID MATCHES "Clang"))
-		add_compile_options(-mfma)
-	endif()
-endif()
->>>>>>> 5c1da05b (Simd improvement)
 
 # Compiler and default options
 
@@ -130,15 +14,6 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 	if(NOT GLM_DISABLE_AUTO_DETECTION)
 		add_compile_options(-Werror -Weverything)
 	endif()
-<<<<<<< HEAD
-=======
-	if (NOT APPLE)
-		add_compile_options(-Wno-unsafe-buffer-usage) #this option makes MacOS compilation fail but prevent error on windows
-	endif()
-	
-	add_compile_options(-Wno-c++98-compat -Wno-c++98-compat-pedantic -Wno-c++11-long-long -Wno-padded -Wno-gnu-anonymous-struct -Wno-nested-anon-types)
-    add_compile_options(-Wno-undefined-reinterpret-cast -Wno-sign-conversion -Wno-unused-variable -Wno-missing-prototypes -Wno-unreachable-code -Wno-missing-variable-declarations -Wno-sign-compare -Wno-global-constructors -Wno-unused-macros -Wno-format-nonliteral -Wno-float-equal)
->>>>>>> 5c1da05b (Simd improvement)
 
 elseif(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
 	if(NOT GLM_QUIET)
