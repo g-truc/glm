@@ -542,25 +542,25 @@ namespace detail
 	}
 
 	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER vec<L, T, Q> splatX(vec<L, T, Q> const& a)
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<L, T, Q> splatX(vec<L, T, Q> const& a)
 	{
 		return detail::convert_splat<L, T, Q, detail::is_aligned<Q>::value>::template call<0>(a);
 	}
 
 	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER vec<L, T, Q> splatY(vec<L, T, Q> const& a)
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<L, T, Q> splatY(vec<L, T, Q> const& a)
 	{
 		return detail::convert_splat<L, T, Q, detail::is_aligned<Q>::value>::template call<1>(a);
 	}
 
 	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER vec<L, T, Q> splatZ(vec<L, T, Q> const& a)
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<L, T, Q> splatZ(vec<L, T, Q> const& a)
 	{
 		return detail::convert_splat<L, T, Q, detail::is_aligned<Q>::value>::template call<2>(a);
 	}
 
 	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER vec<L, T, Q> splatW(vec<L, T, Q> const& a)
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<L, T, Q> splatW(vec<L, T, Q> const& a)
 	{
 		return detail::convert_splat<L, T, Q, detail::is_aligned<Q>::value>::template call<3>(a);
 	}

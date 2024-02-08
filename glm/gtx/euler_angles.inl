@@ -694,7 +694,7 @@ namespace glm
 	}
 
     template<typename T>
-    GLM_FUNC_DECL void extractEulerAngleXYZ(mat<4, 4, T, defaultp> const& M,
+	GLM_FUNC_QUALIFIER void extractEulerAngleXYZ(mat<4, 4, T, defaultp> const& M,
                                             T & t1,
                                             T & t2,
                                             T & t3)

@@ -35,14 +35,14 @@ namespace glm
 
 		GLM_DEFAULTED_DEFAULT_CTOR_DECL GLM_CONSTEXPR mat() GLM_DEFAULT_CTOR;
 		template<qualifier P>
-		GLM_FUNC_DECL GLM_CONSTEXPR mat(mat<3, 2, T, P> const& m);
+		GLM_CTOR_DECL mat(mat<3, 2, T, P> const& m);
 
-		GLM_FUNC_DECL explicit GLM_CONSTEXPR mat(T scalar);
-		GLM_FUNC_DECL GLM_CONSTEXPR mat(
+		GLM_CTOR_DECL GLM_EXPLICIT mat(T scalar);
+		GLM_CTOR_DECL mat(
 			T x0, T y0,
 			T x1, T y1,
 			T x2, T y2);
-		GLM_FUNC_DECL GLM_CONSTEXPR mat(
+		GLM_CTOR_DECL mat(
 			col_type const& v0,
 			col_type const& v1,
 			col_type const& v2);
@@ -53,13 +53,13 @@ namespace glm
 			typename X1, typename Y1,
 			typename X2, typename Y2,
 			typename X3, typename Y3>
-		GLM_FUNC_DECL GLM_CONSTEXPR mat(
+			GLM_CTOR_DECL mat(
 			X1 x1, Y1 y1,
 			X2 x2, Y2 y2,
 			X3 x3, Y3 y3);
 
 		template<typename V1, typename V2, typename V3>
-		GLM_FUNC_DECL GLM_CONSTEXPR mat(
+		GLM_CTOR_DECL mat(
 			vec<2, V1, Q> const& v1,
 			vec<2, V2, Q> const& v2,
 			vec<2, V3, Q> const& v3);
@@ -67,38 +67,38 @@ namespace glm
 		// -- Matrix conversions --
 
 		template<typename U, qualifier P>
-		GLM_FUNC_DECL GLM_EXPLICIT GLM_CONSTEXPR mat(mat<3, 2, U, P> const& m);
+		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<3, 2, U, P> const& m);
 
-		GLM_FUNC_DECL GLM_EXPLICIT GLM_CONSTEXPR mat(mat<2, 2, T, Q> const& x);
-		GLM_FUNC_DECL GLM_EXPLICIT GLM_CONSTEXPR mat(mat<3, 3, T, Q> const& x);
-		GLM_FUNC_DECL GLM_EXPLICIT GLM_CONSTEXPR mat(mat<4, 4, T, Q> const& x);
-		GLM_FUNC_DECL GLM_EXPLICIT GLM_CONSTEXPR mat(mat<2, 3, T, Q> const& x);
-		GLM_FUNC_DECL GLM_EXPLICIT GLM_CONSTEXPR mat(mat<2, 4, T, Q> const& x);
-		GLM_FUNC_DECL GLM_EXPLICIT GLM_CONSTEXPR mat(mat<3, 4, T, Q> const& x);
-		GLM_FUNC_DECL GLM_EXPLICIT GLM_CONSTEXPR mat(mat<4, 2, T, Q> const& x);
-		GLM_FUNC_DECL GLM_EXPLICIT GLM_CONSTEXPR mat(mat<4, 3, T, Q> const& x);
+		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<2, 2, T, Q> const& x);
+		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<3, 3, T, Q> const& x);
+		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<4, 4, T, Q> const& x);
+		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<2, 3, T, Q> const& x);
+		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<2, 4, T, Q> const& x);
+		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<3, 4, T, Q> const& x);
+		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<4, 2, T, Q> const& x);
+		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<4, 3, T, Q> const& x);
 
 		// -- Unary arithmetic operators --
 
 		template<typename U>
-		GLM_FUNC_DECL GLM_CONSTEXPR mat<3, 2, T, Q> & operator=(mat<3, 2, U, Q> const& m);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<3, 2, T, Q> & operator=(mat<3, 2, U, Q> const& m);
 		template<typename U>
-		GLM_FUNC_DECL GLM_CONSTEXPR mat<3, 2, T, Q> & operator+=(U s);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<3, 2, T, Q> & operator+=(U s);
 		template<typename U>
-		GLM_FUNC_DECL GLM_CONSTEXPR mat<3, 2, T, Q> & operator+=(mat<3, 2, U, Q> const& m);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<3, 2, T, Q> & operator+=(mat<3, 2, U, Q> const& m);
 		template<typename U>
-		GLM_FUNC_DECL GLM_CONSTEXPR mat<3, 2, T, Q> & operator-=(U s);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<3, 2, T, Q> & operator-=(U s);
 		template<typename U>
-		GLM_FUNC_DECL GLM_CONSTEXPR mat<3, 2, T, Q> & operator-=(mat<3, 2, U, Q> const& m);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<3, 2, T, Q> & operator-=(mat<3, 2, U, Q> const& m);
 		template<typename U>
-		GLM_FUNC_DECL GLM_CONSTEXPR mat<3, 2, T, Q> & operator*=(U s);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<3, 2, T, Q> & operator*=(U s);
 		template<typename U>
-		GLM_FUNC_DECL GLM_CONSTEXPR mat<3, 2, T, Q> & operator/=(U s);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<3, 2, T, Q> & operator/=(U s);
 
 		// -- Increment and decrement operators --
 
-		GLM_FUNC_DECL GLM_CONSTEXPR mat<3, 2, T, Q> & operator++ ();
-		GLM_FUNC_DECL GLM_CONSTEXPR mat<3, 2, T, Q> & operator-- ();
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<3, 2, T, Q> & operator++ ();
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<3, 2, T, Q> & operator-- ();
 		GLM_FUNC_DECL GLM_CONSTEXPR mat<3, 2, T, Q> operator++(int);
 		GLM_FUNC_DECL GLM_CONSTEXPR mat<3, 2, T, Q> operator--(int);
 	};

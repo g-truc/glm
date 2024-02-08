@@ -34,67 +34,67 @@ namespace glm
 
 		GLM_DEFAULTED_DEFAULT_CTOR_DECL GLM_CONSTEXPR mat() GLM_DEFAULT_CTOR;
 		template<qualifier P>
-		GLM_FUNC_DECL GLM_CONSTEXPR mat(mat<2, 2, T, P> const& m);
+		GLM_CTOR_DECL mat(mat<2, 2, T, P> const& m);
 
-		GLM_FUNC_DECL explicit GLM_CONSTEXPR mat(T scalar);
-		GLM_FUNC_DECL GLM_CONSTEXPR mat(
+		GLM_CTOR_DECL GLM_EXPLICIT mat(T scalar);
+		GLM_CTOR_DECL mat(
 			T const& x1, T const& y1,
 			T const& x2, T const& y2);
-		GLM_FUNC_DECL GLM_CONSTEXPR mat(
+		GLM_CTOR_DECL mat(
 			col_type const& v1,
 			col_type const& v2);
 
 		// -- Conversions --
 
 		template<typename U, typename V, typename M, typename N>
-		GLM_FUNC_DECL GLM_CONSTEXPR mat(
+		GLM_CTOR_DECL mat(
 			U const& x1, V const& y1,
 			M const& x2, N const& y2);
 
 		template<typename U, typename V>
-		GLM_FUNC_DECL GLM_CONSTEXPR mat(
+		GLM_CTOR_DECL mat(
 			vec<2, U, Q> const& v1,
 			vec<2, V, Q> const& v2);
 
 		// -- Matrix conversions --
 
 		template<typename U, qualifier P>
-		GLM_FUNC_DECL GLM_EXPLICIT GLM_CONSTEXPR mat(mat<2, 2, U, P> const& m);
+		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<2, 2, U, P> const& m);
 
-		GLM_FUNC_DECL GLM_EXPLICIT GLM_CONSTEXPR mat(mat<3, 3, T, Q> const& x);
-		GLM_FUNC_DECL GLM_EXPLICIT GLM_CONSTEXPR mat(mat<4, 4, T, Q> const& x);
-		GLM_FUNC_DECL GLM_EXPLICIT GLM_CONSTEXPR mat(mat<2, 3, T, Q> const& x);
-		GLM_FUNC_DECL GLM_EXPLICIT GLM_CONSTEXPR mat(mat<3, 2, T, Q> const& x);
-		GLM_FUNC_DECL GLM_EXPLICIT GLM_CONSTEXPR mat(mat<2, 4, T, Q> const& x);
-		GLM_FUNC_DECL GLM_EXPLICIT GLM_CONSTEXPR mat(mat<4, 2, T, Q> const& x);
-		GLM_FUNC_DECL GLM_EXPLICIT GLM_CONSTEXPR mat(mat<3, 4, T, Q> const& x);
-		GLM_FUNC_DECL GLM_EXPLICIT GLM_CONSTEXPR mat(mat<4, 3, T, Q> const& x);
+		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<3, 3, T, Q> const& x);
+		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<4, 4, T, Q> const& x);
+		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<2, 3, T, Q> const& x);
+		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<3, 2, T, Q> const& x);
+		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<2, 4, T, Q> const& x);
+		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<4, 2, T, Q> const& x);
+		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<3, 4, T, Q> const& x);
+		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<4, 3, T, Q> const& x);
 
 		// -- Unary arithmetic operators --
 
 		template<typename U>
-		GLM_FUNC_DECL GLM_CONSTEXPR mat<2, 2, T, Q> & operator=(mat<2, 2, U, Q> const& m);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<2, 2, T, Q> & operator=(mat<2, 2, U, Q> const& m);
 		template<typename U>
-		GLM_FUNC_DECL GLM_CONSTEXPR mat<2, 2, T, Q> & operator+=(U s);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<2, 2, T, Q> & operator+=(U s);
 		template<typename U>
-		GLM_FUNC_DECL GLM_CONSTEXPR mat<2, 2, T, Q> & operator+=(mat<2, 2, U, Q> const& m);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<2, 2, T, Q> & operator+=(mat<2, 2, U, Q> const& m);
 		template<typename U>
-		GLM_FUNC_DECL GLM_CONSTEXPR mat<2, 2, T, Q> & operator-=(U s);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<2, 2, T, Q> & operator-=(U s);
 		template<typename U>
-		GLM_FUNC_DECL GLM_CONSTEXPR mat<2, 2, T, Q> & operator-=(mat<2, 2, U, Q> const& m);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<2, 2, T, Q> & operator-=(mat<2, 2, U, Q> const& m);
 		template<typename U>
-		GLM_FUNC_DECL GLM_CONSTEXPR mat<2, 2, T, Q> & operator*=(U s);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<2, 2, T, Q> & operator*=(U s);
 		template<typename U>
-		GLM_FUNC_DECL GLM_CONSTEXPR mat<2, 2, T, Q> & operator*=(mat<2, 2, U, Q> const& m);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<2, 2, T, Q> & operator*=(mat<2, 2, U, Q> const& m);
 		template<typename U>
-		GLM_FUNC_DECL GLM_CONSTEXPR mat<2, 2, T, Q> & operator/=(U s);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<2, 2, T, Q> & operator/=(U s);
 		template<typename U>
-		GLM_FUNC_DECL GLM_CONSTEXPR mat<2, 2, T, Q> & operator/=(mat<2, 2, U, Q> const& m);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<2, 2, T, Q> & operator/=(mat<2, 2, U, Q> const& m);
 
 		// -- Increment and decrement operators --
 
-		GLM_FUNC_DECL GLM_CONSTEXPR mat<2, 2, T, Q> & operator++ ();
-		GLM_FUNC_DECL GLM_CONSTEXPR mat<2, 2, T, Q> & operator-- ();
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<2, 2, T, Q> & operator++ ();
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<2, 2, T, Q> & operator-- ();
 		GLM_FUNC_DECL GLM_CONSTEXPR mat<2, 2, T, Q> operator++(int);
 		GLM_FUNC_DECL GLM_CONSTEXPR mat<2, 2, T, Q> operator--(int);
 	};

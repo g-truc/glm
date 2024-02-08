@@ -105,148 +105,148 @@ namespace glm
 		GLM_DEFAULTED_DEFAULT_CTOR_DECL GLM_CONSTEXPR vec() GLM_DEFAULT_CTOR;
 		GLM_DEFAULTED_FUNC_DECL GLM_CONSTEXPR vec(vec<4, T, Q> const& v) GLM_DEFAULT;
 		template<qualifier P>
-		GLM_FUNC_DECL GLM_CONSTEXPR vec(vec<4, T, P> const& v);
+		GLM_CTOR_DECL vec(vec<4, T, P> const& v);
 
 		// -- Explicit basic constructors --
 
-		GLM_FUNC_DECL GLM_CONSTEXPR explicit vec(T scalar);
-		GLM_FUNC_DECL GLM_CONSTEXPR vec(T x, T y, T z, T w);
+		GLM_CTOR_DECL explicit vec(T scalar);
+		GLM_CTOR_DECL vec(T x, T y, T z, T w);
 
 		// -- Conversion scalar constructors --
 
 		template<typename U, qualifier P>
-		GLM_FUNC_DECL GLM_CONSTEXPR explicit vec(vec<1, U, P> const& v);
+		GLM_CTOR_DECL explicit vec(vec<1, U, P> const& v);
 
 		/// Explicit conversions (From section 5.4.1 Conversion and scalar constructors of GLSL 1.30.08 specification)
 		template<typename X, typename Y, typename Z, typename W>
-		GLM_FUNC_DECL GLM_CONSTEXPR vec(X _x, Y _y, Z _z, W _w);
+		GLM_CTOR_DECL vec(X _x, Y _y, Z _z, W _w);
 		template<typename X, typename Y, typename Z, typename W>
-		GLM_FUNC_DECL GLM_CONSTEXPR vec(vec<1, X, Q> const& _x, Y _y, Z _z, W _w);
+		GLM_CTOR_DECL vec(vec<1, X, Q> const& _x, Y _y, Z _z, W _w);
 		template<typename X, typename Y, typename Z, typename W>
-		GLM_FUNC_DECL GLM_CONSTEXPR vec(X _x, vec<1, Y, Q> const& _y, Z _z, W _w);
+		GLM_CTOR_DECL vec(X _x, vec<1, Y, Q> const& _y, Z _z, W _w);
 		template<typename X, typename Y, typename Z, typename W>
-		GLM_FUNC_DECL GLM_CONSTEXPR vec(vec<1, X, Q> const& _x, vec<1, Y, Q> const& _y, Z _z, W _w);
+		GLM_CTOR_DECL vec(vec<1, X, Q> const& _x, vec<1, Y, Q> const& _y, Z _z, W _w);
 		template<typename X, typename Y, typename Z, typename W>
-		GLM_FUNC_DECL GLM_CONSTEXPR vec(X _x, Y _y, vec<1, Z, Q> const& _z, W _w);
+		GLM_CTOR_DECL vec(X _x, Y _y, vec<1, Z, Q> const& _z, W _w);
 		template<typename X, typename Y, typename Z, typename W>
-		GLM_FUNC_DECL GLM_CONSTEXPR vec(vec<1, X, Q> const& _x, Y _y, vec<1, Z, Q> const& _z, W _w);
+		GLM_CTOR_DECL vec(vec<1, X, Q> const& _x, Y _y, vec<1, Z, Q> const& _z, W _w);
 		template<typename X, typename Y, typename Z, typename W>
-		GLM_FUNC_DECL GLM_CONSTEXPR vec(X _x, vec<1, Y, Q> const& _y, vec<1, Z, Q> const& _z, W _w);
+		GLM_CTOR_DECL vec(X _x, vec<1, Y, Q> const& _y, vec<1, Z, Q> const& _z, W _w);
 		template<typename X, typename Y, typename Z, typename W>
-		GLM_FUNC_DECL GLM_CONSTEXPR vec(vec<1, X, Q> const& _x, vec<1, Y, Q> const& _y, vec<1, Z, Q> const& _z, W _w);
+		GLM_CTOR_DECL vec(vec<1, X, Q> const& _x, vec<1, Y, Q> const& _y, vec<1, Z, Q> const& _z, W _w);
 		template<typename X, typename Y, typename Z, typename W>
-		GLM_FUNC_DECL GLM_CONSTEXPR vec(vec<1, X, Q> const& _x, Y _y, Z _z, vec<1, W, Q> const& _w);
+		GLM_CTOR_DECL vec(vec<1, X, Q> const& _x, Y _y, Z _z, vec<1, W, Q> const& _w);
 		template<typename X, typename Y, typename Z, typename W>
-		GLM_FUNC_DECL GLM_CONSTEXPR vec(X _x, vec<1, Y, Q> const& _y, Z _z, vec<1, W, Q> const& _w);
+		GLM_CTOR_DECL vec(X _x, vec<1, Y, Q> const& _y, Z _z, vec<1, W, Q> const& _w);
 		template<typename X, typename Y, typename Z, typename W>
-		GLM_FUNC_DECL GLM_CONSTEXPR vec(vec<1, X, Q> const& _x, vec<1, Y, Q> const& _y, Z _z, vec<1, W, Q> const& _w);
+		GLM_CTOR_DECL vec(vec<1, X, Q> const& _x, vec<1, Y, Q> const& _y, Z _z, vec<1, W, Q> const& _w);
 		template<typename X, typename Y, typename Z, typename W>
-		GLM_FUNC_DECL GLM_CONSTEXPR vec(X _x, Y _y, vec<1, Z, Q> const& _z, vec<1, W, Q> const& _w);
+		GLM_CTOR_DECL vec(X _x, Y _y, vec<1, Z, Q> const& _z, vec<1, W, Q> const& _w);
 		template<typename X, typename Y, typename Z, typename W>
-		GLM_FUNC_DECL GLM_CONSTEXPR vec(vec<1, X, Q> const& _x, Y _y, vec<1, Z, Q> const& _z, vec<1, W, Q> const& _w);
+		GLM_CTOR_DECL vec(vec<1, X, Q> const& _x, Y _y, vec<1, Z, Q> const& _z, vec<1, W, Q> const& _w);
 		template<typename X, typename Y, typename Z, typename W>
-		GLM_FUNC_DECL GLM_CONSTEXPR vec(X _x, vec<1, Y, Q> const& _y, vec<1, Z, Q> const& _z, vec<1, W, Q> const& _w);
+		GLM_CTOR_DECL vec(X _x, vec<1, Y, Q> const& _y, vec<1, Z, Q> const& _z, vec<1, W, Q> const& _w);
 		template<typename X, typename Y, typename Z, typename W>
-		GLM_FUNC_DECL GLM_CONSTEXPR vec(vec<1, X, Q> const& _x, vec<1, Y, Q> const& _y, vec<1, Z, Q> const& _z, vec<1, W, Q> const& _w);
+		GLM_CTOR_DECL vec(vec<1, X, Q> const& _x, vec<1, Y, Q> const& _y, vec<1, Z, Q> const& _z, vec<1, W, Q> const& _w);
 
 		// -- Conversion vector constructors --
 
 		/// Explicit conversions (From section 5.4.1 Conversion and scalar constructors of GLSL 1.30.08 specification)
 		template<typename A, typename B, typename C, qualifier P>
-		GLM_FUNC_DECL GLM_CONSTEXPR vec(vec<2, A, P> const& _xy, B _z, C _w);
+		GLM_CTOR_DECL vec(vec<2, A, P> const& _xy, B _z, C _w);
 		/// Explicit conversions (From section 5.4.1 Conversion and scalar constructors of GLSL 1.30.08 specification)
 		template<typename A, typename B, typename C, qualifier P>
-		GLM_FUNC_DECL GLM_CONSTEXPR vec(vec<2, A, P> const& _xy, vec<1, B, P> const& _z, C _w);
+		GLM_CTOR_DECL vec(vec<2, A, P> const& _xy, vec<1, B, P> const& _z, C _w);
 		/// Explicit conversions (From section 5.4.1 Conversion and scalar constructors of GLSL 1.30.08 specification)
 		template<typename A, typename B, typename C, qualifier P>
-		GLM_FUNC_DECL GLM_CONSTEXPR vec(vec<2, A, P> const& _xy, B _z, vec<1, C, P> const& _w);
+		GLM_CTOR_DECL vec(vec<2, A, P> const& _xy, B _z, vec<1, C, P> const& _w);
 		/// Explicit conversions (From section 5.4.1 Conversion and scalar constructors of GLSL 1.30.08 specification)
 		template<typename A, typename B, typename C, qualifier P>
-		GLM_FUNC_DECL GLM_CONSTEXPR vec(vec<2, A, P> const& _xy, vec<1, B, P> const& _z, vec<1, C, P> const& _w);
+		GLM_CTOR_DECL vec(vec<2, A, P> const& _xy, vec<1, B, P> const& _z, vec<1, C, P> const& _w);
 		/// Explicit conversions (From section 5.4.1 Conversion and scalar constructors of GLSL 1.30.08 specification)
 		template<typename A, typename B, typename C, qualifier P>
-		GLM_FUNC_DECL GLM_CONSTEXPR vec(A _x, vec<2, B, P> const& _yz, C _w);
+		GLM_CTOR_DECL vec(A _x, vec<2, B, P> const& _yz, C _w);
 		/// Explicit conversions (From section 5.4.1 Conversion and scalar constructors of GLSL 1.30.08 specification)
 		template<typename A, typename B, typename C, qualifier P>
-		GLM_FUNC_DECL GLM_CONSTEXPR vec(vec<1, A, P> const& _x, vec<2, B, P> const& _yz, C _w);
+		GLM_CTOR_DECL vec(vec<1, A, P> const& _x, vec<2, B, P> const& _yz, C _w);
 		/// Explicit conversions (From section 5.4.1 Conversion and scalar constructors of GLSL 1.30.08 specification)
 		template<typename A, typename B, typename C, qualifier P>
-		GLM_FUNC_DECL GLM_CONSTEXPR vec(A _x, vec<2, B, P> const& _yz, vec<1, C, P> const& _w);
+		GLM_CTOR_DECL vec(A _x, vec<2, B, P> const& _yz, vec<1, C, P> const& _w);
 		/// Explicit conversions (From section 5.4.1 Conversion and scalar constructors of GLSL 1.30.08 specification)
 		template<typename A, typename B, typename C, qualifier P>
-		GLM_FUNC_DECL GLM_CONSTEXPR vec(vec<1, A, P> const& _x, vec<2, B, P> const& _yz, vec<1, C, P> const& _w);
+		GLM_CTOR_DECL vec(vec<1, A, P> const& _x, vec<2, B, P> const& _yz, vec<1, C, P> const& _w);
 		/// Explicit conversions (From section 5.4.1 Conversion and scalar constructors of GLSL 1.30.08 specification)
 		template<typename A, typename B, typename C, qualifier P>
-		GLM_FUNC_DECL GLM_CONSTEXPR vec(A _x, B _y, vec<2, C, P> const& _zw);
+		GLM_CTOR_DECL vec(A _x, B _y, vec<2, C, P> const& _zw);
 		/// Explicit conversions (From section 5.4.1 Conversion and scalar constructors of GLSL 1.30.08 specification)
 		template<typename A, typename B, typename C, qualifier P>
-		GLM_FUNC_DECL GLM_CONSTEXPR vec(vec<1, A, P> const& _x, B _y, vec<2, C, P> const& _zw);
+		GLM_CTOR_DECL vec(vec<1, A, P> const& _x, B _y, vec<2, C, P> const& _zw);
 		/// Explicit conversions (From section 5.4.1 Conversion and scalar constructors of GLSL 1.30.08 specification)
 		template<typename A, typename B, typename C, qualifier P>
-		GLM_FUNC_DECL GLM_CONSTEXPR vec(A _x, vec<1, B, P> const& _y, vec<2, C, P> const& _zw);
+		GLM_CTOR_DECL vec(A _x, vec<1, B, P> const& _y, vec<2, C, P> const& _zw);
 		/// Explicit conversions (From section 5.4.1 Conversion and scalar constructors of GLSL 1.30.08 specification)
 		template<typename A, typename B, typename C, qualifier P>
-		GLM_FUNC_DECL GLM_CONSTEXPR vec(vec<1, A, P> const& _x, vec<1, B, P> const& _y, vec<2, C, P> const& _zw);
+		GLM_CTOR_DECL vec(vec<1, A, P> const& _x, vec<1, B, P> const& _y, vec<2, C, P> const& _zw);
 		/// Explicit conversions (From section 5.4.1 Conversion and scalar constructors of GLSL 1.30.08 specification)
 		template<typename A, typename B, qualifier P>
-		GLM_FUNC_DECL GLM_CONSTEXPR vec(vec<3, A, P> const& _xyz, B _w);
+		GLM_CTOR_DECL vec(vec<3, A, P> const& _xyz, B _w);
 		/// Explicit conversions (From section 5.4.1 Conversion and scalar constructors of GLSL 1.30.08 specification)
 		template<typename A, typename B, qualifier P>
-		GLM_FUNC_DECL GLM_CONSTEXPR vec(vec<3, A, P> const& _xyz, vec<1, B, P> const& _w);
+		GLM_CTOR_DECL vec(vec<3, A, P> const& _xyz, vec<1, B, P> const& _w);
 		/// Explicit conversions (From section 5.4.1 Conversion and scalar constructors of GLSL 1.30.08 specification)
 		template<typename A, typename B, qualifier P>
-		GLM_FUNC_DECL GLM_CONSTEXPR vec(A _x, vec<3, B, P> const& _yzw);
+		GLM_CTOR_DECL vec(A _x, vec<3, B, P> const& _yzw);
 		/// Explicit conversions (From section 5.4.1 Conversion and scalar constructors of GLSL 1.30.08 specification)
 		template<typename A, typename B, qualifier P>
-		GLM_FUNC_DECL GLM_CONSTEXPR vec(vec<1, A, P> const& _x, vec<3, B, P> const& _yzw);
+		GLM_CTOR_DECL vec(vec<1, A, P> const& _x, vec<3, B, P> const& _yzw);
 		/// Explicit conversions (From section 5.4.1 Conversion and scalar constructors of GLSL 1.30.08 specification)
 		template<typename A, typename B, qualifier P>
-		GLM_FUNC_DECL GLM_CONSTEXPR vec(vec<2, A, P> const& _xy, vec<2, B, P> const& _zw);
+		GLM_CTOR_DECL vec(vec<2, A, P> const& _xy, vec<2, B, P> const& _zw);
 
 		/// Explicit conversions (From section 5.4.1 Conversion and scalar constructors of GLSL 1.30.08 specification)
 		template<typename U, qualifier P>
-		GLM_FUNC_DECL GLM_CONSTEXPR GLM_EXPLICIT vec(vec<4, U, P> const& v);
+		GLM_CTOR_DECL GLM_EXPLICIT vec(vec<4, U, P> const& v);
 
 		// -- Swizzle constructors --
 #		if GLM_CONFIG_SWIZZLE == GLM_SWIZZLE_OPERATOR
 			template<int E0, int E1, int E2, int E3>
-			GLM_FUNC_DECL GLM_CONSTEXPR vec(detail::_swizzle<4, T, Q, E0, E1, E2, E3> const& that)
+			GLM_FUNC_DISCARD_DECL vec(detail::_swizzle<4, T, Q, E0, E1, E2, E3> const& that)
 			{
 				*this = that();
 			}
 
 			template<int E0, int E1, int F0, int F1>
-			GLM_FUNC_DECL GLM_CONSTEXPR vec(detail::_swizzle<2, T, Q, E0, E1, -1, -2> const& v, detail::_swizzle<2, T, Q, F0, F1, -1, -2> const& u)
+			GLM_FUNC_DISCARD_DECL vec(detail::_swizzle<2, T, Q, E0, E1, -1, -2> const& v, detail::_swizzle<2, T, Q, F0, F1, -1, -2> const& u)
 			{
 				*this = vec<4, T, Q>(v(), u());
 			}
 
 			template<int E0, int E1>
-			GLM_FUNC_DECL GLM_CONSTEXPR vec(T const& x, T const& y, detail::_swizzle<2, T, Q, E0, E1, -1, -2> const& v)
+			GLM_FUNC_DISCARD_DECL vec(T const& x, T const& y, detail::_swizzle<2, T, Q, E0, E1, -1, -2> const& v)
 			{
 				*this = vec<4, T, Q>(x, y, v());
 			}
 
 			template<int E0, int E1>
-			GLM_FUNC_DECL GLM_CONSTEXPR vec(T const& x, detail::_swizzle<2, T, Q, E0, E1, -1, -2> const& v, T const& w)
+			GLM_FUNC_DISCARD_DECL vec(T const& x, detail::_swizzle<2, T, Q, E0, E1, -1, -2> const& v, T const& w)
 			{
 				*this = vec<4, T, Q>(x, v(), w);
 			}
 
 			template<int E0, int E1>
-			GLM_FUNC_DECL GLM_CONSTEXPR vec(detail::_swizzle<2, T, Q, E0, E1, -1, -2> const& v, T const& z, T const& w)
+			GLM_FUNC_DISCARD_DECL vec(detail::_swizzle<2, T, Q, E0, E1, -1, -2> const& v, T const& z, T const& w)
 			{
 				*this = vec<4, T, Q>(v(), z, w);
 			}
 
 			template<int E0, int E1, int E2>
-			GLM_FUNC_DECL GLM_CONSTEXPR vec(detail::_swizzle<3, T, Q, E0, E1, E2, 3> const& v, T const& w)
+			GLM_FUNC_DISCARD_DECL vec(detail::_swizzle<3, T, Q, E0, E1, E2, 3> const& v, T const& w)
 			{
 				*this = vec<4, T, Q>(v(), w);
 			}
 
 			template<int E0, int E1, int E2>
-			GLM_FUNC_DECL GLM_CONSTEXPR vec(T const& x, detail::_swizzle<3, T, Q, E0, E1, E2, 3> const& v)
+			GLM_FUNC_DISCARD_DECL vec(T const& x, detail::_swizzle<3, T, Q, E0, E1, E2, 3> const& v)
 			{
 				*this = vec<4, T, Q>(x, v());
 			}
@@ -257,36 +257,36 @@ namespace glm
 		GLM_DEFAULTED_FUNC_DECL GLM_CONSTEXPR vec<4, T, Q>& operator=(vec<4, T, Q> const& v) GLM_DEFAULT;
 
 		template<typename U>
-		GLM_FUNC_DECL GLM_CONSTEXPR vec<4, T, Q>& operator=(vec<4, U, Q> const& v);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR vec<4, T, Q>& operator=(vec<4, U, Q> const& v);
 		template<typename U>
-		GLM_FUNC_DECL GLM_CONSTEXPR vec<4, T, Q>& operator+=(U scalar);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR vec<4, T, Q>& operator+=(U scalar);
 		template<typename U>
-		GLM_FUNC_DECL GLM_CONSTEXPR vec<4, T, Q>& operator+=(vec<1, U, Q> const& v);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR vec<4, T, Q>& operator+=(vec<1, U, Q> const& v);
 		template<typename U>
-		GLM_FUNC_DECL GLM_CONSTEXPR vec<4, T, Q>& operator+=(vec<4, U, Q> const& v);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR vec<4, T, Q>& operator+=(vec<4, U, Q> const& v);
 		template<typename U>
-		GLM_FUNC_DECL GLM_CONSTEXPR vec<4, T, Q>& operator-=(U scalar);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR vec<4, T, Q>& operator-=(U scalar);
 		template<typename U>
-		GLM_FUNC_DECL GLM_CONSTEXPR vec<4, T, Q>& operator-=(vec<1, U, Q> const& v);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR vec<4, T, Q>& operator-=(vec<1, U, Q> const& v);
 		template<typename U>
-		GLM_FUNC_DECL GLM_CONSTEXPR vec<4, T, Q>& operator-=(vec<4, U, Q> const& v);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR vec<4, T, Q>& operator-=(vec<4, U, Q> const& v);
 		template<typename U>
-		GLM_FUNC_DECL GLM_CONSTEXPR vec<4, T, Q>& operator*=(U scalar);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR vec<4, T, Q>& operator*=(U scalar);
 		template<typename U>
-		GLM_FUNC_DECL GLM_CONSTEXPR vec<4, T, Q>& operator*=(vec<1, U, Q> const& v);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR vec<4, T, Q>& operator*=(vec<1, U, Q> const& v);
 		template<typename U>
-		GLM_FUNC_DECL GLM_CONSTEXPR vec<4, T, Q>& operator*=(vec<4, U, Q> const& v);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR vec<4, T, Q>& operator*=(vec<4, U, Q> const& v);
 		template<typename U>
-		GLM_FUNC_DECL GLM_CONSTEXPR vec<4, T, Q>& operator/=(U scalar);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR vec<4, T, Q>& operator/=(U scalar);
 		template<typename U>
-		GLM_FUNC_DECL GLM_CONSTEXPR vec<4, T, Q>& operator/=(vec<1, U, Q> const& v);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR vec<4, T, Q>& operator/=(vec<1, U, Q> const& v);
 		template<typename U>
-		GLM_FUNC_DECL GLM_CONSTEXPR vec<4, T, Q>& operator/=(vec<4, U, Q> const& v);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR vec<4, T, Q>& operator/=(vec<4, U, Q> const& v);
 
 		// -- Increment and decrement operators --
 
-		GLM_FUNC_DECL GLM_CONSTEXPR vec<4, T, Q> & operator++();
-		GLM_FUNC_DECL GLM_CONSTEXPR vec<4, T, Q> & operator--();
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR vec<4, T, Q> & operator++();
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR vec<4, T, Q> & operator--();
 		GLM_FUNC_DECL GLM_CONSTEXPR vec<4, T, Q> operator++(int);
 		GLM_FUNC_DECL GLM_CONSTEXPR vec<4, T, Q> operator--(int);
 

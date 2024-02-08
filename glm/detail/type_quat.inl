@@ -229,13 +229,13 @@ namespace detail
 	}
 
 	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER qua<T, Q>::qua(mat<3, 3, T, Q> const& m)
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q>::qua(mat<3, 3, T, Q> const& m)
 	{
 		*this = quat_cast(m);
 	}
 
 	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER qua<T, Q>::qua(mat<4, 4, T, Q> const& m)
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q>::qua(mat<4, 4, T, Q> const& m)
 	{
 		*this = quat_cast(m);
 	}

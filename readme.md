@@ -107,6 +107,9 @@ target_link_libraries(main PRIVATE glm::glm)
 
 ### [GLM 1.0.1](https://github.com/g-truc/glm) - 2024-XX-XX
 
+#### Features:
+- Added C++17 [[nodiscard]] support
+
 #### Improvements:
 - Enables only warnings as errors while building unit tests
 - Added aligned_*vec3 simd support #1245

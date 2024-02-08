@@ -62,7 +62,7 @@ namespace glm
 	/// @see <a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/umulExtended.xml">GLSL umulExtended man page</a>
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.8 Integer Functions</a>
 	template<length_t L, qualifier Q>
-	GLM_FUNC_DECL void umulExtended(
+	GLM_FUNC_DISCARD_DECL void umulExtended(
 		vec<L, uint, Q> const& x,
 		vec<L, uint, Q> const& y,
 		vec<L, uint, Q> & msb,
@@ -77,7 +77,7 @@ namespace glm
 	/// @see <a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/imulExtended.xml">GLSL imulExtended man page</a>
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.8 Integer Functions</a>
 	template<length_t L, qualifier Q>
-	GLM_FUNC_DECL void imulExtended(
+	GLM_FUNC_DISCARD_DECL void imulExtended(
 		vec<L, int, Q> const& x,
 		vec<L, int, Q> const& y,
 		vec<L, int, Q> & msb,
