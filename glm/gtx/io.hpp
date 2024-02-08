@@ -64,8 +64,10 @@ namespace glm
 			char_type  separator;
 			char_type  delim_left;
 			char_type  delim_right;
+            char_type  fill;
 			char_type  space;
 			char_type  newline;
+			char_type  firstline;
 			order_type order;
 
 			GLM_FUNC_DECL explicit format_punct(size_t a = 0);
@@ -123,14 +125,14 @@ namespace glm
 		{
 			unsigned value;
 
-			GLM_FUNC_DECL explicit precision(unsigned);
+			GLM_FUNC_DECL explicit precision(unsigned = 3);
 		};
 
 		struct width
 		{
 			unsigned value;
 
-			GLM_FUNC_DECL explicit width(unsigned);
+			GLM_FUNC_DECL explicit width(unsigned = 8);
 		};
 
 		template<typename CTy>
@@ -138,14 +140,21 @@ namespace glm
 		{
 			CTy value[3];
 
-			GLM_FUNC_DECL explicit delimeter(CTy /* left */, CTy /* right */, CTy /* separator */ = ',');
+			GLM_FUNC_DECL explicit delimeter(CTy /* left */ = "[", CTy /* right */ = "]", CTy /* separator */ = ',');
+		};
+
+		template<typename CTy>
+		struct filler
+		{
+			CTy value[4];
+			GLM_FUNC_DECL explicit filler(CTy /* fill */ = ' ', CTy /* space */ = ' ', CTy /* newline */ = '\n', CTy /* firstline */ = '\n');
 		};
 
 		struct order
 		{
 			order_type value;
 
-			GLM_FUNC_DECL explicit order(order_type);
+			GLM_FUNC_DECL explicit order(order_type = column_major);
 		};
 
 		// functions, inlined (inline)
@@ -157,12 +166,19 @@ namespace glm
 		template<typename FTy, typename CTy, typename CTr>
 		std::basic_ios<CTy,CTr>& unformatted(std::basic_ios<CTy,CTr>&);
 
+        template<typename FTy, typename CTy, typename CTr>
+		std::basic_ios<CTy,CTr>& reset(std::basic_ios<CTy,CTr>&);
+        template<typename FTy, typename CTy, typename CTr>
+		std::basic_ios<CTy,CTr>& compressed(std::basic_ios<CTy,CTr>&);
+
 		template<typename CTy, typename CTr>
 		std::basic_ostream<CTy, CTr>& operator<<(std::basic_ostream<CTy, CTr>&, precision const&);
 		template<typename CTy, typename CTr>
 		std::basic_ostream<CTy, CTr>& operator<<(std::basic_ostream<CTy, CTr>&, width const&);
 		template<typename CTy, typename CTr>
 		std::basic_ostream<CTy, CTr>& operator<<(std::basic_ostream<CTy, CTr>&, delimeter<CTy> const&);
+		template<typename CTy, typename CTr>
+		std::basic_ostream<CTy, CTr>& operator<<(std::basic_ostream<CTy, CTr>&, filler<CTy> const&);
 		template<typename CTy, typename CTr>
 		std::basic_ostream<CTy, CTr>& operator<<(std::basic_ostream<CTy, CTr>&, order const&);
 	}//namespace io
