@@ -77,6 +77,15 @@ GLM_FUNC_QUALIFIER glm_vec4 glm_vec4_cross(glm_vec4 v1, glm_vec4 v2)
 GLM_FUNC_QUALIFIER glm_vec4 glm_vec4_normalize(glm_vec4 v)
 {
 	glm_vec4 const dot0 = glm_vec4_dot(v, v);
+	glm_vec4 const sqr0 = _mm_sqrt_ps(dot0);
+	glm_vec4 const isr0 = _mm_div_ps(_mm_set1_ps(1.0f), sqr0);
+	glm_vec4 const mul0 = _mm_mul_ps(v, isr0);
+	return mul0;
+}
+
+GLM_FUNC_QUALIFIER glm_vec4 glm_vec4_fast_normalize(glm_vec4 v)
+{
+	glm_vec4 const dot0 = glm_vec4_dot(v, v);
 	glm_vec4 const isr0 = _mm_rsqrt_ps(dot0);
 	glm_vec4 const mul0 = _mm_mul_ps(v, isr0);
 	return mul0;
