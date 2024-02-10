@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34525.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "glm", "glm.vcxproj", "{8FA2A33A-3660-3847-99C3-AD7E7DE55096}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		MinSizeRel|x64 = MinSizeRel|x64
+		Release|x64 = Release|x64
+		RelWithDebInfo|x64 = RelWithDebInfo|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8FA2A33A-3660-3847-99C3-AD7E7DE55096}.Debug|x64.ActiveCfg = Debug|x64
+		{8FA2A33A-3660-3847-99C3-AD7E7DE55096}.Debug|x64.Build.0 = Debug|x64
+		{8FA2A33A-3660-3847-99C3-AD7E7DE55096}.MinSizeRel|x64.ActiveCfg = MinSizeRel|x64
+		{8FA2A33A-3660-3847-99C3-AD7E7DE55096}.MinSizeRel|x64.Build.0 = MinSizeRel|x64
+		{8FA2A33A-3660-3847-99C3-AD7E7DE55096}.Release|x64.ActiveCfg = Release|x64
+		{8FA2A33A-3660-3847-99C3-AD7E7DE55096}.Release|x64.Build.0 = Release|x64
+		{8FA2A33A-3660-3847-99C3-AD7E7DE55096}.RelWithDebInfo|x64.ActiveCfg = RelWithDebInfo|x64
+		{8FA2A33A-3660-3847-99C3-AD7E7DE55096}.RelWithDebInfo|x64.Build.0 = RelWithDebInfo|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7B961AD9-22AC-4AD7-BB87-03FA754A084B}
+	EndGlobalSection
+EndGlobal
