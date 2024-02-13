@@ -10,7 +10,6 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 		message("GLM: Clang - ${CMAKE_CXX_COMPILER_ID} compiler")
 	endif()
 
-	add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 	if(NOT GLM_DISABLE_AUTO_DETECTION)
 		add_compile_options(-Werror -Weverything)
 	endif()

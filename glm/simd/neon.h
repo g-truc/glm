@@ -22,7 +22,7 @@ namespace glm {
 				case 3: return vdupq_n_f32(vgetq_lane_f32(vsrc, 3));
 #endif
 			}
-			assert(false); //Unreachable code executed!
+			assert(!"Unreachable code executed!");
 			return vdupq_n_f32(0.0f);
 		}
 
@@ -40,7 +40,7 @@ namespace glm {
 				case 3: return vdup_n_f32(vgetq_lane_f32(vsrc, 3));
 #endif
 			}
-			assert(false); //Unreachable code executed!
+			assert(!"Unreachable code executed!");
 			return vdup_n_f32(0.0f);
 		}
 
@@ -54,8 +54,7 @@ namespace glm {
 						case 2: return vcopyq_laneq_f32(vdst, 0, vsrc, 2);
 						case 3: return vcopyq_laneq_f32(vdst, 0, vsrc, 3);
 					}
-					assert(false); //Unreachable code executed!
-					break;
+					assert(!"Unreachable code executed!");
 				case 1:
 					switch(slane) {
 						case 0: return vcopyq_laneq_f32(vdst, 1, vsrc, 0);
@@ -63,8 +62,7 @@ namespace glm {
 						case 2: return vcopyq_laneq_f32(vdst, 1, vsrc, 2);
 						case 3: return vcopyq_laneq_f32(vdst, 1, vsrc, 3);
 					}
-					assert(false); //Unreachable code executed!
-					break;
+					assert(!"Unreachable code executed!");
 				case 2:
 					switch(slane) {
 						case 0: return vcopyq_laneq_f32(vdst, 2, vsrc, 0);
@@ -72,8 +70,7 @@ namespace glm {
 						case 2: return vcopyq_laneq_f32(vdst, 2, vsrc, 2);
 						case 3: return vcopyq_laneq_f32(vdst, 2, vsrc, 3);
 					}
-					assert(false); //Unreachable code executed!
-					break;
+					assert(!"Unreachable code executed!");
 				case 3:
 					switch(slane) {
 						case 0: return vcopyq_laneq_f32(vdst, 3, vsrc, 0);
@@ -81,8 +78,7 @@ namespace glm {
 						case 2: return vcopyq_laneq_f32(vdst, 3, vsrc, 2);
 						case 3: return vcopyq_laneq_f32(vdst, 3, vsrc, 3);
 					}
-					assert(false); //Unreachable code executed!
-					break;
+					assert(!"Unreachable code executed!");
 			}
 #else
 
@@ -93,7 +89,7 @@ namespace glm {
 				case 2: l = vgetq_lane_f32(vsrc, 2); break;
 				case 3: l = vgetq_lane_f32(vsrc, 3); break;
 				default: 
-					assert(false); //Unreachable code executed!
+					assert(!"Unreachable code executed!");
 			}
 			switch(dlane) {
 				case 0: return vsetq_lane_f32(l, vdst, 0);
@@ -102,7 +98,7 @@ namespace glm {
 				case 3: return vsetq_lane_f32(l, vdst, 3);
 			}
 #endif
-			assert(false); //Unreachable code executed!
+			assert(!"Unreachable code executed!");
 			return vdupq_n_f32(0.0f);
 		}
 
@@ -114,9 +110,9 @@ namespace glm {
 				case 2: return vmulq_laneq_f32(v, vlane, 2); break;
 				case 3: return vmulq_laneq_f32(v, vlane, 3); break;
 				default: 
-					assert(false); //Unreachable code executed!
+					assert(!"Unreachable code executed!");
 			}
-			assert(false); //Unreachable code executed!
+			assert(!"Unreachable code executed!");
 			return vdupq_n_f32(0.0f);
 #else
 			return vmulq_f32(v, dupq_lane(vlane, lane));
@@ -145,9 +141,9 @@ namespace glm {
 					FMADD_LANE(acc, v, vlane, 3);
 					return acc;
 				default: 
-					assert(false); //Unreachable code executed!
+					assert(!"Unreachable code executed!");
 			}
-			assert(false); //Unreachable code executed!
+			assert(!"Unreachable code executed!");
 			return vdupq_n_f32(0.0f);
 #	undef FMADD_LANE
 #else

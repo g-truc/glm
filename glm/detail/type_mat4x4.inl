@@ -1,5 +1,4 @@
 #include "../matrix.hpp"
-#include "../geometric.hpp"
 
 namespace glm
 {
@@ -589,10 +588,10 @@ namespace glm
 	)
 	{
 		return typename mat<4, 4, T, Q>::row_type(
-			glm::dot(m[0], v),
-			glm::dot(m[1], v),
-			glm::dot(m[2], v),
-			glm::dot(m[3], v));
+			m[0][0] * v[0] + m[0][1] * v[1] + m[0][2] * v[2] + m[0][3] * v[3],
+			m[1][0] * v[0] + m[1][1] * v[1] + m[1][2] * v[2] + m[1][3] * v[3],
+			m[2][0] * v[0] + m[2][1] * v[1] + m[2][2] * v[2] + m[2][3] * v[3],
+			m[3][0] * v[0] + m[3][1] * v[1] + m[3][2] * v[2] + m[3][3] * v[3]);
 	}
 
 	template<typename T, qualifier Q>
@@ -627,89 +626,25 @@ namespace glm
 			m1[0][3] * m2[2][0] + m1[1][3] * m2[2][1] + m1[2][3] * m2[2][2] + m1[3][3] * m2[2][3]);
 	}
 
-	namespace detail
-	{
-		template<typename T, qualifier Q, bool is_aligned>
-		struct mul4x4 {};
-
-		template<typename T, qualifier Q>
-		struct mul4x4<T, Q, true>
-		{
-			GLM_FUNC_QUALIFIER GLM_CONSTEXPR static mat<4, 4, T, Q> call(mat<4, 4, T, Q> const& m1, mat<4, 4, T, Q> const& m2)
-			{
-				typename mat<4, 4, T, Q>::col_type const SrcA0 = m1[0];
-				typename mat<4, 4, T, Q>::col_type const SrcA1 = m1[1];
-				typename mat<4, 4, T, Q>::col_type const SrcA2 = m1[2];
-				typename mat<4, 4, T, Q>::col_type const SrcA3 = m1[3];
-
-				typename mat<4, 4, T, Q>::col_type const SrcB0 = m2[0];
-				typename mat<4, 4, T, Q>::col_type const SrcB1 = m2[1];
-				typename mat<4, 4, T, Q>::col_type const SrcB2 = m2[2];
-				typename mat<4, 4, T, Q>::col_type const SrcB3 = m2[3];
-
-				mat<4, 4, T, Q> Result;
-				Result[0] = glm::fma(SrcA3, splatW(SrcB0), glm::fma(SrcA2, splatZ(SrcB0), glm::fma(SrcA1, splatY(SrcB0), SrcA0 * splatX(SrcB0))));
-				Result[1] = glm::fma(SrcA3, splatW(SrcB1), glm::fma(SrcA2, splatZ(SrcB1), glm::fma(SrcA1, splatY(SrcB1), SrcA0 * splatX(SrcB1))));
-				Result[2] = glm::fma(SrcA3, splatW(SrcB2), glm::fma(SrcA2, splatZ(SrcB2), glm::fma(SrcA1, splatY(SrcB2), SrcA0 * splatX(SrcB2))));
-				Result[3] = glm::fma(SrcA3, splatW(SrcB3), glm::fma(SrcA2, splatZ(SrcB3), glm::fma(SrcA1, splatY(SrcB3), SrcA0 * splatX(SrcB3))));
-				return mat < 4, 4, T, Q > (Result);
-			}
-		};
-
-		template<typename T, qualifier Q>
-		struct mul4x4<T, Q, false>
-		{
-			GLM_FUNC_QUALIFIER GLM_CONSTEXPR static mat<4, 4, T, Q> call(mat<4, 4, T, Q> const& m1, mat<4, 4, T, Q> const& m2)
-			{
-				typename mat<4, 4, T, Q>::col_type const& SrcA0 = m1[0];
-				typename mat<4, 4, T, Q>::col_type const& SrcA1 = m1[1];
-				typename mat<4, 4, T, Q>::col_type const& SrcA2 = m1[2];
-				typename mat<4, 4, T, Q>::col_type const& SrcA3 = m1[3];
-
-				typename mat<4, 4, T, Q>::col_type const& SrcB0 = m2[0];
-				typename mat<4, 4, T, Q>::col_type const& SrcB1 = m2[1];
-				typename mat<4, 4, T, Q>::col_type const& SrcB2 = m2[2];
-				typename mat<4, 4, T, Q>::col_type const& SrcB3 = m2[3];
-
-				mat<4, 4, T, Q> Result;
-				// note: the following lines are decomposed to have consistent results between simd and non simd code (prevent rounding error because of operation order)
-				//Result[0] = SrcA3 * SrcB0.w + SrcA2 * SrcB0.z + SrcA1 * SrcB0.y + SrcA0 * SrcB0.x;
-				//Result[1] = SrcA3 * SrcB1.w + SrcA2 * SrcB1.z + SrcA1 * SrcB1.y + SrcA0 * SrcB1.x;
-				//Result[2] = SrcA3 * SrcB2.w + SrcA2 * SrcB2.z + SrcA1 * SrcB2.y + SrcA0 * SrcB2.x;
-				//Result[3] = SrcA3 * SrcB3.w + SrcA2 * SrcB3.z + SrcA1 * SrcB3.y + SrcA0 * SrcB3.x;
-
-				typename mat<4, 4, T, Q>::col_type tmp;
-				tmp =  SrcA0 * SrcB0.x;
-				tmp += SrcA1 * SrcB0.y;
-				tmp += SrcA2 * SrcB0.z;
-				tmp += SrcA3 * SrcB0.w;
-				Result[0] = tmp;
-				tmp =  SrcA0 * SrcB1.x;
-				tmp += SrcA1 * SrcB1.y;
-				tmp += SrcA2 * SrcB1.z;
-				tmp += SrcA3 * SrcB1.w;
-				Result[1] = tmp;
-				tmp =  SrcA0 * SrcB2.x;
-				tmp += SrcA1 * SrcB2.y;
-				tmp += SrcA2 * SrcB2.z;
-				tmp += SrcA3 * SrcB2.w;
-				Result[2] = tmp;
-				tmp =  SrcA0 * SrcB3.x;
-				tmp += SrcA1 * SrcB3.y;
-				tmp += SrcA2 * SrcB3.z;
-				tmp += SrcA3 * SrcB3.w;
-				Result[3] = tmp;
-
-				return Result;
-			}
-		};
-	}
-
-
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR mat<4, 4, T, Q> operator*(mat<4, 4, T, Q> const& m1, mat<4, 4, T, Q> const& m2)
 	{
-		return detail::mul4x4<T, Q, detail::is_aligned<Q>::value>::call(m1, m2);
+		typename mat<4, 4, T, Q>::col_type const SrcA0 = m1[0];
+		typename mat<4, 4, T, Q>::col_type const SrcA1 = m1[1];
+		typename mat<4, 4, T, Q>::col_type const SrcA2 = m1[2];
+		typename mat<4, 4, T, Q>::col_type const SrcA3 = m1[3];
+
+		typename mat<4, 4, T, Q>::col_type const SrcB0 = m2[0];
+		typename mat<4, 4, T, Q>::col_type const SrcB1 = m2[1];
+		typename mat<4, 4, T, Q>::col_type const SrcB2 = m2[2];
+		typename mat<4, 4, T, Q>::col_type const SrcB3 = m2[3];
+
+		mat<4, 4, T, Q> Result;
+		Result[0] = SrcA0 * SrcB0[0] + SrcA1 * SrcB0[1] + SrcA2 * SrcB0[2] + SrcA3 * SrcB0[3];
+		Result[1] = SrcA0 * SrcB1[0] + SrcA1 * SrcB1[1] + SrcA2 * SrcB1[2] + SrcA3 * SrcB1[3];
+		Result[2] = SrcA0 * SrcB2[0] + SrcA1 * SrcB2[1] + SrcA2 * SrcB2[2] + SrcA3 * SrcB2[3];
+		Result[3] = SrcA0 * SrcB3[0] + SrcA1 * SrcB3[1] + SrcA2 * SrcB3[2] + SrcA3 * SrcB3[3];
+		return Result;
 	}
 
 	template<typename T, qualifier Q>

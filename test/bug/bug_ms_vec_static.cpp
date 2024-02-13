@@ -3,7 +3,7 @@
 #if GLM_CONFIG_ANONYMOUS_STRUCT == GLM_ENABLE
 struct vec2;
 
-struct swizzleStruct
+struct _swizzle
 {
 	char _buffer[1];
 };
@@ -27,7 +27,7 @@ struct vec2
 	union
 	{
 		struct { float x, y; };
-		struct { swizzleStruct xx; };
+		struct { _swizzle xx; };
 	};
 
 #if GLM_COMPILER & GLM_COMPILER_CLANG
