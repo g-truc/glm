@@ -42,4 +42,3 @@ namespace glm{
 	/// @}
 }//namespace glm
 
-#include "number_precision.inl"
