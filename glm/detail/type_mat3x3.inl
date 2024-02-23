@@ -501,11 +501,11 @@ namespace glm
 				typename mat<4, 4, T, Q>::col_type const SrcB1 = xyzz(m2[1]);
 				typename mat<4, 4, T, Q>::col_type const SrcB2 = xyzz(m2[2]);
 
-				mat<3, 3, T, Q> Result;
-				Result[0] = xyz(glm::fma(SrcA2, splatZ(SrcB0), glm::fma(SrcA1, splatY(SrcB0), SrcA0 * splatX(SrcB0))));
-				Result[1] = xyz(glm::fma(SrcA2, splatZ(SrcB1), glm::fma(SrcA1, splatY(SrcB1), SrcA0 * splatX(SrcB1))));
-				Result[2] = xyz(glm::fma(SrcA2, splatZ(SrcB2), glm::fma(SrcA1, splatY(SrcB2), SrcA0 * splatX(SrcB2))));
-				return mat<3, 3, T, Q>(Result);
+				typename mat<3, 3, T, Q>::col_type const tmp0 = xyz(glm::fma(SrcA2, splatZ(SrcB0), glm::fma(SrcA1, splatY(SrcB0), SrcA0 * splatX(SrcB0))));
+				typename mat<3, 3, T, Q>::col_type const tmp1 = xyz(glm::fma(SrcA2, splatZ(SrcB1), glm::fma(SrcA1, splatY(SrcB1), SrcA0 * splatX(SrcB1))));
+				typename mat<3, 3, T, Q>::col_type const tmp2 = xyz(glm::fma(SrcA2, splatZ(SrcB2), glm::fma(SrcA1, splatY(SrcB2), SrcA0 * splatX(SrcB2))));
+
+				return mat<3, 3, T, Q>(tmp0, tmp1, tmp2);
 			}
 		};
 #endif
@@ -522,26 +522,22 @@ namespace glm
 				typename mat<3, 3, T, Q>::col_type const& SrcB1 = m2[1];
 				typename mat<3, 3, T, Q>::col_type const& SrcB2 = m2[2];
 
-				mat<3, 3, T, Q> Result;
 				// note: the following lines are decomposed to have consistent results between simd and non simd code (prevent rounding error because of operation order)
-				//Result[0] = SrcA2 * SrcB1.z + SrcA1 * SrcB1.y + SrcA0 * SrcB1.x;
+				//Result[0] = SrcA2 * SrcB0.z + SrcA1 * SrcB0.y + SrcA0 * SrcB0.x;
 				//Result[1] = SrcA2 * SrcB1.z + SrcA1 * SrcB1.y + SrcA0 * SrcB1.x;
 				//Result[2] = SrcA2 * SrcB2.z + SrcA1 * SrcB2.y + SrcA0 * SrcB2.x;
 
-				typename mat<3, 3, T, Q>::col_type tmp;
-				tmp = SrcA0 * SrcB0.x;
-				tmp += SrcA1 * SrcB0.y;
-				tmp += SrcA2 * SrcB0.z;
-				Result[0] = tmp;
-				tmp = SrcA0 * SrcB1.x;
-				tmp += SrcA1 * SrcB1.y;
-				tmp += SrcA2 * SrcB1.z;
-				Result[1] = tmp;
-				tmp = SrcA0 * SrcB2.x;
-				tmp += SrcA1 * SrcB2.y;
-				tmp += SrcA2 * SrcB2.z;
-				Result[2] = tmp;
-				return Result;
+				typename mat<3, 3, T, Q>::col_type tmp0 = SrcA0 * SrcB0.x;
+				tmp0 += SrcA1 * SrcB0.y;
+				tmp0 += SrcA2 * SrcB0.z;
+				typename mat<3, 3, T, Q>::col_type tmp1 = SrcA0 * SrcB1.x;
+				tmp1 += SrcA1 * SrcB1.y;
+				tmp1 += SrcA2 * SrcB1.z;
+				typename mat<3, 3, T, Q>::col_type tmp2 = SrcA0 * SrcB2.x;
+				tmp2 += SrcA1 * SrcB2.y;
+				tmp2 += SrcA2 * SrcB2.z;
+
+				return mat<3, 3, T, Q>(tmp0, tmp1, tmp2);
 			}
 		};
 	}

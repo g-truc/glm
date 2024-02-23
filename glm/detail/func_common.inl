@@ -345,7 +345,7 @@ namespace detail
 		template<int c>
 		GLM_FUNC_QUALIFIER GLM_CONSTEXPR static vec<L, T, Q> call(vec<L, T, Q> const& a)
 		{
-			vec<L, T, Q> v;
+			vec<L, T, Q> v(0.0f);
 			for (int i = 0; i < L; ++i)
 				v[i] = a[c];
 			return v;
