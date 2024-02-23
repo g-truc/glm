@@ -450,26 +450,11 @@ namespace glm
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR mat<2, 2, T, Q> operator*(mat<3, 2, T, Q> const& m1, mat<2, 3, T, Q> const& m2)
 	{
-		const T SrcA00 = m1[0][0];
-		const T SrcA01 = m1[0][1];
-		const T SrcA10 = m1[1][0];
-		const T SrcA11 = m1[1][1];
-		const T SrcA20 = m1[2][0];
-		const T SrcA21 = m1[2][1];
-
-		const T SrcB00 = m2[0][0];
-		const T SrcB01 = m2[0][1];
-		const T SrcB02 = m2[0][2];
-		const T SrcB10 = m2[1][0];
-		const T SrcB11 = m2[1][1];
-		const T SrcB12 = m2[1][2];
-
-		mat<2, 2, T, Q> Result;
-		Result[0][0] = SrcA00 * SrcB00 + SrcA10 * SrcB01 + SrcA20 * SrcB02;
-		Result[0][1] = SrcA01 * SrcB00 + SrcA11 * SrcB01 + SrcA21 * SrcB02;
-		Result[1][0] = SrcA00 * SrcB10 + SrcA10 * SrcB11 + SrcA20 * SrcB12;
-		Result[1][1] = SrcA01 * SrcB10 + SrcA11 * SrcB11 + SrcA21 * SrcB12;
-		return Result;
+		return mat<2, 2, T, Q>(
+			m1[0][0] * m2[0][0] + m1[1][0] * m2[0][1] + m1[2][0] * m2[0][2],
+			m1[0][1] * m2[0][0] + m1[1][1] * m2[0][1] + m1[2][1] * m2[0][2],
+			m1[0][0] * m2[1][0] + m1[1][0] * m2[1][1] + m1[2][0] * m2[1][2],
+			m1[0][1] * m2[1][0] + m1[1][1] * m2[1][1] + m1[2][1] * m2[1][2]);
 	}
 
 	template<typename T, qualifier Q>
