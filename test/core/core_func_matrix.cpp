@@ -392,7 +392,7 @@ static int test_inverse_perf(std::size_t Count, std::size_t Instance, char const
 	//glm::uint Ulp = 0;
 	//Ulp = glm::max(glm::float_distance(*Dst, *Src), Ulp);
 
-	std::printf("inverse<%s>(%f): %lu\n", Message, static_cast<double>(Diff), EndTime - StartTime);
+	std::printf("inverse<%s>(%f): %lu\n", Message, static_cast<double>(Diff), static_cast<unsigned long>(EndTime - StartTime));
 
 	return 0;
 }
