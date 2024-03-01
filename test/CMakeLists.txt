@@ -11,7 +11,7 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 	endif()
 
 	if(NOT GLM_DISABLE_AUTO_DETECTION)
-		add_compile_options(-Werror -Weverything)
+		add_compile_options(-Weverything)
 	endif()
 
 elseif(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
@@ -20,7 +20,6 @@ elseif(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
 	endif()
 
 	if(NOT GLM_DISABLE_AUTO_DETECTION)
-		add_compile_options(-Werror)
 #		add_compile_options(-Wpedantic)
 #		add_compile_options(-Wall)
 #		add_compile_options(-Wextra)
