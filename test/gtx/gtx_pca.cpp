@@ -468,7 +468,7 @@ static int testCovar(
 		return failReport(__LINE__);
 	}
 
-	// #2: test function variant consitency with random data
+	// #2: test function variant consistency with random data
 #if GLM_HAS_CXX11_STL == 1
 	std::default_random_engine rndEng(randomEngineSeed);
 	std::normal_distribution<T> normalDist;
@@ -560,7 +560,7 @@ static int smokeTest()
 	if(eCnt != 3u)
 		return failReport(__LINE__);
 
-	// sort eVec by decending eVal
+	// sort eVec by descending eVal
 	if(eVal[0] < eVal[1])
 	{
 		std::swap(eVal[0], eVal[1]);
