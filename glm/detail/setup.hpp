@@ -594,7 +594,11 @@
 #	define GLM_DEPRECATED __declspec(deprecated)
 #	define GLM_ALIGNED_TYPEDEF(type, name, alignment) typedef __declspec(align(alignment)) type name
 #elif GLM_COMPILER & (GLM_COMPILER_GCC | GLM_COMPILER_CLANG | GLM_COMPILER_INTEL)
-#	define GLM_DEPRECATED __attribute__((__deprecated__))
+#	if GLM_LANG & GLM_LANG_CXX14_FLAG
+#		define GLM_DEPRECATED [[deprecated]]
+#	else
+#		define GLM_DEPRECATED __attribute__((__deprecated__))
+#	endif
 #	define GLM_ALIGNED_TYPEDEF(type, name, alignment) typedef type name __attribute__((aligned(alignment)))
 #elif (GLM_COMPILER & GLM_COMPILER_CUDA) || (GLM_COMPILER & GLM_COMPILER_HIP)
 #	define GLM_DEPRECATED
