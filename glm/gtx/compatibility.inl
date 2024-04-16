@@ -15,9 +15,9 @@ namespace glm
 			return _isfinite(x) != 0;
 #		else
 			if (std::numeric_limits<genType>::is_integer || std::denorm_absent == std::numeric_limits<genType>::has_denorm)
-				return std::numeric_limits<genType>::min() <= x && std::numeric_limits<genType>::max() >= x;
+				return (std::numeric_limits<genType>::min)() <= x && (std::numeric_limits<genType>::max)() >= x;
 			else
-				return -std::numeric_limits<genType>::max() <= x && std::numeric_limits<genType>::max() >= x;
+				return -(std::numeric_limits<genType>::max)() <= x && (std::numeric_limits<genType>::max)() >= x;
 #		endif
 	}
 

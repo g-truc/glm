@@ -34,7 +34,7 @@ namespace detail
 #		if GLM_HAS_CXX11_STL
 			return std::fpclassify(x) == FP_SUBNORMAL;
 #		else
-			return epsilonNotEqual(x, static_cast<T>(0), epsilon<T>()) && std::fabs(x) < std::numeric_limits<T>::min();
+			return epsilonNotEqual(x, static_cast<T>(0), epsilon<T>()) && std::fabs(x) < (std::numeric_limits<T>::min)();
 #		endif
 	}
 

@@ -22,7 +22,7 @@ namespace detail
 		GLM_FUNC_QUALIFIER static vec<1, uint8, P> call()
 		{
 			return vec<1, uint8, P>(
-				static_cast<uint8>(std::rand() % std::numeric_limits<uint8>::max()));
+				static_cast<uint8>(std::rand() % (std::numeric_limits<uint8>::max)()));
 		}
 	};
 
@@ -32,8 +32,8 @@ namespace detail
 		GLM_FUNC_QUALIFIER static vec<2, uint8, P> call()
 		{
 			return vec<2, uint8, P>(
-				std::rand() % std::numeric_limits<uint8>::max(),
-				std::rand() % std::numeric_limits<uint8>::max());
+				std::rand() % (std::numeric_limits<uint8>::max)(),
+				std::rand() % (std::numeric_limits<uint8>::max)());
 		}
 	};
 
@@ -43,9 +43,9 @@ namespace detail
 		GLM_FUNC_QUALIFIER static vec<3, uint8, P> call()
 		{
 			return vec<3, uint8, P>(
-				std::rand() % std::numeric_limits<uint8>::max(),
-				std::rand() % std::numeric_limits<uint8>::max(),
-				std::rand() % std::numeric_limits<uint8>::max());
+				std::rand() % (std::numeric_limits<uint8>::max)(),
+				std::rand() % (std::numeric_limits<uint8>::max)(),
+				std::rand() % (std::numeric_limits<uint8>::max)());
 		}
 	};
 
@@ -55,10 +55,10 @@ namespace detail
 		GLM_FUNC_QUALIFIER static vec<4, uint8, P> call()
 		{
 			return vec<4, uint8, P>(
-				std::rand() % std::numeric_limits<uint8>::max(),
-				std::rand() % std::numeric_limits<uint8>::max(),
-				std::rand() % std::numeric_limits<uint8>::max(),
-				std::rand() % std::numeric_limits<uint8>::max());
+				std::rand() % (std::numeric_limits<uint8>::max)(),
+				std::rand() % (std::numeric_limits<uint8>::max)(),
+				std::rand() % (std::numeric_limits<uint8>::max)(),
+				std::rand() % (std::numeric_limits<uint8>::max)());
 		}
 	};
 
@@ -178,7 +178,7 @@ namespace detail
 	{
 		GLM_FUNC_QUALIFIER static vec<L, float, Q> call(vec<L, float, Q> const& Min, vec<L, float, Q> const& Max)
 		{
-			return vec<L, float, Q>(compute_rand<L, uint32, Q>::call()) / static_cast<float>(std::numeric_limits<uint32>::max()) * (Max - Min) + Min;
+			return vec<L, float, Q>(compute_rand<L, uint32, Q>::call()) / static_cast<float>((std::numeric_limits<uint32>::max)()) * (Max - Min) + Min;
 		}
 	};
 
@@ -187,7 +187,7 @@ namespace detail
 	{
 		GLM_FUNC_QUALIFIER static vec<L, double, Q> call(vec<L, double, Q> const& Min, vec<L, double, Q> const& Max)
 		{
-			return vec<L, double, Q>(compute_rand<L, uint64, Q>::call()) / static_cast<double>(std::numeric_limits<uint64>::max()) * (Max - Min) + Min;
+			return vec<L, double, Q>(compute_rand<L, uint64, Q>::call()) / static_cast<double>((std::numeric_limits<uint64>::max)()) * (Max - Min) + Min;
 		}
 	};
 
@@ -196,7 +196,7 @@ namespace detail
 	{
 		GLM_FUNC_QUALIFIER static vec<L, long double, Q> call(vec<L, long double, Q> const& Min, vec<L, long double, Q> const& Max)
 		{
-			return vec<L, long double, Q>(compute_rand<L, uint64, Q>::call()) / static_cast<long double>(std::numeric_limits<uint64>::max()) * (Max - Min) + Min;
+			return vec<L, long double, Q>(compute_rand<L, uint64, Q>::call()) / static_cast<long double>((std::numeric_limits<uint64>::max)()) * (Max - Min) + Min;
 		}
 	};
 }//namespace detail
