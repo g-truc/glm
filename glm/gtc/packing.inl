@@ -688,7 +688,7 @@ namespace detail
 		GLM_STATIC_ASSERT(std::numeric_limits<uintType>::is_integer, "uintType must be an integer type");
 		GLM_STATIC_ASSERT(std::numeric_limits<floatType>::is_iec559, "floatType must be a floating point type");
 
-		return vec<L, uintType, Q>(round(clamp(v, static_cast<floatType>(0), static_cast<floatType>(1)) * static_cast<floatType>(std::numeric_limits<uintType>::max())));
+		return vec<L, uintType, Q>(round(clamp(v, static_cast<floatType>(0), static_cast<floatType>(1)) * static_cast<floatType>((std::numeric_limits<uintType>::max)())));
 	}
 
 	template<typename floatType, length_t L, typename uintType, qualifier Q>
@@ -697,7 +697,7 @@ namespace detail
 		GLM_STATIC_ASSERT(std::numeric_limits<uintType>::is_integer, "uintType must be an integer type");
 		GLM_STATIC_ASSERT(std::numeric_limits<floatType>::is_iec559, "floatType must be a floating point type");
 
-		return vec<L, floatType, Q>(v) * (static_cast<floatType>(1) / static_cast<floatType>(std::numeric_limits<uintType>::max()));
+		return vec<L, floatType, Q>(v) * (static_cast<floatType>(1) / static_cast<floatType>((std::numeric_limits<uintType>::max)()));
 	}
 
 	template<typename intType, length_t L, typename floatType, qualifier Q>
@@ -706,7 +706,7 @@ namespace detail
 		GLM_STATIC_ASSERT(std::numeric_limits<intType>::is_integer, "uintType must be an integer type");
 		GLM_STATIC_ASSERT(std::numeric_limits<floatType>::is_iec559, "floatType must be a floating point type");
 
-		return vec<L, intType, Q>(round(clamp(v , static_cast<floatType>(-1), static_cast<floatType>(1)) * static_cast<floatType>(std::numeric_limits<intType>::max())));
+		return vec<L, intType, Q>(round(clamp(v , static_cast<floatType>(-1), static_cast<floatType>(1)) * static_cast<floatType>((std::numeric_limits<intType>::max)())));
 	}
 
 	template<typename floatType, length_t L, typename intType, qualifier Q>
@@ -715,7 +715,7 @@ namespace detail
 		GLM_STATIC_ASSERT(std::numeric_limits<intType>::is_integer, "uintType must be an integer type");
 		GLM_STATIC_ASSERT(std::numeric_limits<floatType>::is_iec559, "floatType must be a floating point type");
 
-		return clamp(vec<L, floatType, Q>(v) * (static_cast<floatType>(1) / static_cast<floatType>(std::numeric_limits<intType>::max())), static_cast<floatType>(-1), static_cast<floatType>(1));
+		return clamp(vec<L, floatType, Q>(v) * (static_cast<floatType>(1) / static_cast<floatType>((std::numeric_limits<intType>::max)())), static_cast<floatType>(-1), static_cast<floatType>(1));
 	}
 
 	GLM_FUNC_QUALIFIER uint8 packUnorm2x4(vec2 const& v)

@@ -199,7 +199,7 @@ namespace glm
 	GLM_FUNC_QUALIFIER float nextFloat(float x)
 	{
 #		if GLM_HAS_CXX11_STL
-			return std::nextafter(x, std::numeric_limits<float>::max());
+			return std::nextafter(x, (std::numeric_limits<float>::max)());
 #		elif((GLM_COMPILER & GLM_COMPILER_VC) || ((GLM_COMPILER & GLM_COMPILER_INTEL) && (GLM_PLATFORM & GLM_PLATFORM_WINDOWS)))
 			return detail::nextafterf(x, FLT_MAX);
 #		elif(GLM_PLATFORM & GLM_PLATFORM_ANDROID)
@@ -213,9 +213,9 @@ namespace glm
 	GLM_FUNC_QUALIFIER double nextFloat(double x)
 	{
 #		if GLM_HAS_CXX11_STL
-			return std::nextafter(x, std::numeric_limits<double>::max());
+			return std::nextafter(x, (std::numeric_limits<double>::max)());
 #		elif((GLM_COMPILER & GLM_COMPILER_VC) || ((GLM_COMPILER & GLM_COMPILER_INTEL) && (GLM_PLATFORM & GLM_PLATFORM_WINDOWS)))
-			return detail::nextafter(x, std::numeric_limits<double>::max());
+			return detail::nextafter(x, (std::numeric_limits<double>::max)());
 #		elif(GLM_PLATFORM & GLM_PLATFORM_ANDROID)
 			return __builtin_nextafter(x, DBL_MAX);
 #		else
@@ -238,7 +238,7 @@ namespace glm
 	GLM_FUNC_QUALIFIER float prevFloat(float x)
 	{
 #		if GLM_HAS_CXX11_STL
-			return std::nextafter(x, std::numeric_limits<float>::min());
+			return std::nextafter(x, (std::numeric_limits<float>::min)());
 #		elif((GLM_COMPILER & GLM_COMPILER_VC) || ((GLM_COMPILER & GLM_COMPILER_INTEL) && (GLM_PLATFORM & GLM_PLATFORM_WINDOWS)))
 			return detail::nextafterf(x, FLT_MIN);
 #		elif(GLM_PLATFORM & GLM_PLATFORM_ANDROID)
@@ -251,7 +251,7 @@ namespace glm
 	GLM_FUNC_QUALIFIER double prevFloat(double x)
 	{
 #		if GLM_HAS_CXX11_STL
-			return std::nextafter(x, std::numeric_limits<double>::min());
+			return std::nextafter(x, (std::numeric_limits<double>::min)());
 #		elif((GLM_COMPILER & GLM_COMPILER_VC) || ((GLM_COMPILER & GLM_COMPILER_INTEL) && (GLM_PLATFORM & GLM_PLATFORM_WINDOWS)))
 			return _nextafter(x, DBL_MIN);
 #		elif(GLM_PLATFORM & GLM_PLATFORM_ANDROID)
