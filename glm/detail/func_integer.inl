@@ -192,6 +192,9 @@ namespace detail
 		return vec<L, uint, Q>(Value64 % (Max32 + static_cast<detail::uint64>(1)));
 	}
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wduplicated-branches"
+
 	// usubBorrow
 	GLM_FUNC_QUALIFIER uint usubBorrow(uint const& x, uint const& y, uint & Borrow)
 	{
@@ -201,6 +204,8 @@ namespace detail
 		else
 			return static_cast<uint>((static_cast<detail::int64>(1) << static_cast<detail::int64>(32)) + (static_cast<detail::int64>(y) - static_cast<detail::int64>(x)));
 	}
+
+#pragma GCC diagnostic pop
 
 	template<length_t L, qualifier Q>
 	GLM_FUNC_QUALIFIER vec<L, uint, Q> usubBorrow(vec<L, uint, Q> const& x, vec<L, uint, Q> const& y, vec<L, uint, Q>& Borrow)
