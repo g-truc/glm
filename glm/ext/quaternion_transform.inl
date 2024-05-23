@@ -18,7 +18,7 @@ namespace glm
 		T const AngleRad(angle);
 		T const Sin = sin(AngleRad * static_cast<T>(0.5));
 
-		return q * qua<T, Q>::wxyz(cos(AngleRad * static_cast<T>(0.5)), Tmp.x * Sin, Tmp.y * Sin, Tmp.z * Sin);
+		return qua<T, Q>::wxyz(cos(AngleRad * static_cast<T>(0.5)), Tmp.x * Sin, Tmp.y * Sin, Tmp.z * Sin) * q;
 	}
 }//namespace glm
 
