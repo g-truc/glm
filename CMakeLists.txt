@@ -270,6 +270,11 @@ if (GLM_BUILD_INSTALL)
 		DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/glm"
 		FILE glmConfig.cmake
 	)
+	export(
+        TARGETS glm glm-header-only
+        NAMESPACE glm::
+        FILE "${CMAKE_INSTALL_DATAROOTDIR}/glm/glmConfig.cmake"
+	)
 	include(CMakePackageConfigHelpers)
 	write_basic_package_version_file(
 		"${CMAKE_CURRENT_BINARY_DIR}/glmConfigVersion.cmake"
