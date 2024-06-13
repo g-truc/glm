@@ -85,7 +85,7 @@ namespace detail
 	struct storage
 	{
 		typedef struct type {
-			T data[L];
+			T data[static_cast<size_t>(L)];
 		} type;
 	};
 
@@ -94,7 +94,7 @@ namespace detail
 		struct storage<L, T, true>
 		{
 			typedef struct alignas(L * sizeof(T)) type {
-				T data[L];
+				T data[static_cast<size_t>(L)];
 			} type;
 		};
 
