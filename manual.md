@@ -1903,7 +1903,7 @@ A good place is [stackoverflow](http://stackoverflow.com/search?q=GLM) using the
 
 ### <a name="section7_6"></a> 7.6. Where can I find the documentation of extensions?
 
-The Doxygen generated documentation includes a complete list of all extensions available. Explore this [*API documentation*](http://glm.g-truc.net/html/index.html) to get a complete
+The Doxygen generated documentation includes a complete list of all extensions available. Explore this [*API documentation*](http://glm.g-truc.net/0.9.9/api/modules.html) to get a complete
 view of all GLM capabilities!
 
 ### <a name="section7_7"></a> 7.7. Should I use ‘using namespace glm;’?
