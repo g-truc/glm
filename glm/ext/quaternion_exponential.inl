@@ -60,7 +60,7 @@ namespace glm
 			//VectorMagnitude to 0. here; we could use denorm_int() compiling a
 			//project with unsafe maths optimizations might make the comparison
 			//always false, even when VectorMagnitude is 0.
-			if (VectorMagnitude < std::numeric_limits<T>::min()) {
+			if (VectorMagnitude < (std::numeric_limits<T>::min)()) {
 				//Equivalent to raising a real number to a power
 				return qua<T, Q>::wxyz(pow(x.w, y), 0, 0, 0);
 			}
