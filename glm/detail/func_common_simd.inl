@@ -572,7 +572,7 @@ namespace glm {
 		template<length_t L, qualifier Q>
 		struct compute_splat<L, float, Q, true> {
 			template<int c>
-			GLM_FUNC_QUALIFIER GLM_CONSTEXPR static vec<L, float, Q> call(vec<L, float, Q> const& a)
+			GLM_FUNC_QUALIFIER GLM_CONSTEXPR static vec<L, float, Q> call(vec<L, float, Q> const&)
 			{}
 
 			template<>
