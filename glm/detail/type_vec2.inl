@@ -107,11 +107,11 @@ namespace glm
 	{
 		GLM_ASSERT_LENGTH(i, this->length());
 
-#		if GLM_LANG & GLM_LANG_CXX14_FLAG || GLM_LANG & GLM_LANG_CXX17_FLAG
-#		if GLM_LANG & GLM_LANG_CXX20_FLAG
+#if GLM_LANG & GLM_LANG_CXX14_FLAG || GLM_LANG & GLM_LANG_CXX17_FLAG
+	#if GLM_LANG & GLM_LANG_CXX20_FLAG
 		if (std::is_constant_evaluated())
 		{
-#		endif
+	#endif
 			switch (i)
 			{
 			default:
@@ -120,16 +120,16 @@ namespace glm
 			case 1:
 				return y;
 			}
-#		if GLM_LANG & GLM_LANG_CXX20_FLAG
+	#if GLM_LANG & GLM_LANG_CXX20_FLAG
 		}
 		else
 		{
 			return (&x)[i];
 		}
-#		endif
-#		else
+	#endif
+#else
 		return (&x)[i];
-#		endif
+#endif
 	}
 
 	template<typename T, qualifier Q>
@@ -137,11 +137,11 @@ namespace glm
 	{
 		GLM_ASSERT_LENGTH(i, this->length());
 
-#		if GLM_LANG & GLM_LANG_CXX14_FLAG || GLM_LANG & GLM_LANG_CXX17_FLAG
-#		if GLM_LANG & GLM_LANG_CXX20_FLAG
+#if GLM_LANG & GLM_LANG_CXX14_FLAG || GLM_LANG & GLM_LANG_CXX17_FLAG
+	#if GLM_LANG & GLM_LANG_CXX20_FLAG
 		if (std::is_constant_evaluated())
 		{
-#		endif
+	#endif
 			switch (i)
 			{
 			default:
@@ -150,16 +150,16 @@ namespace glm
 			case 1:
 				return y;
 			}
-#		if GLM_LANG & GLM_LANG_CXX20_FLAG
+	#if GLM_LANG & GLM_LANG_CXX20_FLAG
 		}
 		else
 		{
 			return (&x)[i];
 		}
-#		endif
-#		else
+	#endif
+#else
 		return (&x)[i];
-#		endif
+#endif
 	}
 
 	// -- Unary arithmetic operators --
