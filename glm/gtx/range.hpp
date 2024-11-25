@@ -22,6 +22,7 @@
 #endif
 
 #include "../gtc/type_ptr.hpp"
+#include <type_traits>
 #include "type_trait.hpp"
 
 namespace glm
@@ -38,7 +39,7 @@ namespace glm
 	template<typename genType>
 	/*GLM_DEPRECATED*/ GLM_NODISCARD GLM_FUNC_QUALIFIER GLM_CONSTEXPR length_t components(genType const& v)
 	{
-		return type<std::remove_cv<genType>::type>::elements;
+		return type<genType>::elements;
 	}
 
 #if GLM_COMPILER & GLM_COMPILER_VC
@@ -54,7 +55,7 @@ namespace glm
 	template<typename genType>
 	GLM_NODISCARD GLM_FUNC_QUALIFIER GLM_CONSTEXPR typename genType::value_type const * end(genType const& v)
 	{
-		return begin(v) + type<std::remove_cv<genType>::type>::elements;
+		return begin(v) + type<genType>::elements;
 	}
 
 	template<typename genType>
@@ -66,7 +67,7 @@ namespace glm
 	template<typename genType>
 	GLM_NODISCARD GLM_FUNC_QUALIFIER GLM_CONSTEXPR typename genType::value_type * end(genType& v)
 	{
-		return begin(v) + type<std::remove_cv<genType>::type>::elements;
+		return begin(v) + type<genType>::elements;
 	}
 
 	/// @}
