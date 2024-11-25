@@ -22,53 +22,28 @@
 #endif
 
 #include "../gtc/type_ptr.hpp"
-#include "../gtc/vec1.hpp"
+#include "type_trait.hpp"
 
 namespace glm
 {
 	/// @addtogroup gtx_range
 	/// @{
 
-#	if GLM_COMPILER & GLM_COMPILER_VC
-#		pragma warning(push)
-#		pragma warning(disable : 4100) // unreferenced formal parameter
-#	endif
+#if GLM_COMPILER & GLM_COMPILER_VC
+#	pragma warning(push)
+#	pragma warning(disable : 4100) // unreferenced formal parameter
+#endif
 
-	template<typename T, qualifier Q>
-	GLM_NODISCARD GLM_FUNC_QUALIFIER GLM_CONSTEXPR length_t components(vec<1, T, Q> const& v)
-	{
-		return v.length();
-	}
-
-	template<typename T, qualifier Q>
-	GLM_NODISCARD GLM_FUNC_QUALIFIER GLM_CONSTEXPR length_t components(vec<2, T, Q> const& v)
-	{
-		return v.length();
-	}
-
-	template<typename T, qualifier Q>
-	GLM_NODISCARD GLM_FUNC_QUALIFIER GLM_CONSTEXPR length_t components(vec<3, T, Q> const& v)
-	{
-		return v.length();
-	}
-
-	template<typename T, qualifier Q>
-	GLM_NODISCARD GLM_FUNC_QUALIFIER GLM_CONSTEXPR length_t components(vec<4, T, Q> const& v)
-	{
-		return v.length();
-	}
-
-	template<typename T, qualifier Q>
-	GLM_NODISCARD GLM_FUNC_QUALIFIER GLM_CONSTEXPR length_t components(qua<T, Q> const& v)
-	{
-		return v.length();
-	}
-
+	/// @warning This is not same as `type<genType>::components`, calling this returns total elements (for mat4 returns 16 instead of 4).
 	template<typename genType>
-	GLM_NODISCARD GLM_FUNC_QUALIFIER GLM_CONSTEXPR length_t components(genType const& m)
+	/*GLM_DEPRECATED*/ GLM_NODISCARD GLM_FUNC_QUALIFIER GLM_CONSTEXPR length_t components(genType const& v)
 	{
-		return m.length() * m[0].length();
+		return type<std::remove_cv<genType>::type>::elements;
 	}
+
+#if GLM_COMPILER & GLM_COMPILER_VC
+#	pragma warning(pop)
+#endif
 
 	template<typename genType>
 	GLM_NODISCARD GLM_FUNC_QUALIFIER GLM_CONSTEXPR typename genType::value_type const * begin(genType const& v)
@@ -79,7 +54,7 @@ namespace glm
 	template<typename genType>
 	GLM_NODISCARD GLM_FUNC_QUALIFIER GLM_CONSTEXPR typename genType::value_type const * end(genType const& v)
 	{
-		return begin(v) + components(v);
+		return begin(v) + type<std::remove_cv<genType>::type>::elements;
 	}
 
 	template<typename genType>
@@ -91,12 +66,8 @@ namespace glm
 	template<typename genType>
 	GLM_NODISCARD GLM_FUNC_QUALIFIER GLM_CONSTEXPR typename genType::value_type * end(genType& v)
 	{
-		return begin(v) + components(v);
+		return begin(v) + type<std::remove_cv<genType>::type>::elements;
 	}
-
-#	if GLM_COMPILER & GLM_COMPILER_VC
-#		pragma warning(pop)
-#	endif
 
 	/// @}
 }//namespace glm

@@ -20,27 +20,29 @@
 #	pragma message("GLM: GLM_GTX_span extension included")
 #endif
 
-#if !(GLM_LANG & GLM_LANG_CXX11)
-// This requirement is due to `std::enable_if`
+// `std::enable_if` support (and few more)
+// Required for all functions below
+#if !(GLM_LANG & GLM_LANG_CXX11_FLAG)
 #	error "GLM_GTX_span requiers at least C++11, using C++20 or C++23 is recommended for full functionality"
 #endif
 
+// GLM_MESSAGES info
 #if GLM_MESSAGES == GLM_ENABLE && !defined(GLM_EXT_INCLUDED)
-#	if (GLM_LANG & GLM_LANG_CXX20) && defined(__cpp_lib_span) && __cpp_lib_span >= 202002L
+#	if (GLM_LANG & GLM_LANG_CXX20_FLAG) && defined(__cpp_lib_span) && __cpp_lib_span >= 202002L
 #		pragma message("GLM: GLM_GTX_span extension will include std::span")
 #	endif
-#	if (GLM_LANG & GLM_LANG_CXX23) && defined(__cpp_lib_mdspan) && __cpp_lib_mdspan >= 202207L
+#	if (GLM_LANG & GLM_LANG_CXX23_FLAG) && defined(__cpp_lib_mdspan) && __cpp_lib_mdspan >= 202207L
 #		pragma message("GLM: GLM_GTX_span extension will include std::mdspan")
 #	endif
 #endif
 
-#include "../gtc/type_precision.hpp"
 #include "../gtc/type_ptr.hpp"
+#include "type_trait.hpp"
 
 #include <valarray>
-#include <type_traits>
 
-#if GLM_LANG & GLM_LANG_CXX20
+// Version-specific includes
+#if GLM_LANG & GLM_LANG_CXX20_FLAG
 // Feature testing
 #	include <version>
 
@@ -60,141 +62,80 @@ namespace glm
 	/// @addtogroup gtx_span
 	/// @{
 
+#	if (GLM_LANG & GLM_LANG_CXX20_FLAG)
 	template<typename T>
-	struct is_vec : std::false_type {};
-	template<length_t L, typename T, qualifier Q>
-	struct is_vec<vec<L, T, Q>> : std::true_type {};
-
-	template<typename T>
-	struct is_quat : std::false_type {};
-	template<typename T, qualifier Q>
-	struct is_quat<qua<T, Q>> : std::true_type {};
-
-	template<typename T>
-	struct is_mat : std::false_type {};
-	template<length_t L1, length_t L2, typename T, qualifier Q>
-	struct is_mat<mat<L1, L2, T, Q>> : std::true_type {};
-
-#if (GLM_LANG & GLM_LANG_CXX17)
-	template<typename T>
-	inline constexpr bool is_vec_v = is_vec<T>::value;
-	template<typename T>
-	inline constexpr bool is_quat_v = is_quat<T>::value;
-	template<typename T>
-	inline constexpr bool is_mat_v = is_mat<T>::value;
-#endif
-
-#if (GLM_LANG & GLM_LANG_CXX20)
-	template<typename T>
-		requires is_vec<T>::value || is_quat<T>::value
-#else
-	template<typename T, typename = typename std::enable_if<is_vec<T>::value || is_quat<T>::value>::type>
-#endif
-	GLM_NODISCARD GLM_FUNC_QUALIFIER GLM_CONSTEXPR length_t components()
-	{
-		return T::length();
-	}
-#if (GLM_LANG & GLM_LANG_CXX20)
-	template<typename T>
-		requires is_mat<T>::value
-#else
-	template<typename T, typename = typename std::enable_if<is_mat<T>::value>::type>
-#endif
-	GLM_NODISCARD GLM_FUNC_QUALIFIER GLM_CONSTEXPR length_t components()
-	{
-		return T::length() * T::col_type::length();
-	}
-#	if GLM_COMPILER & GLM_COMPILER_VC
-#		pragma warning(push)
-#		pragma warning(disable : 4100) // unreferenced formal parameter
+		requires (type<std::remove_cvref_t<T>>::elements > 0)
+#	else
+	template<typename T, typename = typename std::enable_if<
+		(
+			type<
+				typename std::remove_reference<
+					typename std::remove_cv<T>::type
+				>::type
+			>::elements > 0
+		)>::type>
 #	endif
-
-	/// Utility function if you don't have the type and dont use `decltype` (it is from C++11 so this function won't exist for earlier anyway)
-#if (GLM_LANG & GLM_LANG_CXX20)
-	template<typename T>
-		requires is_vec<T>::value || is_quat<T>::value
-#else
-	template<typename T, typename = typename std::enable_if<is_vec<T>::value || is_quat<T>::value>::type>
-#endif
-	GLM_NODISCARD GLM_FUNC_QUALIFIER GLM_CONSTEXPR length_t components(T const&)
-	{
-		return components<T>();
-	}
-#	if GLM_COMPILER & GLM_COMPILER_VC
-#		pragma warning(pop)
-#	endif
-
-#if (GLM_LANG & GLM_LANG_CXX20)
-	template<typename T>
-		requires is_vec<T>::value || is_quat<T>::value || is_mat<T>::value
-#else
-	template<typename T, typename = typename std::enable_if<is_vec<T>::value || is_quat<T>::value || is_mat<T>::value>::type>
-#endif
 	GLM_NODISCARD GLM_FUNC_QUALIFIER GLM_CONSTEXPR std::valarray<typename T::value_type> valarray(T const& v)
 	{
-		return std::valarray<typename T::value_type>(value_ptr(v), components<T>());
+		return std::valarray<typename T::value_type>(value_ptr(v), type<T>::elements);
 	}
 
-#if (GLM_LANG & GLM_LANG_CXX20) && defined(__cpp_lib_span) && __cpp_lib_span >= 202002L
+#if (GLM_LANG & GLM_LANG_CXX20_FLAG) && defined(__cpp_lib_span) && __cpp_lib_span >= 202002L
 
-#if (GLM_LANG & GLM_LANG_CXX20)
 	template<typename T>
-		requires is_vec<T>::value || is_quat<T>::value || is_mat<T>::value
-#else
-	template<typename T, typename = typename std::enable_if<is_vec<T>::value || is_quat<T>::value || is_mat<T>::value>::type>
-#endif
+		requires (type<std::remove_cvref_t<T>>::elements > 0)
 	GLM_NODISCARD GLM_FUNC_QUALIFIER GLM_CONSTEXPR std::span<typename T::value_type> span(T & v)
 	{
-		return std::span<typename T::value_type>(value_ptr(v), components<T>());
+		using TN = std::remove_cvref_t<T>;
+		return std::span<typename T::value_type>(value_ptr(v), type<TN>::elements);
 	}
 
-#if (GLM_LANG & GLM_LANG_CXX20)
 	template<typename T>
-		requires is_vec<T>::value || is_quat<T>::value || is_mat<T>::value
-#else
-	template<typename T, typename = typename std::enable_if<is_vec<T>::value || is_quat<T>::value || is_mat<T>::value>::type>
-#endif
+		requires (type<std::remove_cvref_t<T>>::elements > 0)
 	GLM_NODISCARD GLM_FUNC_QUALIFIER GLM_CONSTEXPR std::span<const typename T::value_type> span(T const& v)
 	{
-		return std::span<const typename T::value_type>(value_ptr(v), components<T>());
+		using TN = std::remove_cvref_t<T>;
+		return std::span<const typename T::value_type>(value_ptr(v), type<TN>::elements);
 	}
 
 #endif
 
-#if (GLM_LANG & GLM_LANG_CXX23) && defined(__cpp_lib_mdspan) && __cpp_lib_mdspan >= 202207L
+#if (GLM_LANG & GLM_LANG_CXX23_FLAG) && defined(__cpp_lib_mdspan) && __cpp_lib_mdspan >= 202207L
 
-#if (GLM_LANG & GLM_LANG_CXX20)
 	template<typename T>
-		requires is_vec<T>::value || is_quat<T>::value
-#else
-	template<typename T, typename = typename std::enable_if<is_vec<T>::value || is_quat<T>::value>::type>
-#endif
+		requires (type<std::remove_cvref_t<T>>::rows == 1)
 	GLM_NODISCARD GLM_FUNC_QUALIFIER GLM_CONSTEXPR std::mdspan<typename T::value_type> span(T & v)
 	{
-		return std::mdspan<typename T::value_type>(value_ptr(v), components<T>());
+		using TN = std::remove_cvref_t<T>;
+		static_assert(type<TN>::cols >= 1);
+		return std::mdspan<typename T::value_type>(value_ptr(v), type<TN>::cols);
 	}
 
-#if (GLM_LANG & GLM_LANG_CXX20)
 	template<typename T>
-		requires is_vec<T>::value || is_quat<T>::value
-#else
-	template<typename T, typename = typename std::enable_if<is_vec<T>::value || is_quat<T>::value>::type>
-#endif
+		requires (type<std::remove_cvref_t<T>>::rows == 1)
 	GLM_NODISCARD GLM_FUNC_QUALIFIER GLM_CONSTEXPR std::mdspan<const typename T::value_type> span(T const& v)
 	{
-		return std::mdspan<const typename T::value_type>(value_ptr(v), components<T>());
+		using TN = std::remove_cvref_t<T>;
+		static_assert(type<TN>::cols >= 1);
+		return std::mdspan<const typename T::value_type>(value_ptr(v), type<TN>::cols);
 	}
 
-	template<length_t L1, length_t L2, typename T, qualifier Q>
-	GLM_NODISCARD GLM_FUNC_QUALIFIER GLM_CONSTEXPR auto mdspan(mat<L1, L2, T, Q> & m)
+	template<typename T>
+		requires (type<std::remove_cvref_t<T>>::rows > 1)
+	GLM_NODISCARD GLM_FUNC_QUALIFIER GLM_CONSTEXPR auto mdspan(T & m)
 	{
-		return std::mdspan<T>(value_ptr(m), L1, L2);
+		using TN = std::remove_cvref_t<T>;
+		static_assert(type<TN>::cols >= 1);
+		return std::mdspan<typename T::value_type>(value_ptr(m), type<TN>::cols, type<TN>::rows);
 	}
 
-	template<length_t L1, length_t L2, typename T, qualifier Q>
-	GLM_NODISCARD GLM_FUNC_QUALIFIER GLM_CONSTEXPR auto mdspan(mat<L1, L2, T, Q> const& m)
+	template<typename T>
+		requires (type<std::remove_cvref_t<T>>::rows > 1)
+	GLM_NODISCARD GLM_FUNC_QUALIFIER GLM_CONSTEXPR auto mdspan(T const& m)
 	{
-		return std::mdspan<const T>(value_ptr(m), L1, L2);
+		using TN = std::remove_cvref_t<T>;
+		static_assert(type<TN>::cols >= 1);
+		return std::mdspan<const typename T::value_type>(value_ptr(m), type<TN>::cols, type<TN>::rows);
 	}
 
 #endif
