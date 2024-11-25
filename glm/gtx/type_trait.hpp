@@ -31,12 +31,20 @@ namespace glm
 	template<typename T>
 	struct type
 	{
+#if GLM_LANG & GLM_LANG_CXX11_FLAG
+		// with C++20, you can use std::remove_cvref for all of those
+		// with C++11, you can use std::remove_cv for the first two
+		static_assert(!std::is_const<T>::value); // use std::remove_const
+		static_assert(!std::is_volatile<T>::value); // use std::remove_volatile
+		static_assert(!std::is_reference<T>::value); // use std::remove_reference
+#endif
 		static bool const is_vec = false;
 		static bool const is_mat = false;
 		static bool const is_quat = false;
 		static length_t const components = 0;
 		static length_t const cols = 0;
 		static length_t const rows = 0;
+		static length_t const elements = cols * rows;
 	};
 
 	template<length_t L, typename T, qualifier Q>
@@ -46,6 +54,9 @@ namespace glm
 		static bool const is_mat = false;
 		static bool const is_quat = false;
 		static length_t const components = L;
+		static length_t const cols = L;
+		static length_t const rows = 1;
+		static length_t const elements = cols * rows;
 	};
 
 	template<length_t C, length_t R, typename T, qualifier Q>
@@ -57,6 +68,7 @@ namespace glm
 		static length_t const components = C;
 		static length_t const cols = C;
 		static length_t const rows = R;
+		static length_t const elements = cols * rows;
 	};
 
 	template<typename T, qualifier Q>
@@ -66,6 +78,9 @@ namespace glm
 		static bool const is_mat = false;
 		static bool const is_quat = true;
 		static length_t const components = 4;
+		static length_t const cols = components;
+		static length_t const rows = 1;
+		static length_t const elements = cols * rows;
 	};
 
 	template<typename T, qualifier Q>
@@ -75,6 +90,9 @@ namespace glm
 		static bool const is_mat = false;
 		static bool const is_quat = true;
 		static length_t const components = 8;
+		static length_t const cols = components;
+		static length_t const rows = 1;
+		static length_t const elements = cols * rows;
 	};
 
 	/// @}
