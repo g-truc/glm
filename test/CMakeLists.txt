@@ -5,7 +5,7 @@ option(GLM_PERF_TEST_ENABLE "Build perf tests" OFF)
 
 if(GLM_PERF_TEST_ENABLE)
 	add_definitions(-DGLM_TEST_PERF)
-	endif()
+endif()
 
 if (GLM_TEST_ENABLE_SIMD_FMA)
 	add_definitions(-DGLM_FORCE_FMA)
@@ -78,6 +78,43 @@ function(glmCreateTestGTC NAME)
 		NAME ${SAMPLE_NAME}
 		COMMAND $<TARGET_FILE:${SAMPLE_NAME}> )
 	target_link_libraries(${SAMPLE_NAME} PRIVATE glm::glm)
+
+	# Add labels for summary
+	if(NAME MATCHES "^bug_")
+		set_tests_properties(
+			${SAMPLE_NAME}
+			PROPERTIES
+				LABELS "bug"
+		)
+	endif()
+	if(NAME MATCHES "^core_")
+		set_tests_properties(
+			${SAMPLE_NAME}
+			PROPERTIES
+				LABELS "core"
+		)
+	endif()
+	if(NAME MATCHES "^ext_")
+		set_tests_properties(
+			${SAMPLE_NAME}
+			PROPERTIES
+				LABELS "ext"
+		)
+	endif()
+	if(NAME MATCHES "^gtc_")
+		set_tests_properties(
+			${SAMPLE_NAME}
+			PROPERTIES
+				LABELS "gtc"
+		)
+	endif()
+	if((NAME MATCHES "^gtx_") OR (NAME STREQUAL "gtx"))
+		set_tests_properties(
+			${SAMPLE_NAME}
+			PROPERTIES
+				LABELS "gtx"
+		)
+	endif()
 endfunction()
 
 if(GLM_TEST_ENABLE)
