@@ -17,7 +17,13 @@ namespace glm::detail
 			static constexpr auto size = std::min(sizeof(v), sizeof(data_t));
 			static constexpr auto biggerSize = std::max(sizeof(v), sizeof(data_t));
 			if constexpr (size == biggerSize) {
-				return std::bit_cast<data_t>(v);
+				if constexpr (L != 3 && (L < 3 || detail::is_aligned<Q>::value)) {
+					return reinterpret_cast<data_t>(v);
+				} else {
+					data_t d;
+					std::memcpy(&d, &v, size);
+					return d;
+				}
 			} else {
 				data_t d;
 				std::memcpy(&d, &v, size);
@@ -43,6 +49,10 @@ namespace glm::detail
 					std::memcpy(&o, &(v.data), size);
 					using o_vec_t = decltype(v);
 					v.o_vec_t::~o_vec_t();
+					gcc_vec_t converted = __builtin_convertvector(o, gcc_vec_t);
+					return gcc_vec_to_data(converted);
+				} else if constexpr ( L == Lx && sizeof(v) == sizeof(data_t) ) {
+					OtherVec o = reinterpret_cast<OtherVec>(v.data);
 					gcc_vec_t converted = __builtin_convertvector(o, gcc_vec_t);
 					return gcc_vec_to_data(converted);
 				} else {

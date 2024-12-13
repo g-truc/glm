@@ -135,7 +135,8 @@ consteval uint32_t roundToPow2(uint32_t n) { // https://stackoverflow.com/a/4662
 	template<typename T>
 	struct ATTR(1) storage<1, T, false>
 	{
-		typedef T type;
+		using VType = std::conditional_t< std::is_same_v<T, bool>, uint8_t, T>;
+		typedef VType type __attribute__((aligned(sizeof(VType)),vector_size(sizeof(VType))));
 	};
 	template<typename T>
 	struct storage<2, T, true>
@@ -143,11 +144,18 @@ consteval uint32_t roundToPow2(uint32_t n) { // https://stackoverflow.com/a/4662
 		using VType = std::conditional_t< std::is_same_v<T, bool>, uint8_t, T>;
 		typedef VType type __attribute__((aligned(sizeof(VType)),vector_size(2*sizeof(VType))));
 	};
+	
 	template<typename T>
 	struct storage<1, T, true>
 	{
 		using VType = std::conditional_t< std::is_same_v<T, bool>, uint8_t, T>;
 		typedef VType type __attribute__((aligned(sizeof(VType)),vector_size(sizeof(VType))));
+	};
+	template<typename T> requires (roundToPow2(sizeof(T)) == sizeof(T))
+	struct storage<4, T, false>
+	{
+		using VType = std::conditional_t< std::is_same_v<T, bool>, uint8_t, T>;
+		typedef VType type __attribute__((vector_size(4*sizeof(VType))));
 	};
 #undef ATTR
 #undef ALIGNED
