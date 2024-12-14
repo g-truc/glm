@@ -221,7 +221,7 @@ namespace glm
 		    for (length_t i = 0; i < L; i++) {
 		    	a.p[i]=scalar();
 		    }
-		    return EC{.data=std::bit_cast<data_t>(a)};
+		    return EC{.elementArr=a};
 			} else {
 				return EC{.data=SimdHlp::simd_ctor_scalar(scalar())};
 			}
@@ -239,7 +239,7 @@ namespace glm
 					a.p[i] = (T)ax.p[i];
 				}
 				
-				return EC{.data=std::bit_cast<data_t>(a)};
+				return EC{.elementArr=a};
 			} else {
 				return EC{.data=SimdHlp::simd_ctor(vecGetter())};
 			}
@@ -291,13 +291,13 @@ namespace glm
 		template <arithmetic... Scalar> requires (sizeof...(Scalar) == L)
 		constexpr __attribute__((always_inline)) vec(Scalar... scalar)
 		: EC
-			{.elementArr= [scalar...]() -> DataArray
+			{ [scalar...]() -> EC
 				{
 					if (std::is_constant_evaluated() || (L == 3 && !BIsAlignedQ<Q>())) {
 						DataArray a = {.p={ static_cast<T>(scalar)... }};
-						return a;
+						return EC{.elementArr=a};
 					} else {
-						return std::bit_cast<DataArray>(SimdHlp::simd_ctor_multi_scalars(scalar...));
+						return EC{.data=SimdHlp::simd_ctor_multi_scalars(scalar...)};
 					}
 				}()
 			} {}
