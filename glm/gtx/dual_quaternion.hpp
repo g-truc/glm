@@ -54,7 +54,7 @@ namespace glm
 
 		// -- Implicit basic constructors --
 
-		GLM_DEFAULTED_FUNC_DECL GLM_CONSTEXPR tdualquat() GLM_DEFAULT;
+		GLM_DEFAULTED_DEFAULT_CTOR_DECL GLM_CONSTEXPR tdualquat() GLM_DEFAULT_CTOR;
 		GLM_DEFAULTED_FUNC_DECL GLM_CONSTEXPR tdualquat(tdualquat<T, Q> const& d) GLM_DEFAULT;
 		template<qualifier P>
 		GLM_CTOR_DECL tdualquat(tdualquat<T, P> const& d);
