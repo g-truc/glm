@@ -32,7 +32,7 @@ namespace glm::detail
 		}
 		
 		static inline auto __attribute__((always_inline)) simd_ctor_scalar(arithmetic auto scalar) {
-			gcc_vec_t v = gcc_vec_t{} + ( (T)scalar );
+			gcc_vec_t v = ( (T)scalar ) - gcc_vec_t{};
 			using Tx = decltype(scalar);
 			scalar.Tx::~Tx();
 			return gcc_vec_to_data(v);
@@ -85,9 +85,18 @@ namespace glm::detail
 		}
 		
 		template <arithmetic... A>
-		static inline auto __attribute__((always_inline)) simd_ctor_multi_scalars(A... scalars) requires ( isLengthOfVector<A...>() && SameArithmeticTypes<A...>())
+		static inline auto __attribute__((always_inline)) simd_ctor_multi_scalars(A... scalars) requires ( isLengthOfVector<A...>() && SameTypes<A...>())
 		{
-			//assuming that number of scalars is always the same as the length of the to-be-constructed vector
+			using OtherType = GetFirstType<A...>::FirstTx;
+			using other_vec_t = GccVec<L, OtherType, Q>;
+			other_vec_t o {scalars...};
+			
+			return gcc_vec_to_data(__builtin_convertvector(o, gcc_vec_t));
+		}
+		
+		template <arithmetic... A>
+		static inline auto __attribute__((always_inline)) simd_ctor_multi_scalars(A... scalars) requires ( isLengthOfVector<A...>() && !SameTypes<A...>() && SameArithmeticTypes<A...>())
+		{
 			gcc_vec_t v;
 			std::array<T, sizeof...(scalars)> pack{static_cast<T>(scalars)...};
 			for (int i = 0; i != sizeof...(scalars); i++ ) {

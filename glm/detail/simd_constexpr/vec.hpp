@@ -53,6 +53,10 @@ namespace glm
 	consteval bool SameArithmeticTypes() {
 		return (std::is_same_v<std::common_type_t<T0,T>, std::common_type_t<T0,T>> && ...);
 	}
+	template <typename T0, typename... T>
+	consteval bool SameTypes() {
+		return (std::is_same_v<T0, T> && ...);
+	}
 	template <typename... T>
 	consteval bool NotSameArithmeticTypes() {
 		return ( (!(std::is_integral_v<T> || std::is_floating_point_v<T>) || ...) || !(SameArithmeticTypes<T...>()) );
@@ -265,7 +269,7 @@ namespace glm
 				return 1;
 			} 
 		}
-		static inline decltype(auto) __attribute__((always_inline)) ctor_mixed_constexpr_single = [](auto vs0) -> auto
+		static constexpr decltype(auto) __attribute__((always_inline)) ctor_mixed_constexpr_single(auto vs0)
 		{
 			using VTX = decltype(vs0);
 			if constexpr ( std::is_integral_v<VTX> || std::is_floating_point_v<VTX> ) {
@@ -280,7 +284,7 @@ namespace glm
 				using Tx = VTX::value_type;
 				return RetArr<1>{(Tx)vs0};
 			} 
-		};
+		}
 		
 		constexpr __attribute__((always_inline)) vec() = default;
 		constexpr __attribute__((always_inline)) vec(arithmetic auto scalar) : EC{ ctor_scalar(scalar)} {}
