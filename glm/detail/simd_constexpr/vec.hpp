@@ -30,13 +30,23 @@ namespace glm
 #else
 #define GLM_TRIVIAL
 #endif
+	
+			//improve vectorization by widening length-three vectors that are floating point
+			//since the compiler will have a harder time vectorizing glm::vec3's
 	template <length_t L>
 	concept NotVec1 = !std::is_same_v<std::integral_constant<length_t, L>, std::integral_constant<length_t, 1>>;
 	template <qualifier Q>
 	consteval bool BIsAlignedQ() {
 		return Q == aligned_highp || Q == aligned_mediump || Q == aligned_lowp;
 	}
-	
+	template <length_t L>
+	consteval bool BIsLenThree() {
+		return L == 3;
+	}
+	template <length_t L, typename T, qualifier Q>
+	consteval bool BShouldWidenVec() { 
+		return BIsLenThree<L>() && BIsAlignedQ<Q>() && std::is_floating_point_v<T>;
+	}
 	template <typename T>
 	concept arithmetic = std::integral<T> || std::floating_point<T>;
 	template <typename T0, typename... T>
@@ -245,7 +255,7 @@ namespace glm
 		using RetArr = std::array<T, len>;
 		
 		template <typename Vs0>
-		static constexpr length_t __attribute__((always_inline,flatten)) ctor_mixed_constexpr_single_get_length()
+		static constexpr length_t __attribute__((always_inline)) ctor_mixed_constexpr_single_get_length()
 		{
 			if constexpr ( std::is_integral_v<Vs0> || std::is_floating_point_v<Vs0> ) {
 				return 1;
@@ -255,7 +265,7 @@ namespace glm
 				return 1;
 			} 
 		}
-		static inline decltype(auto) __attribute__((always_inline,flatten)) ctor_mixed_constexpr_single = [](auto vs0) -> auto
+		static inline decltype(auto) __attribute__((always_inline)) ctor_mixed_constexpr_single = [](auto vs0) -> auto
 		{
 			using VTX = decltype(vs0);
 			if constexpr ( std::is_integral_v<VTX> || std::is_floating_point_v<VTX> ) {
@@ -338,14 +348,11 @@ namespace glm
 		: EC
 			{ctor_multi_mixed_func(vecOrScalar0, vecOrScalar...)} {}
 
-		consteval bool BShouldWidenVec() {
-			//improve vectorization by widening length-three vectors that are floating point
-			//since the compiler will have a harder time vectorizing glm::vec3's
-			return L==3 && !BIsAlignedQ<Q> && std::is_floating_point_v<T>;
-		}
+
+			
 		inline GLM_CONSTEXPR vec<L, T, Q>& __attribute__((always_inline)) operator+=(arithmetic auto scalar)
 		{
-			if constexpr (BShouldWidenVec()) {
+			if constexpr (BShouldWidenVec<L,T,Q>()) {
 				vec<4,T,Q> widened(*this);
 				
 				widened.data += scalar;
@@ -361,7 +368,7 @@ namespace glm
 		template<typename Tx>
 		inline GLM_CONSTEXPR vec<L, T, Q> & __attribute__((always_inline)) operator+=(vec<1, Tx, Q> v) requires (NotVec1<L>)
 		{
-			if constexpr (BShouldWidenVec()) {
+			if constexpr (BShouldWidenVec<L,T,Q>()) {
 				vec<4,T,Q> widened(*this);
 				
 				widened.data += v.x;
@@ -376,7 +383,7 @@ namespace glm
 		template<typename Tx>
 		inline GLM_CONSTEXPR vec<L, T, Q> & __attribute__((always_inline)) operator+=(vec<L, Tx, Q> const& __restrict__ v)
 		{
-			if constexpr (BShouldWidenVec()) {
+			if constexpr (BShouldWidenVec<L,T,Q>()) {
 				vec<4,T,Q> widened(*this);
 				
 				widened.data += vec<4,T,Q>(v).data;
@@ -390,7 +397,7 @@ namespace glm
 
 		inline GLM_CONSTEXPR vec<L, T, Q> & __attribute__((always_inline)) operator-=(arithmetic auto scalar)
 		{
-			if constexpr (BShouldWidenVec()) {
+			if constexpr (BShouldWidenVec<L,T,Q>()) {
 				vec<4,T,Q> widened(*this);
 				
 				widened.data -= vec<4,T,Q>(scalar).data;
@@ -405,7 +412,7 @@ namespace glm
 		template<typename Tx>
 		inline GLM_CONSTEXPR vec<L, T, Q> & __attribute__((always_inline)) operator-=(vec<1, Tx, Q> v) requires (NotVec1<L>)
 		{
-			if constexpr (BShouldWidenVec()) {
+			if constexpr (BShouldWidenVec<L,T,Q>()) {
 				vec<4,T,Q> widened(*this);
 				
 				widened.data -= vec<4,T,Q>(v.x).data;
@@ -420,7 +427,7 @@ namespace glm
 		template<typename Tx>
 		inline GLM_CONSTEXPR vec<L, T, Q> & __attribute__((always_inline)) operator-=(vec<L, Tx, Q> const& __restrict__ v)
 		{
-			if constexpr (BShouldWidenVec()) {
+			if constexpr (BShouldWidenVec<L,T,Q>()) {
 				vec<4,T,Q> widened(*this);
 				
 				widened.data -= vec<4,T,Q>(v).data;
@@ -434,7 +441,7 @@ namespace glm
 
 		inline GLM_CONSTEXPR vec<L, T, Q> & __attribute__((always_inline)) operator*=(arithmetic auto scalar)
 		{
-			if constexpr (BShouldWidenVec()) {
+			if constexpr (BShouldWidenVec<L,T,Q>()) {
 				vec<4,T,Q> widened(*this);
 				
 				widened.data *= vec<4,T,Q>(scalar).data;
@@ -449,7 +456,7 @@ namespace glm
 		template<typename Tx>
 		inline GLM_CONSTEXPR vec<L, T, Q> & __attribute__((always_inline)) operator*=(vec<1, Tx, Q> v) requires (NotVec1<L>)
 		{
-			if constexpr (BShouldWidenVec()) {
+			if constexpr (BShouldWidenVec<L,T,Q>()) {
 				vec<4,T,Q> widened(*this);
 				
 				widened.data *= vec<4,T,Q>(v.x).data;
@@ -464,7 +471,7 @@ namespace glm
 		template<typename Tx>
 		inline GLM_CONSTEXPR vec<L, T, Q> & __attribute__((always_inline)) operator*=(vec<L, Tx, Q> const& __restrict__ v)
 		{
-			if constexpr (BShouldWidenVec()) {
+			if constexpr (BShouldWidenVec<L,T,Q>()) {
 				vec<4,T,Q> widened(*this);
 				
 				widened.data *= vec<4,T,Q>(v).data;
@@ -478,7 +485,7 @@ namespace glm
 
 		inline GLM_CONSTEXPR vec<L, T, Q> & __attribute__((always_inline)) operator/=(arithmetic auto scalar)
 		{
-			if constexpr (BShouldWidenVec()) {
+			if constexpr (BShouldWidenVec<L,T,Q>()) {
 				vec<4,T,Q> widened(*this);
 				
 				widened.data /= vec<4,T,Q>(scalar).data;
@@ -493,7 +500,7 @@ namespace glm
 		template<typename Tx>
 		inline GLM_CONSTEXPR vec<L, T, Q> & __attribute__((always_inline)) operator/=(vec<1, Tx, Q> v) requires (NotVec1<L>)
 		{
-			if constexpr (BShouldWidenVec()) {
+			if constexpr (BShouldWidenVec<L,T,Q>()) {
 				vec<4,T,Q> widened(*this);
 				
 				widened.data /= vec<4,T,Q>(v.x).data;
@@ -508,7 +515,7 @@ namespace glm
 		template<typename Tx>
 		inline GLM_CONSTEXPR vec<L, T, Q> & __attribute__((always_inline)) operator/=(vec<L, Tx, Q> const& __restrict__ v)
 		{
-			if constexpr (BShouldWidenVec()) {
+			if constexpr (BShouldWidenVec<L,T,Q>()) {
 				vec<4,T,Q> widened(*this);
 				
 				widened.data /= vec<4,T,Q>(v).data;
@@ -576,7 +583,7 @@ namespace glm
 
 		inline GLM_CONSTEXPR vec<L, T, Q> & __attribute__((always_inline)) operator%=(arithmetic auto scalar)
 		{
-			if constexpr (BShouldWidenVec()) {
+			if constexpr (BShouldWidenVec<L,T,Q>()) {
 				vec<4,T,Q> widened(*this);
 				
 				widened.data %= vec<4,T,Q>(scalar).data;
@@ -591,7 +598,7 @@ namespace glm
 		template<typename Tx>
 		inline GLM_CONSTEXPR vec<L, T, Q> & __attribute__((always_inline)) operator%=(vec<1, Tx, Q> v) requires (NotVec1<L>)
 		{
-			if constexpr (BShouldWidenVec()) {
+			if constexpr (BShouldWidenVec<L,T,Q>()) {
 				vec<4,T,Q> widened(*this);
 				
 				widened.data %= vec<4,T,Q>(v.x).data;
@@ -606,7 +613,7 @@ namespace glm
 		template<typename Tx>
 		inline GLM_CONSTEXPR vec<L, T, Q> & __attribute__((always_inline)) operator%=(vec<L, Tx, Q> v)
 		{
-			if constexpr (BShouldWidenVec()) {
+			if constexpr (BShouldWidenVec<L,T,Q>()) {
 				vec<4,T,Q> widened(*this);
 				
 				widened.data %= vec<4,T,Q>(v).data;
@@ -620,7 +627,7 @@ namespace glm
 
 		inline GLM_CONSTEXPR vec<L, T, Q> & __attribute__((always_inline)) operator&=(arithmetic auto scalar)
 		{
-			if constexpr (BShouldWidenVec()) {
+			if constexpr (BShouldWidenVec<L,T,Q>()) {
 				vec<4,T,Q> widened(*this);
 				
 				widened.data &= vec<4,T,Q>(scalar).data;
@@ -635,7 +642,7 @@ namespace glm
 		template<typename Tx>
 		inline GLM_CONSTEXPR vec<L, T, Q> & __attribute__((always_inline)) operator&=(vec<1, Tx, Q> v) requires (NotVec1<L>)
 		{
-			if constexpr (BShouldWidenVec()) {
+			if constexpr (BShouldWidenVec<L,T,Q>()) {
 				vec<4,T,Q> widened(*this);
 				
 				widened.data &= vec<4,T,Q>(v.x).data;
@@ -650,7 +657,7 @@ namespace glm
 		template<typename Tx>
 		inline GLM_CONSTEXPR vec<L, T, Q> & __attribute__((always_inline)) operator&=(vec<L, Tx, Q> v)
 		{
-			if constexpr (BShouldWidenVec()) {
+			if constexpr (BShouldWidenVec<L,T,Q>()) {
 				vec<4,T,Q> widened(*this);
 				
 				widened.data &= vec<4,T,Q>(v).data;
@@ -664,7 +671,7 @@ namespace glm
 
 		inline GLM_CONSTEXPR vec<L, T, Q> & __attribute__((always_inline)) operator|=(arithmetic auto scalar)
 		{
-			if constexpr (BShouldWidenVec()) {
+			if constexpr (BShouldWidenVec<L,T,Q>()) {
 				vec<4,T,Q> widened(*this);
 				
 				widened.data |= vec<4,T,Q>(scalar).data;
@@ -679,7 +686,7 @@ namespace glm
 		template<typename Tx>
 		inline GLM_CONSTEXPR vec<L, T, Q> & __attribute__((always_inline)) operator|=(vec<1, Tx, Q>  v) requires (NotVec1<L>)
 		{
-			if constexpr (BShouldWidenVec()) {
+			if constexpr (BShouldWidenVec<L,T,Q>()) {
 				vec<4,T,Q> widened(*this);
 				
 				widened.data |= vec<4,T,Q>(v.x).data;
@@ -694,7 +701,7 @@ namespace glm
 		template<typename Tx>
 		inline GLM_CONSTEXPR vec<L, T, Q> & __attribute__((always_inline)) operator|=(vec<L, Tx, Q>  v)
 		{
-			if constexpr (BShouldWidenVec()) {
+			if constexpr (BShouldWidenVec<L,T,Q>()) {
 				vec<4,T,Q> widened(*this);
 				
 				widened.data |= vec<4,T,Q>(v).data;
@@ -708,7 +715,7 @@ namespace glm
 
 		inline GLM_CONSTEXPR vec<L, T, Q> & __attribute__((always_inline)) operator^=(arithmetic auto scalar)
 		{
-			if constexpr (BShouldWidenVec()) {
+			if constexpr (BShouldWidenVec<L,T,Q>()) {
 				vec<4,T,Q> widened(*this);
 				
 				widened.data ^= vec<4,T,Q>(scalar).data;
@@ -723,7 +730,7 @@ namespace glm
 		template<typename Tx>
 		inline GLM_CONSTEXPR vec<L, T, Q> & __attribute__((always_inline)) operator^=(vec<1, Tx, Q>  v) requires (NotVec1<L>)
 		{
-			if constexpr (BShouldWidenVec()) {
+			if constexpr (BShouldWidenVec<L,T,Q>()) {
 				vec<4,T,Q> widened(*this);
 				
 				widened.data ^= vec<4,T,Q>(v.x).data;
@@ -743,7 +750,7 @@ namespace glm
 
 		inline GLM_CONSTEXPR vec<L, T, Q> & __attribute__((always_inline)) operator<<=(arithmetic auto scalar)
 		{
-			if constexpr (BShouldWidenVec()) {
+			if constexpr (BShouldWidenVec<L,T,Q>()) {
 				vec<4,T,Q> widened(*this);
 				
 				widened.data <<= vec<4,T,Q>(scalar).data;
@@ -758,7 +765,7 @@ namespace glm
 		template<typename Tx>
 		inline GLM_CONSTEXPR vec<L, T, Q> & __attribute__((always_inline)) operator<<=(vec<1, Tx, Q>  v) requires (NotVec1<L>)
 		{
-			if constexpr (BShouldWidenVec()) {
+			if constexpr (BShouldWidenVec<L,T,Q>()) {
 				vec<4,T,Q> widened(*this);
 				
 				widened.data <<= vec<4,T,Q>(v.x).data;
@@ -773,7 +780,7 @@ namespace glm
 		template<typename Tx>
 		inline GLM_CONSTEXPR vec<L, T, Q> & __attribute__((always_inline)) operator<<=(vec<L, Tx, Q>  v)
 		{
-			if constexpr (BShouldWidenVec()) {
+			if constexpr (BShouldWidenVec<L,T,Q>()) {
 				vec<4,T,Q> widened(*this);
 				
 				widened.data <<= vec<4,T,Q>(v).data;
@@ -787,7 +794,7 @@ namespace glm
 
 		inline GLM_CONSTEXPR vec<L, T, Q> & __attribute__((always_inline)) operator>>=(arithmetic auto scalar)
 		{
-			if constexpr (BShouldWidenVec()) {
+			if constexpr (BShouldWidenVec<L,T,Q>()) {
 				vec<4,T,Q> widened(*this);
 				
 				widened.data >>= vec<4,T,Q>(scalar).data;
@@ -802,7 +809,7 @@ namespace glm
 		template<typename Tx>
 		inline GLM_CONSTEXPR vec<L, T, Q> & __attribute__((always_inline)) operator>>=(vec<1, Tx, Q>  v) requires (NotVec1<L>)
 		{
-			if constexpr (BShouldWidenVec()) {
+			if constexpr (BShouldWidenVec<L,T,Q>()) {
 				vec<4,T,Q> widened(*this);
 				
 				widened.data >>= vec<4,T,Q>(v.x).data;
@@ -817,7 +824,7 @@ namespace glm
 		template<typename Tx>
 		inline GLM_CONSTEXPR vec<L, T, Q> & __attribute__((always_inline)) operator>>=(vec<L, Tx, Q>  v)
 		{
-			if constexpr (BShouldWidenVec()) {
+			if constexpr (BShouldWidenVec<L,T,Q>()) {
 				vec<4,T,Q> widened(*this);
 				
 				widened.data >>= vec<4,T,Q>(v).data;
