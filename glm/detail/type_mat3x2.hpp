@@ -5,6 +5,7 @@
 
 #include "type_vec2.hpp"
 #include "type_vec3.hpp"
+#include "mat3xn_common_ops.hpp"
 #include <limits>
 #include <cstddef>
 
@@ -78,58 +79,12 @@ namespace glm
 		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<4, 2, T, Q> const& x);
 		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<4, 3, T, Q> const& x);
 
-		// -- Unary arithmetic operators --
-
+		// Assignment Operator
 		template<typename U>
 		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<3, 2, T, Q> & operator=(mat<3, 2, U, Q> const& m);
-		template<typename U>
-		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<3, 2, T, Q> & operator+=(U s);
-		template<typename U>
-		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<3, 2, T, Q> & operator+=(mat<3, 2, U, Q> const& m);
-		template<typename U>
-		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<3, 2, T, Q> & operator-=(U s);
-		template<typename U>
-		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<3, 2, T, Q> & operator-=(mat<3, 2, U, Q> const& m);
-		template<typename U>
-		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<3, 2, T, Q> & operator*=(U s);
-		template<typename U>
-		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<3, 2, T, Q> & operator/=(U s);
-
-		// -- Increment and decrement operators --
-
-		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<3, 2, T, Q> & operator++ ();
-		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<3, 2, T, Q> & operator-- ();
-		GLM_FUNC_DECL GLM_CONSTEXPR mat<3, 2, T, Q> operator++(int);
-		GLM_FUNC_DECL GLM_CONSTEXPR mat<3, 2, T, Q> operator--(int);
 	};
 
-	// -- Unary operators --
-
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR mat<3, 2, T, Q> operator+(mat<3, 2, T, Q> const& m);
-
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR mat<3, 2, T, Q> operator-(mat<3, 2, T, Q> const& m);
-
 	// -- Binary operators --
-
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR mat<3, 2, T, Q> operator+(mat<3, 2, T, Q> const& m, T scalar);
-
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR mat<3, 2, T, Q> operator+(mat<3, 2, T, Q> const& m1, mat<3, 2, T, Q> const& m2);
-
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR mat<3, 2, T, Q> operator-(mat<3, 2, T, Q> const& m, T scalar);
-
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR mat<3, 2, T, Q> operator-(mat<3, 2, T, Q> const& m1, mat<3, 2, T, Q> const& m2);
-
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR mat<3, 2, T, Q> operator*(mat<3, 2, T, Q> const& m, T scalar);
-
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR mat<3, 2, T, Q> operator*(T scalar, mat<3, 2, T, Q> const& m);
 
 	template<typename T, qualifier Q>
 	GLM_FUNC_DECL GLM_CONSTEXPR typename mat<3, 2, T, Q>::col_type operator*(mat<3, 2, T, Q> const& m, typename mat<3, 2, T, Q>::row_type const& v);
@@ -145,20 +100,6 @@ namespace glm
 
 	template<typename T, qualifier Q>
 	GLM_FUNC_DECL GLM_CONSTEXPR mat<4, 2, T, Q> operator*(mat<3, 2, T, Q> const& m1, mat<4, 3, T, Q> const& m2);
-
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR mat<3, 2, T, Q> operator/(mat<3, 2, T, Q> const& m, T scalar);
-
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR mat<3, 2, T, Q> operator/(T scalar, mat<3, 2, T, Q> const& m);
-
-	// -- Boolean operators --
-
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR bool operator==(mat<3, 2, T, Q> const& m1, mat<3, 2, T, Q> const& m2);
-
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR bool operator!=(mat<3, 2, T, Q> const& m1, mat<3, 2, T, Q> const& m2);
 
 }//namespace glm
 
