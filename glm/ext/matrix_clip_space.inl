@@ -555,6 +555,26 @@ namespace glm
 	}
 
 	template<typename T>
+	GLM_FUNC_QUALIFIER mat<4, 4, T, defaultp> infinitePerspectiveRH(T fovy, T aspect, T zNear)
+	{
+#		if GLM_CONFIG_CLIP_CONTROL & GLM_CLIP_CONTROL_ZO_BIT
+			return infinitePerspectiveRH_ZO(fovy, aspect, zNear);
+#		else
+			return infinitePerspectiveRH_NO(fovy, aspect, zNear);
+#		endif
+	}
+
+	template<typename T>
+	GLM_FUNC_QUALIFIER mat<4, 4, T, defaultp> infinitePerspectiveLH(T fovy, T aspect, T zNear)
+	{
+#		if GLM_CONFIG_CLIP_CONTROL & GLM_CLIP_CONTROL_ZO_BIT
+			return infinitePerspectiveLH_ZO(fovy, aspect, zNear);
+#		else
+			return infinitePerspectiveLH_NO(fovy, aspect, zNear);
+#		endif
+	}
+
+	template<typename T>
 	GLM_FUNC_QUALIFIER mat<4, 4, T, defaultp> infinitePerspective(T fovy, T aspect, T zNear)
 	{
 #		if GLM_CONFIG_CLIP_CONTROL == GLM_CLIP_CONTROL_LH_ZO
