@@ -1,4 +1,5 @@
 #define GLM_SIMD_CONSTEXPR 1
+#include <cmath>
 #include <glm/glm.hpp>
 #include <glm/vec4.hpp>
 #include <cstdio>
@@ -15,10 +16,11 @@
 
 int main()
 {
+#if defined(__x86_64__) || defined(__aarch64__)
         static_assert(GLM_ARCH & GLM_ARCH_SIMD_BIT);
         static_assert(GLM_CONFIG_SIMD);
         static_assert(GLM_ARCH_SIMD_BIT);
-       
+#endif
         
         using avec4 = glm::vec<4, float, glm::aligned_highp>;
         static constexpr avec4 v{1.0f};//, 1.1f, 1.2f, 1.0f};

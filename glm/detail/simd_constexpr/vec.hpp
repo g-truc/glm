@@ -23,6 +23,7 @@
 #include <variant>
 #include <cstring>
 #include <ranges>
+#include <algorithm>
 namespace glm
 {
 #ifdef __clang__
