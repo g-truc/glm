@@ -107,36 +107,21 @@ namespace detail
 		};
 #	endif
 
-#	if GLM_ARCH & GLM_ARCH_SSE2_BIT
 #if (defined(__clang__) || defined(__GNUC__)) && (GLM_LANG_CXX20_FLAG & GLM_LANG)
-#if __x86_64__
-consteval uint32_t roundToPow2(uint32_t n) { // https://stackoverflow.com/a/466242
-		n--;
-		n |= n >> 1u;
-		n |= n >> 2u;
-		n |= n >> 4u;
-		n |= n >> 8u;
-		n |= n >> 16u;
-		n++;
-		return std::max(n, 1u);
-}
-#define ALIGNED(size) aligned(roundToPow2( (size) )),
-#define ATTR(size)  __attribute__((packed,aligned(roundToPow2( (size) ))))
-#else
-#define ATTR(size)
-#define ALIGNED(size)
-#endif
+	template <typename T>
+	static constexpr size_t requiredAlignment = alignof(T);
+	
 	template<typename T>
-	struct ATTR(sizeof(T)/2) storage<2, T, false>
+	struct __attribute__((packed,aligned(requiredAlignment<T>))) storage<2, T, false>
 	{
 		using VType = std::conditional_t< std::is_same_v<T, bool>, uint8_t, T>;
-		typedef VType type __attribute__((ALIGNED(sizeof(VType)/2) vector_size(2*sizeof(VType))));
+		typedef VType type __attribute__((aligned( requiredAlignment<T> ), vector_size(2*sizeof(VType))));
 	};
 	template<typename T>
-	struct ATTR(1) storage<1, T, false>
+	struct __attribute__((packed,aligned(requiredAlignment<T>))) storage<1, T, false>
 	{
 		using VType = std::conditional_t< std::is_same_v<T, bool>, uint8_t, T>;
-		typedef VType type __attribute__((aligned(sizeof(VType)),vector_size(sizeof(VType))));
+		typedef VType type __attribute__((aligned( requiredAlignment<T> ),vector_size(sizeof(VType))));
 	};
 	template<typename T>
 	struct storage<2, T, true>
@@ -151,15 +136,22 @@ consteval uint32_t roundToPow2(uint32_t n) { // https://stackoverflow.com/a/4662
 		using VType = std::conditional_t< std::is_same_v<T, bool>, uint8_t, T>;
 		typedef VType type __attribute__((aligned(sizeof(VType)),vector_size(sizeof(VType))));
 	};
-	template<typename T> requires (roundToPow2(sizeof(T)) == sizeof(T))
-	struct storage<4, T, false>
+	template <typename T>
+	struct __attribute__((packed,aligned(requiredAlignment<T>))) storage<3, T, false>
+	{
+		typedef struct __attribute__((packed,aligned(requiredAlignment<T>))) type {
+				T data[3] __attribute__((packed,aligned(requiredAlignment<T>)));
+			} type;
+	};
+	template <typename T>
+	struct __attribute__((packed,aligned(requiredAlignment<T>))) storage<4, T, false>
 	{
 		using VType = std::conditional_t< std::is_same_v<T, bool>, uint8_t, T>;
-		typedef VType type __attribute__((vector_size(4*sizeof(VType))));
+		typedef VType type __attribute__((aligned( requiredAlignment<T> ), vector_size(4*sizeof(VType))));
 	};
-#undef ATTR
-#undef ALIGNED
 #endif
+
+#	if GLM_ARCH & GLM_ARCH_SSE2_BIT
 	template<>
 	struct storage<4, float, true>
 	{
