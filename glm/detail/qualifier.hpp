@@ -154,7 +154,7 @@ namespace detail
 	struct storage<4, T, true>
 	{
 		using VType = std::conditional_t< std::is_same_v<T, bool>, uint8_t, T>;
-		typedef VType type __attribute__((aligned(4*sizeof(VType)),vector_size(sizeof(VType))));
+		typedef VType type __attribute__((aligned(4*sizeof(VType)),vector_size(4*sizeof(VType))));
 	};
 # endif
 #endif
