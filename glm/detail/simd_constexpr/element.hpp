@@ -16,7 +16,7 @@ namespace glm::detail
 	template <length_t L, typename T, qualifier Q>
 	struct ElementCollection;
 	
-#ifdef __clang
+#ifdef __clang__
 	template<typename T> struct declval_helper { static T value; };
 
 template<typename T, typename Z, Z T::*MPtr>
