@@ -45,5 +45,7 @@ int main()
 				
 				auto v7 = v3.blend<{0, 1, 0, 1}>(vfin);
 				printf("v3.blend<glm::bvec4{0, 1, 0, 1}>(vfin) = %f %f %f %f\n", v7.x, v7.y, v7.z, v7.w);
+				static constexpr auto v8 = v + v4;
+				printf("static constexpr auto v8 = v + v4 = %f %f %f %f\n", v8.x, v8.y, v8.z, v8.w);
 	return 0;
 }
