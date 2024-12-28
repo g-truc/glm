@@ -803,7 +803,7 @@
 		using G = typename vec<L, T, Q>::GccVec_t; \
 		G vin; std::memcpy(&vin, &data, std::min(sizeof(data), sizeof(vin))); \
 		GccVec<4, T, Q> vout; \
-		vout = __builtin_shufflevector(vin, vin, offsetof(E, A)/sizeof(A), offsetof(E, B)/sizeof(B), offsetof(E, C)/sizeof(C), offsetof(E, A)/sizeof(A)); \
+		vout = __builtin_shufflevector(vin, vin, offsetof(E, A)/sizeof(A), offsetof(E, B)/sizeof(B), offsetof(E, C)/sizeof(C), -1); \
 		vec<3, T, Q> voutfin; std::memcpy(&voutfin, &vout, sizeof(voutfin)); \
 		return voutfin;			\
 	}
