@@ -26,7 +26,7 @@
 		static constexpr auto pA = &testObj.A;\
 		static constexpr auto pB = &testObj.B;\
 		static constexpr auto pC = &testObj.C;\
-		vout=__builtin_shufflevector(vin, vin, getOffset<pA, &testObj>(), getOffset<pB, &testObj>(), getOffset<pC, &testObj>()); \
+		vout=__builtin_shufflevector(vin, vin, getOffset<pA, &testObj>(), getOffset<pB, &testObj>(), getOffset<pC, &testObj>(), -1); \
 		vec<3, T, Q> voutfin; std::memcpy(&voutfin, &vout, sizeof(voutfin)); \
 		return voutfin;			\
 	}

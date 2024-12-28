@@ -232,7 +232,7 @@ namespace glm
 		//! and vector v1 and vector v2 must have the same type (the predicate vector can be a different type
 		template <typename Tx, qualifier Qx> requires(std::is_integral_v<T>)
 		inline vec<L, Tx, Qx> __attribute((pure, leaf, nothrow, no_stack_protector)) compWiseTernary(vec<L, Tx, Qx> v1, vec<L, Tx, Qx> v2) const {
-			if constexpr (L == 3 && !BIsAlignedQ<Qx>() || !BIsAlignedQ<Q>()) {
+			if constexpr (L == 3 && (!BIsAlignedQ<Qx>() || !BIsAlignedQ<Q>())) {
 				vec<4, T, Q> predicateWidened(*this);
 				vec<4, Tx, Qx> v1Widened(v1);
 				vec<4, Tx, Qx> v2Widened(v2);
@@ -249,7 +249,7 @@ namespace glm
 		//! and vector v1 and vector v2 must have the same type (the predicate vector can be a different type
 		template <typename Tx, qualifier Qx> requires(std::is_integral_v<T>)
 		inline vec<L, Tx, Qx> __attribute((pure, leaf, nothrow, no_stack_protector)) compWiseTernary(vec<L, Tx, Qx> v1, vec<L, Tx, Qx> v2) {
-			if constexpr (L == 3 && !BIsAlignedQ<Qx>() || !BIsAlignedQ<Q>()) {
+			if constexpr (L == 3 && (!BIsAlignedQ<Qx>() || !BIsAlignedQ<Q>())) {
 				vec<4, T, Q> predicateWidened(*this);
 				vec<4, Tx, Qx> v1Widened(v1);
 				vec<4, Tx, Qx> v2Widened(v2);
@@ -449,7 +449,7 @@ namespace glm
 		inline GLM_CONSTEXPR vec<L, T, Q> & __attribute__((always_inline)) operator+=(vec<L, Tx, Q> const& v)
 		{
 		  if (std::is_constant_evaluated()) {
-		  	std::array<T, L> result{};
+		  	std::array<T, data_len> result{};
 		  	
 		  	std::ranges::transform(this->elementArr.p, v.elementArr.p, result.begin(), [](auto const& lhs, auto const& rhs) -> T { return lhs + rhs; });
 		  	this->elementArr.p = result;
@@ -503,7 +503,7 @@ namespace glm
 		inline GLM_CONSTEXPR vec<L, T, Q> & __attribute__((always_inline)) operator-=(vec<L, Tx, Q> const& v)
 		{
 			 if (std::is_constant_evaluated()) {
-		  	std::array<T, L> result{};
+		  	std::array<T, data_len> result{};
 		  	
 		  	std::ranges::transform(this->elementArr.p, v.elementArr.p, result.begin(), [](auto const& lhs, auto const& rhs) -> T { return lhs - rhs; });
 		  	this->elementArr.p = result;
@@ -557,7 +557,7 @@ namespace glm
 		inline GLM_CONSTEXPR vec<L, T, Q> & __attribute__((always_inline)) operator*=(vec<L, Tx, Q> const& v)
 		{
 			 if (std::is_constant_evaluated()) {
-		  	std::array<T, L> result{};
+		  	std::array<T, data_len> result{};
 		  	
 		  	std::ranges::transform(this->elementArr.p, v.elementArr.p, result.begin(), [](auto const& lhs, auto const& rhs) -> T { return lhs * rhs; });
 		  	this->elementArr.p = result;
@@ -611,7 +611,7 @@ namespace glm
 		inline GLM_CONSTEXPR vec<L, T, Q> & __attribute__((always_inline)) operator/=(vec<L, Tx, Q> const& v)
 		{
 			 if (std::is_constant_evaluated()) {
-		  	std::array<T, L> result{};
+		  	std::array<T, data_len> result{};
 		  	
 		  	std::ranges::transform(this->elementArr.p, v.elementArr.p, result.begin(), [](auto const& lhs, auto const& rhs) -> T { return lhs + rhs; });
 		  	this->elementArr.p = result;
@@ -699,7 +699,7 @@ namespace glm
 		inline GLM_CONSTEXPR vec<L, T, Q> & __attribute__((always_inline)) operator%=(vec<L, Tx, Q> v)
 		{
 			if (std::is_constant_evaluated()) {
-		  	std::array<T, L> result{};
+		  	std::array<T, data_len> result{};
 		  	
 		  	std::ranges::transform(this->elementArr.p, v.elementArr.p, result.begin(), [](auto const& lhs, auto const& rhs) -> T { return lhs % rhs; });
 		  	this->elementArr.p = result;
@@ -753,7 +753,7 @@ namespace glm
 		inline GLM_CONSTEXPR vec<L, T, Q> & __attribute__((always_inline)) operator&=(vec<L, Tx, Q> v)
 		{
 			if (std::is_constant_evaluated()) {
-		  	std::array<T, L> result{};
+		  	std::array<T, data_len> result{};
 		  	
 		  	std::ranges::transform(this->elementArr.p, v.elementArr.p, result.begin(), [](auto const& lhs, auto const& rhs) -> T { return lhs & rhs; });
 		  	this->elementArr.p = result;
@@ -807,7 +807,7 @@ namespace glm
 		inline GLM_CONSTEXPR vec<L, T, Q> & __attribute__((always_inline)) operator|=(vec<L, Tx, Q>  v)
 		{
 			if (std::is_constant_evaluated()) {
-		  	std::array<T, L> result{};
+		  	std::array<T, data_len> result{};
 		  	
 		  	std::ranges::transform(this->elementArr.p, v.elementArr.p, result.begin(), [](auto const& lhs, auto const& rhs) -> T { return lhs | rhs; });
 		  	this->elementArr.p = result;
@@ -861,7 +861,7 @@ namespace glm
 		inline GLM_CONSTEXPR vec<L, T, Q> & __attribute__((always_inline)) operator^=(vec<L, Tx, Q>  v)
 		{
 			if (std::is_constant_evaluated()) {
-		  	std::array<T, L> result{};
+		  	std::array<T, data_len> result{};
 		  	
 		  	std::ranges::transform(this->elementArr.p, v.elementArr.p, result.begin(), [](auto const& lhs, auto const& rhs) -> T { return lhs ^ rhs; });
 		  	this->elementArr.p = result;
@@ -908,7 +908,7 @@ namespace glm
 		inline GLM_CONSTEXPR vec<L, T, Q> & __attribute__((always_inline)) operator<<=(vec<L, Tx, Q>  v)
 		{
 			if (std::is_constant_evaluated()) {
-		  	std::array<T, L> result{};
+		  	std::array<T, data_len> result{};
 		  	
 		  	std::ranges::transform(this->elementArr.p, v.elementArr.p, result.begin(), [](auto const& lhs, auto const& rhs) -> T { return lhs << rhs; });
 		  	this->elementArr.p = result;
@@ -962,7 +962,7 @@ namespace glm
 		inline GLM_CONSTEXPR vec<L, T, Q> & __attribute__((always_inline)) operator>>=(vec<L, Tx, Q>  v)
 		{
 			if (std::is_constant_evaluated()) {
-		  	std::array<T, L> result{};
+		  	std::array<T, data_len> result{};
 		  	
 		  	std::ranges::transform(this->elementArr.p, v.elementArr.p, result.begin(), [](auto const& lhs, auto const& rhs) -> T { return lhs >> rhs; });
 		  	this->elementArr.p = result;
@@ -1298,7 +1298,7 @@ namespace glm
 		friend inline GLM_CONSTEXPR vec<L, T, Q> __attribute__((always_inline)) operator~(vec<L, T, Q>  v)
 		{
 			if (std::is_constant_evaluated()) {
-				std::array<T, L> result{};
+				std::array<T, data_len> result{};
 		  	std::ranges::transform(v.elementArr.p, result.begin(), [](auto const& lhs) -> T { return ~lhs; });
 		  	vec<L, T, Q> ret{T(0)};
 		  	ret.elementArr.p = result; 
@@ -1313,9 +1313,9 @@ namespace glm
 		friend inline GLM_CONSTEXPR bool __attribute__((always_inline)) operator==(vec<L, T, Q>  v1, vec<L, T, Q>  v2)
 		{
 			if (std::is_constant_evaluated()) {
-				std::array<bool, L> result{};
+				std::array<bool, data_len> result{};
 		  	std::ranges::transform(v1.elementArr.p, v2.elementArr.p, result.begin(), [](auto const& lhs, auto const& rhs) -> bool { return lhs == rhs; });
-		  	return std::ranges::all_of(result);
+		  	return std::ranges::all_of(result, [](bool lhs) -> bool { return lhs; });
 			} else {
 				return detail::compute_vec_equal<L, T, Q, detail::is_int<T>::value, sizeof(T) * 8, detail::is_aligned<Q>::value>::call(v1, v2);
 			}
@@ -1325,9 +1325,9 @@ namespace glm
 		friend inline GLM_CONSTEXPR bool __attribute__((always_inline)) operator!=(vec<L, T, Q>  v1, vec<L, T, Q>  v2)
 		{
 			if (std::is_constant_evaluated()) {
-				std::array<bool, L> result{};
+				std::array<bool, data_len> result{};
 		  	std::ranges::transform(v1.elementArr.p, v2.elementArr.p, result.begin(), [](auto const& lhs, auto const& rhs) -> bool { return lhs != rhs; });
-		  	return std::ranges::any_of(result);
+		  	return std::ranges::any_of(result, [](bool lhs) -> bool { return lhs; });
 			} else {
 				return detail::compute_vec_nequal<L, T, Q, detail::is_int<T>::value, sizeof(T) * 8, detail::is_aligned<Q>::value>::call(v1, v2);
 			}
@@ -1338,7 +1338,7 @@ namespace glm
 	inline vec<Lx, bool, Qx> __attribute__((always_inline)) operator&&(vec<Lx, Tx, Qx>  v1, vec<Lx, Tx, Qx>  v2)
 	{
 		if (std::is_constant_evaluated()) {
-	  	std::array<bool, Lx> result{};
+	  	std::array<bool, vec<Lx, Tx, Qx>::data_len> result{};
 	  	
 	  	std::ranges::transform(v1.elementArr.p, v2.elementArr.p, result.begin(), [](auto const& lhs, auto const& rhs) -> Tx { return lhs && rhs; });
 	  	vec<Lx, bool, Qx> ret{false};
@@ -1359,7 +1359,7 @@ namespace glm
 	inline vec<Lx, bool, Qx> __attribute__((always_inline)) operator||(vec<Lx, bool, Qx>  v1, vec<Lx, bool, Qx>  v2)
 	{
 		if (std::is_constant_evaluated()) {
-	  	std::array<bool, Lx> result{};
+	  	std::array<bool, vec<Lx, bool, Qx>::data_len> result{};
 	  	
 	  	std::ranges::transform(v1.elementArr.p, v2.elementArr.p, result.begin(), [](auto const& lhs, auto const& rhs) -> Tx { return lhs || rhs; });
 	  	vec<Lx, bool, Qx> ret{false};

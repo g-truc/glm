@@ -65,7 +65,7 @@ namespace glm::detail
 		using RowFour::a;
 		using RowFour::q;
 		static constexpr length_t data_len = (Q == aligned) ? 4 : 3;
-		static constexpr int64_t X = -1ll;
+		static constexpr T X = -1ll;
 		union
 		{
 				VDataArray<data_len, T, Q> elementArr;
@@ -103,7 +103,7 @@ namespace glm::detail
 		using RowFour::w;
 		using RowFour::a;
 		using RowFour::q;
-		static constexpr int64_t X = -1ll;
+		static constexpr T X = -1ll;
 		union
 		{
 				VDataArray<2, T, Q> elementArr;
@@ -141,7 +141,7 @@ namespace glm::detail
 		using RowFour::w;
 		using RowFour::a;
 		using RowFour::q;
-		static constexpr int64_t X = -1ll;
+		static constexpr T X = -1ll;
 		union
 		{
 				VDataArray<1, T, Q> elementArr;
