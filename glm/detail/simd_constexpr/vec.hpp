@@ -1,4 +1,5 @@
 /// @ref core
+/// @defgroup simd_constexpr_vec c++20 vec implementation that supports using both constexpr constructors, and simd constructors & functions
 /// @file glm/detail/simd_constexpr/vec.hpp
 
 #pragma once
@@ -199,36 +200,71 @@ namespace glm
 			
 			return elementArr.p[i];
 		}
+		/// @addtogroup simd_constexpr_vec
+		/// @{
 		
-		template <typename Tx, qualifier Qx> requires(std::is_same_v<T, bool>)
-		inline vec<L, Tx, Qx> compWiseTernary(vec<L, Tx, Qx> v1, vec<L, Tx, Qx> v2) {
-			if constexpr ( sizeof(Tx) == sizeof(int32_t) ) {
-				using GVec_t = typename detail::GccVExt<L, int32_t, Q>::GccV;
-				GVec_t condMask = __builtin_convertvector(std::bit_cast<GccVec_t>(elementArr), GVec_t);
-				auto gv1 = std::bit_cast<GccVec<L, Tx, Qx>>(v1.elementArr);
-				auto gv2 = std::bit_cast<GccVec<L, Tx, Qx>>(v2.elementArr);
-				return vec<L, Tx, Qx>((condMask ? gv1 : gv2));
-			} else if constexpr ( sizeof(Tx) == sizeof(int64_t) ) {
-				using GVec_t = typename detail::GccVExt<L, int64_t, Q>::GccV;
-				GVec_t condMask = __builtin_convertvector(std::bit_cast<GccVec_t>(elementArr), GVec_t);
-				auto gv1 = std::bit_cast<GccVec<L, Tx, Qx>>(v1.elementArr);
-				auto gv2 = std::bit_cast<GccVec<L, Tx, Qx>>(v2.elementArr);
-				return vec<L, Tx, Qx>((condMask ? gv1 : gv2));
-			} else if constexpr ( sizeof(Tx) == sizeof(int16_t) ) {
-				using GVec_t = typename detail::GccVExt<L, int16_t, Q>::GccV;
-				GVec_t condMask = __builtin_convertvector(std::bit_cast<GccVec_t>(elementArr), GVec_t);
-				auto gv1 = std::bit_cast<GccVec<L, Tx, Qx>>(v1.elementArr);
-				auto gv2 = std::bit_cast<GccVec<L, Tx, Qx>>(v2.elementArr);
-				return vec<L, Tx, Qx>((condMask ? gv1 : gv2));
+		//! Evaluates the component-wise expression: this ? v1 : v2, 
+		//! where the vector pointed to by this is the predicate vector
+		//! the predicate vector must be of an integral or boolean type,
+		//! All vectors must have the same length, 
+		//! and vector v1 and vector v2 must have the same type (the predicate vector can be a different type
+		template <typename Tx, qualifier Qx> requires(std::is_integral_v<T>)
+		inline vec<L, Tx, Qx> __attribute((pure, leaf, nothrow, no_stack_protector)) compWiseTernary(vec<L, Tx, Qx> v1, vec<L, Tx, Qx> v2) const {
+			if constexpr (L == 3 && !BIsAlignedQ<Qx>() || !BIsAlignedQ<Q>()) {
+				vec<4, T, Q> predicateWidened(*this);
+				vec<4, Tx, Qx> v1Widened(v1);
+				vec<4, Tx, Qx> v2Widened(v2);
+				return vec<3, Tx, Qx>( vec<4, Tx, Qx>( predicateWidened.data ? v1Widened.data : v2Widened.data ) );
 			} else {
-				using GVec_t = typename detail::GccVExt<L, int8_t, Q>::GccV;
-				GVec_t condMask = __builtin_convertvector(std::bit_cast<GccVec_t>(elementArr), GVec_t);
-				auto gv1 = std::bit_cast<GccVec<L, Tx, Qx>>(v1.elementArr);
-				auto gv2 = std::bit_cast<GccVec<L, Tx, Qx>>(v2.elementArr);
-				return vec<L, Tx, Qx>((condMask ? gv1 : gv2));
+				return vec<L, Tx, Qx>( this->data ? v1.data : v2.data );
+			}
+		}
+		
+		//! Evaluates the component-wise expression: this ? v1 : v2, 
+		//! where the vector pointed to by this is the predicate vector
+		//! the predicate vector must be of an integral or boolean type,
+		//! All vectors must have the same length, 
+		//! and vector v1 and vector v2 must have the same type (the predicate vector can be a different type
+		template <typename Tx, qualifier Qx> requires(std::is_integral_v<T>)
+		inline vec<L, Tx, Qx> __attribute((pure, leaf, nothrow, no_stack_protector)) compWiseTernary(vec<L, Tx, Qx> v1, vec<L, Tx, Qx> v2) {
+			if constexpr (L == 3 && !BIsAlignedQ<Qx>() || !BIsAlignedQ<Q>()) {
+				vec<4, T, Q> predicateWidened(*this);
+				vec<4, Tx, Qx> v1Widened(v1);
+				vec<4, Tx, Qx> v2Widened(v2);
+				return vec<3, Tx, Qx>( vec<4, Tx, Qx>( predicateWidened.data ? v1Widened.data : v2Widened.data ) );
+			} else {
+				return vec<L, Tx, Qx>( this->data ? v1.data : v2.data );
 			}
 		} 
+
+		//! Returns a vector created from blending two vectors together, based on the non-type template parameter boolean array mask.
+		//! Vector lhs is the vector pointed to by this, vector rhs is the second vector.
+		//! The nth false/0 element in the mask will select the nth element from the first vector.
+		//! The nth true/1 element in the mask will select the nth element from the second vector.
+		//! Vector lhs & rhs must have the same type, length & qualifier.
+		//! The returned vector has the same type, length & qualifer as vectors lhs & rhs. 
+		template <std::array<bool, L> mask>
+		inline vec<L, T, Q> __attribute((pure, leaf, nothrow, no_stack_protector)) blend(vec<L, T, Q> rhs) const {
+			if constexpr (L == 1) {
+				return vec<1, T, Q>(__builtin_shufflevector(this->data, rhs.data, mask[0]?1:0));
+			} else if constexpr (L == 2) {
+				return vec<2, T, Q>(__builtin_shufflevector(this->data, rhs.data, mask[0]?2:0, mask[1]?3:1));
+			} else if constexpr (L == 3 && BIsAlignedQ<Q>()) {
+				//aligned vec3 data is just vec4 data
+				return vec<3, T, Q>(__builtin_shufflevector(this->data, rhs.data, mask[0]?4:0, mask[1]?5:1, mask[2]?6:2, -1));
+			} else if constexpr (L == 3 && !BIsAlignedQ<Q>()) {
+				vec<4, T, Q> lhsWidened(*this);
+				vec<4, T, Q> rhsWidened(rhs);
+				return vec<3, T, Q>( vec<4, T, Q>(__builtin_shufflevector(lhsWidened.data, rhsWidened.data, mask[0]?4:0, mask[1]?5:1, mask[2]?6:2, -1)) );
+			} else if constexpr (L == 4) {
+				return vec<4, T, Q>(__builtin_shufflevector(this->data, rhs.data, mask[0]?4:0, mask[1]?5:1, mask[2]?6:2, mask[3]?7:3));
+			} else {
+				static_assert(false, "vec.blend() can only be run on a vec of length 1<=length<=4" );
+			}
+		}
 		
+		
+		/// @}
 		static constexpr auto __attribute__((always_inline,flatten)) ctor_scalar(arithmetic auto scalar) {
 			if (std::is_constant_evaluated()) {
 				DataArray a{};
@@ -298,8 +334,6 @@ namespace glm
 
 		constexpr __attribute__((always_inline)) vec(GccVec_t d) : EC{.data=reinterpret_cast<data_t>(d)} {}
 		
-		//template <length_t Lx, typename Tx, qualifier Qx> requires (Lx != 1)
-		//constexpr vec(__m128 d) : EC{ .data = std::bit_cast<detail::_data_t<L, T, Q>>(d) } {}
 		template <arithmetic... Scalar> requires (sizeof...(Scalar) == L)
 		constexpr auto __attribute__((always_inline)) ctor_multi_scalar_func(Scalar... scalar) {
 			if (std::is_constant_evaluated() || (L == 3)) {

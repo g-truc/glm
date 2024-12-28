@@ -17,24 +17,8 @@ namespace glm::detail
 	struct ElementCollection;
 	
 #ifdef __clang__
-	template<typename T> struct declval_helper { static T value; };
+	
 
-template<typename T, typename Z, Z T::*MPtr>
-struct offset_helper {
-    using TV = declval_helper<T>;
-    char for_sizeof[
-        (char *)&(TV::value.*MPtr) -
-        (char *)&TV::value
-    ];
-};
-
-
-template<typename T, typename Z>
-constexpr int memberOffset(Z T::*MPtr, auto MPtrGetter) {
-    return sizeof(glm::detail::offset_helper<T, Z, MPtrGetter()>::for_sizeof);
-}
-			template <length_t L, typename T, qualifier Q>
-			static constexpr auto k_X = &ElementCollection<L, T, Q>::X;
 	template <qualifier Q, typename T>
 	struct  GLM_TRIVIAL ElementCollection<4, T, Q> {
 		using data_t = typename detail::storage<4, T, detail::is_aligned<Q>::value>::type;
@@ -52,18 +36,13 @@ constexpr int memberOffset(Z T::*MPtr, auto MPtrGetter) {
 		};
 		
 
-			template <auto member, auto* baseObj>
-			static consteval int64_t getOffset()  {
-		//if constexpr (requires { constexpr vec<L,T,Q> v{0}; v.*member; }) {
-
-//#    ifdef __clang__
-			
+		template <auto member, auto* baseObj>
+		static consteval int64_t getOffset()  {
 			using E = ElementCollection<4, T, Q>;
 
 			if constexpr (member == &baseObj->X) {
 				return -1ll;
-			}
-			else if constexpr (member == &baseObj->x || member == &baseObj->r || member == &baseObj->s) {
+			} else if constexpr (member == &baseObj->x || member == &baseObj->r || member == &baseObj->s) {
 				return (int64_t)(offsetof(E, x)/sizeof(T));
 			} else if constexpr (member == &baseObj->y || member == &baseObj->g || member == &baseObj->t) {
 				return (int64_t)(offsetof(E, y)/sizeof(T));
@@ -74,8 +53,8 @@ constexpr int memberOffset(Z T::*MPtr, auto MPtrGetter) {
 			} else {
 				static_assert(false);
 			}
-	}
-					GLM_SWIZZLE_GEN_VEC_FROM_VEC4(T, Q)
+		}
+		GLM_SWIZZLE_GEN_VEC_FROM_VEC4(T, Q)
 	};
 	
 
@@ -97,30 +76,23 @@ constexpr int memberOffset(Z T::*MPtr, auto MPtrGetter) {
 				};
 				data_t data;
 		};
-			template <auto member, auto* baseObj>
-			consteval int64_t getOffset() {
-		//if constexpr (requires { constexpr vec<L,T,Q> v{0}; v.*member; }) {
-
-//#    ifdef __clang__
-			auto callable = []() { return member; };
+		template <auto member, auto* baseObj>
+		static consteval int64_t getOffset()  {
 			using E = ElementCollection<3, T, Q>;
 
 			if constexpr (member == &baseObj->X) {
 				return -1ll;
-			}
-			else if constexpr (member == &baseObj->x || member == &baseObj->r || member == &baseObj->s) {
+			} else if constexpr (member == &baseObj->x || member == &baseObj->r || member == &baseObj->s) {
 				return (int64_t)(offsetof(E, x)/sizeof(T));
 			} else if constexpr (member == &baseObj->y || member == &baseObj->g || member == &baseObj->t) {
 				return (int64_t)(offsetof(E, y)/sizeof(T));
 			} else if constexpr (member == &baseObj->z || member == &baseObj->b || member == &baseObj->p) {
 				return (int64_t)(offsetof(E, z)/sizeof(T));
-			} else if constexpr (member == &baseObj->w || member == &baseObj->a || member == &baseObj->q) {
-				return (int64_t)(offsetof(E, w)/sizeof(T));
 			} else {
 				static_assert(false);
 			}
-	}
-					GLM_SWIZZLE_GEN_VEC_FROM_VEC3(T, Q)
+		}
+		GLM_SWIZZLE_GEN_VEC_FROM_VEC3(T, Q)
 	};
 	template <qualifier Q, typename T>
 	struct GLM_TRIVIAL ElementCollection<2, T, Q> : RowThree, RowFour {
@@ -142,29 +114,20 @@ constexpr int memberOffset(Z T::*MPtr, auto MPtrGetter) {
 				data_t data;
 		};
 		template <auto member, auto* baseObj>
-			static consteval int64_t getOffset() {
-		//if constexpr (requires { constexpr vec<L,T,Q> v{0}; v.*member; }) {
-
-//#    ifdef __clang__
-			auto callable = []() { return member; };
+		static consteval int64_t getOffset()  {
 			using E = ElementCollection<2, T, Q>;
 
 			if constexpr (member == &baseObj->X) {
 				return -1ll;
-			}
-			else if constexpr (member == &baseObj->x || member == &baseObj->r || member == &baseObj->s) {
+			} else if constexpr (member == &baseObj->x || member == &baseObj->r || member == &baseObj->s) {
 				return (int64_t)(offsetof(E, x)/sizeof(T));
 			} else if constexpr (member == &baseObj->y || member == &baseObj->g || member == &baseObj->t) {
 				return (int64_t)(offsetof(E, y)/sizeof(T));
-			} else if constexpr (member == &baseObj->z || member == &baseObj->b || member == &baseObj->p) {
-				return (int64_t)(offsetof(E, z)/sizeof(T));
-			} else if constexpr (member == &baseObj->w || member == &baseObj->a || member == &baseObj->q) {
-				return (int64_t)(offsetof(E, w)/sizeof(T));
 			} else {
 				static_assert(false);
 			}
-	}
-				GLM_SWIZZLE_GEN_VEC_FROM_VEC2(T, Q)
+		}
+		GLM_SWIZZLE_GEN_VEC_FROM_VEC2(T, Q)
 	};
 	template <qualifier Q, typename T>
 	struct GLM_TRIVIAL ElementCollection<1, T, Q> : RowTwo, RowThree, RowFour {
@@ -187,7 +150,6 @@ constexpr int memberOffset(Z T::*MPtr, auto MPtrGetter) {
 				};
 				data_t data;
 		};
-		#undef G
 	};
 
 #else
@@ -207,7 +169,7 @@ constexpr int memberOffset(Z T::*MPtr, auto MPtrGetter) {
 				};
 				data_t data;
 		};
-					GLM_SWIZZLE_GEN_VEC_FROM_VEC4(T, Q)
+		GLM_SWIZZLE_GEN_VEC_FROM_VEC4(T, Q)
 	};
 	
 
@@ -228,7 +190,7 @@ constexpr int memberOffset(Z T::*MPtr, auto MPtrGetter) {
 				};
 				data_t data;
 		};
-					GLM_SWIZZLE_GEN_VEC_FROM_VEC3(T, Q)
+		GLM_SWIZZLE_GEN_VEC_FROM_VEC3(T, Q)
 	};
 	template <qualifier Q, typename T>
 	struct GLM_TRIVIAL ElementCollection<2, T, Q> : RowThree, RowFour {
@@ -248,7 +210,7 @@ constexpr int memberOffset(Z T::*MPtr, auto MPtrGetter) {
 				};
 				data_t data;
 		};				
-				GLM_SWIZZLE_GEN_VEC_FROM_VEC2(T, Q)
+		GLM_SWIZZLE_GEN_VEC_FROM_VEC2(T, Q)
 	};
 	template <qualifier Q, typename T>
 	struct GLM_TRIVIAL ElementCollection<1, T, Q> : RowTwo, RowThree, RowFour {
@@ -270,8 +232,7 @@ constexpr int memberOffset(Z T::*MPtr, auto MPtrGetter) {
 				};
 				data_t data;
 		};
-		#undef G
 	};
-	#endif
+#endif
 }
 
