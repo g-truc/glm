@@ -1,5 +1,7 @@
 #pragma once
-
+#if GLM_SIMD_CONSTEXPR == 1
+#include "simd_constexpr/_vectorize.hpp"
+#else
 namespace glm{
 namespace detail
 {
@@ -228,3 +230,4 @@ namespace detail
 	};
 }//namespace detail
 }//namespace glm
+#endif
