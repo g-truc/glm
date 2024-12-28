@@ -446,7 +446,7 @@ namespace glm
 		}
 
 		template<typename Tx>
-		inline GLM_CONSTEXPR vec<L, T, Q> & __attribute__((always_inline)) operator+=(vec<L, Tx, Q> const& __restrict__ v)
+		inline GLM_CONSTEXPR vec<L, T, Q> & __attribute__((always_inline)) operator+=(vec<L, Tx, Q> const& v)
 		{
 		  if (std::is_constant_evaluated()) {
 		  	std::array<T, L> result{};
@@ -1076,7 +1076,7 @@ namespace glm
 		}
 
 		
-		friend inline GLM_CONSTEXPR vec<L, T, Q> __attribute__((always_inline)) operator*(vec<L, T, Q> v1, vec<L, T, Q> const& __restrict__ v2)
+		friend inline GLM_CONSTEXPR vec<L, T, Q> __attribute__((always_inline)) operator*(vec<L, T, Q> v1, vec<L, T, Q> const& v2)
 		{
 			return vec<L, T, Q>(v2) *= v1;
 		}
@@ -1101,7 +1101,7 @@ namespace glm
 		}
 
 		template <length_t Lx>
-		friend inline GLM_CONSTEXPR vec<L, T, Q> __attribute__((always_inline)) operator/(vec<Lx, T, Q>  v1, vec<L, T, Q> && __restrict__ v2) requires (!NotVec1<Lx> && NotVec1<L>)
+		friend inline GLM_CONSTEXPR vec<L, T, Q> __attribute__((always_inline)) operator/(vec<Lx, T, Q>  v1, vec<L, T, Q> v2) requires (!NotVec1<Lx> && NotVec1<L>)
 		{
 				return vec<L, T, Q>(v1.x) /= v2;
 		}
