@@ -17,7 +17,7 @@ namespace glm::detail
 			static constexpr auto size = std::min(sizeof(v), sizeof(data_t));
 			static constexpr auto biggerSize = std::max(sizeof(v), sizeof(data_t));
 			if constexpr (size == biggerSize) {
-				if constexpr (L != 3 && (L < 3 || detail::is_aligned<Q>::value)) {
+				if constexpr (L != 3 || (detail::is_aligned<Q>::value)) {
 					return reinterpret_cast<data_t>(v);
 				} else {
 					data_t d;
@@ -44,13 +44,48 @@ namespace glm::detail
 			using OtherVec = GccVec<Lx, Tx, Qx>;
 			if constexpr (!std::is_same_v<::glm::vec<Lx, Tx, Qx>, ::glm::vec<L,T,Q>>) {
 				if constexpr (	((Lx == 3 || L == 3) && (!BIsAlignedQ<Q>() || !BIsAlignedQ<Qx>())) || sizeof(v.data) != sizeof(OtherVec)  ) { 
-					OtherVec o;
-					static constexpr auto size = std::min(sizeof(v.data), sizeof(o));
-					std::memcpy(&o, &(v.data), size);
-					using o_vec_t = decltype(v);
-					v.o_vec_t::~o_vec_t();
-					gcc_vec_t converted = __builtin_convertvector(o, gcc_vec_t);
-					return gcc_vec_to_data(converted);
+					if constexpr ( (sizeof(v.data) != sizeof(OtherVec) || Lx != 3 || BIsAlignedQ<Qx>()) && L != 3 && L > 0 && L <= 4) {
+						static constexpr int64_t posOne = 0;
+						static constexpr int64_t posTwo = Lx > 1 ? 1 : -1;
+						static constexpr int64_t posThree = Lx > 2 ? 2 : -1;
+						static constexpr int64_t posFour = Lx > 3 ? 3 : -1;
+						if constexpr (L == 4) {
+								OtherVec o = v.data;
+								auto oExt = __builtin_shufflevector(o, o, posOne, posTwo, posThree, posFour);
+								if constexpr (std::is_same_v<T, Tx>) {
+									return gcc_vec_to_data(oExt);
+								} else {
+									return gcc_vec_to_data(__builtin_convertvector(oExt, gcc_vec_t));
+								}
+						} else if constexpr (L == 2) {
+								OtherVec o = v.data;
+								auto oExt = __builtin_shufflevector(o, o, posOne, posTwo);
+								if constexpr (std::is_same_v<T, Tx>) {
+									return gcc_vec_to_data(oExt);
+								} else {
+									return gcc_vec_to_data(__builtin_convertvector(oExt, gcc_vec_t));
+								}
+						} else if constexpr (L == 1) {
+								OtherVec o = v.data;
+								auto oExt = __builtin_shufflevector(o, o, posOne);
+								if constexpr (std::is_same_v<T, Tx>) {
+									return gcc_vec_to_data(oExt);
+								} else {
+									return gcc_vec_to_data(__builtin_convertvector(oExt, gcc_vec_t));
+								}
+						} else {
+							static_assert(false, "unreachable");
+						}
+					} else 
+					{
+						OtherVec o;
+						static constexpr auto size = std::min(sizeof(v.data), sizeof(o));
+						std::memcpy(&o, &(v.data), size);
+						using o_vec_t = decltype(v);
+						v.o_vec_t::~o_vec_t();
+						gcc_vec_t converted = __builtin_convertvector(o, gcc_vec_t);
+						return gcc_vec_to_data(converted);
+					}
 				} else if constexpr ( L == Lx && sizeof(v) == sizeof(data_t) ) {
 					OtherVec o = reinterpret_cast<OtherVec>(v.data);
 					gcc_vec_t converted = __builtin_convertvector(o, gcc_vec_t);
@@ -90,8 +125,38 @@ namespace glm::detail
 			using OtherType = GetFirstType<A...>::FirstTx;
 			using other_vec_t = GccVec<L, OtherType, Q>;
 			other_vec_t o {scalars...};
+			if constexpr (std::is_same_v<T, OtherType>) {
+					return gcc_vec_to_data(o);
+			} else {
+					return gcc_vec_to_data(__builtin_convertvector(o, gcc_vec_t));
+			}
+		}
+		template <arithmetic... A>
+		static inline auto __attribute__((always_inline)) simd_ctor_multi_scalars(A... scalars) requires ( isLengthOfVector<A...>() && std::is_floating_point_v<T> && AllIntegralTypes<A...>() && !SameTypes<A...>())
+		{
+			using OtherType = GetCommonType<A...>::Type;
+			using other_vec_t = GccVec<L, OtherType, Q>;
+			other_vec_t o {scalars...};
 			
-			return gcc_vec_to_data(__builtin_convertvector(o, gcc_vec_t));
+			if constexpr (std::is_same_v<T, OtherType>) {
+					return gcc_vec_to_data(o);
+			} else {
+					return gcc_vec_to_data(__builtin_convertvector(o, gcc_vec_t));
+			}
+		}
+		
+		template <arithmetic... A>
+		static inline auto __attribute__((always_inline)) simd_ctor_multi_scalars(A... scalars) requires ( isLengthOfVector<A...>() && std::is_integral_v<T> && AllFloatTypes<A...>() && !SameTypes<A...>())
+		{
+			using OtherType = GetCommonType<A...>::Type;
+			using other_vec_t = GccVec<L, OtherType, Q>;
+			other_vec_t o {scalars...};
+			
+			if constexpr (std::is_same_v<T, OtherType>) {
+					return gcc_vec_to_data(o);
+			} else {
+					return gcc_vec_to_data(__builtin_convertvector(o, gcc_vec_t));
+			}
 		}
 		
 		template <arithmetic... A>
@@ -105,5 +170,7 @@ namespace glm::detail
 			}
 			return gcc_vec_to_data(v);
 		}
+		
+		
 	};
 }

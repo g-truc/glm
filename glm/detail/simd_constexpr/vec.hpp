@@ -33,21 +33,18 @@ namespace glm
 #define GLM_TRIVIAL
 #endif
 	
-			//improve vectorization by widening length-three vectors that are floating point
-			//since the compiler will have a harder time vectorizing glm::vec3's
+	//improve vectorization by widening length-three vectors that are floating point
+	//since the compiler will have a harder time vectorizing glm::vec3's
 	template <length_t L>
 	concept NotVec1 = !std::is_same_v<std::integral_constant<length_t, L>, std::integral_constant<length_t, 1>>;
 	template <qualifier Q>
 	consteval bool BIsAlignedQ() {
-		return Q == aligned_highp || Q == aligned_mediump || Q == aligned_lowp;
+		return detail::is_aligned<Q>::value;
 	}
-	template <length_t L>
-	consteval bool BIsLenThree() {
-		return L == 3;
-	}
+
 	template <length_t L, typename T, qualifier Q>
 	consteval bool BShouldWidenVec() { 
-		return BIsLenThree<L>() && BIsAlignedQ<Q>() && std::is_floating_point_v<T>;
+		return (L==3) && BIsAlignedQ<Q>() && std::is_floating_point_v<T>;
 	}
 	template <typename T>
 	concept arithmetic = std::integral<T> || std::floating_point<T>;
@@ -59,6 +56,36 @@ namespace glm
 	consteval bool SameTypes() {
 		return (std::is_same_v<T0, T> && ...);
 	}
+	
+	template <typename... T>
+	consteval bool AllIntegralTypes() {
+		return (std::is_integral_v<T> && ...);
+	}
+	
+	template <typename... T> 
+	struct GetCommonType;
+	
+	
+	template <typename T, typename... T1>
+	struct GetCommonType<T, T1...> {
+		using Type = GetCommonType<T, typename GetCommonType<T1...>::Type>::Type;
+	};
+	
+	template <typename T, typename T1>
+	struct GetCommonType<T, T1> {
+		using Type = std::common_type_t<T, T1>;
+	};
+	
+	template <typename T>
+	struct GetCommonType<T> {
+		using Type = T;
+	};
+	
+	template <typename... T>
+	consteval bool AllFloatTypes() {
+		return (std::is_floating_point_v<T> && ...);
+	}
+	
 	template <typename... T>
 	consteval bool NotSameArithmeticTypes() {
 		return ( (!(std::is_integral_v<T> || std::is_floating_point_v<T>) || ...) || !(SameArithmeticTypes<T...>()) );
@@ -74,6 +101,7 @@ namespace glm
 		
 		template <length_t L, typename T, qualifier Q>
 		struct GccVExt {
+			static constexpr qualifier k_qual = Q;
 			static constexpr length_t v_length = (L == 3) ? 4 : L;
 			using VType = std::conditional_t< std::is_same_v<T, bool>, uint8_t, T>;
 			typedef VType GccV __attribute__(( vector_size(sizeof(VType)*v_length), aligned(alignof(_data_t<L, T, Q>)) ));
@@ -358,7 +386,7 @@ namespace glm
 		
 		template <arithmetic... Scalar> requires (sizeof...(Scalar) == L)
 		constexpr auto __attribute__((always_inline)) ctor_multi_scalar_func(Scalar... scalar) {
-			if (std::is_constant_evaluated() || (L == 3)) {
+			if ( std::is_constant_evaluated() || (L == 3 && !BIsAlignedQ<Q>()) ) {
 				DataArray a = {.p={ static_cast<T>(scalar)... }};
 				return EC{.elementArr=a};
 			} else {
@@ -1335,7 +1363,7 @@ namespace glm
 	};
 	
 	template <length_t Lx, typename Tx, qualifier Qx> requires (std::is_same_v<Tx, bool>)
-	inline vec<Lx, bool, Qx> __attribute__((always_inline)) operator&&(vec<Lx, Tx, Qx>  v1, vec<Lx, Tx, Qx>  v2)
+	inline GLM_CONSTEXPR vec<Lx, bool, Qx> __attribute__((always_inline)) operator&&(vec<Lx, Tx, Qx>  v1, vec<Lx, Tx, Qx>  v2)
 	{
 		if (std::is_constant_evaluated()) {
 	  	std::array<bool, vec<Lx, Tx, Qx>::data_len> result{};
@@ -1356,7 +1384,7 @@ namespace glm
 		}
 	}
 	template <length_t Lx, typename Tx, qualifier Qx> requires (std::is_same_v<Tx, bool>)
-	inline vec<Lx, bool, Qx> __attribute__((always_inline)) operator||(vec<Lx, bool, Qx>  v1, vec<Lx, bool, Qx>  v2)
+	inline GLM_CONSTEXPR vec<Lx, bool, Qx> __attribute__((always_inline)) operator||(vec<Lx, bool, Qx>  v1, vec<Lx, bool, Qx>  v2)
 	{
 		if (std::is_constant_evaluated()) {
 	  	std::array<bool, vec<Lx, bool, Qx>::data_len> result{};
