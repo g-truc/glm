@@ -41,6 +41,25 @@ namespace glm
 	consteval bool BIsAlignedQ() {
 		return detail::is_aligned<Q>::value;
 	}
+	
+	template <qualifier Q>
+	consteval qualifier PackedToAligned() {
+#ifdef GLM_CONFIG_ALIGNED_GENTYPES
+	if constexpr (BIsAlignedQ<Q>()) {
+		return Q;
+	} else if constexpr (Q == packed_highp) {
+		return aligned_highp;
+	} else if constexpr (Q == packed_mediump) {
+		return aligned_mediump;
+	} else if constexpr (Q == packed_lowp) {
+		return aligned_lowp;
+	} else {
+		static_assert(false, "Invalid qualifier");
+	}
+#else
+	return Q;
+#endif
+	}
 
 	template <length_t L, typename T, qualifier Q>
 	consteval bool BShouldWidenVec() { 
@@ -261,10 +280,10 @@ namespace glm
 		template <typename Tx, qualifier Qx> requires(std::is_integral_v<T>)
 		inline vec<L, Tx, Qx> __attribute((pure, leaf, nothrow, no_stack_protector)) compWiseTernary(vec<L, Tx, Qx> v1, vec<L, Tx, Qx> v2) const {
 			if constexpr (L == 3 && (!BIsAlignedQ<Qx>() || !BIsAlignedQ<Q>())) {
-				vec<4, T, Q> predicateWidened(*this);
-				vec<4, Tx, Qx> v1Widened(v1);
-				vec<4, Tx, Qx> v2Widened(v2);
-				return vec<3, Tx, Qx>( vec<4, Tx, Qx>( predicateWidened.data ? v1Widened.data : v2Widened.data ) );
+				vec<3, T, PackedToAligned<Q>()> predicateWidened(*this);
+				vec<3, Tx, PackedToAligned<Qx>()> v1Widened(v1);
+				vec<3, Tx, PackedToAligned<Qx>()> v2Widened(v2);
+				return vec<3, Tx, Qx>( vec<3, Tx, PackedToAligned<Qx>()>( predicateWidened.data ? v1Widened.data : v2Widened.data ) );
 			} else {
 				return vec<L, Tx, Qx>( this->data ? v1.data : v2.data );
 			}
@@ -278,10 +297,10 @@ namespace glm
 		template <typename Tx, qualifier Qx> requires(std::is_integral_v<T>)
 		inline vec<L, Tx, Qx> __attribute((pure, leaf, nothrow, no_stack_protector)) compWiseTernary(vec<L, Tx, Qx> v1, vec<L, Tx, Qx> v2) {
 			if constexpr (L == 3 && (!BIsAlignedQ<Qx>() || !BIsAlignedQ<Q>())) {
-				vec<4, T, Q> predicateWidened(*this);
-				vec<4, Tx, Qx> v1Widened(v1);
-				vec<4, Tx, Qx> v2Widened(v2);
-				return vec<3, Tx, Qx>( vec<4, Tx, Qx>( predicateWidened.data ? v1Widened.data : v2Widened.data ) );
+				vec<3, T, PackedToAligned<Q>()> predicateWidened(*this);
+				vec<3, Tx, PackedToAligned<Qx>()> v1Widened(v1);
+				vec<3, Tx, PackedToAligned<Qx>()> v2Widened(v2);
+				return vec<3, Tx, Qx>( vec<3, Tx, PackedToAligned<Qx>()>( predicateWidened.data ? v1Widened.data : v2Widened.data ) );
 			} else {
 				return vec<L, Tx, Qx>( this->data ? v1.data : v2.data );
 			}
@@ -303,9 +322,9 @@ namespace glm
 				//aligned vec3 data is just vec4 data
 				return vec<3, T, Q>(__builtin_shufflevector(this->data, rhs.data, mask[0]?4:0, mask[1]?5:1, mask[2]?6:2, -1));
 			} else if constexpr (L == 3 && !BIsAlignedQ<Q>()) {
-				vec<4, T, Q> lhsWidened(*this);
-				vec<4, T, Q> rhsWidened(rhs);
-				return vec<3, T, Q>( vec<4, T, Q>(__builtin_shufflevector(lhsWidened.data, rhsWidened.data, mask[0]?4:0, mask[1]?5:1, mask[2]?6:2, -1)) );
+				vec<3, T, PackedToAligned<Q>()> lhsWidened(*this);
+				vec<3, T, PackedToAligned<Q>()> rhsWidened(rhs);
+				return vec<3, T, Q>( vec<3, T, PackedToAligned<Q>()>(__builtin_shufflevector(lhsWidened.data, rhsWidened.data, mask[0]?4:0, mask[1]?5:1, mask[2]?6:2, -1)) );
 			} else if constexpr (L == 4) {
 				return vec<4, T, Q>(__builtin_shufflevector(this->data, rhs.data, mask[0]?4:0, mask[1]?5:1, mask[2]?6:2, mask[3]?7:3));
 			} else {
@@ -328,7 +347,7 @@ namespace glm
 		}
 		
 		template <length_t Lx, typename Tx, qualifier Qx>
-		static constexpr auto __attribute__((always_inline,flatten)) ctor(vec<Lx, Tx, Qx> vec) {
+		static constexpr auto __attribute__((always_inline,flatten)) ctor(auto&& vec) {
 			if (std::is_constant_evaluated()) {
 				DataArray a;
 				using ArrX = VDataArray<Lx, Tx, Qx>;
@@ -377,10 +396,10 @@ namespace glm
 		constexpr __attribute__((always_inline)) vec(arithmetic auto scalar) : EC{ ctor_scalar(scalar)} {}
 
 		template <length_t Lx, typename Tx, qualifier Qx> requires (Lx == 1 && NotVec1<L>)
-	  constexpr __attribute__((always_inline)) vec(vec<Lx, Tx, Qx> v) : EC{ [d=std::bit_cast<VDataArray<Lx, Tx, Qx>>(v.elementArr)](){ auto s = [scalar=d.p[0]](){ return scalar; }; return ctor_scalar(s); }() } {}
+	  constexpr __attribute__((always_inline)) vec(vec<Lx, Tx, Qx>&& v) : EC{ [d=std::bit_cast<VDataArray<Lx, Tx, Qx>>(v.elementArr)](){ auto s = [scalar=d.p[0]](){ return scalar; }; return ctor_scalar(s); }() } {}
 		
 		template <length_t Lx, typename Tx, qualifier Qx> requires (Lx != 1)
-		constexpr __attribute__((always_inline)) vec(vec<Lx, Tx, Qx> v) : EC{ ctor(v) } {}
+		constexpr __attribute__((always_inline)) vec(vec<Lx, Tx, Qx>&& v) : EC{ ctor(std::forward<vec<Lx, Tx, Qx>>(v)) } {}
 
 		constexpr __attribute__((always_inline)) vec(GccVec_t d) : EC{.data=reinterpret_cast<data_t>(d)} {}
 		
@@ -444,7 +463,7 @@ namespace glm
 			if (std::is_constant_evaluated()) {
 				return *this += vec<L,T,Q>(scalar); 
 			} else if constexpr (BShouldWidenVec<L,T,Q>()) {
-				vec<4,T,Q> widened(*this);
+				vec<3,T,PackedToAligned<Q>()> widened(*this);
 				
 				widened.data += scalar;
 				return (*this = vec<3,T,Q>(widened));
@@ -462,7 +481,7 @@ namespace glm
 			if (std::is_constant_evaluated()) {
 				return *this += vec<L,T,Q>(v); 
 			} else if constexpr (BShouldWidenVec<L,T,Q>()) {
-				vec<4,T,Q> widened(*this);
+				vec<3,T,PackedToAligned<Q>()> widened(*this);
 				
 				widened.data += v.x;
 				return (*this = vec<3,T,Q>(widened));
@@ -483,9 +502,9 @@ namespace glm
 		  	this->elementArr.p = result;
 		  	return *this;
 		  } else if constexpr (BShouldWidenVec<L,T,Q>()) {
-				vec<4,T,Q> widened(*this);
+				vec<3,T,PackedToAligned<Q>()> widened(*this);
 				
-				widened.data += vec<4,T,Q>(v).data;
+				widened.data += vec<3,T,PackedToAligned<Q>()>(v).data;
 				return (*this = vec<3,T,Q>(widened));
 			} else if constexpr (L != 3) {
 				this->data += v.data;
@@ -499,9 +518,9 @@ namespace glm
 			if (std::is_constant_evaluated()) {
 				return *this -= vec<L,T,Q>(scalar); 
 			} else if constexpr (BShouldWidenVec<L,T,Q>()) {
-				vec<4,T,Q> widened(*this);
+				vec<3,T,PackedToAligned<Q>()> widened(*this);
 				
-				widened.data -= vec<4,T,Q>(scalar).data;
+				widened.data -= vec<3,T,PackedToAligned<Q>()>(scalar).data;
 				return (*this = vec<3,T,Q>(widened));
 			} else if constexpr (L != 3) {
 				this->data -= scalar;
@@ -516,9 +535,9 @@ namespace glm
 			if (std::is_constant_evaluated()) {
 				return *this += vec<L,T,Q>(v); 
 			} else if constexpr (BShouldWidenVec<L,T,Q>()) {
-				vec<4,T,Q> widened(*this);
+				vec<3,T,PackedToAligned<Q>()> widened(*this);
 				
-				widened.data -= vec<4,T,Q>(v.x).data;
+				widened.data -= vec<3,T,PackedToAligned<Q>()>(v.x).data;
 				return (*this = vec<3,T,Q>(widened));
 			} else if constexpr (L != 3) {
 				this->data -= v.x;
@@ -537,9 +556,9 @@ namespace glm
 		  	this->elementArr.p = result;
 		  	return *this;
 		  } else if constexpr (BShouldWidenVec<L,T,Q>()) {
-				vec<4,T,Q> widened(*this);
+				vec<3,T,PackedToAligned<Q>()> widened(*this);
 				
-				widened.data -= vec<4,T,Q>(v).data;
+				widened.data -= vec<3,T,PackedToAligned<Q>()>(v).data;
 				return (*this = vec<3,T,Q>(widened));
 			} else if constexpr (L != 3) {
 				this->data -= v.data;
@@ -553,9 +572,9 @@ namespace glm
 			if (std::is_constant_evaluated()) {
 				return *this *= vec<L,T,Q>(scalar); 
 			} else if constexpr (BShouldWidenVec<L,T,Q>()) {
-				vec<4,T,Q> widened(*this);
+				vec<3,T,PackedToAligned<Q>()> widened(*this);
 				
-				widened.data *= vec<4,T,Q>(scalar).data;
+				widened.data *= vec<3,T,PackedToAligned<Q>()>(scalar).data;
 				return (*this = vec<3,T,Q>(widened));
 			} else if constexpr (L != 3) {
 				this->data *= scalar;
@@ -570,9 +589,9 @@ namespace glm
 			if (std::is_constant_evaluated()) {
 				return *this *= vec<L,T,Q>(v); 
 			} else if constexpr (BShouldWidenVec<L,T,Q>()) {
-				vec<4,T,Q> widened(*this);
+				vec<3,T,PackedToAligned<Q>()> widened(*this);
 				
-				widened.data *= vec<4,T,Q>(v.x).data;
+				widened.data *= vec<3,T,PackedToAligned<Q>()>(v.x).data;
 				return (*this = vec<3,T,Q>(widened));
 			} else if constexpr (L != 3) {
 				this->data *= v.x;
@@ -591,9 +610,9 @@ namespace glm
 		  	this->elementArr.p = result;
 		  	return *this;
 		  } else if constexpr (BShouldWidenVec<L,T,Q>()) {
-				vec<4,T,Q> widened(*this);
+				vec<3,T,PackedToAligned<Q>()> widened(*this);
 				
-				widened.data *= vec<4,T,Q>(v).data;
+				widened.data *= vec<3,T,PackedToAligned<Q>()>(v).data;
 				return (*this = vec<3,T,Q>(widened));
 			} else if constexpr (L != 3) {
 				this->data *= v.data;
@@ -607,9 +626,9 @@ namespace glm
 			if (std::is_constant_evaluated()) {
 				return *this /= vec<L,T,Q>(scalar); 
 			} else if constexpr (BShouldWidenVec<L,T,Q>()) {
-				vec<4,T,Q> widened(*this);
+				vec<3,T,PackedToAligned<Q>()> widened(*this);
 				
-				widened.data /= vec<4,T,Q>(scalar).data;
+				widened.data /= vec<3,T,PackedToAligned<Q>()>(scalar).data;
 				return (*this = vec<3,T,Q>(widened));
 			} else if constexpr (L != 3) {
 				this->data /= scalar;
@@ -624,9 +643,9 @@ namespace glm
 			if (std::is_constant_evaluated()) {
 				return *this /= vec<L,T,Q>(v); 
 			} else if constexpr (BShouldWidenVec<L,T,Q>()) {
-				vec<4,T,Q> widened(*this);
+				vec<3,T,PackedToAligned<Q>()> widened(*this);
 				
-				widened.data /= vec<4,T,Q>(v.x).data;
+				widened.data /= vec<3,T,PackedToAligned<Q>()>(v.x).data;
 				return (*this = vec<3,T,Q>(widened));
 			} else if constexpr (L != 3) {
 				this->data /= v.x;
@@ -645,9 +664,9 @@ namespace glm
 		  	this->elementArr.p = result;
 		  	return *this;
 		  } else if constexpr (BShouldWidenVec<L,T,Q>()) {
-				vec<4,T,Q> widened(*this);
+				vec<3,T,PackedToAligned<Q>()> widened(*this);
 				
-				widened.data /= vec<4,T,Q>(v).data;
+				widened.data /= vec<3,T,PackedToAligned<Q>()>(v).data;
 				return (*this = vec<3,T,Q>(widened));
 			} else if constexpr (L != 3) {
 				this->data /= v.data;
@@ -695,9 +714,9 @@ namespace glm
 			if (std::is_constant_evaluated()) {
 				return *this %= vec<L,T,Q>(scalar); 
 			} else if constexpr (BShouldWidenVec<L,T,Q>()) {
-				vec<4,T,Q> widened(*this);
+				vec<3,T,PackedToAligned<Q>()> widened(*this);
 				
-				widened.data %= vec<4,T,Q>(scalar).data;
+				widened.data %= vec<3,T,PackedToAligned<Q>()>(scalar).data;
 				return (*this = vec<3,T,Q>(widened));
 			} else if constexpr (L != 3) {
 				this->data %= scalar;
@@ -712,9 +731,9 @@ namespace glm
 			if (std::is_constant_evaluated()) {
 				return *this %= vec<L,T,Q>(v); 
 			} else if constexpr (BShouldWidenVec<L,T,Q>()) {
-				vec<4,T,Q> widened(*this);
+				vec<3,T,PackedToAligned<Q>()> widened(*this);
 				
-				widened.data %= vec<4,T,Q>(v.x).data;
+				widened.data %= vec<3,T,PackedToAligned<Q>()>(v.x).data;
 				return (*this = vec<3,T,Q>(widened));
 			} else if constexpr (L != 3) {
 				this->data %= v.x;
@@ -733,9 +752,9 @@ namespace glm
 		  	this->elementArr.p = result;
 		  	return *this;
 		  } else if constexpr (BShouldWidenVec<L,T,Q>()) {
-				vec<4,T,Q> widened(*this);
+				vec<3,T,PackedToAligned<Q>()> widened(*this);
 				
-				widened.data %= vec<4,T,Q>(v).data;
+				widened.data %= vec<3,T,PackedToAligned<Q>()>(v).data;
 				return (*this = vec<3,T,Q>(widened));
 			} else if constexpr (L != 3) {
 				this->data %= v.data;
@@ -749,9 +768,9 @@ namespace glm
 			if (std::is_constant_evaluated()) {
 				return *this &= vec<L,T,Q>(scalar); 
 			} else if constexpr (BShouldWidenVec<L,T,Q>()) {
-				vec<4,T,Q> widened(*this);
+				vec<3,T,PackedToAligned<Q>()> widened(*this);
 				
-				widened.data &= vec<4,T,Q>(scalar).data;
+				widened.data &= vec<3,T,PackedToAligned<Q>()>(scalar).data;
 				return (*this = vec<3,T,Q>(widened));
 			} else if constexpr (L != 3) {
 				this->data &= scalar;
@@ -766,9 +785,9 @@ namespace glm
 			if (std::is_constant_evaluated()) {
 				return *this &= vec<L,T,Q>(v); 
 			} else if constexpr (BShouldWidenVec<L,T,Q>()) {
-				vec<4,T,Q> widened(*this);
+				vec<3,T,PackedToAligned<Q>()> widened(*this);
 				
-				widened.data &= vec<4,T,Q>(v.x).data;
+				widened.data &= vec<3,T,PackedToAligned<Q>()>(v.x).data;
 				return (*this = vec<3,T,Q>(widened));
 			} else if constexpr (L != 3) {
 				this->data &= v.x;
@@ -787,9 +806,9 @@ namespace glm
 		  	this->elementArr.p = result;
 		  	return *this;
 		  } else if constexpr (BShouldWidenVec<L,T,Q>()) {
-				vec<4,T,Q> widened(*this);
+				vec<3,T,PackedToAligned<Q>()> widened(*this);
 				
-				widened.data &= vec<4,T,Q>(v).data;
+				widened.data &= vec<3,T,PackedToAligned<Q>()>(v).data;
 				return (*this = vec<3,T,Q>(widened));
 			} else if constexpr (L != 3) {
 				this->data &= v.data;
@@ -803,9 +822,9 @@ namespace glm
 			if (std::is_constant_evaluated()) {
 				return *this |= vec<L,T,Q>(scalar); 
 			} else if constexpr (BShouldWidenVec<L,T,Q>()) {
-				vec<4,T,Q> widened(*this);
+				vec<3,T,PackedToAligned<Q>()> widened(*this);
 				
-				widened.data |= vec<4,T,Q>(scalar).data;
+				widened.data |= vec<3,T,PackedToAligned<Q>()>(scalar).data;
 				return (*this = vec<3,T,Q>(widened));
 			} else if constexpr (L != 3) {
 				this->data |= scalar;
@@ -820,9 +839,9 @@ namespace glm
 			if (std::is_constant_evaluated()) {
 				return *this |= vec<L,T,Q>(v); 
 			} else if constexpr (BShouldWidenVec<L,T,Q>()) {
-				vec<4,T,Q> widened(*this);
+				vec<3,T,PackedToAligned<Q>()> widened(*this);
 				
-				widened.data |= vec<4,T,Q>(v.x).data;
+				widened.data |= vec<3,T,PackedToAligned<Q>()>(v.x).data;
 				return (*this = vec<3,T,Q>(widened));
 			} else if constexpr (L != 3) {
 				this->data |= v.x;
@@ -841,9 +860,9 @@ namespace glm
 		  	this->elementArr.p = result;
 		  	return *this;
 		  } else if constexpr (BShouldWidenVec<L,T,Q>()) {
-				vec<4,T,Q> widened(*this);
+				vec<3,T,PackedToAligned<Q>()> widened(*this);
 				
-				widened.data |= vec<4,T,Q>(v).data;
+				widened.data |= vec<3,T,PackedToAligned<Q>()>(v).data;
 				return (*this = vec<3,T,Q>(widened));
 			} else if constexpr (L != 3) {
 				this->data |= v.data;
@@ -857,9 +876,9 @@ namespace glm
 			if (std::is_constant_evaluated()) {
 				return *this ^= vec<L,T,Q>(scalar); 
 			} else if constexpr (BShouldWidenVec<L,T,Q>()) {
-				vec<4,T,Q> widened(*this);
+				vec<3,T,PackedToAligned<Q>()> widened(*this);
 				
-				widened.data ^= vec<4,T,Q>(scalar).data;
+				widened.data ^= vec<3,T,PackedToAligned<Q>()>(scalar).data;
 				return (*this = vec<3,T,Q>(widened));
 			} else if constexpr (L != 3) {
 				this->data ^= scalar;
@@ -874,9 +893,9 @@ namespace glm
 			if (std::is_constant_evaluated()) {
 				return *this ^= vec<L,T,Q>(v); 
 			} else if constexpr (BShouldWidenVec<L,T,Q>()) {
-				vec<4,T,Q> widened(*this);
+				vec<3,T,PackedToAligned<Q>()> widened(*this);
 				
-				widened.data ^= vec<4,T,Q>(v.x).data;
+				widened.data ^= vec<3,T,PackedToAligned<Q>()>(v.x).data;
 				return (*this = vec<3,T,Q>(widened));
 			} else if constexpr (L != 3) {
 				this->data ^= v.x;
@@ -904,9 +923,9 @@ namespace glm
 			if (std::is_constant_evaluated()) {
 				return *this <<= vec<L,T,Q>(scalar); 
 			} else if constexpr (BShouldWidenVec<L,T,Q>()) {
-				vec<4,T,Q> widened(*this);
+				vec<3,T,PackedToAligned<Q>()> widened(*this);
 				
-				widened.data <<= vec<4,T,Q>(scalar).data;
+				widened.data <<= vec<4,T,PackedToAligned<Q>()>(scalar).data;
 				return (*this = vec<3,T,Q>(widened));
 			} else if constexpr (L != 3) {
 				this->data <<= scalar;
@@ -921,9 +940,9 @@ namespace glm
 			if (std::is_constant_evaluated()) {
 				return *this <<= vec<L,T,Q>(v); 
 			} else if constexpr (BShouldWidenVec<L,T,Q>()) {
-				vec<4,T,Q> widened(*this);
+				vec<3,T,PackedToAligned<Q>()> widened(*this);
 				
-				widened.data <<= vec<4,T,Q>(v.x).data;
+				widened.data <<= vec<3,T,PackedToAligned<Q>()>(v.x).data;
 				return (*this = vec<3,T,Q>(widened));
 			} else if constexpr (L != 3) {
 				this->data <<= v.x;
@@ -942,9 +961,9 @@ namespace glm
 		  	this->elementArr.p = result;
 		  	return *this;
 		  } else if constexpr (BShouldWidenVec<L,T,Q>()) {
-				vec<4,T,Q> widened(*this);
+				vec<3,T,PackedToAligned<Q>()> widened(*this);
 				
-				widened.data <<= vec<4,T,Q>(v).data;
+				widened.data <<= vec<3,T,PackedToAligned<Q>()>(v).data;
 				return (*this = vec<3,T,Q>(widened));
 			} else if constexpr (L != 3) {
 				this->data <<= v.data;
@@ -958,9 +977,9 @@ namespace glm
 			if (std::is_constant_evaluated()) {
 				return *this >>= vec<L,T,Q>(scalar); 
 			} else if constexpr (BShouldWidenVec<L,T,Q>()) {
-				vec<4,T,Q> widened(*this);
+				vec<3,T,PackedToAligned<Q>()> widened(*this);
 				
-				widened.data >>= vec<4,T,Q>(scalar).data;
+				widened.data >>= vec<3,T,PackedToAligned<Q>()>(scalar).data;
 				return (*this = vec<3,T,Q>(widened));
 			} else if constexpr (L != 3) {
 				this->data >>= scalar;
@@ -975,9 +994,9 @@ namespace glm
 			if (std::is_constant_evaluated()) {
 				return *this >>= vec<L,T,Q>(v); 
 			} else if constexpr (BShouldWidenVec<L,T,Q>()) {
-				vec<4,T,Q> widened(*this);
+				vec<3,T,PackedToAligned<Q>()> widened(*this);
 				
-				widened.data >>= vec<4,T,Q>(v.x).data;
+				widened.data >>= vec<3,T,PackedToAligned<Q>()>(v.x).data;
 				return (*this = vec<3,T,Q>(widened));
 			} else if constexpr (L != 3) {
 				this->data >>= v.x;
@@ -996,9 +1015,9 @@ namespace glm
 		  	this->elementArr.p = result;
 		  	return *this;
 		  } else if constexpr (BShouldWidenVec<L,T,Q>()) {
-				vec<4,T,Q> widened(*this);
+				vec<3,T,PackedToAligned<Q>()> widened(*this);
 				
-				widened.data >>= vec<4,T,Q>(v).data;
+				widened.data >>= vec<3,T,PackedToAligned<Q>()>(v).data;
 				return (*this = vec<3,T,Q>(widened));
 			} else if constexpr (L != 3) {
 				this->data >>= v.data;
