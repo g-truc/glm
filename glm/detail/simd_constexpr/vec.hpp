@@ -347,7 +347,7 @@ namespace glm
 		}
 		
 		template <length_t Lx, typename Tx, qualifier Qx>
-		static constexpr auto __attribute__((always_inline,flatten)) ctor(auto&& vec) {
+		static constexpr auto __attribute__((always_inline,flatten)) ctor(::glm::vec<Lx, Tx, Qx>&& vec) {
 			if (std::is_constant_evaluated()) {
 				DataArray a;
 				using ArrX = VDataArray<Lx, Tx, Qx>;
@@ -361,6 +361,23 @@ namespace glm
 				return EC{.data=SimdHlp::simd_ctor(vec)};
 			}
 		}
+		
+		template <length_t Lx, typename Tx, qualifier Qx>
+		static constexpr auto __attribute__((always_inline,flatten)) ctor(::glm::vec<Lx, Tx, Qx> const& vec) {
+			if (std::is_constant_evaluated()) {
+				DataArray a;
+				using ArrX = VDataArray<Lx, Tx, Qx>;
+				ArrX ax = std::bit_cast<ArrX>(vec.elementArr);
+				for (length_t i = 0; i < std::min(Lx, L); i++) {
+					a.p[i] = (T)ax.p[i];
+				}
+				
+				return EC{.elementArr=a};
+			} else {
+				return EC{.data=SimdHlp::simd_ctor(vec)};
+			}
+		}
+		
 		template <length_t len>
 		using RetArr = std::array<T, len>;
 		
@@ -396,10 +413,13 @@ namespace glm
 		constexpr __attribute__((always_inline)) vec(arithmetic auto scalar) : EC{ ctor_scalar(scalar)} {}
 
 		template <length_t Lx, typename Tx, qualifier Qx> requires (Lx == 1 && NotVec1<L>)
-	  constexpr __attribute__((always_inline)) vec(vec<Lx, Tx, Qx>&& v) : EC{ [d=std::bit_cast<VDataArray<Lx, Tx, Qx>>(v.elementArr)](){ auto s = [scalar=d.p[0]](){ return scalar; }; return ctor_scalar(s); }() } {}
+	  constexpr __attribute__((always_inline)) vec(vec<Lx, Tx, Qx> v) : EC{ [d=std::bit_cast<VDataArray<Lx, Tx, Qx>>(v.elementArr)](){ auto s = [scalar=d.p[0]](){ return scalar; }; return ctor_scalar(s); }() } {}
 		
 		template <length_t Lx, typename Tx, qualifier Qx> requires (Lx != 1)
-		constexpr __attribute__((always_inline)) vec(vec<Lx, Tx, Qx>&& v) : EC{ ctor(std::forward<vec<Lx, Tx, Qx>>(v)) } {}
+		constexpr __attribute__((always_inline)) vec(vec<Lx, Tx, Qx>&& v) : EC{ ctor<Lx, Tx, Qx>(v) } {}
+		
+		template <length_t Lx, typename Tx, qualifier Qx> requires (Lx != 1)
+		constexpr __attribute__((always_inline)) vec(vec<Lx, Tx, Qx> const& v) : EC{ ctor<Lx, Tx, Qx>(v) } {}
 
 		constexpr __attribute__((always_inline)) vec(GccVec_t d) : EC{.data=reinterpret_cast<data_t>(d)} {}
 		

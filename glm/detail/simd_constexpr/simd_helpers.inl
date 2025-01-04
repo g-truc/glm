@@ -38,16 +38,16 @@ namespace glm::detail
 			return gcc_vec_to_data(v);
 		}
 		template <typename Tx, qualifier Qx>
-		static inline auto __attribute__((always_inline)) fetch_vec3_as_vec4(::glm::vec<3, Tx, Qx>& v) {
-			using OtherVec = GccVec<Lx, Tx, Qx>;
-	#ifdef __clang__
+		static inline auto __attribute__((always_inline)) fetch_vec3_as_vec4(::glm::vec<3, Tx, Qx> const& v) {
+			using OtherVec = GccVec<3, Tx, Qx>;
+#ifdef __clang__
 			//On clang, simply doing memcpy results in better overall codegen
 			//Also, this allows clang to avoid spilling registers to the stack, when this function is run on local lvalues
 			//The local lvalues thing only matters for clang, because gcc seems to always emit memory load/stores when going from packed vec3 -> vec4/aligned_vec3 :(  
 			OtherVec o{};
-			std::memcpy(&v, &v, sizeof(v));
+			std::memcpy(&o, &v, sizeof(v));
 			return o;
-	#else
+#else
 			typedef Tx v2_packed __attribute__((aligned(alignof(Tx)),vector_size(2*sizeof(Tx)))); 
 			struct __attribute__((packed,aligned(alignof(Tx)))) padded {
         Tx data0;
@@ -59,7 +59,7 @@ namespace glm::detail
     	OtherVec fetched = __builtin_shufflevector(reinterpreted.v2, reinterpreted.v2, -1, -1, 0, 1);
     	initialPart = __builtin_shufflevector(initialPart, fetched, 0, 5, 6, -1 );
     	return initialPart;
-    #endif
+#endif
 		}
 		template <typename Tx, qualifier Qx>
 		static inline auto __attribute__((always_inline)) fetch_vec3_as_vec4(::glm::vec<3, Tx, Qx>&& v) {
@@ -81,7 +81,7 @@ namespace glm::detail
 														&& L == 3 && !BIsAlignedQ<Q>()) {
 				 OtherVec o {};
 				 std::memcpy(&o, &v, sizeof(v));
-				 o = __builtin_shufflevector(o, o, 0, 1, 2, 3, -1); //tell compiler that the fourth lane is unused
+				 o = __builtin_shufflevector(o, o, 0, 1, 2, -1); //tell compiler that the fourth lane is unused
 				 if constexpr (std::is_same_v<T, Tx>) {
 						return gcc_vec_to_data(o);
 				 } else {
@@ -89,8 +89,7 @@ namespace glm::detail
 						return gcc_vec_to_data(converted);
 				 }
 			} else if constexpr (Q == Qx && Lx == 3) {
-				auto o = fetch_vec3_as_vec4(v);
-				OtherVec o = reinterpret_cast<OtherVec>(v.data);
+				auto o = fetch_vec3_as_vec4<Tx,Qx>(v);
 				if constexpr (std::is_same_v<T, Tx>) {
 					return gcc_vec_to_data(o);
 				} else {
@@ -103,11 +102,12 @@ namespace glm::detail
 					return gcc_vec_to_data(converted);
 			}
 		}
+		
 		template <length_t Lx, typename Tx, qualifier Qx> requires (Lx == L)
-		static inline auto __attribute__((always_inline)) simd_ctor(auto&& v)
+		static inline auto __attribute__((always_inline)) simd_ctor(::glm::vec<Lx, Tx, Qx>&& v)
 		{
 			using OtherVec = GccVec<Lx, Tx, Qx>;
-			if constexpr (sizeof(v) == sizeof(data_t) {
+			if constexpr (sizeof(v) == sizeof(data_t)) {
 				return simd_ctor_same_size_conversions<Lx, Tx, Qx>(v);
 			} else {
 				OtherVec o;
@@ -119,9 +119,23 @@ namespace glm::detail
 				return gcc_vec_to_data(converted);
 			}
 		}
+		template <length_t Lx, typename Tx, qualifier Qx> requires (Lx == L)
+		static inline auto __attribute__((always_inline)) simd_ctor(::glm::vec<Lx, Tx, Qx> const& v)
+		{
+			using OtherVec = GccVec<Lx, Tx, Qx>;
+			if constexpr (sizeof(v) == sizeof(data_t)) {
+				return simd_ctor_same_size_conversions<Lx, Tx, Qx>(v);
+			} else {
+				OtherVec o;
+				static constexpr auto size = std::min(sizeof(v.data), sizeof(o));
+				std::memcpy(&o, &(v.data), size);
+				gcc_vec_t converted = __builtin_convertvector(o, gcc_vec_t);
+				return gcc_vec_to_data(converted);
+			}
+		}
 		
 		template <length_t Lx, typename Tx, qualifier Qx> requires (Lx != L)
-		static inline auto __attribute__((always_inline)) simd_ctor(auto&& v)
+		static inline auto __attribute__((always_inline)) simd_ctor(::glm::vec<Lx, Tx, Qx> v)
 		{
 			using OtherVec = GccVec<Lx, Tx, Qx>;
 			if constexpr (	((Lx != 3 || L == 3) && (!BIsAlignedQ<Q>() || !BIsAlignedQ<Qx>()))
