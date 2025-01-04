@@ -110,7 +110,7 @@ namespace glm::detail
 			using OtherVec = GccVec<Lx, Tx, Qx>;
 			if constexpr (sizeof(v) == sizeof(data_t)) {
 				return simd_ctor_same_size_conversions<Lx, Tx, Qx>(v);
-			} else if constexpr (BIsAligned<Q>() && !BIsAligned<Qx>() && Lx == 3) {
+			} else if constexpr (BIsAlignedQ<Q>() && !BIsAlignedQ<Qx>() && Lx == 3) {
 				auto o = fetch_vec3_as_vec4<Tx,Qx>(v);
 				if constexpr (std::is_same_v<T, Tx>) {
 					return gcc_vec_to_data(o);
@@ -122,8 +122,8 @@ namespace glm::detail
 				OtherVec o;
 				static constexpr auto size = std::min(sizeof(v.data), sizeof(o));
 				std::memcpy(&o, &(v.data), size);
-				using o_vec_t = decltype(v);
-				v.o_vec_t::~o_vec_t();
+				//using o_vec_t = decltype(v);
+				//v.o_vec_t::~o_vec_t();
 				gcc_vec_t converted = __builtin_convertvector(o, gcc_vec_t);
 				return gcc_vec_to_data(converted);
 			}
@@ -134,7 +134,7 @@ namespace glm::detail
 			using OtherVec = GccVec<Lx, Tx, Qx>;
 			if constexpr (sizeof(v) == sizeof(data_t)) {
 				return simd_ctor_same_size_conversions<Lx, Tx, Qx>(v);
-			} else if constexpr (BIsAligned<Q>() && !BIsAligned<Qx>() && Lx == 3) {
+			} else if constexpr (BIsAlignedQ<Q>() && !BIsAlignedQ<Qx>() && Lx == 3) {
 				auto o = fetch_vec3_as_vec4<Tx,Qx>(v);
 				if constexpr (std::is_same_v<T, Tx>) {
 					return gcc_vec_to_data(o);
@@ -146,8 +146,8 @@ namespace glm::detail
 				OtherVec o;
 				static constexpr auto size = std::min(sizeof(v.data), sizeof(o));
 				std::memcpy(&o, &(v.data), size);
-				using o_vec_t = decltype(v);
-				v.o_vec_t::~o_vec_t();
+				//using o_vec_t = decltype(v);
+				//v.o_vec_t::~o_vec_t();
 				gcc_vec_t converted = __builtin_convertvector(o, gcc_vec_t);
 				return gcc_vec_to_data(converted);
 			}
