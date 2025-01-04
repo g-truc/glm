@@ -85,8 +85,9 @@ namespace glm::detail
 						gcc_vec_t converted = __builtin_convertvector(fetch_vec3_as_vec4(v), Vec4);
 						return gcc_vec_to_data(converted);
 				 }
-			} else { 
+			} else {  
 				gcc_vec_t converted = __builtin_convertvector(v.data, gcc_vec_t);
+				return gcc_vec_to_data(converted);
 			}
 		}
 		
