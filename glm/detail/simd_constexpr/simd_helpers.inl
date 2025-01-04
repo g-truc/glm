@@ -85,14 +85,15 @@ namespace glm::detail
 				 if constexpr (std::is_same_v<T, Tx>) {
 						return gcc_vec_to_data(o);
 				 } else {
-						gcc_vec_t converted = __builtin_convertvector(o, gcc_vec_t);
+				 		using Vec4 = GccVec<4, T, Qx>;
+						gcc_vec_t converted = __builtin_convertvector(fetch_vec3_as_vec4(o), Vec4);
 						return gcc_vec_to_data(converted);
 				 }
 			} else if constexpr (Q == Qx && Lx == 3) {
-				auto o = fetch_vec3_as_vec4<Tx,Qx>(v);
 				if constexpr (std::is_same_v<T, Tx>) {
-					return gcc_vec_to_data(o);
+					return v.data;
 				} else {
+					auto o = fetch_vec3_as_vec4<Tx,Qx>(v);
 					gcc_vec_t converted = __builtin_convertvector(o, gcc_vec_t);
 					return gcc_vec_to_data(converted);
 				}
@@ -109,6 +110,14 @@ namespace glm::detail
 			using OtherVec = GccVec<Lx, Tx, Qx>;
 			if constexpr (sizeof(v) == sizeof(data_t)) {
 				return simd_ctor_same_size_conversions<Lx, Tx, Qx>(v);
+			} else if constexpr (BIsAligned<Q>() && !BIsAligned<Qx>() && Lx == 3) {
+				auto o = fetch_vec3_as_vec4<Tx,Qx>(v);
+				if constexpr (std::is_same_v<T, Tx>) {
+					return gcc_vec_to_data(o);
+				} else {
+					gcc_vec_t converted = __builtin_convertvector(o, gcc_vec_t);
+					return gcc_vec_to_data(converted);
+				}
 			} else {
 				OtherVec o;
 				static constexpr auto size = std::min(sizeof(v.data), sizeof(o));
@@ -125,10 +134,20 @@ namespace glm::detail
 			using OtherVec = GccVec<Lx, Tx, Qx>;
 			if constexpr (sizeof(v) == sizeof(data_t)) {
 				return simd_ctor_same_size_conversions<Lx, Tx, Qx>(v);
+			} else if constexpr (BIsAligned<Q>() && !BIsAligned<Qx>() && Lx == 3) {
+				auto o = fetch_vec3_as_vec4<Tx,Qx>(v);
+				if constexpr (std::is_same_v<T, Tx>) {
+					return gcc_vec_to_data(o);
+				} else {
+					gcc_vec_t converted = __builtin_convertvector(o, gcc_vec_t);
+					return gcc_vec_to_data(converted);
+				}
 			} else {
 				OtherVec o;
 				static constexpr auto size = std::min(sizeof(v.data), sizeof(o));
 				std::memcpy(&o, &(v.data), size);
+				using o_vec_t = decltype(v);
+				v.o_vec_t::~o_vec_t();
 				gcc_vec_t converted = __builtin_convertvector(o, gcc_vec_t);
 				return gcc_vec_to_data(converted);
 			}
