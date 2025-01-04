@@ -1,5 +1,5 @@
 /// @ref core
-
+#if GLM_SIMD_CONSTEXPR == 0
 #include "compute_vector_relational.hpp"
 #include "compute_vector_decl.hpp"
 
@@ -1126,5 +1126,7 @@ namespace glm {
 
 #endif//GLM_ARCH & GLM_ARCH_SSE2_BIT
 }
+
+#endif
 
 #endif
