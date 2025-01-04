@@ -77,30 +77,16 @@ namespace glm::detail
 			static_assert(sizeof(v) == sizeof(data_t));
 			if constexpr (std::is_same_v<::glm::vec<Lx, Tx, Qx>, ::glm::vec<L,T,Q>>) {
 				return v.data;
-			} else if constexpr ( Q == Qx
-														&& L == 3 && !BIsAlignedQ<Q>()) {
-				 OtherVec o {};
-				 std::memcpy(&o, &v, sizeof(v));
-				 o = __builtin_shufflevector(o, o, 0, 1, 2, -1); //tell compiler that the fourth lane is unused
+			} else if constexpr (L == 3 && !BIsAlignedQ<Q>()) {
 				 if constexpr (std::is_same_v<T, Tx>) {
-						return gcc_vec_to_data(o);
+						return v.data;
 				 } else {
 				 		using Vec4 = GccVec<4, T, Qx>;
-						gcc_vec_t converted = __builtin_convertvector(fetch_vec3_as_vec4(o), Vec4);
+						gcc_vec_t converted = __builtin_convertvector(fetch_vec3_as_vec4(v), Vec4);
 						return gcc_vec_to_data(converted);
 				 }
-			} else if constexpr (Q == Qx && Lx == 3) {
-				if constexpr (std::is_same_v<T, Tx>) {
-					return v.data;
-				} else {
-					auto o = fetch_vec3_as_vec4<Tx,Qx>(v);
-					gcc_vec_t converted = __builtin_convertvector(o, gcc_vec_t);
-					return gcc_vec_to_data(converted);
-				}
-			} else {
-					OtherVec o = std::bit_cast<OtherVec>(v.data);
-					gcc_vec_t converted = __builtin_convertvector(o, gcc_vec_t);
-					return gcc_vec_to_data(converted);
+			} else { 
+				gcc_vec_t converted = __builtin_convertvector(v.data, gcc_vec_t);
 			}
 		}
 		
