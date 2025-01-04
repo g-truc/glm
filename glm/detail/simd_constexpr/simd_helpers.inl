@@ -53,7 +53,7 @@ namespace glm::detail
         Tx data0;
         v2_packed v2;
     	};
-    	auto& reinterpreted = reinterpret_cast<padded&>(v);
+    	auto const& reinterpreted = reinterpret_cast<padded const&>(v);
     	OtherVec initialPart{};
     	initialPart[0] = v[0];
     	OtherVec fetched = __builtin_shufflevector(reinterpreted.v2, reinterpreted.v2, -1, -1, 0, 1);
