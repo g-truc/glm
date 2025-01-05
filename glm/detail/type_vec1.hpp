@@ -4,6 +4,7 @@
 #pragma once
 
 #include "qualifier.hpp"
+#include "vec_common_ops.hpp"
 #if GLM_CONFIG_SWIZZLE == GLM_SWIZZLE_OPERATOR
 #	include "_swizzle.hpp"
 #elif GLM_CONFIG_SWIZZLE == GLM_SWIZZLE_FUNCTION
@@ -130,23 +131,14 @@ namespace glm
 		// -- Unary arithmetic operators --
 
 		GLM_DEFAULTED_FUNC_DECL GLM_CONSTEXPR vec<1, T, Q> & operator=(vec const& v) GLM_DEFAULT;
-
 		template<typename U>
 		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR vec<1, T, Q> & operator=(vec<1, U, Q> const& v);
 		template<typename U>
-		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR vec<1, T, Q> & operator+=(U scalar);
-		template<typename U>
-		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR vec<1, T, Q> & operator+=(vec<1, U, Q> const& v);
-		template<typename U>
-		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR vec<1, T, Q> & operator-=(U scalar);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR vec<1, T, Q> & operator+=(vec<1,U,Q> const& v);
 		template<typename U>
 		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR vec<1, T, Q> & operator-=(vec<1, U, Q> const& v);
 		template<typename U>
-		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR vec<1, T, Q> & operator*=(U scalar);
-		template<typename U>
 		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR vec<1, T, Q> & operator*=(vec<1, U, Q> const& v);
-		template<typename U>
-		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR vec<1, T, Q> & operator/=(U scalar);
 		template<typename U>
 		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR vec<1, T, Q> & operator/=(vec<1, U, Q> const& v);
 
@@ -154,33 +146,19 @@ namespace glm
 
 		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR vec<1, T, Q> & operator++();
 		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR vec<1, T, Q> & operator--();
-		GLM_FUNC_DECL GLM_CONSTEXPR vec<1, T, Q> operator++(int);
-		GLM_FUNC_DECL GLM_CONSTEXPR vec<1, T, Q> operator--(int);
 
 		// -- Unary bit operators --
 
 		template<typename U>
-		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR vec<1, T, Q> & operator%=(U scalar);
-		template<typename U>
 		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR vec<1, T, Q> & operator%=(vec<1, U, Q> const& v);
-		template<typename U>
-		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR vec<1, T, Q> & operator&=(U scalar);
 		template<typename U>
 		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR vec<1, T, Q> & operator&=(vec<1, U, Q> const& v);
 		template<typename U>
-		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR vec<1, T, Q> & operator|=(U scalar);
-		template<typename U>
 		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR vec<1, T, Q> & operator|=(vec<1, U, Q> const& v);
-		template<typename U>
-		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR vec<1, T, Q> & operator^=(U scalar);
 		template<typename U>
 		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR vec<1, T, Q> & operator^=(vec<1, U, Q> const& v);
 		template<typename U>
-		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR vec<1, T, Q> & operator<<=(U scalar);
-		template<typename U>
 		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR vec<1, T, Q> & operator<<=(vec<1, U, Q> const& v);
-		template<typename U>
-		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR vec<1, T, Q> & operator>>=(U scalar);
 		template<typename U>
 		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR vec<1, T, Q> & operator>>=(vec<1, U, Q> const& v);
 	};
@@ -188,113 +166,42 @@ namespace glm
 	// -- Unary operators --
 
 	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<1, T, Q> operator+(vec<1, T, Q> const& v);
-
-	template<typename T, qualifier Q>
 	GLM_FUNC_DECL GLM_CONSTEXPR vec<1, T, Q> operator-(vec<1, T, Q> const& v);
 
 	// -- Binary operators --
 
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<1, T, Q> operator+(vec<1, T, Q> const& v, T scalar);
-
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<1, T, Q> operator+(T scalar, vec<1, T, Q> const& v);
-
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<1, T, Q> operator+(vec<1, T, Q> const& v1, vec<1, T, Q> const& v2);
-
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<1, T, Q> operator-(vec<1, T, Q> const& v, T scalar);
-
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<1, T, Q> operator-(T scalar, vec<1, T, Q> const& v);
-
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<1, T, Q> operator-(vec<1, T, Q> const& v1, vec<1, T, Q> const& v2);
-
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<1, T, Q> operator*(vec<1, T, Q> const& v, T scalar);
-
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<1, T, Q> operator*(T scalar, vec<1, T, Q> const& v);
-
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<1, T, Q> operator*(vec<1, T, Q> const& v1, vec<1, T, Q> const& v2);
-
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<1, T, Q> operator/(vec<1, T, Q> const& v, T scalar);
-
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<1, T, Q> operator/(T scalar, vec<1, T, Q> const& v);
-
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<1, T, Q> operator/(vec<1, T, Q> const& v1, vec<1, T, Q> const& v2);
-
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<1, T, Q> operator%(vec<1, T, Q> const& v, T scalar);
-
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<1, T, Q> operator%(T scalar, vec<1, T, Q> const& v);
-
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<1, T, Q> operator%(vec<1, T, Q> const& v1, vec<1, T, Q> const& v2);
-
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<1, T, Q> operator&(vec<1, T, Q> const& v, T scalar);
-
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<1, T, Q> operator&(T scalar, vec<1, T, Q> const& v);
-
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<1, T, Q> operator&(vec<1, T, Q> const& v1, vec<1, T, Q> const& v2);
-
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<1, T, Q> operator|(vec<1, T, Q> const& v, T scalar);
-
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<1, T, Q> operator|(T scalar, vec<1, T, Q> const& v);
-
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<1, T, Q> operator|(vec<1, T, Q> const& v1, vec<1, T, Q> const& v2);
-
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<1, T, Q> operator^(vec<1, T, Q> const& v, T scalar);
-
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<1, T, Q> operator^(T scalar, vec<1, T, Q> const& v);
-
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<1, T, Q> operator^(vec<1, T, Q> const& v1, vec<1, T, Q> const& v2);
-
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<1, T, Q> operator<<(vec<1, T, Q> const& v, T scalar);
-
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<1, T, Q> operator<<(T scalar, vec<1, T, Q> const& v);
-
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<1, T, Q> operator<<(vec<1, T, Q> const& v1, vec<1, T, Q> const& v2);
-
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<1, T, Q> operator>>(vec<1, T, Q> const& v, T scalar);
-
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<1, T, Q> operator>>(T scalar, vec<1, T, Q> const& v);
-
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<1, T, Q> operator>>(vec<1, T, Q> const& v1, vec<1, T, Q> const& v2);
 
 	template<typename T, qualifier Q>
 	GLM_FUNC_DECL GLM_CONSTEXPR vec<1, T, Q> operator~(vec<1, T, Q> const& v);
+
+	// These are to avoid ambigiuities
+	template<typename T, qualifier Q>
+	GLM_FUNC_DECL GLM_CONSTEXPR vec<1, T, Q> operator+(vec<1, T, Q> const& v1, vec<1, T, Q> const& v2);
+	template<typename T, qualifier Q>
+	GLM_FUNC_DECL GLM_CONSTEXPR vec<1, T, Q> operator-(vec<1, T, Q> const& v1, vec<1, T, Q> const& v2);
+	template<typename T, qualifier Q>
+	GLM_FUNC_DECL GLM_CONSTEXPR vec<1, T, Q> operator*(vec<1, T, Q> const& v1, vec<1, T, Q> const& v2);
+	template<typename T, qualifier Q>
+	GLM_FUNC_DECL GLM_CONSTEXPR vec<1, T, Q> operator/(vec<1, T, Q> const& v1, vec<1, T, Q> const& v2);
+	template<typename T, qualifier Q>
+	GLM_FUNC_DECL GLM_CONSTEXPR vec<1, T, Q> operator%(vec<1, T, Q> const& v1, vec<1, T, Q> const& v2);
+	template<typename T, qualifier Q>
+	GLM_FUNC_DECL GLM_CONSTEXPR vec<1, T, Q> operator&(vec<1, T, Q> const& v1, vec<1, T, Q> const& v2);
+	template<typename T, qualifier Q>
+	GLM_FUNC_DECL GLM_CONSTEXPR vec<1, T, Q> operator|(vec<1, T, Q> const& v1, vec<1, T, Q> const& v2);
+	template<typename T, qualifier Q>
+	GLM_FUNC_DECL GLM_CONSTEXPR vec<1, T, Q> operator^(vec<1, T, Q> const& v1, vec<1, T, Q> const& v2);
+	template<typename T, qualifier Q>
+	GLM_FUNC_DECL GLM_CONSTEXPR vec<1, T, Q> operator<<(vec<1, T, Q> const& v1, vec<1, T, Q> const& v2);
+	template<typename T, qualifier Q>
+	GLM_FUNC_DECL GLM_CONSTEXPR vec<1, T, Q> operator>>(vec<1, T, Q> const& v1, vec<1, T, Q> const& v2);
+
 
 	// -- Boolean operators --
 
 	template<typename T, qualifier Q>
 	GLM_FUNC_DECL GLM_CONSTEXPR bool operator==(vec<1, T, Q> const& v1, vec<1, T, Q> const& v2);
 
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR bool operator!=(vec<1, T, Q> const& v1, vec<1, T, Q> const& v2);
 
 	template<qualifier Q>
 	GLM_FUNC_DECL GLM_CONSTEXPR vec<1, bool, Q> operator&&(vec<1, bool, Q> const& v1, vec<1, bool, Q> const& v2);
