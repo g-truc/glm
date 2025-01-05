@@ -193,7 +193,7 @@ elseif(GLM_ENABLE_SIMD_SSE4_2)
 	elseif(CMAKE_CXX_COMPILER_ID MATCHES "Intel")
 		add_compile_options(/QxSSE4.2)
 	elseif((CMAKE_CXX_COMPILER_ID MATCHES "MSVC") AND NOT CMAKE_CL_64)
-		add_compile_options(/arch:SSE2) # VC doesn't support SSE4.2
+		add_compile_options(/arch:SSE4.2)
 	endif()
 	message(STATUS "GLM: SSE4.2 instruction set")
 
