@@ -418,42 +418,23 @@ namespace glm
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR mat<4, 4, T, Q> operator*(mat<2, 4, T, Q> const& m1, mat<4, 2, T, Q> const& m2)
 	{
-		T SrcA00 = m1[0][0];
-		T SrcA01 = m1[0][1];
-		T SrcA02 = m1[0][2];
-		T SrcA03 = m1[0][3];
-		T SrcA10 = m1[1][0];
-		T SrcA11 = m1[1][1];
-		T SrcA12 = m1[1][2];
-		T SrcA13 = m1[1][3];
-
-		T SrcB00 = m2[0][0];
-		T SrcB01 = m2[0][1];
-		T SrcB10 = m2[1][0];
-		T SrcB11 = m2[1][1];
-		T SrcB20 = m2[2][0];
-		T SrcB21 = m2[2][1];
-		T SrcB30 = m2[3][0];
-		T SrcB31 = m2[3][1];
-
-		mat<4, 4, T, Q> Result;
-		Result[0][0] = SrcA00 * SrcB00 + SrcA10 * SrcB01;
-		Result[0][1] = SrcA01 * SrcB00 + SrcA11 * SrcB01;
-		Result[0][2] = SrcA02 * SrcB00 + SrcA12 * SrcB01;
-		Result[0][3] = SrcA03 * SrcB00 + SrcA13 * SrcB01;
-		Result[1][0] = SrcA00 * SrcB10 + SrcA10 * SrcB11;
-		Result[1][1] = SrcA01 * SrcB10 + SrcA11 * SrcB11;
-		Result[1][2] = SrcA02 * SrcB10 + SrcA12 * SrcB11;
-		Result[1][3] = SrcA03 * SrcB10 + SrcA13 * SrcB11;
-		Result[2][0] = SrcA00 * SrcB20 + SrcA10 * SrcB21;
-		Result[2][1] = SrcA01 * SrcB20 + SrcA11 * SrcB21;
-		Result[2][2] = SrcA02 * SrcB20 + SrcA12 * SrcB21;
-		Result[2][3] = SrcA03 * SrcB20 + SrcA13 * SrcB21;
-		Result[3][0] = SrcA00 * SrcB30 + SrcA10 * SrcB31;
-		Result[3][1] = SrcA01 * SrcB30 + SrcA11 * SrcB31;
-		Result[3][2] = SrcA02 * SrcB30 + SrcA12 * SrcB31;
-		Result[3][3] = SrcA03 * SrcB30 + SrcA13 * SrcB31;
-		return Result;
+		return mat<4, 4, T, Q>(
+			m1[0][0] * m2[0][0] + m1[1][0] * m2[0][1],
+			m1[0][1] * m2[0][0] + m1[1][1] * m2[0][1],
+			m1[0][2] * m2[0][0] + m1[1][2] * m2[0][1],
+			m1[0][3] * m2[0][0] + m1[1][3] * m2[0][1],
+			m1[0][0] * m2[1][0] + m1[1][0] * m2[1][1],
+			m1[0][1] * m2[1][0] + m1[1][1] * m2[1][1],
+			m1[0][2] * m2[1][0] + m1[1][2] * m2[1][1],
+			m1[0][3] * m2[1][0] + m1[1][3] * m2[1][1],
+			m1[0][0] * m2[2][0] + m1[1][0] * m2[2][1],
+			m1[0][1] * m2[2][0] + m1[1][1] * m2[2][1],
+			m1[0][2] * m2[2][0] + m1[1][2] * m2[2][1],
+			m1[0][3] * m2[2][0] + m1[1][3] * m2[2][1],
+			m1[0][0] * m2[3][0] + m1[1][0] * m2[3][1],
+			m1[0][1] * m2[3][0] + m1[1][1] * m2[3][1],
+			m1[0][2] * m2[3][0] + m1[1][2] * m2[3][1],
+			m1[0][3] * m2[3][0] + m1[1][3] * m2[3][1]);
 	}
 
 	template<typename T, qualifier Q>
