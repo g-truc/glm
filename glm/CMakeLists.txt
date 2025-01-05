@@ -67,3 +67,9 @@ else()
 	add_library(glm::glm ALIAS glm)
 	target_link_libraries(glm INTERFACE glm-header-only)
 endif()
+
+include(GenerateExportHeader)
+generate_export_header(glm BASE_NAME glm)
+target_include_directories(glm PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/..>)
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/glm_export.h
+        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/glm)
