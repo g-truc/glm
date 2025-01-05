@@ -127,7 +127,7 @@ $(function() {
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">// C++ Version</span></div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">// User defines: GLM_FORCE_CXX98, GLM_FORCE_CXX03, GLM_FORCE_CXX11, GLM_FORCE_CXX14, GLM_FORCE_CXX17, GLM_FORCE_CXX2A</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">// User defines: GLM_FORCE_CXX98, GLM_FORCE_CXX03, GLM_FORCE_CXX11, GLM_FORCE_CXX14, GLM_FORCE_CXX17, GLM_FORCE_CXX2A, GLM_FORCE_CXX23</span></div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">#define GLM_LANG_CXX98_FLAG                     (1 &lt;&lt; 1)</span></div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#define GLM_LANG_CXX03_FLAG                     (1 &lt;&lt; 2)</span></div>
@@ -138,6 +138,7 @@ $(function() {
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">#define GLM_LANG_CXX20_FLAG                     (1 &lt;&lt; 7)</span></div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">#define GLM_LANG_CXXMS_FLAG                     (1 &lt;&lt; 8)</span></div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">#define GLM_LANG_CXXGNU_FLAG            (1 &lt;&lt; 9)</span></div>
+ <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">#define GLM_LANG_CXX23_FLAG                     (1 &lt;&lt; 10)</span></div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#define GLM_LANG_CXX98                  GLM_LANG_CXX98_FLAG</span></div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">#define GLM_LANG_CXX03                  (GLM_LANG_CXX98 | GLM_LANG_CXX03_FLAG)</span></div>
@@ -146,6 +147,7 @@ $(function() {
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">#define GLM_LANG_CXX14                  (GLM_LANG_CXX11 | GLM_LANG_CXX14_FLAG)</span></div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">#define GLM_LANG_CXX17                  (GLM_LANG_CXX14 | GLM_LANG_CXX17_FLAG)</span></div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#define GLM_LANG_CXX20                  (GLM_LANG_CXX17 | GLM_LANG_CXX20_FLAG)</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#define GLM_LANG_CXX23                  (GLM_LANG_CXX20 | GLM_LANG_CXX23_FLAG)</span></div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="preprocessor">#define GLM_LANG_CXXMS                  GLM_LANG_CXXMS_FLAG</span></div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="preprocessor">#define GLM_LANG_CXXGNU                 GLM_LANG_CXXGNU_FLAG</span></div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
@@ -159,6 +161,9 @@ $(function() {
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor">#if (defined(GLM_FORCE_CXX_UNKNOWN))</span></div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="preprocessor">#       define GLM_LANG 0</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="preprocessor">#elif defined(GLM_FORCE_CXX23)</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="preprocessor">#       define GLM_LANG (GLM_LANG_CXX23 | GLM_LANG_EXT)</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor">#       define GLM_LANG_STL11_FORCED</span></div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="preprocessor">#elif defined(GLM_FORCE_CXX20)</span></div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="preprocessor">#       define GLM_LANG (GLM_LANG_CXX20 | GLM_LANG_EXT)</span></div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor">#       define GLM_LANG_STL11_FORCED</span></div>
@@ -192,7 +197,9 @@ $(function() {
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="preprocessor">#               define GLM_LANG_PLATFORM 0</span></div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="preprocessor">#       endif</span></div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="preprocessor">#       if __cplusplus &gt; 201703L || GLM_LANG_PLATFORM &gt; 201703L</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="preprocessor">#       if __cplusplus &gt; 202002L || GLM_LANG_PLATFORM &gt; 202002L</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="preprocessor">#               define GLM_LANG (GLM_LANG_CXX23 | GLM_LANG_EXT)</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="preprocessor">#       elif __cplusplus &gt; 201703L || GLM_LANG_PLATFORM &gt; 201703L</span></div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="preprocessor">#               define GLM_LANG (GLM_LANG_CXX20 | GLM_LANG_EXT)</span></div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="preprocessor">#       elif __cplusplus == 201703L || GLM_LANG_PLATFORM == 201703L</span></div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="preprocessor">#               define GLM_LANG (GLM_LANG_CXX17 | GLM_LANG_EXT)</span></div>
@@ -1010,7 +1017,11 @@ $(function() {
 <div class="line"><a name="l00969"></a><span class="lineno">  969</span>&#160;<span class="preprocessor">#               pragma message (GLM_STR(GLM_VERSION_MESSAGE))</span></div>
 <div class="line"><a name="l00970"></a><span class="lineno">  970</span>&#160; </div>
 <div class="line"><a name="l00971"></a><span class="lineno">  971</span>&#160;        <span class="comment">// Report C++ language</span></div>
-<div class="line"><a name="l00972"></a><span class="lineno">  972</span>&#160;<span class="preprocessor">#       if (GLM_LANG &amp; GLM_LANG_CXX20_FLAG) &amp;&amp; (GLM_LANG &amp; GLM_LANG_EXT)</span></div>
+<div class="line"><a name="l00972"></a><span class="lineno">  972</span>&#160;<span class="preprocessor">#       if (GLM_LANG &amp; GLM_LANG_CXX23_FLAG) &amp;&amp; (GLM_LANG &amp; GLM_LANG_EXT)</span></div>
+<div class="line"><a name="l00973"></a><span class="lineno">  973</span>&#160;<span class="preprocessor">#               pragma message(&quot;GLM: C++ 23 with extensions&quot;)</span></div>
+<div class="line"><a name="l00974"></a><span class="lineno">  974</span>&#160;<span class="preprocessor">#       elif (GLM_LANG &amp; GLM_LANG_CXX23_FLAG)</span></div>
+<div class="line"><a name="l00975"></a><span class="lineno">  975</span>&#160;<span class="preprocessor">#               pragma message(&quot;GLM: C++ 2B&quot;)</span></div>
+<div class="line"><a name="l00972"></a><span class="lineno">  972</span>&#160;<span class="preprocessor">#       elif (GLM_LANG &amp; GLM_LANG_CXX20_FLAG) &amp;&amp; (GLM_LANG &amp; GLM_LANG_EXT)</span></div>
 <div class="line"><a name="l00973"></a><span class="lineno">  973</span>&#160;<span class="preprocessor">#               pragma message(&quot;GLM: C++ 20 with extensions&quot;)</span></div>
 <div class="line"><a name="l00974"></a><span class="lineno">  974</span>&#160;<span class="preprocessor">#       elif (GLM_LANG &amp; GLM_LANG_CXX20_FLAG)</span></div>
 <div class="line"><a name="l00975"></a><span class="lineno">  975</span>&#160;<span class="preprocessor">#               pragma message(&quot;GLM: C++ 2A&quot;)</span></div>
