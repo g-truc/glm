@@ -373,7 +373,7 @@
 #elif defined(GLM_FORCE_SSE)
 #	define GLM_ARCH (GLM_ARCH_SSE)
 #	define GLM_FORCE_INTRINSICS
-#elif defined(GLM_FORCE_INTRINSICS) && !defined(GLM_FORCE_XYZW_ONLY)
+#elif ( (defined(GLM_FORCE_INTRINSICS) && !defined(GLM_FORCE_XYZW_ONLY)) || GLM_SIMD_CONSTEXPR == 1 ) 
 #	if defined(__AVX2__)
 #		define GLM_ARCH (GLM_ARCH_AVX2)
 #	elif defined(__AVX__)
