@@ -34,7 +34,6 @@ namespace glm
 	}
 
 	// fastExp
-	// Note: This function provides accurate results only for value between -1 and 1, else avoid it.
 	template<typename T>
 	GLM_FUNC_QUALIFIER T fastExp(T x)
 	{
@@ -48,12 +47,11 @@ namespace glm
 		return T(1) + x + (x2 * T(0.5)) + (x3 * T(0.1666666667)) + (x4 * T(0.041666667)) + (x5 * T(0.008333333333));
 	*/
         /*
-         ieee exponential, it handle large and negative value
+         ieee exponential, it handles large and negative values
          e^x = (x_exponent / ln(2)) * taylor_series(x-floor(x))
         */
-#define __ln2 0.693147180559945 //log(ln)
 #define __epsilon 0.0001
-              x /= __ln2; //convert to 2^x
+              x /= ln_two<T>();
               bool sign = x < 0; //handling negative values exp(-x) = 1.0 / exp(abs(x))
               if(sign)
                  x = -x;
@@ -64,10 +62,9 @@ namespace glm
 	       uint64_t* bits = reinterpret_cast<uint64_t*>(&out);
 	       (*bits) += ((uint64_t)exponent) << 52; //the base of ieee float is 2, so just add whole number of x to exponent
 
-               //handling decimal numbers 
                if(fractional >= __epsilon) {
                    //subdivide into half, take advantage this formula exp(x) = exp(x/2)^2 for better accuracy
-	           fractional = ((fractional * __ln2) * 0.5);
+	           fractional = ((fractional * ln_two<T>()) * 0.5);
 	 
 	           //the code above can be used here since the fractional is always lower than 1.0
                    const T x2 = fractional * fractional;
@@ -78,7 +75,6 @@ namespace glm
 	 	   return static_cast<T>((sign) ? 1.0 / (out * (x*x)) : (out * (x*x)));
 	         }
                return static_cast<T>((sign) ? 1.0/ out : out);
-#undef __ln2
 #undef __epsilon
         }
 	/*  // Try to handle all values of float... but often shower than std::exp, glm::floor and the loop kill the performance
