@@ -122,7 +122,7 @@ namespace detail
 	GLM_FUNC_QUALIFIER T fastAtan(T y, T x)
 	{
 		/*
-	        // correct vec2 mapping between 91° and 269°
+	        // incorrect vec2 mapping between 91° and 269°
 	           T sgn = sign(y) * sign(x);
 	           return abs(fastAtan(y/x)) * sgn;
 	         */
@@ -152,9 +152,7 @@ namespace detail
 	template<typename T>
 	GLM_FUNC_QUALIFIER T fastAtan(T x)
 	{
-		//as the x gradually increasing until it becomes close to infinity,
-                //the output becomes farther to pi half
-                //so it needs a little bit of adjustment between tan(45°) - tan(89°)
+                //it needs a little bit of corrections between tan(45°) - tan(89°) for consistent output value
                 if(x > 1.0)
                     return fastAcos(fastInverseSqrt(x * x + 1));
                  else if(x < -1.0)
