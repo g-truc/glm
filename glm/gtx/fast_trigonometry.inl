@@ -122,7 +122,7 @@ namespace detail
 	GLM_FUNC_QUALIFIER T fastAtan(T y, T x)
 	{
 		/*
-	        // it works, but it doesn't give an output between 91° and 269°
+	        // it works, but it doesn't mapped the value correctly when vec2 is between 91° and 269°
 	           T sgn = __sign(y) * __sign(x);
 	           return abs(fastAtan(y/x)) * sgn;
 	         */
