@@ -118,9 +118,27 @@ namespace detail
 	template<typename T>
 	GLM_FUNC_QUALIFIER T fastAtan(T y, T x)
 	{
-		T sgn = sign(y) * sign(x);
-		return abs(fastAtan(y / x)) * sgn;
-	}
+		/*
+	        // it works, but it doesn't give an output between 91° and 269°
+	           T sgn = __sign(y) * __sign(x);
+	           return abs(fastAtan(y/x)) * sgn;
+	         */
+                 if(x > 0)
+                    return fastAtan(y / x);
+                 else if(x < 0) {
+                    if(y >= 0)
+                         return fastAtan(y / x) + 3.1415926535897; //pi 
+                    else
+                         return fastAtan(y / x) - 3.1415926535897; //pi
+                 } else {
+                   if(y > 0)
+                         return 1.5707963267948; //pi half
+                   else if(y < 0)
+                         return -1.5707963267948; //pi half
+                   else
+                         return 0.0;
+                }
+        }
 
 	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER vec<L, T, Q> fastAtan(vec<L, T, Q> const& y, vec<L, T, Q> const& x)
