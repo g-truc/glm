@@ -152,7 +152,7 @@ namespace detail
 	template<typename T>
 	GLM_FUNC_QUALIFIER T fastAtan(T x)
 	{
-                //it needs a little bit of corrections between tan(45°) - tan(89°) for consistent output value
+                //correction between tan(45°) - tan(89°) for consistent output value
                 if(x > 1.0)
                     return fastAcos(fastInverseSqrt(x * x + 1));
                  else if(x < -1.0)
