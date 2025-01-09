@@ -125,8 +125,19 @@ namespace detail
 	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER vec<L, T, Q> fastAtan(vec<L, T, Q> const& y, vec<L, T, Q> const& x)
 	{
-		return detail::functor2<vec, L, T, Q>::call(fastAtan, y, x);
-	}
+	 //as the x gradually increasing until it becomes close to infinity,
+         //the output becomes farther to pi half
+         //so it needs a little bit of adjustment between tan(45°) - tan(89°)
+         if(x > 1.0)
+           return fastAcos(fastInverseSqrt(x * x + 1));
+         else if(x < -1.0)
+           return -fastAcos(fastInverseSqrt(x * x + 1));
+ 
+         bool negative = x < 0.0;
+         if(negative) x = -x;
+            return (negative) ?  -(x - (x * x * x * T(0.333333333333)) + (x * x * x * x * x * T(0.2)) - (x * x * x * x * x * x * x * T(0.1428571429)) + (x * x * x * x * x * x * x * x * x * T(0.111111111111)) - (x * x * x * x * x * x * x * x * x * x * x * T(0.0909090909)))
+             : x - (x * x * x * T(0.333333333333)) + (x * x * x * x * x * T(0.2)) - (x * x * x * x * x * x * x * T(0.1428571429)) + (x * x * x * x * x * x * x * x * x * T(0.111111111111)) - (x * x * x * x * x * x * x * x * x * x * x * T(0.0909090909));
+        }
 
 	template<typename T>
 	GLM_FUNC_QUALIFIER T fastAtan(T x)
