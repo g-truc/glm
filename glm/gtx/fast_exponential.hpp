@@ -15,6 +15,7 @@
 
 // Dependency:
 #include "../glm.hpp"
+#include "../gtc/constants.hpp"
 
 #ifndef GLM_ENABLE_EXPERIMENTAL
 #	error "GLM: GLM_GTX_fast_exponential is an experimental extension and may change in the future. Use #define GLM_ENABLE_EXPERIMENTAL before including it, if you really want to use it."
