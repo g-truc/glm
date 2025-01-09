@@ -145,7 +145,7 @@ namespace detail
                  val.f = val.f * (1.5 - (x_half * val.f * val.f));
                  val.f = val.f * (1.5 - (x_half * val.f * val.f));
                  val.f = val.f * (1.5 - (x_half * val.f * val.f));
-                 return static_cast<T>(val.f);
+                 return static_cast<genType>(val.f);
         }
 
 	template<length_t L, typename T, qualifier Q>
