@@ -135,8 +135,18 @@ namespace detail
 	template<typename genType>
 	GLM_FUNC_QUALIFIER genType inversesqrt(genType x)
 	{
-		return static_cast<genType>(1) / sqrt(x);
-	}
+		 union __double64_t {
+ 	            double f;
+ 	            uint64_t n;
+                 } val = {static_cast<double>(x)};
+                 const double x_half = static_cast<double>(x*0.5);
+                 val.n = 0x5fe6eb50c7b537a9 - (val.n >> 1);
+                 val.f = val.f * (1.5 - (x_half * val.f * val.f));
+                 val.f = val.f * (1.5 - (x_half * val.f * val.f));
+                 val.f = val.f * (1.5 - (x_half * val.f * val.f));
+                 val.f = val.f * (1.5 - (x_half * val.f * val.f));
+                 return static_cast<T>(val.f);
+        }
 
 	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER vec<L, T, Q> inversesqrt(vec<L, T, Q> const& x)
