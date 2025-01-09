@@ -148,7 +148,7 @@ namespace glm
 	GLM_FUNC_QUALIFIER genType fastExp2(genType x)
 	{
 		return fastExp(static_cast<genType>(0.69314718055994530941723212145818) * x);
-	}
+        }
 
 	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER vec<L, T, Q> fastExp2(vec<L, T, Q> const& x)
@@ -161,7 +161,46 @@ namespace glm
 	GLM_FUNC_QUALIFIER genType fastLog2(genType x)
 	{
 		return fastLog(x) / static_cast<genType>(0.69314718055994530941723212145818);
-	}
+	    /*
+	    // ieee log2 function, bit slower than std::logb
+#define __epsilon 0.0001
+#define __inv_ln2 1.4426950409 // 1.0 / log(ln)
+           union __double64_t {
+  	    double f;
+  	    uint64_t n;
+           } val = {x};
+
+           //handle the value lower than 1.0
+           //const bool bb = ((val.n >> 52) & 0x7FF) < 1023;
+           const bool bb = val.f < 1.0;
+           x = 1.0 + (val.n & 0xFFFFFFFFFFFFF) / static_cast<double>((1LU << 52));
+
+           if(bb)
+             x = 1.0 / x;
+
+           if(x >= __epsilon) {
+             //fast log function
+             const genType y1 = (x - 1.0f) / (x + 1.0f);
+	     const genType y2 = y1 * y1;
+	     genType mx = 2.0 * y1 * (1.0f + y2 * (0.3333333333 + y2 * (0.2f + y2 * 0.1428571429)));
+             // newton raphson iteration, for accuracy and slow computation
+             //genType xp_tmp;
+             //xp_tmp = fastExp<genType>(mx);
+             //mx = mx - ((xp_tmp-x) / xp_tmp);
+             //xp_tmp = fastExp<genType>(mx);
+             //mx = mx - ((xp_tmp-x) / xp_tmp);
+             //xp_tmp = fastExp<genType>(mx);
+             //mx = mx - ((xp_tmp-x) / xp_tmp);
+             //xp_tmp = fastExp<genType>(mx);
+             //mx = mx - ((xp_tmp-x) / xp_tmp);
+             
+             return (bb) ? (-mx) : (mx * __inv_ln2 + genType(((val.n >> 52) & 0x7FF)-1023));
+           }
+          return genType(((val.n >> 52) & 0x7FF)-1023);
+#undef __epsilon
+#undef __inv_ln2
+        */
+        }
 
 	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER vec<L, T, Q> fastLog2(vec<L, T, Q> const& x)
