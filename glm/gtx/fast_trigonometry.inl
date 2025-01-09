@@ -79,6 +79,9 @@ namespace detail
 	template<typename T>
 	GLM_FUNC_QUALIFIER T fastTan(T x)
 	{
+                //correction between tan(51°) - tan(89°)
+		if(x >= 1.2348971565)
+		 return fastSin<T>(x)/fastCos<T>(x);
 		return x + (x * x * x * T(0.3333333333)) + (x * x * x * x * x * T(0.1333333333333)) + (x * x * x * x * x * x * x * T(0.0539682539));
 	}
 
