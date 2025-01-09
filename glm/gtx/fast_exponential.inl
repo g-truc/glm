@@ -38,6 +38,7 @@ namespace glm
 	template<typename T>
 	GLM_FUNC_QUALIFIER T fastExp(T x)
 	{
+	 /*
 		// This has a better looking and same performance in release mode than the following code. However, in debug mode it's slower.
 		// return 1.0f + x * (1.0f + x * 0.5f * (1.0f + x * 0.3333333333f * (1.0f + x * 0.25 * (1.0f + x * 0.2f))));
 		T x2 = x * x;
@@ -45,6 +46,66 @@ namespace glm
 		T x4 = x3 * x;
 		T x5 = x4 * x;
 		return T(1) + x + (x2 * T(0.5)) + (x3 * T(0.1666666667)) + (x4 * T(0.041666667)) + (x5 * T(0.008333333333));
+	*/
+
+        /*
+           ieee754 exponential with average error 1e-10, bit faster than std::exp
+           e^x = (x_exponent / ln(2)) * taylor_series(x-floor(x))
+        */
+                const double __ln2 = 0.693147180559945309417232121; //log(2)
+
+ 
+                 x /= __ln2; //convert to 2^x
+                 bool sign = x < 0; // handling negative values using reciprocal exp(x) = 1.0 / exp(-x)
+                 if(sign)
+                   x = -x;
+ 
+                 const uint16_t exponent = static_cast<uint16_t>(x);
+                 double fractional = x-exponent;
+
+                 double out = 1.0;
+                 uint64_t* bits = reinterpret_cast<uint64_t*>(&out);
+                 (*bits) += ((uint64_t)exponent) << 52; //the base of ieee float is 2 so just add into its exponent
+
+                 if(fractional >= 1e-4) {
+                      //you can replace your code above here since the value of "fractional" is lower than zero
+                      double exponential = 1.0;
+                      double iteration = 1.0;
+                      //subdivide it into half 5x, take advantage this formula "exp(x/2) = exp(x/2)^2" for accuracy
+                      fractional = ((((fractional * __ln2) * 0.5) * 0.5) * 0.5);
+
+                      //just remove this comment if you want more accurate 
+                      //fractional = (((((fractional * Math_LN2) * 0.5) * 0.5) * 0.5) * 0.5) * 0.5;
+
+                      //                  (pre computed reciprocals)
+                      iteration *= fractional * 1.0000000000000000; //1 / 1
+                      exponential += iteration;
+                      iteration *= fractional * 0.5000000000000000; //1 / 2
+                      exponential += iteration;
+                     /*
+                     //just remove this comment if you want more accurate 
+                     iteration *= fractional * 0.3333333333333333; //1 / 3
+                     exponential += iteration;
+                     iteration *= fractional * 0.2500000000000000; //1 / 4
+                     exponential += iteration;
+                     iteration *= fractional * 0.2000000000000000; //1 / 5
+                     exponential += iteration;
+                     iteration *= fractional * 0.1666666666666666; //1 / 6
+                     exponential += iteration;
+                     */
+                     //squared it 5x
+                     exponential *= exponential;
+                     exponential *= exponential;
+                     exponential *= exponential;
+                    /*
+                    //just remove this comment if you want more accurate 
+                    exponential *= exponential;
+                    exponential *= exponential;
+                    exponential *= exponential;
+                    */
+                    return static_cast<T>((sign) ? (1.0 / (out * exponential)) : (out * exponential));
+               }
+          return static_cast<T>((sign) ? (1.0/ out) : out);
 	}
 	/*  // Try to handle all values of float... but often shower than std::exp, glm::floor and the loop kill the performance
 	GLM_FUNC_QUALIFIER float fastExp(float x)
