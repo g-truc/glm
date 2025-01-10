@@ -240,6 +240,7 @@ namespace detail
 	struct storage<3, unsigned int, true> : public storage<4, unsigned int, true>
 	{};
 
+#	if GLM_HAS_ALIGNOF
 	template<>
 	struct storage<3, double, true>
 	{
@@ -247,6 +248,7 @@ namespace detail
 			double data[4];
 		} type;
 	};
+#	endif//GLM_HAS_ALIGNOF
 
 #	endif
 

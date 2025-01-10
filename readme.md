@@ -105,7 +105,7 @@ target_link_libraries(main PRIVATE glm::glm)
 
 ## Release notes
 
-### [GLM 1.0.2](https://github.com/g-truc/glm/tree/master) - 2024-0X-XX
+### [GLM 1.0.2](https://github.com/g-truc/glm/tree/master) - 2025-0X-XX
 
 #### Improvements:
 - Unit tests are not build by default, `GLM_BUILD_TESTS` set to `ON` required.
