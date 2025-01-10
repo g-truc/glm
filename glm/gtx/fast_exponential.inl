@@ -160,7 +160,7 @@ namespace glm
 	    /*
 	    // ieee log2 function, bit slower than std::log
 #define __epsilon 0.0001
-#define __inv_ln2 1.4426950409 // 1.0 / log(ln)
+#define __inv_ln2 1.4426950409 // 1.0 / ln(2)
            union __double64_t {
   	    double f;
   	    uint64_t n;
