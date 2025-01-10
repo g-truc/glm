@@ -66,7 +66,7 @@ namespace glm
                    //subdivide into half, take advantage this formula exp(x) = exp(x/2)^2 for better accuracy
 	           fractional = ((fractional * ln_two<T>()) * 0.5);
 	 
-	           //the code above can be used here since the fractional is always lower than 1.0
+	           //the code above is used here since the fractional is always lower than 1.0
                    const T x2 = fractional * fractional;
 		   const T x3 = x2 * fractional;
 	 	   const T x4 = x3 * fractional;
@@ -158,7 +158,7 @@ namespace glm
 	{
 		return fastLog(x) / static_cast<genType>(0.69314718055994530941723212145818);
 	    /*
-	    // ieee log2 function, bit slower than std::logb
+	    // ieee log2 function, bit slower than std::log
 #define __epsilon 0.0001
 #define __inv_ln2 1.4426950409 // 1.0 / log(ln)
            union __double64_t {
