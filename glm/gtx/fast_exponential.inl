@@ -7,6 +7,50 @@ namespace glm
 	GLM_FUNC_QUALIFIER genType fastPow(genType x, genType y)
 	{
 		return exp(y * log(x));
+        /*
+         // ieee pow 
+	      union __double64_t {
+		  double f;
+		  uint64_t n;
+               };
+ 
+              __double64_t mx = {static_cast<double>(x)};
+
+              genType lnx, px, vx;
+              if(x < 1.0)
+                lnx = -(-mx.f * (mx.f*mx.f * 0.5) - (mx.f*mx.f*mx.f * 0.3333333));
+              else {
+                 px = (mx.n & 0xFFFFFFFFFFFFF) * 0.0000000000000002;
+                 vx = (-px * (px*px * 0.5) - (px*px*px * 0.333333));
+                 lnx = static_cast<genType>( (((mx.n >> 52) & 0x7FF)-1023) * 0.69314718055994) + vx;
+               }
+ 
+               for(int i = 0; i < 4; i++) {
+ 	         const genType inx = lnx * 0.5 * 0.5 * 0.5;
+                 const genType x2 = inx * inx;
+	         const genType x3 = x2 * inx;
+	         const genType x4 = x3 * inx;
+	         const genType x5 = x4 * inx;
+	         genType expo = genType(1) + inx + (x2 * genType(0.5)) + (x3 * genType(0.1666666667)) + (x4 * genType(0.041666667)) + (x5 * genType(0.008333333333));
+                 expo *= expo;
+                 expo *= expo;
+                 expo *= expo;
+                 lnx = lnx-((expo-x)/expo);
+                }
+ 
+                genType in_expo_half = y * lnx * 1.4426950408889634 * 0.5;
+                genType my, final_exponent;
+                uint32_t whole = static_cast<uint32_t>(in_expo_half);
+	        const uint64_t integer_exponent = ((1023L+whole) << 52);
+	         my =(in_expo_half-whole)*0.69314718055994;
+	
+	        if(my)
+	          final_exponent = static_cast<genType>(*reinterpret_cast<const double*>(&integer_exponent) * (1.0 + my + (my*my * 0.5)));
+                else
+                  final_exponent = static_cast<genType>(*reinterpret_cast<const double*>(&integer_exponent));
+                final_exponent *= final_exponent;
+             return (y < genType(0.0)) ? (1.0/final_exponent) : final_exponent;
+        */
 	}
 
 	template<length_t L, typename T, qualifier Q>
