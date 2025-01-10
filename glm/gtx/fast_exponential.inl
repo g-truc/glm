@@ -124,16 +124,14 @@ namespace glm
 		return std::log(x);
         /*
          // fast ieee log
-		union __double64_t {
-			 	double f;
-			 	uint64_t n;
-		} val = {static_cast<double>(x)};
-		// x = 1.0 + (val.n & 0xFFFFFFFFFFFFF) / static_cast<double>((1LU << 52));
-		if(x < 1.0)
-		  return -(-x * (x*x * 0.5));
-		  x = (val.n & 0xFFFFFFFFFFFFF) * 0.0000000000000002;
-		  x = -x * (x*x * 0.5);
-	 return (((val.n >> 52) & 0x7FF)-1023) * 0.69314718055994 + x;
+	      union __double64_t {
+	        double f;
+	        uint64_t n;
+	      } val = {static_cast<double>(x)};
+	      if(x < 1.0)
+		 return -x;
+              x = (val.n & 0xFFFFFFFFFFFFF) * 0.0000000000000002;
+	      return static_cast<genType>((((val.n >> 52) & 0x7FF)-1023) * 0.69314718055994 + x);
         */
 	}
 
