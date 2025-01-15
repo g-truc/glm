@@ -3,7 +3,7 @@
 // Based on the work of Stefan Gustavson and Ashima Arts on "webgl-noise":
 // https://github.com/stegu/webgl-noise
 // Following Stefan Gustavson's paper "Simplex noise demystified":
-// http://www.itn.liu.se/~stegu/simplexnoise/simplexnoise.pdf
+// https://itn-web.it.liu.se/~stegu76/TNM084-2011/simplexnoise-demystified.pdf
 
 namespace glm{
 namespace detail
