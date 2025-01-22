@@ -11,8 +11,7 @@ namespace glm{
 namespace detail
 {
 	template <typename T>
-	union float_t
-	{};
+	union float_t; // undefined
 
 	// https://randomascii.wordpress.com/2012/02/25/comparing-floating-point-numbers-2012-edition/
 	template <>

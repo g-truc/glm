@@ -47,6 +47,7 @@ static int test_storage_aligned()
 
 static int test_storage_unaligned()
 {
+	
 	int Error = 0;
 
 	size_t align1_unaligned = alignof(glm::detail::storage<1, int, false>::type);
@@ -122,3 +123,4 @@ int main()
 }
 
 #endif//GLM_PLATFORM & GLM_PLATFORM_APPLE
+
