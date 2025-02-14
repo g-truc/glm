@@ -3,10 +3,11 @@
 #include <glm/ext/vector_relational.hpp>
 #include <glm/glm.hpp>
 
+#if (GLM_LANG & GLM_LANG_CXX20_FLAG) && defined(__cpp_lib_span) && __cpp_lib_span >= 202002L
+
 #define GLM_ENABLE_EXPERIMENTAL
 #include <glm/gtx/span.hpp>
 
-#if (GLM_LANG & GLM_LANG_CXX20_FLAG) && defined(__cpp_lib_span) && __cpp_lib_span >= 202002L
 static int test_span_vec2()
 {
 	int Error = 0;
