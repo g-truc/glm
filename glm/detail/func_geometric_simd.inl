@@ -79,6 +79,17 @@ namespace detail
 		}
 	};
 
+	template<>
+	struct compute_normalize<4, float, lowp, true>
+	{
+		GLM_FUNC_QUALIFIER static vec<4, float, lowp> call(vec<4, float, lowp> const& v)
+		{
+			vec<4, float, lowp> Result;
+			Result.data = glm_vec4_fast_normalize(v.data);
+			return Result;
+		}
+	};
+
 	template<qualifier Q>
 	struct compute_faceforward<4, float, Q, true>
 	{
