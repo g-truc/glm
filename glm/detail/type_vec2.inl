@@ -912,4 +912,12 @@ namespace glm
 	{
 		return vec<2, bool, Q>(v1.x || v2.x, v1.y || v2.y);
 	}
+
+	template<qualifier Q>
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<2, bool, Q> operator!(vec<2, bool, Q> const& v)
+	{
+		return vec<2, bool, Q>(
+			!v.x,
+			!v.y);
+	}
 }//namespace glm
