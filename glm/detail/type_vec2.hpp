@@ -399,6 +399,9 @@ namespace glm
 
 	template<qualifier Q>
 	GLM_FUNC_DECL GLM_CONSTEXPR vec<2, bool, Q> operator||(vec<2, bool, Q> const& v1, vec<2, bool, Q> const& v2);
+
+	template<qualifier Q>
+	GLM_FUNC_DECL GLM_CONSTEXPR vec<2, bool, Q> operator!(vec<2, bool, Q> const& v);
 }//namespace glm
 
 #ifndef GLM_EXTERNAL_TEMPLATE

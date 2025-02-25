@@ -1018,6 +1018,12 @@ namespace detail
 	{
 		return vec<4, bool, Q>(v1.x || v2.x, v1.y || v2.y, v1.z || v2.z, v1.w || v2.w);
 	}
+
+	template<qualifier Q>
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, bool, Q> operator!(vec<4, bool, Q> const& v)
+	{
+		return vec<4, bool, Q>(!v.x, !v.y, !v.z, !v.w);
+	}
 }//namespace glm
 
 #if GLM_CONFIG_SIMD == GLM_ENABLE
