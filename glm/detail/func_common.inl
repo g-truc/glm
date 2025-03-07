@@ -40,7 +40,6 @@ namespace glm
 	};
 
 	// abs
-	template<>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR int abs(int x)
 	{
 		int const y = x >> (sizeof(int) * 8 - 1);
