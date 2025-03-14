@@ -41,17 +41,17 @@
 #include "../mat4x4.hpp"
 
 #if defined(_MSC_VER)
-    // MSVC uses _MSVC_LANG instead of __cplusplus
-    #if _MSVC_LANG < 201103L
-        #pragma message("GLM_GTX_hash requires C++11 standard library support")
-    #endif
+	// MSVC uses _MSVC_LANG instead of __cplusplus
+#if _MSVC_LANG < 201103L
+#pragma message("GLM_GTX_hash requires C++11 standard library support")
+#endif
 #elif defined(__GNUC__) || defined(__clang__)
-    // GNU and Clang use __cplusplus
-    #if __cplusplus < 201103L
-        #pragma message("GLM_GTX_hash requires C++11 standard library support")
-    #endif
+	// GNU and Clang use __cplusplus
+#if __cplusplus < 201103L
+#pragma message("GLM_GTX_hash requires C++11 standard library support")
+#endif
 #else
-    #error "Unknown compiler"
+#error "Unknown compiler"
 #endif
 
 #if GLM_LANG & GLM_LANG_CXX11
@@ -93,62 +93,27 @@ namespace std
 	template<typename T, glm::qualifier Q>
 	struct hash<glm::tdualquat<T, Q> >
 	{
-		GLM_FUNC_DECL size_t operator()(glm::tdualquat<T,Q> const& q) const GLM_NOEXCEPT;
+		GLM_FUNC_DECL size_t operator()(glm::tdualquat<T, Q> const& q) const GLM_NOEXCEPT;
 	};
 
-	template<typename T, glm::qualifier Q>
-	struct hash<glm::mat<2, 2, T, Q> >
+	template<glm::length_t R,typename T, glm::qualifier Q>
+	struct hash<glm::mat<2, R, T, Q> >
 	{
-		GLM_FUNC_DECL size_t operator()(glm::mat<2, 2, T,Q> const& m) const GLM_NOEXCEPT;
+		GLM_FUNC_DECL size_t operator()(glm::mat<2, R, T, Q> const& m) const GLM_NOEXCEPT;
 	};
 
-	template<typename T, glm::qualifier Q>
-	struct hash<glm::mat<2, 3, T, Q> >
+	template<glm::length_t R,typename T, glm::qualifier Q>
+	struct hash<glm::mat<3, R, T, Q> >
 	{
-		GLM_FUNC_DECL size_t operator()(glm::mat<2, 3, T,Q> const& m) const GLM_NOEXCEPT;
+		GLM_FUNC_DECL size_t operator()(glm::mat<3, R, T, Q> const& m) const GLM_NOEXCEPT;
 	};
 
-	template<typename T, glm::qualifier Q>
-	struct hash<glm::mat<2, 4, T, Q> >
+	template<glm::length_t R,typename T, glm::qualifier Q>
+	struct hash<glm::mat<4, R, T, Q> >
 	{
-		GLM_FUNC_DECL size_t operator()(glm::mat<2, 4, T,Q> const& m) const GLM_NOEXCEPT;
+		GLM_FUNC_DECL size_t operator()(glm::mat<4, R, T, Q> const& m) const GLM_NOEXCEPT;
 	};
 
-	template<typename T, glm::qualifier Q>
-	struct hash<glm::mat<3, 2, T, Q> >
-	{
-		GLM_FUNC_DECL size_t operator()(glm::mat<3, 2, T,Q> const& m) const GLM_NOEXCEPT;
-	};
-
-	template<typename T, glm::qualifier Q>
-	struct hash<glm::mat<3, 3, T, Q> >
-	{
-		GLM_FUNC_DECL size_t operator()(glm::mat<3, 3, T,Q> const& m) const GLM_NOEXCEPT;
-	};
-
-	template<typename T, glm::qualifier Q>
-	struct hash<glm::mat<3, 4, T, Q> >
-	{
-		GLM_FUNC_DECL size_t operator()(glm::mat<3, 4, T,Q> const& m) const GLM_NOEXCEPT;
-	};
-
-	template<typename T, glm::qualifier Q>
-	struct hash<glm::mat<4, 2, T, Q> >
-	{
-		GLM_FUNC_DECL size_t operator()(glm::mat<4, 2, T,Q> const& m) const GLM_NOEXCEPT;
-	};
-
-	template<typename T, glm::qualifier Q>
-	struct hash<glm::mat<4, 3, T, Q> >
-	{
-		GLM_FUNC_DECL size_t operator()(glm::mat<4, 3, T,Q> const& m) const GLM_NOEXCEPT;
-	};
-
-	template<typename T, glm::qualifier Q>
-	struct hash<glm::mat<4, 4, T, Q> >
-	{
-		GLM_FUNC_DECL size_t operator()(glm::mat<4, 4, T,Q> const& m) const GLM_NOEXCEPT;
-	};
 } // namespace std
 
 #include "hash.inl"
