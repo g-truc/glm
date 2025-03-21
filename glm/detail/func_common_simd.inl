@@ -552,7 +552,7 @@ namespace detail {
 		GLM_FUNC_QUALIFIER static vec<4, float, Q> call(vec<3, float, Q> const& a)
 		{
 			vec<4, float, Q> v;
-			static const uint32x4_t mask = { 0, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF };
+			static const uint32x4_t mask = { 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0 };
 			v.data = vbslq_f32(mask, a.data, vdupq_n_f32(0));
 			return v;
 		}
