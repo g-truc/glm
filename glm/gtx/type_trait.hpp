@@ -31,53 +31,62 @@ namespace glm
 	template<typename T>
 	struct type
 	{
-		static bool const is_vec = false;
-		static bool const is_mat = false;
-		static bool const is_quat = false;
-		static length_t const components = 0;
-		static length_t const cols = 0;
-		static length_t const rows = 0;
+		enum {
+			is_vec = false,
+			is_mat = false,
+			is_quat = false,
+			components = 0,
+			cols = 0,
+			rows = 0
+		};
 	};
 
 	template<length_t L, typename T, qualifier Q>
 	struct type<vec<L, T, Q> >
 	{
-		static bool const is_vec = true;
-		static bool const is_mat = false;
-		static bool const is_quat = false;
-		static length_t const components = L;
+		enum {
+			is_vec = true,
+			is_mat = false,
+			is_quat = false,
+			components = L
+		};
 	};
 
 	template<length_t C, length_t R, typename T, qualifier Q>
 	struct type<mat<C, R, T, Q> >
 	{
-		static bool const is_vec = false;
-		static bool const is_mat = true;
-		static bool const is_quat = false;
-		static length_t const components = C;
-		static length_t const cols = C;
-		static length_t const rows = R;
+		enum {
+			is_vec = false,
+			is_mat = true,
+			is_quat = false,
+			components = C,
+			cols = C,
+			rows = R
+		};
 	};
 
 	template<typename T, qualifier Q>
 	struct type<qua<T, Q> >
 	{
-		static bool const is_vec = false;
-		static bool const is_mat = false;
-		static bool const is_quat = true;
-		static length_t const components = 4;
+		enum {
+			is_vec = false,
+			is_mat = false,
+			is_quat = true,
+			components = 4
+		};
 	};
 
 	template<typename T, qualifier Q>
 	struct type<tdualquat<T, Q> >
 	{
-		static bool const is_vec = false;
-		static bool const is_mat = false;
-		static bool const is_quat = true;
-		static length_t const components = 8;
+		enum {
+			is_vec = false,
+			is_mat = false,
+			is_quat = true,
+			components = 8
+		};
 	};
 
 	/// @}
 }//namespace glm
 
-#include "type_trait.inl"

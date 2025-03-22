@@ -1,4 +1,4 @@
-#if __cplusplus >= 201103L
+#if __cplusplus >= 201103L || (defined(_MSC_VER) && _MSVC_LANG >= 201103L)
 
 #include <glm/detail/setup.hpp>
 

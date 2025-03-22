@@ -6,23 +6,21 @@
 
 namespace glm
 {
-	template<>
 	GLM_FUNC_QUALIFIER bool epsilonEqual
 	(
-		float const& x,
-		float const& y,
-		float const& epsilon
+		float x,
+		float y,
+		float epsilon
 	)
 	{
 		return abs(x - y) < epsilon;
 	}
 
-	template<>
 	GLM_FUNC_QUALIFIER bool epsilonEqual
 	(
-		double const& x,
-		double const& y,
-		double const& epsilon
+		double x,
+		double y,
+		double epsilon
 	)
 	{
 		return abs(x - y) < epsilon;
@@ -40,14 +38,12 @@ namespace glm
 		return lessThan(abs(x - y), vec<L, T, Q>(epsilon));
 	}
 
-	template<>
-	GLM_FUNC_QUALIFIER bool epsilonNotEqual(float const& x, float const& y, float const& epsilon)
+	GLM_FUNC_QUALIFIER bool epsilonNotEqual(float x, float y, float epsilon)
 	{
 		return abs(x - y) >= epsilon;
 	}
 
-	template<>
-	GLM_FUNC_QUALIFIER bool epsilonNotEqual(double const& x, double const& y, double const& epsilon)
+	GLM_FUNC_QUALIFIER bool epsilonNotEqual(double x, double y, double epsilon)
 	{
 		return abs(x - y) >= epsilon;
 	}
