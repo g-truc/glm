@@ -22,7 +22,7 @@ namespace glm
 
 	template<typename T>
 	struct TMin {
-		T operator()(const T& a, const T& b) { return min(a, b); }
+		GLM_FUNC_QUALIFIER T operator()(const T& a, const T& b) { return min(a, b); }
 	};
 
 	// max
@@ -36,7 +36,7 @@ namespace glm
 
 	template<typename T>
 	struct TMax {
-		T operator()(const T& a, const T& b) { return max(a, b); }
+		GLM_FUNC_QUALIFIER T operator()(const T& a, const T& b) { return max(a, b); }
 	};
 
 	// abs
