@@ -141,7 +141,7 @@ namespace detail
 	template<>
 	struct storage<3, unsigned int, true>
 	{
-		typedef glm_i32vec4 type;
+		typedef glm_u32vec4 type;
 	};
 
 	template<>
