@@ -196,19 +196,19 @@ namespace detail
 	GLM_FUNC_QUALIFIER uint usubBorrow(uint const& x, uint const& y, uint & Borrow)
 	{
 		Borrow = x >= y ? static_cast<uint>(0) : static_cast<uint>(1);
-		if(y >= x)
-			return y - x;
+		if(x >= y)
+			return x - y;
 		else
-			return static_cast<uint>((static_cast<detail::int64>(1) << static_cast<detail::int64>(32)) + (static_cast<detail::int64>(y) - static_cast<detail::int64>(x)));
+			return static_cast<uint>((static_cast<detail::int64>(1) << static_cast<detail::int64>(32)) + (static_cast<detail::int64>(x) - static_cast<detail::int64>(y)));
 	}
 
 	template<length_t L, qualifier Q>
 	GLM_FUNC_QUALIFIER vec<L, uint, Q> usubBorrow(vec<L, uint, Q> const& x, vec<L, uint, Q> const& y, vec<L, uint, Q>& Borrow)
 	{
 		Borrow = mix(vec<L, uint, Q>(1), vec<L, uint, Q>(0), greaterThanEqual(x, y));
-		vec<L, uint, Q> const YgeX(y - x);
-		vec<L, uint, Q> const XgeY(vec<L, uint, Q>((static_cast<detail::int64>(1) << static_cast<detail::int64>(32)) + (vec<L, detail::int64, Q>(y) - vec<L, detail::int64, Q>(x))));
-		return mix(XgeY, YgeX, greaterThanEqual(y, x));
+		vec<L, uint, Q> const XgeY(x - y);
+		vec<L, uint, Q> const YgX(vec<L, uint, Q>((static_cast<detail::int64>(1) << static_cast<detail::int64>(32)) + (vec<L, detail::int64, Q>(x) - vec<L, detail::int64, Q>(y))));
+		return mix(YgX, XgeY, greaterThanEqual(x, y));
 	}
 
 	// umulExtended
