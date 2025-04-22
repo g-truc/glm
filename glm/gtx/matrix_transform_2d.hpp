@@ -34,7 +34,7 @@ namespace glm
 	/// @param m Input matrix multiplied by this translation matrix.
 	/// @param v Coordinates of a translation vector.
 	template<typename T, qualifier Q>
-	GLM_FUNC_DECL mat<3, 3, T, Q> translate(
+	GLM_FUNC_DECL GLM_CONSTEXPR mat<3, 3, T, Q> translate(
 		mat<3, 3, T, Q> const& m,
 		vec<2, T, Q> const& v);
 
@@ -43,7 +43,7 @@ namespace glm
 	/// @param m Input matrix multiplied by this translation matrix.
 	/// @param angle Rotation angle expressed in radians.
 	template<typename T, qualifier Q>
-	GLM_FUNC_DECL mat<3, 3, T, Q> rotate(
+	GLM_FUNC_DECL GLM_CONSTEXPR mat<3, 3, T, Q> rotate(
 		mat<3, 3, T, Q> const& m,
 		T angle);
 
@@ -52,7 +52,7 @@ namespace glm
 	/// @param m Input matrix multiplied by this translation matrix.
 	/// @param v Coordinates of a scale vector.
 	template<typename T, qualifier Q>
-	GLM_FUNC_DECL mat<3, 3, T, Q> scale(
+	GLM_FUNC_DECL GLM_CONSTEXPR mat<3, 3, T, Q> scale(
 		mat<3, 3, T, Q> const& m,
 		vec<2, T, Q> const& v);
 
@@ -61,7 +61,7 @@ namespace glm
 	/// @param m Input matrix multiplied by this translation matrix.
 	/// @param y Shear factor.
 	template<typename T, qualifier Q>
-	GLM_FUNC_DECL mat<3, 3, T, Q> shearX(
+	GLM_FUNC_DECL GLM_CONSTEXPR mat<3, 3, T, Q> shearX(
 		mat<3, 3, T, Q> const& m,
 		T y);
 
@@ -70,7 +70,7 @@ namespace glm
 	/// @param m Input matrix multiplied by this translation matrix.
 	/// @param x Shear factor.
 	template<typename T, qualifier Q>
-	GLM_FUNC_DECL mat<3, 3, T, Q> shearY(
+	GLM_FUNC_DECL GLM_CONSTEXPR mat<3, 3, T, Q> shearY(
 		mat<3, 3, T, Q> const& m,
 		T x);
 
@@ -79,7 +79,7 @@ namespace glm
 	/// @param m Input matrix multiplied by this translation matrix.
 	/// @param s Shear vector.
 	template <typename T, qualifier Q>
-	GLM_FUNC_DECL mat<3, 3, T, Q> shear(
+	GLM_FUNC_DECL GLM_CONSTEXPR mat<3, 3, T, Q> shear(
 		mat<3, 3, T, Q> const& m,
 		vec<2, T, Q> const& s);
 
