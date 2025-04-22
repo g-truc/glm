@@ -1,11 +1,8 @@
 /// @ref gtx_matrix_transform_2d
 /// @author Miguel Ángel Pérez Martínez
 
-#include "../trigonometric.hpp"
-
 namespace glm
 {
-
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER mat<3, 3, T, Q> translate(
 		mat<3, 3, T, Q> const& m,
@@ -15,7 +12,6 @@ namespace glm
 		Result[2] = m[0] * v[0] + m[1] * v[1] + m[2];
 		return Result;
 	}
-
 
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER mat<3, 3, T, Q> rotate(
@@ -63,6 +59,20 @@ namespace glm
 		mat<3, 3, T, Q> Result(1);
 		Result[1][0] = x;
 		return m * Result;
+	}
+
+	template <typename T, qualifier Q>
+	GLM_FUNC_QUALIFIER mat<3, 3, T, Q> shear(
+		mat<3, 3, T, Q> const& m,
+		vec<2, T, Q> const& s)
+	{
+		mat<3, 3, T, Q> Result;
+
+		Result[0] = m[0] * (s.x * s.y + 1.0f) + m[1] * s.y;
+		Result[1] = m[0] * s.x + m[1];
+		Result[2] = m[2];
+
+		return Result;
 	}
 
 }//namespace glm
