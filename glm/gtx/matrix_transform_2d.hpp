@@ -43,7 +43,7 @@ namespace glm
 	/// @param m Input matrix multiplied by this translation matrix.
 	/// @param angle Rotation angle expressed in radians.
 	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR mat<3, 3, T, Q> rotate(
+	GLM_FUNC_DECL mat<3, 3, T, Q> rotate(
 		mat<3, 3, T, Q> const& m,
 		T angle);
 
