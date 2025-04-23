@@ -14,7 +14,7 @@ namespace glm
 	}
 
 	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR mat<3, 3, T, Q> rotate(
+	GLM_FUNC_QUALIFIER mat<3, 3, T, Q> rotate(
 		mat<3, 3, T, Q> const& m,
 		T angle)
 	{
