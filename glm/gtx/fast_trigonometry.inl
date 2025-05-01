@@ -25,12 +25,36 @@ namespace detail
 	{
 		return detail::functor1<vec, L, T, T, Q>::call(cos_52s, x);
 	}
+
+
+
+ //polynomials
+	template<typename T>
+	GLM_FUNC_QUALIFIER T tanPoly(T x, T sign)
+	{
+		return sign * ((((((T(-9.580235e-4) * x + T(1.025743e-2)) * x - T(1.964406e-3)) * x - T(1.656241e-1)) * x - T(2.652585e-4)) * x + T(1.000025e-0)) * x - T(3.973469e-7))
+		/ ((((((T(-9.580235e-4) * x - T(1.228280e-3)) * x + T(4.313990e-2)) * x - T(8.634596e-4)) * x - T(4.997638e-1)) * x - T(2.400507e-5)) * x + T(1.000000e-0));
+	}
+
+	template<typename T>
+	GLM_FUNC_QUALIFIER T asinPoly(T x)
+	{
+		return ((((((T(1.550104e-1) * x - T(6.284173e-2)) * x + T(5.446719e-2)) * x + T(1.561094e-1)) * x + T(9.531123e-4)) * x + T(9.999680e-1)) * x + T(1.740546e-7));
+	}
+
+	template<typename T>
+	GLM_FUNC_QUALIFIER T acosPoly(T x)
+	{
+		return ((((((T(-1.550104e-1) * x + T(6.284173e-2)) * x - 5.446719e-2) * x - T(1.561094e-1)) * x - T(9.531123e-4)) * x - T(9.999680e-1)) * x + T(1.570796e-0));
+	}
 }//namespace detail
 
 	// wrapAngle
 	template<typename T>
 	GLM_FUNC_QUALIFIER T wrapAngle(T angle)
 	{
+		//glm::trunc() is much faster than glm::mod but i got an error when i try to use it
+		//return abs<T>(angle - trunc<T>(angle * T(0.15915494309189534561)) * two_pi<T>());
 		return abs<T>(mod<T>(angle, two_pi<T>()));
 	}
 
@@ -79,7 +103,28 @@ namespace detail
 	template<typename T>
 	GLM_FUNC_QUALIFIER T fastTan(T x)
 	{
-		return x + (x * x * x * T(0.3333333333)) + (x * x * x * x * x * T(0.1333333333333)) + (x * x * x * x * x * x * x * T(0.0539682539));
+		T ms = (x < T(0.0)) ? T(-1.0) : T(1.0);
+		T mx = x * ms;
+ 
+		if(mx > two_pi<T>())
+			mx = wrapAngle<T>(mx);
+
+		switch((int)(mx * T(0.6366197))) //(1.0 / half_pi<T>())
+		{
+			case 0:
+				return detail::tanPoly<T>(mx, ms);
+			break;
+			case 1:
+				return -detail::tanPoly<T>(pi<T>() - mx, ms);
+			break;
+			case 2:
+				return detail::tanPoly<T>(mx - pi<T>(), ms);
+			break;
+			case 3:
+				return -detail::tanPoly<T>(two_pi<T>() - mx, ms);
+			break;
+		}
+		return T(NAN);
 	}
 
 	template<length_t L, typename T, qualifier Q>
@@ -92,7 +137,11 @@ namespace detail
 	template<typename T>
 	GLM_FUNC_QUALIFIER T fastAsin(T x)
 	{
-		return x + (x * x * x * T(0.166666667)) + (x * x * x * x * x * T(0.075)) + (x * x * x * x * x * x * x * T(0.0446428571)) + (x * x * x * x * x * x * x * x * x * T(0.0303819444));// + (x * x * x * x * x * x * x * x * x * x * x * T(0.022372159));
+		T ms = (x < T(0.0)) ? T(-1.0) : T(1.0);
+		T mx = x * ms;
+		if(mx > T(0.5))
+			return ms * (half_pi<T>() - T(2.0) * detail::asinPoly<T>(fastSqrt<T>((T(1.0) - mx) * T(0.5))) );
+		return ms * detail::asinPoly<T>(mx);
 	}
 
 	template<length_t L, typename T, qualifier Q>
@@ -105,7 +154,18 @@ namespace detail
 	template<typename T>
 	GLM_FUNC_QUALIFIER T fastAcos(T x)
 	{
-		return T(1.5707963267948966192313216916398) - fastAsin(x); //(PI / 2)
+		bool is_negative = (x < T(0.0));
+		T mx = is_negative ? -x : x;
+ 
+		if(is_negative)
+		{
+			if(mx > T(0.5))
+				return T(2.0) * detail::acosPoly<T>(fastSqrt<T>((T(1.0) - mx) * T(0.5)));
+			return pi<T>() - detail::acosPoly<T>(mx);
+		}
+		if(mx > T(0.5))
+			return (pi<T>() - T(2.0) * detail::acosPoly<T>(fastSqrt<T>((T(1.0) - mx) * T(0.5))) );
+		return detail::acosPoly<T>(mx);
 	}
 
 	template<length_t L, typename T, qualifier Q>
@@ -114,12 +174,15 @@ namespace detail
 		return detail::functor1<vec, L, T, T, Q>::call(fastAcos, x);
 	}
 
-	// atan
+	// atan2
 	template<typename T>
 	GLM_FUNC_QUALIFIER T fastAtan(T y, T x)
 	{
-		T sgn = sign(y) * sign(x);
-		return abs(fastAtan(y / x)) * sgn;
+		if (y < T(0.0) && x < T(0.0))
+			return fastAtan<T>(y / x) - pi<T>();
+		else if(y > T(0.0) && x < T(0.0))
+			return fastAtan<T>(y / x) + pi<T>();
+		return fastAtan<T>(y / x);
 	}
 
 	template<length_t L, typename T, qualifier Q>
@@ -127,11 +190,16 @@ namespace detail
 	{
 		return detail::functor2<vec, L, T, Q>::call(fastAtan, y, x);
 	}
-
+	// atan
 	template<typename T>
 	GLM_FUNC_QUALIFIER T fastAtan(T x)
 	{
-		return x - (x * x * x * T(0.333333333333)) + (x * x * x * x * x * T(0.2)) - (x * x * x * x * x * x * x * T(0.1428571429)) + (x * x * x * x * x * x * x * x * x * T(0.111111111111)) - (x * x * x * x * x * x * x * x * x * x * x * T(0.0909090909));
+		T ms = (x < T(0.0)) ? T(-1.0) : T(1.0);
+		T mx = x * ms;
+		mx = (mx * fastInverseSqrt<T>(T(1.0) + mx * mx));
+		if(mx > T(0.5))
+			return ms * (half_pi<T>() - T(2.0) * detail::asinPoly<T>(fastSqrt<T>((T(1.0) - mx) * T(0.5))));
+		return ms * detail::asinPoly<T>(mx);
 	}
 
 	template<length_t L, typename T, qualifier Q>
