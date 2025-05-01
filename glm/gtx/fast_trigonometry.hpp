@@ -14,6 +14,7 @@
 
 // Dependency:
 #include "../gtc/constants.hpp"
+#include "../gtx/fast_square_root.hpp"
 
 #ifndef GLM_ENABLE_EXPERIMENTAL
 #	error "GLM: GLM_GTX_fast_trigonometry is an experimental extension and may change in the future. Use #define GLM_ENABLE_EXPERIMENTAL before including it, if you really want to use it."
@@ -26,7 +27,7 @@ namespace glm
 	/// @addtogroup gtx_fast_trigonometry
 	/// @{
 
-	/// Wrap an angle to [0 2pi[
+	/// Wrap an angle to [0, 2pi]
 	/// From GLM_GTX_fast_trigonometry extension.
 	template<typename T>
 	GLM_FUNC_DECL T wrapAngle(T angle);
@@ -48,25 +49,25 @@ namespace glm
 	GLM_FUNC_DECL T fastTan(T angle);
 
 	/// Faster than the common asin function but less accurate.
-	/// Defined between -2pi and 2pi.
+	/// Defined between -1 and 1.
 	/// From GLM_GTX_fast_trigonometry extension.
 	template<typename T>
 	GLM_FUNC_DECL T fastAsin(T angle);
 
 	/// Faster than the common acos function but less accurate.
-	/// Defined between -2pi and 2pi.
+	/// Defined between -1 and 1.
 	/// From GLM_GTX_fast_trigonometry extension.
 	template<typename T>
 	GLM_FUNC_DECL T fastAcos(T angle);
 
-	/// Faster than the common atan function but less accurate.
-	/// Defined between -2pi and 2pi.
+	/// Faster than the common atan2 function but less accurate.
+	/// Defined between -inf and inf.
 	/// From GLM_GTX_fast_trigonometry extension.
 	template<typename T>
 	GLM_FUNC_DECL T fastAtan(T y, T x);
 
 	/// Faster than the common atan function but less accurate.
-	/// Defined between -2pi and 2pi.
+	/// Defined between -inf and inf.
 	/// From GLM_GTX_fast_trigonometry extension.
 	template<typename T>
 	GLM_FUNC_DECL T fastAtan(T angle);
