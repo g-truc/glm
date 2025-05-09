@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include "glm.hpp"
+#include "./glm.hpp"
 
 #if GLM_MESSAGES == GLM_ENABLE && !defined(GLM_MESSAGE_EXT_INCLUDED_DISPLAYED)
 #	define GLM_MESSAGE_EXT_INCLUDED_DISPLAYED
