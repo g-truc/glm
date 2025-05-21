@@ -45,33 +45,34 @@ namespace glm
 		return m * r;
 	}
 
-	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER mat<3, 3, T, Q> reflect2D(mat<3, 3, T, Q> const& m, vec<3, T, Q> const& normal)
-	{
-		mat<3, 3, T, Q> r(static_cast<T>(1));
-		r[0][0] = static_cast<T>(1) - static_cast<T>(2) * normal.x * normal.x;
-		r[0][1] = -static_cast<T>(2) * normal.x * normal.y;
-		r[1][0] = -static_cast<T>(2) * normal.x * normal.y;
-		r[1][1] = static_cast<T>(1) - static_cast<T>(2) * normal.y * normal.y;
-		return m * r;
-	}
+	// template<typename T, qualifier Q>
+	// GLM_FUNC_QUALIFIER mat<3, 3, T, Q> reflect2D(mat<3, 3, T, Q> const& m, vec<3, T, Q> const& normal)
+	// {
+	// 	mat<3, 3, T, Q> r(static_cast<T>(1));
+	// 	r[0][0] = static_cast<T>(1) - static_cast<T>(2) * normal.x * normal.x;
+	// 	r[0][1] = -static_cast<T>(2) * normal.x * normal.y;
+	// 	r[1][0] = -static_cast<T>(2) * normal.x * normal.y;
+	// 	r[1][1] = static_cast<T>(1) - static_cast<T>(2) * normal.y * normal.y;
+	// 	return m * r;
+	// }
 
 	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER mat<4, 4, T, Q> reflect3D(mat<4, 4, T, Q> const& m, vec<3, T, Q> const& normal)
+	GLM_FUNC_DECL mat<4, 4, T, Q> reflect3D(vec<3, T, Q> const& normal, T distance)
 	{
-		mat<4, 4, T, Q> r(static_cast<T>(1));
-		r[0][0] = static_cast<T>(1) - static_cast<T>(2) * normal.x * normal.x;
-		r[0][1] = -static_cast<T>(2) * normal.x * normal.y;
-		r[0][2] = -static_cast<T>(2) * normal.x * normal.z;
-
-		r[1][0] = -static_cast<T>(2) * normal.x * normal.y;
-		r[1][1] = static_cast<T>(1) - static_cast<T>(2) * normal.y * normal.y;
-		r[1][2] = -static_cast<T>(2) * normal.y * normal.z;
-
-		r[2][0] = -static_cast<T>(2) * normal.x * normal.z;
-		r[2][1] = -static_cast<T>(2) * normal.y * normal.z;
-		r[2][2] = static_cast<T>(1) - static_cast<T>(2) * normal.z * normal.z;
-		return m * r;
+		mat<4, 4, T, Q> result(static_cast<T>(1));
+		result[0][0] = static_cast<T>(1) - static_cast<T>(2) * normal.x * normal.x;
+		result[0][1] = -static_cast<T>(2) * normal.y * normal.x;
+		result[0][2] = -static_cast<T>(2) * normal.z * normal.x;
+		result[1][0] = -static_cast<T>(2) * normal.x * normal.y;
+		result[1][1] = static_cast<T>(1) - static_cast<T>(2) * normal.y * normal.y;
+		result[1][2] = -static_cast<T>(2) * normal.z * normal.y;
+		result[2][0] = -static_cast<T>(2) * normal.x * normal.z;
+		result[2][1] = -static_cast<T>(2) * normal.y * normal.z;
+		result[2][2] = static_cast<T>(1) - static_cast<T>(2) * normal.z * normal.z;
+		result[3][0] = -static_cast<T>(2) * normal.x * distance;
+		result[3][1] = -static_cast<T>(2) * normal.y * distance;
+		result[3][2] = -static_cast<T>(2) * normal.z * distance;
+		return result;
 	}
 
 	template<typename T, qualifier Q>

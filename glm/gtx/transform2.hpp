@@ -57,9 +57,10 @@ namespace glm
 	// Identity + tan(angle) * cross(Normal, OnPlaneVector)     0
 	// - dot(PointOnPlane, normal) * OnPlaneVector              1
 
-	// Reflect functions seem to don't work
-	//template<typename T> mat<3, 3, T, Q> reflect2D(const mat<3, 3, T, Q> & m, const vec<3, T, Q>& normal){return reflect2DGTX(m, normal);}									//!< \brief Build a reflection matrix (from GLM_GTX_transform2 extension)
-	//template<typename T> mat<4, 4, T, Q> reflect3D(const mat<4, 4, T, Q> & m, const vec<3, T, Q>& normal){return reflect3DGTX(m, normal);}									//!< \brief Build a reflection matrix (from GLM_GTX_transform2 extension)
+	//! Build a reflection matrix.
+	//! From GLM_GTX_transform2 extension.
+	template<typename T, qualifier Q>
+	GLM_FUNC_DECL mat<4, 4, T, Q> reflect3D(vec<3, T, Q> const& normal, T distance);
 
 	//! Build planar projection matrix along normal axis.
 	//! From GLM_GTX_transform2 extension.
