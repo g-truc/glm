@@ -2,6 +2,144 @@
 
 namespace glm
 {
+	template<>
+	GLM_FUNC_QUALIFIER float fastExp2(float x)
+	{
+		/*
+		approximated using "exp2(x)" formula
+		for +x = exp2(x)
+		for -x = 1/exp2(abs(x))
+		*/
+		float mx, out, C0, C1, C2, C3, C4, C5;
+		bool reciprocal;
+		uint32_t exponent, tmpx;
+		/* coefficients interval [0, 1] */
+		C0 = 0.00189646114543331e-00f;
+		C1 = 0.00894282898410912e-00f;
+		C2 = 0.05586624630452070e-00f;
+		C3 = 0.24013971109076948e-00f;
+		C4 = 0.69315475247516734e-00f;
+		C5 = 0.99999989311082671e-00f;
+		mx = x;
+		reciprocal = (*(uint32_t*)&x) & 0x80000000;
+		tmpx = (*(uint32_t*)&x) & 0x7FFFFFFF;
+		mx = *(float*)&tmpx;
+		exponent = (uint32_t)mx;
+		mx = mx - (float)exponent;
+		out = (((((C0 * mx + C1) * mx + C2) * mx + C3) * mx + C4) * mx + C5);
+		tmpx = (exponent + 127) << 23;
+		out = (*(float*)&tmpx) * out;
+		out = reciprocal ? (1.0f / out) : out;
+		return out;
+	}
+	
+	template<>
+	GLM_FUNC_QUALIFIER double fastExp2(double x)
+	{
+		/*
+		approximated using "exp2(x)" formula
+		for +x = exp2(x)
+		for -x = 1/exp2(abs(x))
+		*/
+		double mx, out, C0, C1, C2, C3, C4, C5;
+		bool reciprocal;
+		uint64_t exponent, tmpx;
+		/* coefficients interval [0, 1] */
+		C0 = 0.00189646114543331e-00;
+		C1 = 0.00894282898410912e-00;
+		C2 = 0.05586624630452070e-00;
+		C3 = 0.24013971109076948e-00;
+		C4 = 0.69315475247516734e-00;
+		C5 = 0.99999989311082671e-00;
+		mx = x;
+		reciprocal = (*(uint64_t*)&x) & 0x8000000000000000;
+		tmpx = (*(uint64_t*)&x) & 0x7FFFFFFFFFFFFFFF;
+		mx = *(double*)&tmpx;
+		exponent = (uint64_t)mx;
+		mx = mx - (double)exponent;
+		out = (((((C0 * mx + C1) * mx + C2) * mx + C3) * mx + C4) * mx + C5);
+		tmpx = (exponent + 1023) << 52;
+		out = (*(double*)&tmpx) * out;
+		out = reciprocal ? (1.0 / out) : out;
+		return out;
+	}
+
+	template<>
+	GLM_FUNC_QUALIFIER float fastLog2(float x)
+	{
+		/*
+		approximated using this formula "log2(x)"
+		interval [1, 1.5]
+		for x mantissa <= 1.5 log2(x) ≈ C0 * x + C1 * x2...
+		for x mantissa >= 1.5 log2(x) ≈ log2(x / 1.5) + log2(1.5)
+		for x <= 1.0 = -log2(1/x)
+		*/
+		float mx, l2, inv_three_half, lx, out, poly, C0, C1, C2, C3, C4, C5, C6;
+		bool low, low_mantissa;
+		uint32_t tmpx;
+		/* coefficients */
+		C0 = -0.067508561412635e-00f;
+		C1 =  0.605786644896372e-00f;
+		C2 = -2.351461115180550e-00f;
+		C3 =  5.175006419193522e-00f;
+		C4 = -7.182524695365589e-00f;
+		C5 =  7.064678543395325e-00f;
+		C6 = -3.243977190921664e-00f;
+		/* constants */
+		l2 = 0.5849625f; /* log2(1.5) */
+		inv_three_half = 0.6666667f; /* 1.0 / 1.5 */
+		mx = x;
+		low = mx < 1.0f;
+		mx = low ? (1.0f / mx) : mx;
+		tmpx = 1065353216 | ((*(uint32_t*)&mx) & 0x007FFFFF);
+		lx = *(float*)&tmpx;
+		low_mantissa = lx <= 1.5f;
+		lx = low_mantissa ? lx : (lx * inv_three_half);
+		poly = ((((((C0 * lx + C1) * lx + C2) * lx + C3) * lx + C4) * lx + C5) * lx + C6);
+		poly = low_mantissa ? poly : (poly + l2);
+		out = (((*(uint32_t*)&mx) >> 23) - 127) + poly;
+		out = low ? -out : out;
+		return out;
+	}
+
+	template<>
+	GLM_FUNC_QUALIFIER double fastLog2(double x)
+	{
+		/*
+		approximated using this formula "log2(x)"
+		interval [1, 1.5]
+		for x mantissa <= 1.5 log2(x) ≈ C0 * x + C1 * x2...
+		for x mantissa >= 1.5 log2(x) ≈ log2(x / 1.5) + log2(1.5)
+		for x <= 1.0 = -log2(1/x)
+		*/
+		double mx, l2, inv_three_half, lx, out, poly, C0, C1, C2, C3, C4, C5, C6;
+		bool low, low_mantissa;
+		uint64_t tmpx;
+		/* coefficients */
+		C0 = -0.067508561412635e-00;
+		C1 =  0.605786644896372e-00;
+		C2 = -2.351461115180550e-00;
+		C3 =  5.175006419193522e-00;
+		C4 = -7.182524695365589e-00;
+		C5 =  7.064678543395325e-00;
+		C6 = -3.243977190921664e-00;
+		/* constants */
+		l2 = 0.5849625; /* log2(1.5) */
+		inv_three_half = 0.6666667; /* 1.0 / 1.5 */
+		mx = x;
+		low = mx < 1.0;
+		mx = low ? (1.0 / mx) : mx;
+		tmpx = 4607182418800017408U | ((*(uint64_t*)&mx) & 0x000FFFFFFFFFFFFF);
+		lx = *(double*)&tmpx;
+		low_mantissa = lx <= 1.5;
+		lx = low_mantissa ? lx : (lx * inv_three_half);
+		poly = ((((((C0 * lx + C1) * lx + C2) * lx + C3) * lx + C4) * lx + C5) * lx + C6);
+		poly = low_mantissa ? poly : (poly + l2);
+		out = (((*(uint64_t*)&mx) >> 52) - 1023) + poly;
+		out = low ? -out : out;
+		return out;
+	}
+
 	// fastPow
 	template<typename genType>
 	GLM_FUNC_QUALIFIER genType fastPow(genType x, genType y)
@@ -12,27 +150,13 @@ namespace glm
 	template<>
 	GLM_FUNC_QUALIFIER float fastPow(float x, float y)
 	{
-		//negative y always reciprocal, pow(x, -y) = 1 / pow(x, abs(-y))
-		//when x is lower than 1.0, you can use this formula. pow(x, y) = 1 / glm::fastPow(1 / x, y)
-		// ex: when x is '0.3'... pow(0.3, y) = 1 / glm::fastPow(1 / 0.3, y)
-		uint32_t mantissa = 1065353216U | ((*(uint32_t*)&x) & 0x007FFFFF);
-		float mx = *(float*)&mantissa;
-		float lnx = y * float(1.44269504088896338700) * ((((*(uint32_t*)&x) >> 23)-127) * float(0.69314718055994528623) + ((((float(-0.056571767549593956) * mx + float(0.4471786103806078)) * mx - float(1.4699399880154467)) * mx + float(2.8211719569953488)) * mx - float(1.7417780977156199)));
-		uint32_t out = ((127U + uint32_t(lnx)) << 23U);
-		lnx -= uint32_t(lnx);
-		return (*(float*)(&out)) * ((float(0.34400110689651969) * lnx + float(0.65104678030290897)) * lnx + float(1.0024760564002857));
+		return fastExp2<float>(y * fastLog2<float>(x));
 	}
 	
 	template<>
 	GLM_FUNC_QUALIFIER double fastPow(double x, double y)
 	{
-		//negative y always reciprocal, pow(x, -y) = 1 / pow(x, abs(-y))
-		uint64_t mantissa = 4607182418800017408U | ((*(uint64_t*)&x) & 0x000FFFFFFFFFFFFF);
-		double mx = *(double*)&mantissa;
-		double lnx = y * double(1.44269504088896338700) * ((((*(uint64_t*)&x) >> 52)-1023) * double(0.69314718055994528623) + ((((double(-0.056571767549593956) * mx + double(0.4471786103806078)) * mx - double(1.4699399880154467)) * mx + double(2.8211719569953488)) * mx - double(1.7417780977156199)));
-		uint64_t out = ((uint64_t)(1023U + uint64_t(lnx)) << 52U);
-		lnx -= uint64_t(lnx);
-		return (*(double*)(&out)) * ((double(0.34400110689651969) * lnx + double(0.65104678030290897)) * lnx + double(1.0024760564002857));
+		return fastExp2<double>(y * fastLog2<double>(x));
 	}
 
 	template<length_t L, typename T, qualifier Q>
@@ -63,27 +187,13 @@ namespace glm
 	template<>
 	GLM_FUNC_QUALIFIER float fastExp(float x)
 	{
-		//negative x always reciprocal, exp(-x) = 1 / exp(abs(-x))
-		uint32_t out = ((127U + uint32_t(x *= 1.44269504088896338700f)) << 23U);
-		float mx = x - uint32_t(x);
-		/*
-		//(accurate) 2 degree polynomial exp2(), interval [0, 1]
-		return (*(float*)(&out)) * ((float(0.34400110689651969) * mx + float(0.65104678030290897)) * mx + float(1.0024760564002857));
-		*/
-		return (*(float*)(&out)) * (mx + 0.95696433397203284f);
+		return fastExp2<float>(1.4426950409f * x);
 	}
 	
 	template<>
 	GLM_FUNC_QUALIFIER double fastExp(double x)
 	{
-		//negative x always reciprocal, exp(-x) = 1 / exp(abs(-x))
-		uint64_t out = ((uint64_t)(1023U + uint64_t(x *= 1.44269504088896338700)) << 52U);
-		double mx = x - uint64_t(x);
-		/*
-		//(accurate) 2 degree polynomial exp2(), interval [0, 1]
-		return (*(double*)(&out)) * ((double(0.34400110689651969) * mx + double(0.65104678030290897)) * mx + double(1.0024760564002857));
-		*/
-		return (*(double*)(&out)) * (mx + 0.95696433397203284);
+		return fastExp2<double>(1.4426950409 * x);
 	}
 	/*  // Try to handle all values of float... but often shower than std::exp, glm::floor and the loop kill the performance
 	GLM_FUNC_QUALIFIER float fastExp(float x)
@@ -125,59 +235,11 @@ namespace glm
 		return detail::functor1<vec, L, T, T, Q>::call(fastExp, x);
 	}
 
-	// fastLog
-	template<typename genType>
-	GLM_FUNC_QUALIFIER genType fastLog(genType x)
-	{
-		return std::log(x);
-	}
-
-	// Slower than the VC7.1 function...
-	template<>
-	GLM_FUNC_QUALIFIER float fastLog(float x)
-	{
-		//x less than 1 always negative log(0.2) = -log(1 / 0.2)
-		uint32_t mantissa = 1065353216U | ((*(uint32_t*)&x) & 0x007FFFFF);
-		return (((*(uint32_t*)&x) >> 23)-127) * float(0.69314718055994528623) + ((float(-0.2390307190544787) * (*(float*)&mantissa) + float(1.4033913763229589)) * (*(float*)&mantissa) - float(1.1609366765682689));
-	}
-	
-	template<>
-	GLM_FUNC_QUALIFIER double fastLog(double x)
-	{
-		//x less than 1 always negative log(0.2) = -log(1 / 0.2)
-		uint64_t mantissa = 4607182418800017408U | ((*(uint64_t*)&x) & 0x000FFFFFFFFFFFFF);
-		return (((*(uint64_t*)&x) >> 52)-1023) * double(0.69314718055994528623) + ((double(-0.2390307190544787) * (*(double*)&mantissa) + double(1.4033913763229589)) * (*(double*)&mantissa) - double(1.1609366765682689));
-	}
-
-	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER vec<L, T, Q> fastLog(vec<L, T, Q> const& x)
-	{
-		return detail::functor1<vec, L, T, T, Q>::call(fastLog, x);
-	}
-
 	//fastExp2, ln2 = 0.69314718055994530941723212145818f
 	template<typename genType>
 	GLM_FUNC_QUALIFIER genType fastExp2(genType x)
 	{
 		return fastExp(static_cast<genType>(0.69314718055994530941723212145818) * x);
-	}
-
-	template<>
-	GLM_FUNC_QUALIFIER float fastExp2(float x)
-	{
-		//negative x always reciprocal, exp2(-x) = 1 / exp2(abs(-x))		
-		uint32_t out = ((127U + uint32_t(x)) << 23U);
-		x -= uint32_t(x);
-		return (*(float*)(&out)) * ((float(0.34400110689651969) * x + float(0.65104678030290897)) * x + float(1.0024760564002857));
-	}
-	
-	template<>
-	GLM_FUNC_QUALIFIER double fastExp2(double x)
-	{
-		//negative x always reciprocal, exp2(-x) = 1 / exp2(abs(-x))		
-		uint64_t out = ((uint64_t)(1023U + uint64_t(x)) << 52U);
-		x -= uint64_t(x);
-		return (*(double*)(&out)) * ((double(0.34400110689651969) * x + double(0.65104678030290897)) * x + double(1.0024760564002857));
 	}
 
 	template<length_t L, typename T, qualifier Q>
@@ -193,23 +255,35 @@ namespace glm
 		return fastLog(x) / static_cast<genType>(0.69314718055994530941723212145818);
 	}
 	
-	template<>
-	GLM_FUNC_QUALIFIER float fastLog2(float x)
-	{
-		uint32_t mantissa = 1065353216U | ((*(uint32_t*)&x) & 0x007FFFFF);
-		return (((*(uint32_t*)&x) >> 23)-127) + ((float(-0.34484843300001944) * (*(float*)&mantissa) + float(2.0246657790474698)) * (*(float*)&mantissa) - float(1.674877586071156));
-	}
-
-	template<>
-	GLM_FUNC_QUALIFIER double fastLog2(double x)
-	{
-		uint64_t mantissa = 4607182418800017408U | ((*(uint64_t*)&x) & 0x000FFFFFFFFFFFFF);
-		return (((*(uint64_t*)&x) >> 52)-1023) + ((double(-0.34484843300001944) * (*(double*)&mantissa) + double(2.0246657790474698)) * (*(double*)&mantissa) - double(1.674877586071156));
-	}
-
 	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER vec<L, T, Q> fastLog2(vec<L, T, Q> const& x)
 	{
 		return detail::functor1<vec, L, T, T, Q>::call(fastLog2, x);
+	}
+
+	// fastLog
+	template<typename genType>
+	GLM_FUNC_QUALIFIER genType fastLog(genType x)
+	{
+		return std::log(x);
+	}
+
+	// Slower than the VC7.1 function...
+	template<>
+	GLM_FUNC_QUALIFIER float fastLog(float x)
+	{
+		return fastLog2<float>(x) * 0.69314718055994530941723212145818f;
+	}
+	
+	template<>
+	GLM_FUNC_QUALIFIER double fastLog(double x)
+	{
+		return fastLog2<double>(x) * 0.69314718055994530941723212145818;
+	}
+
+	template<length_t L, typename T, qualifier Q>
+	GLM_FUNC_QUALIFIER vec<L, T, Q> fastLog(vec<L, T, Q> const& x)
+	{
+		return detail::functor1<vec, L, T, T, Q>::call(fastLog, x);
 	}
 }//namespace glm
