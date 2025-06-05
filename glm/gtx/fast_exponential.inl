@@ -5,15 +5,13 @@ namespace glm
 	template<>
 	GLM_FUNC_QUALIFIER float fastExp2(float x)
 	{
-		/*
-		approximated using "exp2(x)" formula
-		for +x = exp2(x)
-		for -x = 1/exp2(abs(x))
-		*/
+		//approximated using "exp2(x)" formula
+		//for +x = exp2(x)
+		//for -x = 1/exp2(abs(x))
 		float mx, out, C0, C1, C2, C3, C4, C5;
 		bool reciprocal;
 		uint32_t exponent, tmpx;
-		/* coefficients interval [0, 1] */
+		// coefficients interval [0, 1] 
 		C0 = 0.00189646114543331e-00f;
 		C1 = 0.00894282898410912e-00f;
 		C2 = 0.05586624630452070e-00f;
@@ -36,15 +34,13 @@ namespace glm
 	template<>
 	GLM_FUNC_QUALIFIER double fastExp2(double x)
 	{
-		/*
-		approximated using "exp2(x)" formula
-		for +x = exp2(x)
-		for -x = 1/exp2(abs(x))
-		*/
+		//approximated using "exp2(x)" formula
+		//for +x = exp2(x)
+		//for -x = 1/exp2(abs(x))
 		double mx, out, C0, C1, C2, C3, C4, C5;
 		bool reciprocal;
 		uint64_t exponent, tmpx;
-		/* coefficients interval [0, 1] */
+		//coefficients interval [0, 1] 
 		C0 = 0.00189646114543331e-00;
 		C1 = 0.00894282898410912e-00;
 		C2 = 0.05586624630452070e-00;
@@ -67,17 +63,15 @@ namespace glm
 	template<>
 	GLM_FUNC_QUALIFIER float fastLog2(float x)
 	{
-		/*
-		approximated using this formula "log2(x)"
-		interval [1, 1.5]
-		for x mantissa <= 1.5 log2(x) ≈ C0 * x + C1 * x2...
-		for x mantissa >= 1.5 log2(x) ≈ log2(x / 1.5) + log2(1.5)
-		for x <= 1.0 = -log2(1/x)
-		*/
+		//approximated using this formula "log2(x)"
+		//interval [1, 1.5]
+		//for x mantissa <= 1.5 log2(x) ≈ C0 * x + C1 * x2...
+		//for x mantissa >= 1.5 log2(x) ≈ log2(x / 1.5) + log2(1.5)
+		//for x <= 1.0 = -log2(1/x)
 		float mx, l2, inv_three_half, lx, out, poly, C0, C1, C2, C3, C4, C5, C6;
 		bool low, low_mantissa;
 		uint32_t tmpx;
-		/* coefficients */
+		// coefficients 
 		C0 = -0.067508561412635e-00f;
 		C1 =  0.605786644896372e-00f;
 		C2 = -2.351461115180550e-00f;
@@ -85,9 +79,9 @@ namespace glm
 		C4 = -7.182524695365589e-00f;
 		C5 =  7.064678543395325e-00f;
 		C6 = -3.243977190921664e-00f;
-		/* constants */
-		l2 = 0.5849625f; /* log2(1.5) */
-		inv_three_half = 0.6666667f; /* 1.0 / 1.5 */
+		// constants 
+		l2 = 0.5849625f; //log2(1.5) 
+		inv_three_half = 0.6666667f; // 1.0 / 1.5 
 		mx = x;
 		low = mx < 1.0f;
 		mx = low ? (1.0f / mx) : mx;
@@ -105,17 +99,15 @@ namespace glm
 	template<>
 	GLM_FUNC_QUALIFIER double fastLog2(double x)
 	{
-		/*
-		approximated using this formula "log2(x)"
-		interval [1, 1.5]
-		for x mantissa <= 1.5 log2(x) ≈ C0 * x + C1 * x2...
-		for x mantissa >= 1.5 log2(x) ≈ log2(x / 1.5) + log2(1.5)
-		for x <= 1.0 = -log2(1/x)
-		*/
+		//approximated using this formula "log2(x)"
+		//interval [1, 1.5]
+		//for x mantissa <= 1.5 log2(x) ≈ C0 * x + C1 * x2...
+		//for x mantissa >= 1.5 log2(x) ≈ log2(x / 1.5) + log2(1.5)
+		//for x <= 1.0 = -log2(1/x)
 		double mx, l2, inv_three_half, lx, out, poly, C0, C1, C2, C3, C4, C5, C6;
 		bool low, low_mantissa;
 		uint64_t tmpx;
-		/* coefficients */
+		// coefficients 
 		C0 = -0.067508561412635e-00;
 		C1 =  0.605786644896372e-00;
 		C2 = -2.351461115180550e-00;
@@ -123,9 +115,9 @@ namespace glm
 		C4 = -7.182524695365589e-00;
 		C5 =  7.064678543395325e-00;
 		C6 = -3.243977190921664e-00;
-		/* constants */
-		l2 = 0.5849625; /* log2(1.5) */
-		inv_three_half = 0.6666667; /* 1.0 / 1.5 */
+		// constants 
+		l2 = 0.5849625; // log2(1.5) 
+		inv_three_half = 0.6666667; // 1.0 / 1.5 
 		mx = x;
 		low = mx < 1.0;
 		mx = low ? (1.0 / mx) : mx;
