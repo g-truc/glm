@@ -58,14 +58,13 @@ namespace detail
 
 		return detail::cos_52s(two_pi<T>() - angle);
 		*/
-		/*
-		approximated using "cos(sqrt(x))" 
-		interval [0, pi/2]
-		*/ 
+		
+		//approximated using "cos(sqrt(x))" 
+		//interval [0, pi/2]
 		T mx, x2, out, C0, C1, C2, C3, C4, C5, C6;
 		bool sign, flip;
 		int q;
-		/* coefficients */
+	 // coefficients 
 		C0 = T( 2.0254959785478004e-09);
 		C1 = T(-2.7543954056392956e-07);
 		C2 = T( 2.4801444520278038e-05);
@@ -73,17 +72,17 @@ namespace detail
 		C4 = T( 0.4166666664617346e-01);
 		C5 = T(-4.9999999999799011e-01);
 		C6 = T( 0.9999999999999678e-00);
-		/* sign handle */
+		// sign handle 
 		mx = x < T(0.0) ? -x : x;
-		/* remainder */
+		// remainder 
 		mx = mx - ::trunc(mx * T(0.1591549)) * T(6.283185307);
-		/* range reduction*/
+		// range reduction
 		q = ((int)(mx * T(0.6366197))+1);
 		flip = (q == 2 || q == 4);
 		sign = (q == 2 || q == 3);
 		mx = mx - (T(1.57079632) * T(q-1));
 		mx = flip ? (mx - T(1.57079632)) : mx;
-		/*range reduction*/
+		// polynomial
 		x2 = mx * mx;
 		out = ((((((C0 * x2 + C1) * x2 + C2) * x2 + C3) * x2 + C4) * x2 + C5) * x2 + C6);
 		out = sign ? -out : out;
@@ -101,17 +100,17 @@ namespace detail
 	GLM_FUNC_QUALIFIER T fastSin(T x)
 	{
 		//return fastCos<T>(half_pi<T>() - x);
-		/*
-		this function is approximated using this formula : (sin(sqrt(x))-sqrt(x)) / (x * sqrt(x))
-		interval [0, pi/2]
-		sin(x) ≈ x * x3 * sin_poly(x2)
-		where : sin_poly(x) = (((C0 * x + C1) * x + C2) * x + C3)
-		for -x = -sin(abs(x))
-		*/
+		
+		
+		//this function is approximated using this formula : (sin(sqrt(x))-sqrt(x)) / (x * sqrt(x))
+		//interval [0, pi/2]
+		//sin(x) ≈ x * x3 * sin_poly(x2)
+		//where : sin_poly(x) = (((C0 * x + C1) * x + C2) * x + C3)
+		//for -x = -sin(abs(x))
 		T mx, x2, out, C0, C1, C2, C3;
 		bool sign, flip;
 		int q;
-		/* coefficients */
+		//coefficients 
 		C0 = T( 2.678156924342569e-06);
 		C1 = T(-1.983369323468157e-04);
 		C2 = T( 8.333309602749911e-03);
@@ -119,15 +118,15 @@ namespace detail
 		mx = x;
 		sign = mx < T(0.0);
 		mx = sign ? -mx : mx;
-		/* remainder */
+		//remainder 
 		mx = mx - ::trunc(mx * T(0.1591549)) * T(6.283185307);
-		/* range reduction */
+		// range reduction 
 		q = ((int)(mx * T(0.6366197))+1);
 		flip = (q == 2 || q == 4);
 		sign ^= q > 2;
 		mx = mx - (T(1.57079632) * T(q-1));
 		mx = flip ? (T(1.57079632) - mx) : mx;
-		/* polynomial */
+		// polynomial 
 		x2 = mx * mx;
 		out = mx + (x2 * mx) * (((C0 * x2 + C1) * x2 + C2) * x2 + C3);
 		out = sign ? -out : out;
@@ -144,11 +143,9 @@ namespace detail
 	template<typename T>
 	GLM_FUNC_QUALIFIER T fastTan(T x)
 	{
-		/*
-		calculated using "sin(x)/cos(x)"
-		this is much more efficient because it only perform single
-		range reduction and remainder operation, unlike separate sin and cos
-		*/
+		//calculated using "sin(x)/cos(x)"
+		//this is much more efficient because it only perform single
+		//range reduction and remainder operation, unlike separate sin and cos
 		T mx, sx, cx, out, x2, S0, S1, S2, S3, C0, C1, C2, C3, C4, C5, C6;
 		bool sign, flip;
 		int q;
@@ -168,15 +165,15 @@ namespace detail
 		mx = x;
 		sign = mx < T(0.0);
 		mx = sign ? -mx : mx;
-		/* remainder */
+		// remainder 
 		mx = mx - ::trunc(mx * T(0.1591549)) * T(6.283185307);
-		/* range reduction */
+		// range reduction 
 		q = ((int)(mx * T(0.6366197))+1);
 		flip = (q == 2 || q == 4);
 		sign ^= flip;
 		mx = mx - (T(1.57079632) * T(q-1));
 		mx = flip ? (T(1.57079632) - mx) : mx;
-		/* polynomial */
+		// polynomial
 		x2 = mx * mx;
 		sx = mx + (x2 * mx) * (((S0 * x2 + S1) * x2 + S2) * x2 + S3);
 		cx = ((((((C0 * x2 + C1) * x2 + C2) * x2 + C3) * x2 + C4) * x2 + C5) * x2 + C6);
@@ -195,15 +192,13 @@ namespace detail
 	template<typename T>
 	GLM_FUNC_QUALIFIER T fastAsin(T x)
 	{
-		/*
-		approximated using this formula "(atan(sqrt(x))-sqrt(x)) / (x * sqrt(x))"
-		for x <= 0.5   asin(x) = x + x^3 + asin_poly(x^2)
-		for x > 0.5    asin(x) = asin(sqrt((1 - x) / 2))
-		*/
+		//approximated using this formula "(asin(sqrt(x))-sqrt(x)) / (x * sqrt(x))"
+		//for x <= 0.5   asin(x) = x + x^3 + asin_poly(x^2)
+		//for x > 0.5    asin(x) = asin(sqrt((1 - x) / 2))
 		// TODO : fix glm::fastSqrt, it kills accuracy
 		T mx, x2, out, C0, C1, C2, C3, C4;
 		bool sign, more_x;
-		/* coefficients interval [0, 0.5] */
+		// coefficients interval [0, 0.5] 
 		C0 = T(0.038328305e-00);
 		C1 = T(0.026433362e-00);
 		C2 = T(0.045020215e-00);
@@ -263,16 +258,14 @@ namespace detail
 	template<typename T>
 	GLM_FUNC_QUALIFIER T fastAtan(T x)
 	{
-		/*
-		approximated using this formula "(atan(sqrt(x))-sqrt(x)) / (x * sqrt(x))"
-		interval [0, 0.5]
-		for x <= 0.5            atan(x) = x*C0 + x2*C1 + x3*C2...
-		for x > 0.5 && x < 1.0  atan(x) = atan((x - 1) / (1 + x)) + pi/4
+		//approximated using this formula "(atan(sqrt(x))-sqrt(x)) / (x * sqrt(x))"
+		//interval [0, 0.5]
+		//for x <= 0.5            atan(x) = x*C0 + x2*C1 + x3*C2...
+		//for x > 0.5 && x < 1.0  atan(x) = atan((x - 1) / (1 + x)) + pi/4
  
-		for x > 1.0 -> inf      atan(x) = asin(x / sqrt(1 + x*x))
-		better accuracy:
-		for x > 1.0 -> inf      atan(x) = pi_half - atan(1.0 / x)
-		*/
+		//for x > 1.0 -> inf      atan(x) = asin(x / sqrt(1 + x*x))
+		//better accuracy:
+		//for x > 1.0 -> inf      atan(x) = pi_half - atan(1.0 / x)
 		T mx, x2, out, C0, C1, C2, C3, C4;
 		bool low, high, sign;
 		C0 = T(-0.037163095549048668);
