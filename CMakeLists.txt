@@ -282,6 +282,17 @@ if (GLM_BUILD_INSTALL)
 		DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/glm"
 	)
 
+	install(
+ 		DIRECTORY glm DESTINATION include
+                FILES_MATCHING PATTERN "*.hpp" PATTERN "*.h"
+	)
+	install(
+ 		FILES ${OHOS_ARCH}-build/glm/libglm_shared.so DESTINATION lib
+   	)
+	install(
+ 		FILES ${OHOS_ARCH}-build/glm/libglm_static.a DESTINATION lib
+   	)
+
 	configure_file(
 		"${CMAKE_CURRENT_SOURCE_DIR}/cmake/cmake_uninstall.cmake.in"
 		"${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake"
