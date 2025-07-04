@@ -13,6 +13,7 @@
 #	pragma message("GLM: All extensions included (not recommended)")
 #endif//GLM_MESSAGES
 
+// IWYU pragma: begin_exports
 #include "./ext/matrix_clip_space.hpp"
 #include "./ext/matrix_common.hpp"
 
@@ -265,3 +266,4 @@
 #	include "./gtx/range.hpp"
 #endif
 #endif//GLM_ENABLE_EXPERIMENTAL
+// IWYU pragma: end_exports
