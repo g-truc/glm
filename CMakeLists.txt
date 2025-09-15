@@ -258,6 +258,14 @@ if (GLM_BUILD_TESTS)
 endif()
 
 if (GLM_BUILD_INSTALL)
+	if (GLM_BUILD_LIBRARY)
+		set(ARCH_INSTALL_DIR "${CMAKE_INSTALL_LIBDIR}")
+		set(VERSION_FILE_EXTRA_ARGS "")
+	else()
+		set(ARCH_INSTALL_DIR "${CMAKE_INSTALL_DATADIR}")
+		set(VERSION_FILE_EXTRA_ARGS "ARCH_INDEPENDENT")
+	endif()
+
 	include(CPack)
 
 	install(TARGETS glm-header-only glm EXPORT glm)
@@ -269,25 +277,25 @@ if (GLM_BUILD_INSTALL)
 	install(
 		EXPORT glm
 		NAMESPACE glm::
-		DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/glm"
+		DESTINATION "${ARCH_INSTALL_DIR}/cmake/glm"
 		FILE glmConfig.cmake
 	)
 	include(CMakePackageConfigHelpers)
 	write_basic_package_version_file(
 		"${CMAKE_CURRENT_BINARY_DIR}/glmConfigVersion.cmake"
 		COMPATIBILITY AnyNewerVersion
+		${VERSION_FILE_EXTRA_ARGS}
 	)
 	install(
 		FILES "${CMAKE_CURRENT_BINARY_DIR}/glmConfigVersion.cmake"
-		DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/glm"
+		DESTINATION "${ARCH_INSTALL_DIR}/cmake/glm"
 	)
 
 	configure_file(
-		"${CMAKE_CURRENT_SOURCE_DIR}/cmake/cmake_uninstall.cmake.in"
-		"${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake"
-		IMMEDIATE @ONLY
+		"cmake/cmake_uninstall.cmake.in"
+		"cmake_uninstall.cmake"
+		@ONLY
 	)
-
 	add_custom_target(
 		uninstall
 		"${CMAKE_COMMAND}" -P
