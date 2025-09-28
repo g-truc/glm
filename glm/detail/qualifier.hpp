@@ -88,7 +88,77 @@ namespace detail
 			T data[L];
 		} type;
 	};
-
+#if ((defined(__clang__) || defined(__GNUC__)) && (GLM_LANG_CXX20_FLAG & GLM_LANG)) && GLM_SIMD_CONSTEXPR
+#	if GLM_HAS_ALIGNOF
+		template<length_t L, typename T>
+		struct storage<L, T, true>
+		{
+			typedef struct alignas(L * sizeof(T)) type {
+				T data[L];
+			} type;
+		};
+# endif
+	template <typename T>
+	static constexpr size_t requiredAlignment = alignof(T);
+	
+	template<typename T>
+	struct __attribute__((packed,aligned(requiredAlignment<T>))) storage<2, T, false>
+	{
+		using VType = std::conditional_t< std::is_same_v<T, bool>, uint8_t, T>;
+		typedef VType type __attribute__((aligned( requiredAlignment<T> ), vector_size(2*sizeof(VType))));
+	};
+	template<typename T>
+	struct __attribute__((packed,aligned(requiredAlignment<T>))) storage<1, T, false>
+	{
+		using VType = std::conditional_t< std::is_same_v<T, bool>, uint8_t, T>;
+		typedef VType type __attribute__((aligned( requiredAlignment<T> ),vector_size(sizeof(VType))));
+	};
+	template<typename T>
+	struct storage<2, T, true>
+	{
+		using VType = std::conditional_t< std::is_same_v<T, bool>, uint8_t, T>;
+		typedef VType type __attribute__((aligned(2*sizeof(VType)),vector_size(2*sizeof(VType))));
+	};
+	
+	template<typename T>
+	struct storage<1, T, true>
+	{
+		using VType = std::conditional_t< std::is_same_v<T, bool>, uint8_t, T>;
+		typedef VType type __attribute__((aligned(sizeof(VType)),vector_size(sizeof(VType))));
+	};
+	template <typename T>
+	struct __attribute__((packed,aligned(requiredAlignment<T>))) storage<3, T, false>
+	{
+		typedef struct __attribute__((packed,aligned(requiredAlignment<T>))) type {
+				T data[3];
+			} type;
+	};
+	template <typename T>
+	struct __attribute__((packed,aligned(requiredAlignment<T>))) storage<4, T, false>
+	{
+		using VType = std::conditional_t< std::is_same_v<T, bool>, uint8_t, T>;
+		typedef VType type __attribute__((aligned( requiredAlignment<T> ), vector_size(4*sizeof(VType))));
+	};
+# if (!(GLM_ARCH & GLM_ARCH_SIMD_BIT))
+	template<typename T>
+	struct storage<4, T, true>
+	{
+		using VType = std::conditional_t< std::is_same_v<T, bool>, uint8_t, T>;
+		typedef VType type __attribute__((aligned(4*sizeof(VType)),vector_size(4*sizeof(VType))));
+	};
+	template<typename T>
+	struct storage<3, T, true>
+	{
+		using VType = std::conditional_t< std::is_same_v<T, bool>, uint8_t, T>;
+		typedef VType type __attribute__((aligned(4*sizeof(VType)),vector_size(4*sizeof(VType))));
+	};
+	template<>
+	struct storage<4, bool, true>
+	{
+		typedef uint8_t type  __attribute__((aligned(4*sizeof(uint8_t)),vector_size(4*sizeof(uint8_t))));
+	};
+# endif
+#else
 #	if GLM_HAS_ALIGNOF
 		template<length_t L, typename T>
 		struct storage<L, T, true>
@@ -106,6 +176,7 @@ namespace detail
 			} type;
 		};
 #	endif
+#endif
 
 #	if GLM_ARCH & GLM_ARCH_SSE2_BIT
 	template<>
