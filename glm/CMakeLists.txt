@@ -67,3 +67,10 @@ else()
 	add_library(glm::glm ALIAS glm)
 	target_link_libraries(glm INTERFACE glm-header-only)
 endif()
+
+target_sources(glm
+        PUBLIC
+        FILE_SET CXX_MODULES
+        BASE_DIRS .
+        FILES glm.cppm
+)
