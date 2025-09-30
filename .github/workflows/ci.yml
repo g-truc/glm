@@ -14,25 +14,25 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-latest, windows-2019]
+        os: [windows-latest, windows-2022]
         toolkit: [v143, v142, v141, v140]
         std: [98, 11, 14, 17, 20]
         config: [Debug, Release]
         exclude:
-          - os: windows-2019
+          - os: windows-2022
             toolkit: v143
-          - os: windows-2019
+          - os: windows-2022
             toolkit: v142
           - os: windows-latest
             toolkit: v140
           - os: windows-latest
             toolkit: v141
-          - os: windows-2019
+          - os: windows-2022
             std: 20
-          - os: windows-2019
+          - os: windows-2022
             toolkit: v140
             std: 17
-          - os: windows-2019
+          - os: windows-2022
             toolkit: v140
             std: 14
 
@@ -49,7 +49,10 @@ jobs:
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - name: CMake Version
-        run: cmake --version
+        uses: lukka/get-cmake@latest
+        with:
+          cmakeVersion: 3.22.1
+      - run: cmake --version
 
       - name: Run with automagic detection
         run: |
@@ -110,11 +113,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, ubuntu-20.04]
+        os: [ubuntu-latest, ubuntu-22.04]
         std: [98, 11, 14, 17, 20]
         config: [Debug, Release]
         exclude:
-          - os: ubuntu-20.04
+          - os: ubuntu-22.04
             std: 20
           - os: ubuntu-latest
             std: 98
@@ -132,7 +135,10 @@ jobs:
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - name: CMake Version
-        run: cmake --version
+        uses: lukka/get-cmake@latest
+        with:
+          cmakeVersion: 3.22.1
+      - run: cmake --version
       - name: Run with automagic detection
         run: |
           cmake -S. -B ./build_auto -DGLM_BUILD_TESTS=ON
@@ -205,7 +211,10 @@ jobs:
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - name: CMake Version
-        run: cmake --version
+        uses: lukka/get-cmake@latest
+        with:
+          cmakeVersion: 3.22.1
+      - run: cmake --version
       - name: Run with automagic detection
         run: |
           cmake -S. -B ./build_auto -DGLM_BUILD_TESTS=ON 
@@ -267,7 +276,10 @@ jobs:
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - name: CMake Version
-        run: cmake --version
+        uses: lukka/get-cmake@latest
+        with:
+          cmakeVersion: 3.22.1
+      - run: cmake --version
       - name: Run with automagic detection
         run: |
           cmake -S. -B ./build_auto -DGLM_BUILD_TESTS=ON 
