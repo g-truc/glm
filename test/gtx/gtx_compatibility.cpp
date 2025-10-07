@@ -1,6 +1,12 @@
 #define GLM_ENABLE_EXPERIMENTAL
 #include <glm/gtx/compatibility.hpp>
 
+// This file has divisions by zero to test isnan
+#if GLM_COMPILER & GLM_COMPILER_VC
+#	pragma warning(push)
+#	pragma warning(disable : 4723)
+#endif
+
 int main()
 {
 	int Error(0);
@@ -46,3 +52,7 @@ int main()
 
 	return Error;
 }
+
+#if(GLM_COMPILER & GLM_COMPILER_VC)
+#	pragma warning(pop)
+#endif
