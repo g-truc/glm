@@ -74,7 +74,7 @@ namespace detail
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR T & qua<T, Q>::operator[](typename qua<T, Q>::length_type i)
 	{
-		assert(i >= 0 && i < this->length());
+		GLM_ASSERT_LENGTH(i, this->length());
 #		ifdef GLM_FORCE_QUAT_DATA_WXYZ
 			return (&w)[i];
 #		else
@@ -85,7 +85,7 @@ namespace detail
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR T const& qua<T, Q>::operator[](typename qua<T, Q>::length_type i) const
 	{
-		assert(i >= 0 && i < this->length());
+		GLM_ASSERT_LENGTH(i, this->length());
 #		ifdef GLM_FORCE_QUAT_DATA_WXYZ
 			return (&w)[i];
 #		else
@@ -141,7 +141,7 @@ namespace detail
 	{}
 
 	template <typename T, qualifier Q>
-#		ifdef GLM_FORCE_QUAT_CTOR_XYZW
+#		ifdef GLM_FORCE_QUAT_DATA_XYZW
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q>::qua(T _x, T _y, T _z, T _w)
 #		else
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q>::qua(T _w, T _x, T _y, T _z)
@@ -229,13 +229,13 @@ namespace detail
 	}
 
 	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER qua<T, Q>::qua(mat<3, 3, T, Q> const& m)
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q>::qua(mat<3, 3, T, Q> const& m)
 	{
 		*this = quat_cast(m);
 	}
 
 	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER qua<T, Q>::qua(mat<4, 4, T, Q> const& m)
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q>::qua(mat<4, 4, T, Q> const& m)
 	{
 		*this = quat_cast(m);
 	}

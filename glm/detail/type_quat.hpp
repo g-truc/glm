@@ -73,16 +73,16 @@ namespace glm
 		GLM_DEFAULTED_DEFAULT_CTOR_DECL GLM_CONSTEXPR qua() GLM_DEFAULT_CTOR;
 		GLM_DEFAULTED_FUNC_DECL GLM_CONSTEXPR qua(qua<T, Q> const& q) GLM_DEFAULT;
 		template<qualifier P>
-		GLM_FUNC_DECL GLM_CONSTEXPR qua(qua<T, P> const& q);
+		GLM_CTOR_DECL qua(qua<T, P> const& q);
 
 		// -- Explicit basic constructors --
 
-		GLM_FUNC_DECL GLM_CONSTEXPR qua(T s, vec<3, T, Q> const& v);
+		GLM_CTOR_DECL qua(T s, vec<3, T, Q> const& v);
 
-#		ifdef GLM_FORCE_QUAT_CTOR_XYZW
-		GLM_FUNC_DECL GLM_CONSTEXPR qua(T x, T y, T z, T w);
+#		ifdef GLM_FORCE_QUAT_DATA_XYZW
+		GLM_CTOR_DECL qua(T x, T y, T z, T w);
 #		else
-		GLM_FUNC_DECL GLM_CONSTEXPR qua(T w, T x, T y, T z);
+		GLM_CTOR_DECL qua(T w, T x, T y, T z);
 #		endif
 
 		GLM_FUNC_DECL static GLM_CONSTEXPR qua<T, Q> wxyz(T w, T x, T y, T z);
@@ -90,7 +90,7 @@ namespace glm
 		// -- Conversion constructors --
 
 		template<typename U, qualifier P>
-		GLM_FUNC_DECL GLM_CONSTEXPR GLM_EXPLICIT qua(qua<U, P> const& q);
+		GLM_CTOR_DECL GLM_EXPLICIT qua(qua<U, P> const& q);
 
 		/// Explicit conversion operators
 #		if GLM_HAS_EXPLICIT_CONVERSION_OPERATORS
@@ -104,29 +104,29 @@ namespace glm
 		/// @param v A second normalized axis
 		/// @see gtc_quaternion
 		/// @see http://lolengine.net/blog/2013/09/18/beautiful-maths-quaternion-from-vectors
-		GLM_FUNC_DECL qua(vec<3, T, Q> const& u, vec<3, T, Q> const& v);
+		GLM_FUNC_DISCARD_DECL qua(vec<3, T, Q> const& u, vec<3, T, Q> const& v);
 
 		/// Build a quaternion from euler angles (pitch, yaw, roll), in radians.
-		GLM_FUNC_DECL GLM_CONSTEXPR GLM_EXPLICIT qua(vec<3, T, Q> const& eulerAngles);
-		GLM_FUNC_DECL GLM_EXPLICIT qua(mat<3, 3, T, Q> const& q);
-		GLM_FUNC_DECL GLM_EXPLICIT qua(mat<4, 4, T, Q> const& q);
+		GLM_CTOR_DECL GLM_EXPLICIT qua(vec<3, T, Q> const& eulerAngles);
+		GLM_CTOR_DECL GLM_EXPLICIT qua(mat<3, 3, T, Q> const& q);
+		GLM_CTOR_DECL GLM_EXPLICIT qua(mat<4, 4, T, Q> const& q);
 
 		// -- Unary arithmetic operators --
 
 		GLM_DEFAULTED_FUNC_DECL GLM_CONSTEXPR qua<T, Q>& operator=(qua<T, Q> const& q) GLM_DEFAULT;
 
 		template<typename U>
-		GLM_FUNC_DECL GLM_CONSTEXPR qua<T, Q>& operator=(qua<U, Q> const& q);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR qua<T, Q>& operator=(qua<U, Q> const& q);
 		template<typename U>
-		GLM_FUNC_DECL GLM_CONSTEXPR qua<T, Q>& operator+=(qua<U, Q> const& q);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR qua<T, Q>& operator+=(qua<U, Q> const& q);
 		template<typename U>
-		GLM_FUNC_DECL GLM_CONSTEXPR qua<T, Q>& operator-=(qua<U, Q> const& q);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR qua<T, Q>& operator-=(qua<U, Q> const& q);
 		template<typename U>
-		GLM_FUNC_DECL GLM_CONSTEXPR qua<T, Q>& operator*=(qua<U, Q> const& q);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR qua<T, Q>& operator*=(qua<U, Q> const& q);
 		template<typename U>
-		GLM_FUNC_DECL GLM_CONSTEXPR qua<T, Q>& operator*=(U s);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR qua<T, Q>& operator*=(U s);
 		template<typename U>
-		GLM_FUNC_DECL GLM_CONSTEXPR qua<T, Q>& operator/=(U s);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR qua<T, Q>& operator/=(U s);
 	};
 
 #		if GLM_SILENT_WARNINGS == GLM_ENABLE

@@ -154,6 +154,10 @@ static int test_constexpr()
 
 int main()
 {
+	// Suppress unused variable warnings
+	(void)g1;
+	(void)g2;
+
 	int Error = 0;
 
 	Error += test_vec1_size();

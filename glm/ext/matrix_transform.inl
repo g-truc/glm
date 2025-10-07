@@ -117,10 +117,10 @@ namespace glm
         );
 
         mat<4, 4, T, Q> Result;
-        Result[0] = Shear[0] * m[0][0] + Shear[1] * m[0][1] + Shear[2] * m[0][2] + Shear[3] * m[0][3];
-        Result[1] = Shear[0] * m[1][0] + Shear[1] * m[1][1] + Shear[2] * m[1][2] + Shear[3] * m[1][3];
-        Result[2] = Shear[0] * m[2][0] + Shear[1] * m[2][1] + Shear[2] * m[2][2] + Shear[3] * m[2][3];
-        Result[3] = Shear[0] * m[3][0] + Shear[1] * m[3][1] + Shear[2] * m[3][2] + Shear[3] * m[3][3];
+		Result[0] = m[0] * Shear[0][0] + m[1] * Shear[0][1] + m[2] * Shear[0][2] + m[3] * Shear[0][3];
+		Result[1] = m[0] * Shear[1][0] + m[1] * Shear[1][1] + m[2] * Shear[1][2] + m[3] * Shear[1][3];
+		Result[2] = m[0] * Shear[2][0] + m[1] * Shear[2][1] + m[2] * Shear[2][2] + m[3] * Shear[2][3];
+		Result[3] = m[0] * Shear[3][0] + m[1] * Shear[3][1] + m[2] * Shear[3][2] + m[3] * Shear[3][3];
         return Result;
     }
 

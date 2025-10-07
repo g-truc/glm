@@ -44,7 +44,7 @@ namespace glm
 	///
 	/// @see ext_quaternion_geometric
 	template<typename T, qualifier Q>
-	GLM_FUNC_DECL qua<T, Q> normalize(qua<T, Q> const& q);
+	GLM_FUNC_DECL GLM_CONSTEXPR qua<T, Q> normalize(qua<T, Q> const& q);
 
 	/// Returns dot product of q1 and q2, i.e., q1[0] * q2[0] + q1[1] * q2[1] + ...
 	///

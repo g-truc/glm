@@ -38,6 +38,17 @@ namespace detail
 	};
 
 	template<qualifier Q>
+	struct compute_transpose<3, 3, float, Q, true>
+	{
+		GLM_FUNC_QUALIFIER static mat<3, 3, float, Q> call(mat<3, 3, float, Q> const& m)
+		{
+			mat<3, 3, float, Q> Result;
+			glm_mat3_transpose(&m[0].data, &Result[0].data);
+			return Result;
+		}
+	};
+
+	template<qualifier Q>
 	struct compute_determinant<4, 4, float, Q, true>
 	{
 		GLM_FUNC_QUALIFIER static float call(mat<4, 4, float, Q> const& m)

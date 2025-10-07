@@ -657,6 +657,42 @@ namespace step_
 	}
 }//namespace step_
 
+namespace smoothstep_
+{
+	static int test()
+	{
+		int Error = 0;
+
+		float const Edge = 2.0f;
+
+		// scalar
+		{
+			float const A = glm::smoothstep(0.0f, Edge, 1.0f);
+			Error += glm::equal(A, 0.5f, glm::epsilon<float>()) ? 0 : 1;
+
+			float const B = glm::smoothstep(0.0f, Edge, 1.0f);
+			Error += glm::equal(B, 0.5f, glm::epsilon<float>()) ? 0 : 1;
+
+			float const C = glm::smoothstep(0.0f, Edge, 1.0f);
+			Error += glm::equal(C, 0.5f, glm::epsilon<float>()) ? 0 : 1;
+		}
+
+		// vec4 and float
+		{
+			glm::vec4 Result = glm::smoothstep(0.0f, Edge, glm::vec4(1.0f));
+			Error += glm::all(glm::equal(Result, glm::vec4(0.5f), glm::epsilon<float>())) ? 0 : 1;
+		}
+
+		// vec4 and vec4
+		{
+			glm::vec4 Result = glm::smoothstep(glm::vec4(0.0f), glm::vec4(Edge), glm::vec4(1.0f));
+			Error += glm::all(glm::equal(Result, glm::vec4(0.5f), glm::epsilon<float>())) ? 0 : 1;
+		}
+
+		return Error;
+	}
+}//namespace smoothstep_
+
 namespace round_
 {
 	static int test()
@@ -1367,6 +1403,7 @@ int main()
 	Error += floatBitsToUint::test();
 	Error += mix_::test();
 	Error += step_::test();
+	Error += smoothstep_::test();
 	Error += max_::test();
 	Error += min_::test();
 	Error += clamp_::test();

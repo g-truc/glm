@@ -2,9 +2,8 @@
 
 #ifndef GLM_HAS_CXX11_STL
 #include <algorithm>
-#else
-#include <utility>
 #endif
+#include <utility>
 
 namespace glm {
 

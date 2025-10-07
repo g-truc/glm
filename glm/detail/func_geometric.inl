@@ -59,8 +59,13 @@ namespace detail
 	{
 		GLM_FUNC_QUALIFIER GLM_CONSTEXPR static T call(vec<4, T, Q> const& a, vec<4, T, Q> const& b)
 		{
-			vec<4, T, Q> tmp(a * b);
-			return (tmp.x + tmp.y) + (tmp.z + tmp.w);
+			// VS 17.7.4 generates longer assembly (~20 instructions vs 11 instructions)
+			#if defined(_MSC_VER)
+				return a.x * b.x + a.y * b.y + a.z * b.z + a.w * b.w;
+			#else
+				vec<4, T, Q> tmp(a * b);
+				return (tmp.x + tmp.y) + (tmp.z + tmp.w);
+			#endif
 		}
 	};
 
@@ -75,6 +80,17 @@ namespace detail
 				x.y * y.z - y.y * x.z,
 				x.z * y.x - y.z * x.x,
 				x.x * y.y - y.x * x.y);
+		}
+
+		GLM_FUNC_QUALIFIER GLM_CONSTEXPR static vec<4, T, Q> call(vec<4, T, Q> const& x, vec<4, T, Q> const& y)
+		{
+			GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'cross' accepts only floating-point inputs");
+
+			return vec<4, T, Q>(
+				x.y * y.z - y.y * x.z,
+				x.z * y.x - y.z * x.x,
+				x.x * y.y - y.x * x.y,
+				0.0f);
 		}
 	};
 

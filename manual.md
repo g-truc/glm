@@ -515,7 +515,7 @@ static_assert(glm::vec4::length() == 4, "Using GLM C++ 14 constexpr support for 
 #define GLM_FORCE_SIMD_AVX2
 #include <glm/glm.hpp>
 
-// If the compiler doesn’t support AVX2 instrinsics, compiler errors will happen.
+// If the compiler doesn’t support AVX2 intrinsics, compiler errors will happen.
 ```
 
 Additionally, GLM provides a low level SIMD API in glm/simd directory for users who are really interested in writing fast algorithms.
@@ -1943,7 +1943,7 @@ To workaround the incompatibility with these macros, GLM will systematically und
 ### <a name="section7_13"></a> 7.13. Constant expressions support
 
 GLM has some C++ [constant expressions](http://en.cppreference.com/w/cpp/language/constexpr) support. However, GLM automatically detects the use of SIMD instruction sets through compiler arguments to populate its implementation with SIMD intrinsics.
-Unfortunately, GCC and Clang doesn't support SIMD instrinsics as constant expressions. To allow constant expressions on all vectors and matrices types, define `GLM_FORCE_PURE` before including GLM headers.
+Unfortunately, GCC and Clang don't support SIMD intrinsics as constant expressions. To allow constant expressions on all vectors and matrices types, define `GLM_FORCE_PURE` before including GLM headers.
 
 ---
 <div style="page-break-after: always;"> </div>
@@ -2133,7 +2133,7 @@ We need to download a copy of our fork to our local machine. In the terminal, ty
 
 This will clone our fork repository into the current folder.
 
-We can find our repository git url on the Github reposotory page. The url looks like this: `https://github.com/<our-username>/<repository-name>.git`
+We can find our repository git url on the Github repository page. The url looks like this: `https://github.com/<our-username>/<repository-name>.git`
 
 #### Step 2: Synchronizing our fork
 

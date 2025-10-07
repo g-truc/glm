@@ -181,6 +181,13 @@ namespace refract
 			Error += glm::all(glm::equal(C, glm::dvec2(0.0, -1.0), 0.0001)) ? 0 : 1;
 		}
 
+		{
+			glm::vec4 A(0.0f, -1.0f, 0.0f, 0.0f);
+			glm::vec4 B(0.0f, 1.0f, 0.0f, 0.0f);
+			glm::vec4 C = glm::refract(A, B, 0.5f);
+			Error += glm::all(glm::equal(C, glm::vec4(0.0, -1.0, 0.0f, 0.0f), 0.0001f)) ? 0 : 1;
+		}
+
 		return Error;
 	}
 }//namespace refract

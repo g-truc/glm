@@ -63,7 +63,7 @@ GLM_FUNC_QUALIFIER glm_f32vec4 glm_vec4_swizzle_xyzw(glm_f32vec4 a)
 
 GLM_FUNC_QUALIFIER glm_f32vec4 glm_vec1_fma(glm_f32vec4 a, glm_f32vec4 b, glm_f32vec4 c)
 {
-#	if (GLM_ARCH & GLM_ARCH_AVX2_BIT) && !(GLM_COMPILER & GLM_COMPILER_CLANG)
+#	ifdef GLM_FORCE_FMA
 		return _mm_fmadd_ss(a, b, c);
 #	else
 		return _mm_add_ss(_mm_mul_ss(a, b), c);
@@ -72,7 +72,16 @@ GLM_FUNC_QUALIFIER glm_f32vec4 glm_vec1_fma(glm_f32vec4 a, glm_f32vec4 b, glm_f3
 
 GLM_FUNC_QUALIFIER glm_f32vec4 glm_vec4_fma(glm_f32vec4 a, glm_f32vec4 b, glm_f32vec4 c)
 {
-#	if (GLM_ARCH & GLM_ARCH_AVX2_BIT) && !(GLM_COMPILER & GLM_COMPILER_CLANG)
+#	ifdef GLM_FORCE_FMA
+		return _mm_fmadd_ps(a, b, c);
+#	else
+		return glm_vec4_add(glm_vec4_mul(a, b), c);
+#	endif
+}
+
+GLM_FUNC_QUALIFIER glm_f32vec4 glm_vec4d_fma(glm_f32vec4 a, glm_f32vec4 b, glm_f32vec4 c)
+{
+#	ifdef GLM_FORCE_FMA
 		return _mm_fmadd_ps(a, b, c);
 #	else
 		return glm_vec4_add(glm_vec4_mul(a, b), c);
@@ -206,7 +215,7 @@ GLM_FUNC_QUALIFIER glm_vec4 glm_vec4_smoothstep(glm_vec4 edge0, glm_vec4 edge1, 
 {
 	glm_vec4 const sub0 = glm_vec4_sub(x, edge0);
 	glm_vec4 const sub1 = glm_vec4_sub(edge1, edge0);
-	glm_vec4 const div0 = glm_vec4_sub(sub0, sub1);
+	glm_vec4 const div0 = glm_vec4_div(sub0, sub1);
 	glm_vec4 const clp0 = glm_vec4_clamp(div0, _mm_setzero_ps(), _mm_set1_ps(1.0f));
 	glm_vec4 const mul0 = glm_vec4_mul(_mm_set1_ps(2.0f), clp0);
 	glm_vec4 const sub2 = glm_vec4_sub(_mm_set1_ps(3.0f), mul0);

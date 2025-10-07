@@ -166,6 +166,18 @@ GLM_FUNC_QUALIFIER void glm_mat4_transpose(glm_vec4 const in[4], glm_vec4 out[4]
 	out[3] = _mm_shuffle_ps(tmp2, tmp3, 0xDD);
 }
 
+GLM_FUNC_QUALIFIER void glm_mat3_transpose(glm_vec4 const in[3], glm_vec4 out[3])
+{
+	__m128 tmp0 = _mm_shuffle_ps(in[0], in[1], 0x44);
+	__m128 tmp2 = _mm_shuffle_ps(in[0], in[1], 0xEE);
+	__m128 tmp1 = _mm_shuffle_ps(in[2], in[2], 0x44);
+	__m128 tmp3 = _mm_shuffle_ps(in[2], in[2], 0xEE);
+
+	out[0] = _mm_shuffle_ps(tmp0, tmp1, 0x88);
+	out[1] = _mm_shuffle_ps(tmp0, tmp1, 0xDD);
+	out[2] = _mm_shuffle_ps(tmp2, tmp3, 0x88);
+}
+
 GLM_FUNC_QUALIFIER glm_vec4 glm_mat4_determinant_highp(glm_vec4 const in[4])
 {
 	__m128 Fac0;

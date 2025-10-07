@@ -29,6 +29,7 @@
 #include "../mat2x4.hpp"
 #include "../mat2x3.hpp"
 #include "../mat2x2.hpp"
+#include "../gtc/quaternion.hpp"
 #include "../gtc/vec1.hpp"
 #include "../vec2.hpp"
 #include "../vec3.hpp"
@@ -863,6 +864,44 @@ namespace glm
 	/// 4 by 4 matrix tightly packed in memory of double-precision floating-point numbers using low precision arithmetic in term of ULPs.
 	typedef mat<4, 4, double, packed_lowp>		packed_lowp_dmat4x4;
 
+	// -- *quat --
+
+	/// quaternion aligned in memory of single-precision floating-point numbers using high precision arithmetic in term of ULPs.
+	typedef qua<float, aligned_highp>		aligned_highp_quat;
+
+	/// quaternion aligned in memory of single-precision floating-point numbers using medium precision arithmetic in term of ULPs.
+	typedef qua<float, aligned_mediump>		aligned_mediump_quat;
+
+	/// quaternion aligned in memory of single-precision floating-point numbers using low precision arithmetic in term of ULPs.
+	typedef qua<float, aligned_lowp>		aligned_lowp_quat;
+
+	/// quaternion aligned in memory of double-precision floating-point numbers using high precision arithmetic in term of ULPs.
+	typedef qua<double, aligned_highp>		aligned_highp_dquat;
+
+	/// quaternion aligned in memory of double-precision floating-point numbers using medium precision arithmetic in term of ULPs.
+	typedef qua<double, aligned_mediump>	aligned_mediump_dquat;
+
+	/// quaternion aligned in memory of double-precision floating-point numbers using low precision arithmetic in term of ULPs.
+	typedef qua<double, aligned_lowp>		aligned_lowp_dquat;
+
+	/// quaternion tightly packed in memory of single-precision floating-point numbers using high precision arithmetic in term of ULPs.
+	typedef qua<float, packed_highp>		packed_highp_quat;
+
+	/// quaternion tightly packed in memory of single-precision floating-point numbers using medium precision arithmetic in term of ULPs.
+	typedef qua<float, packed_mediump>		packed_mediump_quat;
+
+	/// quaternion tightly packed in memory of single-precision floating-point numbers using low precision arithmetic in term of ULPs.
+	typedef qua<float, packed_lowp>			packed_lowp_quat;
+
+	/// quaternion tightly packed in memory of double-precision floating-point numbers using high precision arithmetic in term of ULPs.
+	typedef qua<double, packed_highp>		packed_highp_dquat;
+
+	/// quaternion tightly packed in memory of double-precision floating-point numbers using medium precision arithmetic in term of ULPs.
+	typedef qua<double, packed_mediump>		packed_mediump_dquat;
+
+	/// quaternion tightly packed in memory of double-precision floating-point numbers using low precision arithmetic in term of ULPs.
+	typedef qua<double, packed_lowp>		packed_lowp_dquat;
+
 	// -- default --
 
 #if(defined(GLM_PRECISION_LOWP_FLOAT))
@@ -900,6 +939,9 @@ namespace glm
 	typedef packed_lowp_mat4x2			packed_mat4x2;
 	typedef packed_lowp_mat4x3			packed_mat4x3;
 	typedef packed_lowp_mat4x4			packed_mat4x4;
+
+	typedef aligned_lowp_quat			aligned_quat;
+	typedef packed_lowp_quat			packed_quat;
 #elif(defined(GLM_PRECISION_MEDIUMP_FLOAT))
 	typedef aligned_mediump_vec1		aligned_vec1;
 	typedef aligned_mediump_vec2		aligned_vec2;
@@ -935,6 +977,9 @@ namespace glm
 	typedef packed_mediump_mat4x2		packed_mat4x2;
 	typedef packed_mediump_mat4x3		packed_mat4x3;
 	typedef packed_mediump_mat4x4		packed_mat4x4;
+
+	typedef aligned_mediump_quat		aligned_quat;
+	typedef packed_mediump_quat			packed_quat;
 #else //defined(GLM_PRECISION_HIGHP_FLOAT)
 	/// 1 component vector aligned in memory of single-precision floating-point numbers.
 	typedef aligned_highp_vec1			aligned_vec1;
@@ -1031,6 +1076,12 @@ namespace glm
 
 	/// 4 by 4 matrix tightly packed in memory of single-precision floating-point numbers.
 	typedef packed_highp_mat4x4			packed_mat4x4;
+
+	/// quaternion tightly aligned in memory of single-precision floating-point numbers.
+	typedef aligned_highp_quat			aligned_quat;
+
+	/// quaternion tightly packed in memory of single-precision floating-point numbers.
+	typedef packed_highp_quat			packed_quat;
 #endif//GLM_PRECISION
 
 #if(defined(GLM_PRECISION_LOWP_DOUBLE))
@@ -1068,6 +1119,9 @@ namespace glm
 	typedef packed_lowp_dmat4x2			packed_dmat4x2;
 	typedef packed_lowp_dmat4x3			packed_dmat4x3;
 	typedef packed_lowp_dmat4x4			packed_dmat4x4;
+
+	typedef aligned_lowp_dquat			aligned_dquat;
+	typedef packed_lowp_dquat			packed_dquat;
 #elif(defined(GLM_PRECISION_MEDIUMP_DOUBLE))
 	typedef aligned_mediump_dvec1		aligned_dvec1;
 	typedef aligned_mediump_dvec2		aligned_dvec2;
@@ -1103,6 +1157,9 @@ namespace glm
 	typedef packed_mediump_dmat4x2		packed_dmat4x2;
 	typedef packed_mediump_dmat4x3		packed_dmat4x3;
 	typedef packed_mediump_dmat4x4		packed_dmat4x4;
+
+	typedef aligned_mediump_dquat		aligned_dquat;
+	typedef packed_mediump_dquat		packed_dquat;
 #else //defined(GLM_PRECISION_HIGHP_DOUBLE)
 	/// 1 component vector aligned in memory of double-precision floating-point numbers.
 	typedef aligned_highp_dvec1			aligned_dvec1;
@@ -1199,6 +1256,12 @@ namespace glm
 
 	/// 4 by 4 matrix tightly packed in memory of double-precision floating-point numbers.
 	typedef packed_highp_dmat4x4		packed_dmat4x4;
+
+	/// quaternion tightly aligned in memory of double-precision floating-point numbers.
+	typedef aligned_highp_dquat			aligned_dquat;
+
+	/// quaternion tightly packed in memory of double-precision floating-point numbers.
+	typedef packed_highp_dquat			packed_dquat;
 #endif//GLM_PRECISION
 
 #if(defined(GLM_PRECISION_LOWP_INT))

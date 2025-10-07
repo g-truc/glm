@@ -72,14 +72,19 @@ static int comp_mat3_mul_vec3(std::size_t Samples)
 	
 	int Error = 0;
 
-	packedMatType const Transform(1, 2, 3, 4, 5, 6, 7, 8, 9);
-	packedVecType const Scale(0.01, 0.02, 0.05);
-
 	std::vector<packedVecType> SISD;
-	std::printf("- SISD: %d us\n", launch_mat_mul_vec<packedMatType, packedVecType>(SISD, Transform, Scale, Samples));
+	{
+		packedMatType const Transform(1, 2, 3, 4, 5, 6, 7, 8, 9);
+		packedVecType const Scale(0.01, 0.02, 0.05);
+		std::printf("- SISD: %d us\n", launch_mat_mul_vec<packedMatType, packedVecType>(SISD, Transform, Scale, Samples));
+	}
 
 	std::vector<alignedVecType> SIMD;
-	std::printf("- SIMD: %d us\n", launch_mat_mul_vec<alignedMatType, alignedVecType>(SIMD, Transform, Scale, Samples));
+	{
+		alignedMatType const Transform(1, 2, 3, 4, 5, 6, 7, 8, 9);
+		alignedVecType const Scale(0.01, 0.02, 0.05);
+		std::printf("- SIMD: %d us\n", launch_mat_mul_vec<alignedMatType, alignedVecType>(SIMD, Transform, Scale, Samples));
+	}
 
 	for(std::size_t i = 0; i < Samples; ++i)
 	{
@@ -125,9 +130,9 @@ int main()
 
 	std::printf("mat2 * vec2:\n");
 	Error += comp_mat2_mul_vec2<glm::mat2, glm::vec2, glm::aligned_mat2, glm::aligned_vec2>(Samples);
-	
+
 	std::printf("dmat2 * dvec2:\n");
-	Error += comp_mat2_mul_vec2<glm::dmat2, glm::dvec2,glm::aligned_dmat2, glm::aligned_dvec2>(Samples);
+	Error += comp_mat2_mul_vec2<glm::dmat2, glm::dvec2, glm::aligned_dmat2, glm::aligned_dvec2>(Samples);
 
 	std::printf("mat3 * vec3:\n");
 	Error += comp_mat3_mul_vec3<glm::mat3, glm::vec3, glm::aligned_mat3, glm::aligned_vec3>(Samples);

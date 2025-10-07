@@ -22,11 +22,11 @@ namespace fastCos
 		float result = 0.f;
 
 		const std::clock_t timestamp1 = std::clock();
-		for(float i = begin; i < end; i = NextFloat ? glm::nextFloat(i) : i += 0.1f)
+		for(float i = begin; i < end; i = NextFloat ? glm::nextFloat(i) : i + 0.1f)
 			result = glm::fastCos(i);
 
 		const std::clock_t timestamp2 = std::clock();
-		for(float i = begin; i < end; i = NextFloat ? glm::nextFloat(i) : i += 0.1f)
+		for(float i = begin; i < end; i = NextFloat ? glm::nextFloat(i) : i + 0.1f)
 			result = glm::cos(i);
 
 		const std::clock_t timestamp3 = std::clock();
@@ -58,11 +58,11 @@ namespace fastSin
 		float result = 0.f;
 
 		const std::clock_t timestamp1 = std::clock();
-		for(float i = begin; i < end; i = NextFloat ? glm::nextFloat(i) : i += 0.1f)
+		for(float i = begin; i < end; i = NextFloat ? glm::nextFloat(i) : i + 0.1f)
 			result = glm::fastSin(i);
 
 		const std::clock_t timestamp2 = std::clock();
-		for(float i = begin; i < end; i = NextFloat ? glm::nextFloat(i) : i += 0.1f)
+		for(float i = begin; i < end; i = NextFloat ? glm::nextFloat(i) : i + 0.1f)
 			result = glm::sin(i);
 
 		const std::clock_t timestamp3 = std::clock();
@@ -86,11 +86,11 @@ namespace fastTan
 		float result = 0.f;
 
 		const std::clock_t timestamp1 = std::clock();
-		for(float i = begin; i < end; i = NextFloat ? glm::nextFloat(i) : i += 0.1f)
+		for(float i = begin; i < end; i = NextFloat ? glm::nextFloat(i) : i + 0.1f)
 			result = glm::fastTan(i);
 
 		const std::clock_t timestamp2 = std::clock();
-		for (float i = begin; i < end; i = NextFloat ? glm::nextFloat(i) : i += 0.1f)
+		for (float i = begin; i < end; i = NextFloat ? glm::nextFloat(i) : i + 0.1f)
 			result = glm::tan(i);
 
 		const std::clock_t timestamp3 = std::clock();
@@ -114,11 +114,11 @@ namespace fastAcos
 		float result = 0.f;
 
 		const std::clock_t timestamp1 = std::clock();
-		for(float i = begin; i < end; i = NextFloat ? glm::nextFloat(i) : i += 0.1f)
+		for(float i = begin; i < end; i = NextFloat ? glm::nextFloat(i) : i + 0.1f)
 			result = glm::fastAcos(i);
 
 		const std::clock_t timestamp2 = std::clock();
-		for(float i = begin; i < end; i = NextFloat ? glm::nextFloat(i) : i += 0.1f)
+		for(float i = begin; i < end; i = NextFloat ? glm::nextFloat(i) : i + 0.1f)
 			result = glm::acos(i);
 
 		const std::clock_t timestamp3 = std::clock();
@@ -142,10 +142,10 @@ namespace fastAsin
 		const float end = glm::pi<float>();
 		float result = 0.f;
 		const std::clock_t timestamp1 = std::clock();
-		for(float i = begin; i < end; i = NextFloat ? glm::nextFloat(i) : i += 0.1f)
+		for(float i = begin; i < end; i = NextFloat ? glm::nextFloat(i) : i + 0.1f)
 			result = glm::fastAsin(i);
 		const std::clock_t timestamp2 = std::clock();
-		for(float i = begin; i < end; i = NextFloat ? glm::nextFloat(i) : i += 0.1f)
+		for(float i = begin; i < end; i = NextFloat ? glm::nextFloat(i) : i + 0.1f)
 			result = glm::asin(i);
 		const std::clock_t timestamp3 = std::clock();
 		const std::clock_t time_fast = timestamp2 - timestamp1;
@@ -167,10 +167,10 @@ namespace fastAtan
 		const float end = glm::pi<float>();
 		float result = 0.f;
 		const std::clock_t timestamp1 = std::clock();
-		for(float i = begin; i < end; i = NextFloat ? glm::nextFloat(i) : i += 0.1f)
+		for(float i = begin; i < end; i = NextFloat ? glm::nextFloat(i) : i + 0.1f)
 			result = glm::fastAtan(i);
 		const std::clock_t timestamp2 = std::clock();
-		for(float i = begin; i < end; i = NextFloat ? glm::nextFloat(i) : i += 0.1f)
+		for(float i = begin; i < end; i = NextFloat ? glm::nextFloat(i) : i + 0.1f)
 			result = glm::atan(i);
 		const std::clock_t timestamp3 = std::clock();
 		const std::clock_t time_fast = timestamp2 - timestamp1;

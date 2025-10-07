@@ -391,6 +391,16 @@ static int test_operators()
 		Error += B == glm::ivec4(2, 1, 2, 1) ? 0 : 1;
 	}
 	{
+		glm::ivec4 A(1.0f, 2.0f, 2.0f, 4.0f);
+		glm::ivec4 B(4.0f, 4.0f, 8.0f, 8.0f);
+
+		B = B / A;
+		Error += B == glm::ivec4(4, 2, 4, 2) ? 0 : 1;
+
+		B = B / 2;
+		Error += B == glm::ivec4(2, 1, 2, 1) ? 0 : 1;
+	}
+	{
 		glm::ivec4 B(2);
 
 		B /= B.y;
@@ -770,6 +780,11 @@ static int test_simd_gen()
 */
 int main()
 {
+	// Suppress unused variable warnings
+	(void)g1;
+	(void)g2;
+	(void)g3;
+
 	int Error = 0;
 
 	//Error += test_simd_gen();

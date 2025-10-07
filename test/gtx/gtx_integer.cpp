@@ -33,7 +33,7 @@ static int test_log2()
 		Error += glm::abs(double(A) - B) <= 24 ? 0 : 1;
 		assert(!Error);
 
-		std::printf("Log2(%d) error A=%d, B=%d\n", 1 << i, A, B);
+		std::printf("Log2(%d) error A=%u, B=%u\n", 1 << i, A, B);
 	}
 
 	std::printf("log2 error=%d\n", Error);

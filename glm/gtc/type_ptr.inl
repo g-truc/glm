@@ -8,6 +8,18 @@ namespace glm
 	/// @{
 
 	template<typename T, qualifier Q>
+	GLM_FUNC_QUALIFIER T const* value_ptr(vec<1, T, Q> const& v)
+	{
+		return &(v.x);
+	}
+
+	template<typename T, qualifier Q>
+	GLM_FUNC_QUALIFIER T* value_ptr(vec<1, T, Q>& v)
+	{
+		return &(v.x);
+	}
+
+	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER T const* value_ptr(vec<2, T, Q> const& v)
 	{
 		return &(v.x);

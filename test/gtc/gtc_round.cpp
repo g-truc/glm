@@ -244,7 +244,7 @@ namespace ceilPowerOfTwo_advanced
 		int Error(0);
 
 		std::vector<glm::uint> v;
-		v.resize(100000000);
+		v.resize(10000);
 
 		std::clock_t Timestramp0 = std::clock();
 

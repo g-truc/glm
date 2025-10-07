@@ -403,7 +403,7 @@
     </Expand>
   </Type>
 
-  <Type Name="glm::mat&lt;3,2*,*&gt;">
+  <Type Name="glm::mat&lt;3,2,*,*&gt;">
     <DisplayString>[{value[0]} {value[1]} {value[2]}]</DisplayString>
     <Expand HideRawView="1">
       <!-- display matrix in row major order - it makes more sense -->

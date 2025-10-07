@@ -14,7 +14,7 @@ namespace detail
 		using std::log2;
 #	else
 		template<typename genType>
-		genType log2(genType Value)
+		GLM_FUNC_QUALIFIER genType log2(genType Value)
 		{
 			return std::log(Value) * static_cast<genType>(1.4426950408889634073599246810019);
 		}

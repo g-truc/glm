@@ -1,6 +1,8 @@
 /// @ref gtx_component_wise
 
+#include "../ext/scalar_common.hpp"
 #include <limits>
+#include <cmath>
 
 namespace glm{
 namespace detail
@@ -14,8 +16,8 @@ namespace detail
 	{
 		GLM_FUNC_QUALIFIER static vec<L, floatType, Q> call(vec<L, T, Q> const& v)
 		{
-			floatType const Min = static_cast<floatType>(std::numeric_limits<T>::min());
-			floatType const Max = static_cast<floatType>(std::numeric_limits<T>::max());
+			floatType const Min = static_cast<floatType>((std::numeric_limits<T>::min)());
+			floatType const Max = static_cast<floatType>((std::numeric_limits<T>::max)());
 			return (vec<L, floatType, Q>(v) - Min) / (Max - Min) * static_cast<floatType>(2) - static_cast<floatType>(1);
 		}
 	};
@@ -25,7 +27,7 @@ namespace detail
 	{
 		GLM_FUNC_QUALIFIER static vec<L, floatType, Q> call(vec<L, T, Q> const& v)
 		{
-			return vec<L, floatType, Q>(v) / static_cast<floatType>(std::numeric_limits<T>::max());
+			return vec<L, floatType, Q>(v) / static_cast<floatType>((std::numeric_limits<T>::max)());
 		}
 	};
 
@@ -47,7 +49,7 @@ namespace detail
 	{
 		GLM_FUNC_QUALIFIER static vec<L, T, Q> call(vec<L, floatType, Q> const& v)
 		{
-			floatType const Max = static_cast<floatType>(std::numeric_limits<T>::max()) + static_cast<floatType>(0.5);
+			floatType const Max = static_cast<floatType>((std::numeric_limits<T>::max)()) + static_cast<floatType>(0.5);
 			vec<L, floatType, Q> const Scaled(v * Max);
 			vec<L, T, Q> const Result(Scaled - static_cast<floatType>(0.5));
 			return Result;
@@ -59,7 +61,7 @@ namespace detail
 	{
 		GLM_FUNC_QUALIFIER static vec<L, T, Q> call(vec<L, floatType, Q> const& v)
 		{
-			return vec<L, T, Q>(vec<L, floatType, Q>(v) * static_cast<floatType>(std::numeric_limits<T>::max()));
+			return vec<L, T, Q>(vec<L, floatType, Q>(v) * static_cast<floatType>((std::numeric_limits<T>::max)()));
 		}
 	};
 
@@ -122,6 +124,24 @@ namespace detail
 		T Result(v[0]);
 		for(length_t i = 1, n = v.length(); i < n; ++i)
 			Result = max(Result, v[i]);
+		return Result;
+	}
+
+    template<length_t L, typename T, qualifier Q>
+	GLM_FUNC_QUALIFIER T fcompMin(vec<L, T, Q> const& v)
+	{
+		T Result(v[0]);
+		for(length_t i = 1, n = v.length(); i < n; ++i)
+			Result = fmin(Result, v[i]);
+		return Result;
+	}
+
+	template<length_t L, typename T, qualifier Q>
+	GLM_FUNC_QUALIFIER T fcompMax(vec<L, T, Q> const& v)
+	{
+		T Result(v[0]);
+		for(length_t i = 1, n = v.length(); i < n; ++i)
+			Result = fmax(Result, v[i]);
 		return Result;
 	}
 }//namespace glm

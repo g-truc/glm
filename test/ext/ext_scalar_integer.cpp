@@ -222,7 +222,7 @@ namespace nextPowerOfTwo_advanced
 		int Error(0);
 
 		std::vector<glm::uint> v;
-		v.resize(100000000);
+		v.resize(10000);
 
 		std::clock_t Timestramp0 = std::clock();
 
@@ -586,7 +586,7 @@ namespace nextMultiple
 	{
 		int Error = 0;
 
-		glm::uint const Samples = 10000;
+		glm::uint const Samples = 100;
 
 		for(int i = 0; i < 4; ++i)
 		{

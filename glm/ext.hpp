@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include "glm.hpp"
+#include "./glm.hpp"
 
 #if GLM_MESSAGES == GLM_ENABLE && !defined(GLM_MESSAGE_EXT_INCLUDED_DISPLAYED)
 #	define GLM_MESSAGE_EXT_INCLUDED_DISPLAYED
@@ -234,6 +234,7 @@
 #include "./gtx/norm.hpp"
 #include "./gtx/normal.hpp"
 #include "./gtx/normalize_dot.hpp"
+#include "./gtx/number_precision.hpp"
 #include "./gtx/optimum_pow.hpp"
 #include "./gtx/orthonormalize.hpp"
 #include "./gtx/pca.hpp"

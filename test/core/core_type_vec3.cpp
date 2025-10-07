@@ -253,6 +253,18 @@ static int test_vec3_operators()
 		B /= 2;
 		Error += B == glm::ivec3(2, 1, 1) ? 0 : 1;
 	}
+
+	{
+		glm::ivec3 A(1.0f, 2.0f, 3.0f);
+		glm::ivec3 B(4.0f, 4.0f, 6.0f);
+
+		B = B / A;
+		Error += B == glm::ivec3(4, 2, 2) ? 0 : 1;
+
+		B = B / 2;
+		Error += B == glm::ivec3(2, 1, 1) ? 0 : 1;
+	}
+
 	{
 		glm::ivec3 B(2);
 
@@ -612,6 +624,11 @@ static int test_constexpr()
 
 int main()
 {
+	// Suppress unused variable warnings
+	(void)g1;
+	(void)g2;
+	(void)g3;
+
 	int Error = 0;
 
 	Error += test_vec3_ctor();
