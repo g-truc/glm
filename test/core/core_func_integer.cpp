@@ -1181,7 +1181,7 @@ namespace usubBorrow
 			glm::uint Result = glm::usubBorrow(x, y, Borrow);
 
 			Error += Borrow == 1 ? 0 : 1;
-			Error += Result == 1 ? 0 : 1;
+			Error += Result == glm::uint(x-y) ? 0 : 1;
 		}
 
 		{
@@ -1191,7 +1191,7 @@ namespace usubBorrow
 			glm::uvec1 Result(glm::usubBorrow(x, y, Borrow));
 
 			Error += glm::all(glm::equal(Borrow, glm::uvec1(1))) ? 0 : 1;
-			Error += glm::all(glm::equal(Result, glm::uvec1(1))) ? 0 : 1;
+			Error += glm::all(glm::equal(Result, glm::uvec1(x-y))) ? 0 : 1;
 		}
 
 		{
@@ -1201,7 +1201,7 @@ namespace usubBorrow
 			glm::uvec2 Result(glm::usubBorrow(x, y, Borrow));
 
 			Error += glm::all(glm::equal(Borrow, glm::uvec2(1))) ? 0 : 1;
-			Error += glm::all(glm::equal(Result, glm::uvec2(1))) ? 0 : 1;
+			Error += glm::all(glm::equal(Result, glm::uvec2(x-y))) ? 0 : 1;
 		}
 
 		{
@@ -1211,7 +1211,7 @@ namespace usubBorrow
 			glm::uvec3 Result(glm::usubBorrow(x, y, Borrow));
 
 			Error += glm::all(glm::equal(Borrow, glm::uvec3(1))) ? 0 : 1;
-			Error += glm::all(glm::equal(Result, glm::uvec3(1))) ? 0 : 1;
+			Error += glm::all(glm::equal(Result, glm::uvec3(x-y))) ? 0 : 1;
 		}
 
 		{
@@ -1221,7 +1221,7 @@ namespace usubBorrow
 			glm::uvec4 Result(glm::usubBorrow(x, y, Borrow));
 
 			Error += glm::all(glm::equal(Borrow, glm::uvec4(1))) ? 0 : 1;
-			Error += glm::all(glm::equal(Result, glm::uvec4(1))) ? 0 : 1;
+			Error += glm::all(glm::equal(Result, glm::uvec4(x-y))) ? 0 : 1;
 		}
 
 		return Error;
