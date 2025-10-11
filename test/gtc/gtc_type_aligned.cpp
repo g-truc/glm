@@ -1,6 +1,6 @@
 #include <glm/glm.hpp>
 
-#if GLM_CONFIG_ALIGNED_GENTYPES == GLM_ENABLE && !(GLM_ARCH & GLM_ARCH_NEON_BIT) // Fail on Github macOS latest C.I.
+#if GLM_CONFIG_ALIGNED_GENTYPES == GLM_ENABLE
 #include <glm/gtc/type_aligned.hpp>
 #include <glm/gtc/type_precision.hpp>
 #include <glm/ext/scalar_relational.hpp>
