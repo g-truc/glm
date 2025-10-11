@@ -59,4 +59,15 @@ namespace glm
 			isfinite(x.w));
 	}
 
+	template<typename T, qualifier Q>
+	GLM_FUNC_QUALIFIER vec<4, bool, Q> isfinite(
+		qua<T, Q> const& x)
+	{
+		return vec<4, bool, Q>(
+			isfinite(x.x),
+			isfinite(x.y),
+			isfinite(x.z),
+			isfinite(x.w));
+	}
+
 }//namespace glm
