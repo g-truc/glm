@@ -1,9 +1,9 @@
 /// @ref core
 /// @file glm/detail/type_vec2.hpp
-
 #pragma once
 
 #include "qualifier.hpp"
+#if GLM_SIMD_CONSTEXPR == 0
 #if GLM_CONFIG_SWIZZLE == GLM_SWIZZLE_OPERATOR
 #	include "_swizzle.hpp"
 #elif GLM_CONFIG_SWIZZLE == GLM_SWIZZLE_FUNCTION
@@ -404,3 +404,4 @@ namespace glm
 #ifndef GLM_EXTERNAL_TEMPLATE
 #include "type_vec2.inl"
 #endif//GLM_EXTERNAL_TEMPLATE
+#endif

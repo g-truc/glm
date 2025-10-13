@@ -101,6 +101,14 @@
 /// included  a specific file.
 ///
 
+#ifndef GLM_SIMD_CONSTEXPR
+#define GLM_SIMD_CONSTEXPR 0
+#endif
+
+#if GLM_SIMD_CONSTEXPR == 1
+# define GLM_FORCE_INTRINSICS 1
+#endif
+
 #include "detail/_fixes.hpp"
 
 #include "detail/setup.hpp"
@@ -114,9 +122,14 @@
 #include <cassert>
 #include "fwd.hpp"
 
-#include "vec2.hpp"
-#include "vec3.hpp"
-#include "vec4.hpp"
+#if GLM_SIMD_CONSTEXPR == 0
+# include "vec2.hpp"
+# include "vec3.hpp"
+# include "vec4.hpp"
+#else
+# include "simd_constexpr/vec.hpp"
+#endif
+ 
 #include "mat2x2.hpp"
 #include "mat2x3.hpp"
 #include "mat2x4.hpp"

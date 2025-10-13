@@ -15,9 +15,14 @@
 // Dependencies
 #include "detail/qualifier.hpp"
 #include "detail/setup.hpp"
-#include "vec2.hpp"
-#include "vec3.hpp"
-#include "vec4.hpp"
+#if GLM_SIMD_CONSTEXPR == 0
+# include "vec2.hpp"
+# include "vec3.hpp"
+# include "vec4.hpp"
+#else
+# include"simd_constexpr/vec.hpp"
+#endif
+
 #include "mat2x2.hpp"
 #include "mat2x3.hpp"
 #include "mat2x4.hpp"
