@@ -334,9 +334,9 @@ namespace detail
 	template<typename T, qualifier Q, bool Aligned>
 	struct convert_vec4_to_vec3
 	{
-		GLM_FUNC_QUALIFIER static vec<4, T, Q> call(vec<3, T, Q> const& a)
+		GLM_FUNC_QUALIFIER static vec<3, T, Q> call(vec<4, T, Q> const& a)
 		{
-			return vec<4, T, Q>(a.x, a.y, a.z, 0.0f);
+			return vec<3, T, Q>(a.x, a.y, a.z);
 		}
 	};
 
