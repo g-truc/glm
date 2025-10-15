@@ -164,9 +164,9 @@ option(GLM_FORCE_PURE "Force 'pure' instructions" OFF)
 if(GLM_FORCE_PURE)
 	add_definitions(-DGLM_FORCE_PURE)
 
-	if(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
-		add_compile_options(-mfpmath=387)
-	endif()
+#	if(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
+#		add_compile_options(-mfpmath=387)
+#	endif()
 	message(STATUS "GLM: No SIMD instruction set")
 
 elseif(GLM_ENABLE_SIMD_AVX2)

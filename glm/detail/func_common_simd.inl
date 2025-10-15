@@ -546,6 +546,7 @@ namespace detail
 #if GLM_ARCH & GLM_ARCH_NEON_BIT
 namespace glm {
 namespace detail {
+/* FIXME: Breaking Windows ARM Github C.I.
 	template<qualifier Q>
 	struct convert_vec3_to_vec4W0<float, Q, true>
 	{
@@ -557,7 +558,7 @@ namespace detail {
 			return v;
 		}
 	};
-
+*/
 	template<qualifier Q>
 	struct convert_vec4_to_vec3<float, Q, true> {
 		GLM_FUNC_QUALIFIER static vec<3, float, Q> call(vec<4, float, Q> const& a)

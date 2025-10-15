@@ -578,7 +578,7 @@ namespace findMSB
 		}
 #	endif//GLM_HAS_BITSCAN_WINDOWS
 
-#	if GLM_ARCH & GLM_ARCH_AVX && GLM_COMPILER & GLM_COMPILER_VC
+#	if ((GLM_ARCH & GLM_ARCH_AVX_BIT) && (GLM_COMPILER & GLM_COMPILER_VC))
 		template<typename genIUType>
 		static int findMSB_avx(genIUType Value)
 		{
@@ -589,7 +589,7 @@ namespace findMSB
 
 			return int(_tzcnt_u32(Value));
 		}
-#	endif//GLM_ARCH & GLM_ARCH_AVX && GLM_PLATFORM & GLM_PLATFORM_WINDOWS
+#	endif//((GLM_ARCH & GLM_ARCH_AVX_BIT) && (GLM_PLATFORM & GLM_PLATFORM_WINDOWS))
 
 	template<typename genIUType>
 	static int findMSB_095(genIUType Value)
@@ -756,7 +756,7 @@ namespace findMSB
 
 		std::clock_t Timestamps6 = std::clock();
 
-#		if GLM_ARCH & GLM_ARCH_AVX && GLM_COMPILER & GLM_COMPILER_VC
+#		if ((GLM_ARCH & GLM_ARCH_AVX_BIT) && (GLM_COMPILER & GLM_COMPILER_VC))
 			for(std::size_t k = 0; k < Count; ++k)
 			for(std::size_t i = 0; i < sizeof(Data) / sizeof(type<int, int>); ++i)
 			{
@@ -765,7 +765,7 @@ namespace findMSB
 			}
 
 			std::clock_t Timestamps7 = std::clock();
-#		endif
+#		endif//((GLM_ARCH & GLM_ARCH_AVX_BIT) && (GLM_COMPILER & GLM_COMPILER_VC))
 
 		std::printf("glm::findMSB: %d clocks\n", static_cast<int>(Timestamps1 - Timestamps0));
 		std::printf("findMSB - nlz1: %d clocks\n", static_cast<int>(Timestamps2 - Timestamps1));
@@ -777,9 +777,9 @@ namespace findMSB
 #		endif//GLM_HAS_BITSCAN_WINDOWS
 		std::printf("findMSB - pop: %d clocks\n", static_cast<int>(Timestamps6 - Timestamps5));
 
-#		if GLM_ARCH & GLM_ARCH_AVX && GLM_COMPILER & GLM_COMPILER_VC
+#		if ((GLM_ARCH & GLM_ARCH_AVX_BIT) && (GLM_COMPILER & GLM_COMPILER_VC))
 			std::printf("findMSB - avx tzcnt: %d clocks\n", static_cast<int>(Timestamps7 - Timestamps6));
-#		endif//GLM_ARCH & GLM_ARCH_AVX && GLM_PLATFORM & GLM_PLATFORM_WINDOWS
+#		endif//((GLM_ARCH & GLM_ARCH_AVX_BIT) && (GLM_COMPILER & GLM_COMPILER_VC))
 
 		return Error;
 	}

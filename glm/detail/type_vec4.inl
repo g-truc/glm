@@ -1024,6 +1024,7 @@ namespace detail
 #	include "type_vec_simd.inl"
 
 namespace glm {
+/* build errors on Windows ARM Github C.I.
 #if GLM_ARCH & GLM_ARCH_NEON_BIT && !GLM_CONFIG_XYZW_ONLY
 	CTORSL(4, CTOR_FLOAT);
 	CTORSL(4, CTOR_INT);
@@ -1033,10 +1034,8 @@ namespace glm {
 	CTORSL(4, CTOR_VECF_VECF);
 	CTORSL(4, CTOR_VECF_VECI);
 	CTORSL(4, CTOR_VECF_VECU);
-
-
 #endif// GLM_ARCH & GLM_ARCH_NEON_BIT
-
+*/
 #if GLM_ARCH & GLM_ARCH_SSE2_BIT
 	CTORSL(4, CTOR_FLOAT);
 	CTORSL(4, CTOR_DOUBLE);

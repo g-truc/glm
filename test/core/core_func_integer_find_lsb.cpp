@@ -264,7 +264,7 @@ static int ntz11(unsigned int n) {
    };
    unsigned int k;
    n = n & (-n);        /* isolate lsb */
-   printf("n = %d\n", n);
+   //printf("n = %d\n", n);
 #if defined(SLOW_MUL)
    k = (n << 11) - n;
    k = (k <<  2) + k;
