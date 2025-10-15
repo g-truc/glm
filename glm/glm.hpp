@@ -112,6 +112,8 @@
 #include <cfloat>
 #include <limits>
 #include <cassert>
+
+// IWYU pragma: begin_exports
 #include "fwd.hpp"
 
 #include "vec2.hpp"
@@ -135,3 +137,4 @@
 #include "matrix.hpp"
 #include "vector_relational.hpp"
 #include "integer.hpp"
+// IWYU pragma: end_exports
