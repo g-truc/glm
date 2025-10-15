@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>1.0.0 API documentation: GLM_EXT_vector_int1</title>
+<title>1.0.2 API documentation: GLM_EXT_scalar_uint_sized</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo-mini.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">1.0.0 API documentation
+   <div id="projectname">1.0.2 API documentation
    </div>
   </td>
  </tr>
@@ -65,23 +65,33 @@ $(function() {
   <div class="summary">
 <a href="#typedef-members">Typedefs</a>  </div>
   <div class="headertitle">
-<div class="title">GLM_EXT_vector_int1<div class="ingroups"><a class="el" href="a00894.html">Stable extensions</a></div></div>  </div>
+<div class="title">GLM_EXT_scalar_uint_sized<div class="ingroups"><a class="el" href="a00903.html">Stable extensions</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:gac5197e18f85a147ad178c1a786afcc4d"><td class="memItemLeft" align="right" valign="top"><a id="gac5197e18f85a147ad178c1a786afcc4d"></a>
-typedef vec&lt; 1, int, defaultp &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00873.html#gac5197e18f85a147ad178c1a786afcc4d">ivec1</a></td></tr>
-<tr class="memdesc:gac5197e18f85a147ad178c1a786afcc4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">1 component vector of signed integer numbers. <br /></td></tr>
-<tr class="separator:gac5197e18f85a147ad178c1a786afcc4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga05f6b0ae8f6a6e135b0e290c25fe0e4e"><td class="memItemLeft" align="right" valign="top"><a id="ga05f6b0ae8f6a6e135b0e290c25fe0e4e"></a>
+typedef detail::uint16&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00873.html#ga05f6b0ae8f6a6e135b0e290c25fe0e4e">uint16</a></td></tr>
+<tr class="memdesc:ga05f6b0ae8f6a6e135b0e290c25fe0e4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">16 bit unsigned integer type. <br /></td></tr>
+<tr class="separator:ga05f6b0ae8f6a6e135b0e290c25fe0e4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1134b580f8da4de94ca6b1de4d37975e"><td class="memItemLeft" align="right" valign="top"><a id="ga1134b580f8da4de94ca6b1de4d37975e"></a>
+typedef detail::uint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00873.html#ga1134b580f8da4de94ca6b1de4d37975e">uint32</a></td></tr>
+<tr class="memdesc:ga1134b580f8da4de94ca6b1de4d37975e"><td class="mdescLeft">&#160;</td><td class="mdescRight">32 bit unsigned integer type. <br /></td></tr>
+<tr class="separator:ga1134b580f8da4de94ca6b1de4d37975e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab630f76c26b50298187f7889104d4b9c"><td class="memItemLeft" align="right" valign="top"><a id="gab630f76c26b50298187f7889104d4b9c"></a>
+typedef detail::uint64&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00873.html#gab630f76c26b50298187f7889104d4b9c">uint64</a></td></tr>
+<tr class="memdesc:gab630f76c26b50298187f7889104d4b9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">64 bit unsigned integer type. <br /></td></tr>
+<tr class="separator:gab630f76c26b50298187f7889104d4b9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadde6aaee8457bee49c2a92621fe22b79"><td class="memItemLeft" align="right" valign="top"><a id="gadde6aaee8457bee49c2a92621fe22b79"></a>
+typedef detail::uint8&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00873.html#gadde6aaee8457bee49c2a92621fe22b79">uint8</a></td></tr>
+<tr class="memdesc:gadde6aaee8457bee49c2a92621fe22b79"><td class="mdescLeft">&#160;</td><td class="mdescRight">8 bit unsigned integer type. <br /></td></tr>
+<tr class="separator:gadde6aaee8457bee49c2a92621fe22b79"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<p>Exposes ivec1 vector type.</p>
-<p>Include &lt;<a class="el" href="a00455.html" title="GLM_EXT_vector_int1">glm/ext/vector_int1.hpp</a>&gt; to use the features of this extension.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00882.html">GLM_EXT_vector_uint1</a> extension. </dd>
-<dd>
-ext_vector_int1_precision extension. </dd></dl>
+<p>Exposes sized unsigned integer scalar types.</p>
+<p>Include &lt;<a class="el" href="a00377.html" title="GLM_EXT_scalar_uint_sized">glm/ext/scalar_uint_sized.hpp</a>&gt; to use the features of this extension.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00868.html">GLM_EXT_scalar_int_sized</a> </dd></dl>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>1.0.0 API documentation: GLM_GTX_extend</title>
+<title>1.0.2 API documentation: GLM_GTX_color_encoding</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo-mini.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">1.0.0 API documentation
+   <div id="projectname">1.0.2 API documentation
    </div>
   </td>
  </tr>
@@ -65,58 +65,39 @@ $(function() {
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">GLM_GTX_extend<div class="ingroups"><a class="el" href="a00896.html">Experimental extensions</a></div></div>  </div>
+<div class="title">GLM_GTX_color_encoding<div class="ingroups"><a class="el" href="a00905.html">Experimental extensions</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Allow to perform bit operations on integer values.  
+<a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga8140caae613b0f847ab0d7175dc03a37"><td class="memTemplParams" colspan="2">template&lt;typename genType &gt; </td></tr>
-<tr class="memitem:ga8140caae613b0f847ab0d7175dc03a37"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL genType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00929.html#ga8140caae613b0f847ab0d7175dc03a37">extend</a> (genType const &amp;Origin, genType const &amp;Source, typename genType::value_type const Length)</td></tr>
-<tr class="memdesc:ga8140caae613b0f847ab0d7175dc03a37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extends of Length the Origin position using the (Source - Origin) direction.  <a href="a00929.html#ga8140caae613b0f847ab0d7175dc03a37">More...</a><br /></td></tr>
-<tr class="separator:ga8140caae613b0f847ab0d7175dc03a37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad12f4f65022b2c80e33fcba2ced0dc48"><td class="memTemplParams" colspan="2"><a id="gad12f4f65022b2c80e33fcba2ced0dc48"></a>
+template&lt;typename T , qualifier Q&gt; </td></tr>
+<tr class="memitem:gad12f4f65022b2c80e33fcba2ced0dc48"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL vec&lt; 3, T, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00929.html#gad12f4f65022b2c80e33fcba2ced0dc48">convertD65XYZToD50XYZ</a> (vec&lt; 3, T, Q &gt; const &amp;ColorD65XYZ)</td></tr>
+<tr class="memdesc:gad12f4f65022b2c80e33fcba2ced0dc48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a D65 YUV color to D50 YUV. <br /></td></tr>
+<tr class="separator:gad12f4f65022b2c80e33fcba2ced0dc48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5265386fc3ac29e4c580d37ed470859c"><td class="memTemplParams" colspan="2"><a id="ga5265386fc3ac29e4c580d37ed470859c"></a>
+template&lt;typename T , qualifier Q&gt; </td></tr>
+<tr class="memitem:ga5265386fc3ac29e4c580d37ed470859c"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL vec&lt; 3, T, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00929.html#ga5265386fc3ac29e4c580d37ed470859c">convertD65XYZToLinearSRGB</a> (vec&lt; 3, T, Q &gt; const &amp;ColorD65XYZ)</td></tr>
+<tr class="memdesc:ga5265386fc3ac29e4c580d37ed470859c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a D65 YUV color to linear sRGB. <br /></td></tr>
+<tr class="separator:ga5265386fc3ac29e4c580d37ed470859c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1522ba180e3d83d554a734056da031f9"><td class="memTemplParams" colspan="2"><a id="ga1522ba180e3d83d554a734056da031f9"></a>
+template&lt;typename T , qualifier Q&gt; </td></tr>
+<tr class="memitem:ga1522ba180e3d83d554a734056da031f9"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL vec&lt; 3, T, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00929.html#ga1522ba180e3d83d554a734056da031f9">convertLinearSRGBToD50XYZ</a> (vec&lt; 3, T, Q &gt; const &amp;ColorLinearSRGB)</td></tr>
+<tr class="memdesc:ga1522ba180e3d83d554a734056da031f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a linear sRGB color to D50 YUV. <br /></td></tr>
+<tr class="separator:ga1522ba180e3d83d554a734056da031f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf9e130d9d4ccf51cc99317de7449f369"><td class="memTemplParams" colspan="2"><a id="gaf9e130d9d4ccf51cc99317de7449f369"></a>
+template&lt;typename T , qualifier Q&gt; </td></tr>
+<tr class="memitem:gaf9e130d9d4ccf51cc99317de7449f369"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL vec&lt; 3, T, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00929.html#gaf9e130d9d4ccf51cc99317de7449f369">convertLinearSRGBToD65XYZ</a> (vec&lt; 3, T, Q &gt; const &amp;ColorLinearSRGB)</td></tr>
+<tr class="memdesc:gaf9e130d9d4ccf51cc99317de7449f369"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a linear sRGB color to D65 YUV. <br /></td></tr>
+<tr class="separator:gaf9e130d9d4ccf51cc99317de7449f369"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<p>Include &lt;<a class="el" href="a00614.html" title="GLM_GTX_extend">glm/gtx/extend.hpp</a>&gt; to use the features of this extension.</p>
-<p>Extend a position from a source to a position at a defined length. </p>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="ga8140caae613b0f847ab0d7175dc03a37"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga8140caae613b0f847ab0d7175dc03a37">&#9670;&nbsp;</a></span>extend()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">GLM_FUNC_DECL genType glm::extend </td>
-          <td>(</td>
-          <td class="paramtype">genType const &amp;&#160;</td>
-          <td class="paramname"><em>Origin</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">genType const &amp;&#160;</td>
-          <td class="paramname"><em>Source</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">typename genType::value_type const&#160;</td>
-          <td class="paramname"><em>Length</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Extends of Length the Origin position using the (Source - Origin) direction. </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00929.html">GLM_GTX_extend</a> </dd></dl>
-
-</div>
-</div>
+<p>Allow to perform bit operations on integer values. </p>
+<p>Include &lt;<a class="el" href="a00596.html" title="GLM_GTX_color_encoding">glm/gtx/color_encoding.hpp</a>&gt; to use the features of this extension. </p>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>1.0.0 API documentation: GLM_GTX_matrix_query</title>
+<title>1.0.2 API documentation: GLM_GTX_intersect</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo-mini.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">1.0.0 API documentation
+   <div id="projectname">1.0.2 API documentation
    </div>
   </td>
  </tr>
@@ -65,66 +65,94 @@ $(function() {
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">GLM_GTX_matrix_query<div class="ingroups"><a class="el" href="a00896.html">Experimental extensions</a></div></div>  </div>
+<div class="title">GLM_GTX_intersect<div class="ingroups"><a class="el" href="a00905.html">Experimental extensions</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gaee935d145581c82e82b154ccfd78ad91"><td class="memTemplParams" colspan="2">template&lt;length_t C, length_t R, typename T , qualifier Q, template&lt; length_t, length_t, typename, qualifier &gt; class matType&gt; </td></tr>
-<tr class="memitem:gaee935d145581c82e82b154ccfd78ad91"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00949.html#gaee935d145581c82e82b154ccfd78ad91">isIdentity</a> (matType&lt; C, R, T, Q &gt; const &amp;m, T const &amp;epsilon)</td></tr>
-<tr class="memdesc:gaee935d145581c82e82b154ccfd78ad91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return whether a matrix is an identity matrix.  <a href="a00949.html#gaee935d145581c82e82b154ccfd78ad91">More...</a><br /></td></tr>
-<tr class="separator:gaee935d145581c82e82b154ccfd78ad91"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae785af56f47ce220a1609f7f84aa077a"><td class="memTemplParams" colspan="2">template&lt;typename T , qualifier Q&gt; </td></tr>
-<tr class="memitem:gae785af56f47ce220a1609f7f84aa077a"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00949.html#gae785af56f47ce220a1609f7f84aa077a">isNormalized</a> (mat&lt; 2, 2, T, Q &gt; const &amp;m, T const &amp;epsilon)</td></tr>
-<tr class="memdesc:gae785af56f47ce220a1609f7f84aa077a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return whether a matrix is a normalized matrix.  <a href="a00949.html#gae785af56f47ce220a1609f7f84aa077a">More...</a><br /></td></tr>
-<tr class="separator:gae785af56f47ce220a1609f7f84aa077a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa068311695f28f5f555f5f746a6a66fb"><td class="memTemplParams" colspan="2">template&lt;typename T , qualifier Q&gt; </td></tr>
-<tr class="memitem:gaa068311695f28f5f555f5f746a6a66fb"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00949.html#gaa068311695f28f5f555f5f746a6a66fb">isNormalized</a> (mat&lt; 3, 3, T, Q &gt; const &amp;m, T const &amp;epsilon)</td></tr>
-<tr class="memdesc:gaa068311695f28f5f555f5f746a6a66fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return whether a matrix is a normalized matrix.  <a href="a00949.html#gaa068311695f28f5f555f5f746a6a66fb">More...</a><br /></td></tr>
-<tr class="separator:gaa068311695f28f5f555f5f746a6a66fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4d9bb4d0465df49fedfad79adc6ce4ad"><td class="memTemplParams" colspan="2">template&lt;typename T , qualifier Q&gt; </td></tr>
-<tr class="memitem:ga4d9bb4d0465df49fedfad79adc6ce4ad"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00949.html#ga4d9bb4d0465df49fedfad79adc6ce4ad">isNormalized</a> (mat&lt; 4, 4, T, Q &gt; const &amp;m, T const &amp;epsilon)</td></tr>
-<tr class="memdesc:ga4d9bb4d0465df49fedfad79adc6ce4ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return whether a matrix is a normalized matrix.  <a href="a00949.html#ga4d9bb4d0465df49fedfad79adc6ce4ad">More...</a><br /></td></tr>
-<tr class="separator:ga4d9bb4d0465df49fedfad79adc6ce4ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9790ec222ce948c0ff0d8ce927340dba"><td class="memTemplParams" colspan="2">template&lt;typename T , qualifier Q&gt; </td></tr>
-<tr class="memitem:ga9790ec222ce948c0ff0d8ce927340dba"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00949.html#ga9790ec222ce948c0ff0d8ce927340dba">isNull</a> (mat&lt; 2, 2, T, Q &gt; const &amp;m, T const &amp;epsilon)</td></tr>
-<tr class="memdesc:ga9790ec222ce948c0ff0d8ce927340dba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return whether a matrix a null matrix.  <a href="a00949.html#ga9790ec222ce948c0ff0d8ce927340dba">More...</a><br /></td></tr>
-<tr class="separator:ga9790ec222ce948c0ff0d8ce927340dba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae14501c6b14ccda6014cc5350080103d"><td class="memTemplParams" colspan="2">template&lt;typename T , qualifier Q&gt; </td></tr>
-<tr class="memitem:gae14501c6b14ccda6014cc5350080103d"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00949.html#gae14501c6b14ccda6014cc5350080103d">isNull</a> (mat&lt; 3, 3, T, Q &gt; const &amp;m, T const &amp;epsilon)</td></tr>
-<tr class="memdesc:gae14501c6b14ccda6014cc5350080103d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return whether a matrix a null matrix.  <a href="a00949.html#gae14501c6b14ccda6014cc5350080103d">More...</a><br /></td></tr>
-<tr class="separator:gae14501c6b14ccda6014cc5350080103d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2b98bb30a9fefa7cdea5f1dcddba677b"><td class="memTemplParams" colspan="2">template&lt;typename T , qualifier Q&gt; </td></tr>
-<tr class="memitem:ga2b98bb30a9fefa7cdea5f1dcddba677b"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00949.html#ga2b98bb30a9fefa7cdea5f1dcddba677b">isNull</a> (mat&lt; 4, 4, T, Q &gt; const &amp;m, T const &amp;epsilon)</td></tr>
-<tr class="memdesc:ga2b98bb30a9fefa7cdea5f1dcddba677b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return whether a matrix is a null matrix.  <a href="a00949.html#ga2b98bb30a9fefa7cdea5f1dcddba677b">More...</a><br /></td></tr>
-<tr class="separator:ga2b98bb30a9fefa7cdea5f1dcddba677b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga58f3289f74dcab653387dd78ad93ca40"><td class="memTemplParams" colspan="2">template&lt;length_t C, length_t R, typename T , qualifier Q, template&lt; length_t, length_t, typename, qualifier &gt; class matType&gt; </td></tr>
-<tr class="memitem:ga58f3289f74dcab653387dd78ad93ca40"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00949.html#ga58f3289f74dcab653387dd78ad93ca40">isOrthogonal</a> (matType&lt; C, R, T, Q &gt; const &amp;m, T const &amp;epsilon)</td></tr>
-<tr class="memdesc:ga58f3289f74dcab653387dd78ad93ca40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return whether a matrix is an orthonormalized matrix.  <a href="a00949.html#ga58f3289f74dcab653387dd78ad93ca40">More...</a><br /></td></tr>
-<tr class="separator:ga58f3289f74dcab653387dd78ad93ca40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9c68139f3d8a4f3d7fe45f9dbc0de5b7"><td class="memTemplParams" colspan="2">template&lt;typename genType &gt; </td></tr>
+<tr class="memitem:ga9c68139f3d8a4f3d7fe45f9dbc0de5b7"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00949.html#ga9c68139f3d8a4f3d7fe45f9dbc0de5b7">intersectLineSphere</a> (genType const &amp;point0, genType const &amp;point1, genType const &amp;sphereCenter, typename genType::value_type sphereRadius, genType &amp;intersectionPosition1, genType &amp;intersectionNormal1, genType &amp;intersectionPosition2=genType(), genType &amp;intersectionNormal2=genType())</td></tr>
+<tr class="memdesc:ga9c68139f3d8a4f3d7fe45f9dbc0de5b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the intersection of a line and a sphere.  <a href="a00949.html#ga9c68139f3d8a4f3d7fe45f9dbc0de5b7">More...</a><br /></td></tr>
+<tr class="separator:ga9c68139f3d8a4f3d7fe45f9dbc0de5b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9d29b9b3acb504d43986502f42740df4"><td class="memTemplParams" colspan="2">template&lt;typename genType &gt; </td></tr>
+<tr class="memitem:ga9d29b9b3acb504d43986502f42740df4"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00949.html#ga9d29b9b3acb504d43986502f42740df4">intersectLineTriangle</a> (genType const &amp;orig, genType const &amp;dir, genType const &amp;vert0, genType const &amp;vert1, genType const &amp;vert2, genType &amp;position)</td></tr>
+<tr class="memdesc:ga9d29b9b3acb504d43986502f42740df4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the intersection of a line and a triangle.  <a href="a00949.html#ga9d29b9b3acb504d43986502f42740df4">More...</a><br /></td></tr>
+<tr class="separator:ga9d29b9b3acb504d43986502f42740df4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad3697a9700ea379739a667ea02573488"><td class="memTemplParams" colspan="2">template&lt;typename genType &gt; </td></tr>
+<tr class="memitem:gad3697a9700ea379739a667ea02573488"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00949.html#gad3697a9700ea379739a667ea02573488">intersectRayPlane</a> (genType const &amp;orig, genType const &amp;dir, genType const &amp;planeOrig, genType const &amp;planeNormal, typename genType::value_type &amp;intersectionDistance)</td></tr>
+<tr class="memdesc:gad3697a9700ea379739a667ea02573488"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the intersection of a ray and a plane.  <a href="a00949.html#gad3697a9700ea379739a667ea02573488">More...</a><br /></td></tr>
+<tr class="separator:gad3697a9700ea379739a667ea02573488"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad28c00515b823b579c608aafa1100c1d"><td class="memTemplParams" colspan="2">template&lt;typename genType &gt; </td></tr>
+<tr class="memitem:gad28c00515b823b579c608aafa1100c1d"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00949.html#gad28c00515b823b579c608aafa1100c1d">intersectRaySphere</a> (genType const &amp;rayStarting, genType const &amp;rayNormalizedDirection, genType const &amp;sphereCenter, const typename genType::value_type sphereRadius, genType &amp;intersectionPosition, genType &amp;intersectionNormal)</td></tr>
+<tr class="memdesc:gad28c00515b823b579c608aafa1100c1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the intersection of a ray and a sphere.  <a href="a00949.html#gad28c00515b823b579c608aafa1100c1d">More...</a><br /></td></tr>
+<tr class="separator:gad28c00515b823b579c608aafa1100c1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga69367b81be6a589e3a1f9661b4430a27"><td class="memTemplParams" colspan="2">template&lt;typename genType &gt; </td></tr>
+<tr class="memitem:ga69367b81be6a589e3a1f9661b4430a27"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00949.html#ga69367b81be6a589e3a1f9661b4430a27">intersectRaySphere</a> (genType const &amp;rayStarting, genType const &amp;rayNormalizedDirection, genType const &amp;sphereCenter, typename genType::value_type const sphereRadiusSquared, typename genType::value_type &amp;intersectionDistance)</td></tr>
+<tr class="memdesc:ga69367b81be6a589e3a1f9661b4430a27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the intersection distance of a ray and a sphere.  <a href="a00949.html#ga69367b81be6a589e3a1f9661b4430a27">More...</a><br /></td></tr>
+<tr class="separator:ga69367b81be6a589e3a1f9661b4430a27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga65bf2c594482f04881c36bc761f9e946"><td class="memTemplParams" colspan="2">template&lt;typename T , qualifier Q&gt; </td></tr>
+<tr class="memitem:ga65bf2c594482f04881c36bc761f9e946"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00949.html#ga65bf2c594482f04881c36bc761f9e946">intersectRayTriangle</a> (vec&lt; 3, T, Q &gt; const &amp;orig, vec&lt; 3, T, Q &gt; const &amp;dir, vec&lt; 3, T, Q &gt; const &amp;v0, vec&lt; 3, T, Q &gt; const &amp;v1, vec&lt; 3, T, Q &gt; const &amp;v2, vec&lt; 2, T, Q &gt; &amp;baryPosition, T &amp;distance)</td></tr>
+<tr class="memdesc:ga65bf2c594482f04881c36bc761f9e946"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the intersection of a ray and a triangle.  <a href="a00949.html#ga65bf2c594482f04881c36bc761f9e946">More...</a><br /></td></tr>
+<tr class="separator:ga65bf2c594482f04881c36bc761f9e946"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<p>Include &lt;<a class="el" href="a00671.html" title="GLM_GTX_matrix_query">glm/gtx/matrix_query.hpp</a>&gt; to use the features of this extension.</p>
-<p>Query to evaluate matrix properties </p>
+<p>Include &lt;<a class="el" href="a00647.html" title="GLM_GTX_intersect">glm/gtx/intersect.hpp</a>&gt; to use the features of this extension.</p>
+<p>Add intersection functions </p>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="gaee935d145581c82e82b154ccfd78ad91"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaee935d145581c82e82b154ccfd78ad91">&#9670;&nbsp;</a></span>isIdentity()</h2>
+<a id="ga9c68139f3d8a4f3d7fe45f9dbc0de5b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9c68139f3d8a4f3d7fe45f9dbc0de5b7">&#9670;&nbsp;</a></span>intersectLineSphere()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">GLM_FUNC_DECL bool glm::isIdentity </td>
+          <td class="memname">GLM_FUNC_DECL bool glm::intersectLineSphere </td>
           <td>(</td>
-          <td class="paramtype">matType&lt; C, R, T, Q &gt; const &amp;&#160;</td>
-          <td class="paramname"><em>m</em>, </td>
+          <td class="paramtype">genType const &amp;&#160;</td>
+          <td class="paramname"><em>point0</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">T const &amp;&#160;</td>
-          <td class="paramname"><em>epsilon</em>&#160;</td>
+          <td class="paramtype">genType const &amp;&#160;</td>
+          <td class="paramname"><em>point1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">genType const &amp;&#160;</td>
+          <td class="paramname"><em>sphereCenter</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">typename genType::value_type&#160;</td>
+          <td class="paramname"><em>sphereRadius</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">genType &amp;&#160;</td>
+          <td class="paramname"><em>intersectionPosition1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">genType &amp;&#160;</td>
+          <td class="paramname"><em>intersectionNormal1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">genType &amp;&#160;</td>
+          <td class="paramname"><em>intersectionPosition2</em> = <code>genType()</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">genType &amp;&#160;</td>
+          <td class="paramname"><em>intersectionNormal2</em> = <code>genType()</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -134,28 +162,52 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Return whether a matrix is an identity matrix. </p>
-<p>From GLM_GTX_matrix_query extension. </p>
+<p>Compute the intersection of a line and a sphere. </p>
+<p>From GLM_GTX_intersect extension </p>
 
 </div>
 </div>
-<a id="gae785af56f47ce220a1609f7f84aa077a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gae785af56f47ce220a1609f7f84aa077a">&#9670;&nbsp;</a></span>isNormalized() <span class="overload">[1/3]</span></h2>
+<a id="ga9d29b9b3acb504d43986502f42740df4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9d29b9b3acb504d43986502f42740df4">&#9670;&nbsp;</a></span>intersectLineTriangle()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">GLM_FUNC_DECL bool glm::isNormalized </td>
+          <td class="memname">GLM_FUNC_DECL bool glm::intersectLineTriangle </td>
           <td>(</td>
-          <td class="paramtype">mat&lt; 2, 2, T, Q &gt; const &amp;&#160;</td>
-          <td class="paramname"><em>m</em>, </td>
+          <td class="paramtype">genType const &amp;&#160;</td>
+          <td class="paramname"><em>orig</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">T const &amp;&#160;</td>
-          <td class="paramname"><em>epsilon</em>&#160;</td>
+          <td class="paramtype">genType const &amp;&#160;</td>
+          <td class="paramname"><em>dir</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">genType const &amp;&#160;</td>
+          <td class="paramname"><em>vert0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">genType const &amp;&#160;</td>
+          <td class="paramname"><em>vert1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">genType const &amp;&#160;</td>
+          <td class="paramname"><em>vert2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">genType &amp;&#160;</td>
+          <td class="paramname"><em>position</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -165,28 +217,46 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Return whether a matrix is a normalized matrix. </p>
-<p>From GLM_GTX_matrix_query extension. </p>
+<p>Compute the intersection of a line and a triangle. </p>
+<p>From GLM_GTX_intersect extension. </p>
 
 </div>
 </div>
-<a id="gaa068311695f28f5f555f5f746a6a66fb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaa068311695f28f5f555f5f746a6a66fb">&#9670;&nbsp;</a></span>isNormalized() <span class="overload">[2/3]</span></h2>
+<a id="gad3697a9700ea379739a667ea02573488"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad3697a9700ea379739a667ea02573488">&#9670;&nbsp;</a></span>intersectRayPlane()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">GLM_FUNC_DECL bool glm::isNormalized </td>
+          <td class="memname">GLM_FUNC_DECL bool glm::intersectRayPlane </td>
           <td>(</td>
-          <td class="paramtype">mat&lt; 3, 3, T, Q &gt; const &amp;&#160;</td>
-          <td class="paramname"><em>m</em>, </td>
+          <td class="paramtype">genType const &amp;&#160;</td>
+          <td class="paramname"><em>orig</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">T const &amp;&#160;</td>
-          <td class="paramname"><em>epsilon</em>&#160;</td>
+          <td class="paramtype">genType const &amp;&#160;</td>
+          <td class="paramname"><em>dir</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">genType const &amp;&#160;</td>
+          <td class="paramname"><em>planeOrig</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">genType const &amp;&#160;</td>
+          <td class="paramname"><em>planeNormal</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">typename genType::value_type &amp;&#160;</td>
+          <td class="paramname"><em>intersectionDistance</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -196,28 +266,52 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Return whether a matrix is a normalized matrix. </p>
-<p>From GLM_GTX_matrix_query extension. </p>
+<p>Compute the intersection of a ray and a plane. </p>
+<p>Ray direction and plane normal must be unit length. From GLM_GTX_intersect extension. </p>
 
 </div>
 </div>
-<a id="ga4d9bb4d0465df49fedfad79adc6ce4ad"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga4d9bb4d0465df49fedfad79adc6ce4ad">&#9670;&nbsp;</a></span>isNormalized() <span class="overload">[3/3]</span></h2>
+<a id="gad28c00515b823b579c608aafa1100c1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad28c00515b823b579c608aafa1100c1d">&#9670;&nbsp;</a></span>intersectRaySphere() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">GLM_FUNC_DECL bool glm::isNormalized </td>
+          <td class="memname">GLM_FUNC_DECL bool glm::intersectRaySphere </td>
           <td>(</td>
-          <td class="paramtype">mat&lt; 4, 4, T, Q &gt; const &amp;&#160;</td>
-          <td class="paramname"><em>m</em>, </td>
+          <td class="paramtype">genType const &amp;&#160;</td>
+          <td class="paramname"><em>rayStarting</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">T const &amp;&#160;</td>
-          <td class="paramname"><em>epsilon</em>&#160;</td>
+          <td class="paramtype">genType const &amp;&#160;</td>
+          <td class="paramname"><em>rayNormalizedDirection</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">genType const &amp;&#160;</td>
+          <td class="paramname"><em>sphereCenter</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const typename genType::value_type&#160;</td>
+          <td class="paramname"><em>sphereRadius</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">genType &amp;&#160;</td>
+          <td class="paramname"><em>intersectionPosition</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">genType &amp;&#160;</td>
+          <td class="paramname"><em>intersectionNormal</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -227,28 +321,46 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Return whether a matrix is a normalized matrix. </p>
-<p>From GLM_GTX_matrix_query extension. </p>
+<p>Compute the intersection of a ray and a sphere. </p>
+<p>From GLM_GTX_intersect extension. </p>
 
 </div>
 </div>
-<a id="ga9790ec222ce948c0ff0d8ce927340dba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga9790ec222ce948c0ff0d8ce927340dba">&#9670;&nbsp;</a></span>isNull() <span class="overload">[1/3]</span></h2>
+<a id="ga69367b81be6a589e3a1f9661b4430a27"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga69367b81be6a589e3a1f9661b4430a27">&#9670;&nbsp;</a></span>intersectRaySphere() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">GLM_FUNC_DECL bool glm::isNull </td>
+          <td class="memname">GLM_FUNC_DECL bool glm::intersectRaySphere </td>
           <td>(</td>
-          <td class="paramtype">mat&lt; 2, 2, T, Q &gt; const &amp;&#160;</td>
-          <td class="paramname"><em>m</em>, </td>
+          <td class="paramtype">genType const &amp;&#160;</td>
+          <td class="paramname"><em>rayStarting</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">T const &amp;&#160;</td>
-          <td class="paramname"><em>epsilon</em>&#160;</td>
+          <td class="paramtype">genType const &amp;&#160;</td>
+          <td class="paramname"><em>rayNormalizedDirection</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">genType const &amp;&#160;</td>
+          <td class="paramname"><em>sphereCenter</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">typename genType::value_type const&#160;</td>
+          <td class="paramname"><em>sphereRadiusSquared</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">typename genType::value_type &amp;&#160;</td>
+          <td class="paramname"><em>intersectionDistance</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -258,28 +370,58 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Return whether a matrix a null matrix. </p>
-<p>From GLM_GTX_matrix_query extension. </p>
+<p>Compute the intersection distance of a ray and a sphere. </p>
+<p>The ray direction vector is unit length. From GLM_GTX_intersect extension. </p>
 
 </div>
 </div>
-<a id="gae14501c6b14ccda6014cc5350080103d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gae14501c6b14ccda6014cc5350080103d">&#9670;&nbsp;</a></span>isNull() <span class="overload">[2/3]</span></h2>
+<a id="ga65bf2c594482f04881c36bc761f9e946"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga65bf2c594482f04881c36bc761f9e946">&#9670;&nbsp;</a></span>intersectRayTriangle()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">GLM_FUNC_DECL bool glm::isNull </td>
+          <td class="memname">GLM_FUNC_DECL bool glm::intersectRayTriangle </td>
           <td>(</td>
-          <td class="paramtype">mat&lt; 3, 3, T, Q &gt; const &amp;&#160;</td>
-          <td class="paramname"><em>m</em>, </td>
+          <td class="paramtype">vec&lt; 3, T, Q &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>orig</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">T const &amp;&#160;</td>
-          <td class="paramname"><em>epsilon</em>&#160;</td>
+          <td class="paramtype">vec&lt; 3, T, Q &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>dir</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vec&lt; 3, T, Q &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>v0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vec&lt; 3, T, Q &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>v1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vec&lt; 3, T, Q &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>v2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vec&lt; 2, T, Q &gt; &amp;&#160;</td>
+          <td class="paramname"><em>baryPosition</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T &amp;&#160;</td>
+          <td class="paramname"><em>distance</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -289,70 +431,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Return whether a matrix a null matrix. </p>
-<p>From GLM_GTX_matrix_query extension. </p>
-
-</div>
-</div>
-<a id="ga2b98bb30a9fefa7cdea5f1dcddba677b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga2b98bb30a9fefa7cdea5f1dcddba677b">&#9670;&nbsp;</a></span>isNull() <span class="overload">[3/3]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">GLM_FUNC_DECL bool glm::isNull </td>
-          <td>(</td>
-          <td class="paramtype">mat&lt; 4, 4, T, Q &gt; const &amp;&#160;</td>
-          <td class="paramname"><em>m</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">T const &amp;&#160;</td>
-          <td class="paramname"><em>epsilon</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Return whether a matrix is a null matrix. </p>
-<p>From GLM_GTX_matrix_query extension. </p>
-
-</div>
-</div>
-<a id="ga58f3289f74dcab653387dd78ad93ca40"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga58f3289f74dcab653387dd78ad93ca40">&#9670;&nbsp;</a></span>isOrthogonal()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">GLM_FUNC_DECL bool glm::isOrthogonal </td>
-          <td>(</td>
-          <td class="paramtype">matType&lt; C, R, T, Q &gt; const &amp;&#160;</td>
-          <td class="paramname"><em>m</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">T const &amp;&#160;</td>
-          <td class="paramname"><em>epsilon</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Return whether a matrix is an orthonormalized matrix. </p>
-<p>From GLM_GTX_matrix_query extension. </p>
+<p>Compute the intersection of a ray and a triangle. </p>
+<p>Based om Tomas Möller implementation <a href="http://fileadmin.cs.lth.se/cs/Personal/Tomas_Akenine-Moller/raytri/">http://fileadmin.cs.lth.se/cs/Personal/Tomas_Akenine-Moller/raytri/</a> From GLM_GTX_intersect extension. </p>
 
 </div>
 </div>

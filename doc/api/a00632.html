@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>1.0.0 API documentation: functions.hpp File Reference</title>
+<title>1.0.2 API documentation: fast_trigonometry.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo-mini.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">1.0.0 API documentation
+   <div id="projectname">1.0.2 API documentation
    </div>
   </td>
  </tr>
@@ -69,33 +69,56 @@ $(function() {
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">functions.hpp File Reference</div>  </div>
+<div class="title">fast_trigonometry.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="a00935.html">GLM_GTX_functions</a>  
+<p><a class="el" href="a00943.html">GLM_GTX_fast_trigonometry</a>  
 <a href="#details">More...</a></p>
 
 <p><a href="a00632_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga0b50b197ff74261a0fad90f4b8d24702"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga0b50b197ff74261a0fad90f4b8d24702"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00935.html#ga0b50b197ff74261a0fad90f4b8d24702">gauss</a> (T x, T ExpectedValue, T StandardDeviation)</td></tr>
-<tr class="memdesc:ga0b50b197ff74261a0fad90f4b8d24702"><td class="mdescLeft">&#160;</td><td class="mdescRight">1D gauss function  <a href="a00935.html#ga0b50b197ff74261a0fad90f4b8d24702">More...</a><br /></td></tr>
-<tr class="separator:ga0b50b197ff74261a0fad90f4b8d24702"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad19ec8754a83c0b9a8dc16b7e60705ab"><td class="memTemplParams" colspan="2">template&lt;typename T , qualifier Q&gt; </td></tr>
-<tr class="memitem:gad19ec8754a83c0b9a8dc16b7e60705ab"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00935.html#gad19ec8754a83c0b9a8dc16b7e60705ab">gauss</a> (vec&lt; 2, T, Q &gt; const &amp;Coord, vec&lt; 2, T, Q &gt; const &amp;ExpectedValue, vec&lt; 2, T, Q &gt; const &amp;StandardDeviation)</td></tr>
-<tr class="memdesc:gad19ec8754a83c0b9a8dc16b7e60705ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">2D gauss function  <a href="a00935.html#gad19ec8754a83c0b9a8dc16b7e60705ab">More...</a><br /></td></tr>
-<tr class="separator:gad19ec8754a83c0b9a8dc16b7e60705ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9721d63356e5d94fdc4b393a426ab26b"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ga9721d63356e5d94fdc4b393a426ab26b"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00943.html#ga9721d63356e5d94fdc4b393a426ab26b">fastAcos</a> (T angle)</td></tr>
+<tr class="memdesc:ga9721d63356e5d94fdc4b393a426ab26b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Faster than the common acos function but less accurate.  <a href="a00943.html#ga9721d63356e5d94fdc4b393a426ab26b">More...</a><br /></td></tr>
+<tr class="separator:ga9721d63356e5d94fdc4b393a426ab26b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga562cb62c51fbfe7fac7db0bce706b81f"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ga562cb62c51fbfe7fac7db0bce706b81f"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00943.html#ga562cb62c51fbfe7fac7db0bce706b81f">fastAsin</a> (T angle)</td></tr>
+<tr class="memdesc:ga562cb62c51fbfe7fac7db0bce706b81f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Faster than the common asin function but less accurate.  <a href="a00943.html#ga562cb62c51fbfe7fac7db0bce706b81f">More...</a><br /></td></tr>
+<tr class="separator:ga562cb62c51fbfe7fac7db0bce706b81f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae25de86a968490ff56856fa425ec9d30"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:gae25de86a968490ff56856fa425ec9d30"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00943.html#gae25de86a968490ff56856fa425ec9d30">fastAtan</a> (T angle)</td></tr>
+<tr class="memdesc:gae25de86a968490ff56856fa425ec9d30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Faster than the common atan function but less accurate.  <a href="a00943.html#gae25de86a968490ff56856fa425ec9d30">More...</a><br /></td></tr>
+<tr class="separator:gae25de86a968490ff56856fa425ec9d30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8d197c6ef564f5e5d59af3b3f8adcc2c"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ga8d197c6ef564f5e5d59af3b3f8adcc2c"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00943.html#ga8d197c6ef564f5e5d59af3b3f8adcc2c">fastAtan</a> (T y, T x)</td></tr>
+<tr class="memdesc:ga8d197c6ef564f5e5d59af3b3f8adcc2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Faster than the common atan function but less accurate.  <a href="a00943.html#ga8d197c6ef564f5e5d59af3b3f8adcc2c">More...</a><br /></td></tr>
+<tr class="separator:ga8d197c6ef564f5e5d59af3b3f8adcc2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab34c8b45c23c0165a64dcecfcc3b302a"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:gab34c8b45c23c0165a64dcecfcc3b302a"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00943.html#gab34c8b45c23c0165a64dcecfcc3b302a">fastCos</a> (T angle)</td></tr>
+<tr class="memdesc:gab34c8b45c23c0165a64dcecfcc3b302a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Faster than the common cos function but less accurate.  <a href="a00943.html#gab34c8b45c23c0165a64dcecfcc3b302a">More...</a><br /></td></tr>
+<tr class="separator:gab34c8b45c23c0165a64dcecfcc3b302a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0aab3257bb3b628d10a1e0483e2c6915"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ga0aab3257bb3b628d10a1e0483e2c6915"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00943.html#ga0aab3257bb3b628d10a1e0483e2c6915">fastSin</a> (T angle)</td></tr>
+<tr class="memdesc:ga0aab3257bb3b628d10a1e0483e2c6915"><td class="mdescLeft">&#160;</td><td class="mdescRight">Faster than the common sin function but less accurate.  <a href="a00943.html#ga0aab3257bb3b628d10a1e0483e2c6915">More...</a><br /></td></tr>
+<tr class="separator:ga0aab3257bb3b628d10a1e0483e2c6915"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf29b9c1101a10007b4f79ee89df27ba2"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:gaf29b9c1101a10007b4f79ee89df27ba2"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00943.html#gaf29b9c1101a10007b4f79ee89df27ba2">fastTan</a> (T angle)</td></tr>
+<tr class="memdesc:gaf29b9c1101a10007b4f79ee89df27ba2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Faster than the common tan function but less accurate.  <a href="a00943.html#gaf29b9c1101a10007b4f79ee89df27ba2">More...</a><br /></td></tr>
+<tr class="separator:gaf29b9c1101a10007b4f79ee89df27ba2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga069527c6dbd64f53435b8ebc4878b473"><td class="memTemplParams" colspan="2">
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ga069527c6dbd64f53435b8ebc4878b473"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00943.html#ga069527c6dbd64f53435b8ebc4878b473">wrapAngle</a> (T angle)</td></tr>
+<tr class="memdesc:ga069527c6dbd64f53435b8ebc4878b473"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrap an angle to [0 2pi[ From GLM_GTX_fast_trigonometry extension. <br /></td></tr>
+<tr class="separator:ga069527c6dbd64f53435b8ebc4878b473"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="a00935.html">GLM_GTX_functions</a> </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00889.html" title="Features that implement in C++ the GLSL specification as closely as possible.">Core features</a> (dependence) </dd>
-<dd>
-<a class="el" href="a00908.html">GLM_GTC_quaternion</a> (dependence) </dd></dl>
+<div class="textblock"><p><a class="el" href="a00943.html">GLM_GTX_fast_trigonometry</a> </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00898.html" title="Features that implement in C++ the GLSL specification as closely as possible.">Core features</a> (dependence) </dd></dl>
 
-<p class="definition">Definition in file <a class="el" href="a00632_source.html">functions.hpp</a>.</p>
+<p class="definition">Definition in file <a class="el" href="a00632_source.html">fast_trigonometry.hpp</a>.</p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

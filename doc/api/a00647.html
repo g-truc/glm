@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>1.0.0 API documentation: io.hpp File Reference</title>
+<title>1.0.2 API documentation: intersect.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo-mini.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">1.0.0 API documentation
+   <div id="projectname">1.0.2 API documentation
    </div>
   </td>
  </tr>
@@ -66,25 +66,52 @@ $(function() {
 </div>
 </div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">io.hpp File Reference</div>  </div>
+<div class="title">intersect.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="a00941.html">GLM_GTX_io</a>  
+<p><a class="el" href="a00949.html">GLM_GTX_intersect</a>  
 <a href="#details">More...</a></p>
 
 <p><a href="a00647_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ga9c68139f3d8a4f3d7fe45f9dbc0de5b7"><td class="memTemplParams" colspan="2">template&lt;typename genType &gt; </td></tr>
+<tr class="memitem:ga9c68139f3d8a4f3d7fe45f9dbc0de5b7"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00949.html#ga9c68139f3d8a4f3d7fe45f9dbc0de5b7">intersectLineSphere</a> (genType const &amp;point0, genType const &amp;point1, genType const &amp;sphereCenter, typename genType::value_type sphereRadius, genType &amp;intersectionPosition1, genType &amp;intersectionNormal1, genType &amp;intersectionPosition2=genType(), genType &amp;intersectionNormal2=genType())</td></tr>
+<tr class="memdesc:ga9c68139f3d8a4f3d7fe45f9dbc0de5b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the intersection of a line and a sphere.  <a href="a00949.html#ga9c68139f3d8a4f3d7fe45f9dbc0de5b7">More...</a><br /></td></tr>
+<tr class="separator:ga9c68139f3d8a4f3d7fe45f9dbc0de5b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9d29b9b3acb504d43986502f42740df4"><td class="memTemplParams" colspan="2">template&lt;typename genType &gt; </td></tr>
+<tr class="memitem:ga9d29b9b3acb504d43986502f42740df4"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00949.html#ga9d29b9b3acb504d43986502f42740df4">intersectLineTriangle</a> (genType const &amp;orig, genType const &amp;dir, genType const &amp;vert0, genType const &amp;vert1, genType const &amp;vert2, genType &amp;position)</td></tr>
+<tr class="memdesc:ga9d29b9b3acb504d43986502f42740df4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the intersection of a line and a triangle.  <a href="a00949.html#ga9d29b9b3acb504d43986502f42740df4">More...</a><br /></td></tr>
+<tr class="separator:ga9d29b9b3acb504d43986502f42740df4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad3697a9700ea379739a667ea02573488"><td class="memTemplParams" colspan="2">template&lt;typename genType &gt; </td></tr>
+<tr class="memitem:gad3697a9700ea379739a667ea02573488"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00949.html#gad3697a9700ea379739a667ea02573488">intersectRayPlane</a> (genType const &amp;orig, genType const &amp;dir, genType const &amp;planeOrig, genType const &amp;planeNormal, typename genType::value_type &amp;intersectionDistance)</td></tr>
+<tr class="memdesc:gad3697a9700ea379739a667ea02573488"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the intersection of a ray and a plane.  <a href="a00949.html#gad3697a9700ea379739a667ea02573488">More...</a><br /></td></tr>
+<tr class="separator:gad3697a9700ea379739a667ea02573488"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad28c00515b823b579c608aafa1100c1d"><td class="memTemplParams" colspan="2">template&lt;typename genType &gt; </td></tr>
+<tr class="memitem:gad28c00515b823b579c608aafa1100c1d"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00949.html#gad28c00515b823b579c608aafa1100c1d">intersectRaySphere</a> (genType const &amp;rayStarting, genType const &amp;rayNormalizedDirection, genType const &amp;sphereCenter, const typename genType::value_type sphereRadius, genType &amp;intersectionPosition, genType &amp;intersectionNormal)</td></tr>
+<tr class="memdesc:gad28c00515b823b579c608aafa1100c1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the intersection of a ray and a sphere.  <a href="a00949.html#gad28c00515b823b579c608aafa1100c1d">More...</a><br /></td></tr>
+<tr class="separator:gad28c00515b823b579c608aafa1100c1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga69367b81be6a589e3a1f9661b4430a27"><td class="memTemplParams" colspan="2">template&lt;typename genType &gt; </td></tr>
+<tr class="memitem:ga69367b81be6a589e3a1f9661b4430a27"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00949.html#ga69367b81be6a589e3a1f9661b4430a27">intersectRaySphere</a> (genType const &amp;rayStarting, genType const &amp;rayNormalizedDirection, genType const &amp;sphereCenter, typename genType::value_type const sphereRadiusSquared, typename genType::value_type &amp;intersectionDistance)</td></tr>
+<tr class="memdesc:ga69367b81be6a589e3a1f9661b4430a27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the intersection distance of a ray and a sphere.  <a href="a00949.html#ga69367b81be6a589e3a1f9661b4430a27">More...</a><br /></td></tr>
+<tr class="separator:ga69367b81be6a589e3a1f9661b4430a27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga65bf2c594482f04881c36bc761f9e946"><td class="memTemplParams" colspan="2">template&lt;typename T , qualifier Q&gt; </td></tr>
+<tr class="memitem:ga65bf2c594482f04881c36bc761f9e946"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00949.html#ga65bf2c594482f04881c36bc761f9e946">intersectRayTriangle</a> (vec&lt; 3, T, Q &gt; const &amp;orig, vec&lt; 3, T, Q &gt; const &amp;dir, vec&lt; 3, T, Q &gt; const &amp;v0, vec&lt; 3, T, Q &gt; const &amp;v1, vec&lt; 3, T, Q &gt; const &amp;v2, vec&lt; 2, T, Q &gt; &amp;baryPosition, T &amp;distance)</td></tr>
+<tr class="memdesc:ga65bf2c594482f04881c36bc761f9e946"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the intersection of a ray and a triangle.  <a href="a00949.html#ga65bf2c594482f04881c36bc761f9e946">More...</a><br /></td></tr>
+<tr class="separator:ga65bf2c594482f04881c36bc761f9e946"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="a00941.html">GLM_GTX_io</a> </p>
-<dl class="section author"><dt>Author</dt><dd>Jan P Springer (<a href="#" onclick="location.href='mai'+'lto:'+'reg'+'ni'+'rps'+'j@'+'gma'+'il'+'.co'+'m'; return false;">regni<span style="display: none;">.nosp@m.</span>rpsj<span style="display: none;">.nosp@m.</span>@gmai<span style="display: none;">.nosp@m.</span>l.co<span style="display: none;">.nosp@m.</span>m</a>)</dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00889.html" title="Features that implement in C++ the GLSL specification as closely as possible.">Core features</a> (dependence) </dd>
+<div class="textblock"><p><a class="el" href="a00949.html">GLM_GTX_intersect</a> </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00898.html" title="Features that implement in C++ the GLSL specification as closely as possible.">Core features</a> (dependence) </dd>
 <dd>
-<a class="el" href="a00902.html">GLM_GTC_matrix_access</a> (dependence) </dd>
-<dd>
-<a class="el" href="a00908.html">GLM_GTC_quaternion</a> (dependence) </dd></dl>
+<a class="el" href="a00928.html">GLM_GTX_closest_point</a> (dependence) </dd></dl>
 
-<p class="definition">Definition in file <a class="el" href="a00647_source.html">io.hpp</a>.</p>
+<p class="definition">Definition in file <a class="el" href="a00647_source.html">intersect.hpp</a>.</p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

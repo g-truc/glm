@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>1.0.0 API documentation: GLM_EXT_scalar_constants</title>
+<title>1.0.2 API documentation: GLM_EXT_quaternion_double_precision</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo-mini.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">1.0.0 API documentation
+   <div id="projectname">1.0.2 API documentation
    </div>
   </td>
  </tr>
@@ -63,33 +63,85 @@ $(function() {
 
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a>  </div>
+<a href="#typedef-members">Typedefs</a>  </div>
   <div class="headertitle">
-<div class="title">GLM_EXT_scalar_constants<div class="ingroups"><a class="el" href="a00894.html">Stable extensions</a></div></div>  </div>
+<div class="title">GLM_EXT_quaternion_double_precision<div class="ingroups"><a class="el" href="a00903.html">Stable extensions</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:gae8d1938913da2e5b2e102b9076cd0389"><td class="memTemplParams" colspan="2"><a id="gae8d1938913da2e5b2e102b9076cd0389"></a>
-template&lt;typename genType &gt; </td></tr>
-<tr class="memitem:gae8d1938913da2e5b2e102b9076cd0389"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL GLM_CONSTEXPR genType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00858.html#gae8d1938913da2e5b2e102b9076cd0389">cos_one_over_two</a> ()</td></tr>
-<tr class="memdesc:gae8d1938913da2e5b2e102b9076cd0389"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the value of cos(1 / 2) for floating point types. <br /></td></tr>
-<tr class="separator:gae8d1938913da2e5b2e102b9076cd0389"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2a1e57fc5592b69cfae84174cbfc9429"><td class="memTemplParams" colspan="2"><a id="ga2a1e57fc5592b69cfae84174cbfc9429"></a>
-template&lt;typename genType &gt; </td></tr>
-<tr class="memitem:ga2a1e57fc5592b69cfae84174cbfc9429"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL GLM_CONSTEXPR genType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00858.html#ga2a1e57fc5592b69cfae84174cbfc9429">epsilon</a> ()</td></tr>
-<tr class="memdesc:ga2a1e57fc5592b69cfae84174cbfc9429"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the epsilon constant for floating point types. <br /></td></tr>
-<tr class="separator:ga2a1e57fc5592b69cfae84174cbfc9429"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga94bafeb2a0f23ab6450fed1f98ee4e45"><td class="memTemplParams" colspan="2"><a id="ga94bafeb2a0f23ab6450fed1f98ee4e45"></a>
-template&lt;typename genType &gt; </td></tr>
-<tr class="memitem:ga94bafeb2a0f23ab6450fed1f98ee4e45"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL GLM_CONSTEXPR genType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00858.html#ga94bafeb2a0f23ab6450fed1f98ee4e45">pi</a> ()</td></tr>
-<tr class="memdesc:ga94bafeb2a0f23ab6450fed1f98ee4e45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the pi constant for floating point types. <br /></td></tr>
-<tr class="separator:ga94bafeb2a0f23ab6450fed1f98ee4e45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:gaf13a25f41afc03480b40fc71bd249cec"><td class="memItemLeft" align="right" valign="top">typedef qua&lt; double, highp &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00858.html#gaf13a25f41afc03480b40fc71bd249cec">highp_dquat</a></td></tr>
+<tr class="memdesc:gaf13a25f41afc03480b40fc71bd249cec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Quaternion of high double-qualifier floating-point numbers using high precision arithmetic in term of ULPs.  <a href="a00858.html#gaf13a25f41afc03480b40fc71bd249cec">More...</a><br /></td></tr>
+<tr class="separator:gaf13a25f41afc03480b40fc71bd249cec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9e6e5f42e67dd5877350ba485c191f1c"><td class="memItemLeft" align="right" valign="top">typedef qua&lt; double, lowp &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00858.html#ga9e6e5f42e67dd5877350ba485c191f1c">lowp_dquat</a></td></tr>
+<tr class="memdesc:ga9e6e5f42e67dd5877350ba485c191f1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Quaternion of double-precision floating-point numbers using high precision arithmetic in term of ULPs.  <a href="a00858.html#ga9e6e5f42e67dd5877350ba485c191f1c">More...</a><br /></td></tr>
+<tr class="separator:ga9e6e5f42e67dd5877350ba485c191f1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacdf73b1f7fd8f5a0c79a3934e99c1a14"><td class="memItemLeft" align="right" valign="top">typedef qua&lt; double, mediump &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00858.html#gacdf73b1f7fd8f5a0c79a3934e99c1a14">mediump_dquat</a></td></tr>
+<tr class="memdesc:gacdf73b1f7fd8f5a0c79a3934e99c1a14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Quaternion of medium double-qualifier floating-point numbers using high precision arithmetic in term of ULPs.  <a href="a00858.html#gacdf73b1f7fd8f5a0c79a3934e99c1a14">More...</a><br /></td></tr>
+<tr class="separator:gacdf73b1f7fd8f5a0c79a3934e99c1a14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<p>Provides a list of constants and precomputed useful values.</p>
-<p>Include &lt;<a class="el" href="a00356.html" title="GLM_EXT_scalar_constants">glm/ext/scalar_constants.hpp</a>&gt; to use the features of this extension. </p>
+<p>Exposes double-precision floating point quaternion type with various precision in term of ULPs.</p>
+<p>Include &lt;<a class="el" href="a00332.html" title="GLM_EXT_quaternion_double_precision">glm/ext/quaternion_double_precision.hpp</a>&gt; to use the features of this extension. </p>
+<h2 class="groupheader">Typedef Documentation</h2>
+<a id="gaf13a25f41afc03480b40fc71bd249cec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf13a25f41afc03480b40fc71bd249cec">&#9670;&nbsp;</a></span>highp_dquat</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef qua&lt; double, highp &gt; <a class="el" href="a00858.html#gaf13a25f41afc03480b40fc71bd249cec">highp_dquat</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Quaternion of high double-qualifier floating-point numbers using high precision arithmetic in term of ULPs. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00858.html">GLM_EXT_quaternion_double_precision</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="a00332_source.html#l00038">38</a> of file <a class="el" href="a00332_source.html">quaternion_double_precision.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ga9e6e5f42e67dd5877350ba485c191f1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9e6e5f42e67dd5877350ba485c191f1c">&#9670;&nbsp;</a></span>lowp_dquat</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef qua&lt; double, lowp &gt; <a class="el" href="a00858.html#ga9e6e5f42e67dd5877350ba485c191f1c">lowp_dquat</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Quaternion of double-precision floating-point numbers using high precision arithmetic in term of ULPs. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00858.html">GLM_EXT_quaternion_double_precision</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="a00332_source.html#l00028">28</a> of file <a class="el" href="a00332_source.html">quaternion_double_precision.hpp</a>.</p>
+
+</div>
+</div>
+<a id="gacdf73b1f7fd8f5a0c79a3934e99c1a14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gacdf73b1f7fd8f5a0c79a3934e99c1a14">&#9670;&nbsp;</a></span>mediump_dquat</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef qua&lt; double, mediump &gt; <a class="el" href="a00858.html#gacdf73b1f7fd8f5a0c79a3934e99c1a14">mediump_dquat</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Quaternion of medium double-qualifier floating-point numbers using high precision arithmetic in term of ULPs. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00858.html">GLM_EXT_quaternion_double_precision</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="a00332_source.html#l00033">33</a> of file <a class="el" href="a00332_source.html">quaternion_double_precision.hpp</a>.</p>
+
+</div>
+</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

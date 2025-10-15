@@ -105,10 +105,27 @@ target_link_libraries(main PRIVATE glm::glm)
 
 ## Release notes
 
-### [GLM 1.0.2](https://github.com/g-truc/glm/tree/master) - 2025-0X-XX
+### [GLM 1.0.2](https://github.com/g-truc/glm/releases/tag/1.0.2) - 2025-10-15
+
+#### Features:
+- Added packed/aligned quat types #1353
+- Added `GLM_GTX_structured_bindings` extension
+- Added `GLM_GTX_iteration` extension
 
 #### Improvements:
+- Added `infinitePerspectiveRH` and `infinitePerspectiveLH`
+- Improved SIMD support #1278
 - Unit tests are not build by default, `GLM_BUILD_TESTS` set to `ON` required.
+
+#### Fixes:
+- Fixed `usubBorrow` #1394
+- Fixed inconsistent '#include' #1368
+- Fixed Quaternion `rotate` direction #960 #1297 
+- Fixed various NEON support issues
+- Fixed various warnings
+
+#### Deprecation:
+- From version 1.1, C++ 17 support will be required. Branch 1.0 could be used for older C++ version
 
 ### [GLM 1.0.1](https://github.com/g-truc/glm/releases/tag/1.0.1) - 2024-02-26
 

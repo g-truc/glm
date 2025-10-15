@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>1.0.0 API documentation: vector_uint2.hpp Source File</title>
+<title>1.0.2 API documentation: vector_uint1_sized.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo-mini.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">1.0.0 API documentation
+   <div id="projectname">1.0.2 API documentation
    </div>
   </td>
  </tr>
@@ -67,21 +67,36 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">vector_uint2.hpp</div>  </div>
+<div class="title">vector_uint1_sized.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
 <a href="a00497.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;../detail/type_vec2.hpp&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span>glm</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;{</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="a00890.html#gab173892ee0fd88db1e13a17b1d861326">   15</a></span>&#160;        <span class="keyword">typedef</span> vec&lt;2, unsigned int, defaultp&gt;          <a class="code" href="a00890.html#gab173892ee0fd88db1e13a17b1d861326">uvec2</a>;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;}<span class="comment">//namespace glm</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;../ext/vector_uint1.hpp&quot;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;../ext/scalar_uint_sized.hpp&quot;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#if GLM_MESSAGES == GLM_ENABLE &amp;&amp; !defined(GLM_EXT_INCLUDED)</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#       pragma message(&quot;GLM: GLM_EXT_vector_uint1_sized extension included&quot;)</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">namespace </span>glm</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;{</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="a00892.html#ga29b349e037f0b24320b4548a143daee2">   31</a></span>&#160;        <span class="keyword">typedef</span> vec&lt;1, uint8, defaultp&gt;         <a class="code" href="a00892.html#ga29b349e037f0b24320b4548a143daee2">u8vec1</a>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="a00892.html#ga08c05ba8ffb19f5d14ab584e1e9e9ee5">   36</a></span>&#160;        <span class="keyword">typedef</span> vec&lt;1, uint16, defaultp&gt;        <a class="code" href="a00892.html#ga08c05ba8ffb19f5d14ab584e1e9e9ee5">u16vec1</a>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="a00892.html#gae627372cfd5f20dd87db490387b71195">   41</a></span>&#160;        <span class="keyword">typedef</span> vec&lt;1, uint32, defaultp&gt;        <a class="code" href="a00892.html#gae627372cfd5f20dd87db490387b71195">u32vec1</a>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="a00892.html#gaf09f3ca4b671a4a4f84505eb4cc865fd">   46</a></span>&#160;        <span class="keyword">typedef</span> vec&lt;1, uint64, defaultp&gt;        <a class="code" href="a00892.html#gaf09f3ca4b671a4a4f84505eb4cc865fd">u64vec1</a>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}<span class="comment">//namespace glm</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aa00890_html_gab173892ee0fd88db1e13a17b1d861326"><div class="ttname"><a href="a00890.html#gab173892ee0fd88db1e13a17b1d861326">glm::uvec2</a></div><div class="ttdeci">vec&lt; 2, unsigned int, defaultp &gt; uvec2</div><div class="ttdoc">2 components vector of unsigned integer numbers.</div><div class="ttdef"><b>Definition:</b> <a href="a00497_source.html#l00015">vector_uint2.hpp:15</a></div></div>
+<div class="ttc" id="aa00892_html_ga29b349e037f0b24320b4548a143daee2"><div class="ttname"><a href="a00892.html#ga29b349e037f0b24320b4548a143daee2">glm::u8vec1</a></div><div class="ttdeci">vec&lt; 1, uint8, defaultp &gt; u8vec1</div><div class="ttdoc">8 bit unsigned integer vector of 1 component type.</div><div class="ttdef"><b>Definition:</b> <a href="a00497_source.html#l00031">vector_uint1_sized.hpp:31</a></div></div>
+<div class="ttc" id="aa00892_html_ga08c05ba8ffb19f5d14ab584e1e9e9ee5"><div class="ttname"><a href="a00892.html#ga08c05ba8ffb19f5d14ab584e1e9e9ee5">glm::u16vec1</a></div><div class="ttdeci">vec&lt; 1, uint16, defaultp &gt; u16vec1</div><div class="ttdoc">16 bit unsigned integer vector of 1 component type.</div><div class="ttdef"><b>Definition:</b> <a href="a00497_source.html#l00036">vector_uint1_sized.hpp:36</a></div></div>
+<div class="ttc" id="aa00892_html_gaf09f3ca4b671a4a4f84505eb4cc865fd"><div class="ttname"><a href="a00892.html#gaf09f3ca4b671a4a4f84505eb4cc865fd">glm::u64vec1</a></div><div class="ttdeci">vec&lt; 1, uint64, defaultp &gt; u64vec1</div><div class="ttdoc">64 bit unsigned integer vector of 1 component type.</div><div class="ttdef"><b>Definition:</b> <a href="a00497_source.html#l00046">vector_uint1_sized.hpp:46</a></div></div>
+<div class="ttc" id="aa00892_html_gae627372cfd5f20dd87db490387b71195"><div class="ttname"><a href="a00892.html#gae627372cfd5f20dd87db490387b71195">glm::u32vec1</a></div><div class="ttdeci">vec&lt; 1, uint32, defaultp &gt; u32vec1</div><div class="ttdoc">32 bit unsigned integer vector of 1 component type.</div><div class="ttdef"><b>Definition:</b> <a href="a00497_source.html#l00041">vector_uint1_sized.hpp:41</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

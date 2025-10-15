@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>1.0.0 API documentation: quaternion_trigonometric.hpp File Reference</title>
+<title>1.0.2 API documentation: quaternion_transform.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo-mini.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">1.0.0 API documentation
+   <div id="projectname">1.0.2 API documentation
    </div>
   </td>
  </tr>
@@ -69,34 +69,26 @@ $(function() {
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">quaternion_trigonometric.hpp File Reference</div>  </div>
+<div class="title">quaternion_transform.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="a00856.html">GLM_EXT_quaternion_trigonometric</a>  
+<p><a class="el" href="a00864.html">GLM_EXT_quaternion_transform</a>  
 <a href="#details">More...</a></p>
 
 <p><a href="a00350_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga8aa248b31d5ade470c87304df5eb7bd8"><td class="memTemplParams" colspan="2">template&lt;typename T , qualifier Q&gt; </td></tr>
-<tr class="memitem:ga8aa248b31d5ade470c87304df5eb7bd8"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00856.html#ga8aa248b31d5ade470c87304df5eb7bd8">angle</a> (qua&lt; T, Q &gt; const &amp;x)</td></tr>
-<tr class="memdesc:ga8aa248b31d5ade470c87304df5eb7bd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the quaternion rotation angle.  <a href="a00856.html#ga8aa248b31d5ade470c87304df5eb7bd8">More...</a><br /></td></tr>
-<tr class="separator:ga8aa248b31d5ade470c87304df5eb7bd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5c0095cfcb218c75a4b79d7687950036"><td class="memTemplParams" colspan="2">template&lt;typename T , qualifier Q&gt; </td></tr>
-<tr class="memitem:ga5c0095cfcb218c75a4b79d7687950036"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL qua&lt; T, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00856.html#ga5c0095cfcb218c75a4b79d7687950036">angleAxis</a> (T const &amp;angle, vec&lt; 3, T, Q &gt; const &amp;axis)</td></tr>
-<tr class="memdesc:ga5c0095cfcb218c75a4b79d7687950036"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build a quaternion from an angle and a normalized axis.  <a href="a00856.html#ga5c0095cfcb218c75a4b79d7687950036">More...</a><br /></td></tr>
-<tr class="separator:ga5c0095cfcb218c75a4b79d7687950036"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga764254f10248b505e936e5309a88c23d"><td class="memTemplParams" colspan="2">template&lt;typename T , qualifier Q&gt; </td></tr>
-<tr class="memitem:ga764254f10248b505e936e5309a88c23d"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL vec&lt; 3, T, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00856.html#ga764254f10248b505e936e5309a88c23d">axis</a> (qua&lt; T, Q &gt; const &amp;x)</td></tr>
-<tr class="memdesc:ga764254f10248b505e936e5309a88c23d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the q rotation axis.  <a href="a00856.html#ga764254f10248b505e936e5309a88c23d">More...</a><br /></td></tr>
-<tr class="separator:ga764254f10248b505e936e5309a88c23d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabfc57de6d4d2e11970f54119c5ccf0f5"><td class="memTemplParams" colspan="2">template&lt;typename T , qualifier Q&gt; </td></tr>
+<tr class="memitem:gabfc57de6d4d2e11970f54119c5ccf0f5"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL qua&lt; T, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00864.html#gabfc57de6d4d2e11970f54119c5ccf0f5">rotate</a> (qua&lt; T, Q &gt; const &amp;q, T const &amp;angle, vec&lt; 3, T, Q &gt; const &amp;axis)</td></tr>
+<tr class="memdesc:gabfc57de6d4d2e11970f54119c5ccf0f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rotates a quaternion from a vector of 3 components axis and an angle.  <a href="a00864.html#gabfc57de6d4d2e11970f54119c5ccf0f5">More...</a><br /></td></tr>
+<tr class="separator:gabfc57de6d4d2e11970f54119c5ccf0f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="a00856.html">GLM_EXT_quaternion_trigonometric</a> </p>
+<div class="textblock"><p><a class="el" href="a00864.html">GLM_EXT_quaternion_transform</a> </p>
 
-<p class="definition">Definition in file <a class="el" href="a00350_source.html">quaternion_trigonometric.hpp</a>.</p>
+<p class="definition">Definition in file <a class="el" href="a00350_source.html">quaternion_transform.hpp</a>.</p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

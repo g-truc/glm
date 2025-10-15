@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>1.0.0 API documentation: GLM_GTX_normalize_dot</title>
+<title>1.0.2 API documentation: GLM_GTX_matrix_decompose</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo-mini.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">1.0.0 API documentation
+   <div id="projectname">1.0.2 API documentation
    </div>
   </td>
  </tr>
@@ -65,42 +65,62 @@ $(function() {
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">GLM_GTX_normalize_dot<div class="ingroups"><a class="el" href="a00896.html">Experimental extensions</a></div></div>  </div>
+<div class="title">GLM_GTX_matrix_decompose<div class="ingroups"><a class="el" href="a00905.html">Experimental extensions</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga2746fb9b5bd22b06b2f7c8babba5de9e"><td class="memTemplParams" colspan="2">template&lt;length_t L, typename T , qualifier Q&gt; </td></tr>
-<tr class="memitem:ga2746fb9b5bd22b06b2f7c8babba5de9e"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00954.html#ga2746fb9b5bd22b06b2f7c8babba5de9e">fastNormalizeDot</a> (vec&lt; L, T, Q &gt; const &amp;x, vec&lt; L, T, Q &gt; const &amp;y)</td></tr>
-<tr class="memdesc:ga2746fb9b5bd22b06b2f7c8babba5de9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Normalize parameters and returns the dot product of x and y.  <a href="a00954.html#ga2746fb9b5bd22b06b2f7c8babba5de9e">More...</a><br /></td></tr>
-<tr class="separator:ga2746fb9b5bd22b06b2f7c8babba5de9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gacb140a2b903115d318c8b0a2fb5a5daa"><td class="memTemplParams" colspan="2">template&lt;length_t L, typename T , qualifier Q&gt; </td></tr>
-<tr class="memitem:gacb140a2b903115d318c8b0a2fb5a5daa"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00954.html#gacb140a2b903115d318c8b0a2fb5a5daa">normalizeDot</a> (vec&lt; L, T, Q &gt; const &amp;x, vec&lt; L, T, Q &gt; const &amp;y)</td></tr>
-<tr class="memdesc:gacb140a2b903115d318c8b0a2fb5a5daa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Normalize parameters and returns the dot product of x and y.  <a href="a00954.html#gacb140a2b903115d318c8b0a2fb5a5daa">More...</a><br /></td></tr>
-<tr class="separator:gacb140a2b903115d318c8b0a2fb5a5daa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabd7878e1b23aab583bc01040c5ed2b71"><td class="memTemplParams" colspan="2">template&lt;typename T , qualifier Q&gt; </td></tr>
+<tr class="memitem:gabd7878e1b23aab583bc01040c5ed2b71"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DISCARD_DECL bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00954.html#gabd7878e1b23aab583bc01040c5ed2b71">decompose</a> (mat&lt; 4, 4, T, Q &gt; const &amp;modelMatrix, vec&lt; 3, T, Q &gt; &amp;scale, qua&lt; T, Q &gt; &amp;orientation, vec&lt; 3, T, Q &gt; &amp;translation, vec&lt; 3, T, Q &gt; &amp;skew, vec&lt; 4, T, Q &gt; &amp;perspective)</td></tr>
+<tr class="memdesc:gabd7878e1b23aab583bc01040c5ed2b71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decomposes a model matrix to translations, rotation and scale components.  <a href="a00954.html#gabd7878e1b23aab583bc01040c5ed2b71">More...</a><br /></td></tr>
+<tr class="separator:gabd7878e1b23aab583bc01040c5ed2b71"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<p>Include &lt;<a class="el" href="a00686.html" title="GLM_GTX_normalize_dot">glm/gtx/normalize_dot.hpp</a>&gt; to use the features of this extension.</p>
-<p>Dot product of vectors that need to be normalize with a single square root. </p>
+<p>Include &lt;<a class="el" href="a00662.html" title="GLM_GTX_matrix_decompose">glm/gtx/matrix_decompose.hpp</a>&gt; to use the features of this extension.</p>
+<p>Decomposes a model matrix to translations, rotation and scale components </p>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ga2746fb9b5bd22b06b2f7c8babba5de9e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga2746fb9b5bd22b06b2f7c8babba5de9e">&#9670;&nbsp;</a></span>fastNormalizeDot()</h2>
+<a id="gabd7878e1b23aab583bc01040c5ed2b71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gabd7878e1b23aab583bc01040c5ed2b71">&#9670;&nbsp;</a></span>decompose()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">GLM_FUNC_DECL T glm::fastNormalizeDot </td>
+          <td class="memname">GLM_FUNC_DISCARD_DECL bool glm::decompose </td>
           <td>(</td>
-          <td class="paramtype">vec&lt; L, T, Q &gt; const &amp;&#160;</td>
-          <td class="paramname"><em>x</em>, </td>
+          <td class="paramtype">mat&lt; 4, 4, T, Q &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>modelMatrix</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">vec&lt; L, T, Q &gt; const &amp;&#160;</td>
-          <td class="paramname"><em>y</em>&#160;</td>
+          <td class="paramtype">vec&lt; 3, T, Q &gt; &amp;&#160;</td>
+          <td class="paramname"><em>scale</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">qua&lt; T, Q &gt; &amp;&#160;</td>
+          <td class="paramname"><em>orientation</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vec&lt; 3, T, Q &gt; &amp;&#160;</td>
+          <td class="paramname"><em>translation</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vec&lt; 3, T, Q &gt; &amp;&#160;</td>
+          <td class="paramname"><em>skew</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vec&lt; 4, T, Q &gt; &amp;&#160;</td>
+          <td class="paramname"><em>perspective</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -110,41 +130,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Normalize parameters and returns the dot product of x and y. </p>
-<p>Faster that dot(fastNormalize(x), fastNormalize(y)).</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00954.html">GLM_GTX_normalize_dot</a> extension. </dd></dl>
-
-</div>
-</div>
-<a id="gacb140a2b903115d318c8b0a2fb5a5daa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gacb140a2b903115d318c8b0a2fb5a5daa">&#9670;&nbsp;</a></span>normalizeDot()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">GLM_FUNC_DECL T glm::normalizeDot </td>
-          <td>(</td>
-          <td class="paramtype">vec&lt; L, T, Q &gt; const &amp;&#160;</td>
-          <td class="paramname"><em>x</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">vec&lt; L, T, Q &gt; const &amp;&#160;</td>
-          <td class="paramname"><em>y</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Normalize parameters and returns the dot product of x and y. </p>
-<p>It's faster that dot(normalize(x), normalize(y)).</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00954.html">GLM_GTX_normalize_dot</a> extension. </dd></dl>
+<p>Decomposes a model matrix to translations, rotation and scale components. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00954.html">GLM_GTX_matrix_decompose</a> </dd></dl>
 
 </div>
 </div>

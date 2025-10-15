@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>1.0.0 API documentation: GLM_GTX_log_base</title>
+<title>1.0.2 API documentation: GLM_GTX_fast_square_root</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo-mini.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">1.0.0 API documentation
+   <div id="projectname">1.0.2 API documentation
    </div>
   </td>
  </tr>
@@ -65,42 +65,76 @@ $(function() {
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">GLM_GTX_log_base<div class="ingroups"><a class="el" href="a00896.html">Experimental extensions</a></div></div>  </div>
+<div class="title">GLM_GTX_fast_square_root<div class="ingroups"><a class="el" href="a00905.html">Experimental extensions</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga60a7b0a401da660869946b2b77c710c9"><td class="memTemplParams" colspan="2">template&lt;typename genType &gt; </td></tr>
-<tr class="memitem:ga60a7b0a401da660869946b2b77c710c9"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL genType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00942.html#ga60a7b0a401da660869946b2b77c710c9">log</a> (genType const &amp;x, genType const &amp;base)</td></tr>
-<tr class="memdesc:ga60a7b0a401da660869946b2b77c710c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logarithm for any base.  <a href="a00942.html#ga60a7b0a401da660869946b2b77c710c9">More...</a><br /></td></tr>
-<tr class="separator:ga60a7b0a401da660869946b2b77c710c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga04ef803a24f3d4f8c67dbccb33b0fce0"><td class="memTemplParams" colspan="2">template&lt;length_t L, typename T , qualifier Q&gt; </td></tr>
-<tr class="memitem:ga04ef803a24f3d4f8c67dbccb33b0fce0"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL vec&lt; L, T, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00942.html#ga04ef803a24f3d4f8c67dbccb33b0fce0">sign</a> (vec&lt; L, T, Q &gt; const &amp;x, vec&lt; L, T, Q &gt; const &amp;base)</td></tr>
-<tr class="memdesc:ga04ef803a24f3d4f8c67dbccb33b0fce0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logarithm for any base.  <a href="a00942.html#ga04ef803a24f3d4f8c67dbccb33b0fce0">More...</a><br /></td></tr>
-<tr class="separator:ga04ef803a24f3d4f8c67dbccb33b0fce0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaac333418d0c4e0cc6d3d219ed606c238"><td class="memTemplParams" colspan="2">template&lt;typename genType &gt; </td></tr>
+<tr class="memitem:gaac333418d0c4e0cc6d3d219ed606c238"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL genType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00942.html#gaac333418d0c4e0cc6d3d219ed606c238">fastDistance</a> (genType x, genType y)</td></tr>
+<tr class="memdesc:gaac333418d0c4e0cc6d3d219ed606c238"><td class="mdescLeft">&#160;</td><td class="mdescRight">Faster than the common distance function but less accurate.  <a href="a00942.html#gaac333418d0c4e0cc6d3d219ed606c238">More...</a><br /></td></tr>
+<tr class="separator:gaac333418d0c4e0cc6d3d219ed606c238"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga42d3e771fa7cb3c60d828e315829df19"><td class="memTemplParams" colspan="2">template&lt;length_t L, typename T , qualifier Q&gt; </td></tr>
+<tr class="memitem:ga42d3e771fa7cb3c60d828e315829df19"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00942.html#ga42d3e771fa7cb3c60d828e315829df19">fastDistance</a> (vec&lt; L, T, Q &gt; const &amp;x, vec&lt; L, T, Q &gt; const &amp;y)</td></tr>
+<tr class="memdesc:ga42d3e771fa7cb3c60d828e315829df19"><td class="mdescLeft">&#160;</td><td class="mdescRight">Faster than the common distance function but less accurate.  <a href="a00942.html#ga42d3e771fa7cb3c60d828e315829df19">More...</a><br /></td></tr>
+<tr class="separator:ga42d3e771fa7cb3c60d828e315829df19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7f081b14d9c7035c8714eba5f7f75a8f"><td class="memTemplParams" colspan="2">template&lt;typename genType &gt; </td></tr>
+<tr class="memitem:ga7f081b14d9c7035c8714eba5f7f75a8f"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL genType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00942.html#ga7f081b14d9c7035c8714eba5f7f75a8f">fastInverseSqrt</a> (genType x)</td></tr>
+<tr class="memdesc:ga7f081b14d9c7035c8714eba5f7f75a8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Faster than the common inversesqrt function but less accurate.  <a href="a00942.html#ga7f081b14d9c7035c8714eba5f7f75a8f">More...</a><br /></td></tr>
+<tr class="separator:ga7f081b14d9c7035c8714eba5f7f75a8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadcd7be12b1e5ee182141359d4c45dd24"><td class="memTemplParams" colspan="2">template&lt;length_t L, typename T , qualifier Q&gt; </td></tr>
+<tr class="memitem:gadcd7be12b1e5ee182141359d4c45dd24"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL vec&lt; L, T, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00942.html#gadcd7be12b1e5ee182141359d4c45dd24">fastInverseSqrt</a> (vec&lt; L, T, Q &gt; const &amp;x)</td></tr>
+<tr class="memdesc:gadcd7be12b1e5ee182141359d4c45dd24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Faster than the common inversesqrt function but less accurate.  <a href="a00942.html#gadcd7be12b1e5ee182141359d4c45dd24">More...</a><br /></td></tr>
+<tr class="separator:gadcd7be12b1e5ee182141359d4c45dd24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafe697d6287719538346bbdf8b1367c59"><td class="memTemplParams" colspan="2">template&lt;typename genType &gt; </td></tr>
+<tr class="memitem:gafe697d6287719538346bbdf8b1367c59"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL genType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00942.html#gafe697d6287719538346bbdf8b1367c59">fastLength</a> (genType x)</td></tr>
+<tr class="memdesc:gafe697d6287719538346bbdf8b1367c59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Faster than the common length function but less accurate.  <a href="a00942.html#gafe697d6287719538346bbdf8b1367c59">More...</a><br /></td></tr>
+<tr class="separator:gafe697d6287719538346bbdf8b1367c59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga90f66be92ef61e705c005e7b3209edb8"><td class="memTemplParams" colspan="2">template&lt;length_t L, typename T , qualifier Q&gt; </td></tr>
+<tr class="memitem:ga90f66be92ef61e705c005e7b3209edb8"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00942.html#ga90f66be92ef61e705c005e7b3209edb8">fastLength</a> (vec&lt; L, T, Q &gt; const &amp;x)</td></tr>
+<tr class="memdesc:ga90f66be92ef61e705c005e7b3209edb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Faster than the common length function but less accurate.  <a href="a00942.html#ga90f66be92ef61e705c005e7b3209edb8">More...</a><br /></td></tr>
+<tr class="separator:ga90f66be92ef61e705c005e7b3209edb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac0991240651a3f75792ff5de2e526b8c"><td class="memTemplParams" colspan="2">template&lt;typename genType &gt; </td></tr>
+<tr class="memitem:gac0991240651a3f75792ff5de2e526b8c"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL genType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00942.html#gac0991240651a3f75792ff5de2e526b8c">fastNormalize</a> (genType x)</td></tr>
+<tr class="memdesc:gac0991240651a3f75792ff5de2e526b8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Faster than the common normalize function but less accurate.  <a href="a00942.html#gac0991240651a3f75792ff5de2e526b8c">More...</a><br /></td></tr>
+<tr class="separator:gac0991240651a3f75792ff5de2e526b8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaab477221230a6e12a3b9e22e750c8928"><td class="memTemplParams" colspan="2">template&lt;length_t L, typename T , qualifier Q&gt; </td></tr>
+<tr class="memitem:gaab477221230a6e12a3b9e22e750c8928"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL vec&lt; L, T, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00942.html#gaab477221230a6e12a3b9e22e750c8928">fastNormalize</a> (vec&lt; L, T, Q &gt; const &amp;x)</td></tr>
+<tr class="memdesc:gaab477221230a6e12a3b9e22e750c8928"><td class="mdescLeft">&#160;</td><td class="mdescRight">Faster than the common normalize function but less accurate.  <a href="a00942.html#gaab477221230a6e12a3b9e22e750c8928">More...</a><br /></td></tr>
+<tr class="separator:gaab477221230a6e12a3b9e22e750c8928"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6c460e9414a50b2fc455c8f64c86cdc9"><td class="memTemplParams" colspan="2">template&lt;typename genType &gt; </td></tr>
+<tr class="memitem:ga6c460e9414a50b2fc455c8f64c86cdc9"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL genType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00942.html#ga6c460e9414a50b2fc455c8f64c86cdc9">fastSqrt</a> (genType x)</td></tr>
+<tr class="memdesc:ga6c460e9414a50b2fc455c8f64c86cdc9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Faster than the common sqrt function but less accurate.  <a href="a00942.html#ga6c460e9414a50b2fc455c8f64c86cdc9">More...</a><br /></td></tr>
+<tr class="separator:ga6c460e9414a50b2fc455c8f64c86cdc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae83f0c03614f73eae5478c5b6274ee6d"><td class="memTemplParams" colspan="2">template&lt;length_t L, typename T , qualifier Q&gt; </td></tr>
+<tr class="memitem:gae83f0c03614f73eae5478c5b6274ee6d"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL vec&lt; L, T, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00942.html#gae83f0c03614f73eae5478c5b6274ee6d">fastSqrt</a> (vec&lt; L, T, Q &gt; const &amp;x)</td></tr>
+<tr class="memdesc:gae83f0c03614f73eae5478c5b6274ee6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Faster than the common sqrt function but less accurate.  <a href="a00942.html#gae83f0c03614f73eae5478c5b6274ee6d">More...</a><br /></td></tr>
+<tr class="separator:gae83f0c03614f73eae5478c5b6274ee6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<p>Include &lt;<a class="el" href="a00650.html" title="GLM_GTX_log_base">glm/gtx/log_base.hpp</a>&gt; to use the features of this extension.</p>
-<p>Logarithm for any base. base can be a vector or a scalar. </p>
+<p>Include &lt;<a class="el" href="a00629.html" title="GLM_GTX_fast_square_root">glm/gtx/fast_square_root.hpp</a>&gt; to use the features of this extension.</p>
+<p>Fast but less accurate implementations of square root based functions.</p><ul>
+<li>Sqrt optimisation based on Newton's method, www.gamedev.net/community/forums/topic.asp?topic id=139956 </li>
+</ul>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ga60a7b0a401da660869946b2b77c710c9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga60a7b0a401da660869946b2b77c710c9">&#9670;&nbsp;</a></span>log()</h2>
+<a id="gaac333418d0c4e0cc6d3d219ed606c238"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaac333418d0c4e0cc6d3d219ed606c238">&#9670;&nbsp;</a></span>fastDistance() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">GLM_FUNC_DECL genType glm::log </td>
+          <td class="memname">GLM_FUNC_DECL genType glm::fastDistance </td>
           <td>(</td>
-          <td class="paramtype">genType const &amp;&#160;</td>
+          <td class="paramtype">genType&#160;</td>
           <td class="paramname"><em>x</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">genType const &amp;&#160;</td>
-          <td class="paramname"><em>base</em>&#160;</td>
+          <td class="paramtype">genType&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -110,19 +144,19 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Logarithm for any base. </p>
-<p>From GLM_GTX_log_base. </p>
+<p>Faster than the common distance function but less accurate. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00942.html">GLM_GTX_fast_square_root</a> extension. </dd></dl>
 
 </div>
 </div>
-<a id="ga04ef803a24f3d4f8c67dbccb33b0fce0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga04ef803a24f3d4f8c67dbccb33b0fce0">&#9670;&nbsp;</a></span>sign()</h2>
+<a id="ga42d3e771fa7cb3c60d828e315829df19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga42d3e771fa7cb3c60d828e315829df19">&#9670;&nbsp;</a></span>fastDistance() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">GLM_FUNC_DECL vec&lt;L, T, Q&gt; glm::sign </td>
+          <td class="memname">GLM_FUNC_DECL T glm::fastDistance </td>
           <td>(</td>
           <td class="paramtype">vec&lt; L, T, Q &gt; const &amp;&#160;</td>
           <td class="paramname"><em>x</em>, </td>
@@ -131,7 +165,7 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">vec&lt; L, T, Q &gt; const &amp;&#160;</td>
-          <td class="paramname"><em>base</em>&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -141,8 +175,176 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Logarithm for any base. </p>
-<p>From GLM_GTX_log_base. </p>
+<p>Faster than the common distance function but less accurate. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00942.html">GLM_GTX_fast_square_root</a> extension. </dd></dl>
+
+</div>
+</div>
+<a id="ga7f081b14d9c7035c8714eba5f7f75a8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga7f081b14d9c7035c8714eba5f7f75a8f">&#9670;&nbsp;</a></span>fastInverseSqrt() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GLM_FUNC_DECL genType glm::fastInverseSqrt </td>
+          <td>(</td>
+          <td class="paramtype">genType&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Faster than the common inversesqrt function but less accurate. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00942.html">GLM_GTX_fast_square_root</a> extension. </dd></dl>
+
+</div>
+</div>
+<a id="gadcd7be12b1e5ee182141359d4c45dd24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gadcd7be12b1e5ee182141359d4c45dd24">&#9670;&nbsp;</a></span>fastInverseSqrt() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GLM_FUNC_DECL vec&lt;L, T, Q&gt; glm::fastInverseSqrt </td>
+          <td>(</td>
+          <td class="paramtype">vec&lt; L, T, Q &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Faster than the common inversesqrt function but less accurate. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00942.html">GLM_GTX_fast_square_root</a> extension. </dd></dl>
+
+</div>
+</div>
+<a id="gafe697d6287719538346bbdf8b1367c59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gafe697d6287719538346bbdf8b1367c59">&#9670;&nbsp;</a></span>fastLength() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GLM_FUNC_DECL genType glm::fastLength </td>
+          <td>(</td>
+          <td class="paramtype">genType&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Faster than the common length function but less accurate. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00942.html">GLM_GTX_fast_square_root</a> extension. </dd></dl>
+
+</div>
+</div>
+<a id="ga90f66be92ef61e705c005e7b3209edb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga90f66be92ef61e705c005e7b3209edb8">&#9670;&nbsp;</a></span>fastLength() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GLM_FUNC_DECL T glm::fastLength </td>
+          <td>(</td>
+          <td class="paramtype">vec&lt; L, T, Q &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Faster than the common length function but less accurate. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00942.html">GLM_GTX_fast_square_root</a> extension. </dd></dl>
+
+</div>
+</div>
+<a id="gac0991240651a3f75792ff5de2e526b8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gac0991240651a3f75792ff5de2e526b8c">&#9670;&nbsp;</a></span>fastNormalize() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GLM_FUNC_DECL genType glm::fastNormalize </td>
+          <td>(</td>
+          <td class="paramtype">genType&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Faster than the common normalize function but less accurate. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00942.html">GLM_GTX_fast_square_root</a> extension. </dd></dl>
+
+</div>
+</div>
+<a id="gaab477221230a6e12a3b9e22e750c8928"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaab477221230a6e12a3b9e22e750c8928">&#9670;&nbsp;</a></span>fastNormalize() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GLM_FUNC_DECL vec&lt;L, T, Q&gt; glm::fastNormalize </td>
+          <td>(</td>
+          <td class="paramtype">vec&lt; L, T, Q &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Faster than the common normalize function but less accurate. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00942.html">GLM_GTX_fast_square_root</a> extension. </dd></dl>
+
+</div>
+</div>
+<a id="ga6c460e9414a50b2fc455c8f64c86cdc9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6c460e9414a50b2fc455c8f64c86cdc9">&#9670;&nbsp;</a></span>fastSqrt() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GLM_FUNC_DECL genType glm::fastSqrt </td>
+          <td>(</td>
+          <td class="paramtype">genType&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Faster than the common sqrt function but less accurate. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00942.html">GLM_GTX_fast_square_root</a> extension. </dd></dl>
+
+</div>
+</div>
+<a id="gae83f0c03614f73eae5478c5b6274ee6d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae83f0c03614f73eae5478c5b6274ee6d">&#9670;&nbsp;</a></span>fastSqrt() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GLM_FUNC_DECL vec&lt;L, T, Q&gt; glm::fastSqrt </td>
+          <td>(</td>
+          <td class="paramtype">vec&lt; L, T, Q &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Faster than the common sqrt function but less accurate. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00942.html">GLM_GTX_fast_square_root</a> extension. </dd></dl>
 
 </div>
 </div>

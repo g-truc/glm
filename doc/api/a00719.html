@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>1.0.0 API documentation: rotate_vector.hpp File Reference</title>
+<title>1.0.2 API documentation: raw_data.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo-mini.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">1.0.0 API documentation
+   <div id="projectname">1.0.2 API documentation
    </div>
   </td>
  </tr>
@@ -67,71 +67,37 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a>  </div>
+<a href="#typedef-members">Typedefs</a>  </div>
   <div class="headertitle">
-<div class="title">rotate_vector.hpp File Reference</div>  </div>
+<div class="title">raw_data.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="a00966.html">GLM_GTX_rotate_vector</a>  
+<p><a class="el" href="a00974.html">GLM_GTX_raw_data</a>  
 <a href="#details">More...</a></p>
 
 <p><a href="a00719_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:ga1a32fceb71962e6160e8af295c91930a"><td class="memTemplParams" colspan="2">template&lt;typename T , qualifier Q&gt; </td></tr>
-<tr class="memitem:ga1a32fceb71962e6160e8af295c91930a"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL mat&lt; 4, 4, T, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00966.html#ga1a32fceb71962e6160e8af295c91930a">orientation</a> (vec&lt; 3, T, Q &gt; const &amp;Normal, vec&lt; 3, T, Q &gt; const &amp;Up)</td></tr>
-<tr class="memdesc:ga1a32fceb71962e6160e8af295c91930a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build a rotation matrix from a normal and a up vector.  <a href="a00966.html#ga1a32fceb71962e6160e8af295c91930a">More...</a><br /></td></tr>
-<tr class="separator:ga1a32fceb71962e6160e8af295c91930a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab64a67b52ff4f86c3ba16595a5a25af6"><td class="memTemplParams" colspan="2">template&lt;typename T , qualifier Q&gt; </td></tr>
-<tr class="memitem:gab64a67b52ff4f86c3ba16595a5a25af6"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL vec&lt; 2, T, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00966.html#gab64a67b52ff4f86c3ba16595a5a25af6">rotate</a> (vec&lt; 2, T, Q &gt; const &amp;v, T const &amp;angle)</td></tr>
-<tr class="memdesc:gab64a67b52ff4f86c3ba16595a5a25af6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rotate a two dimensional vector.  <a href="a00966.html#gab64a67b52ff4f86c3ba16595a5a25af6">More...</a><br /></td></tr>
-<tr class="separator:gab64a67b52ff4f86c3ba16595a5a25af6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1ba501ef83d1a009a17ac774cc560f21"><td class="memTemplParams" colspan="2">template&lt;typename T , qualifier Q&gt; </td></tr>
-<tr class="memitem:ga1ba501ef83d1a009a17ac774cc560f21"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL vec&lt; 3, T, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00966.html#ga1ba501ef83d1a009a17ac774cc560f21">rotate</a> (vec&lt; 3, T, Q &gt; const &amp;v, T const &amp;angle, vec&lt; 3, T, Q &gt; const &amp;normal)</td></tr>
-<tr class="memdesc:ga1ba501ef83d1a009a17ac774cc560f21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rotate a three dimensional vector around an axis.  <a href="a00966.html#ga1ba501ef83d1a009a17ac774cc560f21">More...</a><br /></td></tr>
-<tr class="separator:ga1ba501ef83d1a009a17ac774cc560f21"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1005f1267ed9c57faa3f24cf6873b961"><td class="memTemplParams" colspan="2">template&lt;typename T , qualifier Q&gt; </td></tr>
-<tr class="memitem:ga1005f1267ed9c57faa3f24cf6873b961"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL vec&lt; 4, T, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00966.html#ga1005f1267ed9c57faa3f24cf6873b961">rotate</a> (vec&lt; 4, T, Q &gt; const &amp;v, T const &amp;angle, vec&lt; 3, T, Q &gt; const &amp;normal)</td></tr>
-<tr class="memdesc:ga1005f1267ed9c57faa3f24cf6873b961"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rotate a four dimensional vector around an axis.  <a href="a00966.html#ga1005f1267ed9c57faa3f24cf6873b961">More...</a><br /></td></tr>
-<tr class="separator:ga1005f1267ed9c57faa3f24cf6873b961"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga059fdbdba4cca35cdff172a9d0d0afc9"><td class="memTemplParams" colspan="2">template&lt;typename T , qualifier Q&gt; </td></tr>
-<tr class="memitem:ga059fdbdba4cca35cdff172a9d0d0afc9"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL vec&lt; 3, T, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00966.html#ga059fdbdba4cca35cdff172a9d0d0afc9">rotateX</a> (vec&lt; 3, T, Q &gt; const &amp;v, T const &amp;angle)</td></tr>
-<tr class="memdesc:ga059fdbdba4cca35cdff172a9d0d0afc9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rotate a three dimensional vector around the X axis.  <a href="a00966.html#ga059fdbdba4cca35cdff172a9d0d0afc9">More...</a><br /></td></tr>
-<tr class="separator:ga059fdbdba4cca35cdff172a9d0d0afc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4333b1ea8ebf1bd52bc3801a7617398a"><td class="memTemplParams" colspan="2">template&lt;typename T , qualifier Q&gt; </td></tr>
-<tr class="memitem:ga4333b1ea8ebf1bd52bc3801a7617398a"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL vec&lt; 4, T, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00966.html#ga4333b1ea8ebf1bd52bc3801a7617398a">rotateX</a> (vec&lt; 4, T, Q &gt; const &amp;v, T const &amp;angle)</td></tr>
-<tr class="memdesc:ga4333b1ea8ebf1bd52bc3801a7617398a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rotate a four dimensional vector around the X axis.  <a href="a00966.html#ga4333b1ea8ebf1bd52bc3801a7617398a">More...</a><br /></td></tr>
-<tr class="separator:ga4333b1ea8ebf1bd52bc3801a7617398a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaebdc8b054ace27d9f62e054531c6f44d"><td class="memTemplParams" colspan="2">template&lt;typename T , qualifier Q&gt; </td></tr>
-<tr class="memitem:gaebdc8b054ace27d9f62e054531c6f44d"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL vec&lt; 3, T, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00966.html#gaebdc8b054ace27d9f62e054531c6f44d">rotateY</a> (vec&lt; 3, T, Q &gt; const &amp;v, T const &amp;angle)</td></tr>
-<tr class="memdesc:gaebdc8b054ace27d9f62e054531c6f44d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rotate a three dimensional vector around the Y axis.  <a href="a00966.html#gaebdc8b054ace27d9f62e054531c6f44d">More...</a><br /></td></tr>
-<tr class="separator:gaebdc8b054ace27d9f62e054531c6f44d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3ce3db0867b7f8efd878ee34f95a623b"><td class="memTemplParams" colspan="2">template&lt;typename T , qualifier Q&gt; </td></tr>
-<tr class="memitem:ga3ce3db0867b7f8efd878ee34f95a623b"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL vec&lt; 4, T, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00966.html#ga3ce3db0867b7f8efd878ee34f95a623b">rotateY</a> (vec&lt; 4, T, Q &gt; const &amp;v, T const &amp;angle)</td></tr>
-<tr class="memdesc:ga3ce3db0867b7f8efd878ee34f95a623b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rotate a four dimensional vector around the Y axis.  <a href="a00966.html#ga3ce3db0867b7f8efd878ee34f95a623b">More...</a><br /></td></tr>
-<tr class="separator:ga3ce3db0867b7f8efd878ee34f95a623b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5a048838a03f6249acbacb4dbacf79c4"><td class="memTemplParams" colspan="2">template&lt;typename T , qualifier Q&gt; </td></tr>
-<tr class="memitem:ga5a048838a03f6249acbacb4dbacf79c4"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL vec&lt; 3, T, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00966.html#ga5a048838a03f6249acbacb4dbacf79c4">rotateZ</a> (vec&lt; 3, T, Q &gt; const &amp;v, T const &amp;angle)</td></tr>
-<tr class="memdesc:ga5a048838a03f6249acbacb4dbacf79c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rotate a three dimensional vector around the Z axis.  <a href="a00966.html#ga5a048838a03f6249acbacb4dbacf79c4">More...</a><br /></td></tr>
-<tr class="separator:ga5a048838a03f6249acbacb4dbacf79c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga923b75c6448161053768822d880702e6"><td class="memTemplParams" colspan="2">template&lt;typename T , qualifier Q&gt; </td></tr>
-<tr class="memitem:ga923b75c6448161053768822d880702e6"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL vec&lt; 4, T, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00966.html#ga923b75c6448161053768822d880702e6">rotateZ</a> (vec&lt; 4, T, Q &gt; const &amp;v, T const &amp;angle)</td></tr>
-<tr class="memdesc:ga923b75c6448161053768822d880702e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rotate a four dimensional vector around the Z axis.  <a href="a00966.html#ga923b75c6448161053768822d880702e6">More...</a><br /></td></tr>
-<tr class="separator:ga923b75c6448161053768822d880702e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8b11b18ce824174ea1a5a69ea14e2cee"><td class="memTemplParams" colspan="2">template&lt;typename T , qualifier Q&gt; </td></tr>
-<tr class="memitem:ga8b11b18ce824174ea1a5a69ea14e2cee"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL vec&lt; 3, T, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00966.html#ga8b11b18ce824174ea1a5a69ea14e2cee">slerp</a> (vec&lt; 3, T, Q &gt; const &amp;x, vec&lt; 3, T, Q &gt; const &amp;y, T const &amp;a)</td></tr>
-<tr class="memdesc:ga8b11b18ce824174ea1a5a69ea14e2cee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns Spherical interpolation between two vectors.  <a href="a00966.html#ga8b11b18ce824174ea1a5a69ea14e2cee">More...</a><br /></td></tr>
-<tr class="separator:ga8b11b18ce824174ea1a5a69ea14e2cee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:ga3005cb0d839d546c616becfa6602c607"><td class="memItemLeft" align="right" valign="top">typedef detail::uint8&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00974.html#ga3005cb0d839d546c616becfa6602c607">byte</a></td></tr>
+<tr class="memdesc:ga3005cb0d839d546c616becfa6602c607"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type for byte numbers.  <a href="a00974.html#ga3005cb0d839d546c616becfa6602c607">More...</a><br /></td></tr>
+<tr class="separator:ga3005cb0d839d546c616becfa6602c607"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga86e46fff9f80ae33893d8d697f2ca98a"><td class="memItemLeft" align="right" valign="top">typedef detail::uint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00974.html#ga86e46fff9f80ae33893d8d697f2ca98a">dword</a></td></tr>
+<tr class="memdesc:ga86e46fff9f80ae33893d8d697f2ca98a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type for dword numbers.  <a href="a00974.html#ga86e46fff9f80ae33893d8d697f2ca98a">More...</a><br /></td></tr>
+<tr class="separator:ga86e46fff9f80ae33893d8d697f2ca98a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4021754ffb8e5ef14c75802b15657714"><td class="memItemLeft" align="right" valign="top">typedef detail::uint64&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00974.html#ga4021754ffb8e5ef14c75802b15657714">qword</a></td></tr>
+<tr class="memdesc:ga4021754ffb8e5ef14c75802b15657714"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type for qword numbers.  <a href="a00974.html#ga4021754ffb8e5ef14c75802b15657714">More...</a><br /></td></tr>
+<tr class="separator:ga4021754ffb8e5ef14c75802b15657714"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga16e9fea0ef1e6c4ef472d3d1731c49a5"><td class="memItemLeft" align="right" valign="top">typedef detail::uint16&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00974.html#ga16e9fea0ef1e6c4ef472d3d1731c49a5">word</a></td></tr>
+<tr class="memdesc:ga16e9fea0ef1e6c4ef472d3d1731c49a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type for word numbers.  <a href="a00974.html#ga16e9fea0ef1e6c4ef472d3d1731c49a5">More...</a><br /></td></tr>
+<tr class="separator:ga16e9fea0ef1e6c4ef472d3d1731c49a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="a00966.html">GLM_GTX_rotate_vector</a> </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00889.html" title="Features that implement in C++ the GLSL specification as closely as possible.">Core features</a> (dependence) </dd>
-<dd>
-<a class="el" href="a00973.html">GLM_GTX_transform</a> (dependence) </dd></dl>
+<div class="textblock"><p><a class="el" href="a00974.html">GLM_GTX_raw_data</a> </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00898.html" title="Features that implement in C++ the GLSL specification as closely as possible.">Core features</a> (dependence) </dd></dl>
 
-<p class="definition">Definition in file <a class="el" href="a00719_source.html">rotate_vector.hpp</a>.</p>
+<p class="definition">Definition in file <a class="el" href="a00719_source.html">raw_data.hpp</a>.</p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
