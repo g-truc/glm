@@ -245,6 +245,7 @@
 #include "./gtx/raw_data.hpp"
 #include "./gtx/rotate_normalized_axis.hpp"
 #include "./gtx/rotate_vector.hpp"
+#include "./gtx/span.hpp"
 #include "./gtx/spline.hpp"
 #include "./gtx/std_based_type.hpp"
 #if !((GLM_COMPILER & GLM_COMPILER_CUDA) || (GLM_COMPILER & GLM_COMPILER_HIP))
