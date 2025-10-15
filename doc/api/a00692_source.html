@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>1.0.0 API documentation: optimum_pow.hpp Source File</title>
+<title>1.0.2 API documentation: normalize_dot.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo-mini.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">1.0.0 API documentation
+   <div id="projectname">1.0.2 API documentation
    </div>
   </td>
  </tr>
@@ -67,40 +67,36 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">optimum_pow.hpp</div>  </div>
+<div class="title">normalize_dot.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
 <a href="a00692.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">// Dependency:</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;../glm.hpp&quot;</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#ifndef GLM_ENABLE_EXPERIMENTAL</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#       error &quot;GLM: GLM_GTX_optimum_pow is an experimental extension and may change in the future. Use #define GLM_ENABLE_EXPERIMENTAL before including it, if you really want to use it.&quot;</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#elif GLM_MESSAGES == GLM_ENABLE &amp;&amp; !defined(GLM_EXT_INCLUDED)</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#       pragma message(&quot;GLM: GLM_GTX_optimum_pow extension included&quot;)</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">namespace </span>glm</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;{</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> genType&gt;</div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="a00956.html#ga7288d7bb23f192bd64a60ba2a61a1c9f">   33</a></span>&#160;        GLM_FUNC_DECL genType <a class="code" href="a00956.html#ga7288d7bb23f192bd64a60ba2a61a1c9f">pow2</a>(genType <span class="keyword">const</span>&amp; x);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> genType&gt;</div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="a00956.html#ga156e452c2d630001bb07f4a6f1060a10">   39</a></span>&#160;        GLM_FUNC_DECL genType <a class="code" href="a00956.html#ga156e452c2d630001bb07f4a6f1060a10">pow3</a>(genType <span class="keyword">const</span>&amp; x);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> genType&gt;</div>
-<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="a00956.html#ga830b64f3b47818374e9d03cc20fadbf3">   45</a></span>&#160;        GLM_FUNC_DECL genType <a class="code" href="a00956.html#ga830b64f3b47818374e9d03cc20fadbf3">pow4</a>(genType <span class="keyword">const</span>&amp; x);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">// Dependency:</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;../gtx/fast_square_root.hpp&quot;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#ifndef GLM_ENABLE_EXPERIMENTAL</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#       error &quot;GLM: GLM_GTX_normalize_dot is an experimental extension and may change in the future. Use #define GLM_ENABLE_EXPERIMENTAL before including it, if you really want to use it.&quot;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#elif GLM_MESSAGES == GLM_ENABLE &amp;&amp; !defined(GLM_EXT_INCLUDED)</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#       pragma message(&quot;GLM: GLM_GTX_normalize_dot extension included&quot;)</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">namespace </span>glm</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;{</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keyword">template</span>&lt;length_t L, <span class="keyword">typename</span> T, qualifier Q&gt;</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="a00964.html#gacb140a2b903115d318c8b0a2fb5a5daa">   35</a></span>&#160;        GLM_FUNC_DECL T <a class="code" href="a00964.html#gacb140a2b903115d318c8b0a2fb5a5daa">normalizeDot</a>(vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; x, vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; y);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keyword">template</span>&lt;length_t L, <span class="keyword">typename</span> T, qualifier Q&gt;</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="a00964.html#ga2746fb9b5bd22b06b2f7c8babba5de9e">   42</a></span>&#160;        GLM_FUNC_DECL T <a class="code" href="a00964.html#ga2746fb9b5bd22b06b2f7c8babba5de9e">fastNormalizeDot</a>(vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; x, vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; y);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}<span class="comment">//namespace glm</span></div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;}<span class="comment">//namespace glm</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#include &quot;optimum_pow.inl&quot;</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#include &quot;normalize_dot.inl&quot;</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aa00956_html_ga7288d7bb23f192bd64a60ba2a61a1c9f"><div class="ttname"><a href="a00956.html#ga7288d7bb23f192bd64a60ba2a61a1c9f">glm::pow2</a></div><div class="ttdeci">GLM_FUNC_DECL genType pow2(genType const &amp;x)</div><div class="ttdoc">Returns x raised to the power of 2.</div></div>
-<div class="ttc" id="aa00956_html_ga156e452c2d630001bb07f4a6f1060a10"><div class="ttname"><a href="a00956.html#ga156e452c2d630001bb07f4a6f1060a10">glm::pow3</a></div><div class="ttdeci">GLM_FUNC_DECL genType pow3(genType const &amp;x)</div><div class="ttdoc">Returns x raised to the power of 3.</div></div>
-<div class="ttc" id="aa00956_html_ga830b64f3b47818374e9d03cc20fadbf3"><div class="ttname"><a href="a00956.html#ga830b64f3b47818374e9d03cc20fadbf3">glm::pow4</a></div><div class="ttdeci">GLM_FUNC_DECL genType pow4(genType const &amp;x)</div><div class="ttdoc">Returns x raised to the power of 4.</div></div>
+<div class="ttc" id="aa00964_html_ga2746fb9b5bd22b06b2f7c8babba5de9e"><div class="ttname"><a href="a00964.html#ga2746fb9b5bd22b06b2f7c8babba5de9e">glm::fastNormalizeDot</a></div><div class="ttdeci">GLM_FUNC_DECL T fastNormalizeDot(vec&lt; L, T, Q &gt; const &amp;x, vec&lt; L, T, Q &gt; const &amp;y)</div><div class="ttdoc">Normalize parameters and returns the dot product of x and y.</div></div>
+<div class="ttc" id="aa00964_html_gacb140a2b903115d318c8b0a2fb5a5daa"><div class="ttname"><a href="a00964.html#gacb140a2b903115d318c8b0a2fb5a5daa">glm::normalizeDot</a></div><div class="ttdeci">GLM_FUNC_DECL T normalizeDot(vec&lt; L, T, Q &gt; const &amp;x, vec&lt; L, T, Q &gt; const &amp;y)</div><div class="ttdoc">Normalize parameters and returns the dot product of x and y.</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

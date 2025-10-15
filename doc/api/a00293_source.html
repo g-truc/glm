@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>1.0.0 API documentation: matrix_uint3x3.hpp Source File</title>
+<title>1.0.2 API documentation: matrix_uint3x2_sized.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo-mini.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">1.0.0 API documentation
+   <div id="projectname">1.0.2 API documentation
    </div>
   </td>
  </tr>
@@ -67,30 +67,37 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">matrix_uint3x3.hpp</div>  </div>
+<div class="title">matrix_uint3x2_sized.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
 <a href="a00293.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">// Dependency:</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;../mat3x3.hpp&quot;</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#if GLM_MESSAGES == GLM_ENABLE &amp;&amp; !defined(GLM_EXT_INCLUDED)</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#       pragma message(&quot;GLM: GLM_EXT_matrix_uint3x3 extension included&quot;)</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">namespace </span>glm</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;{</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="a00837.html#gaebb9027bcbaeb05e0678a00f03d2c312">   30</a></span>&#160;        <span class="keyword">typedef</span> mat&lt;3, 3, uint, defaultp&gt;       <a class="code" href="a00837.html#gaebb9027bcbaeb05e0678a00f03d2c312">umat3x3</a>;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="a00837.html#gaffdc395cb4be217d92a17235e8e0fc99">   35</a></span>&#160;        <span class="keyword">typedef</span> mat&lt;3, 3, uint, defaultp&gt;       <a class="code" href="a00837.html#gaffdc395cb4be217d92a17235e8e0fc99">umat3</a>;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}<span class="comment">//namespace glm</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;../mat3x2.hpp&quot;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;../ext/scalar_uint_sized.hpp&quot;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#if GLM_MESSAGES == GLM_ENABLE &amp;&amp; !defined(GLM_EXT_INCLUDED)</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#       pragma message(&quot;GLM: GLM_EXT_matrix_uint3x2_sized extension included&quot;)</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">namespace </span>glm</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;{</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="a00845.html#ga61551e90468eb24390b045e6733fa9b4">   31</a></span>&#160;        <span class="keyword">typedef</span> mat&lt;3, 2, uint8, defaultp&gt;                              <a class="code" href="a00845.html#ga61551e90468eb24390b045e6733fa9b4">u8mat3x2</a>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="a00845.html#ga3311ce83a726e0153773bc42683434ed">   36</a></span>&#160;        <span class="keyword">typedef</span> mat&lt;3, 2, uint16, defaultp&gt;                             <a class="code" href="a00845.html#ga3311ce83a726e0153773bc42683434ed">u16mat3x2</a>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="a00845.html#ga3ef030ce44dbd2e68bd12f1f7d47d242">   41</a></span>&#160;        <span class="keyword">typedef</span> mat&lt;3, 2, uint32, defaultp&gt;                             <a class="code" href="a00845.html#ga3ef030ce44dbd2e68bd12f1f7d47d242">u32mat3x2</a>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="a00845.html#ga4dc2fdfe9a3d2461101e017e1a24fef6">   46</a></span>&#160;        <span class="keyword">typedef</span> mat&lt;3, 2, uint64, defaultp&gt;                             <a class="code" href="a00845.html#ga4dc2fdfe9a3d2461101e017e1a24fef6">u64mat3x2</a>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}<span class="comment">//namespace glm</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aa00837_html_gaebb9027bcbaeb05e0678a00f03d2c312"><div class="ttname"><a href="a00837.html#gaebb9027bcbaeb05e0678a00f03d2c312">glm::umat3x3</a></div><div class="ttdeci">mat&lt; 3, 3, uint, defaultp &gt; umat3x3</div><div class="ttdoc">Unsigned integer 3x3 matrix.</div><div class="ttdef"><b>Definition:</b> <a href="a00293_source.html#l00030">matrix_uint3x3.hpp:30</a></div></div>
-<div class="ttc" id="aa00837_html_gaffdc395cb4be217d92a17235e8e0fc99"><div class="ttname"><a href="a00837.html#gaffdc395cb4be217d92a17235e8e0fc99">glm::umat3</a></div><div class="ttdeci">mat&lt; 3, 3, uint, defaultp &gt; umat3</div><div class="ttdoc">Unsigned integer 3x3 matrix.</div><div class="ttdef"><b>Definition:</b> <a href="a00293_source.html#l00035">matrix_uint3x3.hpp:35</a></div></div>
+<div class="ttc" id="aa00845_html_ga61551e90468eb24390b045e6733fa9b4"><div class="ttname"><a href="a00845.html#ga61551e90468eb24390b045e6733fa9b4">glm::u8mat3x2</a></div><div class="ttdeci">mat&lt; 3, 2, uint8, defaultp &gt; u8mat3x2</div><div class="ttdoc">8 bit signed integer 3x2 matrix.</div><div class="ttdef"><b>Definition:</b> <a href="a00293_source.html#l00031">matrix_uint3x2_sized.hpp:31</a></div></div>
+<div class="ttc" id="aa00845_html_ga4dc2fdfe9a3d2461101e017e1a24fef6"><div class="ttname"><a href="a00845.html#ga4dc2fdfe9a3d2461101e017e1a24fef6">glm::u64mat3x2</a></div><div class="ttdeci">mat&lt; 3, 2, uint64, defaultp &gt; u64mat3x2</div><div class="ttdoc">64 bit signed integer 3x2 matrix.</div><div class="ttdef"><b>Definition:</b> <a href="a00293_source.html#l00046">matrix_uint3x2_sized.hpp:46</a></div></div>
+<div class="ttc" id="aa00845_html_ga3311ce83a726e0153773bc42683434ed"><div class="ttname"><a href="a00845.html#ga3311ce83a726e0153773bc42683434ed">glm::u16mat3x2</a></div><div class="ttdeci">mat&lt; 3, 2, uint16, defaultp &gt; u16mat3x2</div><div class="ttdoc">16 bit signed integer 3x2 matrix.</div><div class="ttdef"><b>Definition:</b> <a href="a00293_source.html#l00036">matrix_uint3x2_sized.hpp:36</a></div></div>
+<div class="ttc" id="aa00845_html_ga3ef030ce44dbd2e68bd12f1f7d47d242"><div class="ttname"><a href="a00845.html#ga3ef030ce44dbd2e68bd12f1f7d47d242">glm::u32mat3x2</a></div><div class="ttdeci">mat&lt; 3, 2, uint32, defaultp &gt; u32mat3x2</div><div class="ttdoc">32 bit signed integer 3x2 matrix.</div><div class="ttdef"><b>Definition:</b> <a href="a00293_source.html#l00041">matrix_uint3x2_sized.hpp:41</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>1.0.0 API documentation: quaternion_exponential.hpp Source File</title>
+<title>1.0.2 API documentation: quaternion_double_precision.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo-mini.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">1.0.0 API documentation
+   <div id="projectname">1.0.2 API documentation
    </div>
   </td>
  </tr>
@@ -67,45 +67,34 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">quaternion_exponential.hpp</div>  </div>
+<div class="title">quaternion_double_precision.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
 <a href="a00332.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">// Dependency:</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;../common.hpp&quot;</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;../trigonometric.hpp&quot;</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;../geometric.hpp&quot;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;../ext/scalar_constants.hpp&quot;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#if GLM_MESSAGES == GLM_ENABLE &amp;&amp; !defined(GLM_EXT_INCLUDED)</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#       pragma message(&quot;GLM: GLM_EXT_quaternion_exponential extension included&quot;)</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">namespace </span>glm</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;{</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, qualifier Q&gt;</div>
-<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="a00855.html#gaab2d37ef7265819f1d2939b9dc2c52ac">   37</a></span>&#160;        GLM_FUNC_DECL qua&lt;T, Q&gt; <a class="code" href="a00855.html#gaab2d37ef7265819f1d2939b9dc2c52ac">exp</a>(qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; q);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, qualifier Q&gt;</div>
-<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="a00855.html#gaa5f7b20e296671b16ce25a2ab7ad5473">   44</a></span>&#160;        GLM_FUNC_DECL qua&lt;T, Q&gt; <a class="code" href="a00855.html#gaa5f7b20e296671b16ce25a2ab7ad5473">log</a>(qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; q);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, qualifier Q&gt;</div>
-<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="a00855.html#ga4975ffcacd312a8c0bbd046a76c5607e">   51</a></span>&#160;        GLM_FUNC_DECL qua&lt;T, Q&gt; <a class="code" href="a00855.html#ga4975ffcacd312a8c0bbd046a76c5607e">pow</a>(qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; q, T y);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, qualifier Q&gt;</div>
-<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="a00855.html#ga64b7b255ed7bcba616fe6b44470b022e">   58</a></span>&#160;        GLM_FUNC_DECL qua&lt;T, Q&gt; <a class="code" href="a00855.html#ga64b7b255ed7bcba616fe6b44470b022e">sqrt</a>(qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; q);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;} <span class="comment">//namespace glm</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#include &quot;quaternion_exponential.inl&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">// Dependency:</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;../detail/type_quat.hpp&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#if GLM_MESSAGES == GLM_ENABLE &amp;&amp; !defined(GLM_EXT_INCLUDED)</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#       pragma message(&quot;GLM: GLM_EXT_quaternion_double_precision extension included&quot;)</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">namespace </span>glm</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;{</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="a00858.html#ga9e6e5f42e67dd5877350ba485c191f1c">   28</a></span>&#160;        <span class="keyword">typedef</span> qua&lt;double, lowp&gt;               <a class="code" href="a00858.html#ga9e6e5f42e67dd5877350ba485c191f1c">lowp_dquat</a>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="a00858.html#gacdf73b1f7fd8f5a0c79a3934e99c1a14">   33</a></span>&#160;        <span class="keyword">typedef</span> qua&lt;double, mediump&gt;    <a class="code" href="a00858.html#gacdf73b1f7fd8f5a0c79a3934e99c1a14">mediump_dquat</a>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="a00858.html#gaf13a25f41afc03480b40fc71bd249cec">   38</a></span>&#160;        <span class="keyword">typedef</span> qua&lt;double, highp&gt;              <a class="code" href="a00858.html#gaf13a25f41afc03480b40fc71bd249cec">highp_dquat</a>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;} <span class="comment">//namespace glm</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aa00855_html_ga4975ffcacd312a8c0bbd046a76c5607e"><div class="ttname"><a href="a00855.html#ga4975ffcacd312a8c0bbd046a76c5607e">glm::pow</a></div><div class="ttdeci">GLM_FUNC_DECL qua&lt; T, Q &gt; pow(qua&lt; T, Q &gt; const &amp;q, T y)</div><div class="ttdoc">Returns a quaternion raised to a power.</div></div>
-<div class="ttc" id="aa00855_html_gaa5f7b20e296671b16ce25a2ab7ad5473"><div class="ttname"><a href="a00855.html#gaa5f7b20e296671b16ce25a2ab7ad5473">glm::log</a></div><div class="ttdeci">GLM_FUNC_DECL qua&lt; T, Q &gt; log(qua&lt; T, Q &gt; const &amp;q)</div><div class="ttdoc">Returns a logarithm of a quaternion.</div></div>
-<div class="ttc" id="aa00855_html_gaab2d37ef7265819f1d2939b9dc2c52ac"><div class="ttname"><a href="a00855.html#gaab2d37ef7265819f1d2939b9dc2c52ac">glm::exp</a></div><div class="ttdeci">GLM_FUNC_DECL qua&lt; T, Q &gt; exp(qua&lt; T, Q &gt; const &amp;q)</div><div class="ttdoc">Returns a exponential of a quaternion.</div></div>
-<div class="ttc" id="aa00855_html_ga64b7b255ed7bcba616fe6b44470b022e"><div class="ttname"><a href="a00855.html#ga64b7b255ed7bcba616fe6b44470b022e">glm::sqrt</a></div><div class="ttdeci">GLM_FUNC_DECL qua&lt; T, Q &gt; sqrt(qua&lt; T, Q &gt; const &amp;q)</div><div class="ttdoc">Returns the square root of a quaternion.</div></div>
+<div class="ttc" id="aa00858_html_gaf13a25f41afc03480b40fc71bd249cec"><div class="ttname"><a href="a00858.html#gaf13a25f41afc03480b40fc71bd249cec">glm::highp_dquat</a></div><div class="ttdeci">qua&lt; double, highp &gt; highp_dquat</div><div class="ttdoc">Quaternion of high double-qualifier floating-point numbers using high precision arithmetic in term of...</div><div class="ttdef"><b>Definition:</b> <a href="a00332_source.html#l00038">quaternion_double_precision.hpp:38</a></div></div>
+<div class="ttc" id="aa00858_html_gacdf73b1f7fd8f5a0c79a3934e99c1a14"><div class="ttname"><a href="a00858.html#gacdf73b1f7fd8f5a0c79a3934e99c1a14">glm::mediump_dquat</a></div><div class="ttdeci">qua&lt; double, mediump &gt; mediump_dquat</div><div class="ttdoc">Quaternion of medium double-qualifier floating-point numbers using high precision arithmetic in term ...</div><div class="ttdef"><b>Definition:</b> <a href="a00332_source.html#l00033">quaternion_double_precision.hpp:33</a></div></div>
+<div class="ttc" id="aa00858_html_ga9e6e5f42e67dd5877350ba485c191f1c"><div class="ttname"><a href="a00858.html#ga9e6e5f42e67dd5877350ba485c191f1c">glm::lowp_dquat</a></div><div class="ttdeci">qua&lt; double, lowp &gt; lowp_dquat</div><div class="ttdoc">Quaternion of double-precision floating-point numbers using high precision arithmetic in term of ULPs...</div><div class="ttdef"><b>Definition:</b> <a href="a00332_source.html#l00028">quaternion_double_precision.hpp:28</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

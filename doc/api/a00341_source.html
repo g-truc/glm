@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>1.0.0 API documentation: quaternion_geometric.hpp Source File</title>
+<title>1.0.2 API documentation: quaternion_float_precision.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo-mini.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">1.0.0 API documentation
+   <div id="projectname">1.0.2 API documentation
    </div>
   </td>
  </tr>
@@ -67,44 +67,34 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">quaternion_geometric.hpp</div>  </div>
+<div class="title">quaternion_float_precision.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
 <a href="a00341.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">// Dependency:</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;../geometric.hpp&quot;</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;../exponential.hpp&quot;</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;../ext/vector_relational.hpp&quot;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#if GLM_MESSAGES == GLM_ENABLE &amp;&amp; !defined(GLM_EXT_INCLUDED)</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#       pragma message(&quot;GLM: GLM_EXT_quaternion_geometric extension included&quot;)</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">namespace </span>glm</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;{</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">// Dependency:</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;../detail/type_quat.hpp&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#if GLM_MESSAGES == GLM_ENABLE &amp;&amp; !defined(GLM_EXT_INCLUDED)</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#       pragma message(&quot;GLM: GLM_EXT_quaternion_float_precision extension included&quot;)</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">namespace </span>glm</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;{</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="a00861.html#gade62c5316c1c11a79c34c00c189558eb">   26</a></span>&#160;        <span class="keyword">typedef</span> qua&lt;float, lowp&gt;                <a class="code" href="a00861.html#gade62c5316c1c11a79c34c00c189558eb">lowp_quat</a>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="a00861.html#gad2a59409de1bb12ccb6eb692ee7e9d8d">   29</a></span>&#160;        <span class="keyword">typedef</span> qua&lt;float, mediump&gt;             <a class="code" href="a00861.html#gad2a59409de1bb12ccb6eb692ee7e9d8d">mediump_quat</a>;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, qualifier Q&gt;</div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="a00853.html#gab703732449be6c7199369b3f9a91ed38">   38</a></span>&#160;        GLM_FUNC_DECL T <a class="code" href="a00853.html#gab703732449be6c7199369b3f9a91ed38">length</a>(qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; q);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, qualifier Q&gt;</div>
-<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="a00853.html#gabf30e3263fffe8dcc6659aea76ae8927">   47</a></span>&#160;        GLM_FUNC_DECL qua&lt;T, Q&gt; <a class="code" href="a00853.html#gabf30e3263fffe8dcc6659aea76ae8927">normalize</a>(qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; q);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, qualifier Q&gt;</div>
-<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="a00853.html#gadaab7b4495755b4102838d7834cd9544">   56</a></span>&#160;        GLM_FUNC_DECL GLM_CONSTEXPR T <a class="code" href="a00853.html#gadaab7b4495755b4102838d7834cd9544">dot</a>(qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; x, qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; y);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, qualifier Q&gt;</div>
-<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="a00853.html#ga9a47ad9ca44bc04eeaac260d42105134">   65</a></span>&#160;        GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua&lt;T, Q&gt; <a class="code" href="a00853.html#ga9a47ad9ca44bc04eeaac260d42105134">cross</a>(qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; q1, qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; q2);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;} <span class="comment">//namespace glm</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#include &quot;quaternion_geometric.inl&quot;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="a00861.html#gaa2fd8085774376310aeb80588e0eab6e">   32</a></span>&#160;        <span class="keyword">typedef</span> qua&lt;float, highp&gt;               <a class="code" href="a00861.html#gaa2fd8085774376310aeb80588e0eab6e">highp_quat</a>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;} <span class="comment">//namespace glm</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aa00853_html_ga9a47ad9ca44bc04eeaac260d42105134"><div class="ttname"><a href="a00853.html#ga9a47ad9ca44bc04eeaac260d42105134">glm::cross</a></div><div class="ttdeci">GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua&lt; T, Q &gt; cross(qua&lt; T, Q &gt; const &amp;q1, qua&lt; T, Q &gt; const &amp;q2)</div><div class="ttdoc">Compute a cross product.</div></div>
-<div class="ttc" id="aa00853_html_gadaab7b4495755b4102838d7834cd9544"><div class="ttname"><a href="a00853.html#gadaab7b4495755b4102838d7834cd9544">glm::dot</a></div><div class="ttdeci">GLM_FUNC_DECL GLM_CONSTEXPR T dot(qua&lt; T, Q &gt; const &amp;x, qua&lt; T, Q &gt; const &amp;y)</div><div class="ttdoc">Returns dot product of q1 and q2, i.e., q1[0] * q2[0] + q1[1] * q2[1] + ...</div></div>
-<div class="ttc" id="aa00853_html_gab703732449be6c7199369b3f9a91ed38"><div class="ttname"><a href="a00853.html#gab703732449be6c7199369b3f9a91ed38">glm::length</a></div><div class="ttdeci">GLM_FUNC_DECL T length(qua&lt; T, Q &gt; const &amp;q)</div><div class="ttdoc">Returns the norm of a quaternions.</div></div>
-<div class="ttc" id="aa00853_html_gabf30e3263fffe8dcc6659aea76ae8927"><div class="ttname"><a href="a00853.html#gabf30e3263fffe8dcc6659aea76ae8927">glm::normalize</a></div><div class="ttdeci">GLM_FUNC_DECL qua&lt; T, Q &gt; normalize(qua&lt; T, Q &gt; const &amp;q)</div><div class="ttdoc">Returns the normalized quaternion.</div></div>
+<div class="ttc" id="aa00861_html_gade62c5316c1c11a79c34c00c189558eb"><div class="ttname"><a href="a00861.html#gade62c5316c1c11a79c34c00c189558eb">glm::lowp_quat</a></div><div class="ttdeci">qua&lt; float, lowp &gt; lowp_quat</div><div class="ttdoc">Quaternion of single-precision floating-point numbers using high precision arithmetic in term of ULPs...</div><div class="ttdef"><b>Definition:</b> <a href="a00341_source.html#l00026">quaternion_float_precision.hpp:26</a></div></div>
+<div class="ttc" id="aa00861_html_gad2a59409de1bb12ccb6eb692ee7e9d8d"><div class="ttname"><a href="a00861.html#gad2a59409de1bb12ccb6eb692ee7e9d8d">glm::mediump_quat</a></div><div class="ttdeci">qua&lt; float, mediump &gt; mediump_quat</div><div class="ttdoc">Quaternion of single-precision floating-point numbers using high precision arithmetic in term of ULPs...</div><div class="ttdef"><b>Definition:</b> <a href="a00341_source.html#l00029">quaternion_float_precision.hpp:29</a></div></div>
+<div class="ttc" id="aa00861_html_gaa2fd8085774376310aeb80588e0eab6e"><div class="ttname"><a href="a00861.html#gaa2fd8085774376310aeb80588e0eab6e">glm::highp_quat</a></div><div class="ttdeci">qua&lt; float, highp &gt; highp_quat</div><div class="ttdoc">Quaternion of single-precision floating-point numbers using high precision arithmetic in term of ULPs...</div><div class="ttdef"><b>Definition:</b> <a href="a00341_source.html#l00032">quaternion_float_precision.hpp:32</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

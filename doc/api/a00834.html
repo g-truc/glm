@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>1.0.0 API documentation: GLM_EXT_matrix_uint2x4_sized</title>
+<title>1.0.2 API documentation: GLM_EXT_matrix_integer</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo-mini.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">1.0.0 API documentation
+   <div id="projectname">1.0.2 API documentation
    </div>
   </td>
  </tr>
@@ -63,104 +63,232 @@ $(function() {
 
 <div class="header">
   <div class="summary">
-<a href="#typedef-members">Typedefs</a>  </div>
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">GLM_EXT_matrix_uint2x4_sized<div class="ingroups"><a class="el" href="a00894.html">Stable extensions</a></div></div>  </div>
+<div class="title">GLM_EXT_matrix_integer<div class="ingroups"><a class="el" href="a00903.html">Stable extensions</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:ga055726c5e617b57196bb8f4c695f5728"><td class="memItemLeft" align="right" valign="top">typedef mat&lt; 2, 4, <a class="el" href="a00864.html#ga05f6b0ae8f6a6e135b0e290c25fe0e4e">uint16</a>, defaultp &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00834.html#ga055726c5e617b57196bb8f4c695f5728">u16mat2x4</a></td></tr>
-<tr class="memdesc:ga055726c5e617b57196bb8f4c695f5728"><td class="mdescLeft">&#160;</td><td class="mdescRight">16 bit unsigned integer 2x4 matrix.  <a href="a00834.html#ga055726c5e617b57196bb8f4c695f5728">More...</a><br /></td></tr>
-<tr class="separator:ga055726c5e617b57196bb8f4c695f5728"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga544507f62e26969e98ce9a6afb5d2cad"><td class="memItemLeft" align="right" valign="top">typedef mat&lt; 2, 4, <a class="el" href="a00864.html#ga1134b580f8da4de94ca6b1de4d37975e">uint32</a>, defaultp &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00834.html#ga544507f62e26969e98ce9a6afb5d2cad">u32mat2x4</a></td></tr>
-<tr class="memdesc:ga544507f62e26969e98ce9a6afb5d2cad"><td class="mdescLeft">&#160;</td><td class="mdescRight">32 bit unsigned integer 2x4 matrix.  <a href="a00834.html#ga544507f62e26969e98ce9a6afb5d2cad">More...</a><br /></td></tr>
-<tr class="separator:ga544507f62e26969e98ce9a6afb5d2cad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaade09898ba32793e1a252330e881ebf4"><td class="memItemLeft" align="right" valign="top">typedef mat&lt; 2, 4, <a class="el" href="a00864.html#gab630f76c26b50298187f7889104d4b9c">uint64</a>, defaultp &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00834.html#gaade09898ba32793e1a252330e881ebf4">u64mat2x4</a></td></tr>
-<tr class="memdesc:gaade09898ba32793e1a252330e881ebf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">64 bit unsigned integer 2x4 matrix.  <a href="a00834.html#gaade09898ba32793e1a252330e881ebf4">More...</a><br /></td></tr>
-<tr class="separator:gaade09898ba32793e1a252330e881ebf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf23eaa003d78c2eff52e35af503b4774"><td class="memItemLeft" align="right" valign="top">typedef mat&lt; 2, 4, <a class="el" href="a00864.html#gadde6aaee8457bee49c2a92621fe22b79">uint8</a>, defaultp &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00834.html#gaf23eaa003d78c2eff52e35af503b4774">u8mat2x4</a></td></tr>
-<tr class="memdesc:gaf23eaa003d78c2eff52e35af503b4774"><td class="mdescLeft">&#160;</td><td class="mdescRight">8 bit unsigned integer 2x4 matrix.  <a href="a00834.html#gaf23eaa003d78c2eff52e35af503b4774">More...</a><br /></td></tr>
-<tr class="separator:gaf23eaa003d78c2eff52e35af503b4774"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ga07f545826ec7726ca072e587246afdde"><td class="memTemplParams" colspan="2">template&lt;length_t C, length_t R, typename T , qualifier Q&gt; </td></tr>
+<tr class="memitem:ga07f545826ec7726ca072e587246afdde"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00834.html#ga07f545826ec7726ca072e587246afdde">determinant</a> (mat&lt; C, R, T, Q &gt; const &amp;m)</td></tr>
+<tr class="memdesc:ga07f545826ec7726ca072e587246afdde"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the determinant of a squared matrix.  <a href="a00834.html#ga07f545826ec7726ca072e587246afdde">More...</a><br /></td></tr>
+<tr class="separator:ga07f545826ec7726ca072e587246afdde"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga514c5f14f88b22355731a992e683fc90"><td class="memTemplParams" colspan="2">template&lt;length_t C, length_t R, typename T , qualifier Q&gt; </td></tr>
+<tr class="memitem:ga514c5f14f88b22355731a992e683fc90"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL mat&lt; C, R, T, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00834.html#ga514c5f14f88b22355731a992e683fc90">matrixCompMult</a> (mat&lt; C, R, T, Q &gt; const &amp;x, mat&lt; C, R, T, Q &gt; const &amp;y)</td></tr>
+<tr class="memdesc:ga514c5f14f88b22355731a992e683fc90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiply matrix x by matrix y component-wise, i.e., result[i][j] is the scalar product of x[i][j] and y[i][j].  <a href="a00834.html#ga514c5f14f88b22355731a992e683fc90">More...</a><br /></td></tr>
+<tr class="separator:ga514c5f14f88b22355731a992e683fc90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga80d31e9320fd77035336e01d0228321f"><td class="memTemplParams" colspan="2">template&lt;length_t C, length_t R, typename T , qualifier Q&gt; </td></tr>
+<tr class="memitem:ga80d31e9320fd77035336e01d0228321f"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL detail::outerProduct_trait&lt; C, R, T, Q &gt;::type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00834.html#ga80d31e9320fd77035336e01d0228321f">outerProduct</a> (vec&lt; C, T, Q &gt; const &amp;c, vec&lt; R, T, Q &gt; const &amp;r)</td></tr>
+<tr class="memdesc:ga80d31e9320fd77035336e01d0228321f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Treats the first parameter c as a column vector and the second parameter r as a row vector and does a linear algebraic matrix multiply c * r.  <a href="a00834.html#ga80d31e9320fd77035336e01d0228321f">More...</a><br /></td></tr>
+<tr class="separator:ga80d31e9320fd77035336e01d0228321f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4bedcb9c511484f38fd30a60c95f4679"><td class="memTemplParams" colspan="2">template&lt;length_t C, length_t R, typename T , qualifier Q&gt; </td></tr>
+<tr class="memitem:ga4bedcb9c511484f38fd30a60c95f4679"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL mat&lt; C, R, T, Q &gt;::transpose_type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00834.html#ga4bedcb9c511484f38fd30a60c95f4679">transpose</a> (mat&lt; C, R, T, Q &gt; const &amp;x)</td></tr>
+<tr class="memdesc:ga4bedcb9c511484f38fd30a60c95f4679"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the transposed matrix of x.  <a href="a00834.html#ga4bedcb9c511484f38fd30a60c95f4679">More...</a><br /></td></tr>
+<tr class="separator:ga4bedcb9c511484f38fd30a60c95f4679"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<p>Include &lt;<a class="el" href="a00284.html" title="GLM_EXT_matrix_uint2x4_sized">glm/ext/matrix_uint2x4_sized.hpp</a>&gt; to use the features of this extension.</p>
-<p>Defines a number of matrices with integer types. </p>
-<h2 class="groupheader">Typedef Documentation</h2>
-<a id="ga055726c5e617b57196bb8f4c695f5728"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga055726c5e617b57196bb8f4c695f5728">&#9670;&nbsp;</a></span>u16mat2x4</h2>
+<p>Defines functions that generate common transformation matrices.</p>
+<p>The matrices generated by this extension use standard OpenGL fixed-function conventions. For example, the lookAt function generates a transform from world space into the specific eye space that the projective matrix functions (perspective, ortho, etc) are designed to expect. The OpenGL compatibility specifications defines the particular layout of this eye space.</p>
+<p>Include &lt;<a class="el" href="a01696.html" title="GLM_EXT_matrix_integer">glm/ext/matrix_integer.hpp</a>&gt; to use the features of this extension.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00835.html">GLM_EXT_matrix_projection</a> </dd>
+<dd>
+<a class="el" href="a00814.html">GLM_EXT_matrix_clip_space</a> </dd></dl>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="ga07f545826ec7726ca072e587246afdde"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga07f545826ec7726ca072e587246afdde">&#9670;&nbsp;</a></span>determinant()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef mat&lt; 2, 4, <a class="el" href="a00864.html#ga05f6b0ae8f6a6e135b0e290c25fe0e4e">uint16</a>, defaultp &gt; <a class="el" href="a00834.html#ga055726c5e617b57196bb8f4c695f5728">u16mat2x4</a></td>
+          <td class="memname">GLM_FUNC_DECL T determinant </td>
+          <td>(</td>
+          <td class="paramtype">mat&lt; C, R, T, Q &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>m</em></td><td>)</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>16 bit unsigned integer 2x4 matrix. </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00834.html">GLM_EXT_matrix_uint2x4_sized</a> </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="a00284_source.html#l00036">36</a> of file <a class="el" href="a00284_source.html">matrix_uint2x4_sized.hpp</a>.</p>
+<p>Return the determinant of a squared matrix. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">C</td><td>Integer between 1 and 4 included that qualify the number a column </td></tr>
+    <tr><td class="paramname">R</td><td>Integer between 1 and 4 included that qualify the number a row </td></tr>
+    <tr><td class="paramname">T</td><td>Floating-point or signed integer scalar types </td></tr>
+    <tr><td class="paramname">Q</td><td>Value from qualifier enum</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/determinant.xml">GLSL determinant man page</a> </dd>
+<dd>
+<a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.6 Matrix Functions</a></dd></dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">C</td><td>Integer between 1 and 4 included that qualify the number a column </td></tr>
+    <tr><td class="paramname">R</td><td>Integer between 1 and 4 included that qualify the number a row </td></tr>
+    <tr><td class="paramname">T</td><td>Floating-point scalar types </td></tr>
+    <tr><td class="paramname">Q</td><td>Value from qualifier enum</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/determinant.xml">GLSL determinant man page</a> </dd>
+<dd>
+<a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.6 Matrix Functions</a> </dd></dl>
 
 </div>
 </div>
-<a id="ga544507f62e26969e98ce9a6afb5d2cad"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga544507f62e26969e98ce9a6afb5d2cad">&#9670;&nbsp;</a></span>u32mat2x4</h2>
+<a id="ga514c5f14f88b22355731a992e683fc90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga514c5f14f88b22355731a992e683fc90">&#9670;&nbsp;</a></span>matrixCompMult()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef mat&lt; 2, 4, <a class="el" href="a00864.html#ga1134b580f8da4de94ca6b1de4d37975e">uint32</a>, defaultp &gt; <a class="el" href="a00834.html#ga544507f62e26969e98ce9a6afb5d2cad">u32mat2x4</a></td>
+          <td class="memname">GLM_FUNC_DECL mat&lt; C, R, T, Q &gt; matrixCompMult </td>
+          <td>(</td>
+          <td class="paramtype">mat&lt; C, R, T, Q &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">mat&lt; C, R, T, Q &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>32 bit unsigned integer 2x4 matrix. </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00834.html">GLM_EXT_matrix_uint2x4_sized</a> </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="a00284_source.html#l00041">41</a> of file <a class="el" href="a00284_source.html">matrix_uint2x4_sized.hpp</a>.</p>
+<p>Multiply matrix x by matrix y component-wise, i.e., result[i][j] is the scalar product of x[i][j] and y[i][j]. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">C</td><td>Integer between 1 and 4 included that qualify the number a column </td></tr>
+    <tr><td class="paramname">R</td><td>Integer between 1 and 4 included that qualify the number a row </td></tr>
+    <tr><td class="paramname">T</td><td>Floating-point or signed integer scalar types </td></tr>
+    <tr><td class="paramname">Q</td><td>Value from qualifier enum</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/matrixCompMult.xml">GLSL matrixCompMult man page</a> </dd>
+<dd>
+<a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.6 Matrix Functions</a></dd></dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">C</td><td>Integer between 1 and 4 included that qualify the number a column </td></tr>
+    <tr><td class="paramname">R</td><td>Integer between 1 and 4 included that qualify the number a row </td></tr>
+    <tr><td class="paramname">T</td><td>Floating-point scalar types </td></tr>
+    <tr><td class="paramname">Q</td><td>Value from qualifier enum</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/matrixCompMult.xml">GLSL matrixCompMult man page</a> </dd>
+<dd>
+<a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.6 Matrix Functions</a> </dd></dl>
 
 </div>
 </div>
-<a id="gaade09898ba32793e1a252330e881ebf4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaade09898ba32793e1a252330e881ebf4">&#9670;&nbsp;</a></span>u64mat2x4</h2>
+<a id="ga80d31e9320fd77035336e01d0228321f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga80d31e9320fd77035336e01d0228321f">&#9670;&nbsp;</a></span>outerProduct()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef mat&lt; 2, 4, <a class="el" href="a00864.html#gab630f76c26b50298187f7889104d4b9c">uint64</a>, defaultp &gt; <a class="el" href="a00834.html#gaade09898ba32793e1a252330e881ebf4">u64mat2x4</a></td>
+          <td class="memname">GLM_FUNC_DECL detail::outerProduct_trait&lt; C, R, T, Q &gt;::type outerProduct </td>
+          <td>(</td>
+          <td class="paramtype">vec&lt; C, T, Q &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vec&lt; R, T, Q &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>r</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>64 bit unsigned integer 2x4 matrix. </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00834.html">GLM_EXT_matrix_uint2x4_sized</a> </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="a00284_source.html#l00046">46</a> of file <a class="el" href="a00284_source.html">matrix_uint2x4_sized.hpp</a>.</p>
+<p>Treats the first parameter c as a column vector and the second parameter r as a row vector and does a linear algebraic matrix multiply c * r. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">C</td><td>Integer between 1 and 4 included that qualify the number a column </td></tr>
+    <tr><td class="paramname">R</td><td>Integer between 1 and 4 included that qualify the number a row </td></tr>
+    <tr><td class="paramname">T</td><td>Floating-point or signed integer scalar types </td></tr>
+    <tr><td class="paramname">Q</td><td>Value from qualifier enum</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/outerProduct.xml">GLSL outerProduct man page</a> </dd>
+<dd>
+<a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.6 Matrix Functions</a></dd></dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">C</td><td>Integer between 1 and 4 included that qualify the number a column </td></tr>
+    <tr><td class="paramname">R</td><td>Integer between 1 and 4 included that qualify the number a row </td></tr>
+    <tr><td class="paramname">T</td><td>Floating-point scalar types </td></tr>
+    <tr><td class="paramname">Q</td><td>Value from qualifier enum</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/outerProduct.xml">GLSL outerProduct man page</a> </dd>
+<dd>
+<a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.6 Matrix Functions</a> </dd></dl>
 
 </div>
 </div>
-<a id="gaf23eaa003d78c2eff52e35af503b4774"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaf23eaa003d78c2eff52e35af503b4774">&#9670;&nbsp;</a></span>u8mat2x4</h2>
+<a id="ga4bedcb9c511484f38fd30a60c95f4679"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4bedcb9c511484f38fd30a60c95f4679">&#9670;&nbsp;</a></span>transpose()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef mat&lt; 2, 4, <a class="el" href="a00864.html#gadde6aaee8457bee49c2a92621fe22b79">uint8</a>, defaultp &gt; <a class="el" href="a00834.html#gaf23eaa003d78c2eff52e35af503b4774">u8mat2x4</a></td>
+          <td class="memname">GLM_FUNC_DECL mat&lt; C, R, T, Q &gt;::transpose_type transpose </td>
+          <td>(</td>
+          <td class="paramtype">mat&lt; C, R, T, Q &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>8 bit unsigned integer 2x4 matrix. </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00834.html">GLM_EXT_matrix_uint2x4_sized</a> </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="a00284_source.html#l00031">31</a> of file <a class="el" href="a00284_source.html">matrix_uint2x4_sized.hpp</a>.</p>
+<p>Returns the transposed matrix of x. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">C</td><td>Integer between 1 and 4 included that qualify the number a column </td></tr>
+    <tr><td class="paramname">R</td><td>Integer between 1 and 4 included that qualify the number a row </td></tr>
+    <tr><td class="paramname">T</td><td>Floating-point or signed integer scalar types </td></tr>
+    <tr><td class="paramname">Q</td><td>Value from qualifier enum</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/transpose.xml">GLSL transpose man page</a> </dd>
+<dd>
+<a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.6 Matrix Functions</a></dd></dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">C</td><td>Integer between 1 and 4 included that qualify the number a column </td></tr>
+    <tr><td class="paramname">R</td><td>Integer between 1 and 4 included that qualify the number a row </td></tr>
+    <tr><td class="paramname">T</td><td>Floating-point scalar types </td></tr>
+    <tr><td class="paramname">Q</td><td>Value from qualifier enum</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/transpose.xml">GLSL transpose man page</a> </dd>
+<dd>
+<a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.6 Matrix Functions</a> </dd></dl>
 
 </div>
 </div>

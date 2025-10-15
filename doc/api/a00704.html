@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>1.0.0 API documentation: polar_coordinates.hpp File Reference</title>
+<title>1.0.2 API documentation: pca.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo-mini.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">1.0.0 API documentation
+   <div id="projectname">1.0.2 API documentation
    </div>
   </td>
  </tr>
@@ -69,31 +69,59 @@ $(function() {
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">polar_coordinates.hpp File Reference</div>  </div>
+<div class="title">pca.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="a00960.html">GLM_GTX_polar_coordinates</a>  
+<p><a class="el" href="a00968.html">GLM_GTX_pca</a>  
 <a href="#details">More...</a></p>
 
 <p><a href="a00704_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga1821d5b3324201e60a9e2823d0b5d0c8"><td class="memTemplParams" colspan="2">template&lt;typename T , qualifier Q&gt; </td></tr>
-<tr class="memitem:ga1821d5b3324201e60a9e2823d0b5d0c8"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL vec&lt; 3, T, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00960.html#ga1821d5b3324201e60a9e2823d0b5d0c8">euclidean</a> (vec&lt; 2, T, Q &gt; const &amp;polar)</td></tr>
-<tr class="memdesc:ga1821d5b3324201e60a9e2823d0b5d0c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert Polar to Euclidean coordinates.  <a href="a00960.html#ga1821d5b3324201e60a9e2823d0b5d0c8">More...</a><br /></td></tr>
-<tr class="separator:ga1821d5b3324201e60a9e2823d0b5d0c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab83ac2c0e55b684b06b6c46c28b1590d"><td class="memTemplParams" colspan="2">template&lt;typename T , qualifier Q&gt; </td></tr>
-<tr class="memitem:gab83ac2c0e55b684b06b6c46c28b1590d"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL vec&lt; 3, T, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00960.html#gab83ac2c0e55b684b06b6c46c28b1590d">polar</a> (vec&lt; 3, T, Q &gt; const &amp;euclidean)</td></tr>
-<tr class="memdesc:gab83ac2c0e55b684b06b6c46c28b1590d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert Euclidean to Polar coordinates, x is the latitude, y the longitude and z the xz distance.  <a href="a00960.html#gab83ac2c0e55b684b06b6c46c28b1590d">More...</a><br /></td></tr>
-<tr class="separator:gab83ac2c0e55b684b06b6c46c28b1590d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2c7b5ff4e0f4132a23e58eeb0803b53a"><td class="memTemplParams" colspan="2">
+template&lt;length_t D, typename T , qualifier Q, typename I &gt; </td></tr>
+<tr class="memitem:ga2c7b5ff4e0f4132a23e58eeb0803b53a"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL mat&lt; D, D, T, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00968.html#ga2c7b5ff4e0f4132a23e58eeb0803b53a">computeCovarianceMatrix</a> (I const &amp;b, I const &amp;e)</td></tr>
+<tr class="memdesc:ga2c7b5ff4e0f4132a23e58eeb0803b53a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute a covariance matrix form a pair of iterators <code>b</code> (begin) and <code>e</code> (end) of a container with relative coordinates (e.g., relative to the center of gravity of the object) Dereferencing an iterator of type I must yield a <code>vec&lt;D, T, Qgt;</code> <br /></td></tr>
+<tr class="separator:ga2c7b5ff4e0f4132a23e58eeb0803b53a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga666383aa52036f00f3b66e4e7e56da3a"><td class="memTemplParams" colspan="2">
+template&lt;length_t D, typename T , qualifier Q, typename I &gt; </td></tr>
+<tr class="memitem:ga666383aa52036f00f3b66e4e7e56da3a"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL mat&lt; D, D, T, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00968.html#ga666383aa52036f00f3b66e4e7e56da3a">computeCovarianceMatrix</a> (I const &amp;b, I const &amp;e, vec&lt; D, T, Q &gt; const &amp;c)</td></tr>
+<tr class="memdesc:ga666383aa52036f00f3b66e4e7e56da3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute a covariance matrix form a pair of iterators <code>b</code> (begin) and <code>e</code> (end) of a container with absolute coordinates and a precomputed center of gravity <code>c</code> Dereferencing an iterator of type I must yield a <code>vec&lt;D, T, Qgt;</code> <br /></td></tr>
+<tr class="separator:ga666383aa52036f00f3b66e4e7e56da3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2d6dc3e25182cae243cdf55310059af0"><td class="memTemplParams" colspan="2">template&lt;length_t D, typename T , qualifier Q&gt; </td></tr>
+<tr class="memitem:ga2d6dc3e25182cae243cdf55310059af0"><td class="memTemplItemLeft" align="right" valign="top">GLM_INLINE mat&lt; D, D, T, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00968.html#ga2d6dc3e25182cae243cdf55310059af0">computeCovarianceMatrix</a> (vec&lt; D, T, Q &gt; const *v, size_t n)</td></tr>
+<tr class="memdesc:ga2d6dc3e25182cae243cdf55310059af0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute a covariance matrix form an array of relative coordinates <code>v</code> (e.g., relative to the center of gravity of the object)  <a href="a00968.html#ga2d6dc3e25182cae243cdf55310059af0">More...</a><br /></td></tr>
+<tr class="separator:ga2d6dc3e25182cae243cdf55310059af0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabfc7aba26da1eed6726f2484584f4077"><td class="memTemplParams" colspan="2">template&lt;length_t D, typename T , qualifier Q&gt; </td></tr>
+<tr class="memitem:gabfc7aba26da1eed6726f2484584f4077"><td class="memTemplItemLeft" align="right" valign="top">GLM_INLINE mat&lt; D, D, T, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00968.html#gabfc7aba26da1eed6726f2484584f4077">computeCovarianceMatrix</a> (vec&lt; D, T, Q &gt; const *v, size_t n, vec&lt; D, T, Q &gt; const &amp;c)</td></tr>
+<tr class="memdesc:gabfc7aba26da1eed6726f2484584f4077"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute a covariance matrix form an array of absolute coordinates <code>v</code> and a precomputed center of gravity <code>c</code>  <a href="a00968.html#gabfc7aba26da1eed6726f2484584f4077">More...</a><br /></td></tr>
+<tr class="separator:gabfc7aba26da1eed6726f2484584f4077"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0586007af1073c8b0f629bca0ee7c46c"><td class="memTemplParams" colspan="2">template&lt;length_t D, typename T , qualifier Q&gt; </td></tr>
+<tr class="memitem:ga0586007af1073c8b0f629bca0ee7c46c"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL unsigned int&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00968.html#ga0586007af1073c8b0f629bca0ee7c46c">findEigenvaluesSymReal</a> (mat&lt; D, D, T, Q &gt; const &amp;covarMat, vec&lt; D, T, Q &gt; &amp;outEigenvalues, mat&lt; D, D, T, Q &gt; &amp;outEigenvectors)</td></tr>
+<tr class="memdesc:ga0586007af1073c8b0f629bca0ee7c46c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assuming the provided covariance matrix <code>covarMat</code> is symmetric and real-valued, this function find the <code>D</code> Eigenvalues of the matrix, and also provides the corresponding Eigenvectors.  <a href="a00968.html#ga0586007af1073c8b0f629bca0ee7c46c">More...</a><br /></td></tr>
+<tr class="separator:ga0586007af1073c8b0f629bca0ee7c46c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2824ef6f23df255f86b9c33cebd5da2f"><td class="memTemplParams" colspan="2">template&lt;typename T , qualifier Q&gt; </td></tr>
+<tr class="memitem:ga2824ef6f23df255f86b9c33cebd5da2f"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DISCARD_DECL void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00968.html#ga2824ef6f23df255f86b9c33cebd5da2f">sortEigenvalues</a> (vec&lt; 2, T, Q &gt; &amp;eigenvalues, mat&lt; 2, 2, T, Q &gt; &amp;eigenvectors)</td></tr>
+<tr class="memdesc:ga2824ef6f23df255f86b9c33cebd5da2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sorts a group of Eigenvalues&amp;Eigenvectors, for largest Eigenvalue to smallest Eigenvalue.  <a href="a00968.html#ga2824ef6f23df255f86b9c33cebd5da2f">More...</a><br /></td></tr>
+<tr class="separator:ga2824ef6f23df255f86b9c33cebd5da2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf6fbcbcca3eb46f4fd6d491a979db7c5"><td class="memTemplParams" colspan="2">template&lt;typename T , qualifier Q&gt; </td></tr>
+<tr class="memitem:gaf6fbcbcca3eb46f4fd6d491a979db7c5"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DISCARD_DECL void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00968.html#gaf6fbcbcca3eb46f4fd6d491a979db7c5">sortEigenvalues</a> (vec&lt; 3, T, Q &gt; &amp;eigenvalues, mat&lt; 3, 3, T, Q &gt; &amp;eigenvectors)</td></tr>
+<tr class="memdesc:gaf6fbcbcca3eb46f4fd6d491a979db7c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sorts a group of Eigenvalues&amp;Eigenvectors, for largest Eigenvalue to smallest Eigenvalue.  <a href="a00968.html#gaf6fbcbcca3eb46f4fd6d491a979db7c5">More...</a><br /></td></tr>
+<tr class="separator:gaf6fbcbcca3eb46f4fd6d491a979db7c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3fe570b4abe7eca8afb32896d77394f5"><td class="memTemplParams" colspan="2">template&lt;typename T , qualifier Q&gt; </td></tr>
+<tr class="memitem:ga3fe570b4abe7eca8afb32896d77394f5"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DISCARD_DECL void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00968.html#ga3fe570b4abe7eca8afb32896d77394f5">sortEigenvalues</a> (vec&lt; 4, T, Q &gt; &amp;eigenvalues, mat&lt; 4, 4, T, Q &gt; &amp;eigenvectors)</td></tr>
+<tr class="memdesc:ga3fe570b4abe7eca8afb32896d77394f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sorts a group of Eigenvalues&amp;Eigenvectors, for largest Eigenvalue to smallest Eigenvalue.  <a href="a00968.html#ga3fe570b4abe7eca8afb32896d77394f5">More...</a><br /></td></tr>
+<tr class="separator:ga3fe570b4abe7eca8afb32896d77394f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="a00960.html">GLM_GTX_polar_coordinates</a> </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00889.html" title="Features that implement in C++ the GLSL specification as closely as possible.">Core features</a> (dependence) </dd></dl>
+<div class="textblock"><p><a class="el" href="a00968.html">GLM_GTX_pca</a> </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00898.html" title="Features that implement in C++ the GLSL specification as closely as possible.">Core features</a> (dependence) </dd>
+<dd>
+<a class="el" href="a00872.html">GLM_EXT_scalar_relational</a> (dependence) </dd></dl>
 
-<p class="definition">Definition in file <a class="el" href="a00704_source.html">polar_coordinates.hpp</a>.</p>
+<p class="definition">Definition in file <a class="el" href="a00704_source.html">pca.hpp</a>.</p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

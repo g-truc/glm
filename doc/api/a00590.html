@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>1.0.0 API documentation: closest_point.hpp File Reference</title>
+<title>1.0.2 API documentation: bit.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo-mini.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">1.0.0 API documentation
+   <div id="projectname">1.0.2 API documentation
    </div>
   </td>
  </tr>
@@ -69,32 +69,57 @@ $(function() {
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">closest_point.hpp File Reference</div>  </div>
+<div class="title">bit.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="a00919.html">GLM_GTX_closest_point</a>  
+<p><a class="el" href="a00927.html">GLM_GTX_bit</a>  
 <a href="#details">More...</a></p>
 
 <p><a href="a00590_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga55bcbcc5fc06cb7ff7bc7a6e0e155eb0"><td class="memTemplParams" colspan="2">
-template&lt;typename T , qualifier Q&gt; </td></tr>
-<tr class="memitem:ga55bcbcc5fc06cb7ff7bc7a6e0e155eb0"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL vec&lt; 2, T, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00919.html#ga55bcbcc5fc06cb7ff7bc7a6e0e155eb0">closestPointOnLine</a> (vec&lt; 2, T, Q &gt; const &amp;point, vec&lt; 2, T, Q &gt; const &amp;a, vec&lt; 2, T, Q &gt; const &amp;b)</td></tr>
-<tr class="memdesc:ga55bcbcc5fc06cb7ff7bc7a6e0e155eb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">2d lines work as well <br /></td></tr>
-<tr class="separator:ga55bcbcc5fc06cb7ff7bc7a6e0e155eb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga36529c278ef716986151d58d151d697d"><td class="memTemplParams" colspan="2">template&lt;typename T , qualifier Q&gt; </td></tr>
-<tr class="memitem:ga36529c278ef716986151d58d151d697d"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL vec&lt; 3, T, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00919.html#ga36529c278ef716986151d58d151d697d">closestPointOnLine</a> (vec&lt; 3, T, Q &gt; const &amp;point, vec&lt; 3, T, Q &gt; const &amp;a, vec&lt; 3, T, Q &gt; const &amp;b)</td></tr>
-<tr class="memdesc:ga36529c278ef716986151d58d151d697d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find the point on a straight line which is the closet of a point.  <a href="a00919.html#ga36529c278ef716986151d58d151d697d">More...</a><br /></td></tr>
-<tr class="separator:ga36529c278ef716986151d58d151d697d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0dcc8fe7c3d3ad60dea409281efa3d05"><td class="memTemplParams" colspan="2">template&lt;typename genIUType &gt; </td></tr>
+<tr class="memitem:ga0dcc8fe7c3d3ad60dea409281efa3d05"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL genIUType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00927.html#ga0dcc8fe7c3d3ad60dea409281efa3d05">highestBitValue</a> (genIUType Value)</td></tr>
+<tr class="separator:ga0dcc8fe7c3d3ad60dea409281efa3d05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga898ef075ccf809a1e480faab48fe96bf"><td class="memTemplParams" colspan="2">template&lt;length_t L, typename T , qualifier Q&gt; </td></tr>
+<tr class="memitem:ga898ef075ccf809a1e480faab48fe96bf"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL vec&lt; L, T, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00927.html#ga898ef075ccf809a1e480faab48fe96bf">highestBitValue</a> (vec&lt; L, T, Q &gt; const &amp;value)</td></tr>
+<tr class="memdesc:ga898ef075ccf809a1e480faab48fe96bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find the highest bit set to 1 in a integer variable and return its value.  <a href="a00927.html#ga898ef075ccf809a1e480faab48fe96bf">More...</a><br /></td></tr>
+<tr class="separator:ga898ef075ccf809a1e480faab48fe96bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2ff6568089f3a9b67f5c30918855fc6f"><td class="memTemplParams" colspan="2">template&lt;typename genIUType &gt; </td></tr>
+<tr class="memitem:ga2ff6568089f3a9b67f5c30918855fc6f"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL genIUType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00927.html#ga2ff6568089f3a9b67f5c30918855fc6f">lowestBitValue</a> (genIUType Value)</td></tr>
+<tr class="separator:ga2ff6568089f3a9b67f5c30918855fc6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8cda2459871f574a0aecbe702ac93291"><td class="memTemplParams" colspan="2">template&lt;typename genIUType &gt; </td></tr>
+<tr class="memitem:ga8cda2459871f574a0aecbe702ac93291"><td class="memTemplItemLeft" align="right" valign="top">GLM_DEPRECATED GLM_FUNC_DECL genIUType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00927.html#ga8cda2459871f574a0aecbe702ac93291">powerOfTwoAbove</a> (genIUType Value)</td></tr>
+<tr class="memdesc:ga8cda2459871f574a0aecbe702ac93291"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the power of two number which value is just higher the input value.  <a href="a00927.html#ga8cda2459871f574a0aecbe702ac93291">More...</a><br /></td></tr>
+<tr class="separator:ga8cda2459871f574a0aecbe702ac93291"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2bbded187c5febfefc1e524ba31b3fab"><td class="memTemplParams" colspan="2">template&lt;length_t L, typename T , qualifier Q&gt; </td></tr>
+<tr class="memitem:ga2bbded187c5febfefc1e524ba31b3fab"><td class="memTemplItemLeft" align="right" valign="top">GLM_DEPRECATED GLM_FUNC_DECL vec&lt; L, T, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00927.html#ga2bbded187c5febfefc1e524ba31b3fab">powerOfTwoAbove</a> (vec&lt; L, T, Q &gt; const &amp;value)</td></tr>
+<tr class="memdesc:ga2bbded187c5febfefc1e524ba31b3fab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the power of two number which value is just higher the input value.  <a href="a00927.html#ga2bbded187c5febfefc1e524ba31b3fab">More...</a><br /></td></tr>
+<tr class="separator:ga2bbded187c5febfefc1e524ba31b3fab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3de7df63c589325101a2817a56f8e29d"><td class="memTemplParams" colspan="2">template&lt;typename genIUType &gt; </td></tr>
+<tr class="memitem:ga3de7df63c589325101a2817a56f8e29d"><td class="memTemplItemLeft" align="right" valign="top">GLM_DEPRECATED GLM_FUNC_DECL genIUType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00927.html#ga3de7df63c589325101a2817a56f8e29d">powerOfTwoBelow</a> (genIUType Value)</td></tr>
+<tr class="memdesc:ga3de7df63c589325101a2817a56f8e29d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the power of two number which value is just lower the input value.  <a href="a00927.html#ga3de7df63c589325101a2817a56f8e29d">More...</a><br /></td></tr>
+<tr class="separator:ga3de7df63c589325101a2817a56f8e29d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf78ddcc4152c051b2a21e68fecb10980"><td class="memTemplParams" colspan="2">template&lt;length_t L, typename T , qualifier Q&gt; </td></tr>
+<tr class="memitem:gaf78ddcc4152c051b2a21e68fecb10980"><td class="memTemplItemLeft" align="right" valign="top">GLM_DEPRECATED GLM_FUNC_DECL vec&lt; L, T, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00927.html#gaf78ddcc4152c051b2a21e68fecb10980">powerOfTwoBelow</a> (vec&lt; L, T, Q &gt; const &amp;value)</td></tr>
+<tr class="memdesc:gaf78ddcc4152c051b2a21e68fecb10980"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the power of two number which value is just lower the input value.  <a href="a00927.html#gaf78ddcc4152c051b2a21e68fecb10980">More...</a><br /></td></tr>
+<tr class="separator:gaf78ddcc4152c051b2a21e68fecb10980"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5f65973a5d2ea38c719e6a663149ead9"><td class="memTemplParams" colspan="2">template&lt;typename genIUType &gt; </td></tr>
+<tr class="memitem:ga5f65973a5d2ea38c719e6a663149ead9"><td class="memTemplItemLeft" align="right" valign="top">GLM_DEPRECATED GLM_FUNC_DECL genIUType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00927.html#ga5f65973a5d2ea38c719e6a663149ead9">powerOfTwoNearest</a> (genIUType Value)</td></tr>
+<tr class="memdesc:ga5f65973a5d2ea38c719e6a663149ead9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the power of two number which value is the closet to the input value.  <a href="a00927.html#ga5f65973a5d2ea38c719e6a663149ead9">More...</a><br /></td></tr>
+<tr class="separator:ga5f65973a5d2ea38c719e6a663149ead9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac87e65d11e16c3d6b91c3bcfaef7da0b"><td class="memTemplParams" colspan="2">template&lt;length_t L, typename T , qualifier Q&gt; </td></tr>
+<tr class="memitem:gac87e65d11e16c3d6b91c3bcfaef7da0b"><td class="memTemplItemLeft" align="right" valign="top">GLM_DEPRECATED GLM_FUNC_DECL vec&lt; L, T, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00927.html#gac87e65d11e16c3d6b91c3bcfaef7da0b">powerOfTwoNearest</a> (vec&lt; L, T, Q &gt; const &amp;value)</td></tr>
+<tr class="memdesc:gac87e65d11e16c3d6b91c3bcfaef7da0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the power of two number which value is the closet to the input value.  <a href="a00927.html#gac87e65d11e16c3d6b91c3bcfaef7da0b">More...</a><br /></td></tr>
+<tr class="separator:gac87e65d11e16c3d6b91c3bcfaef7da0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="a00919.html">GLM_GTX_closest_point</a> </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00889.html" title="Features that implement in C++ the GLSL specification as closely as possible.">Core features</a> (dependence) </dd></dl>
+<div class="textblock"><p><a class="el" href="a00927.html">GLM_GTX_bit</a> </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00898.html" title="Features that implement in C++ the GLSL specification as closely as possible.">Core features</a> (dependence) </dd></dl>
 
-<p class="definition">Definition in file <a class="el" href="a00590_source.html">closest_point.hpp</a>.</p>
+<p class="definition">Definition in file <a class="el" href="a00590_source.html">bit.hpp</a>.</p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

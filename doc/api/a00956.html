@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>1.0.0 API documentation: GLM_GTX_optimum_pow</title>
+<title>1.0.2 API documentation: GLM_GTX_matrix_interpolation</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo-mini.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">1.0.0 API documentation
+   <div id="projectname">1.0.2 API documentation
    </div>
   </td>
  </tr>
@@ -65,89 +65,156 @@ $(function() {
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">GLM_GTX_optimum_pow<div class="ingroups"><a class="el" href="a00896.html">Experimental extensions</a></div></div>  </div>
+<div class="title">GLM_GTX_matrix_interpolation<div class="ingroups"><a class="el" href="a00905.html">Experimental extensions</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga7288d7bb23f192bd64a60ba2a61a1c9f"><td class="memTemplParams" colspan="2">template&lt;typename genType &gt; </td></tr>
-<tr class="memitem:ga7288d7bb23f192bd64a60ba2a61a1c9f"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL genType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00956.html#ga7288d7bb23f192bd64a60ba2a61a1c9f">pow2</a> (genType const &amp;x)</td></tr>
-<tr class="memdesc:ga7288d7bb23f192bd64a60ba2a61a1c9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns x raised to the power of 2.  <a href="a00956.html#ga7288d7bb23f192bd64a60ba2a61a1c9f">More...</a><br /></td></tr>
-<tr class="separator:ga7288d7bb23f192bd64a60ba2a61a1c9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga156e452c2d630001bb07f4a6f1060a10"><td class="memTemplParams" colspan="2">template&lt;typename genType &gt; </td></tr>
-<tr class="memitem:ga156e452c2d630001bb07f4a6f1060a10"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL genType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00956.html#ga156e452c2d630001bb07f4a6f1060a10">pow3</a> (genType const &amp;x)</td></tr>
-<tr class="memdesc:ga156e452c2d630001bb07f4a6f1060a10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns x raised to the power of 3.  <a href="a00956.html#ga156e452c2d630001bb07f4a6f1060a10">More...</a><br /></td></tr>
-<tr class="separator:ga156e452c2d630001bb07f4a6f1060a10"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga830b64f3b47818374e9d03cc20fadbf3"><td class="memTemplParams" colspan="2">template&lt;typename genType &gt; </td></tr>
-<tr class="memitem:ga830b64f3b47818374e9d03cc20fadbf3"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL genType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00956.html#ga830b64f3b47818374e9d03cc20fadbf3">pow4</a> (genType const &amp;x)</td></tr>
-<tr class="memdesc:ga830b64f3b47818374e9d03cc20fadbf3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns x raised to the power of 4.  <a href="a00956.html#ga830b64f3b47818374e9d03cc20fadbf3">More...</a><br /></td></tr>
-<tr class="separator:ga830b64f3b47818374e9d03cc20fadbf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga75220364722b0e367df98af61de4c3e5"><td class="memTemplParams" colspan="2">template&lt;typename T , qualifier Q&gt; </td></tr>
+<tr class="memitem:ga75220364722b0e367df98af61de4c3e5"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DISCARD_DECL void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00956.html#ga75220364722b0e367df98af61de4c3e5">axisAngle</a> (mat&lt; 4, 4, T, Q &gt; const &amp;Mat, vec&lt; 3, T, Q &gt; &amp;Axis, T &amp;Angle)</td></tr>
+<tr class="memdesc:ga75220364722b0e367df98af61de4c3e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the axis and angle of the rotation from a matrix.  <a href="a00956.html#ga75220364722b0e367df98af61de4c3e5">More...</a><br /></td></tr>
+<tr class="separator:ga75220364722b0e367df98af61de4c3e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3a788e2f5223397df5c426413ecc2f6b"><td class="memTemplParams" colspan="2">template&lt;typename T , qualifier Q&gt; </td></tr>
+<tr class="memitem:ga3a788e2f5223397df5c426413ecc2f6b"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL mat&lt; 4, 4, T, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00956.html#ga3a788e2f5223397df5c426413ecc2f6b">axisAngleMatrix</a> (vec&lt; 3, T, Q &gt; const &amp;Axis, T const Angle)</td></tr>
+<tr class="memdesc:ga3a788e2f5223397df5c426413ecc2f6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build a matrix from axis and angle.  <a href="a00956.html#ga3a788e2f5223397df5c426413ecc2f6b">More...</a><br /></td></tr>
+<tr class="separator:ga3a788e2f5223397df5c426413ecc2f6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabbc1c7385a145f04b5c54228965df145"><td class="memTemplParams" colspan="2">template&lt;typename T , qualifier Q&gt; </td></tr>
+<tr class="memitem:gabbc1c7385a145f04b5c54228965df145"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL mat&lt; 4, 4, T, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00956.html#gabbc1c7385a145f04b5c54228965df145">extractMatrixRotation</a> (mat&lt; 4, 4, T, Q &gt; const &amp;Mat)</td></tr>
+<tr class="memdesc:gabbc1c7385a145f04b5c54228965df145"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extracts the rotation part of a matrix.  <a href="a00956.html#gabbc1c7385a145f04b5c54228965df145">More...</a><br /></td></tr>
+<tr class="separator:gabbc1c7385a145f04b5c54228965df145"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4e67863d150724b10c1ac00972dc958c"><td class="memTemplParams" colspan="2">template&lt;typename T , qualifier Q&gt; </td></tr>
+<tr class="memitem:ga4e67863d150724b10c1ac00972dc958c"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL mat&lt; 4, 4, T, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00956.html#ga4e67863d150724b10c1ac00972dc958c">interpolate</a> (mat&lt; 4, 4, T, Q &gt; const &amp;m1, mat&lt; 4, 4, T, Q &gt; const &amp;m2, T const Delta)</td></tr>
+<tr class="memdesc:ga4e67863d150724b10c1ac00972dc958c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build a interpolation of 4 * 4 matrixes.  <a href="a00956.html#ga4e67863d150724b10c1ac00972dc958c">More...</a><br /></td></tr>
+<tr class="separator:ga4e67863d150724b10c1ac00972dc958c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<p>Include &lt;<a class="el" href="a00692.html" title="GLM_GTX_optimum_pow">glm/gtx/optimum_pow.hpp</a>&gt; to use the features of this extension.</p>
-<p>Integer exponentiation of power functions. </p>
+<p>Include &lt;<a class="el" href="a00668.html" title="GLM_GTX_matrix_interpolation">glm/gtx/matrix_interpolation.hpp</a>&gt; to use the features of this extension.</p>
+<p>Allows to directly interpolate two matrices. </p>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ga7288d7bb23f192bd64a60ba2a61a1c9f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga7288d7bb23f192bd64a60ba2a61a1c9f">&#9670;&nbsp;</a></span>pow2()</h2>
+<a id="ga75220364722b0e367df98af61de4c3e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga75220364722b0e367df98af61de4c3e5">&#9670;&nbsp;</a></span>axisAngle()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">GLM_FUNC_DECL genType glm::pow2 </td>
+          <td class="memname">GLM_FUNC_DISCARD_DECL void glm::axisAngle </td>
           <td>(</td>
-          <td class="paramtype">genType const &amp;&#160;</td>
-          <td class="paramname"><em>x</em></td><td>)</td>
+          <td class="paramtype">mat&lt; 4, 4, T, Q &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>Mat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">vec&lt; 3, T, Q &gt; &amp;&#160;</td>
+          <td class="paramname"><em>Axis</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T &amp;&#160;</td>
+          <td class="paramname"><em>Angle</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Returns x raised to the power of 2. </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00956.html">GLM_GTX_optimum_pow</a> </dd></dl>
+<p>Get the axis and angle of the rotation from a matrix. </p>
+<p>From GLM_GTX_matrix_interpolation extension. </p>
 
 </div>
 </div>
-<a id="ga156e452c2d630001bb07f4a6f1060a10"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga156e452c2d630001bb07f4a6f1060a10">&#9670;&nbsp;</a></span>pow3()</h2>
+<a id="ga3a788e2f5223397df5c426413ecc2f6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga3a788e2f5223397df5c426413ecc2f6b">&#9670;&nbsp;</a></span>axisAngleMatrix()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">GLM_FUNC_DECL genType glm::pow3 </td>
+          <td class="memname">GLM_FUNC_DECL mat&lt;4, 4, T, Q&gt; glm::axisAngleMatrix </td>
           <td>(</td>
-          <td class="paramtype">genType const &amp;&#160;</td>
-          <td class="paramname"><em>x</em></td><td>)</td>
+          <td class="paramtype">vec&lt; 3, T, Q &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>Axis</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">T const&#160;</td>
+          <td class="paramname"><em>Angle</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Returns x raised to the power of 3. </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00956.html">GLM_GTX_optimum_pow</a> </dd></dl>
+<p>Build a matrix from axis and angle. </p>
+<p>From GLM_GTX_matrix_interpolation extension. </p>
 
 </div>
 </div>
-<a id="ga830b64f3b47818374e9d03cc20fadbf3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga830b64f3b47818374e9d03cc20fadbf3">&#9670;&nbsp;</a></span>pow4()</h2>
+<a id="gabbc1c7385a145f04b5c54228965df145"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gabbc1c7385a145f04b5c54228965df145">&#9670;&nbsp;</a></span>extractMatrixRotation()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">GLM_FUNC_DECL genType glm::pow4 </td>
+          <td class="memname">GLM_FUNC_DECL mat&lt;4, 4, T, Q&gt; glm::extractMatrixRotation </td>
           <td>(</td>
-          <td class="paramtype">genType const &amp;&#160;</td>
-          <td class="paramname"><em>x</em></td><td>)</td>
+          <td class="paramtype">mat&lt; 4, 4, T, Q &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>Mat</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Returns x raised to the power of 4. </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00956.html">GLM_GTX_optimum_pow</a> </dd></dl>
+<p>Extracts the rotation part of a matrix. </p>
+<p>From GLM_GTX_matrix_interpolation extension. </p>
+
+</div>
+</div>
+<a id="ga4e67863d150724b10c1ac00972dc958c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4e67863d150724b10c1ac00972dc958c">&#9670;&nbsp;</a></span>interpolate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GLM_FUNC_DECL mat&lt;4, 4, T, Q&gt; glm::interpolate </td>
+          <td>(</td>
+          <td class="paramtype">mat&lt; 4, 4, T, Q &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>m1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">mat&lt; 4, 4, T, Q &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>m2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T const&#160;</td>
+          <td class="paramname"><em>Delta</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Build a interpolation of 4 * 4 matrixes. </p>
+<p>From GLM_GTX_matrix_interpolation extension. Warning! works only with rotation and/or translation matrixes, scale will generate unexpected results. </p>
 
 </div>
 </div>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>1.0.0 API documentation: matrix_factorisation.hpp Source File</title>
+<title>1.0.2 API documentation: matrix_cross_product.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo-mini.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">1.0.0 API documentation
+   <div id="projectname">1.0.2 API documentation
    </div>
   </td>
  </tr>
@@ -67,50 +67,38 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">matrix_factorisation.hpp</div>  </div>
+<div class="title">matrix_cross_product.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
 <a href="a00659.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">// Dependency:</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;../glm.hpp&quot;</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#ifndef GLM_ENABLE_EXPERIMENTAL</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#       error &quot;GLM: GLM_GTX_matrix_factorisation is an experimental extension and may change in the future. Use #define GLM_ENABLE_EXPERIMENTAL before including it, if you really want to use it.&quot;</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#elif GLM_MESSAGES == GLM_ENABLE &amp;&amp; !defined(GLM_EXT_INCLUDED)</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#       pragma message(&quot;GLM: GLM_GTX_matrix_factorisation extension included&quot;)</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">Suggestions:</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment"> - Move helper functions flipud and fliplr to another file: They may be helpful in more general circumstances.</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment"> - Implement other types of matrix factorisation, such as: QL and LQ, L(D)U, eigendecompositions, etc...</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">// Dependency:</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;../glm.hpp&quot;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#ifndef GLM_ENABLE_EXPERIMENTAL</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#       error &quot;GLM: GLM_GTX_matrix_cross_product is an experimental extension and may change in the future. Use #define GLM_ENABLE_EXPERIMENTAL before including it, if you really want to use it.&quot;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#elif GLM_MESSAGES == GLM_ENABLE &amp;&amp; !defined(GLM_EXT_INCLUDED)</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#       pragma message(&quot;GLM: GLM_GTX_matrix_cross_product extension included&quot;)</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">namespace </span>glm</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;{</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">namespace </span>glm</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;{</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keyword">template</span> &lt;length_t C, length_t R, <span class="keyword">typename</span> T, qualifier Q&gt;</div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="a00945.html#ga85003371f0ba97380dd25e8905de1870">   39</a></span>&#160;        GLM_FUNC_DECL mat&lt;C, R, T, Q&gt; <a class="code" href="a00945.html#ga85003371f0ba97380dd25e8905de1870">flipud</a>(mat&lt;C, R, T, Q&gt; <span class="keyword">const</span>&amp; in);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keyword">template</span> &lt;length_t C, length_t R, <span class="keyword">typename</span> T, qualifier Q&gt;</div>
-<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="a00945.html#gaf39f4e5f78eb29c1a90277d45b9b3feb">   45</a></span>&#160;        GLM_FUNC_DECL mat&lt;C, R, T, Q&gt; <a class="code" href="a00945.html#gaf39f4e5f78eb29c1a90277d45b9b3feb">fliplr</a>(mat&lt;C, R, T, Q&gt; <span class="keyword">const</span>&amp; in);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keyword">template</span> &lt;length_t C, length_t R, <span class="keyword">typename</span> T, qualifier Q&gt;</div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="a00945.html#ga77022dca1aa38add548f9f56a9f8071a">   53</a></span>&#160;        GLM_FUNC_DECL <span class="keywordtype">void</span> <a class="code" href="a00945.html#ga77022dca1aa38add548f9f56a9f8071a">qr_decompose</a>(mat&lt;C, R, T, Q&gt; <span class="keyword">const</span>&amp; in, mat&lt;(C &lt; R ? C : R), R, T, Q&gt;&amp; q, mat&lt;C, (C &lt; R ? C : R), T, Q&gt;&amp; r);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keyword">template</span> &lt;length_t C, length_t R, <span class="keyword">typename</span> T, qualifier Q&gt;</div>
-<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="a00945.html#ga4e022709c9e7eaad9d7cc315d2cdb05c">   62</a></span>&#160;        GLM_FUNC_DECL <span class="keywordtype">void</span> <a class="code" href="a00945.html#ga4e022709c9e7eaad9d7cc315d2cdb05c">rq_decompose</a>(mat&lt;C, R, T, Q&gt; <span class="keyword">const</span>&amp; in, mat&lt;(C &lt; R ? C : R), R, T, Q&gt;&amp; r, mat&lt;C, (C &lt; R ? C : R), T, Q&gt;&amp; q);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">#include &quot;matrix_factorisation.inl&quot;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, qualifier Q&gt;</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="a00953.html#ga5802386bb4c37b3332a3b6fd8b6960ff">   33</a></span>&#160;        GLM_FUNC_DECL mat&lt;3, 3, T, Q&gt; <a class="code" href="a00953.html#ga5802386bb4c37b3332a3b6fd8b6960ff">matrixCross3</a>(</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                vec&lt;3, T, Q&gt; <span class="keyword">const</span>&amp; x);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, qualifier Q&gt;</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="a00953.html#ga20057fff91ddafa102934adb25458cde">   39</a></span>&#160;        GLM_FUNC_DECL mat&lt;4, 4, T, Q&gt; <a class="code" href="a00953.html#ga20057fff91ddafa102934adb25458cde">matrixCross4</a>(</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                vec&lt;3, T, Q&gt; <span class="keyword">const</span>&amp; x);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}<span class="comment">//namespace glm</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#include &quot;matrix_cross_product.inl&quot;</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aa00945_html_gaf39f4e5f78eb29c1a90277d45b9b3feb"><div class="ttname"><a href="a00945.html#gaf39f4e5f78eb29c1a90277d45b9b3feb">glm::fliplr</a></div><div class="ttdeci">GLM_FUNC_DECL mat&lt; C, R, T, Q &gt; fliplr(mat&lt; C, R, T, Q &gt; const &amp;in)</div><div class="ttdoc">Flips the matrix columns right and left.</div></div>
-<div class="ttc" id="aa00945_html_ga77022dca1aa38add548f9f56a9f8071a"><div class="ttname"><a href="a00945.html#ga77022dca1aa38add548f9f56a9f8071a">glm::qr_decompose</a></div><div class="ttdeci">GLM_FUNC_DECL void qr_decompose(mat&lt; C, R, T, Q &gt; const &amp;in, mat&lt;(C&lt; R ? C :R), R, T, Q &gt; &amp;q, mat&lt; C,(C&lt; R ? C :R), T, Q &gt; &amp;r)</div><div class="ttdoc">Performs QR factorisation of a matrix.</div></div>
-<div class="ttc" id="aa00945_html_ga4e022709c9e7eaad9d7cc315d2cdb05c"><div class="ttname"><a href="a00945.html#ga4e022709c9e7eaad9d7cc315d2cdb05c">glm::rq_decompose</a></div><div class="ttdeci">GLM_FUNC_DECL void rq_decompose(mat&lt; C, R, T, Q &gt; const &amp;in, mat&lt;(C&lt; R ? C :R), R, T, Q &gt; &amp;r, mat&lt; C,(C&lt; R ? C :R), T, Q &gt; &amp;q)</div><div class="ttdoc">Performs RQ factorisation of a matrix.</div></div>
-<div class="ttc" id="aa00945_html_ga85003371f0ba97380dd25e8905de1870"><div class="ttname"><a href="a00945.html#ga85003371f0ba97380dd25e8905de1870">glm::flipud</a></div><div class="ttdeci">GLM_FUNC_DECL mat&lt; C, R, T, Q &gt; flipud(mat&lt; C, R, T, Q &gt; const &amp;in)</div><div class="ttdoc">Flips the matrix rows up and down.</div></div>
+<div class="ttc" id="aa00953_html_ga20057fff91ddafa102934adb25458cde"><div class="ttname"><a href="a00953.html#ga20057fff91ddafa102934adb25458cde">glm::matrixCross4</a></div><div class="ttdeci">GLM_FUNC_DECL mat&lt; 4, 4, T, Q &gt; matrixCross4(vec&lt; 3, T, Q &gt; const &amp;x)</div><div class="ttdoc">Build a cross product matrix.</div></div>
+<div class="ttc" id="aa00953_html_ga5802386bb4c37b3332a3b6fd8b6960ff"><div class="ttname"><a href="a00953.html#ga5802386bb4c37b3332a3b6fd8b6960ff">glm::matrixCross3</a></div><div class="ttdeci">GLM_FUNC_DECL mat&lt; 3, 3, T, Q &gt; matrixCross3(vec&lt; 3, T, Q &gt; const &amp;x)</div><div class="ttdoc">Build a cross product matrix.</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
