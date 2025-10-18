@@ -47,7 +47,7 @@ namespace glm
 	/// @see <a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/dot.xml">GLSL dot man page</a>
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.5 Geometric Functions</a>
 	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR T dot(vec<L, T, Q> const& x, vec<L, T, Q> const& y);
+	GLM_FUNC_DECL constexpr T dot(vec<L, T, Q> const& x, vec<L, T, Q> const& y);
 
 	/// Returns the cross product of x and y.
 	///
@@ -56,7 +56,7 @@ namespace glm
 	/// @see <a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/cross.xml">GLSL cross man page</a>
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.5 Geometric Functions</a>
 	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<3, T, Q> cross(vec<3, T, Q> const& x, vec<3, T, Q> const& y);
+	GLM_FUNC_DECL constexpr vec<3, T, Q> cross(vec<3, T, Q> const& x, vec<3, T, Q> const& y);
 
 	/// Returns a vector in the same direction as x but with length of 1.
 	/// According to issue 10 GLSL 1.10 specification, if length(x) == 0 then result is undefined and generate an error.

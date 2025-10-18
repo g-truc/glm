@@ -6,7 +6,7 @@ namespace glm
 	template<typename genType>
 	GLM_FUNC_QUALIFIER genType fastSqrt(genType x)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'fastSqrt' only accept floating-point input");
+		static_assert(std::numeric_limits<genType>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'fastSqrt' only accept floating-point input");
 
 		return genType(1) / fastInverseSqrt(x);
 	}
@@ -34,7 +34,7 @@ namespace glm
 	template<typename genType>
 	GLM_FUNC_QUALIFIER genType fastLength(genType x)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'fastLength' only accept floating-point inputs");
+		static_assert(std::numeric_limits<genType>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'fastLength' only accept floating-point inputs");
 
 		return abs(x);
 	}
@@ -42,7 +42,7 @@ namespace glm
 	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER T fastLength(vec<L, T, Q> const& x)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'fastLength' only accept floating-point inputs");
+		static_assert(std::numeric_limits<T>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'fastLength' only accept floating-point inputs");
 
 		return fastSqrt(dot(x, x));
 	}

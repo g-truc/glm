@@ -18,9 +18,9 @@
 template<typename T>
 T myEpsilon();
 template<>
-GLM_INLINE GLM_CONSTEXPR float myEpsilon<float>() { return 0.00001f; }
+GLM_INLINE constexpr float myEpsilon<float>() { return 0.00001f; }
 template<>
-GLM_INLINE GLM_CONSTEXPR double myEpsilon<double>() { return 0.000001; }
+GLM_INLINE constexpr double myEpsilon<double>() { return 0.000001; }
 
 template<glm::length_t D, typename T, glm::qualifier Q>
 static bool vectorEpsilonEqual(glm::vec<D, T, Q> const& a, glm::vec<D, T, Q> const& b, T epsilon)

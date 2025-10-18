@@ -82,7 +82,7 @@ $(function() {
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keywordtype">bool</span> isFloat&gt;</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <span class="keyword">struct </span>compute_equal</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        {</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;                GLM_FUNC_QUALIFIER GLM_CONSTEXPR <span class="keyword">static</span> <span class="keywordtype">bool</span> call(T a, T b)</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;                GLM_FUNC_QUALIFIER constexpr <span class="keyword">static</span> <span class="keywordtype">bool</span> call(T a, T b)</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;                {</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;                        <span class="keywordflow">return</span> a == b;</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;                }</div>
@@ -91,7 +91,7 @@ $(function() {
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">        template &lt;typename T&gt;</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">        struct compute_equal&lt;T, true&gt;</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">        {</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">                GLM_FUNC_QUALIFIER GLM_CONSTEXPR static bool call(T a, T b)</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">                GLM_FUNC_QUALIFIER constexpr static bool call(T a, T b)</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">                {</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">                        return detail::compute_abs&lt;T, std::numeric_limits&lt;T&gt;::is_signed&gt;::call(b - a) &lt;= static_cast&lt;T&gt;(0);</span></div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">                        //return std::memcmp(&amp;a, &amp;b, sizeof(T)) == 0;</span></div>

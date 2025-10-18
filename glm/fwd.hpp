@@ -4,7 +4,6 @@
 
 namespace glm
 {
-#if GLM_HAS_EXTENDED_INTEGER_TYPE
 	typedef std::int8_t				int8;
 	typedef std::int16_t			int16;
 	typedef std::int32_t			int32;
@@ -14,17 +13,6 @@ namespace glm
 	typedef std::uint16_t			uint16;
 	typedef std::uint32_t			uint32;
 	typedef std::uint64_t			uint64;
-#else
-	typedef signed char				int8;
-	typedef signed short			int16;
-	typedef signed int				int32;
-	typedef detail::int64			int64;
-
-	typedef unsigned char			uint8;
-	typedef unsigned short			uint16;
-	typedef unsigned int			uint32;
-	typedef detail::uint64			uint64;
-#endif
 
 	// Scalar int
 

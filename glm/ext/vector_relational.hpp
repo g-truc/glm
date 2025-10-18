@@ -36,7 +36,7 @@ namespace glm
 	/// @tparam T Floating-point or integer scalar types
 	/// @tparam Q Value from qualifier enum
 	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<L, bool, Q> equal(vec<L, T, Q> const& x, vec<L, T, Q> const& y, T epsilon);
+	GLM_FUNC_DECL constexpr vec<L, bool, Q> equal(vec<L, T, Q> const& x, vec<L, T, Q> const& y, T epsilon);
 
 	/// Returns the component-wise comparison of |x - y| < epsilon.
 	/// True if this expression is satisfied.
@@ -45,7 +45,7 @@ namespace glm
 	/// @tparam T Floating-point or integer scalar types
 	/// @tparam Q Value from qualifier enum
 	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<L, bool, Q> equal(vec<L, T, Q> const& x, vec<L, T, Q> const& y, vec<L, T, Q> const& epsilon);
+	GLM_FUNC_DECL constexpr vec<L, bool, Q> equal(vec<L, T, Q> const& x, vec<L, T, Q> const& y, vec<L, T, Q> const& epsilon);
 
 	/// Returns the component-wise comparison of |x - y| >= epsilon.
 	/// True if this expression is not satisfied.
@@ -54,7 +54,7 @@ namespace glm
 	/// @tparam T Floating-point or integer scalar types
 	/// @tparam Q Value from qualifier enum
 	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<L, bool, Q> notEqual(vec<L, T, Q> const& x, vec<L, T, Q> const& y, T epsilon);
+	GLM_FUNC_DECL constexpr vec<L, bool, Q> notEqual(vec<L, T, Q> const& x, vec<L, T, Q> const& y, T epsilon);
 
 	/// Returns the component-wise comparison of |x - y| >= epsilon.
 	/// True if this expression is not satisfied.
@@ -63,7 +63,7 @@ namespace glm
 	/// @tparam T Floating-point or integer scalar types
 	/// @tparam Q Value from qualifier enum
 	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<L, bool, Q> notEqual(vec<L, T, Q> const& x, vec<L, T, Q> const& y, vec<L, T, Q> const& epsilon);
+	GLM_FUNC_DECL constexpr vec<L, bool, Q> notEqual(vec<L, T, Q> const& x, vec<L, T, Q> const& y, vec<L, T, Q> const& epsilon);
 
 	/// Returns the component-wise comparison between two vectors in term of ULPs.
 	/// True if this expression is satisfied.
@@ -72,7 +72,7 @@ namespace glm
 	/// @tparam T Floating-point
 	/// @tparam Q Value from qualifier enum
 	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<L, bool, Q> equal(vec<L, T, Q> const& x, vec<L, T, Q> const& y, int ULPs);
+	GLM_FUNC_DECL constexpr vec<L, bool, Q> equal(vec<L, T, Q> const& x, vec<L, T, Q> const& y, int ULPs);
 
 	/// Returns the component-wise comparison between two vectors in term of ULPs.
 	/// True if this expression is satisfied.
@@ -81,7 +81,7 @@ namespace glm
 	/// @tparam T Floating-point
 	/// @tparam Q Value from qualifier enum
 	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<L, bool, Q> equal(vec<L, T, Q> const& x, vec<L, T, Q> const& y, vec<L, int, Q> const& ULPs);
+	GLM_FUNC_DECL constexpr vec<L, bool, Q> equal(vec<L, T, Q> const& x, vec<L, T, Q> const& y, vec<L, int, Q> const& ULPs);
 
 	/// Returns the component-wise comparison between two vectors in term of ULPs.
 	/// True if this expression is not satisfied.
@@ -90,7 +90,7 @@ namespace glm
 	/// @tparam T Floating-point
 	/// @tparam Q Value from qualifier enum
 	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<L, bool, Q> notEqual(vec<L, T, Q> const& x, vec<L, T, Q> const& y, int ULPs);
+	GLM_FUNC_DECL constexpr vec<L, bool, Q> notEqual(vec<L, T, Q> const& x, vec<L, T, Q> const& y, int ULPs);
 
 	/// Returns the component-wise comparison between two vectors in term of ULPs.
 	/// True if this expression is not satisfied.
@@ -99,7 +99,7 @@ namespace glm
 	/// @tparam T Floating-point
 	/// @tparam Q Value from qualifier enum
 	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<L, bool, Q> notEqual(vec<L, T, Q> const& x, vec<L, T, Q> const& y, vec<L, int, Q> const& ULPs);
+	GLM_FUNC_DECL constexpr vec<L, bool, Q> notEqual(vec<L, T, Q> const& x, vec<L, T, Q> const& y, vec<L, int, Q> const& ULPs);
 
 	/// @}
 }//namespace glm

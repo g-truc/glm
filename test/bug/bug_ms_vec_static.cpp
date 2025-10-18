@@ -10,7 +10,7 @@ struct swizzleStruct
 
 struct vec2
 {
-	GLM_CONSTEXPR vec2() :
+	constexpr vec2() :
 		x(0), y(0)
 	{}
 

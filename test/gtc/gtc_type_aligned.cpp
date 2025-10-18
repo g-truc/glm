@@ -10,19 +10,19 @@
 #include <glm/ext/vector_relational.hpp>
 #include <glm/ext/matrix_relational.hpp>
 
-GLM_STATIC_ASSERT(glm::detail::is_aligned<glm::aligned_lowp>::value, "aligned_lowp is not aligned");
-GLM_STATIC_ASSERT(glm::detail::is_aligned<glm::aligned_mediump>::value, "aligned_mediump is not aligned");
-GLM_STATIC_ASSERT(glm::detail::is_aligned<glm::aligned_highp>::value, "aligned_highp is not aligned");
-GLM_STATIC_ASSERT(!glm::detail::is_aligned<glm::packed_highp>::value, "packed_highp is aligned");
-GLM_STATIC_ASSERT(!glm::detail::is_aligned<glm::packed_mediump>::value, "packed_mediump is aligned");
-GLM_STATIC_ASSERT(!glm::detail::is_aligned<glm::packed_lowp>::value, "packed_lowp is aligned");
+static_assert(glm::detail::is_aligned<glm::aligned_lowp>::value, "aligned_lowp is not aligned");
+static_assert(glm::detail::is_aligned<glm::aligned_mediump>::value, "aligned_mediump is not aligned");
+static_assert(glm::detail::is_aligned<glm::aligned_highp>::value, "aligned_highp is not aligned");
+static_assert(!glm::detail::is_aligned<glm::packed_highp>::value, "packed_highp is aligned");
+static_assert(!glm::detail::is_aligned<glm::packed_mediump>::value, "packed_mediump is aligned");
+static_assert(!glm::detail::is_aligned<glm::packed_lowp>::value, "packed_lowp is aligned");
 
 struct my_vec4_packed
 {
 	glm::uint32 a;
 	glm::vec4 b;
 };
-GLM_STATIC_ASSERT(sizeof(my_vec4_packed) == sizeof(glm::uint32) + sizeof(glm::vec4), "glm::vec4 packed is not correct");
+static_assert(sizeof(my_vec4_packed) == sizeof(glm::uint32) + sizeof(glm::vec4), "glm::vec4 packed is not correct");
 
 #if GLM_COMPILER & GLM_COMPILER_CLANG
 #	pragma clang diagnostic push
@@ -34,7 +34,7 @@ struct my_vec4_aligned
 	glm::uint32 a;
 	glm::aligned_vec4 b;
 };
-GLM_STATIC_ASSERT(sizeof(my_vec4_aligned) == sizeof(glm::aligned_vec4) * 2, "glm::vec4 aligned is not correct");
+static_assert(sizeof(my_vec4_aligned) == sizeof(glm::aligned_vec4) * 2, "glm::vec4 aligned is not correct");
 
 #if GLM_COMPILER & GLM_COMPILER_CLANG
 #	pragma clang diagnostic pop
@@ -45,14 +45,14 @@ struct my_dvec4_packed
 	glm::uint64 a;
 	glm::dvec4 b;
 };
-GLM_STATIC_ASSERT(sizeof(my_dvec4_packed) == sizeof(glm::uint64) + sizeof(glm::dvec4), "glm::dvec4 packed is not correct");
+static_assert(sizeof(my_dvec4_packed) == sizeof(glm::uint64) + sizeof(glm::dvec4), "glm::dvec4 packed is not correct");
 
 struct my_dvec4_aligned
 {
 	glm::uint64 a;
 	glm::aligned_dvec4 b;
 };
-//GLM_STATIC_ASSERT(sizeof(my_dvec4_aligned) == sizeof(glm::aligned_dvec4) * 2, "glm::dvec4 aligned is not correct");
+//static_assert(sizeof(my_dvec4_aligned) == sizeof(glm::aligned_dvec4) * 2, "glm::dvec4 aligned is not correct");
 
 #if GLM_COMPILER & GLM_COMPILER_CLANG
 #	pragma clang diagnostic push
@@ -69,7 +69,7 @@ struct my_ivec4_packed
 #	pragma clang diagnostic pop
 #endif
 
-GLM_STATIC_ASSERT(sizeof(my_ivec4_packed) == sizeof(glm::uint32) + sizeof(glm::ivec4), "glm::ivec4 packed is not correct");
+static_assert(sizeof(my_ivec4_packed) == sizeof(glm::uint32) + sizeof(glm::ivec4), "glm::ivec4 packed is not correct");
 
 #if GLM_COMPILER & GLM_COMPILER_CLANG
 #	pragma clang diagnostic push
@@ -86,14 +86,14 @@ struct my_ivec4_aligned
 #	pragma clang diagnostic pop
 #endif
 
-GLM_STATIC_ASSERT(sizeof(my_ivec4_aligned) == sizeof(glm::aligned_ivec4) * 2, "glm::ivec4 aligned is not correct");
+static_assert(sizeof(my_ivec4_aligned) == sizeof(glm::aligned_ivec4) * 2, "glm::ivec4 aligned is not correct");
 
 struct my_u8vec4_packed
 {
 	glm::uint32 a;
 	glm::u8vec4 b;
 };
-GLM_STATIC_ASSERT(sizeof(my_u8vec4_packed) == sizeof(glm::uint32) + sizeof(glm::u8vec4), "glm::u8vec4 packed is not correct");
+static_assert(sizeof(my_u8vec4_packed) == sizeof(glm::uint32) + sizeof(glm::u8vec4), "glm::u8vec4 packed is not correct");
 
 static int test_copy_vec4()
 {

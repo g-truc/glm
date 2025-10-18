@@ -19,14 +19,14 @@ namespace glm
 	template<length_t C, length_t R, typename T, qualifier Q, bool Aligned>
 	struct compute_abs_matrix
 	{
-		GLM_FUNC_QUALIFIER GLM_CONSTEXPR static mat<C, R, T, Q> call(mat<C, R, T, Q> const& x)
+		GLM_FUNC_QUALIFIER constexpr static mat<C, R, T, Q> call(mat<C, R, T, Q> const& x)
 		{
 			return detail::matrix_functor_1<mat, C, R, T, T, Q>::call(abs, x);
 		}
 	};
 
 	template<length_t C, length_t R, typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR mat<C, R, T, Q> abs(mat<C, R, T, Q> const& x)
+	GLM_FUNC_DECL constexpr mat<C, R, T, Q> abs(mat<C, R, T, Q> const& x)
 	{
 		return compute_abs_matrix<C, R, T, Q, detail::is_aligned<Q>::value>::call(x);
 	}

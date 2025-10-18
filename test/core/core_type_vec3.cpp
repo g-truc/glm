@@ -324,7 +324,7 @@ static int test_vec3_size()
 	Error += glm::vec3::length() == 3 ? 0 : 1;
 	Error += glm::dvec3::length() == 3 ? 0 : 1;
 
-	GLM_CONSTEXPR glm::length_t Length = glm::vec3::length();
+	constexpr glm::length_t Length = glm::vec3::length();
 	Error += Length == 3 ? 0 : 1;
 
 	return Error;

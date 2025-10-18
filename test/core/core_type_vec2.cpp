@@ -332,7 +332,7 @@ static int test_size()
 	Error += glm::vec2::length() == 2 ? 0 : 1;
 	Error += glm::dvec2::length() == 2 ? 0 : 1;
 
-	GLM_CONSTEXPR glm::length_t Length = glm::vec2::length();
+	constexpr glm::length_t Length = glm::vec2::length();
 	Error += Length == 2 ? 0 : 1;
 
 	return Error;

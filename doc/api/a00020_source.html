@@ -81,7 +81,7 @@ $(function() {
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">template</span>&lt;length_t L, <span class="keyword">typename</span> T, qualifier Q&gt; <span class="keyword">class </span>vec, <span class="keyword">typename</span> R, <span class="keyword">typename</span> T, qualifier Q&gt;</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <span class="keyword">struct </span>functor1&lt;vec, 1, R, T, Q&gt;</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        {</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;                GLM_FUNC_QUALIFIER GLM_CONSTEXPR <span class="keyword">static</span> vec&lt;1, R, Q&gt; call(R (*Func) (T x), vec&lt;1, T, Q&gt; <span class="keyword">const</span>&amp; v)</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;                GLM_FUNC_QUALIFIER constexpr <span class="keyword">static</span> vec&lt;1, R, Q&gt; call(R (*Func) (T x), vec&lt;1, T, Q&gt; <span class="keyword">const</span>&amp; v)</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;                {</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;                        <span class="keywordflow">return</span> vec&lt;1, R, Q&gt;(Func(v.x));</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;                }</div>
@@ -90,7 +90,7 @@ $(function() {
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">template</span>&lt;length_t L, <span class="keyword">typename</span> T, qualifier Q&gt; <span class="keyword">class </span>vec, <span class="keyword">typename</span> R, <span class="keyword">typename</span> T, qualifier Q&gt;</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keyword">struct </span>functor1&lt;vec, 2, R, T, Q&gt;</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        {</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                GLM_FUNC_QUALIFIER GLM_CONSTEXPR <span class="keyword">static</span> vec&lt;2, R, Q&gt; call(R (*Func) (T x), vec&lt;2, T, Q&gt; <span class="keyword">const</span>&amp; v)</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                GLM_FUNC_QUALIFIER constexpr <span class="keyword">static</span> vec&lt;2, R, Q&gt; call(R (*Func) (T x), vec&lt;2, T, Q&gt; <span class="keyword">const</span>&amp; v)</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                {</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                        <span class="keywordflow">return</span> vec&lt;2, R, Q&gt;(Func(v.x), Func(v.y));</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                }</div>
@@ -99,7 +99,7 @@ $(function() {
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">template</span>&lt;length_t L, <span class="keyword">typename</span> T, qualifier Q&gt; <span class="keyword">class </span>vec, <span class="keyword">typename</span> R, <span class="keyword">typename</span> T, qualifier Q&gt;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keyword">struct </span>functor1&lt;vec, 3, R, T, Q&gt;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        {</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                GLM_FUNC_QUALIFIER GLM_CONSTEXPR <span class="keyword">static</span> vec&lt;3, R, Q&gt; call(R (*Func) (T x), vec&lt;3, T, Q&gt; <span class="keyword">const</span>&amp; v)</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                GLM_FUNC_QUALIFIER constexpr <span class="keyword">static</span> vec&lt;3, R, Q&gt; call(R (*Func) (T x), vec&lt;3, T, Q&gt; <span class="keyword">const</span>&amp; v)</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                {</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                        <span class="keywordflow">return</span> vec&lt;3, R, Q&gt;(Func(v.x), Func(v.y), Func(v.z));</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                }</div>
@@ -108,7 +108,7 @@ $(function() {
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">template</span>&lt;length_t L, <span class="keyword">typename</span> T, qualifier Q&gt; <span class="keyword">class </span>vec, <span class="keyword">typename</span> R, <span class="keyword">typename</span> T, qualifier Q&gt;</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keyword">struct </span>functor1&lt;vec, 4, R, T, Q&gt;</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                GLM_FUNC_QUALIFIER GLM_CONSTEXPR <span class="keyword">static</span> vec&lt;4, R, Q&gt; call(R (*Func) (T x), vec&lt;4, T, Q&gt; <span class="keyword">const</span>&amp; v)</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                GLM_FUNC_QUALIFIER constexpr <span class="keyword">static</span> vec&lt;4, R, Q&gt; call(R (*Func) (T x), vec&lt;4, T, Q&gt; <span class="keyword">const</span>&amp; v)</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                {</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                        <span class="keywordflow">return</span> vec&lt;4, R, Q&gt;(Func(v.x), Func(v.y), Func(v.z), Func(v.w));</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                }</div>
@@ -126,7 +126,7 @@ $(function() {
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                }</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                <span class="keyword">template</span>&lt;<span class="keyword">typename</span> Fct&gt;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                GLM_FUNC_QUALIFIER GLM_CONSTEXPR <span class="keyword">static</span> vec&lt;1, T, Q&gt; call(Fct Func, vec&lt;1, T, Q&gt; <span class="keyword">const</span>&amp; a, vec&lt;1, T, Q&gt; <span class="keyword">const</span>&amp; b)</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                GLM_FUNC_QUALIFIER constexpr <span class="keyword">static</span> vec&lt;1, T, Q&gt; call(Fct Func, vec&lt;1, T, Q&gt; <span class="keyword">const</span>&amp; a, vec&lt;1, T, Q&gt; <span class="keyword">const</span>&amp; b)</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                {</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                        <span class="keywordflow">return</span> vec&lt;1, T, Q&gt;(Func(a.x, b.x));</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                }</div>
@@ -141,7 +141,7 @@ $(function() {
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                }</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                <span class="keyword">template</span>&lt;<span class="keyword">typename</span> Fct&gt;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                GLM_FUNC_QUALIFIER GLM_CONSTEXPR <span class="keyword">static</span> vec&lt;2, T, Q&gt; call(Fct Func, vec&lt;2, T, Q&gt; <span class="keyword">const</span>&amp; a, vec&lt;2, T, Q&gt; <span class="keyword">const</span>&amp; b)</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                GLM_FUNC_QUALIFIER constexpr <span class="keyword">static</span> vec&lt;2, T, Q&gt; call(Fct Func, vec&lt;2, T, Q&gt; <span class="keyword">const</span>&amp; a, vec&lt;2, T, Q&gt; <span class="keyword">const</span>&amp; b)</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                {</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                        <span class="keywordflow">return</span> vec&lt;2, T, Q&gt;(Func(a.x, b.x), Func(a.y, b.y));</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                }</div>
@@ -156,7 +156,7 @@ $(function() {
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                }</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                <span class="keyword">template</span>&lt;<span class="keyword">class</span> Fct&gt;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                GLM_FUNC_QUALIFIER GLM_CONSTEXPR <span class="keyword">static</span> vec&lt;3, T, Q&gt; call(Fct Func, vec&lt;3, T, Q&gt; <span class="keyword">const</span>&amp; a, vec&lt;3, T, Q&gt; <span class="keyword">const</span>&amp; b)</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                GLM_FUNC_QUALIFIER constexpr <span class="keyword">static</span> vec&lt;3, T, Q&gt; call(Fct Func, vec&lt;3, T, Q&gt; <span class="keyword">const</span>&amp; a, vec&lt;3, T, Q&gt; <span class="keyword">const</span>&amp; b)</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                {</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                        <span class="keywordflow">return</span> vec&lt;3, T, Q&gt;(Func(a.x, b.x), Func(a.y, b.y), Func(a.z, b.z));</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                }</div>
@@ -171,7 +171,7 @@ $(function() {
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                }</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                <span class="keyword">template</span>&lt;<span class="keyword">class</span> Fct&gt;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                GLM_FUNC_QUALIFIER GLM_CONSTEXPR <span class="keyword">static</span> vec&lt;4, T, Q&gt; call(Fct Func, vec&lt;4, T, Q&gt; <span class="keyword">const</span>&amp; a, vec&lt;4, T, Q&gt; <span class="keyword">const</span>&amp; b)</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                GLM_FUNC_QUALIFIER constexpr <span class="keyword">static</span> vec&lt;4, T, Q&gt; call(Fct Func, vec&lt;4, T, Q&gt; <span class="keyword">const</span>&amp; a, vec&lt;4, T, Q&gt; <span class="keyword">const</span>&amp; b)</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                {</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                        <span class="keywordflow">return</span> vec&lt;4, T, Q&gt;(Func(a.x, b.x), Func(a.y, b.y), Func(a.z, b.z), Func(a.w, b.w));</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                }</div>
@@ -188,7 +188,7 @@ $(function() {
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                        <span class="keywordflow">return</span> vec&lt;1, T, Q&gt;(Func(a.x, b));</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                }</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                <span class="keyword">template</span>&lt;<span class="keyword">class</span> Fct&gt;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                GLM_FUNC_QUALIFIER GLM_CONSTEXPR <span class="keyword">static</span> vec&lt;1, T, Q&gt; call(Fct Func, vec&lt;1, T, Q&gt; <span class="keyword">const</span>&amp; a, T b)</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                GLM_FUNC_QUALIFIER constexpr <span class="keyword">static</span> vec&lt;1, T, Q&gt; call(Fct Func, vec&lt;1, T, Q&gt; <span class="keyword">const</span>&amp; a, T b)</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                {</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                        <span class="keywordflow">return</span> vec&lt;1, T, Q&gt;(Func(a.x, b));</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                }</div>
@@ -203,7 +203,7 @@ $(function() {
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                }</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                <span class="keyword">template</span>&lt;<span class="keyword">class</span> Fct&gt;</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                GLM_FUNC_QUALIFIER GLM_CONSTEXPR <span class="keyword">static</span> vec&lt;2, T, Q&gt; call(Fct Func, vec&lt;2, T, Q&gt; <span class="keyword">const</span>&amp; a, T b)</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                GLM_FUNC_QUALIFIER constexpr <span class="keyword">static</span> vec&lt;2, T, Q&gt; call(Fct Func, vec&lt;2, T, Q&gt; <span class="keyword">const</span>&amp; a, T b)</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                {</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                        <span class="keywordflow">return</span> vec&lt;2, T, Q&gt;(Func(a.x, b), Func(a.y, b));</div>
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                }</div>
@@ -218,7 +218,7 @@ $(function() {
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                }</div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                <span class="keyword">template</span>&lt;<span class="keyword">class</span> Fct&gt;</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                GLM_FUNC_QUALIFIER GLM_CONSTEXPR <span class="keyword">static</span> vec&lt;3, T, Q&gt; call(Fct Func, vec&lt;3, T, Q&gt; <span class="keyword">const</span>&amp; a, T b)</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                GLM_FUNC_QUALIFIER constexpr <span class="keyword">static</span> vec&lt;3, T, Q&gt; call(Fct Func, vec&lt;3, T, Q&gt; <span class="keyword">const</span>&amp; a, T b)</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                {</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                        <span class="keywordflow">return</span> vec&lt;3, T, Q&gt;(Func(a.x, b), Func(a.y, b), Func(a.z, b));</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                }</div>
@@ -232,7 +232,7 @@ $(function() {
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                        <span class="keywordflow">return</span> vec&lt;4, T, Q&gt;(Func(a.x, b), Func(a.y, b), Func(a.z, b), Func(a.w, b));</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                }</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                <span class="keyword">template</span>&lt;<span class="keyword">class</span> Fct&gt;</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                GLM_FUNC_QUALIFIER GLM_CONSTEXPR <span class="keyword">static</span> vec&lt;4, T, Q&gt; call(Fct Func, vec&lt;4, T, Q&gt; <span class="keyword">const</span>&amp; a, T b)</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                GLM_FUNC_QUALIFIER constexpr <span class="keyword">static</span> vec&lt;4, T, Q&gt; call(Fct Func, vec&lt;4, T, Q&gt; <span class="keyword">const</span>&amp; a, T b)</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                {</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                        <span class="keywordflow">return</span> vec&lt;4, T, Q&gt;(Func(a.x, b), Func(a.y, b), Func(a.z, b), Func(a.w, b));</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                }</div>
@@ -250,7 +250,7 @@ $(function() {
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                }</div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                <span class="keyword">template</span>&lt;<span class="keyword">class</span> Fct&gt;</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                GLM_FUNC_QUALIFIER GLM_CONSTEXPR <span class="keyword">static</span> vec&lt;1, int, Q&gt; call(Fct Func, vec&lt;1, T, Q&gt; <span class="keyword">const</span>&amp; a, vec&lt;1, int, Q&gt; <span class="keyword">const</span>&amp; b)</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                GLM_FUNC_QUALIFIER constexpr <span class="keyword">static</span> vec&lt;1, int, Q&gt; call(Fct Func, vec&lt;1, T, Q&gt; <span class="keyword">const</span>&amp; a, vec&lt;1, int, Q&gt; <span class="keyword">const</span>&amp; b)</div>
 <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                {</div>
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                        <span class="keywordflow">return</span> vec&lt;1, int, Q&gt;(Func(a.x, b.x));</div>
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                }</div>
@@ -264,7 +264,7 @@ $(function() {
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                        <span class="keywordflow">return</span> vec&lt;2, int, Q&gt;(Func(a.x, b.x), Func(a.y, b.y));</div>
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                }</div>
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                <span class="keyword">template</span>&lt;<span class="keyword">class</span> Fct&gt;</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                GLM_FUNC_QUALIFIER GLM_CONSTEXPR <span class="keyword">static</span> vec&lt;2, int, Q&gt; call(Fct Func, vec&lt;2, T, Q&gt; <span class="keyword">const</span>&amp; a, vec&lt;2, int, Q&gt; <span class="keyword">const</span>&amp; b)</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                GLM_FUNC_QUALIFIER constexpr <span class="keyword">static</span> vec&lt;2, int, Q&gt; call(Fct Func, vec&lt;2, T, Q&gt; <span class="keyword">const</span>&amp; a, vec&lt;2, int, Q&gt; <span class="keyword">const</span>&amp; b)</div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                {</div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                        <span class="keywordflow">return</span> vec&lt;2, int, Q&gt;(Func(a.x, b.x), Func(a.y, b.y));</div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                }</div>
@@ -278,7 +278,7 @@ $(function() {
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                        <span class="keywordflow">return</span> vec&lt;3, int, Q&gt;(Func(a.x, b.x), Func(a.y, b.y), Func(a.z, b.z));</div>
 <div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                }</div>
 <div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                <span class="keyword">template</span>&lt;<span class="keyword">class</span> Fct&gt;</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                GLM_FUNC_QUALIFIER GLM_CONSTEXPR <span class="keyword">static</span> vec&lt;3, int, Q&gt; call(Fct Func, vec&lt;3, T, Q&gt; <span class="keyword">const</span>&amp; a, vec&lt;3, int, Q&gt; <span class="keyword">const</span>&amp; b)</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                GLM_FUNC_QUALIFIER constexpr <span class="keyword">static</span> vec&lt;3, int, Q&gt; call(Fct Func, vec&lt;3, T, Q&gt; <span class="keyword">const</span>&amp; a, vec&lt;3, int, Q&gt; <span class="keyword">const</span>&amp; b)</div>
 <div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                {</div>
 <div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                        <span class="keywordflow">return</span> vec&lt;3, int, Q&gt;(Func(a.x, b.x), Func(a.y, b.y), Func(a.z, b.z));</div>
 <div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                }</div>
@@ -293,7 +293,7 @@ $(function() {
 <div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                }</div>
 <div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160; </div>
 <div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;                <span class="keyword">template</span>&lt;<span class="keyword">class</span> Fct&gt;</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;                GLM_FUNC_QUALIFIER GLM_CONSTEXPR <span class="keyword">static</span> vec&lt;4, int, Q&gt; call(Fct Func, vec&lt;4, T, Q&gt; <span class="keyword">const</span>&amp; a, vec&lt;4, int, Q&gt; <span class="keyword">const</span>&amp; b)</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;                GLM_FUNC_QUALIFIER constexpr <span class="keyword">static</span> vec&lt;4, int, Q&gt; call(Fct Func, vec&lt;4, T, Q&gt; <span class="keyword">const</span>&amp; a, vec&lt;4, int, Q&gt; <span class="keyword">const</span>&amp; b)</div>
 <div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;                {</div>
 <div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                        <span class="keywordflow">return</span> vec&lt;4, int, Q&gt;(Func(a.x, b.x), Func(a.y, b.y), Func(a.z, b.z), Func(a.w, b.w));</div>
 <div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;                }</div>

@@ -35,7 +35,7 @@ namespace glm
 	/// @see <a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/radians.xml">GLSL radians man page</a>
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.1 Angle and Trigonometry Functions</a>
 	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<L, T, Q> radians(vec<L, T, Q> const& degrees);
+	GLM_FUNC_DECL constexpr vec<L, T, Q> radians(vec<L, T, Q> const& degrees);
 
 	/// Converts radians to degrees and returns the result.
 	///
@@ -46,7 +46,7 @@ namespace glm
 	/// @see <a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/degrees.xml">GLSL degrees man page</a>
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.1 Angle and Trigonometry Functions</a>
 	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<L, T, Q> degrees(vec<L, T, Q> const& radians);
+	GLM_FUNC_DECL constexpr vec<L, T, Q> degrees(vec<L, T, Q> const& radians);
 
 	/// The standard trigonometric sine function.
 	/// The values returned by this function will range from [-1, 1].

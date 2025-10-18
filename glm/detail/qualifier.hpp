@@ -178,10 +178,10 @@ namespace detail
 		struct type
 		{
 			glm_f64vec2 data[2];
-			GLM_CONSTEXPR glm_f64vec2 getv(int i) const {
+			constexpr glm_f64vec2 getv(int i) const {
 				return data[i];
 			}
-			GLM_CONSTEXPR void setv(int i, const glm_f64vec2& v) {
+			constexpr void setv(int i, const glm_f64vec2& v) {
 				data[i] = v;
 			}
 		};
@@ -240,15 +240,12 @@ namespace detail
 	struct storage<3, unsigned int, true> : public storage<4, unsigned int, true>
 	{};
 
-#	if GLM_HAS_ALIGNOF
-	template<>
 	struct storage<3, double, true>
 	{
 		typedef struct alignas(4 * sizeof(double)) type {
 			double data[4];
 		} type;
 	};
-#	endif//GLM_HAS_ALIGNOF
 
 #	endif
 
@@ -277,7 +274,7 @@ namespace detail
 	template<typename genType>
 	struct init_gentype<genType, GENTYPE_QUAT>
 	{
-		GLM_FUNC_QUALIFIER GLM_CONSTEXPR static genType identity()
+		GLM_FUNC_QUALIFIER constexpr static genType identity()
 		{
 			return genType(1, 0, 0, 0);
 		}
@@ -286,7 +283,7 @@ namespace detail
 	template<typename genType>
 	struct init_gentype<genType, GENTYPE_MAT>
 	{
-		GLM_FUNC_QUALIFIER GLM_CONSTEXPR static genType identity()
+		GLM_FUNC_QUALIFIER constexpr static genType identity()
 		{
 			return genType(1);
 		}

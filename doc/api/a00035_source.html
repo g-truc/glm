@@ -373,9 +373,9 @@ $(function() {
 <div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160; </div>
 <div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;<span class="preprocessor">#if GLM_HAS_CONSTEXPR</span></div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;<span class="preprocessor">#       define GLM_CONSTEXPR constexpr</span></div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;<span class="preprocessor">#       define constexpr constexpr</span></div>
 <div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;<span class="preprocessor">#       define GLM_CONSTEXPR</span></div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;<span class="preprocessor">#       define constexpr</span></div>
 <div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160; </div>
 <div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;<span class="comment">//</span></div>
@@ -501,11 +501,11 @@ $(function() {
 <div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;<span class="comment">// Static assert</span></div>
 <div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160; </div>
 <div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;<span class="preprocessor">#if GLM_HAS_STATIC_ASSERT</span></div>
-<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;<span class="preprocessor">#       define GLM_STATIC_ASSERT(x, message) static_assert(x, message)</span></div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;<span class="preprocessor">#       define static_assert(x, message) static_assert(x, message)</span></div>
 <div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;<span class="preprocessor">#elif GLM_COMPILER &amp; GLM_COMPILER_VC</span></div>
-<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;<span class="preprocessor">#       define GLM_STATIC_ASSERT(x, message) typedef char __CASSERT__##__LINE__[(x) ? 1 : -1]</span></div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;<span class="preprocessor">#       define static_assert(x, message) typedef char __CASSERT__##__LINE__[(x) ? 1 : -1]</span></div>
 <div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;<span class="preprocessor">#       define GLM_STATIC_ASSERT(x, message) assert(x)</span></div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;<span class="preprocessor">#       define static_assert(x, message) assert(x)</span></div>
 <div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;<span class="preprocessor">#endif//GLM_LANG</span></div>
 <div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160; </div>
 <div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;<span class="comment">// Qualifiers</span></div>
@@ -551,7 +551,7 @@ $(function() {
 <div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;<span class="preprocessor">#       define GLM_NEVER_INLINE</span></div>
 <div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;<span class="preprocessor">#endif//defined(GLM_FORCE_INLINE)</span></div>
 <div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160; </div>
-<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;<span class="preprocessor">#define GLM_CTOR_DECL GLM_CUDA_FUNC_DECL GLM_CONSTEXPR</span></div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;<span class="preprocessor">#define GLM_CTOR_DECL GLM_CUDA_FUNC_DECL constexpr</span></div>
 <div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;<span class="preprocessor">#define GLM_FUNC_DISCARD_DECL GLM_CUDA_FUNC_DECL</span></div>
 <div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;<span class="preprocessor">#define GLM_FUNC_DECL GLM_NODISCARD GLM_CUDA_FUNC_DECL</span></div>
 <div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;<span class="preprocessor">#define GLM_FUNC_QUALIFIER GLM_CUDA_FUNC_DEF GLM_INLINE</span></div>

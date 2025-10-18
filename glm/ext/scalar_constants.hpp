@@ -24,15 +24,15 @@ namespace glm
 
 	/// Return the epsilon constant for floating point types.
 	template<typename genType>
-	GLM_FUNC_DECL GLM_CONSTEXPR genType epsilon();
+	GLM_FUNC_DECL constexpr genType epsilon();
 
 	/// Return the pi constant for floating point types.
 	template<typename genType>
-	GLM_FUNC_DECL GLM_CONSTEXPR genType pi();
+	GLM_FUNC_DECL constexpr genType pi();
 
 	/// Return the value of cos(1 / 2) for floating point types.
 	template<typename genType>
-	GLM_FUNC_DECL GLM_CONSTEXPR genType cos_one_over_two();
+	GLM_FUNC_DECL constexpr genType cos_one_over_two();
 
 	/// @}
 } //namespace glm

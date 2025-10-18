@@ -73,7 +73,7 @@ $(function() {
 Functions</h2></td></tr>
 <tr class="memitem:ga81696f2b8d1db02ea1aff8da8f269314"><td class="memTemplParams" colspan="2"><a id="ga81696f2b8d1db02ea1aff8da8f269314"></a>
 template&lt;typename genType &gt; </td></tr>
-<tr class="memitem:ga81696f2b8d1db02ea1aff8da8f269314"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL GLM_CONSTEXPR genType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00837.html#ga81696f2b8d1db02ea1aff8da8f269314">identity</a> ()</td></tr>
+<tr class="memitem:ga81696f2b8d1db02ea1aff8da8f269314"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL constexpr genType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00837.html#ga81696f2b8d1db02ea1aff8da8f269314">identity</a> ()</td></tr>
 <tr class="memdesc:ga81696f2b8d1db02ea1aff8da8f269314"><td class="mdescLeft">&#160;</td><td class="mdescRight">Builds an identity matrix. <br /></td></tr>
 <tr class="separator:ga81696f2b8d1db02ea1aff8da8f269314"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa64aa951a0e99136bba9008d2b59c78e"><td class="memTemplParams" colspan="2">template&lt;typename T , qualifier Q&gt; </td></tr>
@@ -101,7 +101,7 @@ template&lt;typename genType &gt; </td></tr>
 <tr class="memdesc:ga391e0142852ab4139dcea0d9b1bbc048"><td class="mdescLeft">&#160;</td><td class="mdescRight">Builds a scale 4 * 4 matrix created from point referent 3 shearers.  <a href="a00837.html#ga391e0142852ab4139dcea0d9b1bbc048">More...</a><br /></td></tr>
 <tr class="separator:ga391e0142852ab4139dcea0d9b1bbc048"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac6b494bda2f47615b2fd3e70f3d2c912"><td class="memTemplParams" colspan="2">template&lt;typename T , qualifier Q&gt; </td></tr>
-<tr class="memitem:gac6b494bda2f47615b2fd3e70f3d2c912"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL GLM_CONSTEXPR mat&lt; 4, 4, T, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00837.html#gac6b494bda2f47615b2fd3e70f3d2c912">translate</a> (mat&lt; 4, 4, T, Q &gt; const &amp;m, vec&lt; 3, T, Q &gt; const &amp;v)</td></tr>
+<tr class="memitem:gac6b494bda2f47615b2fd3e70f3d2c912"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL constexpr mat&lt; 4, 4, T, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00837.html#gac6b494bda2f47615b2fd3e70f3d2c912">translate</a> (mat&lt; 4, 4, T, Q &gt; const &amp;m, vec&lt; 3, T, Q &gt; const &amp;v)</td></tr>
 <tr class="memdesc:gac6b494bda2f47615b2fd3e70f3d2c912"><td class="mdescLeft">&#160;</td><td class="mdescRight">Builds a translation 4 * 4 matrix created from a vector of 3 components.  <a href="a00837.html#gac6b494bda2f47615b2fd3e70f3d2c912">More...</a><br /></td></tr>
 <tr class="separator:gac6b494bda2f47615b2fd3e70f3d2c912"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -460,7 +460,7 @@ no resource... </dd></dl>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">GLM_FUNC_DECL GLM_CONSTEXPR mat&lt;4, 4, T, Q&gt; glm::translate </td>
+          <td class="memname">GLM_FUNC_DECL constexpr mat&lt;4, 4, T, Q&gt; glm::translate </td>
           <td>(</td>
           <td class="paramtype">mat&lt; 4, 4, T, Q &gt; const &amp;&#160;</td>
           <td class="paramname"><em>m</em>, </td>
@@ -514,7 +514,7 @@ no resource... </dd></dl>
 <div class="ttc" id="aa00901_html_ga0db98d836c5549d31cf64ecd043b7af7"><div class="ttname"><a href="a00901.html#ga0db98d836c5549d31cf64ecd043b7af7">glm::mat4</a></div><div class="ttdeci">mat&lt; 4, 4, float, defaultp &gt; mat4</div><div class="ttdoc">4 columns of 4 components matrix of single-precision floating-point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="a00200_source.html#l00020">matrix_float4x4.hpp:20</a></div></div>
 <div class="ttc" id="aa01705_html"><div class="ttname"><a href="a01705.html">matrix_transform.hpp</a></div><div class="ttdoc">GLM_GTC_matrix_transform</div></div>
 <div class="ttc" id="aa00899_html_ga9c3019b13faf179e4ad3626ea66df334"><div class="ttname"><a href="a00899.html#ga9c3019b13faf179e4ad3626ea66df334">glm::vec3</a></div><div class="ttdeci">vec&lt; 3, float, defaultp &gt; vec3</div><div class="ttdoc">3 components vector of single-precision floating-point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="a00446_source.html#l00015">vector_float3.hpp:15</a></div></div>
-<div class="ttc" id="aa00837_html_gac6b494bda2f47615b2fd3e70f3d2c912"><div class="ttname"><a href="a00837.html#gac6b494bda2f47615b2fd3e70f3d2c912">glm::translate</a></div><div class="ttdeci">GLM_FUNC_DECL GLM_CONSTEXPR mat&lt; 4, 4, T, Q &gt; translate(mat&lt; 4, 4, T, Q &gt; const &amp;m, vec&lt; 3, T, Q &gt; const &amp;v)</div><div class="ttdoc">Builds a translation 4 * 4 matrix created from a vector of 3 components.</div></div>
+<div class="ttc" id="aa00837_html_gac6b494bda2f47615b2fd3e70f3d2c912"><div class="ttname"><a href="a00837.html#gac6b494bda2f47615b2fd3e70f3d2c912">glm::translate</a></div><div class="ttdeci">GLM_FUNC_DECL constexpr mat&lt; 4, 4, T, Q &gt; translate(mat&lt; 4, 4, T, Q &gt; const &amp;m, vec&lt; 3, T, Q &gt; const &amp;v)</div><div class="ttdoc">Builds a translation 4 * 4 matrix created from a vector of 3 components.</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
