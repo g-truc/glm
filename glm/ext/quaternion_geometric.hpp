@@ -44,7 +44,7 @@ namespace glm
 	///
 	/// @see ext_quaternion_geometric
 	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR qua<T, Q> normalize(qua<T, Q> const& q);
+	GLM_FUNC_DECL constexpr qua<T, Q> normalize(qua<T, Q> const& q);
 
 	/// Returns dot product of q1 and q2, i.e., q1[0] * q2[0] + q1[1] * q2[1] + ...
 	///
@@ -53,7 +53,7 @@ namespace glm
 	///
 	/// @see ext_quaternion_geometric
 	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR T dot(qua<T, Q> const& x, qua<T, Q> const& y);
+	GLM_FUNC_DECL constexpr T dot(qua<T, Q> const& x, qua<T, Q> const& y);
 
 	/// Compute a cross product.
 	///
@@ -62,7 +62,7 @@ namespace glm
 	///
 	/// @see ext_quaternion_geometric
 	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q> cross(qua<T, Q> const& q1, qua<T, Q> const& q2);
+	GLM_FUNC_QUALIFIER constexpr qua<T, Q> cross(qua<T, Q> const& q1, qua<T, Q> const& q2);
 
 	/// @}
 } //namespace glm

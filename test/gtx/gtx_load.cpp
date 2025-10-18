@@ -50,7 +50,7 @@ namespace glm
 	template<qualifier Q>
 	struct load_gentype<4, float, Q, true>
 	{
-		GLM_FUNC_QUALIFIER GLM_CONSTEXPR static vec<4, float, Q> load(float const* Mem)
+		GLM_FUNC_QUALIFIER constexpr static vec<4, float, Q> load(float const* Mem)
 		{
 			vec<4, float, Q> Result;
 			Result.data = _mm_loadu_ps(Mem);
@@ -60,7 +60,7 @@ namespace glm
 #	endif//GLM_ARCH & GLM_ARCH_SSE_BIT
 
 	template<typename genType>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR genType example_identity()
+	GLM_FUNC_QUALIFIER constexpr genType example_identity()
 	{
 		return detail::init_gentype<genType, detail::genTypeTrait<genType>::GENTYPE>::identity();
 	}

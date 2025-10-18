@@ -950,7 +950,7 @@ namespace sign
 	template<typename genFIType> 
 	GLM_FUNC_QUALIFIER genFIType sign_if(genFIType x)
 	{
-		GLM_STATIC_ASSERT(
+		static_assert(
 			std::numeric_limits<genFIType>::is_iec559 ||
 			(std::numeric_limits<genFIType>::is_signed && std::numeric_limits<genFIType>::is_integer), "'sign' only accept signed inputs");
 
@@ -972,7 +972,7 @@ namespace sign
 	template<typename genFIType> 
 	GLM_FUNC_QUALIFIER genFIType sign_alu1(genFIType x)
 	{
-		GLM_STATIC_ASSERT(
+		static_assert(
 			std::numeric_limits<genFIType>::is_signed && std::numeric_limits<genFIType>::is_integer, 
 			"'sign' only accept integer inputs");
 
@@ -985,7 +985,7 @@ namespace sign
 
 	GLM_FUNC_QUALIFIER int sign_alu2(int x)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<int>::is_signed && std::numeric_limits<int>::is_integer, "'sign' only accept integer inputs");
+		static_assert(std::numeric_limits<int>::is_signed && std::numeric_limits<int>::is_integer, "'sign' only accept integer inputs");
 
 #		if GLM_COMPILER & GLM_COMPILER_VC
 #			pragma warning(push)
@@ -1002,7 +1002,7 @@ namespace sign
 	template<typename genFIType> 
 	GLM_FUNC_QUALIFIER genFIType sign_sub(genFIType x)
 	{
-		GLM_STATIC_ASSERT(
+		static_assert(
 			std::numeric_limits<genFIType>::is_signed && std::numeric_limits<genFIType>::is_integer, 
 			"'sign' only accept integer inputs");
 
@@ -1012,7 +1012,7 @@ namespace sign
 	template<typename genFIType> 
 	GLM_FUNC_QUALIFIER genFIType sign_cmp(genFIType x)
 	{
-		GLM_STATIC_ASSERT(
+		static_assert(
 			std::numeric_limits<genFIType>::is_signed && std::numeric_limits<genFIType>::is_integer, 
 			"'sign' only accept integer inputs");
 

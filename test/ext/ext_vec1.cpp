@@ -86,7 +86,7 @@ static int test_vec1_size()
 	Error += glm::vec1::length() == 1 ? 0 : 1;
 	Error += glm::dvec1::length() == 1 ? 0 : 1;
 
-	GLM_CONSTEXPR glm::length_t Length = glm::vec1::length();
+	constexpr glm::length_t Length = glm::vec1::length();
 	Error += Length == 1 ? 0 : 1;
 
 	return Error;

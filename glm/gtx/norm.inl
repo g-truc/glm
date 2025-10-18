@@ -18,28 +18,28 @@ namespace detail
 	template<typename genType>
 	GLM_FUNC_QUALIFIER genType length2(genType x)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'length2' accepts only floating-point inputs");
+		static_assert(std::numeric_limits<genType>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'length2' accepts only floating-point inputs");
 		return x * x;
 	}
 
 	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER T length2(vec<L, T, Q> const& v)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'length2' accepts only floating-point inputs");
+		static_assert(std::numeric_limits<T>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'length2' accepts only floating-point inputs");
 		return detail::compute_length2<L, T, Q, detail::is_aligned<Q>::value>::call(v);
 	}
 
 	template<typename T>
 	GLM_FUNC_QUALIFIER T distance2(T p0, T p1)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'distance2' accepts only floating-point inputs");
+		static_assert(std::numeric_limits<T>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'distance2' accepts only floating-point inputs");
 		return length2(p1 - p0);
 	}
 
 	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER T distance2(vec<L, T, Q> const& p0, vec<L, T, Q> const& p1)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'distance2' accepts only floating-point inputs");
+		static_assert(std::numeric_limits<T>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'distance2' accepts only floating-point inputs");
 		return length2(p1 - p0);
 	}
 

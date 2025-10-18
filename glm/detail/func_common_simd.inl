@@ -402,7 +402,7 @@ namespace detail
 	template<length_t L, qualifier Q>
 	struct convert_splat<L, float, Q, true> {
 		template<int c>
-		GLM_FUNC_QUALIFIER GLM_CONSTEXPR static vec<L, float, Q> call(vec<L, float, Q> const& a)
+		GLM_FUNC_QUALIFIER constexpr static vec<L, float, Q> call(vec<L, float, Q> const& a)
 		{
 			vec<L, float, Q> Result;
 			const int s = _MM_SHUFFLE(c, c, c, c);
@@ -427,7 +427,7 @@ namespace detail
 		template<int c>
 		struct detailSSE<true, c>
 		{
-			GLM_FUNC_QUALIFIER GLM_CONSTEXPR static vec<L, double, Q> call(vec<L, double, Q> const& a)
+			GLM_FUNC_QUALIFIER constexpr static vec<L, double, Q> call(vec<L, double, Q> const& a)
 			{
 				vec<L, double, Q> Result;
 				glm_f64vec2 r0 = _mm_shuffle_pd(a.data.getv(0), a.data.getv(0), c | c << 1);
@@ -440,7 +440,7 @@ namespace detail
 		template<int c>
 		struct detailSSE<false, c>
 		{
-			GLM_FUNC_QUALIFIER GLM_CONSTEXPR static vec<L, double, Q> call(vec<L, double, Q> const& a)
+			GLM_FUNC_QUALIFIER constexpr static vec<L, double, Q> call(vec<L, double, Q> const& a)
 			{
 				vec<L, double, Q> Result;
 				const unsigned int d = static_cast<unsigned int>(c - 2);
@@ -459,7 +459,7 @@ namespace detail
 		template<bool b>
 		struct detailAVX<b, 0>
 		{
-			GLM_FUNC_QUALIFIER GLM_CONSTEXPR static vec<L, double, Q> call(vec<L, double, Q> const& a)
+			GLM_FUNC_QUALIFIER constexpr static vec<L, double, Q> call(vec<L, double, Q> const& a)
 			{
 				vec<L, double, Q> Result;
 				__m256d t1 = _mm256_permute2f128_pd(a.data, a.data, 0x0);
@@ -471,7 +471,7 @@ namespace detail
 		template<bool b>
 		struct detailAVX<b, 1>
 		{
-			GLM_FUNC_QUALIFIER GLM_CONSTEXPR static vec<L, double, Q> call(vec<L, double, Q> const& a)
+			GLM_FUNC_QUALIFIER constexpr static vec<L, double, Q> call(vec<L, double, Q> const& a)
 			{
 				vec<L, double, Q> Result;
 				__m256d t1 = _mm256_permute2f128_pd(a.data, a.data, 0x0);
@@ -483,7 +483,7 @@ namespace detail
 		template<bool b>
 		struct detailAVX<b, 2>
 		{
-			GLM_FUNC_QUALIFIER GLM_CONSTEXPR static vec<L, double, Q> call(vec<L, double, Q> const& a)
+			GLM_FUNC_QUALIFIER constexpr static vec<L, double, Q> call(vec<L, double, Q> const& a)
 			{
 				vec<L, double, Q> Result;
 				__m256d t2 = _mm256_permute2f128_pd(a.data, a.data, 0x11);
@@ -495,7 +495,7 @@ namespace detail
 		template<bool b>
 		struct detailAVX<b, 3>
 		{
-			GLM_FUNC_QUALIFIER GLM_CONSTEXPR static vec<L, double, Q> call(vec<L, double, Q> const& a)
+			GLM_FUNC_QUALIFIER constexpr static vec<L, double, Q> call(vec<L, double, Q> const& a)
 			{
 				vec<L, double, Q> Result;
 				__m256d t2 = _mm256_permute2f128_pd(a.data, a.data, 0x11);
@@ -506,7 +506,7 @@ namespace detail
 #endif //GLM_ARCH & GLM_ARCH_AVX_BIT
 
 		template<int c>
-		GLM_FUNC_QUALIFIER GLM_CONSTEXPR static vec<L, double, Q> call(vec<L, double, Q> const& a)
+		GLM_FUNC_QUALIFIER constexpr static vec<L, double, Q> call(vec<L, double, Q> const& a)
 		{
 			//return compute_splat<L, double, Q, false>::call<c>(a);
 			vec<L, double, Q> Result;

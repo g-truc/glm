@@ -27,58 +27,58 @@ namespace glm
 	/// @addtogroup gtx_iteration
 	/// @{
 	template<length_t L,typename T,qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR T* begin(vec<L, T, Q>& v);
+	GLM_FUNC_DECL constexpr T* begin(vec<L, T, Q>& v);
 	template<length_t C,length_t R,typename T,qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR T* begin(mat<C, R, T, Q>& m);
+	GLM_FUNC_DECL constexpr T* begin(mat<C, R, T, Q>& m);
 	template<typename T,qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR T* begin(qua<T, Q>& q);
+	GLM_FUNC_DECL constexpr T* begin(qua<T, Q>& q);
 	template<length_t L,typename T,qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR const T* begin(const vec<L, T, Q>& v);
+	GLM_FUNC_DECL constexpr const T* begin(const vec<L, T, Q>& v);
 	template<length_t C,length_t R,typename T,qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR const T* begin(const mat<C, R, T, Q>& m);
+	GLM_FUNC_DECL constexpr const T* begin(const mat<C, R, T, Q>& m);
 	template<typename T,qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR const T* begin(const qua<T, Q>& q);
+	GLM_FUNC_DECL constexpr const T* begin(const qua<T, Q>& q);
 
 	template<length_t L,typename T,qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR T* end(vec<L, T, Q>& v);
+	GLM_FUNC_DECL constexpr T* end(vec<L, T, Q>& v);
 	template<length_t C,length_t R,typename T,qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR T* end(mat<C, R, T, Q>& m);
+	GLM_FUNC_DECL constexpr T* end(mat<C, R, T, Q>& m);
 	template<typename T,qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR T* end(qua<T, Q>& q);
+	GLM_FUNC_DECL constexpr T* end(qua<T, Q>& q);
 	template<length_t L,typename T,qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR const T* end(const vec<L, T, Q>& v);
+	GLM_FUNC_DECL constexpr const T* end(const vec<L, T, Q>& v);
 	template<length_t C,length_t R,typename T,qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR const T* end(const mat<C, R, T, Q>& m);
+	GLM_FUNC_DECL constexpr const T* end(const mat<C, R, T, Q>& m);
 	template<typename T,qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR const T* end(const qua<T, Q>& q);
+	GLM_FUNC_DECL constexpr const T* end(const qua<T, Q>& q);
 
 	// Reverse iteration
 	// rbegin,rend
 	template<length_t L,typename T,qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR std::reverse_iterator<T*> rbegin(vec<L, T, Q>& v);
+	GLM_FUNC_DECL constexpr std::reverse_iterator<T*> rbegin(vec<L, T, Q>& v);
 	template<length_t C,length_t R,typename T,qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR std::reverse_iterator<T*> rbegin(mat<C, R, T, Q>& m);
+	GLM_FUNC_DECL constexpr std::reverse_iterator<T*> rbegin(mat<C, R, T, Q>& m);
 	template<typename T,qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR std::reverse_iterator<T*> rbegin(qua<T, Q>& q);
+	GLM_FUNC_DECL constexpr std::reverse_iterator<T*> rbegin(qua<T, Q>& q);
 	template<length_t L,typename T,qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR std::reverse_iterator<const T*> rbegin(const vec<L, T, Q>& v);
+	GLM_FUNC_DECL constexpr std::reverse_iterator<const T*> rbegin(const vec<L, T, Q>& v);
 	template<length_t C,length_t R,typename T,qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR std::reverse_iterator<const T*> rbegin(const mat<C, R, T, Q>& m);
+	GLM_FUNC_DECL constexpr std::reverse_iterator<const T*> rbegin(const mat<C, R, T, Q>& m);
 	template<typename T,qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR std::reverse_iterator<const T*> rbegin(const qua<T, Q>& q);
+	GLM_FUNC_DECL constexpr std::reverse_iterator<const T*> rbegin(const qua<T, Q>& q);
 
 	template<length_t L,typename T,qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR std::reverse_iterator<T*> rend(vec<L, T, Q>& v);
+	GLM_FUNC_DECL constexpr std::reverse_iterator<T*> rend(vec<L, T, Q>& v);
 	template<length_t C,length_t R,typename T,qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR std::reverse_iterator<T*> rend(mat<C, R, T, Q>& m);
+	GLM_FUNC_DECL constexpr std::reverse_iterator<T*> rend(mat<C, R, T, Q>& m);
 	template<typename T,qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR std::reverse_iterator<T*> rend(qua<T, Q>& q);
+	GLM_FUNC_DECL constexpr std::reverse_iterator<T*> rend(qua<T, Q>& q);
 	template<length_t L,typename T,qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR std::reverse_iterator<const T*> rend(const vec<L, T, Q>& v);
+	GLM_FUNC_DECL constexpr std::reverse_iterator<const T*> rend(const vec<L, T, Q>& v);
 	template<length_t C,length_t R,typename T,qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR std::reverse_iterator<const T*> rend(const mat<C, R, T, Q>& m);
+	GLM_FUNC_DECL constexpr std::reverse_iterator<const T*> rend(const mat<C, R, T, Q>& m);
 	template<typename T,qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR std::reverse_iterator<const T*> rend(const qua<T, Q>& q);
+	GLM_FUNC_DECL constexpr std::reverse_iterator<const T*> rend(const qua<T, Q>& q);
 
 
 	/// @}

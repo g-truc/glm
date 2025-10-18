@@ -163,7 +163,7 @@ namespace bitfieldReverse
 	template<glm::length_t L, typename T, glm::qualifier Q>
 	GLM_FUNC_QUALIFIER glm::vec<L, T, Q> bitfieldReverseLoop(glm::vec<L, T, Q> const& v)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_integer, "'bitfieldReverse' only accept integer values");
+		static_assert(std::numeric_limits<T>::is_integer, "'bitfieldReverse' only accept integer values");
 
 		glm::vec<L, T, Q> Result(0);
 		T const BitSize = static_cast<T>(sizeof(T) * 8);
@@ -567,7 +567,7 @@ namespace findMSB
 		template<typename genIUType>
 		static int findMSB_intrinsic(genIUType Value)
 		{
-			GLM_STATIC_ASSERT(std::numeric_limits<genIUType>::is_integer, "'findMSB' only accept integer values");
+			static_assert(std::numeric_limits<genIUType>::is_integer, "'findMSB' only accept integer values");
 
 			if(Value == 0)
 				return -1;
@@ -582,7 +582,7 @@ namespace findMSB
 		template<typename genIUType>
 		static int findMSB_avx(genIUType Value)
 		{
-			GLM_STATIC_ASSERT(std::numeric_limits<genIUType>::is_integer, "'findMSB' only accept integer values");
+			static_assert(std::numeric_limits<genIUType>::is_integer, "'findMSB' only accept integer values");
 
 			if(Value == 0)
 				return -1;
@@ -594,7 +594,7 @@ namespace findMSB
 	template<typename genIUType>
 	static int findMSB_095(genIUType Value)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<genIUType>::is_integer, "'findMSB' only accept integer values");
+		static_assert(std::numeric_limits<genIUType>::is_integer, "'findMSB' only accept integer values");
 		
 		if(Value == genIUType(0) || Value == genIUType(-1))
 			return -1;
@@ -618,7 +618,7 @@ namespace findMSB
 	template<typename genIUType>
 	static int findMSB_nlz1(genIUType x)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<genIUType>::is_integer, "'findMSB' only accept integer values");
+		static_assert(std::numeric_limits<genIUType>::is_integer, "'findMSB' only accept integer values");
 
 		if (x == 0)
 			return -1;
@@ -970,7 +970,7 @@ namespace findLSB
 		template<typename genIUType>
 		static int findLSB_intrinsic(genIUType Value)
 		{
-			GLM_STATIC_ASSERT(std::numeric_limits<genIUType>::is_integer, "'findLSB' only accept integer values");
+			static_assert(std::numeric_limits<genIUType>::is_integer, "'findLSB' only accept integer values");
 
 			if(Value == 0)
 				return -1;
@@ -984,7 +984,7 @@ namespace findLSB
 	template<typename genIUType>
 	static int findLSB_095(genIUType Value)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<genIUType>::is_integer, "'findLSB' only accept integer values");
+		static_assert(std::numeric_limits<genIUType>::is_integer, "'findLSB' only accept integer values");
 		if(Value == 0)
 			return -1;
 
@@ -1397,7 +1397,7 @@ namespace bitCount
 	template<typename T>
 	inline int bitCount_if(T v)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_integer, "'bitCount' only accept integer values");
+		static_assert(std::numeric_limits<T>::is_integer, "'bitCount' only accept integer values");
 
 		int Count(0);
 		for(T i = 0, n = static_cast<T>(sizeof(T) * 8); i < n; ++i)
@@ -1411,7 +1411,7 @@ namespace bitCount
 	template<typename T>
 	inline int bitCount_vec(T v)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_integer, "'bitCount' only accept integer values");
+		static_assert(std::numeric_limits<T>::is_integer, "'bitCount' only accept integer values");
 
 		int Count(0);
 		for(T i = 0, n = static_cast<T>(sizeof(T) * 8); i < n; ++i)

@@ -123,7 +123,7 @@ $(function() {
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                <span class="keyword">template</span>&lt;length_t L, <span class="keyword">typename</span> T, qualifier Q&gt;</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                <span class="keyword">struct </span>compute_vec_add&lt;L, T, Q, false&gt;</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                {</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                        GLM_FUNC_QUALIFIER GLM_CONSTEXPR <span class="keyword">static</span> vec&lt;L, T, Q&gt; call(vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; a, vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; b)</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                        GLM_FUNC_QUALIFIER constexpr <span class="keyword">static</span> vec&lt;L, T, Q&gt; call(vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; a, vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; b)</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                        {</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                                <span class="keywordflow">return</span> detail::functor2&lt;vec, L, T, Q&gt;::call(std::plus&lt;T&gt;(), a, b);</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                        }</div>
@@ -132,7 +132,7 @@ $(function() {
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                <span class="keyword">template</span>&lt;length_t L, <span class="keyword">typename</span> T, qualifier Q&gt;</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                <span class="keyword">struct </span>compute_vec_sub&lt;L, T, Q, false&gt;</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                {</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                        GLM_FUNC_QUALIFIER GLM_CONSTEXPR <span class="keyword">static</span> vec&lt;L, T, Q&gt; call(vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; a, vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; b)</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                        GLM_FUNC_QUALIFIER constexpr <span class="keyword">static</span> vec&lt;L, T, Q&gt; call(vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; a, vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; b)</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                        {</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                                <span class="keywordflow">return</span> detail::functor2&lt;vec, L, T, Q&gt;::call(std::minus&lt;T&gt;(), a, b);</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                        }</div>
@@ -141,7 +141,7 @@ $(function() {
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                <span class="keyword">template</span>&lt;length_t L, <span class="keyword">typename</span> T, qualifier Q&gt;</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                <span class="keyword">struct </span>compute_vec_mul&lt;L, T, Q, false&gt;</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                {</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                        GLM_FUNC_QUALIFIER GLM_CONSTEXPR <span class="keyword">static</span> vec&lt;L, T, Q&gt; call(vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; a, vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; b)</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                        GLM_FUNC_QUALIFIER constexpr <span class="keyword">static</span> vec&lt;L, T, Q&gt; call(vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; a, vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; b)</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                        {</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                                <span class="keywordflow">return</span> detail::functor2&lt;vec, L, T, Q&gt;::call(std::multiplies&lt;T&gt;(), a, b);</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                        }</div>
@@ -150,7 +150,7 @@ $(function() {
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                <span class="keyword">template</span>&lt;length_t L, <span class="keyword">typename</span> T, qualifier Q&gt;</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                <span class="keyword">struct </span>compute_vec_div&lt;L, T, Q, false&gt;</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                {</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                        GLM_FUNC_QUALIFIER GLM_CONSTEXPR <span class="keyword">static</span> vec&lt;L, T, Q&gt; call(vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; a, vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; b)</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                        GLM_FUNC_QUALIFIER constexpr <span class="keyword">static</span> vec&lt;L, T, Q&gt; call(vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; a, vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; b)</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                        {</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                                <span class="keywordflow">return</span> detail::functor2&lt;vec, L, T, Q&gt;::call(std::divides&lt;T&gt;(), a, b);</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                        }</div>
@@ -159,7 +159,7 @@ $(function() {
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                <span class="keyword">template</span>&lt;length_t L, <span class="keyword">typename</span> T, qualifier Q&gt;</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                <span class="keyword">struct </span>compute_vec_mod&lt;L, T, Q, false&gt;</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                {</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                        GLM_FUNC_QUALIFIER GLM_CONSTEXPR <span class="keyword">static</span> vec&lt;L, T, Q&gt; call(vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; a, vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; b)</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                        GLM_FUNC_QUALIFIER constexpr <span class="keyword">static</span> vec&lt;L, T, Q&gt; call(vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; a, vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; b)</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                        {</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                                <span class="keywordflow">return</span> detail::functor2&lt;vec, L, T, Q&gt;::call(std::modulus&lt;T&gt;(), a, b);</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                        }</div>
@@ -168,7 +168,7 @@ $(function() {
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                <span class="keyword">template</span>&lt;length_t L, <span class="keyword">typename</span> T, qualifier Q, <span class="keywordtype">int</span> IsInt, std::<span class="keywordtype">size_t</span> Size&gt;</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                <span class="keyword">struct </span>compute_vec_and&lt;L, T, Q, IsInt, Size, false&gt;</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                {</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                        GLM_FUNC_QUALIFIER GLM_CONSTEXPR <span class="keyword">static</span> vec&lt;L, T, Q&gt; call(vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; a, vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; b)</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                        GLM_FUNC_QUALIFIER constexpr <span class="keyword">static</span> vec&lt;L, T, Q&gt; call(vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; a, vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; b)</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                        {</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                                vec&lt;L, T, Q&gt; v(a);</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                                <span class="keywordflow">for</span> (length_t i = 0; i &lt; L; ++i)</div>
@@ -180,7 +180,7 @@ $(function() {
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                <span class="keyword">template</span>&lt;length_t L, <span class="keyword">typename</span> T, qualifier Q, <span class="keywordtype">int</span> IsInt, std::<span class="keywordtype">size_t</span> Size&gt;</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                <span class="keyword">struct </span>compute_vec_or&lt;L, T, Q, IsInt, Size, false&gt;</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                {</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                        GLM_FUNC_QUALIFIER GLM_CONSTEXPR <span class="keyword">static</span> vec&lt;L, T, Q&gt; call(vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; a, vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; b)</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                        GLM_FUNC_QUALIFIER constexpr <span class="keyword">static</span> vec&lt;L, T, Q&gt; call(vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; a, vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; b)</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                        {</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                                vec&lt;L, T, Q&gt; v(a);</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                                <span class="keywordflow">for</span> (length_t i = 0; i &lt; L; ++i)</div>
@@ -192,7 +192,7 @@ $(function() {
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                <span class="keyword">template</span>&lt;length_t L, <span class="keyword">typename</span> T, qualifier Q, <span class="keywordtype">int</span> IsInt, std::<span class="keywordtype">size_t</span> Size&gt;</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                <span class="keyword">struct </span>compute_vec_xor&lt;L, T, Q, IsInt, Size, false&gt;</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                {</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                        GLM_FUNC_QUALIFIER GLM_CONSTEXPR <span class="keyword">static</span> vec&lt;L, T, Q&gt; call(vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; a, vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; b)</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                        GLM_FUNC_QUALIFIER constexpr <span class="keyword">static</span> vec&lt;L, T, Q&gt; call(vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; a, vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; b)</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                        {</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                                vec&lt;L, T, Q&gt; v(a);</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                                <span class="keywordflow">for</span> (length_t i = 0; i &lt; L; ++i)</div>
@@ -204,7 +204,7 @@ $(function() {
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                <span class="keyword">template</span>&lt;length_t L, <span class="keyword">typename</span> T, qualifier Q, <span class="keywordtype">int</span> IsInt, std::<span class="keywordtype">size_t</span> Size&gt;</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                <span class="keyword">struct </span>compute_vec_shift_left&lt;L, T, Q, IsInt, Size, false&gt;</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                {</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                        GLM_FUNC_QUALIFIER GLM_CONSTEXPR <span class="keyword">static</span> vec&lt;L, T, Q&gt; call(vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; a, vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; b)</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                        GLM_FUNC_QUALIFIER constexpr <span class="keyword">static</span> vec&lt;L, T, Q&gt; call(vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; a, vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; b)</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                        {</div>
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                                vec&lt;L, T, Q&gt; v(a);</div>
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                                <span class="keywordflow">for</span> (length_t i = 0; i &lt; L; ++i)</div>
@@ -216,7 +216,7 @@ $(function() {
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                <span class="keyword">template</span>&lt;length_t L, <span class="keyword">typename</span> T, qualifier Q, <span class="keywordtype">int</span> IsInt, std::<span class="keywordtype">size_t</span> Size&gt;</div>
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                <span class="keyword">struct </span>compute_vec_shift_right&lt;L, T, Q, IsInt, Size, false&gt;</div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                {</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                        GLM_FUNC_QUALIFIER GLM_CONSTEXPR <span class="keyword">static</span> vec&lt;L, T, Q&gt; call(vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; a, vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; b)</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                        GLM_FUNC_QUALIFIER constexpr <span class="keyword">static</span> vec&lt;L, T, Q&gt; call(vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; a, vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; b)</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                        {</div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                                vec&lt;L, T, Q&gt; v(a);</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                                <span class="keywordflow">for</span> (length_t i = 0; i &lt; L; ++i)</div>
@@ -228,7 +228,7 @@ $(function() {
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                <span class="keyword">template</span>&lt;length_t L, <span class="keyword">typename</span> T, qualifier Q, <span class="keywordtype">int</span> IsInt, std::<span class="keywordtype">size_t</span> Size&gt;</div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                <span class="keyword">struct </span>compute_vec_equal&lt;L, T, Q, IsInt, Size, false&gt;</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                {</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                        GLM_FUNC_QUALIFIER GLM_CONSTEXPR <span class="keyword">static</span> <span class="keywordtype">bool</span> call(vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; v1, vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; v2)</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                        GLM_FUNC_QUALIFIER constexpr <span class="keyword">static</span> <span class="keywordtype">bool</span> call(vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; v1, vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; v2)</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                        {</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                                <span class="keywordtype">bool</span> b = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                                <span class="keywordflow">for</span> (length_t i = 0; b &amp;&amp; i &lt; L; ++i)</div>
@@ -240,7 +240,7 @@ $(function() {
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                <span class="keyword">template</span>&lt;length_t L, <span class="keyword">typename</span> T, qualifier Q, <span class="keywordtype">int</span> IsInt, std::<span class="keywordtype">size_t</span> Size&gt;</div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                <span class="keyword">struct </span>compute_vec_nequal&lt;L, T, Q, IsInt, Size, false&gt;</div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                {</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                        GLM_FUNC_QUALIFIER GLM_CONSTEXPR <span class="keyword">static</span> <span class="keywordtype">bool</span> call(vec&lt;4, T, Q&gt; <span class="keyword">const</span>&amp; v1, vec&lt;4, T, Q&gt; <span class="keyword">const</span>&amp; v2)</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                        GLM_FUNC_QUALIFIER constexpr <span class="keyword">static</span> <span class="keywordtype">bool</span> call(vec&lt;4, T, Q&gt; <span class="keyword">const</span>&amp; v1, vec&lt;4, T, Q&gt; <span class="keyword">const</span>&amp; v2)</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                        {</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                                <span class="keywordflow">return</span> !compute_vec_equal&lt;L, T, Q, detail::is_int&lt;T&gt;::value, <span class="keyword">sizeof</span>(T) * 8, detail::is_aligned&lt;Q&gt;::value&gt;::call(v1, v2);</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                        }</div>
@@ -249,7 +249,7 @@ $(function() {
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                <span class="keyword">template</span>&lt;length_t L, <span class="keyword">typename</span> T, qualifier Q, <span class="keywordtype">int</span> IsInt, std::<span class="keywordtype">size_t</span> Size&gt;</div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                <span class="keyword">struct </span>compute_vec_bitwise_not&lt;L, T, Q, IsInt, Size, false&gt;</div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                {</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                        GLM_FUNC_QUALIFIER GLM_CONSTEXPR <span class="keyword">static</span> vec&lt;L, T, Q&gt; call(vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; a)</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                        GLM_FUNC_QUALIFIER constexpr <span class="keyword">static</span> vec&lt;L, T, Q&gt; call(vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; a)</div>
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                        {</div>
 <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                                vec&lt;L, T, Q&gt; v(a);</div>
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                                <span class="keywordflow">for</span> (length_t i = 0; i &lt; L; ++i)</div>

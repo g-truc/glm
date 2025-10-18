@@ -579,41 +579,41 @@ struct compute_vec_div<L, T, Q, true> : public compute_vec_div<L, T, Q, false>
 
 #define CTOR_FLOAT(L, Q)\
 	template<>\
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<L, float, Q>::vec(float _s) :\
+	GLM_FUNC_QUALIFIER constexpr vec<L, float, Q>::vec(float _s) :\
 	data(_mm_set1_ps(_s))\
 	{}
 
 #if GLM_ARCH & GLM_ARCH_AVX_BIT
 #	define CTOR_DOUBLE(L, Q)\
 	template<>\
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<L, double, Q>::vec(double _s) :\
+	GLM_FUNC_QUALIFIER constexpr vec<L, double, Q>::vec(double _s) :\
 		data(_mm256_set1_pd(_s)){}
 
 #define CTOR_DOUBLE4(L, Q)\
 	template<>\
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<L, double, Q>::vec(double _x, double _y, double _z, double _w):\
+	GLM_FUNC_QUALIFIER constexpr vec<L, double, Q>::vec(double _x, double _y, double _z, double _w):\
 		data(_mm256_set_pd(_w, _z, _y, _x)) {}
 
 #define CTOR_DOUBLE3(L, Q)\
 	template<>\
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<L, double, Q>::vec(double _x, double _y, double _z):\
+	GLM_FUNC_QUALIFIER constexpr vec<L, double, Q>::vec(double _x, double _y, double _z):\
 		data(_mm256_set_pd(_z, _z, _y, _x)) {}
 
 #	define CTOR_INT64(L, Q)\
 	template<>\
-		GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<L, detail::int64, Q>::vec(detail::int64 _s) :\
+		GLM_FUNC_QUALIFIER constexpr vec<L, detail::int64, Q>::vec(detail::int64 _s) :\
 		data(_mm256_set1_epi64x(_s)){}
 
 #define CTOR_DOUBLE_COPY3(L, Q)\
 	template<>\
 	template<qualifier P>\
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<3, double, Q>::vec(vec<3, double, P> const& v) :\
+	GLM_FUNC_QUALIFIER constexpr vec<3, double, Q>::vec(vec<3, double, P> const& v) :\
 		data(_mm256_setr_pd(v.x, v.y, v.z, v.z)){}
 
 #else
 #	define CTOR_DOUBLE(L, Q)\
 	template<>\
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<L, double, Q>::vec(double _v) \
+	GLM_FUNC_QUALIFIER constexpr vec<L, double, Q>::vec(double _v) \
 	{\
 		data.setv(0, _mm_set1_pd(_v)); \
 		data.setv(1, _mm_set1_pd(_v)); \
@@ -621,7 +621,7 @@ struct compute_vec_div<L, T, Q, true> : public compute_vec_div<L, T, Q, false>
 
 #define CTOR_DOUBLE4(L, Q)\
 	template<>\
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<L, double, Q>::vec(double _x, double _y, double _z, double _w)\
+	GLM_FUNC_QUALIFIER constexpr vec<L, double, Q>::vec(double _x, double _y, double _z, double _w)\
 	{\
 		data.setv(0, _mm_setr_pd(_x, _y)); \
 		data.setv(1, _mm_setr_pd(_z, _w)); \
@@ -629,7 +629,7 @@ struct compute_vec_div<L, T, Q, true> : public compute_vec_div<L, T, Q, false>
 
 #define CTOR_DOUBLE3(L, Q)\
 	template<>\
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<L, double, Q>::vec(double _x, double _y, double _z)\
+	GLM_FUNC_QUALIFIER constexpr vec<L, double, Q>::vec(double _x, double _y, double _z)\
 	{\
 		data.setv(0, _mm_setr_pd(_x, _y)); \
 		data.setv(1, _mm_setr_pd(_z, _z)); \
@@ -637,13 +637,13 @@ struct compute_vec_div<L, T, Q, true> : public compute_vec_div<L, T, Q, false>
 
 #	define CTOR_INT64(L, Q)\
 	template<>\
-		GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<L, detail::int64, Q>::vec(detail::int64 _s) :\
+		GLM_FUNC_QUALIFIER constexpr vec<L, detail::int64, Q>::vec(detail::int64 _s) :\
 		data(_mm256_set1_epi64x(_s)){}
 
 #define CTOR_DOUBLE_COPY3(L, Q)\
 	template<>\
 	template<qualifier P>\
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<3, double, Q>::vec(vec<3, double, P> const& v)\
+	GLM_FUNC_QUALIFIER constexpr vec<3, double, Q>::vec(vec<3, double, P> const& v)\
 	{\
 		data.setv(0, _mm_setr_pd(v.x, v.y));\
 		data.setv(1, _mm_setr_pd(v.z, 1.0));\
@@ -653,57 +653,57 @@ struct compute_vec_div<L, T, Q, true> : public compute_vec_div<L, T, Q, false>
 
 #define CTOR_INT(L, Q)\
 	template<>\
-		GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<L, int, Q>::vec(int _s) :\
+		GLM_FUNC_QUALIFIER constexpr vec<L, int, Q>::vec(int _s) :\
 		data(_mm_set1_epi32(_s))\
 		{}
 
 #define CTOR_FLOAT4(L, Q)\
 	template<>\
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<L, float, Q>::vec(float _x, float _y, float _z, float _w) :\
+	GLM_FUNC_QUALIFIER constexpr vec<L, float, Q>::vec(float _x, float _y, float _z, float _w) :\
 		data(_mm_set_ps(_w, _z, _y, _x))\
 		{}
 
 #define CTOR_FLOAT3(L, Q)\
 	template<>\
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<L, float, Q>::vec(float _x, float _y, float _z) :\
+	GLM_FUNC_QUALIFIER constexpr vec<L, float, Q>::vec(float _x, float _y, float _z) :\
 	data(_mm_set_ps(_z, _z, _y, _x)){}
 
 
 #define CTOR_INT4(L, Q)\
 	template<>\
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<L, int, Q>::vec(int _x, int _y, int _z, int _w) :\
+	GLM_FUNC_QUALIFIER constexpr vec<L, int, Q>::vec(int _x, int _y, int _z, int _w) :\
 	data(_mm_set_epi32(_w, _z, _y, _x)){}
 
 #define CTOR_INT3(L, Q)\
 	template<>\
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<L, int, Q>::vec(int _x, int _y, int _z) :\
+	GLM_FUNC_QUALIFIER constexpr vec<L, int, Q>::vec(int _x, int _y, int _z) :\
 	data(_mm_set_epi32(_z, _z, _y, _x)){}
 
 #define CTOR_VECF_INT4(L, Q)\
 	template<>\
 	template<>\
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<L, float, Q>::vec(int _x, int _y, int _z, int _w) :\
+	GLM_FUNC_QUALIFIER constexpr vec<L, float, Q>::vec(int _x, int _y, int _z, int _w) :\
 	data(_mm_cvtepi32_ps(_mm_set_epi32(_w, _z, _y, _x)))\
 	{}
 
 #define CTOR_VECF_INT3(L, Q)\
 	template<>\
 	template<>\
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<L, float, Q>::vec(int _x, int _y, int _z) :\
+	GLM_FUNC_QUALIFIER constexpr vec<L, float, Q>::vec(int _x, int _y, int _z) :\
 	data(_mm_cvtepi32_ps(_mm_set_epi32(_z, _z, _y, _x)))\
 	{}
 
 #define CTOR_DEFAULT(L, Q)\
 	template<>\
 	template<>\
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<L, float, Q>::vec() :\
+	GLM_FUNC_QUALIFIER constexpr vec<L, float, Q>::vec() :\
 	data(_mm_setzero_ps())\
 	{}
 
 #define CTOR_FLOAT_COPY3(L, Q)\
 	template<>\
 	template<qualifier P>\
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<3, float, Q>::vec(vec<3, float, P> const& v)\
+	GLM_FUNC_QUALIFIER constexpr vec<3, float, Q>::vec(vec<3, float, P> const& v)\
 		:data(_mm_set_ps(v.z, v.z, v.y, v.x))\
 	{}
 
@@ -948,54 +948,54 @@ struct _swizzle_base1<L, uint, Q, E0, E1, E2, E3, true> : public _swizzle_base1<
 
 #define CTOR_FLOAT(L, Q)\
 	template<>\
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<L, float, Q>::vec(float _s) :\
+	GLM_FUNC_QUALIFIER constexpr vec<L, float, Q>::vec(float _s) :\
 		data(vdupq_n_f32(_s))\
 	{}
 
 #define CTOR_INT(L, Q)\
 	template<>\
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<L, int, Q>::vec(int _s) :\
+	GLM_FUNC_QUALIFIER constexpr vec<L, int, Q>::vec(int _s) :\
 		data(vdupq_n_s32(_s))\
 	{}
 
 #define CTOR_UINT(L, Q)\
 	template<>\
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<L, uint, Q>::vec(uint _s) :\
+	GLM_FUNC_QUALIFIER constexpr vec<L, uint, Q>::vec(uint _s) :\
 		data(vdupq_n_u32(_s))\
 	{}
 
 #define CTOR_VECF_INT4(L, Q)\
 	template<>\
 	template<>\
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<L, float, Q>::vec(int _x, int _y, int _z, int _w) :\
+	GLM_FUNC_QUALIFIER constexpr vec<L, float, Q>::vec(int _x, int _y, int _z, int _w) :\
 		data(vcvtq_f32_s32(vec<L, int, Q>(_x, _y, _z, _w).data))\
 	{}
 
 #define CTOR_VECF_UINT4(L, Q)\
 	template<>\
 	template<>\
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<L, float, Q>::vec(uint _x, uint _y, uint _z, uint _w) :\
+	GLM_FUNC_QUALIFIER constexpr vec<L, float, Q>::vec(uint _x, uint _y, uint _z, uint _w) :\
 		data(vcvtq_f32_u32(vec<L, uint, Q>(_x, _y, _z, _w).data))\
 	{}
 
 #define CTOR_VECF_INT3(L, Q)\
 	template<>\
 	template<>\
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<L, float, Q>::vec(int _x, int _y, int _z) :\
+	GLM_FUNC_QUALIFIER constexpr vec<L, float, Q>::vec(int _x, int _y, int _z) :\
 		data(vcvtq_f32_s32(vec<L, int, Q>(_x, _y, _z).data))\
 	{}
 
 #define CTOR_VECF_UINT4(L, Q)\
 	template<>\
 	template<>\
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<L, float, Q>::vec(uint _x, uint _y, uint _z, uint _w) :\
+	GLM_FUNC_QUALIFIER constexpr vec<L, float, Q>::vec(uint _x, uint _y, uint _z, uint _w) :\
 		data(vcvtq_f32_u32(vec<L, uint, Q>(_x, _y, _z, _w).data))\
 	{}
 
 #define CTOR_VECF_UINT3(L, Q)\
 	template<>\
 	template<>\
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<L, float, Q>::vec(uint _x, uint _y, uint _z) :\
+	GLM_FUNC_QUALIFIER constexpr vec<L, float, Q>::vec(uint _x, uint _y, uint _z) :\
 		data(vcvtq_f32_u32(vec<L, uint, Q>(_x, _y, _z).data))\
 	{}
 
@@ -1003,21 +1003,21 @@ struct _swizzle_base1<L, uint, Q, E0, E1, E2, E3, true> : public _swizzle_base1<
 #define CTOR_VECF_VECF(L, Q)\
 	template<>\
 	template<>\
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<L, float, Q>::vec(const vec<L, float, Q>& rhs) :\
+	GLM_FUNC_QUALIFIER constexpr vec<L, float, Q>::vec(const vec<L, float, Q>& rhs) :\
 		data(rhs.data)\
 	{}
 
 #define CTOR_VECF_VECI(L, Q)\
 	template<>\
 	template<>\
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<L, float, Q>::vec(const vec<L, int, Q>& rhs) :\
+	GLM_FUNC_QUALIFIER constexpr vec<L, float, Q>::vec(const vec<L, int, Q>& rhs) :\
 		data(vcvtq_f32_s32(rhs.data))\
 	{}
 
 #define CTOR_VECF_VECU(L, Q)\
 	template<>\
 	template<>\
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<L, float, Q>::vec(const vec<L, uint, Q>& rhs) :\
+	GLM_FUNC_QUALIFIER constexpr vec<L, float, Q>::vec(const vec<L, uint, Q>& rhs) :\
 		data(vcvtq_f32_u32(rhs.data))\
 	{}
 

@@ -102,15 +102,15 @@ $(function() {
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                <span class="comment">// -- Component accesses --</span></div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                <span class="keyword">typedef</span> length_t length_type;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                GLM_FUNC_DECL <span class="keyword">static</span> GLM_CONSTEXPR length_type <a class="code" href="a00862.html#gab703732449be6c7199369b3f9a91ed38">length</a>(){<span class="keywordflow">return</span> 2;}</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                GLM_FUNC_DECL <span class="keyword">static</span> constexpr length_type <a class="code" href="a00862.html#gab703732449be6c7199369b3f9a91ed38">length</a>(){<span class="keywordflow">return</span> 2;}</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                GLM_FUNC_DECL part_type &amp; operator[](length_type i);</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                GLM_FUNC_DECL part_type <span class="keyword">const</span>&amp; operator[](length_type i) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                <span class="comment">// -- Implicit basic constructors --</span></div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                GLM_DEFAULTED_FUNC_DECL GLM_CONSTEXPR tdualquat() GLM_DEFAULT;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                GLM_DEFAULTED_FUNC_DECL GLM_CONSTEXPR tdualquat(tdualquat&lt;T, Q&gt; const&amp; d) GLM_DEFAULT;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                GLM_DEFAULTED_FUNC_DECL constexpr tdualquat() GLM_DEFAULT;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                GLM_DEFAULTED_FUNC_DECL constexpr tdualquat(tdualquat&lt;T, Q&gt; const&amp; d) GLM_DEFAULT;</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                template&lt;qualifier P&gt;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                GLM_CTOR_DECL tdualquat(tdualquat&lt;T, P&gt; const&amp; d);</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>

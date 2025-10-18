@@ -12,7 +12,7 @@ namespace detail
 	template<qualifier Q>
 	struct compute_matrixCompMult<4, 4, float, Q, true>
 	{
-		GLM_STATIC_ASSERT(detail::is_aligned<Q>::value, "Specialization requires aligned");
+		static_assert(detail::is_aligned<Q>::value, "Specialization requires aligned");
 
 		GLM_FUNC_QUALIFIER static mat<4, 4, float, Q> call(mat<4, 4, float, Q> const& x, mat<4, 4, float, Q> const& y)
 		{

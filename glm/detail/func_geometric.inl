@@ -28,7 +28,7 @@ namespace detail
 	template<typename T, qualifier Q, bool Aligned>
 	struct compute_dot<vec<1, T, Q>, T, Aligned>
 	{
-		GLM_FUNC_QUALIFIER GLM_CONSTEXPR static T call(vec<1, T, Q> const& a, vec<1, T, Q> const& b)
+		GLM_FUNC_QUALIFIER constexpr static T call(vec<1, T, Q> const& a, vec<1, T, Q> const& b)
 		{
 			return a.x * b.x;
 		}
@@ -37,7 +37,7 @@ namespace detail
 	template<typename T, qualifier Q, bool Aligned>
 	struct compute_dot<vec<2, T, Q>, T, Aligned>
 	{
-		GLM_FUNC_QUALIFIER GLM_CONSTEXPR static T call(vec<2, T, Q> const& a, vec<2, T, Q> const& b)
+		GLM_FUNC_QUALIFIER constexpr static T call(vec<2, T, Q> const& a, vec<2, T, Q> const& b)
 		{
 			vec<2, T, Q> tmp(a * b);
 			return tmp.x + tmp.y;
@@ -47,7 +47,7 @@ namespace detail
 	template<typename T, qualifier Q, bool Aligned>
 	struct compute_dot<vec<3, T, Q>, T, Aligned>
 	{
-		GLM_FUNC_QUALIFIER GLM_CONSTEXPR static T call(vec<3, T, Q> const& a, vec<3, T, Q> const& b)
+		GLM_FUNC_QUALIFIER constexpr static T call(vec<3, T, Q> const& a, vec<3, T, Q> const& b)
 		{
 			vec<3, T, Q> tmp(a * b);
 			return tmp.x + tmp.y + tmp.z;
@@ -57,7 +57,7 @@ namespace detail
 	template<typename T, qualifier Q, bool Aligned>
 	struct compute_dot<vec<4, T, Q>, T, Aligned>
 	{
-		GLM_FUNC_QUALIFIER GLM_CONSTEXPR static T call(vec<4, T, Q> const& a, vec<4, T, Q> const& b)
+		GLM_FUNC_QUALIFIER constexpr static T call(vec<4, T, Q> const& a, vec<4, T, Q> const& b)
 		{
 			// VS 17.7.4 generates longer assembly (~20 instructions vs 11 instructions)
 			#if defined(_MSC_VER)
@@ -72,9 +72,9 @@ namespace detail
 	template<typename T, qualifier Q, bool Aligned>
 	struct compute_cross
 	{
-		GLM_FUNC_QUALIFIER GLM_CONSTEXPR static vec<3, T, Q> call(vec<3, T, Q> const& x, vec<3, T, Q> const& y)
+		GLM_FUNC_QUALIFIER constexpr static vec<3, T, Q> call(vec<3, T, Q> const& x, vec<3, T, Q> const& y)
 		{
-			GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'cross' accepts only floating-point inputs");
+			static_assert(std::numeric_limits<T>::is_iec559, "'cross' accepts only floating-point inputs");
 
 			return vec<3, T, Q>(
 				x.y * y.z - y.y * x.z,
@@ -82,9 +82,9 @@ namespace detail
 				x.x * y.y - y.x * x.y);
 		}
 
-		GLM_FUNC_QUALIFIER GLM_CONSTEXPR static vec<4, T, Q> call(vec<4, T, Q> const& x, vec<4, T, Q> const& y)
+		GLM_FUNC_QUALIFIER constexpr static vec<4, T, Q> call(vec<4, T, Q> const& x, vec<4, T, Q> const& y)
 		{
-			GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'cross' accepts only floating-point inputs");
+			static_assert(std::numeric_limits<T>::is_iec559, "'cross' accepts only floating-point inputs");
 
 			return vec<4, T, Q>(
 				x.y * y.z - y.y * x.z,
@@ -99,7 +99,7 @@ namespace detail
 	{
 		GLM_FUNC_QUALIFIER static vec<L, T, Q> call(vec<L, T, Q> const& v)
 		{
-			GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'normalize' accepts only floating-point inputs");
+			static_assert(std::numeric_limits<T>::is_iec559, "'normalize' accepts only floating-point inputs");
 
 			return v * inversesqrt(dot(v, v));
 		}
@@ -110,7 +110,7 @@ namespace detail
 	{
 		GLM_FUNC_QUALIFIER static vec<L, T, Q> call(vec<L, T, Q> const& N, vec<L, T, Q> const& I, vec<L, T, Q> const& Nref)
 		{
-			GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'normalize' accepts only floating-point inputs");
+			static_assert(std::numeric_limits<T>::is_iec559, "'normalize' accepts only floating-point inputs");
 
 			return dot(Nref, I) < static_cast<T>(0) ? N : -N;
 		}
@@ -143,7 +143,7 @@ namespace detail
 	template<typename genType>
 	GLM_FUNC_QUALIFIER genType length(genType x)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559, "'length' accepts only floating-point inputs");
+		static_assert(std::numeric_limits<genType>::is_iec559, "'length' accepts only floating-point inputs");
 
 		return abs(x);
 	}
@@ -151,7 +151,7 @@ namespace detail
 	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER T length(vec<L, T, Q> const& v)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'length' accepts only floating-point inputs");
+		static_assert(std::numeric_limits<T>::is_iec559, "'length' accepts only floating-point inputs");
 
 		return detail::compute_length<L, T, Q, detail::is_aligned<Q>::value>::call(v);
 	}
@@ -160,7 +160,7 @@ namespace detail
 	template<typename genType>
 	GLM_FUNC_QUALIFIER genType distance(genType const& p0, genType const& p1)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559, "'distance' accepts only floating-point inputs");
+		static_assert(std::numeric_limits<genType>::is_iec559, "'distance' accepts only floating-point inputs");
 
 		return length(p1 - p0);
 	}
@@ -173,22 +173,22 @@ namespace detail
 
 	// dot
 	template<typename T>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR T dot(T x, T y)
+	GLM_FUNC_QUALIFIER constexpr T dot(T x, T y)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'dot' accepts only floating-point inputs");
+		static_assert(std::numeric_limits<T>::is_iec559, "'dot' accepts only floating-point inputs");
 		return x * y;
 	}
 
 	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR T dot(vec<L, T, Q> const& x, vec<L, T, Q> const& y)
+	GLM_FUNC_QUALIFIER constexpr T dot(vec<L, T, Q> const& x, vec<L, T, Q> const& y)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'dot' accepts only floating-point inputs");
+		static_assert(std::numeric_limits<T>::is_iec559, "'dot' accepts only floating-point inputs");
 		return detail::compute_dot<vec<L, T, Q>, T, detail::is_aligned<Q>::value>::call(x, y);
 	}
 
 	// cross
 	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<3, T, Q> cross(vec<3, T, Q> const& x, vec<3, T, Q> const& y)
+	GLM_FUNC_QUALIFIER constexpr vec<3, T, Q> cross(vec<3, T, Q> const& x, vec<3, T, Q> const& y)
 	{
 		return detail::compute_cross<T, Q, detail::is_aligned<Q>::value>::call(x, y);
 	}
@@ -197,7 +197,7 @@ namespace detail
 	template<typename genType>
 	GLM_FUNC_QUALIFIER genType normalize(genType const& x)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559, "'normalize' accepts only floating-point inputs");
+		static_assert(std::numeric_limits<genType>::is_iec559, "'normalize' accepts only floating-point inputs");
 
 		return x < genType(0) ? genType(-1) : genType(1);
 	}
@@ -205,7 +205,7 @@ namespace detail
 	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER vec<L, T, Q> normalize(vec<L, T, Q> const& x)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'normalize' accepts only floating-point inputs");
+		static_assert(std::numeric_limits<T>::is_iec559, "'normalize' accepts only floating-point inputs");
 
 		return detail::compute_normalize<L, T, Q, detail::is_aligned<Q>::value>::call(x);
 	}
@@ -240,7 +240,7 @@ namespace detail
 	template<typename genType>
 	GLM_FUNC_QUALIFIER genType refract(genType const& I, genType const& N, genType eta)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559, "'refract' accepts only floating-point inputs");
+		static_assert(std::numeric_limits<genType>::is_iec559, "'refract' accepts only floating-point inputs");
 		genType const dotValue(dot(N, I));
 		genType const k(static_cast<genType>(1) - eta * eta * (static_cast<genType>(1) - dotValue * dotValue));
 		return (eta * I - (eta * dotValue + sqrt(k)) * N) * static_cast<genType>(k >= static_cast<genType>(0));
@@ -249,7 +249,7 @@ namespace detail
 	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER vec<L, T, Q> refract(vec<L, T, Q> const& I, vec<L, T, Q> const& N, T eta)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'refract' accepts only floating-point inputs");
+		static_assert(std::numeric_limits<T>::is_iec559, "'refract' accepts only floating-point inputs");
 		return detail::compute_refract<L, T, Q, detail::is_aligned<Q>::value>::call(I, N, eta);
 	}
 }//namespace glm

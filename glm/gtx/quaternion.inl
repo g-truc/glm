@@ -6,19 +6,19 @@
 namespace glm
 {
 	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q> quat_identity()
+	GLM_FUNC_QUALIFIER constexpr qua<T, Q> quat_identity()
 	{
 		return qua<T, Q>::wxyz(static_cast<T>(1), static_cast<T>(0), static_cast<T>(0), static_cast<T>(0));
 	}
 
 	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<3, T, Q> cross(vec<3, T, Q> const& v, qua<T, Q> const& q)
+	GLM_FUNC_QUALIFIER constexpr vec<3, T, Q> cross(vec<3, T, Q> const& v, qua<T, Q> const& q)
 	{
 		return inverse(q) * v;
 	}
 
 	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<3, T, Q> cross(qua<T, Q> const& q, vec<3, T, Q> const& v)
+	GLM_FUNC_QUALIFIER constexpr vec<3, T, Q> cross(qua<T, Q> const& q, vec<3, T, Q> const& v)
 	{
 		return q * v;
 	}
@@ -70,7 +70,7 @@ namespace glm
 	}
 
 	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR T length2(qua<T, Q> const& q)
+	GLM_FUNC_QUALIFIER constexpr T length2(qua<T, Q> const& q)
 	{
 		return q.x * q.x + q.y * q.y + q.z * q.z + q.w * q.w;
 	}

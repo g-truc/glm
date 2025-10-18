@@ -132,15 +132,15 @@ $(function() {
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                <span class="keyword">typedef</span> length_t length_type;</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                GLM_FUNC_DECL <span class="keyword">static</span> GLM_CONSTEXPR length_type <a class="code" href="a00862.html#gab703732449be6c7199369b3f9a91ed38">length</a>(){<span class="keywordflow">return</span> 4;}</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                GLM_FUNC_DECL <span class="keyword">static</span> constexpr length_type <a class="code" href="a00862.html#gab703732449be6c7199369b3f9a91ed38">length</a>(){<span class="keywordflow">return</span> 4;}</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                GLM_FUNC_DECL GLM_CONSTEXPR T &amp; operator[](length_type i);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                GLM_FUNC_DECL GLM_CONSTEXPR T <span class="keyword">const</span>&amp; operator[](length_type i) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                GLM_FUNC_DECL constexpr T &amp; operator[](length_type i);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                GLM_FUNC_DECL constexpr T <span class="keyword">const</span>&amp; operator[](length_type i) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                <span class="comment">// -- Implicit basic constructors --</span></div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                GLM_DEFAULTED_DEFAULT_CTOR_DECL GLM_CONSTEXPR qua() GLM_DEFAULT_CTOR;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                GLM_DEFAULTED_FUNC_DECL GLM_CONSTEXPR qua(qua&lt;T, Q&gt; const&amp; q) GLM_DEFAULT;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                GLM_DEFAULTED_DEFAULT_CTOR_DECL constexpr qua() GLM_DEFAULT_CTOR;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                GLM_DEFAULTED_FUNC_DECL constexpr qua(qua&lt;T, Q&gt; const&amp; q) GLM_DEFAULT;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                template&lt;qualifier P&gt;</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                GLM_CTOR_DECL qua(qua&lt;T, P&gt; const&amp; q);</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
@@ -154,7 +154,7 @@ $(function() {
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                GLM_CTOR_DECL qua(T w, T x, T y, T z);</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="preprocessor">#               endif</span></div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                GLM_FUNC_DECL <span class="keyword">static</span> GLM_CONSTEXPR qua&lt;T, Q&gt; wxyz(T w, T x, T y, T z);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                GLM_FUNC_DECL <span class="keyword">static</span> constexpr qua&lt;T, Q&gt; wxyz(T w, T x, T y, T z);</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                <span class="comment">// -- Conversion constructors --</span></div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
@@ -174,20 +174,20 @@ $(function() {
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                <span class="comment">// -- Unary arithmetic operators --</span></div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                GLM_DEFAULTED_FUNC_DECL GLM_CONSTEXPR qua&lt;T, Q&gt;&amp; operator=(qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; q) GLM_DEFAULT;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                GLM_DEFAULTED_FUNC_DECL constexpr qua&lt;T, Q&gt;&amp; operator=(qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; q) GLM_DEFAULT;</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                <span class="keyword">template</span>&lt;<span class="keyword">typename</span> U&gt;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR qua&lt;T, Q&gt;&amp; operator=(qua&lt;U, Q&gt; <span class="keyword">const</span>&amp; q);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                GLM_FUNC_DISCARD_DECL constexpr qua&lt;T, Q&gt;&amp; operator=(qua&lt;U, Q&gt; <span class="keyword">const</span>&amp; q);</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                <span class="keyword">template</span>&lt;<span class="keyword">typename</span> U&gt;</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR qua&lt;T, Q&gt;&amp; operator+=(qua&lt;U, Q&gt; <span class="keyword">const</span>&amp; q);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                GLM_FUNC_DISCARD_DECL constexpr qua&lt;T, Q&gt;&amp; operator+=(qua&lt;U, Q&gt; <span class="keyword">const</span>&amp; q);</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                <span class="keyword">template</span>&lt;<span class="keyword">typename</span> U&gt;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR qua&lt;T, Q&gt;&amp; operator-=(qua&lt;U, Q&gt; <span class="keyword">const</span>&amp; q);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                GLM_FUNC_DISCARD_DECL constexpr qua&lt;T, Q&gt;&amp; operator-=(qua&lt;U, Q&gt; <span class="keyword">const</span>&amp; q);</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                <span class="keyword">template</span>&lt;<span class="keyword">typename</span> U&gt;</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR qua&lt;T, Q&gt;&amp; operator*=(qua&lt;U, Q&gt; <span class="keyword">const</span>&amp; q);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                GLM_FUNC_DISCARD_DECL constexpr qua&lt;T, Q&gt;&amp; operator*=(qua&lt;U, Q&gt; <span class="keyword">const</span>&amp; q);</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                <span class="keyword">template</span>&lt;<span class="keyword">typename</span> U&gt;</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR qua&lt;T, Q&gt;&amp; operator*=(U s);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                GLM_FUNC_DISCARD_DECL constexpr qua&lt;T, Q&gt;&amp; operator*=(U s);</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                <span class="keyword">template</span>&lt;<span class="keyword">typename</span> U&gt;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR qua&lt;T, Q&gt;&amp; operator/=(U s);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                GLM_FUNC_DISCARD_DECL constexpr qua&lt;T, Q&gt;&amp; operator/=(U s);</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        };</div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="preprocessor">#               if GLM_SILENT_WARNINGS == GLM_ENABLE</span></div>
@@ -203,50 +203,50 @@ $(function() {
 <div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        <span class="comment">// -- Unary bit operators --</span></div>
 <div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, qualifier Q&gt;</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        GLM_FUNC_DECL GLM_CONSTEXPR qua&lt;T, Q&gt; operator+(qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; q);</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        GLM_FUNC_DECL constexpr qua&lt;T, Q&gt; operator+(qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; q);</div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, qualifier Q&gt;</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        GLM_FUNC_DECL GLM_CONSTEXPR qua&lt;T, Q&gt; operator-(qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; q);</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        GLM_FUNC_DECL constexpr qua&lt;T, Q&gt; operator-(qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; q);</div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <span class="comment">// -- Binary operators --</span></div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, qualifier Q&gt;</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        GLM_FUNC_DECL GLM_CONSTEXPR qua&lt;T, Q&gt; operator+(qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; q, qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; p);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        GLM_FUNC_DECL constexpr qua&lt;T, Q&gt; operator+(qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; q, qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; p);</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, qualifier Q&gt;</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        GLM_FUNC_DECL GLM_CONSTEXPR qua&lt;T, Q&gt; operator-(qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; q, qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; p);</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        GLM_FUNC_DECL constexpr qua&lt;T, Q&gt; operator-(qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; q, qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; p);</div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, qualifier Q&gt;</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        GLM_FUNC_DECL GLM_CONSTEXPR qua&lt;T, Q&gt; operator*(qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; q, qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; p);</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        GLM_FUNC_DECL constexpr qua&lt;T, Q&gt; operator*(qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; q, qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; p);</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, qualifier Q&gt;</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        GLM_FUNC_DECL GLM_CONSTEXPR vec&lt;3, T, Q&gt; operator*(qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; q, vec&lt;3, T, Q&gt; <span class="keyword">const</span>&amp; v);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        GLM_FUNC_DECL constexpr vec&lt;3, T, Q&gt; operator*(qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; q, vec&lt;3, T, Q&gt; <span class="keyword">const</span>&amp; v);</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160; </div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, qualifier Q&gt;</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        GLM_FUNC_DECL GLM_CONSTEXPR vec&lt;3, T, Q&gt; operator*(vec&lt;3, T, Q&gt; <span class="keyword">const</span>&amp; v, qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; q);</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        GLM_FUNC_DECL constexpr vec&lt;3, T, Q&gt; operator*(vec&lt;3, T, Q&gt; <span class="keyword">const</span>&amp; v, qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; q);</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, qualifier Q&gt;</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        GLM_FUNC_DECL GLM_CONSTEXPR vec&lt;4, T, Q&gt; operator*(qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; q, vec&lt;4, T, Q&gt; <span class="keyword">const</span>&amp; v);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        GLM_FUNC_DECL constexpr vec&lt;4, T, Q&gt; operator*(qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; q, vec&lt;4, T, Q&gt; <span class="keyword">const</span>&amp; v);</div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; </div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, qualifier Q&gt;</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        GLM_FUNC_DECL GLM_CONSTEXPR vec&lt;4, T, Q&gt; operator*(vec&lt;4, T, Q&gt; <span class="keyword">const</span>&amp; v, qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; q);</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        GLM_FUNC_DECL constexpr vec&lt;4, T, Q&gt; operator*(vec&lt;4, T, Q&gt; <span class="keyword">const</span>&amp; v, qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; q);</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, qualifier Q&gt;</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        GLM_FUNC_DECL GLM_CONSTEXPR qua&lt;T, Q&gt; operator*(qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; q, T <span class="keyword">const</span>&amp; s);</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        GLM_FUNC_DECL constexpr qua&lt;T, Q&gt; operator*(qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; q, T <span class="keyword">const</span>&amp; s);</div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; </div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, qualifier Q&gt;</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        GLM_FUNC_DECL GLM_CONSTEXPR qua&lt;T, Q&gt; operator*(T <span class="keyword">const</span>&amp; s, qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; q);</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        GLM_FUNC_DECL constexpr qua&lt;T, Q&gt; operator*(T <span class="keyword">const</span>&amp; s, qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; q);</div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; </div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, qualifier Q&gt;</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        GLM_FUNC_DECL GLM_CONSTEXPR qua&lt;T, Q&gt; operator/(qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; q, T <span class="keyword">const</span>&amp; s);</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        GLM_FUNC_DECL constexpr qua&lt;T, Q&gt; operator/(qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; q, T <span class="keyword">const</span>&amp; s);</div>
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160; </div>
 <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        <span class="comment">// -- Boolean operators --</span></div>
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160; </div>
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, qualifier Q&gt;</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        GLM_FUNC_DECL GLM_CONSTEXPR <span class="keywordtype">bool</span> operator==(qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; q1, qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; q2);</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        GLM_FUNC_DECL constexpr <span class="keywordtype">bool</span> operator==(qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; q1, qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; q2);</div>
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160; </div>
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, qualifier Q&gt;</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        GLM_FUNC_DECL GLM_CONSTEXPR <span class="keywordtype">bool</span> operator!=(qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; q1, qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; q2);</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        GLM_FUNC_DECL constexpr <span class="keywordtype">bool</span> operator!=(qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; q1, qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; q2);</div>
 <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;} <span class="comment">//namespace glm</span></div>
 <div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160; </div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="preprocessor">#ifndef GLM_EXTERNAL_TEMPLATE</span></div>

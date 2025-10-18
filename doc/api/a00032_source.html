@@ -249,10 +249,10 @@ $(function() {
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                <span class="keyword">struct </span>type</div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                {</div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                        glm_f64vec2 data[2];</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                        GLM_CONSTEXPR glm_f64vec2 getv(<span class="keywordtype">int</span> i)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                        constexpr glm_f64vec2 getv(<span class="keywordtype">int</span> i)<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                                <span class="keywordflow">return</span> data[i];</div>
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                        }</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                        GLM_CONSTEXPR <span class="keywordtype">void</span> setv(<span class="keywordtype">int</span> i, <span class="keyword">const</span> glm_f64vec2&amp; v) {</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                        constexpr <span class="keywordtype">void</span> setv(<span class="keywordtype">int</span> i, <span class="keyword">const</span> glm_f64vec2&amp; v) {</div>
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                                data[i] = v;</div>
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                        }</div>
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                };</div>
@@ -348,7 +348,7 @@ $(function() {
 <div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> genType&gt;</div>
 <div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;        <span class="keyword">struct </span>init_gentype&lt;genType, GENTYPE_QUAT&gt;</div>
 <div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;        {</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                GLM_FUNC_QUALIFIER GLM_CONSTEXPR <span class="keyword">static</span> genType <a class="code" href="a00837.html#ga81696f2b8d1db02ea1aff8da8f269314">identity</a>()</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                GLM_FUNC_QUALIFIER constexpr <span class="keyword">static</span> genType <a class="code" href="a00837.html#ga81696f2b8d1db02ea1aff8da8f269314">identity</a>()</div>
 <div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                {</div>
 <div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;                        <span class="keywordflow">return</span> genType(1, 0, 0, 0);</div>
 <div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                }</div>
@@ -357,7 +357,7 @@ $(function() {
 <div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> genType&gt;</div>
 <div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;        <span class="keyword">struct </span>init_gentype&lt;genType, GENTYPE_MAT&gt;</div>
 <div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;        {</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                GLM_FUNC_QUALIFIER GLM_CONSTEXPR <span class="keyword">static</span> genType <a class="code" href="a00837.html#ga81696f2b8d1db02ea1aff8da8f269314">identity</a>()</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                GLM_FUNC_QUALIFIER constexpr <span class="keyword">static</span> genType <a class="code" href="a00837.html#ga81696f2b8d1db02ea1aff8da8f269314">identity</a>()</div>
 <div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                {</div>
 <div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                        <span class="keywordflow">return</span> genType(1);</div>
 <div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;                }</div>
@@ -366,7 +366,7 @@ $(function() {
 <div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;}<span class="comment">//namespace glm</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aa00873_html_gab630f76c26b50298187f7889104d4b9c"><div class="ttname"><a href="a00873.html#gab630f76c26b50298187f7889104d4b9c">glm::uint64</a></div><div class="ttdeci">detail::uint64 uint64</div><div class="ttdoc">64 bit unsigned integer type.</div><div class="ttdef"><b>Definition:</b> <a href="a00377_source.html#l00067">scalar_uint_sized.hpp:67</a></div></div>
-<div class="ttc" id="aa00837_html_ga81696f2b8d1db02ea1aff8da8f269314"><div class="ttname"><a href="a00837.html#ga81696f2b8d1db02ea1aff8da8f269314">glm::identity</a></div><div class="ttdeci">GLM_FUNC_DECL GLM_CONSTEXPR genType identity()</div><div class="ttdoc">Builds an identity matrix.</div></div>
+<div class="ttc" id="aa00837_html_ga81696f2b8d1db02ea1aff8da8f269314"><div class="ttname"><a href="a00837.html#ga81696f2b8d1db02ea1aff8da8f269314">glm::identity</a></div><div class="ttdeci">GLM_FUNC_DECL constexpr genType identity()</div><div class="ttdoc">Builds an identity matrix.</div></div>
 <div class="ttc" id="aa00868_html_gaff5189f97f9e842d9636a0f240001b2e"><div class="ttname"><a href="a00868.html#gaff5189f97f9e842d9636a0f240001b2e">glm::int64</a></div><div class="ttdeci">detail::int64 int64</div><div class="ttdoc">64 bit signed integer type.</div><div class="ttdef"><b>Definition:</b> <a href="a00362_source.html#l00067">scalar_int_sized.hpp:67</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

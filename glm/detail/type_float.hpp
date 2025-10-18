@@ -21,18 +21,18 @@ namespace detail
 		typedef int int_type;
 		typedef float float_type;
 
-		GLM_CONSTEXPR float_t(float_type Num = 0.0f) : f(Num) {}
+		constexpr float_t(float_type Num = 0.0f) : f(Num) {}
 
-		GLM_CONSTEXPR float_t& operator=(float_t const& x)
+		constexpr float_t& operator=(float_t const& x)
 		{
 			f = x.f;
 			return *this;
 		}
 
 		// Portable extraction of components.
-		GLM_CONSTEXPR bool negative() const { return i < 0; }
-		GLM_CONSTEXPR int_type mantissa() const { return i & ((1 << 23) - 1); }
-		GLM_CONSTEXPR int_type exponent() const { return (i >> 23) & ((1 << 8) - 1); }
+		constexpr bool negative() const { return i < 0; }
+		constexpr int_type mantissa() const { return i & ((1 << 23) - 1); }
+		constexpr int_type exponent() const { return (i >> 23) & ((1 << 8) - 1); }
 
 		int_type i;
 		float_type f;
@@ -44,18 +44,18 @@ namespace detail
 		typedef detail::int64 int_type;
 		typedef double float_type;
 
-		GLM_CONSTEXPR float_t(float_type Num = static_cast<float_type>(0)) : f(Num) {}
+		constexpr float_t(float_type Num = static_cast<float_type>(0)) : f(Num) {}
 
-		GLM_CONSTEXPR float_t& operator=(float_t const& x)
+		constexpr float_t& operator=(float_t const& x)
 		{
 			f = x.f;
 			return *this;
 		}
 
 		// Portable extraction of components.
-		GLM_CONSTEXPR bool negative() const { return i < 0; }
-		GLM_CONSTEXPR int_type mantissa() const { return i & ((int_type(1) << 52) - 1); }
-		GLM_CONSTEXPR int_type exponent() const { return (i >> 52) & ((int_type(1) << 11) - 1); }
+		constexpr bool negative() const { return i < 0; }
+		constexpr int_type mantissa() const { return i & ((int_type(1) << 52) - 1); }
+		constexpr int_type exponent() const { return (i >> 52) & ((int_type(1) << 11) - 1); }
 
 		int_type i;
 		float_type f;
