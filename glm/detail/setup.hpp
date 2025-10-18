@@ -5,7 +5,7 @@
 
 #define GLM_VERSION_MAJOR 1
 #define GLM_VERSION_MINOR 0
-#define GLM_VERSION_PATCH 2
+#define GLM_VERSION_PATCH 3
 #define GLM_VERSION_REVISION 0 // Deprecated
 #define GLM_VERSION 1000 // Deprecated
 
