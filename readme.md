@@ -104,6 +104,12 @@ target_link_libraries(main PRIVATE glm::glm)
 
 ## Release notes
 
+### [GLM 1.0.3](https://github.com/g-truc/glm/1.0) - 2025-XX-XX
+
+#### Fixes:
+- Fixed Quaternion `rotate` direction (reverted)
+- Fixed vec4 to vec3 conversion #1398
+
 ### [GLM 1.0.2](https://github.com/g-truc/glm/releases/tag/1.0.2) - 2025-10-15
 
 #### Features:
