@@ -86,7 +86,6 @@ static int test_ctr()
 		Error += glm::all(glm::equal(A, C, glm::epsilon<float>())) ? 0 : 1;
 	}
 
-#if GLM_HAS_INITIALIZER_LISTS
 	glm::mat2x2 m0(
 		glm::vec2(0, 1),
 		glm::vec2(2, 3));
@@ -115,8 +114,6 @@ static int test_ctr()
 			{ 4, 5}
 		}
 	};
-
-#endif//GLM_HAS_INITIALIZER_LISTS
 
 	return Error;
 }

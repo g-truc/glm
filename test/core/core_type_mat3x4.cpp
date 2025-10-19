@@ -51,9 +51,8 @@ static int test_operators()
 
 static int test_ctr()
 {
-	int Error(0);
+	int Error = 0;
 
-#if(GLM_HAS_INITIALIZER_LISTS)
 	glm::mat3x4 m0(
 		glm::vec4(0, 1, 2, 3),
 		glm::vec4(4, 5, 6, 7),
@@ -86,9 +85,7 @@ static int test_ctr()
 			{ 8, 9, 10, 11}
 		}
 	};
-	
-#endif//GLM_HAS_INITIALIZER_LISTS
-	
+
 	return Error;
 }
 

@@ -238,7 +238,6 @@ static int test_ctor()
 		Error += std::is_copy_constructible<glm::vec2>::value ? 0 : 1;
 	}
 
-#if GLM_HAS_INITIALIZER_LISTS
 	{
 		glm::vec2 a{ 0, 1 };
 		std::vector<glm::vec2> v = {
@@ -254,7 +253,6 @@ static int test_ctor()
 			{4, 5},
 			{8, 9}};
 	}
-#endif
 
 	{
 		glm::vec2 A = glm::vec2(2.0f);

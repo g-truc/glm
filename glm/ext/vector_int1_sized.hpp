@@ -47,3 +47,27 @@ namespace glm
 
 	/// @}
 }//namespace glm
+
+#if GLM_CONFIG_CTOR_INIT == GLM_DISABLE
+static_assert(std::is_trivially_default_constructible<glm::i8vec1>::value);
+static_assert(std::is_trivially_default_constructible<glm::i16vec1>::value);
+static_assert(std::is_trivially_default_constructible<glm::i32vec1>::value);
+static_assert(std::is_trivially_default_constructible<glm::i64vec1>::value);
+#endif
+static_assert(std::is_trivially_copy_assignable<glm::i8vec1>::value);
+static_assert(std::is_trivially_copy_assignable<glm::i16vec1>::value);
+static_assert(std::is_trivially_copy_assignable<glm::i32vec1>::value);
+static_assert(std::is_trivially_copy_assignable<glm::i64vec1>::value);
+static_assert(std::is_trivially_copyable<glm::i8vec1>::value);
+static_assert(std::is_trivially_copyable<glm::i16vec1>::value);
+static_assert(std::is_trivially_copyable<glm::i32vec1>::value);
+static_assert(std::is_trivially_copyable<glm::i64vec1>::value);
+static_assert(std::is_copy_constructible<glm::i8vec1>::value);
+static_assert(std::is_copy_constructible<glm::i16vec1>::value);
+static_assert(std::is_copy_constructible<glm::i32vec1>::value);
+static_assert(std::is_copy_constructible<glm::i64vec1>::value);
+static_assert(glm::i8vec1::length() == 1);
+static_assert(glm::i16vec1::length() == 1);
+static_assert(glm::i32vec1::length() == 1);
+static_assert(glm::i64vec1::length() == 1);
+

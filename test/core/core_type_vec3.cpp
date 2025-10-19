@@ -28,8 +28,8 @@ static int test_vec3_ctor()
 	int Error = 0;
 
 	{
-	//	Error += std::is_trivially_default_constructible<glm::vec3>::value ? 0 : 1;
-	//	Error += std::is_trivially_copy_assignable<glm::vec3>::value ? 0 : 1;
+		Error += std::is_trivially_default_constructible<glm::vec3>::value ? 0 : 1;
+		Error += std::is_trivially_copy_assignable<glm::vec3>::value ? 0 : 1;
 		Error += std::is_trivially_copyable<glm::vec3>::value ? 0 : 1;
 		Error += std::is_trivially_copyable<glm::dvec3>::value ? 0 : 1;
 		Error += std::is_trivially_copyable<glm::ivec3>::value ? 0 : 1;
@@ -38,7 +38,6 @@ static int test_vec3_ctor()
 		Error += std::is_copy_constructible<glm::vec3>::value ? 0 : 1;
 	}
 	
-#	if GLM_HAS_INITIALIZER_LISTS
 	{
 		glm::vec3 a{ 0, 1, 2 };
 		std::vector<glm::vec3> v = {
@@ -54,7 +53,6 @@ static int test_vec3_ctor()
 			{4, 5, 6},
 			{8, 9, 0}};
 	}
-#	endif
 
 	{
 		glm::ivec3 A(1);

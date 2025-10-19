@@ -93,20 +93,8 @@
 #	define GLM_LANG 0
 #elif defined(GLM_FORCE_CXX20)
 #	define GLM_LANG (GLM_LANG_CXX20 | GLM_LANG_EXT)
-#	define GLM_LANG_STL11_FORCED
 #elif defined(GLM_FORCE_CXX17)
 #	define GLM_LANG (GLM_LANG_CXX17 | GLM_LANG_EXT)
-#	define GLM_LANG_STL11_FORCED
-#elif defined(GLM_FORCE_CXX14)
-#	define GLM_LANG (GLM_LANG_CXX14 | GLM_LANG_EXT)
-#	define GLM_LANG_STL11_FORCED
-#elif defined(GLM_FORCE_CXX11)
-#	define GLM_LANG (GLM_LANG_CXX11 | GLM_LANG_EXT)
-#	define GLM_LANG_STL11_FORCED
-#elif defined(GLM_FORCE_CXX03)
-#	define GLM_LANG (GLM_LANG_CXX03 | GLM_LANG_EXT)
-#elif defined(GLM_FORCE_CXX98)
-#	define GLM_LANG (GLM_LANG_CXX98 | GLM_LANG_EXT)
 #else
 #	if GLM_COMPILER & GLM_COMPILER_VC && defined(_MSVC_LANG)
 #		if GLM_COMPILER >= GLM_COMPILER_VC15_7
@@ -128,14 +116,6 @@
 #		define GLM_LANG (GLM_LANG_CXX20 | GLM_LANG_EXT)
 #	elif __cplusplus == 201703L || GLM_LANG_PLATFORM == 201703L
 #		define GLM_LANG (GLM_LANG_CXX17 | GLM_LANG_EXT)
-#	elif __cplusplus == 201402L || __cplusplus == 201406L || __cplusplus == 201500L || GLM_LANG_PLATFORM == 201402L
-#		define GLM_LANG (GLM_LANG_CXX14 | GLM_LANG_EXT)
-#	elif __cplusplus == 201103L || GLM_LANG_PLATFORM == 201103L
-#		define GLM_LANG (GLM_LANG_CXX11 | GLM_LANG_EXT)
-#	elif defined(__INTEL_CXX11_MODE__) || defined(_MSC_VER) || defined(__GXX_EXPERIMENTAL_CXX0X__)
-#		define GLM_LANG (GLM_LANG_CXX0X | GLM_LANG_EXT)
-#	elif __cplusplus == 199711L
-#		define GLM_LANG (GLM_LANG_CXX98 | GLM_LANG_EXT)
 #	else
 #		define GLM_LANG (0 | GLM_LANG_EXT)
 #	endif
@@ -143,8 +123,6 @@
 
 ///////////////////////////////////////////////////////////////////////////////////
 // Has of C++ features
-
-#define GLM_HAS_INITIALIZER_LISTS 1
 
 #define GLM_CONSTEXPR constexpr
 
@@ -628,7 +606,7 @@ namespace detail
 #	if (GLM_LANG & GLM_LANG_CXX20_FLAG) && (GLM_LANG & GLM_LANG_EXT)
 #		pragma message("GLM: C++ 20 with extensions")
 #	elif (GLM_LANG & GLM_LANG_CXX20_FLAG)
-#		pragma message("GLM: C++ 2A")
+#		pragma message("GLM: C++ 20")
 #	elif (GLM_LANG & GLM_LANG_CXX17_FLAG) && (GLM_LANG & GLM_LANG_EXT)
 #		pragma message("GLM: C++ 17 with extensions")
 #	elif (GLM_LANG & GLM_LANG_CXX17_FLAG)

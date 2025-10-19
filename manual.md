@@ -361,19 +361,18 @@ The following subsections describe each configurations and defines.
 
 ### <a name="section2_6"></a> 2.6. GLM\_FORCE\_CXX**: C++ language detection
 
-GLM will automatically take advantage of compilers’ language extensions when enabled. To increase cross platform compatibility and to avoid compiler extensions, a programmer can define `GLM_FORCE_CXX98` before
-any inclusion of `<glm/glm.hpp>` to restrict the language feature set C++98:
+GLM will automatically take advantage of compilers’ language extensions when enabled. To increase cross platform compatibility and to avoid compiler extensions, a programmer can define `GLM_FORCE_CXX17` before
+any inclusion of `<glm/glm.hpp>` to restrict the language feature set C++17:
 
 ```cpp
-#define GLM_FORCE_CXX98
+#define GLM_FORCE_CXX17
 #include <glm/glm.hpp>
 ```
 
-For C++11, C++14, and C++17 equivalent defines are available:
+For C++17 and C++20 equivalent defines are available:
 
-* `GLM_FORCE_CXX11`
-* `GLM_FORCE_CXX14`
 * `GLM_FORCE_CXX17`
+* `GLM_FORCE_CXX20`
 
 ```cpp
 #define GLM_FORCE_CXX11

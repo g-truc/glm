@@ -71,13 +71,13 @@ static int test_ctr()
 {
 	int Error = 0;
 
-	//Error += std::is_trivially_default_constructible<glm::mat4>::value ? 0 : 1;
-	//Error += std::is_trivially_copy_assignable<glm::mat4>::value ? 0 : 1;
-	Error += std::is_trivially_copyable<glm::mat4>::value ? 0 : 1;
-	//Error += std::is_copy_constructible<glm::mat4>::value ? 0 : 1;
+	static_assert(std::is_trivially_default_constructible<glm::mat4>::value);
+	static_assert(std::is_trivially_copy_assignable<glm::mat4>::value);
+	static_assert(std::is_trivially_copyable<glm::mat4>::value);
+	static_assert(std::is_copy_constructible<glm::mat4>::value);
+
 	//Error += std::has_trivial_copy_constructor<glm::mat4>::value ? 0 : 1;
 
-#if GLM_HAS_INITIALIZER_LISTS
 	glm::mat4 const m0(
 		glm::vec4(0, 1, 2, 3),
 		glm::vec4(4, 5, 6, 7),
@@ -132,8 +132,6 @@ static int test_ctr()
 			{ 8, 9, 10, 11 },
 			{ 12, 13, 14, 15 }
 		}};
-
-#endif//GLM_HAS_INITIALIZER_LISTS
 
 	return Error;
 }
