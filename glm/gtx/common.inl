@@ -29,7 +29,7 @@ namespace detail
 	template<typename T>
 	GLM_FUNC_QUALIFIER bool isdenormal(T const& x)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'isdenormal' only accept floating-point inputs");
+		static_assert(std::numeric_limits<T>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'isdenormal' only accept floating-point inputs");
 
 		return std::fpclassify(x) == FP_SUBNORMAL;
 	}
@@ -40,7 +40,7 @@ namespace detail
 		vec<1, T, Q> const& x
 	)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'isdenormal' only accept floating-point inputs");
+		static_assert(std::numeric_limits<T>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'isdenormal' only accept floating-point inputs");
 
 		return typename vec<1, T, Q>::bool_type(
 			isdenormal(x.x));
@@ -52,7 +52,7 @@ namespace detail
 		vec<2, T, Q> const& x
 	)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'isdenormal' only accept floating-point inputs");
+		static_assert(std::numeric_limits<T>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'isdenormal' only accept floating-point inputs");
 
 		return typename vec<2, T, Q>::bool_type(
 			isdenormal(x.x),
@@ -65,7 +65,7 @@ namespace detail
 		vec<3, T, Q> const& x
 	)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'isdenormal' only accept floating-point inputs");
+		static_assert(std::numeric_limits<T>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'isdenormal' only accept floating-point inputs");
 
 		return typename vec<3, T, Q>::bool_type(
 			isdenormal(x.x),
@@ -79,7 +79,7 @@ namespace detail
 		vec<4, T, Q> const& x
 	)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'isdenormal' only accept floating-point inputs");
+		static_assert(std::numeric_limits<T>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'isdenormal' only accept floating-point inputs");
 
 		return typename vec<4, T, Q>::bool_type(
 			isdenormal(x.x),

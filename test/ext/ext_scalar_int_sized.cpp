@@ -1,13 +1,11 @@
 #include <glm/ext/scalar_int_sized.hpp>
 
-#if GLM_HAS_STATIC_ASSERT
-	static_assert(sizeof(glm::int8) == 1, "int8 size isn't 1 byte on this platform");
-	static_assert(sizeof(glm::int16) == 2, "int16 size isn't 2 bytes on this platform");
-	static_assert(sizeof(glm::int32) == 4, "int32 size isn't 4 bytes on this platform");
-	static_assert(sizeof(glm::int64) == 8, "int64 size isn't 8 bytes on this platform");
-	static_assert(sizeof(glm::int16) == sizeof(short), "signed short size isn't 4 bytes on this platform");
-	static_assert(sizeof(glm::int32) == sizeof(int), "signed int size isn't 4 bytes on this platform");
-#endif
+static_assert(sizeof(glm::int8) == 1, "int8 size isn't 1 byte on this platform");
+static_assert(sizeof(glm::int16) == 2, "int16 size isn't 2 bytes on this platform");
+static_assert(sizeof(glm::int32) == 4, "int32 size isn't 4 bytes on this platform");
+static_assert(sizeof(glm::int64) == 8, "int64 size isn't 8 bytes on this platform");
+static_assert(sizeof(glm::int16) == sizeof(short), "signed short size isn't 4 bytes on this platform");
+static_assert(sizeof(glm::int32) == sizeof(int), "signed int size isn't 4 bytes on this platform");
 
 static int test_size()
 {

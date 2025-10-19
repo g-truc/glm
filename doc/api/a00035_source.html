@@ -501,11 +501,11 @@ $(function() {
 <div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;<span class="comment">// Static assert</span></div>
 <div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160; </div>
 <div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;<span class="preprocessor">#if GLM_HAS_STATIC_ASSERT</span></div>
-<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;<span class="preprocessor">#       define GLM_STATIC_ASSERT(x, message) static_assert(x, message)</span></div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;<span class="preprocessor">#       define static_assert(x, message) static_assert(x, message)</span></div>
 <div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;<span class="preprocessor">#elif GLM_COMPILER &amp; GLM_COMPILER_VC</span></div>
-<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;<span class="preprocessor">#       define GLM_STATIC_ASSERT(x, message) typedef char __CASSERT__##__LINE__[(x) ? 1 : -1]</span></div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;<span class="preprocessor">#       define static_assert(x, message) typedef char __CASSERT__##__LINE__[(x) ? 1 : -1]</span></div>
 <div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;<span class="preprocessor">#       define GLM_STATIC_ASSERT(x, message) assert(x)</span></div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;<span class="preprocessor">#       define static_assert(x, message) assert(x)</span></div>
 <div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;<span class="preprocessor">#endif//GLM_LANG</span></div>
 <div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160; </div>
 <div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;<span class="comment">// Qualifiers</span></div>

@@ -87,7 +87,7 @@ $(function() {
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        {</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;                GLM_FUNC_QUALIFIER GLM_CONSTEXPR <span class="keyword">static</span> genFIType call(genFIType x)</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;                        GLM_STATIC_ASSERT(</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;                        static_assert(</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;                                std::numeric_limits&lt;genFIType&gt;::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT || std::numeric_limits&lt;genFIType&gt;::is_signed,</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                                <span class="stringliteral">&quot;&#39;abs&#39; only accept floating-point and integer scalar or vector inputs&quot;</span>);</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
@@ -112,7 +112,7 @@ $(function() {
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        {</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                GLM_FUNC_QUALIFIER GLM_CONSTEXPR <span class="keyword">static</span> genFIType call(genFIType x)</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                {</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                        GLM_STATIC_ASSERT(</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                        static_assert(</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                                (!std::numeric_limits&lt;genFIType&gt;::is_signed &amp;&amp; std::numeric_limits&lt;genFIType&gt;::is_integer),</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                                <span class="stringliteral">&quot;&#39;abs&#39; only accept floating-point and integer scalar or vector inputs&quot;</span>);</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                        <span class="keywordflow">return</span> x;</div>

@@ -253,7 +253,7 @@ namespace detail
 	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER vec<L, T, Q> bitfieldExtract(vec<L, T, Q> const& Value, int Offset, int Bits)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_integer, "'bitfieldExtract' only accept integer inputs");
+		static_assert(std::numeric_limits<T>::is_integer, "'bitfieldExtract' only accept integer inputs");
 
 		return (Value >> static_cast<T>(Offset)) & static_cast<T>(detail::mask(Bits));
 	}
@@ -262,7 +262,7 @@ namespace detail
 	template<typename genIUType>
 	GLM_FUNC_QUALIFIER genIUType bitfieldInsert(genIUType const& Base, genIUType const& Insert, int Offset, int Bits)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<genIUType>::is_integer, "'bitfieldInsert' only accept integer values");
+		static_assert(std::numeric_limits<genIUType>::is_integer, "'bitfieldInsert' only accept integer values");
 
 		return bitfieldInsert(vec<1, genIUType>(Base), vec<1, genIUType>(Insert), Offset, Bits).x;
 	}
@@ -270,7 +270,7 @@ namespace detail
 	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER vec<L, T, Q> bitfieldInsert(vec<L, T, Q> const& Base, vec<L, T, Q> const& Insert, int Offset, int Bits)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_integer, "'bitfieldInsert' only accept integer values");
+		static_assert(std::numeric_limits<T>::is_integer, "'bitfieldInsert' only accept integer values");
 
 		T const Mask = detail::mask(static_cast<T>(Bits)) << Offset;
 		return (Base & ~Mask) | ((Insert << static_cast<T>(Offset)) & Mask);
@@ -285,7 +285,7 @@ namespace detail
 	template<typename genIUType>
 	GLM_FUNC_QUALIFIER genIUType bitfieldReverse(genIUType x)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<genIUType>::is_integer, "'bitfieldReverse' only accept integer values");
+		static_assert(std::numeric_limits<genIUType>::is_integer, "'bitfieldReverse' only accept integer values");
 
 		return bitfieldReverse(glm::vec<1, genIUType, glm::defaultp>(x)).x;
 	}
@@ -293,7 +293,7 @@ namespace detail
 	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER vec<L, T, Q> bitfieldReverse(vec<L, T, Q> const& v)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_integer, "'bitfieldReverse' only accept integer values");
+		static_assert(std::numeric_limits<T>::is_integer, "'bitfieldReverse' only accept integer values");
 
 		vec<L, T, Q> x(v);
 		x = detail::compute_bitfieldReverseStep<L, T, Q, detail::is_aligned<Q>::value, sizeof(T) * 8>=  2>::call(x, static_cast<T>(0x5555555555555555ull), static_cast<T>( 1));
@@ -313,7 +313,7 @@ namespace detail
 	template<typename genIUType>
 	GLM_FUNC_QUALIFIER int bitCount(genIUType x)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<genIUType>::is_integer, "'bitCount' only accept integer values");
+		static_assert(std::numeric_limits<genIUType>::is_integer, "'bitCount' only accept integer values");
 
 		return bitCount(glm::vec<1, genIUType, glm::defaultp>(x)).x;
 	}
@@ -321,7 +321,7 @@ namespace detail
 	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER vec<L, int, Q> bitCount(vec<L, T, Q> const& v)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_integer, "'bitCount' only accept integer values");
+		static_assert(std::numeric_limits<T>::is_integer, "'bitCount' only accept integer values");
 
 #		if GLM_COMPILER & GLM_COMPILER_VC
 #			pragma warning(push)
@@ -346,7 +346,7 @@ namespace detail
 	template<typename genIUType>
 	GLM_FUNC_QUALIFIER int findLSB(genIUType Value)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<genIUType>::is_integer, "'findLSB' only accept integer values");
+		static_assert(std::numeric_limits<genIUType>::is_integer, "'findLSB' only accept integer values");
 
 		return detail::compute_findLSB<genIUType, sizeof(genIUType) * 8>::call(Value);
 	}
@@ -354,7 +354,7 @@ namespace detail
 	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER vec<L, int, Q> findLSB(vec<L, T, Q> const& x)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_integer, "'findLSB' only accept integer values");
+		static_assert(std::numeric_limits<T>::is_integer, "'findLSB' only accept integer values");
 
 		return detail::functor1<vec, L, int, T, Q>::call(findLSB, x);
 	}
@@ -363,7 +363,7 @@ namespace detail
 	template<typename genIUType>
 	GLM_FUNC_QUALIFIER int findMSB(genIUType v)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<genIUType>::is_integer, "'findMSB' only accept integer values");
+		static_assert(std::numeric_limits<genIUType>::is_integer, "'findMSB' only accept integer values");
 
 		return findMSB(vec<1, genIUType>(v)).x;
 	}
@@ -371,7 +371,7 @@ namespace detail
 	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER vec<L, int, Q> findMSB(vec<L, T, Q> const& v)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_integer, "'findMSB' only accept integer values");
+		static_assert(std::numeric_limits<T>::is_integer, "'findMSB' only accept integer values");
 
 		return detail::compute_findMSB_vec<L, T, Q, static_cast<int>(sizeof(T) * 8)>::call(v);
 	}

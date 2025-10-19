@@ -144,18 +144,6 @@
 ///////////////////////////////////////////////////////////////////////////////////
 // Has of C++ features
 
-// N1720
-#if GLM_COMPILER & GLM_COMPILER_CLANG
-#	define GLM_HAS_STATIC_ASSERT __has_feature(cxx_static_assert)
-#elif GLM_LANG & GLM_LANG_CXX11_FLAG
-#	define GLM_HAS_STATIC_ASSERT 1
-#else
-#	define GLM_HAS_STATIC_ASSERT ((GLM_LANG & GLM_LANG_CXX0X_FLAG) && (\
-		((GLM_COMPILER & GLM_COMPILER_CUDA)) || \
-		((GLM_COMPILER & GLM_COMPILER_VC)) || \
-		((GLM_COMPILER & GLM_COMPILER_HIP))))
-#endif
-
 // N1988
 #if GLM_LANG & GLM_LANG_CXX11_FLAG
 #	define GLM_HAS_EXTENDED_INTEGER_TYPE 1
@@ -410,17 +398,6 @@
 #else
 #	define GLM_NULLPTR 0
 #endif
-
-///////////////////////////////////////////////////////////////////////////////////
-// Static assert
-
-#if GLM_HAS_STATIC_ASSERT
-#	define GLM_STATIC_ASSERT(x, message) static_assert(x, message)
-#elif GLM_COMPILER & GLM_COMPILER_VC
-#	define GLM_STATIC_ASSERT(x, message) typedef char __CASSERT__##__LINE__[(x) ? 1 : -1]
-#else
-#	define GLM_STATIC_ASSERT(x, message) assert(x)
-#endif//GLM_LANG
 
 ///////////////////////////////////////////////////////////////////////////////////
 // Qualifiers
