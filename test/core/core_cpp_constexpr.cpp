@@ -819,7 +819,9 @@ int main()
 	Error += test_vec2();
 	Error += test_vec3();
 	Error += test_vec4();
+
 	Error += test_quat();
+
 	Error += test_mat2x2();
 	Error += test_mat3x3();
 	Error += test_mat3x4();
