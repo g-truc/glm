@@ -96,9 +96,8 @@ static int test_inverse()
 
 static int test_ctr()
 {
-	int Error(0);
+	int Error = 0;
 
-#if(GLM_HAS_INITIALIZER_LISTS)
 	glm::mat3x3 m0(
 		glm::vec3(0, 1, 2),
 		glm::vec3(3, 4, 5),
@@ -131,9 +130,7 @@ static int test_ctr()
 			{ 6, 7, 8}
 		}
 	};
-	
-#endif//GLM_HAS_INITIALIZER_LISTS
-	
+
 	return Error;
 }
 
@@ -185,20 +182,6 @@ static int test_size()
 	return Error;
 }
 
-static int test_constexpr()
-{
-	int Error = 0;
-
-#if GLM_HAS_CONSTEXPR
-	static_assert(glm::mat3x3::length() == 3, "GLM: Failed constexpr");
-
-	constexpr glm::mat3x3 const Z(1.0f);
-	Error += glm::all(glm::equal(Z, glm::mat3x3(1.0f), glm::epsilon<float>())) ? 0 : 1;
-#endif
-
-	return Error;
-}
-
 int main()
 {
 	int Error = 0;
@@ -209,7 +192,6 @@ int main()
 	Error += test_operators();
 	Error += test_inverse();
 	Error += test_size();
-	Error += test_constexpr();
 
 	return Error;
 }

@@ -9,13 +9,13 @@
 
 static int test_ctr()
 {
-	int Error(0);
+	int Error = 0;
 
 	{
-	//	Error += std::is_trivially_default_constructible<glm::quat>::value ? 0 : 1;
-	//	Error += std::is_trivially_default_constructible<glm::dquat>::value ? 0 : 1;
-	//	Error += std::is_trivially_copy_assignable<glm::quat>::value ? 0 : 1;
-	//	Error += std::is_trivially_copy_assignable<glm::dquat>::value ? 0 : 1;
+		Error += std::is_trivially_default_constructible<glm::quat>::value ? 0 : 1;
+		Error += std::is_trivially_default_constructible<glm::dquat>::value ? 0 : 1;
+		Error += std::is_trivially_copy_assignable<glm::quat>::value ? 0 : 1;
+		Error += std::is_trivially_copy_assignable<glm::dquat>::value ? 0 : 1;
 		Error += std::is_trivially_copyable<glm::quat>::value ? 0 : 1;
 		Error += std::is_trivially_copyable<glm::dquat>::value ? 0 : 1;
 
@@ -23,7 +23,6 @@ static int test_ctr()
 		Error += std::is_copy_constructible<glm::dquat>::value ? 0 : 1;
 	}
 	
-#	if GLM_HAS_INITIALIZER_LISTS
 	{
 		glm::quat A{0, 1, 2, 3};
 
@@ -31,7 +30,6 @@ static int test_ctr()
 			A,
 			{0, 1, 2, 3}};
 	}
-#	endif//GLM_HAS_INITIALIZER_LISTS
 
 	return Error;
 }
@@ -89,16 +87,6 @@ static int test_precision()
 	return Error;
 }
 
-static int test_constexpr()
-{
-#if GLM_HAS_CONSTEXPR
-	static_assert(glm::quat::length() == 4, "GLM: Failed constexpr");
-	static_assert(glm::quat(1.0f, glm::vec3(0.0f)).w > 0.0f, "GLM: Failed constexpr");
-#endif
-
-	return 0;
-}
-
 int main()
 {
 	int Error = 0;
@@ -107,7 +95,6 @@ int main()
 	Error += test_two_axis_ctr();
 	Error += test_size();
 	Error += test_precision();
-	Error += test_constexpr();
 
 	return Error;
 }

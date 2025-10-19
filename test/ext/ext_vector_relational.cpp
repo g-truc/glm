@@ -59,16 +59,6 @@ static int test_notEqual()
 	return Error;
 }
 
-template <typename genType, typename valType>
-static int test_constexpr()
-{
-#	if GLM_CONFIG_CONSTEXP == GLM_ENABLE
-		static_assert(glm::all(glm::equal(genType(static_cast<valType>(1.01f)), genType(static_cast<valType>(1.02f)), static_cast<valType>(0.1f))), "GLM: Failed constexpr");
-#	endif
-
-	return 0;
-}
-
 template <typename T>
 static int test_equal_ulps()
 {
@@ -195,11 +185,6 @@ int main()
 	Error += test_notEqual<glm::lowp_dvec4>();
 	Error += test_notEqual<glm::mediump_dvec4>();
 	Error += test_notEqual<glm::highp_dvec4>();
-
-	Error += test_constexpr<glm::vec1, float>();
-	Error += test_constexpr<glm::vec2, float>();
-	Error += test_constexpr<glm::vec3, float>();
-	Error += test_constexpr<glm::vec4, float>();
 
 	return Error;
 }

@@ -7,20 +7,8 @@
 #ifdef GLM_FORCE_CXX17
 #undef GLM_FORCE_CXX17
 #endif
-#ifdef GLM_FORCE_CXX14
-#undef GLM_FORCE_CXX14
-#endif
-#ifdef GLM_FORCE_CXX11
-#undef GLM_FORCE_CXX11
-#endif
-#ifdef GLM_FORCE_CXX03
-#undef GLM_FORCE_CXX03
-#endif
-#ifdef GLM_FORCE_CXX98
-#undef GLM_FORCE_CXX98
-#endif
 
-#define GLM_FORCE_CXX03
+#define GLM_FORCE_CXX20
 
 #include <glm/glm.hpp>
 #include <glm/ext.hpp>
@@ -31,4 +19,3 @@ int main()
 
 	return Error;
 }
-

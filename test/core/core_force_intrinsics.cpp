@@ -32,7 +32,6 @@ static int test_vec4_ctor()
 		Error += std::is_copy_constructible<glm::vec4>::value ? 0 : 1;
 	}
 
-#if GLM_HAS_INITIALIZER_LISTS
 	{
 		glm::vec4 a{ 0, 1, 2, 3 };
 		Error += glm::all(glm::equal(a, glm::vec4(0, 1, 2, 3), glm::epsilon<float>())) ? 0 : 1;
@@ -58,7 +57,6 @@ static int test_vec4_ctor()
 		Error += glm::all(glm::equal(v[1], glm::dvec4(4, 5, 6, 7), glm::epsilon<double>())) ? 0 : 1;
 		Error += glm::all(glm::equal(v[2], glm::dvec4(8, 9, 0, 1), glm::epsilon<double>())) ? 0 : 1;
 	}
-#endif
 
 #	if GLM_CONFIG_SWIZZLE == GLM_SWIZZLE_OPERATOR
 	{

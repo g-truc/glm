@@ -51,8 +51,8 @@ static int test_ctor()
 	int Error = 0;
 
 	{
-	//	Error += std::is_trivially_default_constructible<glm::vec1>::value ? 0 : 1;
-	//	Error += std::is_trivially_copy_assignable<glm::vec1>::value ? 0 : 1;
+		Error += std::is_trivially_default_constructible<glm::vec1>::value ? 0 : 1;
+		Error += std::is_trivially_copy_assignable<glm::vec1>::value ? 0 : 1;
 		Error += std::is_trivially_copyable<glm::vec1>::value ? 0 : 1;
 		Error += std::is_trivially_copyable<glm::dvec1>::value ? 0 : 1;
 		Error += std::is_trivially_copyable<glm::ivec1>::value ? 0 : 1;
@@ -60,9 +60,7 @@ static int test_ctor()
 
 		Error += std::is_copy_constructible<glm::vec1>::value ? 0 : 1;
 	}
-	
-/*
-#if GLM_HAS_INITIALIZER_LISTS
+/*	
 	{
 		glm::vec1 a{ 0 };
 		std::vector<glm::vec1> v = {
@@ -78,9 +76,7 @@ static int test_ctor()
 			{4.0},
 			{8.0}};
 	}
-#endif
 */
-
 	{
 		glm::vec1 A = glm::vec2(2.0f);
 		Error += glm::all(glm::equal(A, glm::vec1(2.0f), glm::epsilon<float>())) ? 0 : 1;
@@ -164,16 +160,6 @@ static int test_swizzle()
 	return Error;
 }
 
-static int test_constexpr()
-{
-#if GLM_HAS_CONSTEXPR
-	static_assert(glm::vec1::length() == 1, "GLM: Failed constexpr");
-	static_assert(glm::vec1(1.0f).x > 0.0f, "GLM: Failed constexpr");
-#endif
-
-	return 0;
-}
-
 int main()
 {
 	// Suppress unused variable warnings
@@ -187,7 +173,6 @@ int main()
 	Error += test_operators();
 	Error += test_operator_increment();
 	Error += test_swizzle();
-	Error += test_constexpr();
 	
 	return Error;
 }

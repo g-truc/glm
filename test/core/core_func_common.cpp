@@ -1372,29 +1372,10 @@ namespace ldexp_
 	}
 }//namespace ldexp_
 
-static int test_constexpr()
-{
-#if GLM_HAS_CONSTEXPR
-	static_assert(glm::abs(1.0f) > 0.0f, "GLM: Failed constexpr");
-	constexpr glm::vec1 const A = glm::abs(glm::vec1(1.0f));
-	constexpr glm::vec2 const B = glm::abs(glm::vec2(1.0f));
-	constexpr glm::vec3 const C = glm::abs(glm::vec3(1.0f));
-	constexpr glm::vec4 const D = glm::abs(glm::vec4(1.0f));
-
-	static_assert(glm::all(glm::equal(A, glm::vec1(1.0f), glm::epsilon<float>())), "GLM: Failed constexpr");
-	static_assert(glm::all(glm::equal(B, glm::vec2(1.0f), glm::epsilon<float>())), "GLM: Failed constexpr");
-	static_assert(glm::all(glm::equal(C, glm::vec3(1.0f), glm::epsilon<float>())), "GLM: Failed constexpr");
-	static_assert(glm::all(glm::equal(D, glm::vec4(1.0f), glm::epsilon<float>())), "GLM: Failed constexpr");
-#endif // GLM_HAS_CONSTEXPR
-
-	return 0;
-}
-
 int main()
 {
 	int Error = 0;
 
-	Error += test_constexpr();
 	Error += sign::test();
 	Error += floor_::test();
 	Error += mod_::test();

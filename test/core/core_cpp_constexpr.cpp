@@ -1,6 +1,7 @@
 #include <glm/glm.hpp>
+#include <glm/ext.hpp>
 
-#if GLM_CONFIG_CONSTEXP == GLM_ENABLE
+#if GLM_HAS_CONSTEXPR
 
 #include <glm/gtc/constants.hpp>
 #include <glm/gtc/quaternion.hpp>
@@ -730,21 +731,113 @@ static int test_mat2x2()
 	return Error;
 }
 
-#endif//GLM_CONFIG_CONSTEXP == GLM_ENABLE
+static int test_mat3x3()
+{
+	int Error = 0;
+
+	static_assert(glm::mat3x3::length() == 3, "GLM: Failed constexpr");
+
+	constexpr glm::mat3x3 const Z(1.0f);
+	Error += glm::all(glm::equal(Z, glm::mat3x3(1.0f), glm::epsilon<float>())) ? 0 : 1;
+
+	return Error;
+}
+
+static int test_mat3x4()
+{
+	int Error = 0;
+
+	static_assert(glm::mat3x4::length() == 3, "GLM: Failed constexpr");
+
+	constexpr glm::mat3x4 const Z(1.0f);
+	Error += glm::all(glm::equal(Z, glm::mat3x4(1.0f), glm::epsilon<float>())) ? 0 : 1;
+
+	return Error;
+}
+
+static int test_mat4x2()
+{
+	int Error = 0;
+
+	static_assert(glm::mat4x2::length() == 4, "GLM: Failed constexpr");
+
+	constexpr glm::mat4x2 const Z(1.0f);
+	Error += glm::all(glm::equal(Z, glm::mat4x2(1.0f), glm::epsilon<float>())) ? 0 : 1;
+
+	return Error;
+}
+
+static int test_mat4x3()
+{
+	int Error = 0;
+
+	static_assert(glm::mat4x3::length() == 4, "GLM: Failed constexpr");
+
+	constexpr glm::mat4x3 const Z(1.0f);
+	Error += glm::all(glm::equal(Z, glm::mat4x3(1.0f), glm::epsilon<float>())) ? 0 : 1;
+
+	return Error;
+}
+
+static int test_mat4x4()
+{
+	int Error = 0;
+
+	static_assert(glm::mat4::length() == 4, "GLM: Failed constexpr");
+	constexpr glm::mat4 A(1.f);
+	constexpr glm::mat4 B(1.f);
+	constexpr glm::bvec4 C = glm::equal(A, B, 0.01f);
+	static_assert(glm::all(C), "GLM: Failed constexpr");
+
+	constexpr glm::mat4 const Z(1.0f);
+	Error += glm::all(glm::equal(Z, glm::mat4(1.0f), glm::epsilon<float>())) ? 0 : 1;
+
+	return Error;
+}
+
+static int test_common()
+{
+	static_assert(glm::abs(1.0f) > 0.0f, "GLM: Failed constexpr");
+	constexpr glm::vec1 const A = glm::abs(glm::vec1(1.0f));
+	constexpr glm::vec2 const B = glm::abs(glm::vec2(1.0f));
+	constexpr glm::vec3 const C = glm::abs(glm::vec3(1.0f));
+	constexpr glm::vec4 const D = glm::abs(glm::vec4(1.0f));
+
+	static_assert(glm::all(glm::equal(A, glm::vec1(1.0f), glm::epsilon<float>())), "GLM: Failed constexpr");
+	static_assert(glm::all(glm::equal(B, glm::vec2(1.0f), glm::epsilon<float>())), "GLM: Failed constexpr");
+	static_assert(glm::all(glm::equal(C, glm::vec3(1.0f), glm::epsilon<float>())), "GLM: Failed constexpr");
+	static_assert(glm::all(glm::equal(D, glm::vec4(1.0f), glm::epsilon<float>())), "GLM: Failed constexpr");
+
+	return 0;
+}
 
 int main()
 {
 	int Error = 0;
 
-#	if GLM_CONFIG_CONSTEXP == GLM_ENABLE
-		Error += test_vec1();
-		Error += test_vec2();
-		Error += test_vec3();
-		Error += test_vec4();
-		Error += test_quat();
-		Error += test_mat2x2();
-#	endif//GLM_CONFIG_CONSTEXP == GLM_ENABLE
+	Error += test_vec1();
+	Error += test_vec2();
+	Error += test_vec3();
+	Error += test_vec4();
+	Error += test_quat();
+	Error += test_mat2x2();
+	Error += test_mat3x3();
+	Error += test_mat3x4();
+	Error += test_mat4x2();
+	Error += test_mat4x3();
+	Error += test_mat4x4();
+
+	Error += test_common();
 
 	return Error;
 }
+
+#else
+
+int main()
+{
+	return 0;
+}
+
+#endif
 

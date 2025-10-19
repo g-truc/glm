@@ -29,3 +29,11 @@ namespace glm
 
 	/// @}
 }//namespace glm
+
+#if GLM_CONFIG_CTOR_INIT == GLM_DISABLE
+static_assert(std::is_trivially_default_constructible<glm::vec1>::value);
+#endif
+static_assert(std::is_trivially_copy_assignable<glm::vec1>::value);
+static_assert(std::is_trivially_copyable<glm::vec1>::value);
+static_assert(std::is_copy_constructible<glm::vec1>::value);
+static_assert(glm::vec1::length() == 1);
