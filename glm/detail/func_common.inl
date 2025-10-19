@@ -20,11 +20,6 @@ namespace glm
 		return (y < x) ? y : x;
 	}
 
-	template<typename T>
-	struct TMin {
-		GLM_FUNC_QUALIFIER T operator()(const T& a, const T& b) { return min(a, b); }
-	};
-
 	// max
 	template<typename genType>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR genType max(genType x, genType y)
@@ -34,10 +29,9 @@ namespace glm
 		return (x < y) ? y : x;
 	}
 
-	template<typename T>
-	struct TMax {
-		GLM_FUNC_QUALIFIER T operator()(const T& a, const T& b) { return max(a, b); }
-	};
+	using ::std::round;
+
+	using ::std::trunc;
 
 	// abs
 	template<>
@@ -46,58 +40,41 @@ namespace glm
 		int const y = x >> (sizeof(int) * 8 - 1);
 		return (x ^ y) - y;
 	}
+}//namespace glm
+
+namespace glm{
+namespace detail
+{
+	template<typename T>
+	struct TMin {
+		GLM_FUNC_QUALIFIER T operator()(const T& a, const T& b) { return min(a, b); }
+	};
+
+	template<typename T>
+	struct TMax {
+		GLM_FUNC_QUALIFIER T operator()(const T& a, const T& b) { return max(a, b); }
+	};
 
 	template<typename T>
 	struct TAbs {
 		T operator()(const T& a) { return abs(a); }
 	};
 
-	// round
-#	if GLM_HAS_CXX11_STL
-		using ::std::round;
-#	else
-		template<typename genType>
-		GLM_FUNC_QUALIFIER genType round(genType x)
-		{
-			GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'round' only accept floating-point inputs");
+	template<typename T>
+	struct TRound {
+		T operator()(const T& a) { return round(a); }
+	};
 
-			return x < static_cast<genType>(0) ? static_cast<genType>(int(x - static_cast<genType>(0.5))) : static_cast<genType>(int(x + static_cast<genType>(0.5)));
-		}
-#	endif
+	template<typename T>
+	struct TTrunc {
+		T operator()(const T& a) { return trunc(a); }
+	};
 
-		template<typename T>
-		struct TRound {
-			T operator()(const T& a) { return round(a); }
-		};
+	template<typename T>
+	struct TFmod {
+		T operator()(const T& a, const T& b) { return std::fmod(a, b); }
+	};
 
-	// trunc
-#	if GLM_HAS_CXX11_STL
-		using ::std::trunc;
-#	else
-		template<typename genType>
-		GLM_FUNC_QUALIFIER genType trunc(genType x)
-		{
-			GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'trunc' only accept floating-point inputs");
-
-			return x < static_cast<genType>(0) ? -std::floor(-x) : std::floor(x);
-		}
-#	endif
-
-		template<typename T>
-		struct TTrunc {
-			T operator()(const T& a) { return trunc(a); }
-		};
-
-		template<typename T>
-		struct TFmod {
-			T operator()(const T& a, const T& b) { return std::fmod(a, b); }
-		};
-
-}//namespace glm
-
-namespace glm{
-namespace detail
-{
 	template<length_t L, typename T, qualifier Q, bool Aligned>
 	struct compute_abs_vector
 	{
@@ -725,33 +702,7 @@ namespace detail
 		return detail::compute_smoothstep_vector<L, T, Q, detail::is_aligned<Q>::value>::call(edge0, edge1, x);
 	}
 
-#	if GLM_HAS_CXX11_STL
-		using std::isnan;
-#	else
-		template<typename genType>
-		GLM_FUNC_QUALIFIER bool isnan(genType x)
-		{
-			GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'isnan' only accept floating-point inputs");
-
-#			if GLM_HAS_CXX11_STL
-				return std::isnan(x);
-#			elif GLM_COMPILER & GLM_COMPILER_VC
-				return _isnan(x) != 0;
-#			elif GLM_COMPILER & GLM_COMPILER_INTEL
-#				if GLM_PLATFORM & GLM_PLATFORM_WINDOWS
-					return _isnan(x) != 0;
-#				else
-					return ::isnan(x) != 0;
-#				endif
-#			elif (GLM_COMPILER & (GLM_COMPILER_GCC | GLM_COMPILER_CLANG)) && (GLM_PLATFORM & GLM_PLATFORM_ANDROID) && __cplusplus < 201103L
-				return _isnan(x) != 0;
-#			elif (GLM_COMPILER & GLM_COMPILER_CUDA) || (GLM_COMPILER & GLM_COMPILER_HIP)
-				return ::isnan(x) != 0;
-#			else
-				return std::isnan(x);
-#			endif
-		}
-#	endif
+	using std::isnan;
 
 	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER vec<L, bool, Q> isnan(vec<L, T, Q> const& v)
@@ -764,36 +715,7 @@ namespace detail
 		return Result;
 	}
 
-#	if GLM_HAS_CXX11_STL
-		using std::isinf;
-#	else
-		template<typename genType>
-		GLM_FUNC_QUALIFIER bool isinf(genType x)
-		{
-			GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'isinf' only accept floating-point inputs");
-
-#			if GLM_HAS_CXX11_STL
-				return std::isinf(x);
-#			elif GLM_COMPILER & (GLM_COMPILER_INTEL | GLM_COMPILER_VC)
-#				if(GLM_PLATFORM & GLM_PLATFORM_WINDOWS)
-					return _fpclass(x) == _FPCLASS_NINF || _fpclass(x) == _FPCLASS_PINF;
-#				else
-					return ::isinf(x);
-#				endif
-#			elif GLM_COMPILER & (GLM_COMPILER_GCC | GLM_COMPILER_CLANG)
-#				if(GLM_PLATFORM & GLM_PLATFORM_ANDROID && __cplusplus < 201103L)
-					return _isinf(x) != 0;
-#				else
-					return std::isinf(x);
-#				endif
-#			elif (GLM_COMPILER & GLM_COMPILER_CUDA) || (GLM_COMPILER & GLM_COMPILER_HIP)
-				// http://developer.download.nvidia.com/compute/cuda/4_2/rel/toolkit/docs/online/group__CUDA__MATH__DOUBLE_g13431dd2b40b51f9139cbb7f50c18fab.html#g13431dd2b40b51f9139cbb7f50c18fab
-				return ::isinf(double(x)) != 0;
-#			else
-				return std::isinf(x);
-#			endif
-	}
-#	endif
+	using std::isinf;
 
 	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER vec<L, bool, Q> isinf(vec<L, T, Q> const& v)
@@ -882,15 +804,7 @@ namespace detail
 		return reinterpret_cast<vec<L, float, Q>&>(const_cast<vec<L, uint, Q>&>(v));
 	}
 
-#	if GLM_HAS_CXX11_STL
-		using std::fma;
-#	else
-		template<typename genType>
-		GLM_FUNC_QUALIFIER genType fma(genType const& a, genType const& b, genType const& c)
-		{
-			return a * b + c;
-		}
-#	endif
+	using std::fma;
 
 	template<typename genType>
 	GLM_FUNC_QUALIFIER genType frexp(genType x, int& exp)

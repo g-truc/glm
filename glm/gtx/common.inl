@@ -12,7 +12,7 @@ namespace detail
 	{
 		GLM_FUNC_QUALIFIER static vec<L, T, Q> call(vec<L, T, Q> const& a, vec<L, T, Q> const& b)
 		{
-			return detail::functor2<vec, L, T, Q>::call(TFmod<T>(), a, b);
+			return detail::functor2<vec, L, T, Q>::call(detail::TFmod<T>(), a, b);
 		}
 	};
 
@@ -31,11 +31,7 @@ namespace detail
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'isdenormal' only accept floating-point inputs");
 
-#		if GLM_HAS_CXX11_STL
-			return std::fpclassify(x) == FP_SUBNORMAL;
-#		else
-			return epsilonNotEqual(x, static_cast<T>(0), epsilon<T>()) && std::fabs(x) < std::numeric_limits<T>::min();
-#		endif
+		return std::fpclassify(x) == FP_SUBNORMAL;
 	}
 
 	template<typename T, qualifier Q>

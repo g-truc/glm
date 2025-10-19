@@ -6,9 +6,7 @@
 
 #include <cstdio>
 #include <vector>
-#if GLM_HAS_CXX11_STL == 1
 #include <random>
-#endif
 
 #if GLM_COMPILER & GLM_COMPILER_CLANG
 #	pragma clang diagnostic push
@@ -444,11 +442,7 @@ static int testEigenvalueSort()
 // Test covariance matrix creation functions
 template<glm::length_t D, typename T, glm::qualifier Q>
 static int testCovar(
-#if GLM_HAS_CXX11_STL == 1
 	glm::length_t dataSize, unsigned int randomEngineSeed
-#else // GLM_HAS_CXX11_STL == 1
-	glm::length_t, unsigned int
-#endif // GLM_HAS_CXX11_STL == 1
 )
 {
 	typedef glm::vec<D, T, Q> vec;
@@ -469,7 +463,6 @@ static int testCovar(
 	}
 
 	// #2: test function variant consistency with random data
-#if GLM_HAS_CXX11_STL == 1
 	std::default_random_engine rndEng(randomEngineSeed);
 	std::normal_distribution<T> normalDist;
 	testData.resize(dataSize);
@@ -500,7 +493,6 @@ static int testCovar(
 		return failReport(__LINE__);
 	if(!matrixEpsilonEqual(c1, c4, myEpsilon<T>()))
 		return failReport(__LINE__);
-#endif // GLM_HAS_CXX11_STL == 1
 	return 0;
 }
 
@@ -587,7 +579,6 @@ static int smokeTest()
 	return 0;
 }
 
-#if GLM_HAS_CXX11_STL == 1
 static int rndTest(unsigned int randomEngineSeed)
 {
 	std::default_random_engine rndEng(randomEngineSeed);
@@ -654,7 +645,6 @@ static int rndTest(unsigned int randomEngineSeed)
 
 	return 0;
 }
-#endif // GLM_HAS_CXX11_STL == 1
 
 int main()
 {
@@ -716,14 +706,12 @@ int main()
 		return error;
 
 	// Final tests with randomized data
-#if GLM_HAS_CXX11_STL == 1
 	if(rndTest(12345) != 0)
 		error = failReport(__LINE__);
 	if(rndTest(42) != 0)
 		error = failReport(__LINE__);
 	if (error != 0)
 		return error;
-#endif // GLM_HAS_CXX11_STL == 1
 
 	return error;
 }

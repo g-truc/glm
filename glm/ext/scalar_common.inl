@@ -24,19 +24,7 @@ namespace glm
 		return (glm::max)((glm::max)(a, b), (glm::max)(c, d));
 	}
 
-#	if GLM_HAS_CXX11_STL
-		using std::fmin;
-#	else
-		template<typename T>
-		GLM_FUNC_QUALIFIER T fmin(T a, T b)
-		{
-			GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'fmin' only accept floating-point input");
-
-			if (isnan(a))
-				return b;
-			return min(a, b);
-		}
-#	endif
+	using std::fmin;
 
 	template<typename T>
 	GLM_FUNC_QUALIFIER T (fmin)(T a, T b, T c)
@@ -68,20 +56,7 @@ namespace glm
 		return (min)(a, b, c, d);
 	}
 
-
-#	if GLM_HAS_CXX11_STL
-		using std::fmax;
-#	else
-		template<typename T>
-		GLM_FUNC_QUALIFIER T (fmax)(T a, T b)
-		{
-			GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'fmax' only accept floating-point input");
-
-			if (isnan(a))
-				return b;
-			return (max)(a, b);
-		}
-#	endif
+	using std::fmax;
 
 	template<typename T>
 	GLM_FUNC_QUALIFIER T (fmax)(T a, T b, T c)

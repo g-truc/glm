@@ -10,15 +10,7 @@
 namespace glm{
 namespace detail
 {
-#	if GLM_HAS_CXX11_STL
-		using std::log2;
-#	else
-		template<typename genType>
-		GLM_FUNC_QUALIFIER genType log2(genType Value)
-		{
-			return std::log(Value) * static_cast<genType>(1.4426950408889634073599246810019);
-		}
-#	endif
+	using std::log2;
 
 	template<length_t L, typename T, qualifier Q, bool isFloat, bool Aligned>
 	struct compute_log2
@@ -90,18 +82,7 @@ namespace detail
 		return detail::functor1<vec, L, T, T, Q>::call(log, x);
 	}
 
-#   if GLM_HAS_CXX11_STL
     using std::exp2;
-#   else
-	//exp2, ln2 = 0.69314718055994530941723212145818f
-	template<typename genType>
-	GLM_FUNC_QUALIFIER genType exp2(genType x)
-	{
-		GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'exp2' only accept floating-point inputs");
-
-		return std::exp(static_cast<genType>(0.69314718055994530941723212145818) * x);
-	}
-#   endif
 
 	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER vec<L, T, Q> exp2(vec<L, T, Q> const& x)
