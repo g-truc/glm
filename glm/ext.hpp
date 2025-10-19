@@ -214,11 +214,7 @@
 #include "./gtx/functions.hpp"
 #include "./gtx/gradient_paint.hpp"
 #include "./gtx/handed_coordinate_space.hpp"
-
-#if __cplusplus >= 201103L
 #include "./gtx/hash.hpp"
-#endif
-
 #include "./gtx/integer.hpp"
 #include "./gtx/intersect.hpp"
 #include "./gtx/io.hpp"
@@ -260,8 +256,5 @@
 #if GLM_HAS_TEMPLATE_ALIASES
 #	include "./gtx/scalar_multiplication.hpp"
 #endif
-
-#if GLM_HAS_RANGE_FOR
-#	include "./gtx/range.hpp"
-#endif
+#include "./gtx/range.hpp"
 #endif//GLM_ENABLE_EXPERIMENTAL

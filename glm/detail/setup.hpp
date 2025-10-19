@@ -144,17 +144,6 @@
 ///////////////////////////////////////////////////////////////////////////////////
 // Has of C++ features
 
-// N1988
-#if GLM_LANG & GLM_LANG_CXX11_FLAG
-#	define GLM_HAS_EXTENDED_INTEGER_TYPE 1
-#else
-#	define GLM_HAS_EXTENDED_INTEGER_TYPE (\
-		((GLM_LANG & GLM_LANG_CXX0X_FLAG) && (GLM_COMPILER & GLM_COMPILER_VC)) || \
-		((GLM_LANG & GLM_LANG_CXX0X_FLAG) && (GLM_COMPILER & GLM_COMPILER_CUDA)) || \
-		((GLM_LANG & GLM_LANG_CXX0X_FLAG) && (GLM_COMPILER & GLM_COMPILER_CLANG)) || \
-		((GLM_COMPILER & GLM_COMPILER_HIP)))
-#endif
-
 // N2672 Initializer lists http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2008/n2672.htm
 #if GLM_COMPILER & GLM_COMPILER_CLANG
 #	define GLM_HAS_INITIALIZER_LISTS __has_feature(cxx_generalized_initializers)
@@ -205,19 +194,6 @@
 		((GLM_COMPILER & GLM_COMPILER_HIP))))
 #endif
 
-// N2437 http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2437.pdf
-#if GLM_COMPILER & GLM_COMPILER_CLANG
-#	define GLM_HAS_EXPLICIT_CONVERSION_OPERATORS __has_feature(cxx_explicit_conversions)
-#elif GLM_LANG & GLM_LANG_CXX11_FLAG
-#	define GLM_HAS_EXPLICIT_CONVERSION_OPERATORS 1
-#else
-#	define GLM_HAS_EXPLICIT_CONVERSION_OPERATORS ((GLM_LANG & GLM_LANG_CXX0X_FLAG) && (\
-		((GLM_COMPILER & GLM_COMPILER_INTEL) && (GLM_COMPILER >= GLM_COMPILER_INTEL14)) || \
-		((GLM_COMPILER & GLM_COMPILER_VC) && (GLM_COMPILER >= GLM_COMPILER_VC12)) || \
-		((GLM_COMPILER & GLM_COMPILER_CUDA)) || \
-		((GLM_COMPILER & GLM_COMPILER_HIP))))
-#endif
-
 // N2258 http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2258.pdf
 #if GLM_COMPILER & GLM_COMPILER_CLANG
 #	define GLM_HAS_TEMPLATE_ALIASES __has_feature(cxx_alias_templates)
@@ -227,19 +203,6 @@
 #	define GLM_HAS_TEMPLATE_ALIASES ((GLM_LANG & GLM_LANG_CXX0X_FLAG) && (\
 		((GLM_COMPILER & GLM_COMPILER_INTEL)) || \
 		((GLM_COMPILER & GLM_COMPILER_VC) && (GLM_COMPILER >= GLM_COMPILER_VC12)) || \
-		((GLM_COMPILER & GLM_COMPILER_CUDA)) || \
-		((GLM_COMPILER & GLM_COMPILER_HIP))))
-#endif
-
-// N2930 http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2009/n2930.html
-#if GLM_COMPILER & GLM_COMPILER_CLANG
-#	define GLM_HAS_RANGE_FOR __has_feature(cxx_range_for)
-#elif GLM_LANG & GLM_LANG_CXX11_FLAG
-#	define GLM_HAS_RANGE_FOR 1
-#else
-#	define GLM_HAS_RANGE_FOR ((GLM_LANG & GLM_LANG_CXX0X_FLAG) && (\
-		((GLM_COMPILER & GLM_COMPILER_INTEL)) || \
-		((GLM_COMPILER & GLM_COMPILER_VC)) || \
 		((GLM_COMPILER & GLM_COMPILER_CUDA)) || \
 		((GLM_COMPILER & GLM_COMPILER_HIP))))
 #endif
@@ -264,44 +227,11 @@
 #	define GLM_CONSTEXPR
 #endif
 
-//
-#if GLM_HAS_CONSTEXPR
-# if (GLM_COMPILER & GLM_COMPILER_CLANG)
-#	if __has_feature(cxx_if_constexpr)
-#		define GLM_HAS_IF_CONSTEXPR 1
-#	else
-# 		define GLM_HAS_IF_CONSTEXPR 0
-#	endif
-# elif (GLM_LANG & GLM_LANG_CXX17_FLAG)
-# 	define GLM_HAS_IF_CONSTEXPR 1
-# else
-# 	define GLM_HAS_IF_CONSTEXPR 0
-# endif
-#else
-#	define GLM_HAS_IF_CONSTEXPR 0
-#endif
-
-#if GLM_HAS_IF_CONSTEXPR
-# 	define GLM_IF_CONSTEXPR if constexpr
-#else
-#	define GLM_IF_CONSTEXPR if
-#endif
-
 // [nodiscard]
 #if GLM_LANG & GLM_LANG_CXX17_FLAG
 #	define GLM_NODISCARD [[nodiscard]]
 #else
 #	define GLM_NODISCARD
-#endif
-
-//
-#if GLM_LANG & GLM_LANG_CXX11_FLAG
-#	define GLM_HAS_MAKE_SIGNED 1
-#else
-#	define GLM_HAS_MAKE_SIGNED ((GLM_LANG & GLM_LANG_CXX0X_FLAG) && (\
-		((GLM_COMPILER & GLM_COMPILER_VC) && (GLM_COMPILER >= GLM_COMPILER_VC12)) || \
-		((GLM_COMPILER & GLM_COMPILER_CUDA)) || \
-		((GLM_COMPILER & GLM_COMPILER_HIP))))
 #endif
 
 //
@@ -581,9 +511,22 @@ namespace glm
 ///////////////////////////////////////////////////////////////////////////////////
 // uint
 
+#include <cstdint>
+
+
 namespace glm{
 namespace detail
 {
+	typedef std::int8_t			int8;
+	typedef std::int16_t		int16;
+	typedef std::int32_t		int32;
+	typedef std::int64_t		int64;
+	
+	typedef std::uint8_t		uint8;
+	typedef std::uint16_t		uint16;
+	typedef std::uint32_t		uint32;
+	typedef std::uint64_t		uint64;
+
 	template<typename T>
 	struct is_int
 	{
@@ -591,32 +534,55 @@ namespace detail
 	};
 
 	template<>
-	struct is_int<unsigned int>
+	struct is_int<int8>
 	{
 		enum test {value = ~0};
 	};
 
 	template<>
-	struct is_int<signed int>
+	struct is_int<int16>
+	{
+		enum test {value = ~0};
+	};
+
+	template<>
+	struct is_int<int32>
+	{
+		enum test {value = ~0};
+	};
+
+	template<>
+	struct is_int<int64>
+	{
+		enum test {value = ~0};
+	};
+
+	template<>
+	struct is_int<uint8>
+	{
+		enum test {value = ~0};
+	};
+
+	template<>
+	struct is_int<uint16>
+	{
+		enum test {value = ~0};
+	};
+
+	template<>
+	struct is_int<uint32>
+	{
+		enum test {value = ~0};
+	};
+
+	template<>
+	struct is_int<uint64>
 	{
 		enum test {value = ~0};
 	};
 }//namespace detail
 
 	typedef unsigned int	uint;
-}//namespace glm
-
-///////////////////////////////////////////////////////////////////////////////////
-// 64-bit int
-
-#include <cstdint>
-
-namespace glm{
-namespace detail
-{
-	typedef std::uint64_t						uint64;
-	typedef std::int64_t						int64;
-}//namespace detail
 }//namespace glm
 
 ///////////////////////////////////////////////////////////////////////////////////
