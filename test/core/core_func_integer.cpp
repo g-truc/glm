@@ -1449,13 +1449,13 @@ namespace bitCount
 	template<glm::length_t L, typename T, glm::qualifier Q>
 	static glm::vec<L, int, Q> bitCount_bitfield(glm::vec<L, T, Q> const& v)
 	{
-		glm::vec<L, typename glm::detail::make_unsigned<T>::type, Q> x(v);
-		x = compute_bitfieldBitCountStep<sizeof(T) * 8 >=  2>::call(x, static_cast<typename glm::detail::make_unsigned<T>::type>(0x5555555555555555ull), static_cast<typename glm::detail::make_unsigned<T>::type>( 1));
-		x = compute_bitfieldBitCountStep<sizeof(T) * 8 >=  4>::call(x, static_cast<typename glm::detail::make_unsigned<T>::type>(0x3333333333333333ull), static_cast<typename glm::detail::make_unsigned<T>::type>( 2));
-		x = compute_bitfieldBitCountStep<sizeof(T) * 8 >=  8>::call(x, static_cast<typename glm::detail::make_unsigned<T>::type>(0x0F0F0F0F0F0F0F0Full), static_cast<typename glm::detail::make_unsigned<T>::type>( 4));
-		x = compute_bitfieldBitCountStep<sizeof(T) * 8 >= 16>::call(x, static_cast<typename glm::detail::make_unsigned<T>::type>(0x00FF00FF00FF00FFull), static_cast<typename glm::detail::make_unsigned<T>::type>( 8));
-		x = compute_bitfieldBitCountStep<sizeof(T) * 8 >= 32>::call(x, static_cast<typename glm::detail::make_unsigned<T>::type>(0x0000FFFF0000FFFFull), static_cast<typename glm::detail::make_unsigned<T>::type>(16));
-		x = compute_bitfieldBitCountStep<sizeof(T) * 8 >= 64>::call(x, static_cast<typename glm::detail::make_unsigned<T>::type>(0x00000000FFFFFFFFull), static_cast<typename glm::detail::make_unsigned<T>::type>(32));
+		glm::vec<L, typename std::make_unsigned<T>::type, Q> x(v);
+		x = compute_bitfieldBitCountStep<sizeof(T) * 8 >=  2>::call(x, static_cast<typename std::make_unsigned<T>::type>(0x5555555555555555ull), static_cast<typename std::make_unsigned<T>::type>( 1));
+		x = compute_bitfieldBitCountStep<sizeof(T) * 8 >=  4>::call(x, static_cast<typename std::make_unsigned<T>::type>(0x3333333333333333ull), static_cast<typename std::make_unsigned<T>::type>( 2));
+		x = compute_bitfieldBitCountStep<sizeof(T) * 8 >=  8>::call(x, static_cast<typename std::make_unsigned<T>::type>(0x0F0F0F0F0F0F0F0Full), static_cast<typename std::make_unsigned<T>::type>( 4));
+		x = compute_bitfieldBitCountStep<sizeof(T) * 8 >= 16>::call(x, static_cast<typename std::make_unsigned<T>::type>(0x00FF00FF00FF00FFull), static_cast<typename std::make_unsigned<T>::type>( 8));
+		x = compute_bitfieldBitCountStep<sizeof(T) * 8 >= 32>::call(x, static_cast<typename std::make_unsigned<T>::type>(0x0000FFFF0000FFFFull), static_cast<typename std::make_unsigned<T>::type>(16));
+		x = compute_bitfieldBitCountStep<sizeof(T) * 8 >= 64>::call(x, static_cast<typename std::make_unsigned<T>::type>(0x00000000FFFFFFFFull), static_cast<typename std::make_unsigned<T>::type>(32));
 		return glm::vec<L, int, Q>(x);
 	}
 
