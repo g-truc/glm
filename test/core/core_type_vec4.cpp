@@ -56,7 +56,7 @@ static int test_vec4_ctor()
 		Error += glm::all(glm::equal(A, B)) ? 0 : 1;
 	}
 
-#	if GLM_HAS_TRIVIAL_QUERIES
+	{
 	//	Error += std::is_trivially_default_constructible<glm::vec4>::value ? 0 : 1;
 	//	Error += std::is_trivially_copy_assignable<glm::vec4>::value ? 0 : 1;
 		Error += std::is_trivially_copyable<glm::vec4>::value ? 0 : 1;
@@ -65,8 +65,8 @@ static int test_vec4_ctor()
 		Error += std::is_trivially_copyable<glm::uvec4>::value ? 0 : 1;
 
 		Error += std::is_copy_constructible<glm::vec4>::value ? 0 : 1;
-#	endif
-
+	}
+	
 #if GLM_HAS_INITIALIZER_LISTS
 	{
 		glm::vec4 a{ 0, 1, 2, 3 };

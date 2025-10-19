@@ -50,7 +50,7 @@ static int test_ctor()
 {
 	int Error = 0;
 
-#	if GLM_HAS_TRIVIAL_QUERIES
+	{
 	//	Error += std::is_trivially_default_constructible<glm::vec1>::value ? 0 : 1;
 	//	Error += std::is_trivially_copy_assignable<glm::vec1>::value ? 0 : 1;
 		Error += std::is_trivially_copyable<glm::vec1>::value ? 0 : 1;
@@ -59,8 +59,8 @@ static int test_ctor()
 		Error += std::is_trivially_copyable<glm::uvec1>::value ? 0 : 1;
 
 		Error += std::is_copy_constructible<glm::vec1>::value ? 0 : 1;
-#	endif
-
+	}
+	
 /*
 #if GLM_HAS_INITIALIZER_LISTS
 	{

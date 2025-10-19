@@ -244,19 +244,6 @@
 		((GLM_COMPILER & GLM_COMPILER_HIP))))
 #endif
 
-// N2341 http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2341.pdf
-#if GLM_COMPILER & GLM_COMPILER_CLANG
-#	define GLM_HAS_ALIGNOF __has_feature(cxx_alignas)
-#elif GLM_LANG & GLM_LANG_CXX11_FLAG
-#	define GLM_HAS_ALIGNOF 1
-#else
-#	define GLM_HAS_ALIGNOF ((GLM_LANG & GLM_LANG_CXX0X_FLAG) && (\
-		((GLM_COMPILER & GLM_COMPILER_INTEL) && (GLM_COMPILER >= GLM_COMPILER_INTEL15)) || \
-		((GLM_COMPILER & GLM_COMPILER_VC) && (GLM_COMPILER >= GLM_COMPILER_VC14)) || \
-		((GLM_COMPILER & GLM_COMPILER_CUDA)) || \
-		((GLM_COMPILER & GLM_COMPILER_HIP))))
-#endif
-
 // N2235 Generalized Constant Expressions http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2235.pdf
 // N3652 Extended Constant Expressions http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3652.html
 #if (GLM_ARCH & GLM_ARCH_SIMD_BIT) // Compiler SIMD intrinsics don't support constexpr...
@@ -306,18 +293,6 @@
 #else
 #	define GLM_NODISCARD
 #endif
-
-//
-#if GLM_LANG & GLM_LANG_CXX11_FLAG
-#	define GLM_HAS_ASSIGNABLE 1
-#else
-#	define GLM_HAS_ASSIGNABLE ((GLM_LANG & GLM_LANG_CXX0X_FLAG) && (\
-		((GLM_COMPILER & GLM_COMPILER_VC) && (GLM_COMPILER >= GLM_COMPILER_VC15)) || \
-		((GLM_COMPILER & GLM_COMPILER_GCC) && (GLM_COMPILER >= GLM_COMPILER_GCC49))))
-#endif
-
-//
-#define GLM_HAS_TRIVIAL_QUERIES 0
 
 //
 #if GLM_LANG & GLM_LANG_CXX11_FLAG
@@ -382,21 +357,6 @@
 #	endif
 #else
 #	define GLM_HAS_OPENMP 0
-#endif
-
-///////////////////////////////////////////////////////////////////////////////////
-// nullptr
-
-#if GLM_LANG & GLM_LANG_CXX0X_FLAG
-#	define GLM_CONFIG_NULLPTR GLM_ENABLE
-#else
-#	define GLM_CONFIG_NULLPTR GLM_DISABLE
-#endif
-
-#if GLM_CONFIG_NULLPTR == GLM_ENABLE
-#	define GLM_NULLPTR nullptr
-#else
-#	define GLM_NULLPTR 0
 #endif
 
 ///////////////////////////////////////////////////////////////////////////////////
@@ -798,7 +758,7 @@ namespace detail
 ///////////////////////////////////////////////////////////////////////////////////
 // Use SIMD instruction sets
 
-#if GLM_HAS_ALIGNOF && (GLM_LANG & GLM_LANG_CXXMS_FLAG) && (GLM_ARCH & GLM_ARCH_SIMD_BIT)
+#if (GLM_LANG & GLM_LANG_CXXMS_FLAG) && (GLM_ARCH & GLM_ARCH_SIMD_BIT)
 #	define GLM_CONFIG_SIMD GLM_ENABLE
 #else
 #	define GLM_CONFIG_SIMD GLM_DISABLE
@@ -834,7 +794,7 @@ namespace detail
 #	define GLM_FORCE_ALIGNED_GENTYPES
 #endif
 
-#if GLM_HAS_ALIGNOF && (GLM_LANG & GLM_LANG_CXXMS_FLAG) && (defined(GLM_FORCE_ALIGNED_GENTYPES) || (GLM_CONFIG_SIMD == GLM_ENABLE))
+#if (GLM_LANG & GLM_LANG_CXXMS_FLAG) && (defined(GLM_FORCE_ALIGNED_GENTYPES) || (GLM_CONFIG_SIMD == GLM_ENABLE))
 #	define GLM_CONFIG_ALIGNED_GENTYPES GLM_ENABLE
 #else
 #	define GLM_CONFIG_ALIGNED_GENTYPES GLM_DISABLE
@@ -942,26 +902,6 @@ namespace detail
 #		pragma message("GLM: C++ 17 with extensions")
 #	elif (GLM_LANG & GLM_LANG_CXX17_FLAG)
 #		pragma message("GLM: C++ 17")
-#	elif (GLM_LANG & GLM_LANG_CXX14_FLAG) && (GLM_LANG & GLM_LANG_EXT)
-#		pragma message("GLM: C++ 14 with extensions")
-#	elif (GLM_LANG & GLM_LANG_CXX14_FLAG)
-#		pragma message("GLM: C++ 14")
-#	elif (GLM_LANG & GLM_LANG_CXX11_FLAG) && (GLM_LANG & GLM_LANG_EXT)
-#		pragma message("GLM: C++ 11 with extensions")
-#	elif (GLM_LANG & GLM_LANG_CXX11_FLAG)
-#		pragma message("GLM: C++ 11")
-#	elif (GLM_LANG & GLM_LANG_CXX0X_FLAG) && (GLM_LANG & GLM_LANG_EXT)
-#		pragma message("GLM: C++ 0x with extensions")
-#	elif (GLM_LANG & GLM_LANG_CXX0X_FLAG)
-#		pragma message("GLM: C++ 0x")
-#	elif (GLM_LANG & GLM_LANG_CXX03_FLAG) && (GLM_LANG & GLM_LANG_EXT)
-#		pragma message("GLM: C++ 03 with extensions")
-#	elif (GLM_LANG & GLM_LANG_CXX03_FLAG)
-#		pragma message("GLM: C++ 03")
-#	elif (GLM_LANG & GLM_LANG_CXX98_FLAG) && (GLM_LANG & GLM_LANG_EXT)
-#		pragma message("GLM: C++ 98 with extensions")
-#	elif (GLM_LANG & GLM_LANG_CXX98_FLAG)
-#		pragma message("GLM: C++ 98")
 #	else
 #		pragma message("GLM: C++ language undetected")
 #	endif//GLM_LANG

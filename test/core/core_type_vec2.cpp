@@ -6,9 +6,7 @@
 #include <glm/vector_relational.hpp>
 #include <glm/vec2.hpp>
 #include <vector>
-#if GLM_HAS_TRIVIAL_QUERIES
-#	include <type_traits>
-#endif
+#include <type_traits>
 
 #if GLM_COMPILER & GLM_COMPILER_CLANG
 #	pragma clang diagnostic push
@@ -229,7 +227,7 @@ static int test_ctor()
 		Error += A == B ? 0 : 1;
 	}
 
-#	if GLM_HAS_TRIVIAL_QUERIES
+	{
 	//	Error += std::is_trivially_default_constructible<glm::vec2>::value ? 0 : 1;
 	//	Error += std::is_trivially_copy_assignable<glm::vec2>::value ? 0 : 1;
 		Error += std::is_trivially_copyable<glm::vec2>::value ? 0 : 1;
@@ -238,7 +236,7 @@ static int test_ctor()
 		Error += std::is_trivially_copyable<glm::uvec2>::value ? 0 : 1;
 
 		Error += std::is_copy_constructible<glm::vec2>::value ? 0 : 1;
-#	endif
+	}
 
 #if GLM_HAS_INITIALIZER_LISTS
 	{

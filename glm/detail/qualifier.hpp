@@ -89,23 +89,21 @@ namespace detail
 		} type;
 	};
 
-#	if GLM_HAS_ALIGNOF
-		template<length_t L, typename T>
-		struct storage<L, T, true>
-		{
-			typedef struct alignas(L * sizeof(T)) type {
-				T data[L];
-			} type;
-		};
+	template<length_t L, typename T>
+	struct storage<L, T, true>
+	{
+		typedef struct alignas(L * sizeof(T)) type {
+			T data[L];
+		} type;
+	};
 
-		template<typename T>
-		struct storage<3, T, true>
-		{
-			typedef struct alignas(4 * sizeof(T)) type {
-				T data[4];
-			} type;
-		};
-#	endif
+	template<typename T>
+	struct storage<3, T, true>
+	{
+		typedef struct alignas(4 * sizeof(T)) type {
+			T data[4];
+		} type;
+	};
 
 #	if GLM_ARCH & GLM_ARCH_SSE2_BIT
 	template<>
@@ -235,12 +233,11 @@ namespace detail
 	{
 		typedef glm_u32vec4 type;
 	};
-
+/* TODO: Duplicate ?
 	template<>
 	struct storage<3, unsigned int, true> : public storage<4, unsigned int, true>
 	{};
 
-#	if GLM_HAS_ALIGNOF
 	template<>
 	struct storage<3, double, true>
 	{
@@ -248,8 +245,7 @@ namespace detail
 			double data[4];
 		} type;
 	};
-#	endif//GLM_HAS_ALIGNOF
-
+*/
 #	endif
 
 	enum genTypeEnum

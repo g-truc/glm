@@ -71,13 +71,11 @@ static int test_ctr()
 {
 	int Error = 0;
 
-#if GLM_HAS_TRIVIAL_QUERIES
 	//Error += std::is_trivially_default_constructible<glm::mat4>::value ? 0 : 1;
 	//Error += std::is_trivially_copy_assignable<glm::mat4>::value ? 0 : 1;
 	Error += std::is_trivially_copyable<glm::mat4>::value ? 0 : 1;
 	//Error += std::is_copy_constructible<glm::mat4>::value ? 0 : 1;
 	//Error += std::has_trivial_copy_constructor<glm::mat4>::value ? 0 : 1;
-#endif
 
 #if GLM_HAS_INITIALIZER_LISTS
 	glm::mat4 const m0(
