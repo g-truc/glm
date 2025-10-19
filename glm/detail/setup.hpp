@@ -609,34 +609,13 @@ namespace detail
 ///////////////////////////////////////////////////////////////////////////////////
 // 64-bit int
 
-#if GLM_HAS_EXTENDED_INTEGER_TYPE
-#	include <cstdint>
-#endif
+#include <cstdint>
 
 namespace glm{
 namespace detail
 {
-#	if GLM_HAS_EXTENDED_INTEGER_TYPE
-		typedef std::uint64_t						uint64;
-		typedef std::int64_t						int64;
-#	elif (defined(__STDC_VERSION__) && (__STDC_VERSION__ >= 199901L)) // C99 detected, 64 bit types available
-		typedef uint64_t							uint64;
-		typedef int64_t								int64;
-#	elif GLM_COMPILER & GLM_COMPILER_VC
-		typedef unsigned __int64					uint64;
-		typedef signed __int64						int64;
-#	elif GLM_COMPILER & GLM_COMPILER_GCC
-#		pragma GCC diagnostic ignored "-Wlong-long"
-		__extension__ typedef unsigned long long	uint64;
-		__extension__ typedef signed long long		int64;
-#	elif (GLM_COMPILER & GLM_COMPILER_CLANG)
-#		pragma clang diagnostic ignored "-Wc++11-long-long"
-		typedef unsigned long long					uint64;
-		typedef signed long long					int64;
-#	else//unknown compiler
-		typedef unsigned long long					uint64;
-		typedef signed long long					int64;
-#	endif
+	typedef std::uint64_t						uint64;
+	typedef std::int64_t						int64;
 }//namespace detail
 }//namespace glm
 
