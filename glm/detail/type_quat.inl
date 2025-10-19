@@ -240,7 +240,6 @@ namespace detail
 		*this = quat_cast(m);
 	}
 
-#	if GLM_HAS_EXPLICIT_CONVERSION_OPERATORS
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER qua<T, Q>::operator mat<3, 3, T, Q>() const
 	{
@@ -252,7 +251,6 @@ namespace detail
 	{
 		return mat4_cast(*this);
 	}
-#	endif//GLM_HAS_EXPLICIT_CONVERSION_OPERATORS
 
 	// -- Unary arithmetic operators --
 

@@ -92,11 +92,8 @@ namespace glm
 		template<typename U, qualifier P>
 		GLM_CTOR_DECL GLM_EXPLICIT qua(qua<U, P> const& q);
 
-		/// Explicit conversion operators
-#		if GLM_HAS_EXPLICIT_CONVERSION_OPERATORS
-			GLM_FUNC_DECL explicit operator mat<3, 3, T, Q>() const;
-			GLM_FUNC_DECL explicit operator mat<4, 4, T, Q>() const;
-#		endif
+		GLM_FUNC_DECL explicit operator mat<3, 3, T, Q>() const;
+		GLM_FUNC_DECL explicit operator mat<4, 4, T, Q>() const;
 
 		/// Create a quaternion from two normalized axis
 		///

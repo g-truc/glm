@@ -3,8 +3,6 @@
 #include <glm/ext/vector_relational.hpp>
 #include <glm/glm.hpp>
 
-#if GLM_HAS_RANGE_FOR
-
 #define GLM_ENABLE_EXPERIMENTAL
 #include <glm/gtx/range.hpp>
 
@@ -73,11 +71,3 @@ int main()
 	return Error;
 }
 
-#else
-
-int main()
-{
-	return 0;
-}
-
-#endif//GLM_HAS_RANGE_FOR

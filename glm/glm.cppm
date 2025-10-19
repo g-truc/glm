@@ -2214,11 +2214,9 @@ export namespace glm {
 		using glm::operator*;
 		using glm::operator/;
 #       endif
-#       if GLM_HAS_RANGE_FOR
 		using glm::components;
 		using glm::begin;
 		using glm::end;
-#       endif
 
 		using glm::abs;
 		using glm::acos;
