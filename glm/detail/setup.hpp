@@ -144,88 +144,9 @@
 ///////////////////////////////////////////////////////////////////////////////////
 // Has of C++ features
 
-// N2672 Initializer lists http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2008/n2672.htm
-#if GLM_COMPILER & GLM_COMPILER_CLANG
-#	define GLM_HAS_INITIALIZER_LISTS __has_feature(cxx_generalized_initializers)
-#elif GLM_LANG & GLM_LANG_CXX11_FLAG
-#	define GLM_HAS_INITIALIZER_LISTS 1
-#else
-#	define GLM_HAS_INITIALIZER_LISTS ((GLM_LANG & GLM_LANG_CXX0X_FLAG) && (\
-		((GLM_COMPILER & GLM_COMPILER_VC) && (GLM_COMPILER >= GLM_COMPILER_VC15)) || \
-		((GLM_COMPILER & GLM_COMPILER_INTEL) && (GLM_COMPILER >= GLM_COMPILER_INTEL14)) || \
-		((GLM_COMPILER & GLM_COMPILER_CUDA)) || \
-		((GLM_COMPILER & GLM_COMPILER_HIP))))
-#endif
+#define GLM_HAS_INITIALIZER_LISTS 1
 
-// N2544 Unrestricted unions http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2008/n2544.pdf
-#if GLM_COMPILER & GLM_COMPILER_CLANG
-#	define GLM_HAS_UNRESTRICTED_UNIONS __has_feature(cxx_unrestricted_unions)
-#elif GLM_LANG & GLM_LANG_CXX11_FLAG
-#	define GLM_HAS_UNRESTRICTED_UNIONS 1
-#else
-#	define GLM_HAS_UNRESTRICTED_UNIONS (GLM_LANG & GLM_LANG_CXX0X_FLAG) && (\
-		(GLM_COMPILER & GLM_COMPILER_VC) || \
-		((GLM_COMPILER & GLM_COMPILER_CUDA)) || \
-		((GLM_COMPILER & GLM_COMPILER_HIP)))
-#endif
-
-// N2346
-#if GLM_COMPILER & GLM_COMPILER_CLANG
-#	define GLM_HAS_DEFAULTED_FUNCTIONS __has_feature(cxx_defaulted_functions)
-#elif GLM_LANG & GLM_LANG_CXX11_FLAG
-#	define GLM_HAS_DEFAULTED_FUNCTIONS 1
-#else
-#	define GLM_HAS_DEFAULTED_FUNCTIONS ((GLM_LANG & GLM_LANG_CXX0X_FLAG) && (\
-		((GLM_COMPILER & GLM_COMPILER_VC) && (GLM_COMPILER >= GLM_COMPILER_VC12)) || \
-		((GLM_COMPILER & GLM_COMPILER_INTEL)) || \
-		(GLM_COMPILER & GLM_COMPILER_CUDA)) || \
-		((GLM_COMPILER & GLM_COMPILER_HIP)))
-#endif
-
-// N2118
-#if GLM_COMPILER & GLM_COMPILER_CLANG
-#	define GLM_HAS_RVALUE_REFERENCES __has_feature(cxx_rvalue_references)
-#elif GLM_LANG & GLM_LANG_CXX11_FLAG
-#	define GLM_HAS_RVALUE_REFERENCES 1
-#else
-#	define GLM_HAS_RVALUE_REFERENCES ((GLM_LANG & GLM_LANG_CXX0X_FLAG) && (\
-		((GLM_COMPILER & GLM_COMPILER_VC)) || \
-		((GLM_COMPILER & GLM_COMPILER_CUDA)) || \
-		((GLM_COMPILER & GLM_COMPILER_HIP))))
-#endif
-
-// N2258 http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2258.pdf
-#if GLM_COMPILER & GLM_COMPILER_CLANG
-#	define GLM_HAS_TEMPLATE_ALIASES __has_feature(cxx_alias_templates)
-#elif GLM_LANG & GLM_LANG_CXX11_FLAG
-#	define GLM_HAS_TEMPLATE_ALIASES 1
-#else
-#	define GLM_HAS_TEMPLATE_ALIASES ((GLM_LANG & GLM_LANG_CXX0X_FLAG) && (\
-		((GLM_COMPILER & GLM_COMPILER_INTEL)) || \
-		((GLM_COMPILER & GLM_COMPILER_VC) && (GLM_COMPILER >= GLM_COMPILER_VC12)) || \
-		((GLM_COMPILER & GLM_COMPILER_CUDA)) || \
-		((GLM_COMPILER & GLM_COMPILER_HIP))))
-#endif
-
-// N2235 Generalized Constant Expressions http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2235.pdf
-// N3652 Extended Constant Expressions http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3652.html
-#if (GLM_ARCH & GLM_ARCH_SIMD_BIT) // Compiler SIMD intrinsics don't support constexpr...
-#	define GLM_HAS_CONSTEXPR 0
-#elif (GLM_COMPILER & GLM_COMPILER_CLANG)
-#	define GLM_HAS_CONSTEXPR __has_feature(cxx_relaxed_constexpr)
-#elif (GLM_LANG & GLM_LANG_CXX14_FLAG)
-#	define GLM_HAS_CONSTEXPR 1
-#else
-#	define GLM_HAS_CONSTEXPR ((GLM_LANG & GLM_LANG_CXX0X_FLAG) && GLM_HAS_INITIALIZER_LISTS && (\
-		((GLM_COMPILER & GLM_COMPILER_INTEL) && (GLM_COMPILER >= GLM_COMPILER_INTEL17)) || \
-		((GLM_COMPILER & GLM_COMPILER_VC) && (GLM_COMPILER >= GLM_COMPILER_VC15))))
-#endif
-
-#if GLM_HAS_CONSTEXPR
-#	define GLM_CONSTEXPR constexpr
-#else
-#	define GLM_CONSTEXPR
-#endif
+#define GLM_CONSTEXPR constexpr
 
 // [nodiscard]
 #if GLM_LANG & GLM_LANG_CXX17_FLAG
@@ -339,13 +260,9 @@
 #define GLM_FUNC_QUALIFIER GLM_CUDA_FUNC_DEF GLM_INLINE
 
 // Do not use CUDA function qualifiers on CUDA compiler when functions are made default
-#if GLM_HAS_DEFAULTED_FUNCTIONS
-#	define GLM_DEFAULTED_FUNC_DECL
-#	define GLM_DEFAULTED_FUNC_QUALIFIER GLM_INLINE
-#else
-#	define GLM_DEFAULTED_FUNC_DECL GLM_FUNC_DISCARD_DECL
-#	define GLM_DEFAULTED_FUNC_QUALIFIER GLM_FUNC_QUALIFIER
-#endif//GLM_HAS_DEFAULTED_FUNCTIONS
+#define GLM_DEFAULTED_FUNC_DECL
+#define GLM_DEFAULTED_FUNC_QUALIFIER GLM_INLINE
+
 #if !defined(GLM_FORCE_CTOR_INIT)
 #	define GLM_DEFAULTED_DEFAULT_CTOR_DECL
 #	define GLM_DEFAULTED_DEFAULT_CTOR_QUALIFIER GLM_DEFAULTED_FUNC_QUALIFIER
@@ -484,35 +401,9 @@ namespace glm
 }//namespace glm
 
 ///////////////////////////////////////////////////////////////////////////////////
-// constexpr
-
-#if GLM_HAS_CONSTEXPR
-#	define GLM_CONFIG_CONSTEXP GLM_ENABLE
-
-	namespace glm
-	{
-		template<typename T, std::size_t N>
-		constexpr std::size_t countof(T const (&)[N])
-		{
-			return N;
-		}
-	}//namespace glm
-#	define GLM_COUNTOF(arr) glm::countof(arr)
-#elif defined(_MSC_VER)
-#	define GLM_CONFIG_CONSTEXP GLM_DISABLE
-
-#	define GLM_COUNTOF(arr) _countof(arr)
-#else
-#	define GLM_CONFIG_CONSTEXP GLM_DISABLE
-
-#	define GLM_COUNTOF(arr) sizeof(arr) / sizeof(arr[0])
-#endif
-
-///////////////////////////////////////////////////////////////////////////////////
 // uint
 
 #include <cstdint>
-
 
 namespace glm{
 namespace detail
@@ -595,21 +486,6 @@ namespace detail
 #endif
 
 ///////////////////////////////////////////////////////////////////////////////////
-// Configure the use of defaulted initialized types
-
-#define GLM_CTOR_INIT_DISABLE		0
-#define GLM_CTOR_INITIALIZER_LIST	1
-#define GLM_CTOR_INITIALISATION		2
-
-#if defined(GLM_FORCE_CTOR_INIT) && GLM_HAS_INITIALIZER_LISTS
-#	define GLM_CONFIG_CTOR_INIT GLM_CTOR_INITIALIZER_LIST
-#elif defined(GLM_FORCE_CTOR_INIT) && !GLM_HAS_INITIALIZER_LISTS
-#	define GLM_CONFIG_CTOR_INIT GLM_CTOR_INITIALISATION
-#else
-#	define GLM_CONFIG_CTOR_INIT GLM_CTOR_INIT_DISABLE
-#endif
-
-///////////////////////////////////////////////////////////////////////////////////
 // Use SIMD instruction sets
 
 #if (GLM_LANG & GLM_LANG_CXXMS_FLAG) && (GLM_ARCH & GLM_ARCH_SIMD_BIT)
@@ -619,21 +495,22 @@ namespace detail
 #endif
 
 ///////////////////////////////////////////////////////////////////////////////////
-// Configure the use of defaulted function
+// Configure the use of defaulted initialized types
 
-#if GLM_HAS_DEFAULTED_FUNCTIONS
-#	define GLM_CONFIG_DEFAULTED_FUNCTIONS GLM_ENABLE
-#	define GLM_DEFAULT = default
+#if defined(GLM_FORCE_CTOR_INIT)
+#	define GLM_CONFIG_CTOR_INIT GLM_ENABLE
 #else
-#	define GLM_CONFIG_DEFAULTED_FUNCTIONS GLM_DISABLE
-#	define GLM_DEFAULT
+#	define GLM_CONFIG_CTOR_INIT GLM_DISABLE
 #endif
 
-#if GLM_CONFIG_CTOR_INIT == GLM_CTOR_INIT_DISABLE && GLM_CONFIG_DEFAULTED_FUNCTIONS == GLM_ENABLE
-#	define GLM_CONFIG_DEFAULTED_DEFAULT_CTOR GLM_ENABLE
+///////////////////////////////////////////////////////////////////////////////////
+// Configure the use of defaulted function
+
+#define GLM_DEFAULT = default
+
+#if GLM_CONFIG_CTOR_INIT == GLM_DISABLE
 #	define GLM_DEFAULT_CTOR GLM_DEFAULT
 #else
-#	define GLM_CONFIG_DEFAULTED_DEFAULT_CTOR GLM_DISABLE
 #	define GLM_DEFAULT_CTOR
 #endif
 

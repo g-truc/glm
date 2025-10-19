@@ -16,7 +16,7 @@ export namespace glm {
 	using glm::vec;
 	using glm::mat;
 	using glm::qua;
-#	if GLM_HAS_TEMPLATE_ALIASES
+
 	using glm::tvec1;
 	using glm::tvec2;
 	using glm::tvec3;
@@ -31,7 +31,6 @@ export namespace glm {
 	using glm::tmat4x3;
 	using glm::tmat4x4;
 	using glm::tquat;
-#	endif
 
 	using glm::int8;
 	using glm::int16;
@@ -2210,10 +2209,8 @@ export namespace glm {
 #       if !((GLM_COMPILER & GLM_COMPILER_CUDA) || (GLM_COMPILER & GLM_COMPILER_HIP))
 		using glm::to_string;
 #       endif
-#       if GLM_HAS_TEMPLATE_ALIASES
 		using glm::operator*;
 		using glm::operator/;
-#       endif
 		using glm::components;
 		using glm::begin;
 		using glm::end;

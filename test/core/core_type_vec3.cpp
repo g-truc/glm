@@ -612,12 +612,10 @@ static int test_swizzle()
 
 static int test_constexpr()
 {
-#if GLM_HAS_CONSTEXPR
 	static_assert(glm::vec3::length() == 3, "GLM: Failed constexpr");
 	static_assert(glm::vec3(1.0f).x > 0.0f, "GLM: Failed constexpr");
 	static_assert(glm::vec3(1.0f, -1.0f, -1.0f).x > 0.0f, "GLM: Failed constexpr");
 	static_assert(glm::vec3(1.0f, -1.0f, -1.0f).y < 0.0f, "GLM: Failed constexpr");
-#endif
 
 	return 0;
 }

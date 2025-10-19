@@ -135,18 +135,14 @@ static int test_copy_vec4()
 	{
 		glm::aligned_ivec4 const u(1, 2, 3, 4);
 		glm::packed_ivec4 const v(u);
-		Error += v.x == u.x ? 0 : 1;
-		Error += v.y == u.y ? 0 : 1;
-		Error += v.z == u.z ? 0 : 1;
-		Error += v.w == u.w ? 0 : 1;
+		glm::aligned_ivec4 const w(v);
+		Error += glm::all(glm::equal(u, w)) ? 0 : 1;
 	}
 	{
 		glm::packed_ivec4 const u(1, 2, 3, 4);
 		glm::aligned_ivec4 const v(u);
-		Error += v.x == u.x ? 0 : 1;
-		Error += v.y == u.y ? 0 : 1;
-		Error += v.z == u.z ? 0 : 1;
-		Error += v.w == u.w ? 0 : 1;
+		glm::packed_ivec4 const w(v);
+		Error += glm::all(glm::equal(u, w)) ? 0 : 1;
 	}
 
 	return Error;
@@ -188,16 +184,14 @@ static int test_copy_vec3()
 	{
 		glm::aligned_ivec3 const u(1, 2, 3);
 		glm::packed_ivec3 const v(u);
-		Error += v.x == u.x ? 0 : 1;
-		Error += v.y == u.y ? 0 : 1;
-		Error += v.z == u.z ? 0 : 1;
+		glm::aligned_ivec3 const w(v);
+		Error += glm::all(glm::equal(u, w)) ? 0 : 1;
 	}
 	{
 		glm::packed_ivec3 const u(1, 2, 3);
 		glm::aligned_ivec3 const v(u);
-		Error += v.x == u.x ? 0 : 1;
-		Error += v.y == u.y ? 0 : 1;
-		Error += v.z == u.z ? 0 : 1;
+		glm::packed_ivec3 const w(v);
+		Error += glm::all(glm::equal(u, w)) ? 0 : 1;
 	}
 
 	return Error;
@@ -439,10 +433,9 @@ static int test_copy()
 	{
 		glm::aligned_ivec4 const a(1, 2, 3, 4);
 		glm::ivec4 const u(a);
-		Error += a.x == u.x ? 0 : 1;
-		Error += a.y == u.y ? 0 : 1;
-		Error += a.z == u.z ? 0 : 1;
-		Error += a.w == u.w ? 0 : 1;
+		glm::aligned_ivec4 const v(u);
+
+		Error += glm::all(glm::equal(a, v)) ? 0 : 1;
 	}
 
 	{
@@ -465,34 +458,29 @@ static int test_ctor()
 {
 	int Error = 0;
 
-#	if GLM_HAS_CONSTEXPR
 	{
 		constexpr glm::aligned_ivec4 v(1);
-
-		Error += v.x == 1 ? 0 : 1;
-		Error += v.y == 1 ? 0 : 1;
-		Error += v.z == 1 ? 0 : 1;
-		Error += v.w == 1 ? 0 : 1;
+		static_assert(v.x == 1);
+		static_assert(v.y == 1);
+		static_assert(v.z == 1);
+		static_assert(v.w == 1);
 	}
 
 	{
 		constexpr glm::packed_ivec4 v(1);
-
-		Error += v.x == 1 ? 0 : 1;
-		Error += v.y == 1 ? 0 : 1;
-		Error += v.z == 1 ? 0 : 1;
-		Error += v.w == 1 ? 0 : 1;
+		static_assert(v.x == 1);
+		static_assert(v.y == 1);
+		static_assert(v.z == 1);
+		static_assert(v.w == 1);
 	}
 
 	{
 		constexpr glm::ivec4 v(1);
-
-		Error += v.x == 1 ? 0 : 1;
-		Error += v.y == 1 ? 0 : 1;
-		Error += v.z == 1 ? 0 : 1;
-		Error += v.w == 1 ? 0 : 1;
+		static_assert(v.x == 1);
+		static_assert(v.y == 1);
+		static_assert(v.z == 1);
+		static_assert(v.w == 1);
 	}
-#	endif//GLM_HAS_CONSTEXPR
 
 	return Error;
 }

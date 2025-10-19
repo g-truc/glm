@@ -1374,7 +1374,6 @@ namespace ldexp_
 
 static int test_constexpr()
 {
-#if GLM_HAS_CONSTEXPR
 	static_assert(glm::abs(1.0f) > 0.0f, "GLM: Failed constexpr");
 	constexpr glm::vec1 const A = glm::abs(glm::vec1(1.0f));
 	constexpr glm::vec2 const B = glm::abs(glm::vec2(1.0f));
@@ -1385,7 +1384,6 @@ static int test_constexpr()
 	static_assert(glm::all(glm::equal(B, glm::vec2(1.0f), glm::epsilon<float>())), "GLM: Failed constexpr");
 	static_assert(glm::all(glm::equal(C, glm::vec3(1.0f), glm::epsilon<float>())), "GLM: Failed constexpr");
 	static_assert(glm::all(glm::equal(D, glm::vec4(1.0f), glm::epsilon<float>())), "GLM: Failed constexpr");
-#endif // GLM_HAS_CONSTEXPR
 
 	return 0;
 }

@@ -62,9 +62,7 @@ static int test_notEqual()
 template <typename genType, typename valType>
 static int test_constexpr()
 {
-#	if GLM_CONFIG_CONSTEXP == GLM_ENABLE
-		static_assert(glm::all(glm::equal(genType(static_cast<valType>(1.01f)), genType(static_cast<valType>(1.02f)), static_cast<valType>(0.1f))), "GLM: Failed constexpr");
-#	endif
+	static_assert(glm::all(glm::equal(genType(static_cast<valType>(1.01f)), genType(static_cast<valType>(1.02f)), static_cast<valType>(0.1f))), "GLM: Failed constexpr");
 
 	return 0;
 }

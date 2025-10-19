@@ -99,7 +99,7 @@ namespace glm
 		// -- Implicit basic constructors --
 
 		GLM_DEFAULTED_DEFAULT_CTOR_DECL GLM_CONSTEXPR vec() GLM_DEFAULT_CTOR;
-		GLM_DEFAULTED_FUNC_DECL GLM_CONSTEXPR vec(vec const& v) GLM_DEFAULT;
+		GLM_CTOR_DECL vec(vec<2, T, Q> const& v) = default;
 		template<qualifier P>
 		GLM_CTOR_DECL vec(vec<2, T, P> const& v);
 
@@ -147,7 +147,7 @@ namespace glm
 
 		// -- Unary arithmetic operators --
 
-		GLM_DEFAULTED_FUNC_DECL GLM_CONSTEXPR vec<2, T, Q> & operator=(vec const& v) GLM_DEFAULT;
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR vec<2, T, Q> & operator=(vec const& v) = default;
 
 		template<typename U>
 		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR vec<2, T, Q> & operator=(vec<2, U, Q> const& v);

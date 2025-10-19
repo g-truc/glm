@@ -33,6 +33,7 @@ namespace glm
 		// -- Constructors --
 
 		GLM_DEFAULTED_DEFAULT_CTOR_DECL GLM_CONSTEXPR mat() GLM_DEFAULT_CTOR;
+		GLM_CTOR_DECL mat(mat<2, 2, T, Q> const& m) = default;
 		template<qualifier P>
 		GLM_CTOR_DECL mat(mat<2, 2, T, P> const& m);
 
@@ -72,24 +73,26 @@ namespace glm
 
 		// -- Unary arithmetic operators --
 
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<2, 2, T, Q>& operator=(mat<2, 2, T, Q> const& m) = default;
+
 		template<typename U>
-		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<2, 2, T, Q> & operator=(mat<2, 2, U, Q> const& m);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<2, 2, T, Q>& operator=(mat<2, 2, U, Q> const& m);
 		template<typename U>
-		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<2, 2, T, Q> & operator+=(U s);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<2, 2, T, Q>& operator+=(U s);
 		template<typename U>
-		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<2, 2, T, Q> & operator+=(mat<2, 2, U, Q> const& m);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<2, 2, T, Q>& operator+=(mat<2, 2, U, Q> const& m);
 		template<typename U>
-		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<2, 2, T, Q> & operator-=(U s);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<2, 2, T, Q>& operator-=(U s);
 		template<typename U>
-		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<2, 2, T, Q> & operator-=(mat<2, 2, U, Q> const& m);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<2, 2, T, Q>& operator-=(mat<2, 2, U, Q> const& m);
 		template<typename U>
-		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<2, 2, T, Q> & operator*=(U s);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<2, 2, T, Q>& operator*=(U s);
 		template<typename U>
-		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<2, 2, T, Q> & operator*=(mat<2, 2, U, Q> const& m);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<2, 2, T, Q>& operator*=(mat<2, 2, U, Q> const& m);
 		template<typename U>
-		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<2, 2, T, Q> & operator/=(U s);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<2, 2, T, Q>& operator/=(U s);
 		template<typename U>
-		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<2, 2, T, Q> & operator/=(mat<2, 2, U, Q> const& m);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<2, 2, T, Q>& operator/=(mat<2, 2, U, Q> const& m);
 
 		// -- Increment and decrement operators --
 

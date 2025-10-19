@@ -33,7 +33,6 @@ namespace glm
 		return q[I];
 	}
 
-#if GLM_HAS_RVALUE_REFERENCES
 	template<length_t I, length_t L, typename T, qualifier Q>
 	GLM_CONSTEXPR T get(vec<L, T, Q> const&& v)
 	{
@@ -50,6 +49,5 @@ namespace glm
 		static_assert(I < 4, "Index out of bounds");
 		return q[I];
 	}
-#endif
 }//namespace glm
 

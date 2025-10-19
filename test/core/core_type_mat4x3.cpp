@@ -147,12 +147,10 @@ static int test_constexpr()
 {
 	int Error = 0;
 
-#if GLM_HAS_CONSTEXPR
 	static_assert(glm::mat4x3::length() == 4, "GLM: Failed constexpr");
 
 	constexpr glm::mat4x3 const Z(1.0f);
 	Error += glm::all(glm::equal(Z, glm::mat4x3(1.0f), glm::epsilon<float>())) ? 0 : 1;
-#endif
 
 	return Error;
 }

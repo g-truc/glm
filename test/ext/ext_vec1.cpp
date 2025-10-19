@@ -143,10 +143,8 @@ static int test_bvec1_ctor()
 
 static int test_constexpr()
 {
-#if GLM_HAS_CONSTEXPR
 	static_assert(glm::vec1::length() == 1, "GLM: Failed constexpr");
 	static_assert(glm::vec1(1.0f).x > 0.0f, "GLM: Failed constexpr");
-#endif
 
 	return 0;
 }

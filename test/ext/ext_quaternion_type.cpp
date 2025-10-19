@@ -91,10 +91,8 @@ static int test_precision()
 
 static int test_constexpr()
 {
-#if GLM_HAS_CONSTEXPR
 	static_assert(glm::quat::length() == 4, "GLM: Failed constexpr");
 	static_assert(glm::quat(1.0f, glm::vec3(0.0f)).w > 0.0f, "GLM: Failed constexpr");
-#endif
 
 	return 0;
 }

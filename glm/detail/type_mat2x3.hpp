@@ -34,6 +34,7 @@ namespace glm
 		// -- Constructors --
 
 		GLM_DEFAULTED_DEFAULT_CTOR_DECL GLM_CONSTEXPR mat() GLM_DEFAULT_CTOR;
+		GLM_CTOR_DECL mat(mat<2, 3, T, Q> const& m) = default;
 		template<qualifier P>
 		GLM_CTOR_DECL mat(mat<2, 3, T, P> const& m);
 
@@ -72,6 +73,8 @@ namespace glm
 		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<4, 3, T, Q> const& x);
 
 		// -- Unary arithmetic operators --
+
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<2, 3, T, Q>& operator=(mat<2, 3, T, Q> const& m) = default;
 
 		template<typename U>
 		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<2, 3, T, Q> & operator=(mat<2, 3, U, Q> const& m);
