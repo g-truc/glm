@@ -77,7 +77,7 @@ namespace detail
 		// remainder 
 		mx = mx - ::trunc(mx * T(0.1591549)) * T(6.283185307);
 		// range reduction
-		q = ((int)(mx * T(0.6366197))+1);
+		q = (static_cast<int>(mx * T(0.6366197))+1);
 		flip = (q == 2 || q == 4);
 		sign = (q == 2 || q == 3);
 		mx = mx - (T(1.57079632) * T(q-1));
@@ -121,7 +121,7 @@ namespace detail
 		//remainder 
 		mx = mx - ::trunc(mx * T(0.1591549)) * T(6.283185307);
 		// range reduction 
-		q = ((int)(mx * T(0.6366197))+1);
+		q = (static_cast<int>(mx * T(0.6366197))+1);
 		flip = (q == 2 || q == 4);
 		sign ^= q > 2;
 		mx = mx - (T(1.57079632) * T(q-1));
@@ -168,7 +168,7 @@ namespace detail
 		// remainder 
 		mx = mx - ::trunc(mx * T(0.1591549)) * T(6.283185307);
 		// range reduction 
-		q = ((int)(mx * T(0.6366197))+1);
+		q = (static_cast<int>(mx * T(0.6366197))+1);
 		flip = (q == 2 || q == 4);
 		sign ^= flip;
 		mx = mx - (T(1.57079632) * T(q-1));
