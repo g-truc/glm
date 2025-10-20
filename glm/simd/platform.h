@@ -373,6 +373,9 @@
 #elif defined(GLM_FORCE_SSE)
 #	define GLM_ARCH (GLM_ARCH_SSE)
 #	define GLM_FORCE_INTRINSICS
+#elif defined(GLM_FORCE_NEON)
+#	define GLM_ARCH (GLM_ARCH_NEON)
+#	define GLM_FORCE_INTRINSICS
 #elif defined(GLM_FORCE_INTRINSICS) && !defined(GLM_FORCE_XYZW_ONLY)
 #	if defined(__AVX2__)
 #		define GLM_ARCH (GLM_ARCH_AVX2)
@@ -390,11 +393,9 @@
 #		define GLM_ARCH (GLM_ARCH_SSE2)
 #	elif defined(__i386__)
 #		define GLM_ARCH (GLM_ARCH_X86)
-#	elif defined(__ARM_ARCH) && (__ARM_ARCH >= 8)
-#		define GLM_ARCH (GLM_ARCH_ARMV8)
 #	elif defined(__ARM_NEON)
-#		define GLM_ARCH (GLM_ARCH_ARM | GLM_ARCH_NEON)
-#	elif defined(__arm__ ) || defined(_M_ARM)
+#		define GLM_ARCH (GLM_ARCH_NEON)
+#	elif defined(__aarch64__) || defined(__arm__ ) || defined(_M_ARM)
 #		define GLM_ARCH (GLM_ARCH_ARM)
 #	elif defined(__mips__ )
 #		define GLM_ARCH (GLM_ARCH_MIPS)
@@ -406,7 +407,7 @@
 #else
 #	if defined(__x86_64__) || defined(_M_X64) || defined(_M_IX86) || defined(__i386__)
 #		define GLM_ARCH (GLM_ARCH_X86)
-#	elif defined(__arm__) || defined(_M_ARM)
+#	elif defined(__aarch64__) || defined(__arm__) || defined(_M_ARM)
 #		define GLM_ARCH (GLM_ARCH_ARM)
 #	elif defined(__powerpc__) || defined(_M_PPC)
 #		define GLM_ARCH (GLM_ARCH_PPC)
