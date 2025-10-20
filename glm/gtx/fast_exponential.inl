@@ -8,25 +8,25 @@ namespace glm
 		//approximated using "exp2(x)" formula
 		//for +x = exp2(x)
 		//for -x = 1/exp2(abs(x))
-		float mx, out, C0, C1, C2, C3, C4, C5;
+		float out, C0, C1, C2, C3, C4, C5;
 		bool reciprocal;
-		uint32_t exponent, tmpx;
+		int exponent;
+		detail::float_t<float> mx, tmpx;
 		// coefficients interval [0, 1] 
-		C0 = 0.00189646114543331e-00f;
-		C1 = 0.00894282898410912e-00f;
-		C2 = 0.05586624630452070e-00f;
-		C3 = 0.24013971109076948e-00f;
-		C4 = 0.69315475247516734e-00f;
-		C5 = 0.99999989311082671e-00f;
-		mx = x;
-		reciprocal = (*(uint32_t*)&x) & 0x80000000;
-		tmpx = (*(uint32_t*)&x) & 0x7FFFFFFF;
-		mx = *(float*)&tmpx;
-		exponent = (uint32_t)mx;
-		mx = mx - (float)exponent;
-		out = (((((C0 * mx + C1) * mx + C2) * mx + C3) * mx + C4) * mx + C5);
-		tmpx = (exponent + 127) << 23;
-		out = (*(float*)&tmpx) * out;
+		C0 = 0.001896461e-00f;
+		C1 = 0.008942828e-00f;
+		C2 = 0.055866246e-00f;
+		C3 = 0.240139711e-00f;
+		C4 = 0.693154752e-00f;
+		C5 = 0.999999893e-00f;
+		mx.f = x;
+		reciprocal = (mx.i & int(0x80000000)) != 0;
+		mx.i = mx.i & 0x7FFFFFFF;
+		exponent = static_cast<int>(mx.f);
+		mx.f = mx.f - static_cast<float>(exponent);
+		out = (((((C0 * mx.f + C1) * mx.f + C2) * mx.f + C3) * mx.f + C4) * mx.f + C5);
+		tmpx.i = (exponent + 127) << 23;
+		out = tmpx.f * out;
 		out = reciprocal ? (1.0f / out) : out;
 		return out;
 	}
@@ -37,9 +37,10 @@ namespace glm
 		//approximated using "exp2(x)" formula
 		//for +x = exp2(x)
 		//for -x = 1/exp2(abs(x))
-		double mx, out, C0, C1, C2, C3, C4, C5;
+		double out, C0, C1, C2, C3, C4, C5;
 		bool reciprocal;
-		uint64_t exponent, tmpx;
+		detail::int64 exponent;
+		detail::float_t<double> mx, tmpx;
 		//coefficients interval [0, 1] 
 		C0 = 0.00189646114543331e-00;
 		C1 = 0.00894282898410912e-00;
@@ -47,15 +48,14 @@ namespace glm
 		C3 = 0.24013971109076948e-00;
 		C4 = 0.69315475247516734e-00;
 		C5 = 0.99999989311082671e-00;
-		mx = x;
-		reciprocal = (*(uint64_t*)&x) & 0x8000000000000000;
-		tmpx = (*(uint64_t*)&x) & 0x7FFFFFFFFFFFFFFF;
-		mx = *(double*)&tmpx;
-		exponent = (uint64_t)mx;
-		mx = mx - (double)exponent;
-		out = (((((C0 * mx + C1) * mx + C2) * mx + C3) * mx + C4) * mx + C5);
-		tmpx = (exponent + 1023) << 52;
-		out = (*(double*)&tmpx) * out;
+		mx.f = x;
+		reciprocal = (mx.i & detail::int64(0x8000000000000000)) != 0;
+		mx.i = mx.i & 0x7FFFFFFFFFFFFFFF;
+		exponent = static_cast<detail::int64>(mx.f);
+		mx.f = mx.f - static_cast<double>(exponent);
+		out = (((((C0 * mx.f + C1) * mx.f + C2) * mx.f + C3) * mx.f + C4) * mx.f + C5);
+		tmpx.i = (exponent + 1023) << 52;
+		out = tmpx.f * out;
 		out = reciprocal ? (1.0 / out) : out;
 		return out;
 	}
@@ -68,30 +68,30 @@ namespace glm
 		//for x mantissa <= 1.5 log2(x) ≈ C0 * x + C1 * x2...
 		//for x mantissa >= 1.5 log2(x) ≈ log2(x / 1.5) + log2(1.5)
 		//for x <= 1.0 = -log2(1/x)
-		float mx, l2, inv_three_half, lx, out, poly, C0, C1, C2, C3, C4, C5, C6;
+		float l2, inv_three_half, lx, out, poly, C0, C1, C2, C3, C4, C5, C6;
 		bool low, low_mantissa;
-		uint32_t tmpx;
+		detail::float_t<float> tmpx, mx;
 		// coefficients 
-		C0 = -0.067508561412635e-00f;
-		C1 =  0.605786644896372e-00f;
-		C2 = -2.351461115180550e-00f;
-		C3 =  5.175006419193522e-00f;
-		C4 = -7.182524695365589e-00f;
-		C5 =  7.064678543395325e-00f;
-		C6 = -3.243977190921664e-00f;
+		C0 = -0.06750856e-00f;
+		C1 =  0.60578664e-00f;
+		C2 = -2.35146111e-00f;
+		C3 =  5.17500641e-00f;
+		C4 = -7.18252469e-00f;
+		C5 =  7.06467854e-00f;
+		C6 = -3.24397719e-00f;
 		// constants 
 		l2 = 0.5849625f; //log2(1.5) 
 		inv_three_half = 0.6666667f; // 1.0 / 1.5 
-		mx = x;
-		low = mx < 1.0f;
-		mx = low ? (1.0f / mx) : mx;
-		tmpx = 1065353216 | ((*(uint32_t*)&mx) & 0x007FFFFF);
-		lx = *(float*)&tmpx;
+		mx.f = x;
+		low = mx.f < 1.0f;
+		mx.f = low ? (1.0f / mx.f) : mx.f;
+		tmpx.i = 1065353216 | (mx.i & int(0x007FFFFF));
+		lx = tmpx.f;
 		low_mantissa = lx <= 1.5f;
 		lx = low_mantissa ? lx : (lx * inv_three_half);
 		poly = ((((((C0 * lx + C1) * lx + C2) * lx + C3) * lx + C4) * lx + C5) * lx + C6);
 		poly = low_mantissa ? poly : (poly + l2);
-		out = (((*(uint32_t*)&mx) >> 23) - 127) + poly;
+		out = static_cast<float>((mx.i >> 23) - 127) + poly;
 		out = low ? -out : out;
 		return out;
 	}
@@ -104,9 +104,9 @@ namespace glm
 		//for x mantissa <= 1.5 log2(x) ≈ C0 * x + C1 * x2...
 		//for x mantissa >= 1.5 log2(x) ≈ log2(x / 1.5) + log2(1.5)
 		//for x <= 1.0 = -log2(1/x)
-		double mx, l2, inv_three_half, lx, out, poly, C0, C1, C2, C3, C4, C5, C6;
+		double l2, inv_three_half, lx, out, poly, C0, C1, C2, C3, C4, C5, C6;
 		bool low, low_mantissa;
-		uint64_t tmpx;
+		detail::float_t<double> tmpx, mx;
 		// coefficients 
 		C0 = -0.067508561412635e-00;
 		C1 =  0.605786644896372e-00;
@@ -118,16 +118,16 @@ namespace glm
 		// constants 
 		l2 = 0.5849625; // log2(1.5) 
 		inv_three_half = 0.6666667; // 1.0 / 1.5 
-		mx = x;
-		low = mx < 1.0;
-		mx = low ? (1.0 / mx) : mx;
-		tmpx = 4607182418800017408U | ((*(uint64_t*)&mx) & 0x000FFFFFFFFFFFFF);
-		lx = *(double*)&tmpx;
+		mx.f = x;
+		low = mx.f < 1.0;
+		mx.f = low ? (1.0 / mx.f) : mx.f;
+		tmpx.i = 4607182418800017408U | (mx.i & detail::int64(0x000FFFFFFFFFFFFF));
+		lx = tmpx.f;
 		low_mantissa = lx <= 1.5;
 		lx = low_mantissa ? lx : (lx * inv_three_half);
 		poly = ((((((C0 * lx + C1) * lx + C2) * lx + C3) * lx + C4) * lx + C5) * lx + C6);
 		poly = low_mantissa ? poly : (poly + l2);
-		out = (((*(uint64_t*)&mx) >> 52) - 1023) + poly;
+		out = static_cast<double>((mx.i >> 52) - 1023) + poly;
 		out = low ? -out : out;
 		return out;
 	}
