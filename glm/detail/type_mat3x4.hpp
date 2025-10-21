@@ -28,8 +28,8 @@ namespace glm
 		typedef length_t length_type;
 		GLM_FUNC_DECL static constexpr length_type length() { return 3; }
 
-		GLM_FUNC_DECL GLM_CONSTEXPR col_type & operator[](length_type i) GLM_NOEXCEPT;
-		GLM_FUNC_DECL GLM_CONSTEXPR col_type const& operator[](length_type i) const GLM_NOEXCEPT;
+		GLM_FUNC_DECL GLM_CONSTEXPR col_type & operator[](length_type i) noexcept;
+		GLM_FUNC_DECL GLM_CONSTEXPR col_type const& operator[](length_type i) const noexcept;
 
 		// -- Constructors --
 

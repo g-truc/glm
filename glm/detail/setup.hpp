@@ -170,18 +170,6 @@
 #	define GLM_HAS_BITSCAN_WINDOWS 0
 #endif
 
-#if GLM_LANG & GLM_LANG_CXX11_FLAG
-#	define GLM_HAS_NOEXCEPT 1
-#else
-#	define GLM_HAS_NOEXCEPT 0
-#endif
-
-#if GLM_HAS_NOEXCEPT
-#	define GLM_NOEXCEPT noexcept
-#else
-#	define GLM_NOEXCEPT
-#endif
-
 ///////////////////////////////////////////////////////////////////////////////////
 // OpenMP
 #ifdef _OPENMP

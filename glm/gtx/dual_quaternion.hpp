@@ -49,8 +49,8 @@ namespace glm
 		/// Return the count of components of a dual quaternion
 		GLM_FUNC_DECL static constexpr length_type length(){return 2;}
 
-		GLM_FUNC_DECL part_type & operator[](length_type i);
-		GLM_FUNC_DECL part_type const& operator[](length_type i) const;
+		GLM_FUNC_DECL GLM_CONSTEXPR part_type & operator[](length_type i) noexcept;
+		GLM_FUNC_DECL GLM_CONSTEXPR part_type const& operator[](length_type i) const noexcept;
 
 		// -- Implicit basic constructors --
 
