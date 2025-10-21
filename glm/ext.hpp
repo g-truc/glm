@@ -185,13 +185,13 @@
 #include "./gtc/random.hpp"
 #include "./gtc/reciprocal.hpp"
 #include "./gtc/round.hpp"
+//#if GLM_CONFIG_ALIGNED_GENTYPES == GLM_ENABLE
+#include "./gtc/type_aligned.hpp"
+//#endif
 #include "./gtc/type_precision.hpp"
 #include "./gtc/type_ptr.hpp"
 #include "./gtc/ulp.hpp"
 #include "./gtc/vec1.hpp"
-#if GLM_CONFIG_ALIGNED_GENTYPES == GLM_ENABLE
-#	include "./gtc/type_aligned.hpp"
-#endif
 
 #ifdef GLM_ENABLE_EXPERIMENTAL
 #include "./gtx/associated_min_max.hpp"

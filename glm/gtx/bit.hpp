@@ -49,7 +49,6 @@ namespace glm
 	GLM_FUNC_DECL genIUType powerOfTwoAbove(genIUType Value);
 
 	/// Return the power of two number which value is just higher the input value.
-	/// Deprecated, use ceilPowerOfTwo from GTC_round instead
 	///
 	/// @see gtc_round
 	/// @see gtx_bit

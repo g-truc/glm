@@ -59,7 +59,7 @@ namespace glm
 				struct{ T r, g, b; };
 				struct{ T s, t, p; };
 
-				typename detail::storage<3, T, detail::is_aligned<Q>::value>::type data;
+				typename detail::storage<3, T, detail::is_aligned<Q>::value> data;
 
 #				if GLM_CONFIG_SWIZZLE == GLM_SWIZZLE_OPERATOR
 					GLM_SWIZZLE3_2_MEMBERS(T, Q, x, y, z)

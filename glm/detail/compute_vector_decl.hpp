@@ -27,7 +27,7 @@ namespace glm {
 			GLM_FUNC_QUALIFIER GLM_CONSTEXPR static vec<L, T, Q> call(vec<L, T, Q> const& a, vec<L, T, Q> const& b)
 			{
 				return detail::functor2<vec, L, T, Q>::call(std::multiplies<T>(), a, b);
-			}
+			}			
 		};
 
 		template<length_t L, typename T, qualifier Q, bool UseSimd>

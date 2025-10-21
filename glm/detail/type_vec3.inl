@@ -836,7 +836,6 @@ namespace glm {
 	CTORSL(3, CTOR_INT3);
 	CTORSL(3, CTOR_VECF_INT3);
 
-
 	template<>
 	template<>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<3, double, aligned_highp>::vec(const vec<3, double, aligned_highp>& v)
@@ -848,9 +847,6 @@ namespace glm {
 		data.setv(1, v.data.getv(1));
 	}
 #endif
-
-
-
 
 	template<>
 	template<>
@@ -958,8 +954,6 @@ namespace glm {
 	//CTORSL(3, CTOR_INT64);
 
 #endif //GLM_ARCH & GLM_ARCH_SSE2_BITt
-
-
 }
 
 #endif

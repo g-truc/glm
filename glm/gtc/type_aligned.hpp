@@ -12,10 +12,6 @@
 
 #pragma once
 
-#if (GLM_CONFIG_ALIGNED_GENTYPES == GLM_DISABLE)
-#	error "GLM: Aligned gentypes require to enable C++ language extensions. Define GLM_FORCE_ALIGNED_GENTYPES before including GLM headers to use aligned types."
-#endif
-
 #if GLM_MESSAGES == GLM_ENABLE && !defined(GLM_EXT_INCLUDED)
 # pragma message("GLM: GLM_GTC_type_aligned extension included")
 #endif

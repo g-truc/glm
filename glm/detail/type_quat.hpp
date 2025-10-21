@@ -48,7 +48,7 @@ namespace glm
 					struct { T x, y, z, w; };
 #				endif
 
-				typename detail::storage<4, T, detail::is_aligned<Q>::value>::type data;
+				typename detail::storage<4, T, detail::is_aligned<Q>::value> data;
 			};
 #		else
 #			ifdef GLM_FORCE_QUAT_DATA_WXYZ

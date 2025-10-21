@@ -322,19 +322,6 @@
 #endif
 
 ///////////////////////////////////////////////////////////////////////////////////
-// Qualifiers
-
-#if (GLM_COMPILER & GLM_COMPILER_VC) || ((GLM_COMPILER & GLM_COMPILER_INTEL) && (GLM_PLATFORM & GLM_PLATFORM_WINDOWS))
-#	define GLM_ALIGNED_TYPEDEF(type, name, alignment) typedef __declspec(align(alignment)) type name
-#elif GLM_COMPILER & (GLM_COMPILER_GCC | GLM_COMPILER_CLANG | GLM_COMPILER_INTEL)
-#	define GLM_ALIGNED_TYPEDEF(type, name, alignment) typedef type name __attribute__((aligned(alignment)))
-#elif (GLM_COMPILER & GLM_COMPILER_CUDA) || (GLM_COMPILER & GLM_COMPILER_HIP)
-#	define GLM_ALIGNED_TYPEDEF(type, name, alignment) typedef type name __align__(x)
-#else
-#	define GLM_ALIGNED_TYPEDEF(type, name, alignment) typedef type name
-#endif
-
-///////////////////////////////////////////////////////////////////////////////////
 
 #ifdef GLM_FORCE_EXPLICIT_CTOR
 #	define GLM_EXPLICIT explicit
