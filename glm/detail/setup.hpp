@@ -131,34 +131,18 @@
 ///////////////////////////////////////////////////////////////////////////////////
 // Has of C++ features
 
-// N2672 Initializer lists http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2008/n2672.htm
-#define GLM_HAS_INITIALIZER_LISTS 1
-
 // N2235 Generalized Constant Expressions http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2235.pdf
 // N3652 Extended Constant Expressions http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3652.html
 #if (GLM_ARCH & GLM_ARCH_SIMD_BIT) // Compiler SIMD intrinsics don't support constexpr...
 #	define GLM_HAS_CONSTEXPR 0
-#elif (GLM_COMPILER & GLM_COMPILER_CLANG)
-#	define GLM_HAS_CONSTEXPR __has_feature(cxx_relaxed_constexpr)
-#elif (GLM_LANG & GLM_LANG_CXX14_FLAG)
-#	define GLM_HAS_CONSTEXPR 1
 #else
-#	define GLM_HAS_CONSTEXPR ((GLM_LANG & GLM_LANG_CXX0X_FLAG) && GLM_HAS_INITIALIZER_LISTS && (\
-		((GLM_COMPILER & GLM_COMPILER_INTEL) && (GLM_COMPILER >= GLM_COMPILER_INTEL17)) || \
-		((GLM_COMPILER & GLM_COMPILER_VC) && (GLM_COMPILER >= GLM_COMPILER_VC15))))
+#	define GLM_HAS_CONSTEXPR 1
 #endif
 
 #if GLM_HAS_CONSTEXPR
 #	define GLM_CONSTEXPR constexpr
 #else
 #	define GLM_CONSTEXPR
-#endif
-
-// [nodiscard]
-#if GLM_LANG & GLM_LANG_CXX17_FLAG
-#	define GLM_NODISCARD [[nodiscard]]
-#else
-#	define GLM_NODISCARD
 #endif
 
 //
@@ -250,16 +234,14 @@
 
 #define GLM_CTOR_DECL GLM_CUDA_FUNC_DECL GLM_CONSTEXPR
 #define GLM_FUNC_DISCARD_DECL GLM_CUDA_FUNC_DECL
-#define GLM_FUNC_DECL GLM_NODISCARD GLM_CUDA_FUNC_DECL
+#define GLM_FUNC_DECL [[nodiscard]] GLM_CUDA_FUNC_DECL
 #define GLM_FUNC_QUALIFIER GLM_CUDA_FUNC_DEF GLM_INLINE
 
 // Do not use CUDA function qualifiers on CUDA compiler when functions are made default
-#define GLM_DEFAULTED_FUNC_DECL
-#define GLM_DEFAULTED_FUNC_QUALIFIER GLM_INLINE
 
 #if !defined(GLM_FORCE_CTOR_INIT)
 #	define GLM_DEFAULTED_DEFAULT_CTOR_DECL
-#	define GLM_DEFAULTED_DEFAULT_CTOR_QUALIFIER GLM_DEFAULTED_FUNC_QUALIFIER
+#	define GLM_DEFAULTED_DEFAULT_CTOR_QUALIFIER GLM_INLINE
 #else
 #	define GLM_DEFAULTED_DEFAULT_CTOR_DECL GLM_FUNC_DISCARD_DECL
 #	define GLM_DEFAULTED_DEFAULT_CTOR_QUALIFIER GLM_FUNC_QUALIFIER

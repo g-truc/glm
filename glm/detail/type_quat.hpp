@@ -110,7 +110,7 @@ namespace glm
 
 		// -- Unary arithmetic operators --
 
-		GLM_DEFAULTED_FUNC_DECL GLM_CONSTEXPR qua<T, Q>& operator=(qua<T, Q> const& q) = default;
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR qua<T, Q>& operator=(qua<T, Q> const& q) = default;
 
 		template<typename U>
 		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR qua<T, Q>& operator=(qua<U, Q> const& q);
