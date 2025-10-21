@@ -41,12 +41,12 @@ namespace glm
 	GLM_FUNC_DECL vec<L, T, Q> highestBitValue(vec<L, T, Q> const& value);
 
 	/// Return the power of two number which value is just higher the input value.
-	/// Deprecated, use ceilPowerOfTwo from GTC_round instead
 	///
 	/// @see gtc_round
 	/// @see gtx_bit
 	template<typename genIUType>
-	GLM_DEPRECATED GLM_FUNC_DECL genIUType powerOfTwoAbove(genIUType Value);
+	[[deprecated("Use ceilPowerOfTwo from GTC_round instead")]]
+	GLM_FUNC_DECL genIUType powerOfTwoAbove(genIUType Value);
 
 	/// Return the power of two number which value is just higher the input value.
 	/// Deprecated, use ceilPowerOfTwo from GTC_round instead
@@ -54,39 +54,40 @@ namespace glm
 	/// @see gtc_round
 	/// @see gtx_bit
 	template<length_t L, typename T, qualifier Q>
-	GLM_DEPRECATED GLM_FUNC_DECL vec<L, T, Q> powerOfTwoAbove(vec<L, T, Q> const& value);
+	[[deprecated("Use ceilPowerOfTwo from GTC_round instead")]]
+	GLM_FUNC_DECL vec<L, T, Q> powerOfTwoAbove(vec<L, T, Q> const& value);
 
 	/// Return the power of two number which value is just lower the input value.
-	/// Deprecated, use floorPowerOfTwo from GTC_round instead
 	///
 	/// @see gtc_round
 	/// @see gtx_bit
 	template<typename genIUType>
-	GLM_DEPRECATED GLM_FUNC_DECL genIUType powerOfTwoBelow(genIUType Value);
+	[[deprecated("Use floorPowerOfTwo from GTC_round instead")]]
+	GLM_FUNC_DECL genIUType powerOfTwoBelow(genIUType Value);
 
 	/// Return the power of two number which value is just lower the input value.
-	/// Deprecated, use floorPowerOfTwo from GTC_round instead
 	///
 	/// @see gtc_round
 	/// @see gtx_bit
 	template<length_t L, typename T, qualifier Q>
-	GLM_DEPRECATED GLM_FUNC_DECL vec<L, T, Q> powerOfTwoBelow(vec<L, T, Q> const& value);
+	[[deprecated("Use floorPowerOfTwo from GTC_round instead")]]
+	GLM_FUNC_DECL vec<L, T, Q> powerOfTwoBelow(vec<L, T, Q> const& value);
 
 	/// Return the power of two number which value is the closet to the input value.
-	/// Deprecated, use roundPowerOfTwo from GTC_round instead
 	///
 	/// @see gtc_round
 	/// @see gtx_bit
 	template<typename genIUType>
-	GLM_DEPRECATED GLM_FUNC_DECL genIUType powerOfTwoNearest(genIUType Value);
+	[[deprecated("Use roundPowerOfTwo from GTC_round instead")]]
+	GLM_FUNC_DECL genIUType powerOfTwoNearest(genIUType Value);
 
 	/// Return the power of two number which value is the closet to the input value.
-	/// Deprecated, use roundPowerOfTwo from GTC_round instead
 	///
 	/// @see gtc_round
 	/// @see gtx_bit
 	template<length_t L, typename T, qualifier Q>
-	GLM_DEPRECATED GLM_FUNC_DECL vec<L, T, Q> powerOfTwoNearest(vec<L, T, Q> const& value);
+	[[deprecated("Use roundPowerOfTwo from GTC_round instead")]]
+	GLM_FUNC_DECL vec<L, T, Q> powerOfTwoNearest(vec<L, T, Q> const& value);
 
 	/// @}
 } //namespace glm
