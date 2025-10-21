@@ -252,9 +252,6 @@
 #include "./gtx/vector_angle.hpp"
 #include "./gtx/vector_query.hpp"
 #include "./gtx/wrap.hpp"
-
-#if GLM_HAS_TEMPLATE_ALIASES
-#	include "./gtx/scalar_multiplication.hpp"
-#endif
+#include "./gtx/scalar_multiplication.hpp"
 #include "./gtx/range.hpp"
 #endif//GLM_ENABLE_EXPERIMENTAL
