@@ -17,12 +17,12 @@ namespace detail
 		char    _buffer[1];
 	};
 
-	template<int N, typename T, qualifier Q, int E0, int E1, int E2, int E3, bool UseSimd>
+	template<length_t N, typename T, qualifier Q, int E0, int E1, int E2, int E3, bool UseSimd>
 	struct _swizzle_base1 : public _swizzle_base0<T, N>
 	{
 	};
 
-	template<int N, typename T, qualifier Q, int E0, int E1, int E2, int E3>
+	template<length_t N, typename T, qualifier Q, int E0, int E1, int E2, int E3>
 	struct _swizzle_base1<N, T, Q, E0, E1, E2, E3, false> : public _swizzle_base0<T, N>
 	{
 	};
@@ -56,7 +56,7 @@ namespace detail
 		DUPLICATE_ELEMENTS = 1 if there is a repeated element, 0 otherwise (used to specialize swizzles
 			containing duplicate elements so that they cannot be used as r-values).
 	*/
-	template<int N, typename T, qualifier Q, int E0, int E1, int E2, int E3, int DUPLICATE_ELEMENTS>
+	template<length_t N, typename T, qualifier Q, int E0, int E1, int E2, int E3, int DUPLICATE_ELEMENTS>
 	struct _swizzle_base2 : public _swizzle_base1<N, T, Q, E0,E1,E2,E3, detail::is_aligned<Q>::value>
 	{
 		struct op_equal
@@ -145,7 +145,7 @@ namespace detail
 	};
 
 	// Specialization for swizzles containing duplicate elements.  These cannot be modified.
-	template<int N, typename T, qualifier Q, int E0, int E1, int E2, int E3>
+	template<length_t N, typename T, qualifier Q, int E0, int E1, int E2, int E3>
 	struct _swizzle_base2<N, T, Q, E0,E1,E2,E3, 1> : public _swizzle_base1<N, T, Q, E0,E1,E2,E3, detail::is_aligned<Q>::value>
 	{
 		struct Stub {};
@@ -159,7 +159,7 @@ namespace detail
 		}
 	};
 
-	template<int N, typename T, qualifier Q, int E0, int E1, int E2, int E3>
+	template<length_t N, typename T, qualifier Q, int E0, int E1, int E2, int E3>
 	struct _swizzle : public _swizzle_base2<N, T, Q, E0, E1, E2, E3, (E0 == E1 || E0 == E2 || E0 == E3 || E1 == E2 || E1 == E3 || E2 == E3)>
 	{
 		typedef _swizzle_base2<N, T, Q, E0, E1, E2, E3, (E0 == E1 || E0 == E2 || E0 == E3 || E1 == E2 || E1 == E3 || E2 == E3)> base_type;
@@ -172,8 +172,8 @@ namespace detail
 //
 // To prevent the C++ syntax from getting entirely overwhelming, define some alias macros
 //
-#define GLM_SWIZZLE_TEMPLATE1   template<int N, typename T, qualifier Q, int E0, int E1, int E2, int E3>
-#define GLM_SWIZZLE_TEMPLATE2   template<int N, typename T, qualifier Q, int E0, int E1, int E2, int E3, int F0, int F1, int F2, int F3>
+#define GLM_SWIZZLE_TEMPLATE1   template<length_t N, typename T, qualifier Q, int E0, int E1, int E2, int E3>
+#define GLM_SWIZZLE_TEMPLATE2   template<length_t N, typename T, qualifier Q, int E0, int E1, int E2, int E3, int F0, int F1, int F2, int F3>
 #define GLM_SWIZZLE_TYPE1       _swizzle<N, T, Q, E0, E1, E2, E3>
 #define GLM_SWIZZLE_TYPE2       _swizzle<N, T, Q, F0, F1, F2, F3>
 
