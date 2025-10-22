@@ -87,6 +87,16 @@ static int test_precision()
 	return Error;
 }
 
+static int test_align()
+{
+	int Error = 0;
+
+	Error += sizeof(glm::lowp_quat) <= sizeof(glm::mediump_quat) ? 0 : 1;
+	Error += sizeof(glm::mediump_quat) <= sizeof(glm::highp_quat) ? 0 : 1;
+
+	return Error;
+}
+
 int main()
 {
 	int Error = 0;
@@ -95,6 +105,7 @@ int main()
 	Error += test_two_axis_ctr();
 	Error += test_size();
 	Error += test_precision();
+	Error += test_align();
 
 	return Error;
 }

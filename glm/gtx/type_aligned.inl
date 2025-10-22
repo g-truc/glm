@@ -1,4 +1,4 @@
-/// @ref gtc_type_aligned
+/// @ref gtx_type_aligned
 
 namespace glm
 {
