@@ -1192,30 +1192,103 @@ namespace glm
 
 	// Quaternion
 
-	typedef qua<float, lowp>			lowp_quat;
-	typedef qua<float, mediump>			mediump_quat;
-	typedef qua<float, highp>			highp_quat;
-	typedef qua<float, defaultp>		quat;
+	typedef qua<float, lowp, sizeof(float) * 4>			aligned_lowp_quat;
+	typedef qua<float, mediump, sizeof(float) * 4>		aligned_mediump_quat;
+	typedef qua<float, highp, sizeof(float) * 4>		aligned_highp_quat;
 
-	typedef qua<float, lowp>			lowp_fquat;
-	typedef qua<float, mediump>			mediump_fquat;
-	typedef qua<float, highp>			highp_fquat;
-	typedef qua<float, defaultp>		fquat;
+	typedef qua<float, lowp>							packed_lowp_quat;
+	typedef qua<float, mediump>							packed_mediump_quat;
+	typedef qua<float, highp>							packed_highp_quat;
 
-	typedef qua<f32, lowp>				lowp_f32quat;
-	typedef qua<f32, mediump>			mediump_f32quat;
-	typedef qua<f32, highp>				highp_f32quat;
-	typedef qua<f32, defaultp>			f32quat;
+#ifdef GLM_FORCE_DEFAULT_ALIGNED_GENTYPES
+	typedef qua<float, lowp, sizeof(float) * 4>			lowp_quat;
+	typedef qua<float, mediump, sizeof(float) * 4>		mediump_quat;
+	typedef qua<float, highp, sizeof(float) * 4>		highp_quat;
+	typedef qua<float, defaultp, sizeof(float) * 4>		quat;
+#else
+	typedef qua<float, lowp>							lowp_quat;
+	typedef qua<float, mediump>							mediump_quat;
+	typedef qua<float, highp>							highp_quat;
+	typedef qua<float, defaultp>						quat;
+#endif
 
-	typedef qua<double, lowp>			lowp_dquat;
-	typedef qua<double, mediump>		mediump_dquat;
-	typedef qua<double, highp>			highp_dquat;
-	typedef qua<double, defaultp>		dquat;
+	typedef qua<float, lowp, sizeof(float) * 4>			aligned_lowp_fquat;
+	typedef qua<float, mediump, sizeof(float) * 4>		aligned_mediump_fquat;
+	typedef qua<float, highp, sizeof(float) * 4>		aligned_highp_fquat;
 
-	typedef qua<f64, lowp>				lowp_f64quat;
-	typedef qua<f64, mediump>			mediump_f64quat;
-	typedef qua<f64, highp>				highp_f64quat;
-	typedef qua<f64, defaultp>			f64quat;
+	typedef qua<float, lowp>							packed_lowp_fquat;
+	typedef qua<float, mediump>							packed_mediump_fquat;
+	typedef qua<float, highp>							packed_highp_fquat;
+
+#ifdef GLM_FORCE_DEFAULT_ALIGNED_GENTYPES
+	typedef qua<float, lowp, sizeof(float) * 4>			lowp_fquat;
+	typedef qua<float, mediump, sizeof(float) * 4>		mediump_fquat;
+	typedef qua<float, highp, sizeof(float) * 4>		highp_fquat;
+	typedef qua<float, defaultp, sizeof(float) * 4>		fquat;
+#else
+	typedef qua<float, lowp>							lowp_fquat;
+	typedef qua<float, mediump>							mediump_fquat;
+	typedef qua<float, highp>							highp_fquat;
+	typedef qua<float, defaultp>						fquat;
+#endif
+
+	typedef qua<double, lowp, sizeof(double) * 4>		aligned_lowp_dquat;
+	typedef qua<double, mediump, sizeof(double) * 4>	aligned_mediump_dquat;
+	typedef qua<double, highp, sizeof(double) * 4>		aligned_highp_dquat;
+
+	typedef qua<double, lowp>							packed_lowp_dquat;
+	typedef qua<double, mediump>						packed_mediump_dquat;
+	typedef qua<double, highp>							packed_highp_dquat;
+
+#ifdef GLM_FORCE_DEFAULT_ALIGNED_GENTYPES
+	typedef qua<double, lowp, sizeof(double) * 4>		lowp_dquat;
+	typedef qua<double, mediump, sizeof(double) * 4>	mediump_dquat;
+	typedef qua<double, highp, sizeof(double) * 4>		highp_dquat;
+	typedef qua<double, defaultp, sizeof(double) * 4>	dquat;
+#else
+	typedef qua<double, lowp>							lowp_dquat;
+	typedef qua<double, mediump>						mediump_dquat;
+	typedef qua<double, highp>							highp_dquat;
+	typedef qua<double, defaultp>						dquat;
+#endif
+
+	typedef qua<float, lowp, sizeof(float) * 4>			aligned_lowp_f32quat;
+	typedef qua<float, mediump, sizeof(float) * 4>		aligned_mediump_f32quat;
+	typedef qua<float, highp, sizeof(float) * 4>		aligned_highp_f32quat;
+
+	typedef qua<float, lowp>							packed_lowp_f32quat;
+	typedef qua<float, mediump>							packed_mediump_f32quat;
+	typedef qua<float, highp>							packed_highp_f32quat;
+
+#ifdef GLM_FORCE_DEFAULT_ALIGNED_GENTYPES
+	typedef qua<float, lowp, sizeof(float) * 4>			lowp_f32quat;
+	typedef qua<float, mediump, sizeof(float) * 4>		mediump_f32quat;
+	typedef qua<float, highp, sizeof(float) * 4>		highp_f32quat;
+	typedef qua<float, defaultp, sizeof(float) * 4>		f32quat;
+#else
+	typedef qua<float, lowp>							lowp_f32quat;
+	typedef qua<float, mediump>							mediump_f32quat;
+	typedef qua<float, highp>							highp_f32quat;
+	typedef qua<float, defaultp>						f32quat;
+#endif
+
+	typedef qua<double, lowp, sizeof(double) * 4>		aligned_lowp_f64quat;
+	typedef qua<double, mediump, sizeof(double) * 4>	aligned_mediump_f64quat;
+	typedef qua<double, highp, sizeof(double) * 4>		aligned_highp_f64quat;
+
+	typedef qua<double, lowp>							packed_lowp_f64quat;
+	typedef qua<double, mediump>						packed_mediump_f64quat;
+	typedef qua<double, highp>							packed_highp_f64quat;
+
+#ifdef GLM_FORCE_DEFAULT_ALIGNED_GENTYPES
+	typedef qua<double, lowp, sizeof(double) * 4>		lowp_f64quat;
+	typedef qua<double, mediump, sizeof(double) * 4>	mediump_f64quat;
+	typedef qua<double, highp, sizeof(double) * 4>		highp_f64quat;
+	typedef qua<double, defaultp, sizeof(double) * 4>	f64quat;
+#else
+	typedef qua<double, lowp>							lowp_f64quat;
+	typedef qua<double, mediump>						mediump_f64quat;
+	typedef qua<double, highp>							highp_f64quat;
+	typedef qua<double, defaultp>						f64quat;
+#endif
 }//namespace glm
-
-

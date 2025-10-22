@@ -1,12 +1,7 @@
-#ifndef GLM_FORCE_PURE
-#define GLM_FORCE_DEFAULT_ALIGNED_GENTYPES
-#endif
 #include <glm/gtc/random.hpp>
 #include <glm/gtc/epsilon.hpp>
 #include <glm/gtc/type_precision.hpp>
-#if GLM_LANG & GLM_LANG_CXX0X_FLAG
-#	include <array>
-#endif
+#include <array>
 
 std::size_t const TestSamples = 10000;
 
@@ -324,47 +319,7 @@ static int test_ballRand()
 
 	return Error;
 }
-/*
-#if(GLM_LANG & GLM_LANG_CXX0X_FLAG)
-int test_grid()
-{
-	int Error = 0;
 
-	typedef std::array<int, 8> colors;
-	typedef std::array<int, 8 * 8> grid;
-
-	grid Grid;
-	colors Colors;
-
-	grid GridBest;
-	colors ColorsBest;
-
-	while(true)
-	{
-		for(std::size_t i = 0; i < Grid.size(); ++i)
-			Grid[i] = int(glm::linearRand(0.0, 8.0 * 8.0 * 8.0 - 1.0) / 64.0);
-
-		for(std::size_t i = 0; i < Grid.size(); ++i)
-			++Colors[Grid[i]];
-
-		bool Exit = true;
-		for(std::size_t i = 0; i < Colors.size(); ++i)
-		{
-			if(Colors[i] == 8)
-				continue;
-
-			Exit = false;
-			break;
-		}
-
-		if(Exit == true)
-			break;
-	}
-
-	return Error;
-}
-#endif
-*/
 int main()
 {
 	int Error = 0;
@@ -374,10 +329,6 @@ int main()
 	Error += test_sphericalRand();
 	Error += test_diskRand();
 	Error += test_ballRand();
-/*
-#if(GLM_LANG & GLM_LANG_CXX0X_FLAG)
-	Error += test_grid();
-#endif
-*/
+
 	return Error;
 }

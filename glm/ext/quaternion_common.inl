@@ -1,7 +1,7 @@
 namespace glm
 {
-	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER qua<T, Q> mix(qua<T, Q> const& x, qua<T, Q> const& y, T a)
+	template<typename T, qualifier Q, std::size_t N>
+	GLM_FUNC_QUALIFIER qua<T, Q, N> mix(qua<T, Q, N> const& x, qua<T, Q, N> const& y, T a)
 	{
 		static_assert(std::numeric_limits<T>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'mix' only accept floating-point inputs");
 
@@ -11,7 +11,7 @@ namespace glm
 		if(cosTheta > static_cast<T>(1) - epsilon<T>())
 		{
 			// Linear interpolation
-			return qua<T, Q>::wxyz(
+			return qua<T, Q, N>::wxyz(
 				mix(x.w, y.w, a),
 				mix(x.x, y.x, a),
 				mix(x.y, y.y, a),
@@ -25,8 +25,8 @@ namespace glm
 		}
 	}
 
-	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q> lerp(qua<T, Q> const& x, qua<T, Q> const& y, T a)
+	template<typename T, qualifier Q, std::size_t N>
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q, N> lerp(qua<T, Q, N> const& x, qua<T, Q, N> const& y, T a)
 	{
 		static_assert(std::numeric_limits<T>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'lerp' only accept floating-point inputs");
 
@@ -37,12 +37,12 @@ namespace glm
 		return x * (static_cast<T>(1) - a) + (y * a);
 	}
 
-	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER qua<T, Q> slerp(qua<T, Q> const& x, qua<T, Q> const& y, T a)
+	template<typename T, qualifier Q, std::size_t N>
+	GLM_FUNC_QUALIFIER qua<T, Q, N> slerp(qua<T, Q, N> const& x, qua<T, Q, N> const& y, T a)
 	{
 		static_assert(std::numeric_limits<T>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'slerp' only accept floating-point inputs");
 
-		qua<T, Q> z = y;
+		qua<T, Q, N> z = y;
 
 		T cosTheta = dot(x, y);
 
@@ -58,7 +58,7 @@ namespace glm
 		if(cosTheta > static_cast<T>(1) - epsilon<T>())
 		{
 			// Linear interpolation
-			return qua<T, Q>::wxyz(
+			return qua<T, Q, N>::wxyz(
 				mix(x.w, z.w, a),
 				mix(x.x, z.x, a),
 				mix(x.y, z.y, a),
@@ -72,13 +72,13 @@ namespace glm
 		}
 	}
 
-    template<typename T, typename S, qualifier Q>
-    GLM_FUNC_QUALIFIER qua<T, Q> slerp(qua<T, Q> const& x, qua<T, Q> const& y, T a, S k)
+    template<typename T, typename S, qualifier Q, std::size_t N>
+    GLM_FUNC_QUALIFIER qua<T, Q, N> slerp(qua<T, Q, N> const& x, qua<T, Q, N> const& y, T a, S k)
     {
         static_assert(std::numeric_limits<T>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'slerp' only accept floating-point inputs");
         static_assert(std::numeric_limits<S>::is_integer, "'slerp' only accept integer for spin count");
 
-        qua<T, Q> z = y;
+        qua<T, Q, N> z = y;
 
         T cosTheta = dot(x, y);
 
@@ -109,28 +109,28 @@ namespace glm
         }
     }
 
-	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q> conjugate(qua<T, Q> const& q)
+	template<typename T, qualifier Q, std::size_t N>
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q, N> conjugate(qua<T, Q, N> const& q)
 	{
-		return qua<T, Q>::wxyz(q.w, -q.x, -q.y, -q.z);
+		return qua<T, Q, N>::wxyz(q.w, -q.x, -q.y, -q.z);
 	}
 
-	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q> inverse(qua<T, Q> const& q)
+	template<typename T, qualifier Q, std::size_t N>
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q, N> inverse(qua<T, Q, N> const& q)
 	{
 		return conjugate(q) / dot(q, q);
 	}
 
-	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER vec<4, bool, Q> isnan(qua<T, Q> const& q)
+	template<typename T, qualifier Q, std::size_t N>
+	GLM_FUNC_QUALIFIER vec<4, bool, Q> isnan(qua<T, Q, N> const& q)
 	{
 		static_assert(std::numeric_limits<T>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'isnan' only accept floating-point inputs");
 
 		return vec<4, bool, Q>(isnan(q.x), isnan(q.y), isnan(q.z), isnan(q.w));
 	}
 
-	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER vec<4, bool, Q> isinf(qua<T, Q> const& q)
+	template<typename T, qualifier Q, std::size_t N>
+	GLM_FUNC_QUALIFIER vec<4, bool, Q> isinf(qua<T, Q, N> const& q)
 	{
 		static_assert(std::numeric_limits<T>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'isinf' only accept floating-point inputs");
 
