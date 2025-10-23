@@ -71,8 +71,8 @@ namespace detail
 
 	// -- Component accesses --
 
-	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR T & qua<T, Q>::operator[](typename qua<T, Q>::length_type i)
+	template<typename T, qualifier Q, std::size_t N>
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR T & qua<T, Q, N>::operator[](typename qua<T, Q, N>::length_type i)
 	{
 		GLM_ASSERT_LENGTH(i, this->length());
 #		ifdef GLM_FORCE_QUAT_DATA_WXYZ
@@ -82,8 +82,8 @@ namespace detail
 #		endif
 	}
 
-	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR T const& qua<T, Q>::operator[](typename qua<T, Q>::length_type i) const
+	template<typename T, qualifier Q, std::size_t N>
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR T const& qua<T, Q, N>::operator[](typename qua<T, Q, N>::length_type i) const
 	{
 		GLM_ASSERT_LENGTH(i, this->length());
 #		ifdef GLM_FORCE_QUAT_DATA_WXYZ
@@ -96,8 +96,8 @@ namespace detail
 	// -- Implicit basic constructors --
 
 #	if GLM_CONFIG_CTOR_INIT == GLM_ENABLE
-		template<typename T, qualifier Q>
-		GLM_DEFAULTED_DEFAULT_CTOR_QUALIFIER GLM_CONSTEXPR qua<T, Q>::qua()
+		template<typename T, qualifier Q, std::size_t N>
+		GLM_DEFAULTED_DEFAULT_CTOR_QUALIFIER GLM_CONSTEXPR qua<T, Q, N>::qua()
 #			ifdef GLM_FORCE_QUAT_DATA_WXYZ
 				: w(1), x(0), y(0), z(0)
 #			else
@@ -106,9 +106,9 @@ namespace detail
 		{}
 #	endif
 
-	template<typename T, qualifier Q>
+	template<typename T, qualifier Q, std::size_t N>
 	template<qualifier P>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q>::qua(qua<T, P> const& q)
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q, N>::qua(qua<T, P, N> const& q)
 #		ifdef GLM_FORCE_QUAT_DATA_WXYZ
 			: w(q.w), x(q.x), y(q.y), z(q.z)
 #		else
@@ -118,8 +118,8 @@ namespace detail
 
 	// -- Explicit basic constructors --
 
-	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q>::qua(T s, vec<3, T, Q> const& v)
+	template<typename T, qualifier Q, std::size_t N>
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q, N>::qua(T s, vec<3, T, Q> const& v)
 #		ifdef GLM_FORCE_QUAT_DATA_WXYZ
 			: w(s), x(v.x), y(v.y), z(v.z)
 #		else
@@ -127,11 +127,11 @@ namespace detail
 #		endif
 	{}
 
-	template <typename T, qualifier Q>
+	template <typename T, qualifier Q, std::size_t N>
 #		ifdef GLM_FORCE_QUAT_DATA_XYZW
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q>::qua(T _x, T _y, T _z, T _w)
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q, N>::qua(T _x, T _y, T _z, T _w)
 #		else
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q>::qua(T _w, T _x, T _y, T _z)
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q, N>::qua(T _w, T _x, T _y, T _z)
 #		endif
 #		ifdef GLM_FORCE_QUAT_DATA_WXYZ
 			: w(_w), x(_x), y(_y), z(_z)
@@ -140,20 +140,20 @@ namespace detail
 #		endif
 	{}
 
-	template <typename T, qualifier Q>
-	GLM_CONSTEXPR qua<T, Q> qua<T, Q>::wxyz(T w, T x, T y, T z) {
+	template <typename T, qualifier Q, std::size_t N>
+	GLM_CONSTEXPR qua<T, Q, N> qua<T, Q, N>::wxyz(T w, T x, T y, T z) {
 #	ifdef GLM_FORCE_QUAT_DATA_XYZW
-		return qua<T, Q>(x, y, z, w);
+		return qua<T, Q, N>(x, y, z, w);
 #	else
-		return qua<T, Q>(w, x, y, z);
+		return qua<T, Q, N>(w, x, y, z);
 #	endif
 	}
 	
 	// -- Conversion constructors --
 
-	template<typename T, qualifier Q>
-	template<typename U, qualifier P>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q>::qua(qua<U, P> const& q)
+	template<typename T, qualifier Q, std::size_t N>
+	template<typename U, qualifier P, std::size_t M>
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q, N>::qua(qua<U, P, M> const& q)
 #		ifdef GLM_FORCE_QUAT_DATA_WXYZ
 			: w(static_cast<T>(q.w)), x(static_cast<T>(q.x)), y(static_cast<T>(q.y)), z(static_cast<T>(q.z))
 #		else
@@ -179,8 +179,8 @@ namespace detail
 	//	this->z = c.x * c.y * s.z - s.x * s.y * c.z;
 	//}
 
-	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER qua<T, Q>::qua(vec<3, T, Q> const& u, vec<3, T, Q> const& v)
+	template<typename T, qualifier Q, std::size_t N>
+	GLM_FUNC_QUALIFIER qua<T, Q, N>::qua(vec<3, T, Q> const& u, vec<3, T, Q> const& v)
 	{
 		T norm_u_norm_v = sqrt(dot(u, u) * dot(v, v));
 		T real_part = norm_u_norm_v + dot(u, v);
@@ -203,8 +203,8 @@ namespace detail
 		*this = normalize(qua<T, Q>::wxyz(real_part, t.x, t.y, t.z));
 	}
 
-	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q>::qua(vec<3, T, Q> const& eulerAngle)
+	template<typename T, qualifier Q, std::size_t N>
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q, N>::qua(vec<3, T, Q> const& eulerAngle)
 	{
 		vec<3, T, Q> c = glm::cos(eulerAngle * T(0.5));
 		vec<3, T, Q> s = glm::sin(eulerAngle * T(0.5));
@@ -215,35 +215,35 @@ namespace detail
 		this->z = c.x * c.y * s.z - s.x * s.y * c.z;
 	}
 
-	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q>::qua(mat<3, 3, T, Q> const& m)
+	template<typename T, qualifier Q, std::size_t N>
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q, N>::qua(mat<3, 3, T, Q> const& m)
 	{
 		*this = quat_cast(m);
 	}
 
-	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q>::qua(mat<4, 4, T, Q> const& m)
+	template<typename T, qualifier Q, std::size_t N>
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q, N>::qua(mat<4, 4, T, Q> const& m)
 	{
 		*this = quat_cast(m);
 	}
 
-	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER qua<T, Q>::operator mat<3, 3, T, Q>() const
+	template<typename T, qualifier Q, std::size_t N>
+	GLM_FUNC_QUALIFIER qua<T, Q, N>::operator mat<3, 3, T, Q>() const
 	{
 		return mat3_cast(*this);
 	}
 
-	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER qua<T, Q>::operator mat<4, 4, T, Q>() const
+	template<typename T, qualifier Q, std::size_t N>
+	GLM_FUNC_QUALIFIER qua<T, Q, N>::operator mat<4, 4, T, Q>() const
 	{
 		return mat4_cast(*this);
 	}
 
 	// -- Unary arithmetic operators --
 
-	template<typename T, qualifier Q>
+	template<typename T, qualifier Q, std::size_t N>
 	template<typename U>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q> & qua<T, Q>::operator=(qua<U, Q> const& q)
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q, N> & qua<T, Q, N>::operator=(qua<U, Q, N> const& q)
 	{
 		this->w = static_cast<T>(q.w);
 		this->x = static_cast<T>(q.x);
@@ -252,26 +252,26 @@ namespace detail
 		return *this;
 	}
 
-	template<typename T, qualifier Q>
+	template<typename T, qualifier Q, std::size_t N>
 	template<typename U>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q> & qua<T, Q>::operator+=(qua<U, Q> const& q)
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q, N> & qua<T, Q, N>::operator+=(qua<U, Q, N> const& q)
 	{
-		return (*this = detail::compute_quat_add<T, Q, detail::is_aligned<Q>::value>::call(*this, qua<T, Q>(q)));
+		return (*this = detail::compute_quat_add<T, Q, detail::is_aligned<Q>::value>::call(*this, qua<T, Q, N>(q)));
 	}
 
-	template<typename T, qualifier Q>
+	template<typename T, qualifier Q, std::size_t N>
 	template<typename U>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q> & qua<T, Q>::operator-=(qua<U, Q> const& q)
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q, N> & qua<T, Q, N>::operator-=(qua<U, Q, N> const& q)
 	{
-		return (*this = detail::compute_quat_sub<T, Q, detail::is_aligned<Q>::value>::call(*this, qua<T, Q>(q)));
+		return (*this = detail::compute_quat_sub<T, Q, detail::is_aligned<Q>::value>::call(*this, qua<T, Q, N>(q)));
 	}
 
-	template<typename T, qualifier Q>
+	template<typename T, qualifier Q, std::size_t N>
 	template<typename U>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q> & qua<T, Q>::operator*=(qua<U, Q> const& r)
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q, N> & qua<T, Q, N>::operator*=(qua<U, Q, N> const& r)
 	{
-		qua<T, Q> const p(*this);
-		qua<T, Q> const q(r);
+		qua<T, Q, N> const p(*this);
+		qua<T, Q, N> const q(r);
 
 		this->w = p.w * q.w - p.x * q.x - p.y * q.y - p.z * q.z;
 		this->x = p.w * q.x + p.x * q.w + p.y * q.z - p.z * q.y;
@@ -280,56 +280,56 @@ namespace detail
 		return *this;
 	}
 
-	template<typename T, qualifier Q>
+	template<typename T, qualifier Q, std::size_t N>
 	template<typename U>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q> & qua<T, Q>::operator*=(U s)
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q, N> & qua<T, Q, N>::operator*=(U s)
 	{
 		return (*this = detail::compute_quat_mul_scalar<T, Q, detail::is_aligned<Q>::value>::call(*this, static_cast<U>(s)));
 	}
 
-	template<typename T, qualifier Q>
+	template<typename T, qualifier Q, std::size_t N>
 	template<typename U>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q> & qua<T, Q>::operator/=(U s)
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q, N> & qua<T, Q, N>::operator/=(U s)
 	{
 		return (*this = detail::compute_quat_div_scalar<T, Q, detail::is_aligned<Q>::value>::call(*this, static_cast<U>(s)));
 	}
 
 	// -- Unary bit operators --
 
-	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q> operator+(qua<T, Q> const& q)
+	template<typename T, qualifier Q, std::size_t N>
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q, N> operator+(qua<T, Q, N> const& q)
 	{
 		return q;
 	}
 
-	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q> operator-(qua<T, Q> const& q)
+	template<typename T, qualifier Q, std::size_t N>
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q, N> operator-(qua<T, Q, N> const& q)
 	{
-		return qua<T, Q>::wxyz(-q.w, -q.x, -q.y, -q.z);
+		return qua<T, Q, N>::wxyz(-q.w, -q.x, -q.y, -q.z);
 	}
 
 	// -- Binary operators --
 
-	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q> operator+(qua<T, Q> const& q, qua<T, Q> const& p)
+	template<typename T, qualifier Q, std::size_t N>
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q, N> operator+(qua<T, Q, N> const& q, qua<T, Q, N> const& p)
 	{
-		return qua<T, Q>(q) += p;
+		return qua<T, Q, N>(q) += p;
 	}
 
-	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q> operator-(qua<T, Q> const& q, qua<T, Q> const& p)
+	template<typename T, qualifier Q, std::size_t N>
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q, N> operator-(qua<T, Q, N> const& q, qua<T, Q, N> const& p)
 	{
-		return qua<T, Q>(q) -= p;
+		return qua<T, Q, N>(q) -= p;
 	}
 
-	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q> operator*(qua<T, Q> const& q, qua<T, Q> const& p)
+	template<typename T, qualifier Q, std::size_t N>
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q, N> operator*(qua<T, Q, N> const& q, qua<T, Q, N> const& p)
 	{
-		return qua<T, Q>(q) *= p;
+		return qua<T, Q, N>(q) *= p;
 	}
 
-	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<3, T, Q> operator*(qua<T, Q> const& q, vec<3, T, Q> const& v)
+	template<typename T, qualifier Q, std::size_t N>
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<3, T, Q> operator*(qua<T, Q, N> const& q, vec<3, T, Q> const& v)
 	{
 		vec<3, T, Q> const QuatVector(q.x, q.y, q.z);
 		vec<3, T, Q> const uv(glm::cross(QuatVector, v));
@@ -338,54 +338,54 @@ namespace detail
 		return v + ((uv * q.w) + uuv) * static_cast<T>(2);
 	}
 
-	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<3, T, Q> operator*(vec<3, T, Q> const& v, qua<T, Q> const& q)
+	template<typename T, qualifier Q, std::size_t N>
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<3, T, Q> operator*(vec<3, T, Q> const& v, qua<T, Q, N> const& q)
 	{
 		return glm::inverse(q) * v;
 	}
 
-	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, T, Q> operator*(qua<T, Q> const& q, vec<4, T, Q> const& v)
+	template<typename T, qualifier Q, std::size_t N>
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, T, Q> operator*(qua<T, Q, N> const& q, vec<4, T, Q> const& v)
 	{
 		return detail::compute_quat_mul_vec4<T, Q, detail::is_aligned<Q>::value>::call(q, v);
 	}
 
-	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, T, Q> operator*(vec<4, T, Q> const& v, qua<T, Q> const& q)
+	template<typename T, qualifier Q, std::size_t N>
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, T, Q> operator*(vec<4, T, Q> const& v, qua<T, Q, N> const& q)
 	{
 		return glm::inverse(q) * v;
 	}
 
-	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q> operator*(qua<T, Q> const& q, T const& s)
+	template<typename T, qualifier Q, std::size_t N>
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q, N> operator*(qua<T, Q, N> const& q, T const& s)
 	{
-		return qua<T, Q>::wxyz(
+		return qua<T, Q, N>::wxyz(
 			q.w * s, q.x * s, q.y * s, q.z * s);
 	}
 
-	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q> operator*(T const& s, qua<T, Q> const& q)
+	template<typename T, qualifier Q, std::size_t N>
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q, N> operator*(T const& s, qua<T, Q, N> const& q)
 	{
 		return q * s;
 	}
 
-	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q> operator/(qua<T, Q> const& q, T const& s)
+	template<typename T, qualifier Q, std::size_t N>
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q, N> operator/(qua<T, Q, N> const& q, T const& s)
 	{
-		return qua<T, Q>::wxyz(
+		return qua<T, Q, N>::wxyz(
 			q.w / s, q.x / s, q.y / s, q.z / s);
 	}
 
 	// -- Boolean operators --
 
-	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR bool operator==(qua<T, Q> const& q1, qua<T, Q> const& q2)
+	template<typename T, qualifier Q, std::size_t N>
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR bool operator==(qua<T, Q, N> const& q1, qua<T, Q, N> const& q2)
 	{
 		return q1.x == q2.x && q1.y == q2.y && q1.z == q2.z && q1.w == q2.w;
 	}
 
-	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR bool operator!=(qua<T, Q> const& q1, qua<T, Q> const& q2)
+	template<typename T, qualifier Q, std::size_t N>
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR bool operator!=(qua<T, Q, N> const& q1, qua<T, Q, N> const& q2)
 	{
 		return q1.x != q2.x || q1.y != q2.y || q1.z != q2.z || q1.w != q2.w;
 	}
