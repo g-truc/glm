@@ -462,7 +462,7 @@ namespace glm
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<3, T, Q> operator-(vec<3, T, Q> const& v)
 	{
-		return vec<3, T, Q>(0) -= v;
+		return vec<3, T, Q>(T(0)) -= v;
 	}
 
 	// -- Binary arithmetic operators --
