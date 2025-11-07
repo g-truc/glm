@@ -64,8 +64,10 @@ namespace glm
 			char_type  separator;
 			char_type  delim_left;
 			char_type  delim_right;
+            char_type  fill;
 			char_type  space;
 			char_type  newline;
+			char_type  firstline;
 			order_type order;
 
 			GLM_FUNC_DISCARD_DECL explicit format_punct(size_t a = 0);
@@ -157,12 +159,19 @@ namespace glm
 		template<typename FTy, typename CTy, typename CTr>
 		std::basic_ios<CTy,CTr>& unformatted(std::basic_ios<CTy,CTr>&);
 
+        template<typename FTy, typename CTy, typename CTr>
+		std::basic_ios<CTy,CTr>& reset(std::basic_ios<CTy,CTr>&);
+        template<typename FTy, typename CTy, typename CTr>
+		std::basic_ios<CTy,CTr>& compressed(std::basic_ios<CTy,CTr>&);
+
 		template<typename CTy, typename CTr>
 		std::basic_ostream<CTy, CTr>& operator<<(std::basic_ostream<CTy, CTr>&, precision const&);
 		template<typename CTy, typename CTr>
 		std::basic_ostream<CTy, CTr>& operator<<(std::basic_ostream<CTy, CTr>&, width const&);
 		template<typename CTy, typename CTr>
 		std::basic_ostream<CTy, CTr>& operator<<(std::basic_ostream<CTy, CTr>&, delimeter<CTy> const&);
+		template<typename CTy, typename CTr>
+		std::basic_ostream<CTy, CTr>& operator<<(std::basic_ostream<CTy, CTr>&, filler<CTy> const&);
 		template<typename CTy, typename CTr>
 		std::basic_ostream<CTy, CTr>& operator<<(std::basic_ostream<CTy, CTr>&, order const&);
 	}//namespace io
