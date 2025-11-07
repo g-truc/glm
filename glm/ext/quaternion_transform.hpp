@@ -31,11 +31,11 @@ namespace glm
 	/// @addtogroup ext_quaternion_transform
 	/// @{
 
-	/// Rotates a quaternion from a vector of 3 components axis and an angle.
+	/// Builds a quaternion created from an axis and angle and rotates it by input quaternion.
 	///
-	/// @param q Source orientation
-	/// @param angle Angle expressed in radians.
-	/// @param axis Axis of the rotation
+	/// @param q Input quaternion
+	/// @param angle Rotation angle expressed in radians.
+	/// @param axis Rotation axis
 	///
 	/// @tparam T Floating-point scalar types
 	/// @tparam Q Value from qualifier enum
