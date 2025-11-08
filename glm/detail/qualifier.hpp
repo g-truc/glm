@@ -34,7 +34,7 @@ namespace glm
 
 	template<length_t L, typename T, qualifier Q = defaultp> struct vec;
 	template<length_t C, length_t R, typename T, qualifier Q = defaultp> struct mat;
-	template<typename T, qualifier Q = defaultp> struct qua;
+	template<typename T, qualifier Q = defaultp, std::size_t N = alignof(T)> struct qua;
 
 	template <typename T, qualifier Q = defaultp> using tvec1 = vec<1, T, Q>;
 	template <typename T, qualifier Q = defaultp> using tvec2 = vec<2, T, Q>;
