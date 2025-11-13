@@ -71,13 +71,6 @@ if (GLM_BUILD_LIBRARY)
 	)
 	add_library(glm::glm ALIAS glm)
 	target_link_libraries(glm PUBLIC glm-header-only)
-
-    target_sources(glm
-            PUBLIC
-            FILE_SET CXX_MODULES
-            BASE_DIRS .
-            FILES glm.cppm
-    )
 else()
 	add_library(glm INTERFACE)
 	add_library(glm::glm ALIAS glm)
