@@ -50,6 +50,15 @@ target_include_directories(glm-header-only INTERFACE
 	"$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
 )
 
+add_library(glm-miu STATIC)
+target_sources(glm-miu
+        PUBLIC
+        FILE_SET CXX_MODULES
+        BASE_DIRS .
+        FILES glm.cppm
+)
+target_link_libraries(glm-header-only INTERFACE glm-miu)
+
 if (GLM_BUILD_LIBRARY)
 	add_library(glm
 		${ROOT_TEXT}      ${ROOT_MD}        ${ROOT_NAT}
