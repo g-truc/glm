@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>1.0.0 API documentation: matrix_float2x2.hpp File Reference</title>
+<title>1.0.2 API documentation: matrix_double4x4_precision.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo-mini.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">1.0.0 API documentation
+   <div id="projectname">1.0.2 API documentation
    </div>
   </td>
  </tr>
@@ -69,28 +69,40 @@ $(function() {
   <div class="summary">
 <a href="#typedef-members">Typedefs</a>  </div>
   <div class="headertitle">
-<div class="title">matrix_float2x2.hpp File Reference</div>  </div>
+<div class="title">matrix_double4x4_precision.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="a00889.html">Core features</a>  
+<p><a class="el" href="a00898.html">Core features</a>  
 <a href="#details">More...</a></p>
 
 <p><a href="a00149_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:ga8dd59e7fc6913ac5d61b86553e9148ba"><td class="memItemLeft" align="right" valign="top">typedef mat&lt; 2, 2, float, defaultp &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00892.html#ga8dd59e7fc6913ac5d61b86553e9148ba">mat2</a></td></tr>
-<tr class="memdesc:ga8dd59e7fc6913ac5d61b86553e9148ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">2 columns of 2 components matrix of single-precision floating-point numbers.  <a href="a00892.html#ga8dd59e7fc6913ac5d61b86553e9148ba">More...</a><br /></td></tr>
-<tr class="separator:ga8dd59e7fc6913ac5d61b86553e9148ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaaa17ef6bfa4e4f2692348b1460c8efcb"><td class="memItemLeft" align="right" valign="top">typedef mat&lt; 2, 2, float, defaultp &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00892.html#gaaa17ef6bfa4e4f2692348b1460c8efcb">mat2x2</a></td></tr>
-<tr class="memdesc:gaaa17ef6bfa4e4f2692348b1460c8efcb"><td class="mdescLeft">&#160;</td><td class="mdescRight">2 columns of 2 components matrix of single-precision floating-point numbers.  <a href="a00892.html#gaaa17ef6bfa4e4f2692348b1460c8efcb">More...</a><br /></td></tr>
-<tr class="separator:gaaa17ef6bfa4e4f2692348b1460c8efcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga945254f459860741138bceb74da496b9"><td class="memItemLeft" align="right" valign="top">typedef mat&lt; 4, 4, double, highp &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00902.html#ga945254f459860741138bceb74da496b9">highp_dmat4</a></td></tr>
+<tr class="memdesc:ga945254f459860741138bceb74da496b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">4 columns of 4 components matrix of double-precision floating-point numbers using medium precision arithmetic in term of ULPs.  <a href="a00902.html#ga945254f459860741138bceb74da496b9">More...</a><br /></td></tr>
+<tr class="separator:ga945254f459860741138bceb74da496b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga118d24a3d12c034e7cccef7bf2f01b8a"><td class="memItemLeft" align="right" valign="top">typedef mat&lt; 4, 4, double, highp &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00902.html#ga118d24a3d12c034e7cccef7bf2f01b8a">highp_dmat4x4</a></td></tr>
+<tr class="memdesc:ga118d24a3d12c034e7cccef7bf2f01b8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">4 columns of 4 components matrix of double-precision floating-point numbers using medium precision arithmetic in term of ULPs.  <a href="a00902.html#ga118d24a3d12c034e7cccef7bf2f01b8a">More...</a><br /></td></tr>
+<tr class="separator:ga118d24a3d12c034e7cccef7bf2f01b8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga708bc5b91bbfedd21debac8dcf2a64cd"><td class="memItemLeft" align="right" valign="top">typedef mat&lt; 4, 4, double, lowp &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00902.html#ga708bc5b91bbfedd21debac8dcf2a64cd">lowp_dmat4</a></td></tr>
+<tr class="memdesc:ga708bc5b91bbfedd21debac8dcf2a64cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">4 columns of 4 components matrix of double-precision floating-point numbers using low precision arithmetic in term of ULPs.  <a href="a00902.html#ga708bc5b91bbfedd21debac8dcf2a64cd">More...</a><br /></td></tr>
+<tr class="separator:ga708bc5b91bbfedd21debac8dcf2a64cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5b0413198b7e9f061f7534a221c9dac9"><td class="memItemLeft" align="right" valign="top">typedef mat&lt; 4, 4, double, lowp &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00902.html#ga5b0413198b7e9f061f7534a221c9dac9">lowp_dmat4x4</a></td></tr>
+<tr class="memdesc:ga5b0413198b7e9f061f7534a221c9dac9"><td class="mdescLeft">&#160;</td><td class="mdescRight">4 columns of 4 components matrix of double-precision floating-point numbers using low precision arithmetic in term of ULPs.  <a href="a00902.html#ga5b0413198b7e9f061f7534a221c9dac9">More...</a><br /></td></tr>
+<tr class="separator:ga5b0413198b7e9f061f7534a221c9dac9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf650bc667bf2a0e496b5a9182bc8d378"><td class="memItemLeft" align="right" valign="top">typedef mat&lt; 4, 4, double, mediump &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00902.html#gaf650bc667bf2a0e496b5a9182bc8d378">mediump_dmat4</a></td></tr>
+<tr class="memdesc:gaf650bc667bf2a0e496b5a9182bc8d378"><td class="mdescLeft">&#160;</td><td class="mdescRight">4 columns of 4 components matrix of double-precision floating-point numbers using medium precision arithmetic in term of ULPs.  <a href="a00902.html#gaf650bc667bf2a0e496b5a9182bc8d378">More...</a><br /></td></tr>
+<tr class="separator:gaf650bc667bf2a0e496b5a9182bc8d378"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5389b3ab32dc0d72bea00057ab6d1dd3"><td class="memItemLeft" align="right" valign="top">typedef mat&lt; 4, 4, double, mediump &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00902.html#ga5389b3ab32dc0d72bea00057ab6d1dd3">mediump_dmat4x4</a></td></tr>
+<tr class="memdesc:ga5389b3ab32dc0d72bea00057ab6d1dd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">4 columns of 4 components matrix of double-precision floating-point numbers using medium precision arithmetic in term of ULPs.  <a href="a00902.html#ga5389b3ab32dc0d72bea00057ab6d1dd3">More...</a><br /></td></tr>
+<tr class="separator:ga5389b3ab32dc0d72bea00057ab6d1dd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="a00889.html">Core features</a> </p>
+<div class="textblock"><p><a class="el" href="a00898.html">Core features</a> </p>
 
-<p class="definition">Definition in file <a class="el" href="a00149_source.html">matrix_float2x2.hpp</a>.</p>
+<p class="definition">Definition in file <a class="el" href="a00149_source.html">matrix_double4x4_precision.hpp</a>.</p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -16,8 +16,8 @@ namespace detail
 	{
 		GLM_FUNC_QUALIFIER static vec<L, floatType, Q> call(vec<L, T, Q> const& v)
 		{
-			floatType const Min = static_cast<floatType>(std::numeric_limits<T>::min());
-			floatType const Max = static_cast<floatType>(std::numeric_limits<T>::max());
+			floatType const Min = static_cast<floatType>((std::numeric_limits<T>::min)());
+			floatType const Max = static_cast<floatType>((std::numeric_limits<T>::max)());
 			return (vec<L, floatType, Q>(v) - Min) / (Max - Min) * static_cast<floatType>(2) - static_cast<floatType>(1);
 		}
 	};
@@ -27,7 +27,7 @@ namespace detail
 	{
 		GLM_FUNC_QUALIFIER static vec<L, floatType, Q> call(vec<L, T, Q> const& v)
 		{
-			return vec<L, floatType, Q>(v) / static_cast<floatType>(std::numeric_limits<T>::max());
+			return vec<L, floatType, Q>(v) / static_cast<floatType>((std::numeric_limits<T>::max)());
 		}
 	};
 
@@ -49,7 +49,7 @@ namespace detail
 	{
 		GLM_FUNC_QUALIFIER static vec<L, T, Q> call(vec<L, floatType, Q> const& v)
 		{
-			floatType const Max = static_cast<floatType>(std::numeric_limits<T>::max()) + static_cast<floatType>(0.5);
+			floatType const Max = static_cast<floatType>((std::numeric_limits<T>::max)()) + static_cast<floatType>(0.5);
 			vec<L, floatType, Q> const Scaled(v * Max);
 			vec<L, T, Q> const Result(Scaled - static_cast<floatType>(0.5));
 			return Result;
@@ -61,7 +61,7 @@ namespace detail
 	{
 		GLM_FUNC_QUALIFIER static vec<L, T, Q> call(vec<L, floatType, Q> const& v)
 		{
-			return vec<L, T, Q>(vec<L, floatType, Q>(v) * static_cast<floatType>(std::numeric_limits<T>::max()));
+			return vec<L, T, Q>(vec<L, floatType, Q>(v) * static_cast<floatType>((std::numeric_limits<T>::max)()));
 		}
 	};
 
@@ -78,7 +78,7 @@ namespace detail
 	template<typename floatType, length_t L, typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER vec<L, floatType, Q> compNormalize(vec<L, T, Q> const& v)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<floatType>::is_iec559, "'compNormalize' accepts only floating-point types for 'floatType' template parameter");
+		static_assert(std::numeric_limits<floatType>::is_iec559, "'compNormalize' accepts only floating-point types for 'floatType' template parameter");
 
 		return detail::compute_compNormalize<L, T, floatType, Q, std::numeric_limits<T>::is_integer, std::numeric_limits<T>::is_signed>::call(v);
 	}
@@ -86,7 +86,7 @@ namespace detail
 	template<typename T, length_t L, typename floatType, qualifier Q>
 	GLM_FUNC_QUALIFIER vec<L, T, Q> compScale(vec<L, floatType, Q> const& v)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<floatType>::is_iec559, "'compScale' accepts only floating-point types for 'floatType' template parameter");
+		static_assert(std::numeric_limits<floatType>::is_iec559, "'compScale' accepts only floating-point types for 'floatType' template parameter");
 
 		return detail::compute_compScale<L, T, floatType, Q, std::numeric_limits<T>::is_integer, std::numeric_limits<T>::is_signed>::call(v);
 	}

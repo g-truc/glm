@@ -7,17 +7,6 @@
 #endif//(GLM_ARCH & GLM_ARCH_X86 && GLM_COMPILER & GLM_COMPILER_VC)
 #include <limits>
 
-#if !GLM_HAS_EXTENDED_INTEGER_TYPE
-#	if GLM_COMPILER & GLM_COMPILER_GCC
-#		pragma GCC diagnostic push
-#		pragma GCC diagnostic ignored "-Wlong-long"
-#	endif
-#	if (GLM_COMPILER & GLM_COMPILER_CLANG)
-#		pragma clang diagnostic push
-#		pragma clang diagnostic ignored "-Wc++11-long-long"
-#	endif
-#endif
-
 namespace glm{
 namespace detail
 {
@@ -196,19 +185,19 @@ namespace detail
 	GLM_FUNC_QUALIFIER uint usubBorrow(uint const& x, uint const& y, uint & Borrow)
 	{
 		Borrow = x >= y ? static_cast<uint>(0) : static_cast<uint>(1);
-		if(y >= x)
-			return y - x;
+		if(x >= y)
+			return x - y;
 		else
-			return static_cast<uint>((static_cast<detail::int64>(1) << static_cast<detail::int64>(32)) + (static_cast<detail::int64>(y) - static_cast<detail::int64>(x)));
+			return static_cast<uint>((static_cast<detail::int64>(1) << static_cast<detail::int64>(32)) + (static_cast<detail::int64>(x) - static_cast<detail::int64>(y)));
 	}
 
 	template<length_t L, qualifier Q>
 	GLM_FUNC_QUALIFIER vec<L, uint, Q> usubBorrow(vec<L, uint, Q> const& x, vec<L, uint, Q> const& y, vec<L, uint, Q>& Borrow)
 	{
 		Borrow = mix(vec<L, uint, Q>(1), vec<L, uint, Q>(0), greaterThanEqual(x, y));
-		vec<L, uint, Q> const YgeX(y - x);
-		vec<L, uint, Q> const XgeY(vec<L, uint, Q>((static_cast<detail::int64>(1) << static_cast<detail::int64>(32)) + (vec<L, detail::int64, Q>(y) - vec<L, detail::int64, Q>(x))));
-		return mix(XgeY, YgeX, greaterThanEqual(y, x));
+		vec<L, uint, Q> const XgeY(x - y);
+		vec<L, uint, Q> const YgX(vec<L, uint, Q>((static_cast<detail::int64>(1) << static_cast<detail::int64>(32)) + (vec<L, detail::int64, Q>(x) - vec<L, detail::int64, Q>(y))));
+		return mix(YgX, XgeY, greaterThanEqual(x, y));
 	}
 
 	// umulExtended
@@ -253,7 +242,7 @@ namespace detail
 	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER vec<L, T, Q> bitfieldExtract(vec<L, T, Q> const& Value, int Offset, int Bits)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_integer, "'bitfieldExtract' only accept integer inputs");
+		static_assert(std::numeric_limits<T>::is_integer, "'bitfieldExtract' only accept integer inputs");
 
 		return (Value >> static_cast<T>(Offset)) & static_cast<T>(detail::mask(Bits));
 	}
@@ -262,7 +251,7 @@ namespace detail
 	template<typename genIUType>
 	GLM_FUNC_QUALIFIER genIUType bitfieldInsert(genIUType const& Base, genIUType const& Insert, int Offset, int Bits)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<genIUType>::is_integer, "'bitfieldInsert' only accept integer values");
+		static_assert(std::numeric_limits<genIUType>::is_integer, "'bitfieldInsert' only accept integer values");
 
 		return bitfieldInsert(vec<1, genIUType>(Base), vec<1, genIUType>(Insert), Offset, Bits).x;
 	}
@@ -270,7 +259,7 @@ namespace detail
 	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER vec<L, T, Q> bitfieldInsert(vec<L, T, Q> const& Base, vec<L, T, Q> const& Insert, int Offset, int Bits)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_integer, "'bitfieldInsert' only accept integer values");
+		static_assert(std::numeric_limits<T>::is_integer, "'bitfieldInsert' only accept integer values");
 
 		T const Mask = detail::mask(static_cast<T>(Bits)) << Offset;
 		return (Base & ~Mask) | ((Insert << static_cast<T>(Offset)) & Mask);
@@ -285,7 +274,7 @@ namespace detail
 	template<typename genIUType>
 	GLM_FUNC_QUALIFIER genIUType bitfieldReverse(genIUType x)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<genIUType>::is_integer, "'bitfieldReverse' only accept integer values");
+		static_assert(std::numeric_limits<genIUType>::is_integer, "'bitfieldReverse' only accept integer values");
 
 		return bitfieldReverse(glm::vec<1, genIUType, glm::defaultp>(x)).x;
 	}
@@ -293,7 +282,7 @@ namespace detail
 	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER vec<L, T, Q> bitfieldReverse(vec<L, T, Q> const& v)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_integer, "'bitfieldReverse' only accept integer values");
+		static_assert(std::numeric_limits<T>::is_integer, "'bitfieldReverse' only accept integer values");
 
 		vec<L, T, Q> x(v);
 		x = detail::compute_bitfieldReverseStep<L, T, Q, detail::is_aligned<Q>::value, sizeof(T) * 8>=  2>::call(x, static_cast<T>(0x5555555555555555ull), static_cast<T>( 1));
@@ -313,7 +302,7 @@ namespace detail
 	template<typename genIUType>
 	GLM_FUNC_QUALIFIER int bitCount(genIUType x)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<genIUType>::is_integer, "'bitCount' only accept integer values");
+		static_assert(std::numeric_limits<genIUType>::is_integer, "'bitCount' only accept integer values");
 
 		return bitCount(glm::vec<1, genIUType, glm::defaultp>(x)).x;
 	}
@@ -321,20 +310,20 @@ namespace detail
 	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER vec<L, int, Q> bitCount(vec<L, T, Q> const& v)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_integer, "'bitCount' only accept integer values");
+		static_assert(std::numeric_limits<T>::is_integer, "'bitCount' only accept integer values");
 
 #		if GLM_COMPILER & GLM_COMPILER_VC
 #			pragma warning(push)
 #			pragma warning(disable : 4310) //cast truncates constant value
 #		endif
 
-		vec<L, typename detail::make_unsigned<T>::type, Q> x(v);
-		x = detail::compute_bitfieldBitCountStep<L, typename detail::make_unsigned<T>::type, Q, detail::is_aligned<Q>::value, sizeof(T) * 8>=  2>::call(x, typename detail::make_unsigned<T>::type(0x5555555555555555ull), typename detail::make_unsigned<T>::type( 1));
-		x = detail::compute_bitfieldBitCountStep<L, typename detail::make_unsigned<T>::type, Q, detail::is_aligned<Q>::value, sizeof(T) * 8>=  4>::call(x, typename detail::make_unsigned<T>::type(0x3333333333333333ull), typename detail::make_unsigned<T>::type( 2));
-		x = detail::compute_bitfieldBitCountStep<L, typename detail::make_unsigned<T>::type, Q, detail::is_aligned<Q>::value, sizeof(T) * 8>=  8>::call(x, typename detail::make_unsigned<T>::type(0x0F0F0F0F0F0F0F0Full), typename detail::make_unsigned<T>::type( 4));
-		x = detail::compute_bitfieldBitCountStep<L, typename detail::make_unsigned<T>::type, Q, detail::is_aligned<Q>::value, sizeof(T) * 8>= 16>::call(x, typename detail::make_unsigned<T>::type(0x00FF00FF00FF00FFull), typename detail::make_unsigned<T>::type( 8));
-		x = detail::compute_bitfieldBitCountStep<L, typename detail::make_unsigned<T>::type, Q, detail::is_aligned<Q>::value, sizeof(T) * 8>= 32>::call(x, typename detail::make_unsigned<T>::type(0x0000FFFF0000FFFFull), typename detail::make_unsigned<T>::type(16));
-		x = detail::compute_bitfieldBitCountStep<L, typename detail::make_unsigned<T>::type, Q, detail::is_aligned<Q>::value, sizeof(T) * 8>= 64>::call(x, typename detail::make_unsigned<T>::type(0x00000000FFFFFFFFull), typename detail::make_unsigned<T>::type(32));
+		vec<L, typename std::make_unsigned<T>::type, Q> x(v);
+		x = detail::compute_bitfieldBitCountStep<L, typename std::make_unsigned<T>::type, Q, detail::is_aligned<Q>::value, sizeof(T) * 8>=  2>::call(x, typename std::make_unsigned<T>::type(0x5555555555555555ull), typename std::make_unsigned<T>::type( 1));
+		x = detail::compute_bitfieldBitCountStep<L, typename std::make_unsigned<T>::type, Q, detail::is_aligned<Q>::value, sizeof(T) * 8>=  4>::call(x, typename std::make_unsigned<T>::type(0x3333333333333333ull), typename std::make_unsigned<T>::type( 2));
+		x = detail::compute_bitfieldBitCountStep<L, typename std::make_unsigned<T>::type, Q, detail::is_aligned<Q>::value, sizeof(T) * 8>=  8>::call(x, typename std::make_unsigned<T>::type(0x0F0F0F0F0F0F0F0Full), typename std::make_unsigned<T>::type( 4));
+		x = detail::compute_bitfieldBitCountStep<L, typename std::make_unsigned<T>::type, Q, detail::is_aligned<Q>::value, sizeof(T) * 8>= 16>::call(x, typename std::make_unsigned<T>::type(0x00FF00FF00FF00FFull), typename std::make_unsigned<T>::type( 8));
+		x = detail::compute_bitfieldBitCountStep<L, typename std::make_unsigned<T>::type, Q, detail::is_aligned<Q>::value, sizeof(T) * 8>= 32>::call(x, typename std::make_unsigned<T>::type(0x0000FFFF0000FFFFull), typename std::make_unsigned<T>::type(16));
+		x = detail::compute_bitfieldBitCountStep<L, typename std::make_unsigned<T>::type, Q, detail::is_aligned<Q>::value, sizeof(T) * 8>= 64>::call(x, typename std::make_unsigned<T>::type(0x00000000FFFFFFFFull), typename std::make_unsigned<T>::type(32));
 		return vec<L, int, Q>(x);
 
 #		if GLM_COMPILER & GLM_COMPILER_VC
@@ -346,7 +335,7 @@ namespace detail
 	template<typename genIUType>
 	GLM_FUNC_QUALIFIER int findLSB(genIUType Value)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<genIUType>::is_integer, "'findLSB' only accept integer values");
+		static_assert(std::numeric_limits<genIUType>::is_integer, "'findLSB' only accept integer values");
 
 		return detail::compute_findLSB<genIUType, sizeof(genIUType) * 8>::call(Value);
 	}
@@ -354,7 +343,7 @@ namespace detail
 	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER vec<L, int, Q> findLSB(vec<L, T, Q> const& x)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_integer, "'findLSB' only accept integer values");
+		static_assert(std::numeric_limits<T>::is_integer, "'findLSB' only accept integer values");
 
 		return detail::functor1<vec, L, int, T, Q>::call(findLSB, x);
 	}
@@ -363,7 +352,7 @@ namespace detail
 	template<typename genIUType>
 	GLM_FUNC_QUALIFIER int findMSB(genIUType v)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<genIUType>::is_integer, "'findMSB' only accept integer values");
+		static_assert(std::numeric_limits<genIUType>::is_integer, "'findMSB' only accept integer values");
 
 		return findMSB(vec<1, genIUType>(v)).x;
 	}
@@ -371,20 +360,11 @@ namespace detail
 	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER vec<L, int, Q> findMSB(vec<L, T, Q> const& v)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_integer, "'findMSB' only accept integer values");
+		static_assert(std::numeric_limits<T>::is_integer, "'findMSB' only accept integer values");
 
 		return detail::compute_findMSB_vec<L, T, Q, static_cast<int>(sizeof(T) * 8)>::call(v);
 	}
 }//namespace glm
-
-#if !GLM_HAS_EXTENDED_INTEGER_TYPE
-#	if GLM_COMPILER & GLM_COMPILER_GCC
-#		pragma GCC diagnostic pop
-#	endif
-#	if (GLM_COMPILER & GLM_COMPILER_CLANG)
-#		pragma clang diagnostic pop
-#	endif
-#endif
 
 #if GLM_CONFIG_SIMD == GLM_ENABLE
 #	include "func_integer_simd.inl"

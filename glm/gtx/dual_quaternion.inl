@@ -8,14 +8,14 @@ namespace glm
 	// -- Component accesses --
 
 	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER typename tdualquat<T, Q>::part_type & tdualquat<T, Q>::operator[](typename tdualquat<T, Q>::length_type i)
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR typename tdualquat<T, Q>::part_type & tdualquat<T, Q>::operator[](typename tdualquat<T, Q>::length_type i) noexcept
 	{
 		assert(i >= 0 && i < this->length());
 		return (&real)[i];
 	}
 
 	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER typename tdualquat<T, Q>::part_type const& tdualquat<T, Q>::operator[](typename tdualquat<T, Q>::length_type i) const
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR typename tdualquat<T, Q>::part_type const& tdualquat<T, Q>::operator[](typename tdualquat<T, Q>::length_type i) const noexcept
 	{
 		assert(i >= 0 && i < this->length());
 		return (&real)[i];
@@ -23,19 +23,11 @@ namespace glm
 
 	// -- Implicit basic constructors --
 
-#	if GLM_CONFIG_DEFAULTED_FUNCTIONS == GLM_DISABLE
+#	if GLM_CONFIG_CTOR_INIT == GLM_ENABLE
 		template<typename T, qualifier Q>
-		GLM_DEFAULTED_FUNC_QUALIFIER GLM_CONSTEXPR tdualquat<T, Q>::tdualquat()
-#			if GLM_CONFIG_DEFAULTED_FUNCTIONS != GLM_DISABLE
+		GLM_DEFAULTED_DEFAULT_CTOR_QUALIFIER GLM_CONSTEXPR tdualquat<T, Q>::tdualquat()
 			: real(qua<T, Q>())
 			, dual(qua<T, Q>::wxyz(0, 0, 0, 0))
-#			endif
-		{}
-
-		template<typename T, qualifier Q>
-		GLM_DEFAULTED_FUNC_QUALIFIER GLM_CONSTEXPR tdualquat<T, Q>::tdualquat(tdualquat<T, Q> const& d)
-			: real(d.real)
-			, dual(d.dual)
 		{}
 #	endif
 
@@ -89,16 +81,6 @@ namespace glm
 	}
 
 	// -- Unary arithmetic operators --
-
-#	if GLM_CONFIG_DEFAULTED_FUNCTIONS == GLM_DISABLE
-		template<typename T, qualifier Q>
-		GLM_DEFAULTED_FUNC_QUALIFIER tdualquat<T, Q> & tdualquat<T, Q>::operator=(tdualquat<T, Q> const& q)
-		{
-			this->real = q.real;
-			this->dual = q.dual;
-			return *this;
-		}
-#	endif
 
 	template<typename T, qualifier Q>
 	template<typename U>

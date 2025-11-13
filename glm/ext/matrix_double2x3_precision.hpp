@@ -29,3 +29,22 @@ namespace glm
 
 	/// @}
 }//namespace glm
+
+#if GLM_CONFIG_CTOR_INIT == GLM_DISABLE
+static_assert(std::is_trivially_default_constructible<glm::lowp_dmat2x3>::value);
+static_assert(std::is_trivially_default_constructible<glm::mediump_dmat2x3>::value);
+static_assert(std::is_trivially_default_constructible<glm::highp_dmat2x3>::value);
+#endif
+static_assert(std::is_trivially_copy_assignable<glm::lowp_dmat2x3>::value);
+static_assert(std::is_trivially_copy_assignable<glm::mediump_dmat2x3>::value);
+static_assert(std::is_trivially_copy_assignable<glm::highp_dmat2x3>::value);
+static_assert(std::is_trivially_copyable<glm::lowp_dmat2x3>::value);
+static_assert(std::is_trivially_copyable<glm::mediump_dmat2x3>::value);
+static_assert(std::is_trivially_copyable<glm::highp_dmat2x3>::value);
+static_assert(std::is_copy_constructible<glm::lowp_dmat2x3>::value);
+static_assert(std::is_copy_constructible<glm::mediump_dmat2x3>::value);
+static_assert(std::is_copy_constructible<glm::highp_dmat2x3>::value);
+static_assert(glm::lowp_dmat2x3::length() == 2);
+static_assert(glm::mediump_dmat2x3::length() == 2);
+static_assert(glm::highp_dmat2x3::length() == 2);
+

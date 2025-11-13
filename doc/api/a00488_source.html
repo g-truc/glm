@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>1.0.0 API documentation: vector_relational.hpp Source File</title>
+<title>1.0.2 API documentation: vector_reciprocal.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo-mini.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">1.0.0 API documentation
+   <div id="projectname">1.0.2 API documentation
    </div>
   </td>
  </tr>
@@ -62,63 +62,80 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_885cc87fac2d91e269af0a5a959fa5f6.html">E:</a></li><li class="navelem"><a class="el" href="dir_63ed049134a778d525e06b63afc2c979.html">Github</a></li><li class="navelem"><a class="el" href="dir_c98a9ac98258ab9f831b188d66361a70.html">g-truc</a></li><li class="navelem"><a class="el" href="dir_50f12b6ceb23d7f6adfb377a1ae8b006.html">glm</a></li><li class="navelem"><a class="el" href="dir_fca33f1b5115d46f42c670590789c0d2.html">glm</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_885cc87fac2d91e269af0a5a959fa5f6.html">E:</a></li><li class="navelem"><a class="el" href="dir_63ed049134a778d525e06b63afc2c979.html">Github</a></li><li class="navelem"><a class="el" href="dir_c98a9ac98258ab9f831b188d66361a70.html">g-truc</a></li><li class="navelem"><a class="el" href="dir_50f12b6ceb23d7f6adfb377a1ae8b006.html">glm</a></li><li class="navelem"><a class="el" href="dir_fca33f1b5115d46f42c670590789c0d2.html">glm</a></li><li class="navelem"><a class="el" href="dir_b171cecbb853a9ee4caace490047c53f.html">ext</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">vector_relational.hpp</div>  </div>
+<div class="title">vector_reciprocal.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
 <a href="a00488.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">// Dependencies</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;../detail/setup.hpp&quot;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#if GLM_MESSAGES == GLM_ENABLE &amp;&amp; !defined(GLM_EXT_INCLUDED)</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#       pragma message(&quot;GLM: GLM_EXT_vector_reciprocal extension included&quot;)</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;detail/qualifier.hpp&quot;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;detail/setup.hpp&quot;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">namespace </span>glm</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;{</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keyword">template</span>&lt;length_t L, <span class="keyword">typename</span> T, qualifier Q&gt;</div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="a00985.html#gae90ed1592c395f93e3f3dfce6b2f39c6">   38</a></span>&#160;        GLM_FUNC_DECL GLM_CONSTEXPR vec&lt;L, bool, Q&gt; <a class="code" href="a00985.html#gae90ed1592c395f93e3f3dfce6b2f39c6">lessThan</a>(vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; x, vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; y);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keyword">template</span>&lt;length_t L, <span class="keyword">typename</span> T, qualifier Q&gt;</div>
-<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="a00985.html#gab0bdafc019d227257ff73fb5bcca1718">   48</a></span>&#160;        GLM_FUNC_DECL GLM_CONSTEXPR vec&lt;L, bool, Q&gt; <a class="code" href="a00985.html#gab0bdafc019d227257ff73fb5bcca1718">lessThanEqual</a>(vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; x, vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; y);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keyword">template</span>&lt;length_t L, <span class="keyword">typename</span> T, qualifier Q&gt;</div>
-<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="a00985.html#gadfdb8ea82deca869ddc7e63ea5a63ae4">   58</a></span>&#160;        GLM_FUNC_DECL GLM_CONSTEXPR vec&lt;L, bool, Q&gt; <a class="code" href="a00985.html#gadfdb8ea82deca869ddc7e63ea5a63ae4">greaterThan</a>(vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; x, vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; y);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keyword">template</span>&lt;length_t L, <span class="keyword">typename</span> T, qualifier Q&gt;</div>
-<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="a00985.html#ga859975f538940f8d18fe62f916b9abd7">   68</a></span>&#160;        GLM_FUNC_DECL GLM_CONSTEXPR vec&lt;L, bool, Q&gt; <a class="code" href="a00985.html#ga859975f538940f8d18fe62f916b9abd7">greaterThanEqual</a>(vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; x, vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; y);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keyword">template</span>&lt;length_t L, <span class="keyword">typename</span> T, qualifier Q&gt;</div>
-<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="a00985.html#gab4c5cfdaa70834421397a85aa83ad946">   78</a></span>&#160;        GLM_FUNC_DECL GLM_CONSTEXPR vec&lt;L, bool, Q&gt; <a class="code" href="a00985.html#gab4c5cfdaa70834421397a85aa83ad946">equal</a>(vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; x, vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; y);</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keyword">template</span>&lt;length_t L, <span class="keyword">typename</span> T, qualifier Q&gt;</div>
-<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="a00985.html#ga17c19dc1b76cd5aef63e9e7ff3aa3c27">   88</a></span>&#160;        GLM_FUNC_DECL GLM_CONSTEXPR vec&lt;L, bool, Q&gt; <a class="code" href="a00985.html#ga17c19dc1b76cd5aef63e9e7ff3aa3c27">notEqual</a>(vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; x, vec&lt;L, T, Q&gt; <span class="keyword">const</span>&amp; y);</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keyword">template</span>&lt;length_t L, qualifier Q&gt;</div>
-<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="a00985.html#ga911b3f8e41459dd551ccb6d385d91061">   97</a></span>&#160;        GLM_FUNC_DECL GLM_CONSTEXPR <span class="keywordtype">bool</span> <a class="code" href="a00985.html#ga911b3f8e41459dd551ccb6d385d91061">any</a>(vec&lt;L, bool, Q&gt; <span class="keyword">const</span>&amp; v);</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <span class="keyword">template</span>&lt;length_t L, qualifier Q&gt;</div>
-<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="a00985.html#ga87e53f50b679f5f95c5cb4780311b3dd">  106</a></span>&#160;        GLM_FUNC_DECL GLM_CONSTEXPR <span class="keywordtype">bool</span> <a class="code" href="a00985.html#ga87e53f50b679f5f95c5cb4780311b3dd">all</a>(vec&lt;L, bool, Q&gt; <span class="keyword">const</span>&amp; v);</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="keyword">template</span>&lt;length_t L, qualifier Q&gt;</div>
-<div class="line"><a name="l00116"></a><span class="lineno"><a class="line" href="a00985.html#ga610fcd175791fd246e328ffee10dbf1e">  116</a></span>&#160;        GLM_FUNC_DECL GLM_CONSTEXPR vec&lt;L, bool, Q&gt; <a class="code" href="a00985.html#ga610fcd175791fd246e328ffee10dbf1e">not_</a>(vec&lt;L, bool, Q&gt; <span class="keyword">const</span>&amp; v);</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;}<span class="comment">//namespace glm</span></div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="preprocessor">#include &quot;detail/func_vector_relational.inl&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">namespace </span>glm</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;{</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> genType&gt;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        GLM_FUNC_DECL genType <a class="code" href="a00871.html#ga225db01831b8a4b5a3d9bd3e486ed21c">sec</a>(genType <a class="code" href="a00865.html#ga8aa248b31d5ade470c87304df5eb7bd8">angle</a>);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> genType&gt;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        GLM_FUNC_DECL genType <a class="code" href="a00871.html#gaa6bf27b118f660387753bfa75af13b6d">csc</a>(genType <a class="code" href="a00865.html#ga8aa248b31d5ade470c87304df5eb7bd8">angle</a>);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> genType&gt;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        GLM_FUNC_DECL genType <a class="code" href="a00871.html#ga1f347629f919b562d9d10951e3b80968">cot</a>(genType <a class="code" href="a00865.html#ga8aa248b31d5ade470c87304df5eb7bd8">angle</a>);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> genType&gt;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        GLM_FUNC_DECL genType <a class="code" href="a00871.html#ga0938f4ce4f0bfe414c85dd92f7c42400">asec</a>(genType x);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> genType&gt;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        GLM_FUNC_DECL genType <a class="code" href="a00871.html#ga0dbb21d8c5b660c7686e262115c3119e">acsc</a>(genType x);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> genType&gt;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        GLM_FUNC_DECL genType <a class="code" href="a00871.html#ga4ba4d4a791560ed05ee07e962207bb45">acot</a>(genType x);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> genType&gt;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        GLM_FUNC_DECL genType <a class="code" href="a00871.html#ga0e16a0de56f2bf9a432dc2776020fc7a">sech</a>(genType <a class="code" href="a00865.html#ga8aa248b31d5ade470c87304df5eb7bd8">angle</a>);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> genType&gt;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        GLM_FUNC_DECL genType <a class="code" href="a00871.html#ga0247051ce3b0bac747136e69b51ab853">csch</a>(genType <a class="code" href="a00865.html#ga8aa248b31d5ade470c87304df5eb7bd8">angle</a>);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> genType&gt;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        GLM_FUNC_DECL genType <a class="code" href="a00871.html#ga35710c9529d973ad01af024f9879fdf7">coth</a>(genType <a class="code" href="a00865.html#ga8aa248b31d5ade470c87304df5eb7bd8">angle</a>);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> genType&gt;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        GLM_FUNC_DECL genType <a class="code" href="a00871.html#ga2db2855bc3ab46bdc83b01620f5d95f1">asech</a>(genType x);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> genType&gt;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        GLM_FUNC_DECL genType <a class="code" href="a00871.html#ga64c5b1bbbeb12731f3e765f26772373c">acsch</a>(genType x);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> genType&gt;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        GLM_FUNC_DECL genType <a class="code" href="a00871.html#ga6dcf17da7d24ef1c29c18bad1a5507e8">acoth</a>(genType x);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;}<span class="comment">//namespace glm</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="preprocessor">#include &quot;vector_reciprocal.inl&quot;</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aa00985_html_ga610fcd175791fd246e328ffee10dbf1e"><div class="ttname"><a href="a00985.html#ga610fcd175791fd246e328ffee10dbf1e">glm::not_</a></div><div class="ttdeci">GLM_FUNC_DECL GLM_CONSTEXPR vec&lt; L, bool, Q &gt; not_(vec&lt; L, bool, Q &gt; const &amp;v)</div><div class="ttdoc">Returns the component-wise logical complement of x.</div></div>
-<div class="ttc" id="aa00985_html_ga911b3f8e41459dd551ccb6d385d91061"><div class="ttname"><a href="a00985.html#ga911b3f8e41459dd551ccb6d385d91061">glm::any</a></div><div class="ttdeci">GLM_FUNC_DECL GLM_CONSTEXPR bool any(vec&lt; L, bool, Q &gt; const &amp;v)</div><div class="ttdoc">Returns true if any component of x is true.</div></div>
-<div class="ttc" id="aa00985_html_ga87e53f50b679f5f95c5cb4780311b3dd"><div class="ttname"><a href="a00985.html#ga87e53f50b679f5f95c5cb4780311b3dd">glm::all</a></div><div class="ttdeci">GLM_FUNC_DECL GLM_CONSTEXPR bool all(vec&lt; L, bool, Q &gt; const &amp;v)</div><div class="ttdoc">Returns true if all components of x are true.</div></div>
-<div class="ttc" id="aa00985_html_gab0bdafc019d227257ff73fb5bcca1718"><div class="ttname"><a href="a00985.html#gab0bdafc019d227257ff73fb5bcca1718">glm::lessThanEqual</a></div><div class="ttdeci">GLM_FUNC_DECL GLM_CONSTEXPR vec&lt; L, bool, Q &gt; lessThanEqual(vec&lt; L, T, Q &gt; const &amp;x, vec&lt; L, T, Q &gt; const &amp;y)</div><div class="ttdoc">Returns the component-wise comparison of result x &lt;= y.</div></div>
-<div class="ttc" id="aa00985_html_gae90ed1592c395f93e3f3dfce6b2f39c6"><div class="ttname"><a href="a00985.html#gae90ed1592c395f93e3f3dfce6b2f39c6">glm::lessThan</a></div><div class="ttdeci">GLM_FUNC_DECL GLM_CONSTEXPR vec&lt; L, bool, Q &gt; lessThan(vec&lt; L, T, Q &gt; const &amp;x, vec&lt; L, T, Q &gt; const &amp;y)</div><div class="ttdoc">Returns the component-wise comparison result of x &lt; y.</div></div>
-<div class="ttc" id="aa00985_html_gab4c5cfdaa70834421397a85aa83ad946"><div class="ttname"><a href="a00985.html#gab4c5cfdaa70834421397a85aa83ad946">glm::equal</a></div><div class="ttdeci">GLM_FUNC_DECL GLM_CONSTEXPR vec&lt; L, bool, Q &gt; equal(vec&lt; L, T, Q &gt; const &amp;x, vec&lt; L, T, Q &gt; const &amp;y)</div><div class="ttdoc">Returns the component-wise comparison of result x == y.</div></div>
-<div class="ttc" id="aa00985_html_ga17c19dc1b76cd5aef63e9e7ff3aa3c27"><div class="ttname"><a href="a00985.html#ga17c19dc1b76cd5aef63e9e7ff3aa3c27">glm::notEqual</a></div><div class="ttdeci">GLM_FUNC_DECL GLM_CONSTEXPR vec&lt; L, bool, Q &gt; notEqual(vec&lt; L, T, Q &gt; const &amp;x, vec&lt; L, T, Q &gt; const &amp;y)</div><div class="ttdoc">Returns the component-wise comparison of result x != y.</div></div>
-<div class="ttc" id="aa00985_html_gadfdb8ea82deca869ddc7e63ea5a63ae4"><div class="ttname"><a href="a00985.html#gadfdb8ea82deca869ddc7e63ea5a63ae4">glm::greaterThan</a></div><div class="ttdeci">GLM_FUNC_DECL GLM_CONSTEXPR vec&lt; L, bool, Q &gt; greaterThan(vec&lt; L, T, Q &gt; const &amp;x, vec&lt; L, T, Q &gt; const &amp;y)</div><div class="ttdoc">Returns the component-wise comparison of result x &gt; y.</div></div>
-<div class="ttc" id="aa00985_html_ga859975f538940f8d18fe62f916b9abd7"><div class="ttname"><a href="a00985.html#ga859975f538940f8d18fe62f916b9abd7">glm::greaterThanEqual</a></div><div class="ttdeci">GLM_FUNC_DECL GLM_CONSTEXPR vec&lt; L, bool, Q &gt; greaterThanEqual(vec&lt; L, T, Q &gt; const &amp;x, vec&lt; L, T, Q &gt; const &amp;y)</div><div class="ttdoc">Returns the component-wise comparison of result x &gt;= y.</div></div>
+<div class="ttc" id="aa00871_html_ga1f347629f919b562d9d10951e3b80968"><div class="ttname"><a href="a00871.html#ga1f347629f919b562d9d10951e3b80968">glm::cot</a></div><div class="ttdeci">GLM_FUNC_DECL genType cot(genType angle)</div><div class="ttdoc">Cotangent function.</div></div>
+<div class="ttc" id="aa00871_html_ga225db01831b8a4b5a3d9bd3e486ed21c"><div class="ttname"><a href="a00871.html#ga225db01831b8a4b5a3d9bd3e486ed21c">glm::sec</a></div><div class="ttdeci">GLM_FUNC_DECL genType sec(genType angle)</div><div class="ttdoc">Secant function.</div></div>
+<div class="ttc" id="aa00871_html_ga0247051ce3b0bac747136e69b51ab853"><div class="ttname"><a href="a00871.html#ga0247051ce3b0bac747136e69b51ab853">glm::csch</a></div><div class="ttdeci">GLM_FUNC_DECL genType csch(genType angle)</div><div class="ttdoc">Cosecant hyperbolic function.</div></div>
+<div class="ttc" id="aa00871_html_ga0e16a0de56f2bf9a432dc2776020fc7a"><div class="ttname"><a href="a00871.html#ga0e16a0de56f2bf9a432dc2776020fc7a">glm::sech</a></div><div class="ttdeci">GLM_FUNC_DECL genType sech(genType angle)</div><div class="ttdoc">Secant hyperbolic function.</div></div>
+<div class="ttc" id="aa00871_html_gaa6bf27b118f660387753bfa75af13b6d"><div class="ttname"><a href="a00871.html#gaa6bf27b118f660387753bfa75af13b6d">glm::csc</a></div><div class="ttdeci">GLM_FUNC_DECL genType csc(genType angle)</div><div class="ttdoc">Cosecant function.</div></div>
+<div class="ttc" id="aa00871_html_ga4ba4d4a791560ed05ee07e962207bb45"><div class="ttname"><a href="a00871.html#ga4ba4d4a791560ed05ee07e962207bb45">glm::acot</a></div><div class="ttdeci">GLM_FUNC_DECL genType acot(genType x)</div><div class="ttdoc">Inverse cotangent function.</div></div>
+<div class="ttc" id="aa00865_html_ga8aa248b31d5ade470c87304df5eb7bd8"><div class="ttname"><a href="a00865.html#ga8aa248b31d5ade470c87304df5eb7bd8">glm::angle</a></div><div class="ttdeci">GLM_FUNC_DECL T angle(qua&lt; T, Q &gt; const &amp;x)</div><div class="ttdoc">Returns the quaternion rotation angle.</div></div>
+<div class="ttc" id="aa00871_html_ga2db2855bc3ab46bdc83b01620f5d95f1"><div class="ttname"><a href="a00871.html#ga2db2855bc3ab46bdc83b01620f5d95f1">glm::asech</a></div><div class="ttdeci">GLM_FUNC_DECL genType asech(genType x)</div><div class="ttdoc">Inverse secant hyperbolic function.</div></div>
+<div class="ttc" id="aa00871_html_ga64c5b1bbbeb12731f3e765f26772373c"><div class="ttname"><a href="a00871.html#ga64c5b1bbbeb12731f3e765f26772373c">glm::acsch</a></div><div class="ttdeci">GLM_FUNC_DECL genType acsch(genType x)</div><div class="ttdoc">Inverse cosecant hyperbolic function.</div></div>
+<div class="ttc" id="aa00871_html_ga6dcf17da7d24ef1c29c18bad1a5507e8"><div class="ttname"><a href="a00871.html#ga6dcf17da7d24ef1c29c18bad1a5507e8">glm::acoth</a></div><div class="ttdeci">GLM_FUNC_DECL genType acoth(genType x)</div><div class="ttdoc">Inverse cotangent hyperbolic function.</div></div>
+<div class="ttc" id="aa00871_html_ga35710c9529d973ad01af024f9879fdf7"><div class="ttname"><a href="a00871.html#ga35710c9529d973ad01af024f9879fdf7">glm::coth</a></div><div class="ttdeci">GLM_FUNC_DECL genType coth(genType angle)</div><div class="ttdoc">Cotangent hyperbolic function.</div></div>
+<div class="ttc" id="aa00871_html_ga0dbb21d8c5b660c7686e262115c3119e"><div class="ttname"><a href="a00871.html#ga0dbb21d8c5b660c7686e262115c3119e">glm::acsc</a></div><div class="ttdeci">GLM_FUNC_DECL genType acsc(genType x)</div><div class="ttdoc">Inverse cosecant function.</div></div>
+<div class="ttc" id="aa00871_html_ga0938f4ce4f0bfe414c85dd92f7c42400"><div class="ttname"><a href="a00871.html#ga0938f4ce4f0bfe414c85dd92f7c42400">glm::asec</a></div><div class="ttdeci">GLM_FUNC_DECL genType asec(genType x)</div><div class="ttdoc">Inverse secant function.</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

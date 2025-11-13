@@ -545,71 +545,72 @@ namespace detail
 
 #if GLM_ARCH & GLM_ARCH_NEON_BIT
 namespace glm {
-	namespace detail {
-
-		template<qualifier Q>
-		struct convert_vec3_to_vec4W0<float, Q, true>
+namespace detail {
+/* FIXME: Breaking Windows ARM Github C.I.
+	template<qualifier Q>
+	struct convert_vec3_to_vec4W0<float, Q, true>
+	{
+		GLM_FUNC_QUALIFIER static vec<4, float, Q> call(vec<3, float, Q> const& a)
 		{
-			GLM_FUNC_QUALIFIER static vec<4, float, Q> call(vec<3, float, Q> const& a)
-			{
-				vec<4, float, Q> v;
-				static const uint32x4_t mask = { 0, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF };
-				v.data = vbslq_f32(mask, a.data, vdupq_n_f32(0));
-				return v;
-			}
-		};
-
-		template<qualifier Q>
-		struct convert_vec4_to_vec3<float, Q, true> {
-			GLM_FUNC_QUALIFIER static vec<3, float, Q> call(vec<4, float, Q> const& a)
-			{
-				vec<3, float, Q> v;
-				v.data = a.data;
-				return v;
-			}
-		};
-
-		template<length_t L, qualifier Q>
-		struct compute_splat<L, float, Q, true> {
-			template<int c>
-			GLM_FUNC_QUALIFIER GLM_CONSTEXPR static vec<L, float, Q> call(vec<L, float, Q> const& a)
-			{
-				(void)a;
-			}
-
-			template<>
-			GLM_FUNC_QUALIFIER GLM_CONSTEXPR static vec<L, float, Q> call<0>(vec<L, float, Q> const& a)
-			{
-				vec<L, float, Q> Result;
-				Result.data = vdupq_lane_f32(vget_low_f32(a.data), 0);
-				return Result;
-			}
-
-			template<>
-			GLM_FUNC_QUALIFIER GLM_CONSTEXPR static vec<L, float, Q> call<1>(vec<L, float, Q> const& a)
-			{
-				vec<L, float, Q> Result;
-				Result.data = vdupq_lane_f32(vget_low_f32(a.data), 1);
-				return Result;
-			}
-
-			template<>
-			GLM_FUNC_QUALIFIER GLM_CONSTEXPR static vec<L, float, Q> call<2>(vec<L, float, Q> const& a)
-			{
-				vec<L, float, Q> Result;
-				Result.data = vdupq_lane_f32(vget_high_f32(a.data), 0);
-				return Result;
-			}
-
-			template<>
-			GLM_FUNC_QUALIFIER GLM_CONSTEXPR static vec<L, float, Q> call<3>(vec<L, float, Q> const& a)
-			{
-				vec<L, float, Q> Result;
-				Result.data = vdupq_lane_f32(vget_high_f32(a.data), 1);
-				return Result;
-			}
+			vec<4, float, Q> v;
+			static const uint32x4_t mask = { 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0 };
+			v.data = vbslq_f32(mask, a.data, vdupq_n_f32(0));
+			return v;
+		}
+	};
+*/
+	template<qualifier Q>
+	struct convert_vec4_to_vec3<float, Q, true> {
+		GLM_FUNC_QUALIFIER static vec<3, float, Q> call(vec<4, float, Q> const& a)
+		{
+			vec<3, float, Q> v;
+			v.data = a.data;
+			return v;
+		}
 	};
 
+/* compute_splat is never called?
+	template<length_t L, qualifier Q>
+	struct compute_splat<L, float, Q, true> {
+		template<int c>
+		GLM_FUNC_QUALIFIER static vec<L, float, Q> call(vec<L, float, Q> const& a)
+		{
+			(void)a;
+		}
+
+		template<>
+		GLM_FUNC_QUALIFIER static vec<L, float, Q> call<0>(vec<L, float, Q> const& a)
+		{
+			vec<L, float, Q> Result;
+			Result.data = vdupq_lane_f32(vget_low_f32(a.data), 0);
+			return Result;
+		}
+
+		template<>
+		GLM_FUNC_QUALIFIER static vec<L, float, Q> call<1>(vec<L, float, Q> const& a)
+		{
+			vec<L, float, Q> Result;
+			Result.data = vdupq_lane_f32(vget_low_f32(a.data), 1);
+			return Result;
+		}
+
+		template<>
+		GLM_FUNC_QUALIFIER static vec<L, float, Q> call<2>(vec<L, float, Q> const& a)
+		{
+			vec<L, float, Q> Result;
+			Result.data = vdupq_lane_f32(vget_high_f32(a.data), 0);
+			return Result;
+		}
+
+		template<>
+		GLM_FUNC_QUALIFIER static vec<L, float, Q> call<3>(vec<L, float, Q> const& a)
+		{
+			vec<L, float, Q> Result;
+			Result.data = vdupq_lane_f32(vget_high_f32(a.data), 1);
+			return Result;
+		}
+	};
+*/
 }//namespace detail
 }//namespace glm
 #endif //GLM_ARCH & GLM_ARCH_NEON_BIT

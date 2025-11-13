@@ -1,11 +1,9 @@
 #include <glm/ext/matrix_uint2x4_sized.hpp>
 
-#if GLM_HAS_STATIC_ASSERT
 static_assert(sizeof(glm::u8mat2x4) == 8, "uint8 size isn't 1 byte on this platform");
 static_assert(sizeof(glm::u16mat2x4) == 16, "uint16 size isn't 2 bytes on this platform");
 static_assert(sizeof(glm::u32mat2x4) == 32, "uint32 size isn't 4 bytes on this platform");
 static_assert(sizeof(glm::u64mat2x4) == 64, "uint64 size isn't 8 bytes on this platform");
-#endif
 
 static int test_comp()
 {

@@ -50,9 +50,8 @@ static int test_operators()
 
 static int test_ctr()
 {
-	int Error(0);
+	int Error = 0;
 
-#if(GLM_HAS_INITIALIZER_LISTS)
 	glm::mat4x2 m0(
 		glm::vec2(0, 1), 
 		glm::vec2(2, 3),
@@ -89,8 +88,6 @@ static int test_ctr()
 			{ 12, 13}
 		}
 	};
-
-#endif//GLM_HAS_INITIALIZER_LISTS
 
 	return Error;
 }
@@ -143,20 +140,6 @@ static int test_size()
 	return Error;
 }
 
-static int test_constexpr()
-{
-	int Error = 0;
-
-#if GLM_HAS_CONSTEXPR
-	static_assert(glm::mat4x2::length() == 4, "GLM: Failed constexpr");
-
-	constexpr glm::mat4x2 const Z(1.0f);
-	Error += glm::all(glm::equal(Z, glm::mat4x2(1.0f), glm::epsilon<float>())) ? 0 : 1;
-#endif
-
-	return Error;
-}
-
 int main()
 {
 	int Error = 0;
@@ -165,7 +148,6 @@ int main()
 	Error += test_ctr();
 	Error += test_operators();
 	Error += test_size();
-	Error += test_constexpr();
 
 	return Error;
 }

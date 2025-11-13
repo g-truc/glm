@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include "glm.hpp"
+#include "./glm.hpp"
 
 #if GLM_MESSAGES == GLM_ENABLE && !defined(GLM_MESSAGE_EXT_INCLUDED_DISPLAYED)
 #	define GLM_MESSAGE_EXT_INCLUDED_DISPLAYED
@@ -214,11 +214,7 @@
 #include "./gtx/functions.hpp"
 #include "./gtx/gradient_paint.hpp"
 #include "./gtx/handed_coordinate_space.hpp"
-
-#if __cplusplus >= 201103L
 #include "./gtx/hash.hpp"
-#endif
-
 #include "./gtx/integer.hpp"
 #include "./gtx/intersect.hpp"
 #include "./gtx/io.hpp"
@@ -256,12 +252,6 @@
 #include "./gtx/vector_angle.hpp"
 #include "./gtx/vector_query.hpp"
 #include "./gtx/wrap.hpp"
-
-#if GLM_HAS_TEMPLATE_ALIASES
-#	include "./gtx/scalar_multiplication.hpp"
-#endif
-
-#if GLM_HAS_RANGE_FOR
-#	include "./gtx/range.hpp"
-#endif
+#include "./gtx/scalar_multiplication.hpp"
+#include "./gtx/range.hpp"
 #endif//GLM_ENABLE_EXPERIMENTAL

@@ -12,7 +12,7 @@ namespace detail
 	{
 		GLM_FUNC_QUALIFIER static vec<L, T, Q> call(vec<L, T, Q> const& a, vec<L, T, Q> const& b)
 		{
-			return detail::functor2<vec, L, T, Q>::call(TFmod<T>(), a, b);
+			return detail::functor2<vec, L, T, Q>::call(detail::TFmod<T>(), a, b);
 		}
 	};
 
@@ -29,13 +29,9 @@ namespace detail
 	template<typename T>
 	GLM_FUNC_QUALIFIER bool isdenormal(T const& x)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'isdenormal' only accept floating-point inputs");
+		static_assert(std::numeric_limits<T>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'isdenormal' only accept floating-point inputs");
 
-#		if GLM_HAS_CXX11_STL
-			return std::fpclassify(x) == FP_SUBNORMAL;
-#		else
-			return epsilonNotEqual(x, static_cast<T>(0), epsilon<T>()) && std::fabs(x) < std::numeric_limits<T>::min();
-#		endif
+		return std::fpclassify(x) == FP_SUBNORMAL;
 	}
 
 	template<typename T, qualifier Q>
@@ -44,7 +40,7 @@ namespace detail
 		vec<1, T, Q> const& x
 	)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'isdenormal' only accept floating-point inputs");
+		static_assert(std::numeric_limits<T>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'isdenormal' only accept floating-point inputs");
 
 		return typename vec<1, T, Q>::bool_type(
 			isdenormal(x.x));
@@ -56,7 +52,7 @@ namespace detail
 		vec<2, T, Q> const& x
 	)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'isdenormal' only accept floating-point inputs");
+		static_assert(std::numeric_limits<T>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'isdenormal' only accept floating-point inputs");
 
 		return typename vec<2, T, Q>::bool_type(
 			isdenormal(x.x),
@@ -69,7 +65,7 @@ namespace detail
 		vec<3, T, Q> const& x
 	)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'isdenormal' only accept floating-point inputs");
+		static_assert(std::numeric_limits<T>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'isdenormal' only accept floating-point inputs");
 
 		return typename vec<3, T, Q>::bool_type(
 			isdenormal(x.x),
@@ -83,7 +79,7 @@ namespace detail
 		vec<4, T, Q> const& x
 	)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'isdenormal' only accept floating-point inputs");
+		static_assert(std::numeric_limits<T>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'isdenormal' only accept floating-point inputs");
 
 		return typename vec<4, T, Q>::bool_type(
 			isdenormal(x.x),

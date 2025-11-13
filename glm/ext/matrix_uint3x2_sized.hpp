@@ -47,3 +47,26 @@ namespace glm
 
 	/// @}
 }//namespace glm
+
+#if GLM_CONFIG_CTOR_INIT == GLM_DISABLE
+static_assert(std::is_trivially_default_constructible<glm::u8mat3x2>::value);
+static_assert(std::is_trivially_default_constructible<glm::u16mat3x2>::value);
+static_assert(std::is_trivially_default_constructible<glm::u32mat3x2>::value);
+static_assert(std::is_trivially_default_constructible<glm::u64mat3x2>::value);
+#endif
+static_assert(std::is_trivially_copy_assignable<glm::u8mat3x2>::value);
+static_assert(std::is_trivially_copy_assignable<glm::u16mat3x2>::value);
+static_assert(std::is_trivially_copy_assignable<glm::u32mat3x2>::value);
+static_assert(std::is_trivially_copy_assignable<glm::u64mat3x2>::value);
+static_assert(std::is_trivially_copyable<glm::u8mat3x2>::value);
+static_assert(std::is_trivially_copyable<glm::u16mat3x2>::value);
+static_assert(std::is_trivially_copyable<glm::u32mat3x2>::value);
+static_assert(std::is_trivially_copyable<glm::u64mat3x2>::value);
+static_assert(std::is_copy_constructible<glm::u8mat3x2>::value);
+static_assert(std::is_copy_constructible<glm::u16mat3x2>::value);
+static_assert(std::is_copy_constructible<glm::u32mat3x2>::value);
+static_assert(std::is_copy_constructible<glm::u64mat3x2>::value);
+static_assert(glm::u8mat3x2::length() == 3);
+static_assert(glm::u16mat3x2::length() == 3);
+static_assert(glm::u32mat3x2::length() == 3);
+static_assert(glm::u64mat3x2::length() == 3);

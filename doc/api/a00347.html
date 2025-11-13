@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>1.0.0 API documentation: quaternion_transform.hpp File Reference</title>
+<title>1.0.2 API documentation: quaternion_relational.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo-mini.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">1.0.0 API documentation
+   <div id="projectname">1.0.2 API documentation
    </div>
   </td>
  </tr>
@@ -69,26 +69,38 @@ $(function() {
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">quaternion_transform.hpp File Reference</div>  </div>
+<div class="title">quaternion_relational.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="a00855.html">GLM_EXT_quaternion_transform</a>  
+<p><a class="el" href="a00863.html">GLM_EXT_quaternion_relational</a>  
 <a href="#details">More...</a></p>
 
 <p><a href="a00347_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gabfc57de6d4d2e11970f54119c5ccf0f5"><td class="memTemplParams" colspan="2">template&lt;typename T , qualifier Q&gt; </td></tr>
-<tr class="memitem:gabfc57de6d4d2e11970f54119c5ccf0f5"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL qua&lt; T, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00855.html#gabfc57de6d4d2e11970f54119c5ccf0f5">rotate</a> (qua&lt; T, Q &gt; const &amp;q, T const &amp;angle, vec&lt; 3, T, Q &gt; const &amp;axis)</td></tr>
-<tr class="memdesc:gabfc57de6d4d2e11970f54119c5ccf0f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rotates a quaternion from a vector of 3 components axis and an angle.  <a href="a00855.html#gabfc57de6d4d2e11970f54119c5ccf0f5">More...</a><br /></td></tr>
-<tr class="separator:gabfc57de6d4d2e11970f54119c5ccf0f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad7827af0549504ff1cd6a359786acc7a"><td class="memTemplParams" colspan="2">template&lt;typename T , qualifier Q&gt; </td></tr>
+<tr class="memitem:gad7827af0549504ff1cd6a359786acc7a"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL vec&lt; 4, bool, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00863.html#gad7827af0549504ff1cd6a359786acc7a">equal</a> (qua&lt; T, Q &gt; const &amp;x, qua&lt; T, Q &gt; const &amp;y)</td></tr>
+<tr class="memdesc:gad7827af0549504ff1cd6a359786acc7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the component-wise comparison of result x == y.  <a href="a00863.html#gad7827af0549504ff1cd6a359786acc7a">More...</a><br /></td></tr>
+<tr class="separator:gad7827af0549504ff1cd6a359786acc7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa001eecb91106463169a8e5ef1577b39"><td class="memTemplParams" colspan="2">template&lt;typename T , qualifier Q&gt; </td></tr>
+<tr class="memitem:gaa001eecb91106463169a8e5ef1577b39"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL vec&lt; 4, bool, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00863.html#gaa001eecb91106463169a8e5ef1577b39">equal</a> (qua&lt; T, Q &gt; const &amp;x, qua&lt; T, Q &gt; const &amp;y, T epsilon)</td></tr>
+<tr class="memdesc:gaa001eecb91106463169a8e5ef1577b39"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the component-wise comparison of |x - y| &lt; epsilon.  <a href="a00863.html#gaa001eecb91106463169a8e5ef1577b39">More...</a><br /></td></tr>
+<tr class="separator:gaa001eecb91106463169a8e5ef1577b39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab441cee0de5867a868f3a586ee68cfe1"><td class="memTemplParams" colspan="2">template&lt;typename T , qualifier Q&gt; </td></tr>
+<tr class="memitem:gab441cee0de5867a868f3a586ee68cfe1"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL vec&lt; 4, bool, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00863.html#gab441cee0de5867a868f3a586ee68cfe1">notEqual</a> (qua&lt; T, Q &gt; const &amp;x, qua&lt; T, Q &gt; const &amp;y)</td></tr>
+<tr class="memdesc:gab441cee0de5867a868f3a586ee68cfe1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the component-wise comparison of result x != y.  <a href="a00863.html#gab441cee0de5867a868f3a586ee68cfe1">More...</a><br /></td></tr>
+<tr class="separator:gab441cee0de5867a868f3a586ee68cfe1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5117a44c1bf21af857cd23e44a96d313"><td class="memTemplParams" colspan="2">template&lt;typename T , qualifier Q&gt; </td></tr>
+<tr class="memitem:ga5117a44c1bf21af857cd23e44a96d313"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL vec&lt; 4, bool, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00863.html#ga5117a44c1bf21af857cd23e44a96d313">notEqual</a> (qua&lt; T, Q &gt; const &amp;x, qua&lt; T, Q &gt; const &amp;y, T epsilon)</td></tr>
+<tr class="memdesc:ga5117a44c1bf21af857cd23e44a96d313"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the component-wise comparison of |x - y| &gt;= epsilon.  <a href="a00863.html#ga5117a44c1bf21af857cd23e44a96d313">More...</a><br /></td></tr>
+<tr class="separator:ga5117a44c1bf21af857cd23e44a96d313"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="a00855.html">GLM_EXT_quaternion_transform</a> </p>
+<div class="textblock"><p><a class="el" href="a00863.html">GLM_EXT_quaternion_relational</a> </p>
 
-<p class="definition">Definition in file <a class="el" href="a00347_source.html">quaternion_transform.hpp</a>.</p>
+<p class="definition">Definition in file <a class="el" href="a00347_source.html">quaternion_relational.hpp</a>.</p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

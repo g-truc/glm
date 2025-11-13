@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>1.0.0 API documentation: spline.hpp Source File</title>
+<title>1.0.2 API documentation: rotate_vector.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo-mini.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">1.0.0 API documentation
+   <div id="projectname">1.0.2 API documentation
    </div>
   </td>
  </tr>
@@ -67,56 +67,96 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">spline.hpp</div>  </div>
+<div class="title">rotate_vector.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
 <a href="a00725.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">// Dependency:</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;../glm.hpp&quot;</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;../gtx/optimum_pow.hpp&quot;</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#ifndef GLM_ENABLE_EXPERIMENTAL</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#       error &quot;GLM: GLM_GTX_spline is an experimental extension and may change in the future. Use #define GLM_ENABLE_EXPERIMENTAL before including it, if you really want to use it.&quot;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#elif GLM_MESSAGES == GLM_ENABLE &amp;&amp; !defined(GLM_EXT_INCLUDED)</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#       pragma message(&quot;GLM: GLM_GTX_spline extension included&quot;)</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">namespace </span>glm</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;{</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> genType&gt;</div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="a00969.html#ga8119c04f8210fd0d292757565cd6918d">   33</a></span>&#160;        GLM_FUNC_DECL genType <a class="code" href="a00969.html#ga8119c04f8210fd0d292757565cd6918d">catmullRom</a>(</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                genType <span class="keyword">const</span>&amp; v1,</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                genType <span class="keyword">const</span>&amp; v2,</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                genType <span class="keyword">const</span>&amp; v3,</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                genType <span class="keyword">const</span>&amp; v4,</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                <span class="keyword">typename</span> genType::value_type <span class="keyword">const</span>&amp; s);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> genType&gt;</div>
-<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="a00969.html#gaa69e143f6374d32f934a8edeaa50bac9">   43</a></span>&#160;        GLM_FUNC_DECL genType <a class="code" href="a00969.html#gaa69e143f6374d32f934a8edeaa50bac9">hermite</a>(</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                genType <span class="keyword">const</span>&amp; v1,</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                genType <span class="keyword">const</span>&amp; t1,</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                genType <span class="keyword">const</span>&amp; v2,</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                genType <span class="keyword">const</span>&amp; t2,</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                <span class="keyword">typename</span> genType::value_type <span class="keyword">const</span>&amp; s);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> genType&gt;</div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="a00969.html#ga6b867eb52e2fc933d2e0bf26aabc9a70">   53</a></span>&#160;        GLM_FUNC_DECL genType <a class="code" href="a00969.html#ga6b867eb52e2fc933d2e0bf26aabc9a70">cubic</a>(</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                genType <span class="keyword">const</span>&amp; v1,</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                genType <span class="keyword">const</span>&amp; v2,</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                genType <span class="keyword">const</span>&amp; v3,</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                genType <span class="keyword">const</span>&amp; v4,</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                <span class="keyword">typename</span> genType::value_type <span class="keyword">const</span>&amp; s);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}<span class="comment">//namespace glm</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#include &quot;spline.inl&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">// Dependency:</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;../gtx/transform.hpp&quot;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;../gtc/epsilon.hpp&quot;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;../ext/vector_relational.hpp&quot;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;../glm.hpp&quot;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#ifndef GLM_ENABLE_EXPERIMENTAL</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#       error &quot;GLM: GLM_GTX_rotate_vector is an experimental extension and may change in the future. Use #define GLM_ENABLE_EXPERIMENTAL before including it, if you really want to use it.&quot;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#elif GLM_MESSAGES == GLM_ENABLE &amp;&amp; !defined(GLM_EXT_INCLUDED)</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#       pragma message(&quot;GLM: GLM_GTX_rotate_vector extension included&quot;)</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">namespace </span>glm</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;{</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, qualifier Q&gt;</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="a00976.html#ga8b11b18ce824174ea1a5a69ea14e2cee">   41</a></span>&#160;        GLM_FUNC_DECL vec&lt;3, T, Q&gt; <a class="code" href="a00976.html#ga8b11b18ce824174ea1a5a69ea14e2cee">slerp</a>(</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                vec&lt;3, T, Q&gt; <span class="keyword">const</span>&amp; x,</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                vec&lt;3, T, Q&gt; <span class="keyword">const</span>&amp; y,</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                T <span class="keyword">const</span>&amp; a);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, qualifier Q&gt;</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="a00976.html#gab64a67b52ff4f86c3ba16595a5a25af6">   49</a></span>&#160;        GLM_FUNC_DECL vec&lt;2, T, Q&gt; <a class="code" href="a00976.html#ga1005f1267ed9c57faa3f24cf6873b961">rotate</a>(</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                vec&lt;2, T, Q&gt; <span class="keyword">const</span>&amp; v,</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                T <span class="keyword">const</span>&amp; <a class="code" href="a00865.html#ga8aa248b31d5ade470c87304df5eb7bd8">angle</a>);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, qualifier Q&gt;</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="a00976.html#ga1ba501ef83d1a009a17ac774cc560f21">   56</a></span>&#160;        GLM_FUNC_DECL vec&lt;3, T, Q&gt; <a class="code" href="a00976.html#ga1005f1267ed9c57faa3f24cf6873b961">rotate</a>(</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                vec&lt;3, T, Q&gt; <span class="keyword">const</span>&amp; v,</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                T <span class="keyword">const</span>&amp; <a class="code" href="a00865.html#ga8aa248b31d5ade470c87304df5eb7bd8">angle</a>,</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                vec&lt;3, T, Q&gt; <span class="keyword">const</span>&amp; normal);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, qualifier Q&gt;</div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="a00976.html#ga1005f1267ed9c57faa3f24cf6873b961">   64</a></span>&#160;        GLM_FUNC_DECL vec&lt;4, T, Q&gt; <a class="code" href="a00976.html#ga1005f1267ed9c57faa3f24cf6873b961">rotate</a>(</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                vec&lt;4, T, Q&gt; <span class="keyword">const</span>&amp; v,</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                T <span class="keyword">const</span>&amp; <a class="code" href="a00865.html#ga8aa248b31d5ade470c87304df5eb7bd8">angle</a>,</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                vec&lt;3, T, Q&gt; <span class="keyword">const</span>&amp; normal);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, qualifier Q&gt;</div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="a00976.html#ga059fdbdba4cca35cdff172a9d0d0afc9">   72</a></span>&#160;        GLM_FUNC_DECL vec&lt;3, T, Q&gt; <a class="code" href="a00976.html#ga4333b1ea8ebf1bd52bc3801a7617398a">rotateX</a>(</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                vec&lt;3, T, Q&gt; <span class="keyword">const</span>&amp; v,</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                T <span class="keyword">const</span>&amp; <a class="code" href="a00865.html#ga8aa248b31d5ade470c87304df5eb7bd8">angle</a>);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, qualifier Q&gt;</div>
+<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="a00976.html#gaebdc8b054ace27d9f62e054531c6f44d">   79</a></span>&#160;        GLM_FUNC_DECL vec&lt;3, T, Q&gt; <a class="code" href="a00976.html#ga3ce3db0867b7f8efd878ee34f95a623b">rotateY</a>(</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                vec&lt;3, T, Q&gt; <span class="keyword">const</span>&amp; v,</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                T <span class="keyword">const</span>&amp; <a class="code" href="a00865.html#ga8aa248b31d5ade470c87304df5eb7bd8">angle</a>);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, qualifier Q&gt;</div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="a00976.html#ga5a048838a03f6249acbacb4dbacf79c4">   86</a></span>&#160;        GLM_FUNC_DECL vec&lt;3, T, Q&gt; <a class="code" href="a00976.html#ga923b75c6448161053768822d880702e6">rotateZ</a>(</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                vec&lt;3, T, Q&gt; <span class="keyword">const</span>&amp; v,</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                T <span class="keyword">const</span>&amp; <a class="code" href="a00865.html#ga8aa248b31d5ade470c87304df5eb7bd8">angle</a>);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, qualifier Q&gt;</div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="a00976.html#ga4333b1ea8ebf1bd52bc3801a7617398a">   93</a></span>&#160;        GLM_FUNC_DECL vec&lt;4, T, Q&gt; <a class="code" href="a00976.html#ga4333b1ea8ebf1bd52bc3801a7617398a">rotateX</a>(</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                vec&lt;4, T, Q&gt; <span class="keyword">const</span>&amp; v,</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                T <span class="keyword">const</span>&amp; <a class="code" href="a00865.html#ga8aa248b31d5ade470c87304df5eb7bd8">angle</a>);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, qualifier Q&gt;</div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="a00976.html#ga3ce3db0867b7f8efd878ee34f95a623b">  100</a></span>&#160;        GLM_FUNC_DECL vec&lt;4, T, Q&gt; <a class="code" href="a00976.html#ga3ce3db0867b7f8efd878ee34f95a623b">rotateY</a>(</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                vec&lt;4, T, Q&gt; <span class="keyword">const</span>&amp; v,</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                T <span class="keyword">const</span>&amp; <a class="code" href="a00865.html#ga8aa248b31d5ade470c87304df5eb7bd8">angle</a>);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, qualifier Q&gt;</div>
+<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="a00976.html#ga923b75c6448161053768822d880702e6">  107</a></span>&#160;        GLM_FUNC_DECL vec&lt;4, T, Q&gt; <a class="code" href="a00976.html#ga923b75c6448161053768822d880702e6">rotateZ</a>(</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                vec&lt;4, T, Q&gt; <span class="keyword">const</span>&amp; v,</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                T <span class="keyword">const</span>&amp; <a class="code" href="a00865.html#ga8aa248b31d5ade470c87304df5eb7bd8">angle</a>);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, qualifier Q&gt;</div>
+<div class="line"><a name="l00114"></a><span class="lineno"><a class="line" href="a00976.html#ga1a32fceb71962e6160e8af295c91930a">  114</a></span>&#160;        GLM_FUNC_DECL mat&lt;4, 4, T, Q&gt; <a class="code" href="a00976.html#ga1a32fceb71962e6160e8af295c91930a">orientation</a>(</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                vec&lt;3, T, Q&gt; <span class="keyword">const</span>&amp; Normal,</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                vec&lt;3, T, Q&gt; <span class="keyword">const</span>&amp; Up);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;}<span class="comment">//namespace glm</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="preprocessor">#include &quot;rotate_vector.inl&quot;</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aa00969_html_ga6b867eb52e2fc933d2e0bf26aabc9a70"><div class="ttname"><a href="a00969.html#ga6b867eb52e2fc933d2e0bf26aabc9a70">glm::cubic</a></div><div class="ttdeci">GLM_FUNC_DECL genType cubic(genType const &amp;v1, genType const &amp;v2, genType const &amp;v3, genType const &amp;v4, typename genType::value_type const &amp;s)</div><div class="ttdoc">Return a point from a cubic curve.</div></div>
-<div class="ttc" id="aa00969_html_gaa69e143f6374d32f934a8edeaa50bac9"><div class="ttname"><a href="a00969.html#gaa69e143f6374d32f934a8edeaa50bac9">glm::hermite</a></div><div class="ttdeci">GLM_FUNC_DECL genType hermite(genType const &amp;v1, genType const &amp;t1, genType const &amp;v2, genType const &amp;t2, typename genType::value_type const &amp;s)</div><div class="ttdoc">Return a point from a hermite curve.</div></div>
-<div class="ttc" id="aa00969_html_ga8119c04f8210fd0d292757565cd6918d"><div class="ttname"><a href="a00969.html#ga8119c04f8210fd0d292757565cd6918d">glm::catmullRom</a></div><div class="ttdeci">GLM_FUNC_DECL genType catmullRom(genType const &amp;v1, genType const &amp;v2, genType const &amp;v3, genType const &amp;v4, typename genType::value_type const &amp;s)</div><div class="ttdoc">Return a point from a catmull rom curve.</div></div>
+<div class="ttc" id="aa00976_html_ga3ce3db0867b7f8efd878ee34f95a623b"><div class="ttname"><a href="a00976.html#ga3ce3db0867b7f8efd878ee34f95a623b">glm::rotateY</a></div><div class="ttdeci">GLM_FUNC_DECL vec&lt; 4, T, Q &gt; rotateY(vec&lt; 4, T, Q &gt; const &amp;v, T const &amp;angle)</div><div class="ttdoc">Rotate a four dimensional vector around the Y axis.</div></div>
+<div class="ttc" id="aa00976_html_ga1005f1267ed9c57faa3f24cf6873b961"><div class="ttname"><a href="a00976.html#ga1005f1267ed9c57faa3f24cf6873b961">glm::rotate</a></div><div class="ttdeci">GLM_FUNC_DECL vec&lt; 4, T, Q &gt; rotate(vec&lt; 4, T, Q &gt; const &amp;v, T const &amp;angle, vec&lt; 3, T, Q &gt; const &amp;normal)</div><div class="ttdoc">Rotate a four dimensional vector around an axis.</div></div>
+<div class="ttc" id="aa00976_html_ga4333b1ea8ebf1bd52bc3801a7617398a"><div class="ttname"><a href="a00976.html#ga4333b1ea8ebf1bd52bc3801a7617398a">glm::rotateX</a></div><div class="ttdeci">GLM_FUNC_DECL vec&lt; 4, T, Q &gt; rotateX(vec&lt; 4, T, Q &gt; const &amp;v, T const &amp;angle)</div><div class="ttdoc">Rotate a four dimensional vector around the X axis.</div></div>
+<div class="ttc" id="aa00976_html_ga923b75c6448161053768822d880702e6"><div class="ttname"><a href="a00976.html#ga923b75c6448161053768822d880702e6">glm::rotateZ</a></div><div class="ttdeci">GLM_FUNC_DECL vec&lt; 4, T, Q &gt; rotateZ(vec&lt; 4, T, Q &gt; const &amp;v, T const &amp;angle)</div><div class="ttdoc">Rotate a four dimensional vector around the Z axis.</div></div>
+<div class="ttc" id="aa00865_html_ga8aa248b31d5ade470c87304df5eb7bd8"><div class="ttname"><a href="a00865.html#ga8aa248b31d5ade470c87304df5eb7bd8">glm::angle</a></div><div class="ttdeci">GLM_FUNC_DECL T angle(qua&lt; T, Q &gt; const &amp;x)</div><div class="ttdoc">Returns the quaternion rotation angle.</div></div>
+<div class="ttc" id="aa00976_html_ga1a32fceb71962e6160e8af295c91930a"><div class="ttname"><a href="a00976.html#ga1a32fceb71962e6160e8af295c91930a">glm::orientation</a></div><div class="ttdeci">GLM_FUNC_DECL mat&lt; 4, 4, T, Q &gt; orientation(vec&lt; 3, T, Q &gt; const &amp;Normal, vec&lt; 3, T, Q &gt; const &amp;Up)</div><div class="ttdoc">Build a rotation matrix from a normal and a up vector.</div></div>
+<div class="ttc" id="aa00976_html_ga8b11b18ce824174ea1a5a69ea14e2cee"><div class="ttname"><a href="a00976.html#ga8b11b18ce824174ea1a5a69ea14e2cee">glm::slerp</a></div><div class="ttdeci">GLM_FUNC_DECL vec&lt; 3, T, Q &gt; slerp(vec&lt; 3, T, Q &gt; const &amp;x, vec&lt; 3, T, Q &gt; const &amp;y, T const &amp;a)</div><div class="ttdoc">Returns Spherical interpolation between two vectors.</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

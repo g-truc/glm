@@ -113,7 +113,7 @@ namespace detail
 	{
 		static qua<float, Q> call(qua<float, Q> const& q, float s)
 		{
-			vec<4, float, Q> Result;
+			qua<float, Q> Result;
 			Result.data = _mm_mul_ps(q.data, _mm_set_ps1(s));
 			return Result;
 		}
@@ -137,7 +137,7 @@ namespace detail
 	{
 		static qua<float, Q> call(qua<float, Q> const& q, float s)
 		{
-			vec<4, float, Q> Result;
+			qua<float, Q> Result;
 			Result.data = _mm_div_ps(q.data, _mm_set_ps1(s));
 			return Result;
 		}

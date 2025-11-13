@@ -60,6 +60,7 @@ namespace glm
 	template<typename T, qualifier Q> GLM_FUNC_DECL vec<2, bool, Q> isfinite(const vec<2, T, Q>& x);				//!< \brief Test whether or not a scalar or each vector component is a finite value. (From GLM_GTX_compatibility)
 	template<typename T, qualifier Q> GLM_FUNC_DECL vec<3, bool, Q> isfinite(const vec<3, T, Q>& x);				//!< \brief Test whether or not a scalar or each vector component is a finite value. (From GLM_GTX_compatibility)
 	template<typename T, qualifier Q> GLM_FUNC_DECL vec<4, bool, Q> isfinite(const vec<4, T, Q>& x);				//!< \brief Test whether or not a scalar or each vector component is a finite value. (From GLM_GTX_compatibility)
+	template<typename T, qualifier Q> GLM_FUNC_DECL vec<4, bool, Q> isfinite(const qua<T, Q>& x);					//!< \brief Test whether or not a scalar or each vector component is a finite value. (From GLM_GTX_compatibility)
 
 	typedef bool						bool1;			//!< \brief boolean type with 1 component. (From GLM_GTX_compatibility extension)
 	typedef vec<2, bool, highp>			bool2;			//!< \brief boolean type with 2 components. (From GLM_GTX_compatibility extension)

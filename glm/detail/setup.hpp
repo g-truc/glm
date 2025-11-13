@@ -2,10 +2,11 @@
 
 #include <cassert>
 #include <cstddef>
+#include <type_traits>
 
 #define GLM_VERSION_MAJOR 1
-#define GLM_VERSION_MINOR 0
-#define GLM_VERSION_PATCH 2
+#define GLM_VERSION_MINOR 1
+#define GLM_VERSION_PATCH 0
 #define GLM_VERSION_REVISION 0 // Deprecated
 #define GLM_VERSION 1000 // Deprecated
 
@@ -68,8 +69,9 @@
 #define GLM_LANG_CXX14_FLAG			(1 << 5)
 #define GLM_LANG_CXX17_FLAG			(1 << 6)
 #define GLM_LANG_CXX20_FLAG			(1 << 7)
-#define GLM_LANG_CXXMS_FLAG			(1 << 8)
-#define GLM_LANG_CXXGNU_FLAG		(1 << 9)
+#define GLM_LANG_CXX23_FLAG			(1 << 8)
+#define GLM_LANG_CXXMS_FLAG			(1 << 9)
+#define GLM_LANG_CXXGNU_FLAG		(1 << 10)
 
 #define GLM_LANG_CXX98			GLM_LANG_CXX98_FLAG
 #define GLM_LANG_CXX03			(GLM_LANG_CXX98 | GLM_LANG_CXX03_FLAG)
@@ -78,6 +80,7 @@
 #define GLM_LANG_CXX14			(GLM_LANG_CXX11 | GLM_LANG_CXX14_FLAG)
 #define GLM_LANG_CXX17			(GLM_LANG_CXX14 | GLM_LANG_CXX17_FLAG)
 #define GLM_LANG_CXX20			(GLM_LANG_CXX17 | GLM_LANG_CXX20_FLAG)
+#define GLM_LANG_CXX23			(GLM_LANG_CXX20 | GLM_LANG_CXX23_FLAG)
 #define GLM_LANG_CXXMS			GLM_LANG_CXXMS_FLAG
 #define GLM_LANG_CXXGNU			GLM_LANG_CXXGNU_FLAG
 
@@ -93,20 +96,8 @@
 #	define GLM_LANG 0
 #elif defined(GLM_FORCE_CXX20)
 #	define GLM_LANG (GLM_LANG_CXX20 | GLM_LANG_EXT)
-#	define GLM_LANG_STL11_FORCED
 #elif defined(GLM_FORCE_CXX17)
 #	define GLM_LANG (GLM_LANG_CXX17 | GLM_LANG_EXT)
-#	define GLM_LANG_STL11_FORCED
-#elif defined(GLM_FORCE_CXX14)
-#	define GLM_LANG (GLM_LANG_CXX14 | GLM_LANG_EXT)
-#	define GLM_LANG_STL11_FORCED
-#elif defined(GLM_FORCE_CXX11)
-#	define GLM_LANG (GLM_LANG_CXX11 | GLM_LANG_EXT)
-#	define GLM_LANG_STL11_FORCED
-#elif defined(GLM_FORCE_CXX03)
-#	define GLM_LANG (GLM_LANG_CXX03 | GLM_LANG_EXT)
-#elif defined(GLM_FORCE_CXX98)
-#	define GLM_LANG (GLM_LANG_CXX98 | GLM_LANG_EXT)
 #else
 #	if GLM_COMPILER & GLM_COMPILER_VC && defined(_MSVC_LANG)
 #		if GLM_COMPILER >= GLM_COMPILER_VC15_7
@@ -124,18 +115,14 @@
 #		define GLM_LANG_PLATFORM 0
 #	endif
 
-#	if __cplusplus > 201703L || GLM_LANG_PLATFORM > 201703L
+#	if __cplusplus > 202302L || GLM_LANG_PLATFORM > 202302L
+#		define GLM_LANG (GLM_LANG_CXX23 | GLM_LANG_EXT)
+#	elif __cplusplus == 202302L || GLM_LANG_PLATFORM == 202302L
+#		define GLM_LANG (GLM_LANG_CXX23 | GLM_LANG_EXT)
+#	elif __cplusplus == 202002L || GLM_LANG_PLATFORM == 202002L
 #		define GLM_LANG (GLM_LANG_CXX20 | GLM_LANG_EXT)
 #	elif __cplusplus == 201703L || GLM_LANG_PLATFORM == 201703L
 #		define GLM_LANG (GLM_LANG_CXX17 | GLM_LANG_EXT)
-#	elif __cplusplus == 201402L || __cplusplus == 201406L || __cplusplus == 201500L || GLM_LANG_PLATFORM == 201402L
-#		define GLM_LANG (GLM_LANG_CXX14 | GLM_LANG_EXT)
-#	elif __cplusplus == 201103L || GLM_LANG_PLATFORM == 201103L
-#		define GLM_LANG (GLM_LANG_CXX11 | GLM_LANG_EXT)
-#	elif defined(__INTEL_CXX11_MODE__) || defined(_MSC_VER) || defined(__GXX_EXPERIMENTAL_CXX0X__)
-#		define GLM_LANG (GLM_LANG_CXX0X | GLM_LANG_EXT)
-#	elif __cplusplus == 199711L
-#		define GLM_LANG (GLM_LANG_CXX98 | GLM_LANG_EXT)
 #	else
 #		define GLM_LANG (0 | GLM_LANG_EXT)
 #	endif
@@ -144,166 +131,12 @@
 ///////////////////////////////////////////////////////////////////////////////////
 // Has of C++ features
 
-// http://clang.llvm.org/cxx_status.html
-// http://gcc.gnu.org/projects/cxx0x.html
-// http://msdn.microsoft.com/en-us/library/vstudio/hh567368(v=vs.120).aspx
-
-#if (GLM_COMPILER & GLM_COMPILER_CUDA_RTC) == GLM_COMPILER_CUDA_RTC
-#	define GLM_HAS_CXX11_STL 0
-#elif (GLM_COMPILER & GLM_COMPILER_HIP)
-#	define GLM_HAS_CXX11_STL 0
-#elif GLM_COMPILER & GLM_COMPILER_CLANG
-#	if (defined(_LIBCPP_VERSION) || (GLM_LANG & GLM_LANG_CXX11_FLAG) || defined(GLM_LANG_STL11_FORCED))
-#		define GLM_HAS_CXX11_STL 1
-#	else
-#		define GLM_HAS_CXX11_STL 0
-#	endif
-#elif GLM_LANG & GLM_LANG_CXX11_FLAG
-#	define GLM_HAS_CXX11_STL 1
-#else
-#	define GLM_HAS_CXX11_STL ((GLM_LANG & GLM_LANG_CXX0X_FLAG) && (\
-		((GLM_COMPILER & GLM_COMPILER_GCC) && (GLM_COMPILER >= GLM_COMPILER_GCC48)) || \
-		((GLM_COMPILER & GLM_COMPILER_VC) && (GLM_COMPILER >= GLM_COMPILER_VC12)) || \
-		((GLM_PLATFORM != GLM_PLATFORM_WINDOWS) && (GLM_COMPILER & GLM_COMPILER_INTEL) && (GLM_COMPILER >= GLM_COMPILER_INTEL15))))
-#endif
-
-// N1720
-#if GLM_COMPILER & GLM_COMPILER_CLANG
-#	define GLM_HAS_STATIC_ASSERT __has_feature(cxx_static_assert)
-#elif GLM_LANG & GLM_LANG_CXX11_FLAG
-#	define GLM_HAS_STATIC_ASSERT 1
-#else
-#	define GLM_HAS_STATIC_ASSERT ((GLM_LANG & GLM_LANG_CXX0X_FLAG) && (\
-		((GLM_COMPILER & GLM_COMPILER_CUDA)) || \
-		((GLM_COMPILER & GLM_COMPILER_VC)) || \
-		((GLM_COMPILER & GLM_COMPILER_HIP))))
-#endif
-
-// N1988
-#if GLM_LANG & GLM_LANG_CXX11_FLAG
-#	define GLM_HAS_EXTENDED_INTEGER_TYPE 1
-#else
-#	define GLM_HAS_EXTENDED_INTEGER_TYPE (\
-		((GLM_LANG & GLM_LANG_CXX0X_FLAG) && (GLM_COMPILER & GLM_COMPILER_VC)) || \
-		((GLM_LANG & GLM_LANG_CXX0X_FLAG) && (GLM_COMPILER & GLM_COMPILER_CUDA)) || \
-		((GLM_LANG & GLM_LANG_CXX0X_FLAG) && (GLM_COMPILER & GLM_COMPILER_CLANG)) || \
-		((GLM_COMPILER & GLM_COMPILER_HIP)))
-#endif
-
-// N2672 Initializer lists http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2008/n2672.htm
-#if GLM_COMPILER & GLM_COMPILER_CLANG
-#	define GLM_HAS_INITIALIZER_LISTS __has_feature(cxx_generalized_initializers)
-#elif GLM_LANG & GLM_LANG_CXX11_FLAG
-#	define GLM_HAS_INITIALIZER_LISTS 1
-#else
-#	define GLM_HAS_INITIALIZER_LISTS ((GLM_LANG & GLM_LANG_CXX0X_FLAG) && (\
-		((GLM_COMPILER & GLM_COMPILER_VC) && (GLM_COMPILER >= GLM_COMPILER_VC15)) || \
-		((GLM_COMPILER & GLM_COMPILER_INTEL) && (GLM_COMPILER >= GLM_COMPILER_INTEL14)) || \
-		((GLM_COMPILER & GLM_COMPILER_CUDA)) || \
-		((GLM_COMPILER & GLM_COMPILER_HIP))))
-#endif
-
-// N2544 Unrestricted unions http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2008/n2544.pdf
-#if GLM_COMPILER & GLM_COMPILER_CLANG
-#	define GLM_HAS_UNRESTRICTED_UNIONS __has_feature(cxx_unrestricted_unions)
-#elif GLM_LANG & GLM_LANG_CXX11_FLAG
-#	define GLM_HAS_UNRESTRICTED_UNIONS 1
-#else
-#	define GLM_HAS_UNRESTRICTED_UNIONS (GLM_LANG & GLM_LANG_CXX0X_FLAG) && (\
-		(GLM_COMPILER & GLM_COMPILER_VC) || \
-		((GLM_COMPILER & GLM_COMPILER_CUDA)) || \
-		((GLM_COMPILER & GLM_COMPILER_HIP)))
-#endif
-
-// N2346
-#if GLM_COMPILER & GLM_COMPILER_CLANG
-#	define GLM_HAS_DEFAULTED_FUNCTIONS __has_feature(cxx_defaulted_functions)
-#elif GLM_LANG & GLM_LANG_CXX11_FLAG
-#	define GLM_HAS_DEFAULTED_FUNCTIONS 1
-#else
-#	define GLM_HAS_DEFAULTED_FUNCTIONS ((GLM_LANG & GLM_LANG_CXX0X_FLAG) && (\
-		((GLM_COMPILER & GLM_COMPILER_VC) && (GLM_COMPILER >= GLM_COMPILER_VC12)) || \
-		((GLM_COMPILER & GLM_COMPILER_INTEL)) || \
-		(GLM_COMPILER & GLM_COMPILER_CUDA)) || \
-		((GLM_COMPILER & GLM_COMPILER_HIP)))
-#endif
-
-// N2118
-#if GLM_COMPILER & GLM_COMPILER_CLANG
-#	define GLM_HAS_RVALUE_REFERENCES __has_feature(cxx_rvalue_references)
-#elif GLM_LANG & GLM_LANG_CXX11_FLAG
-#	define GLM_HAS_RVALUE_REFERENCES 1
-#else
-#	define GLM_HAS_RVALUE_REFERENCES ((GLM_LANG & GLM_LANG_CXX0X_FLAG) && (\
-		((GLM_COMPILER & GLM_COMPILER_VC)) || \
-		((GLM_COMPILER & GLM_COMPILER_CUDA)) || \
-		((GLM_COMPILER & GLM_COMPILER_HIP))))
-#endif
-
-// N2437 http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2437.pdf
-#if GLM_COMPILER & GLM_COMPILER_CLANG
-#	define GLM_HAS_EXPLICIT_CONVERSION_OPERATORS __has_feature(cxx_explicit_conversions)
-#elif GLM_LANG & GLM_LANG_CXX11_FLAG
-#	define GLM_HAS_EXPLICIT_CONVERSION_OPERATORS 1
-#else
-#	define GLM_HAS_EXPLICIT_CONVERSION_OPERATORS ((GLM_LANG & GLM_LANG_CXX0X_FLAG) && (\
-		((GLM_COMPILER & GLM_COMPILER_INTEL) && (GLM_COMPILER >= GLM_COMPILER_INTEL14)) || \
-		((GLM_COMPILER & GLM_COMPILER_VC) && (GLM_COMPILER >= GLM_COMPILER_VC12)) || \
-		((GLM_COMPILER & GLM_COMPILER_CUDA)) || \
-		((GLM_COMPILER & GLM_COMPILER_HIP))))
-#endif
-
-// N2258 http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2258.pdf
-#if GLM_COMPILER & GLM_COMPILER_CLANG
-#	define GLM_HAS_TEMPLATE_ALIASES __has_feature(cxx_alias_templates)
-#elif GLM_LANG & GLM_LANG_CXX11_FLAG
-#	define GLM_HAS_TEMPLATE_ALIASES 1
-#else
-#	define GLM_HAS_TEMPLATE_ALIASES ((GLM_LANG & GLM_LANG_CXX0X_FLAG) && (\
-		((GLM_COMPILER & GLM_COMPILER_INTEL)) || \
-		((GLM_COMPILER & GLM_COMPILER_VC) && (GLM_COMPILER >= GLM_COMPILER_VC12)) || \
-		((GLM_COMPILER & GLM_COMPILER_CUDA)) || \
-		((GLM_COMPILER & GLM_COMPILER_HIP))))
-#endif
-
-// N2930 http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2009/n2930.html
-#if GLM_COMPILER & GLM_COMPILER_CLANG
-#	define GLM_HAS_RANGE_FOR __has_feature(cxx_range_for)
-#elif GLM_LANG & GLM_LANG_CXX11_FLAG
-#	define GLM_HAS_RANGE_FOR 1
-#else
-#	define GLM_HAS_RANGE_FOR ((GLM_LANG & GLM_LANG_CXX0X_FLAG) && (\
-		((GLM_COMPILER & GLM_COMPILER_INTEL)) || \
-		((GLM_COMPILER & GLM_COMPILER_VC)) || \
-		((GLM_COMPILER & GLM_COMPILER_CUDA)) || \
-		((GLM_COMPILER & GLM_COMPILER_HIP))))
-#endif
-
-// N2341 http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2341.pdf
-#if GLM_COMPILER & GLM_COMPILER_CLANG
-#	define GLM_HAS_ALIGNOF __has_feature(cxx_alignas)
-#elif GLM_LANG & GLM_LANG_CXX11_FLAG
-#	define GLM_HAS_ALIGNOF 1
-#else
-#	define GLM_HAS_ALIGNOF ((GLM_LANG & GLM_LANG_CXX0X_FLAG) && (\
-		((GLM_COMPILER & GLM_COMPILER_INTEL) && (GLM_COMPILER >= GLM_COMPILER_INTEL15)) || \
-		((GLM_COMPILER & GLM_COMPILER_VC) && (GLM_COMPILER >= GLM_COMPILER_VC14)) || \
-		((GLM_COMPILER & GLM_COMPILER_CUDA)) || \
-		((GLM_COMPILER & GLM_COMPILER_HIP))))
-#endif
-
 // N2235 Generalized Constant Expressions http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2235.pdf
 // N3652 Extended Constant Expressions http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3652.html
 #if (GLM_ARCH & GLM_ARCH_SIMD_BIT) // Compiler SIMD intrinsics don't support constexpr...
 #	define GLM_HAS_CONSTEXPR 0
-#elif (GLM_COMPILER & GLM_COMPILER_CLANG)
-#	define GLM_HAS_CONSTEXPR __has_feature(cxx_relaxed_constexpr)
-#elif (GLM_LANG & GLM_LANG_CXX14_FLAG)
-#	define GLM_HAS_CONSTEXPR 1
 #else
-#	define GLM_HAS_CONSTEXPR ((GLM_LANG & GLM_LANG_CXX0X_FLAG) && GLM_HAS_INITIALIZER_LISTS && (\
-		((GLM_COMPILER & GLM_COMPILER_INTEL) && (GLM_COMPILER >= GLM_COMPILER_INTEL17)) || \
-		((GLM_COMPILER & GLM_COMPILER_VC) && (GLM_COMPILER >= GLM_COMPILER_VC15))))
+#	define GLM_HAS_CONSTEXPR 1
 #endif
 
 #if GLM_HAS_CONSTEXPR
@@ -313,76 +146,12 @@
 #endif
 
 //
-#if GLM_HAS_CONSTEXPR
-# if (GLM_COMPILER & GLM_COMPILER_CLANG)
-#	if __has_feature(cxx_if_constexpr)
-#		define GLM_HAS_IF_CONSTEXPR 1
-#	else
-# 		define GLM_HAS_IF_CONSTEXPR 0
-#	endif
-# elif (GLM_LANG & GLM_LANG_CXX17_FLAG)
-# 	define GLM_HAS_IF_CONSTEXPR 1
-# else
-# 	define GLM_HAS_IF_CONSTEXPR 0
-# endif
-#else
-#	define GLM_HAS_IF_CONSTEXPR 0
-#endif
-
-#if GLM_HAS_IF_CONSTEXPR
-# 	define GLM_IF_CONSTEXPR if constexpr
-#else
-#	define GLM_IF_CONSTEXPR if
-#endif
-
-// [nodiscard]
-#if GLM_LANG & GLM_LANG_CXX17_FLAG
-#	define GLM_NODISCARD [[nodiscard]]
-#else
-#	define GLM_NODISCARD
-#endif
-
-//
-#if GLM_LANG & GLM_LANG_CXX11_FLAG
-#	define GLM_HAS_ASSIGNABLE 1
-#else
-#	define GLM_HAS_ASSIGNABLE ((GLM_LANG & GLM_LANG_CXX0X_FLAG) && (\
-		((GLM_COMPILER & GLM_COMPILER_VC) && (GLM_COMPILER >= GLM_COMPILER_VC15)) || \
-		((GLM_COMPILER & GLM_COMPILER_GCC) && (GLM_COMPILER >= GLM_COMPILER_GCC49))))
-#endif
-
-//
-#define GLM_HAS_TRIVIAL_QUERIES 0
-
-//
-#if GLM_LANG & GLM_LANG_CXX11_FLAG
-#	define GLM_HAS_MAKE_SIGNED 1
-#else
-#	define GLM_HAS_MAKE_SIGNED ((GLM_LANG & GLM_LANG_CXX0X_FLAG) && (\
-		((GLM_COMPILER & GLM_COMPILER_VC) && (GLM_COMPILER >= GLM_COMPILER_VC12)) || \
-		((GLM_COMPILER & GLM_COMPILER_CUDA)) || \
-		((GLM_COMPILER & GLM_COMPILER_HIP))))
-#endif
-
-//
 #if defined(GLM_FORCE_INTRINSICS)
 #	define GLM_HAS_BITSCAN_WINDOWS ((GLM_PLATFORM & GLM_PLATFORM_WINDOWS) && (\
 		((GLM_COMPILER & GLM_COMPILER_INTEL)) || \
 		((GLM_COMPILER & GLM_COMPILER_VC) && (GLM_COMPILER >= GLM_COMPILER_VC14) && (GLM_ARCH & GLM_ARCH_X86_BIT))))
 #else
 #	define GLM_HAS_BITSCAN_WINDOWS 0
-#endif
-
-#if GLM_LANG & GLM_LANG_CXX11_FLAG
-#	define GLM_HAS_NOEXCEPT 1
-#else
-#	define GLM_HAS_NOEXCEPT 0
-#endif
-
-#if GLM_HAS_NOEXCEPT
-#	define GLM_NOEXCEPT noexcept
-#else
-#	define GLM_NOEXCEPT
 #endif
 
 ///////////////////////////////////////////////////////////////////////////////////
@@ -418,32 +187,6 @@
 #else
 #	define GLM_HAS_OPENMP 0
 #endif
-
-///////////////////////////////////////////////////////////////////////////////////
-// nullptr
-
-#if GLM_LANG & GLM_LANG_CXX0X_FLAG
-#	define GLM_CONFIG_NULLPTR GLM_ENABLE
-#else
-#	define GLM_CONFIG_NULLPTR GLM_DISABLE
-#endif
-
-#if GLM_CONFIG_NULLPTR == GLM_ENABLE
-#	define GLM_NULLPTR nullptr
-#else
-#	define GLM_NULLPTR 0
-#endif
-
-///////////////////////////////////////////////////////////////////////////////////
-// Static assert
-
-#if GLM_HAS_STATIC_ASSERT
-#	define GLM_STATIC_ASSERT(x, message) static_assert(x, message)
-#elif GLM_COMPILER & GLM_COMPILER_VC
-#	define GLM_STATIC_ASSERT(x, message) typedef char __CASSERT__##__LINE__[(x) ? 1 : -1]
-#else
-#	define GLM_STATIC_ASSERT(x, message) assert(x)
-#endif//GLM_LANG
 
 ///////////////////////////////////////////////////////////////////////////////////
 // Qualifiers
@@ -491,20 +234,14 @@
 
 #define GLM_CTOR_DECL GLM_CUDA_FUNC_DECL GLM_CONSTEXPR
 #define GLM_FUNC_DISCARD_DECL GLM_CUDA_FUNC_DECL
-#define GLM_FUNC_DECL GLM_NODISCARD GLM_CUDA_FUNC_DECL
+#define GLM_FUNC_DECL [[nodiscard]] GLM_CUDA_FUNC_DECL
 #define GLM_FUNC_QUALIFIER GLM_CUDA_FUNC_DEF GLM_INLINE
 
 // Do not use CUDA function qualifiers on CUDA compiler when functions are made default
-#if GLM_HAS_DEFAULTED_FUNCTIONS
-#	define GLM_DEFAULTED_FUNC_DECL
-#	define GLM_DEFAULTED_FUNC_QUALIFIER GLM_INLINE
-#else
-#	define GLM_DEFAULTED_FUNC_DECL GLM_FUNC_DISCARD_DECL
-#	define GLM_DEFAULTED_FUNC_QUALIFIER GLM_FUNC_QUALIFIER
-#endif//GLM_HAS_DEFAULTED_FUNCTIONS
+
 #if !defined(GLM_FORCE_CTOR_INIT)
 #	define GLM_DEFAULTED_DEFAULT_CTOR_DECL
-#	define GLM_DEFAULTED_DEFAULT_CTOR_QUALIFIER GLM_DEFAULTED_FUNC_QUALIFIER
+#	define GLM_DEFAULTED_DEFAULT_CTOR_QUALIFIER GLM_INLINE
 #else
 #	define GLM_DEFAULTED_DEFAULT_CTOR_DECL GLM_FUNC_DISCARD_DECL
 #	define GLM_DEFAULTED_DEFAULT_CTOR_QUALIFIER GLM_FUNC_QUALIFIER
@@ -588,20 +325,12 @@
 // Qualifiers
 
 #if (GLM_COMPILER & GLM_COMPILER_VC) || ((GLM_COMPILER & GLM_COMPILER_INTEL) && (GLM_PLATFORM & GLM_PLATFORM_WINDOWS))
-#	define GLM_DEPRECATED __declspec(deprecated)
 #	define GLM_ALIGNED_TYPEDEF(type, name, alignment) typedef __declspec(align(alignment)) type name
 #elif GLM_COMPILER & (GLM_COMPILER_GCC | GLM_COMPILER_CLANG | GLM_COMPILER_INTEL)
-#	if GLM_LANG & GLM_LANG_CXX14_FLAG
-#		define GLM_DEPRECATED [[deprecated]]
-#	else
-#		define GLM_DEPRECATED __attribute__((__deprecated__))
-#	endif
 #	define GLM_ALIGNED_TYPEDEF(type, name, alignment) typedef type name __attribute__((aligned(alignment)))
 #elif (GLM_COMPILER & GLM_COMPILER_CUDA) || (GLM_COMPILER & GLM_COMPILER_HIP)
-#	define GLM_DEPRECATED
 #	define GLM_ALIGNED_TYPEDEF(type, name, alignment) typedef type name __align__(x)
 #else
-#	define GLM_DEPRECATED
 #	define GLM_ALIGNED_TYPEDEF(type, name, alignment) typedef type name
 #endif
 
@@ -640,36 +369,23 @@ namespace glm
 }//namespace glm
 
 ///////////////////////////////////////////////////////////////////////////////////
-// constexpr
-
-#if GLM_HAS_CONSTEXPR
-#	define GLM_CONFIG_CONSTEXP GLM_ENABLE
-
-	namespace glm
-	{
-		template<typename T, std::size_t N>
-		constexpr std::size_t countof(T const (&)[N])
-		{
-			return N;
-		}
-	}//namespace glm
-#	define GLM_COUNTOF(arr) glm::countof(arr)
-#elif defined(_MSC_VER)
-#	define GLM_CONFIG_CONSTEXP GLM_DISABLE
-
-#	define GLM_COUNTOF(arr) _countof(arr)
-#else
-#	define GLM_CONFIG_CONSTEXP GLM_DISABLE
-
-#	define GLM_COUNTOF(arr) sizeof(arr) / sizeof(arr[0])
-#endif
-
-///////////////////////////////////////////////////////////////////////////////////
 // uint
+
+#include <cstdint>
 
 namespace glm{
 namespace detail
 {
+	typedef std::int8_t			int8;
+	typedef std::int16_t		int16;
+	typedef std::int32_t		int32;
+	typedef std::int64_t		int64;
+	
+	typedef std::uint8_t		uint8;
+	typedef std::uint16_t		uint16;
+	typedef std::uint32_t		uint32;
+	typedef std::uint64_t		uint64;
+
 	template<typename T>
 	struct is_int
 	{
@@ -677,13 +393,49 @@ namespace detail
 	};
 
 	template<>
-	struct is_int<unsigned int>
+	struct is_int<int8>
 	{
 		enum test {value = ~0};
 	};
 
 	template<>
-	struct is_int<signed int>
+	struct is_int<int16>
+	{
+		enum test {value = ~0};
+	};
+
+	template<>
+	struct is_int<int32>
+	{
+		enum test {value = ~0};
+	};
+
+	template<>
+	struct is_int<int64>
+	{
+		enum test {value = ~0};
+	};
+
+	template<>
+	struct is_int<uint8>
+	{
+		enum test {value = ~0};
+	};
+
+	template<>
+	struct is_int<uint16>
+	{
+		enum test {value = ~0};
+	};
+
+	template<>
+	struct is_int<uint32>
+	{
+		enum test {value = ~0};
+	};
+
+	template<>
+	struct is_int<uint64>
 	{
 		enum test {value = ~0};
 	};
@@ -691,131 +443,6 @@ namespace detail
 
 	typedef unsigned int	uint;
 }//namespace glm
-
-///////////////////////////////////////////////////////////////////////////////////
-// 64-bit int
-
-#if GLM_HAS_EXTENDED_INTEGER_TYPE
-#	include <cstdint>
-#endif
-
-namespace glm{
-namespace detail
-{
-#	if GLM_HAS_EXTENDED_INTEGER_TYPE
-		typedef std::uint64_t						uint64;
-		typedef std::int64_t						int64;
-#	elif (defined(__STDC_VERSION__) && (__STDC_VERSION__ >= 199901L)) // C99 detected, 64 bit types available
-		typedef uint64_t							uint64;
-		typedef int64_t								int64;
-#	elif GLM_COMPILER & GLM_COMPILER_VC
-		typedef unsigned __int64					uint64;
-		typedef signed __int64						int64;
-#	elif GLM_COMPILER & GLM_COMPILER_GCC
-#		pragma GCC diagnostic ignored "-Wlong-long"
-		__extension__ typedef unsigned long long	uint64;
-		__extension__ typedef signed long long		int64;
-#	elif (GLM_COMPILER & GLM_COMPILER_CLANG)
-#		pragma clang diagnostic ignored "-Wc++11-long-long"
-		typedef unsigned long long					uint64;
-		typedef signed long long					int64;
-#	else//unknown compiler
-		typedef unsigned long long					uint64;
-		typedef signed long long					int64;
-#	endif
-}//namespace detail
-}//namespace glm
-
-///////////////////////////////////////////////////////////////////////////////////
-// make_unsigned
-
-#if GLM_HAS_MAKE_SIGNED
-#	include <type_traits>
-
-namespace glm{
-namespace detail
-{
-	using std::make_unsigned;
-}//namespace detail
-}//namespace glm
-
-#else
-
-namespace glm{
-namespace detail
-{
-	template<typename genType>
-	struct make_unsigned
-	{};
-
-	template<>
-	struct make_unsigned<char>
-	{
-		typedef unsigned char type;
-	};
-
-	template<>
-	struct make_unsigned<signed char>
-	{
-		typedef unsigned char type;
-	};
-
-	template<>
-	struct make_unsigned<short>
-	{
-		typedef unsigned short type;
-	};
-
-	template<>
-	struct make_unsigned<int>
-	{
-		typedef unsigned int type;
-	};
-
-	template<>
-	struct make_unsigned<long>
-	{
-		typedef unsigned long type;
-	};
-
-	template<>
-	struct make_unsigned<int64>
-	{
-		typedef uint64 type;
-	};
-
-	template<>
-	struct make_unsigned<unsigned char>
-	{
-		typedef unsigned char type;
-	};
-
-	template<>
-	struct make_unsigned<unsigned short>
-	{
-		typedef unsigned short type;
-	};
-
-	template<>
-	struct make_unsigned<unsigned int>
-	{
-		typedef unsigned int type;
-	};
-
-	template<>
-	struct make_unsigned<unsigned long>
-	{
-		typedef unsigned long type;
-	};
-
-	template<>
-	struct make_unsigned<uint64>
-	{
-		typedef uint64 type;
-	};
-}//namespace detail
-}//namespace glm
-#endif
 
 ///////////////////////////////////////////////////////////////////////////////////
 // Only use x, y, z, w as vector type components
@@ -827,45 +454,31 @@ namespace detail
 #endif
 
 ///////////////////////////////////////////////////////////////////////////////////
-// Configure the use of defaulted initialized types
-
-#define GLM_CTOR_INIT_DISABLE		0
-#define GLM_CTOR_INITIALIZER_LIST	1
-#define GLM_CTOR_INITIALISATION		2
-
-#if defined(GLM_FORCE_CTOR_INIT) && GLM_HAS_INITIALIZER_LISTS
-#	define GLM_CONFIG_CTOR_INIT GLM_CTOR_INITIALIZER_LIST
-#elif defined(GLM_FORCE_CTOR_INIT) && !GLM_HAS_INITIALIZER_LISTS
-#	define GLM_CONFIG_CTOR_INIT GLM_CTOR_INITIALISATION
-#else
-#	define GLM_CONFIG_CTOR_INIT GLM_CTOR_INIT_DISABLE
-#endif
-
-///////////////////////////////////////////////////////////////////////////////////
 // Use SIMD instruction sets
 
-#if GLM_HAS_ALIGNOF && (GLM_LANG & GLM_LANG_CXXMS_FLAG) && (GLM_ARCH & GLM_ARCH_SIMD_BIT)
+#if (GLM_LANG & GLM_LANG_CXXMS_FLAG) && (GLM_ARCH & GLM_ARCH_SIMD_BIT)
 #	define GLM_CONFIG_SIMD GLM_ENABLE
 #else
 #	define GLM_CONFIG_SIMD GLM_DISABLE
 #endif
 
 ///////////////////////////////////////////////////////////////////////////////////
-// Configure the use of defaulted function
+// Configure the use of defaulted initialized types
 
-#if GLM_HAS_DEFAULTED_FUNCTIONS
-#	define GLM_CONFIG_DEFAULTED_FUNCTIONS GLM_ENABLE
-#	define GLM_DEFAULT = default
+#if defined(GLM_FORCE_CTOR_INIT)
+#	define GLM_CONFIG_CTOR_INIT GLM_ENABLE
 #else
-#	define GLM_CONFIG_DEFAULTED_FUNCTIONS GLM_DISABLE
-#	define GLM_DEFAULT
+#	define GLM_CONFIG_CTOR_INIT GLM_DISABLE
 #endif
 
-#if GLM_CONFIG_CTOR_INIT == GLM_CTOR_INIT_DISABLE && GLM_CONFIG_DEFAULTED_FUNCTIONS == GLM_ENABLE
-#	define GLM_CONFIG_DEFAULTED_DEFAULT_CTOR GLM_ENABLE
+///////////////////////////////////////////////////////////////////////////////////
+// Configure the use of defaulted function
+
+#define GLM_DEFAULT = default
+
+#if GLM_CONFIG_CTOR_INIT == GLM_DISABLE
 #	define GLM_DEFAULT_CTOR GLM_DEFAULT
 #else
-#	define GLM_CONFIG_DEFAULTED_DEFAULT_CTOR GLM_DISABLE
 #	define GLM_DEFAULT_CTOR
 #endif
 
@@ -880,7 +493,7 @@ namespace detail
 #	define GLM_FORCE_ALIGNED_GENTYPES
 #endif
 
-#if GLM_HAS_ALIGNOF && (GLM_LANG & GLM_LANG_CXXMS_FLAG) && (defined(GLM_FORCE_ALIGNED_GENTYPES) || (GLM_CONFIG_SIMD == GLM_ENABLE))
+#if (GLM_LANG & GLM_LANG_CXXMS_FLAG) && (defined(GLM_FORCE_ALIGNED_GENTYPES) || (GLM_CONFIG_SIMD == GLM_ENABLE))
 #	define GLM_CONFIG_ALIGNED_GENTYPES GLM_ENABLE
 #else
 #	define GLM_CONFIG_ALIGNED_GENTYPES GLM_DISABLE
@@ -980,34 +593,18 @@ namespace detail
 #		pragma message ("GLM: version " GLM_STR(GLM_VERSION_MAJOR) "." GLM_STR(GLM_VERSION_MINOR) "." GLM_STR(GLM_VERSION_PATCH))
 
 	// Report C++ language
-#	if (GLM_LANG & GLM_LANG_CXX20_FLAG) && (GLM_LANG & GLM_LANG_EXT)
+#	if (GLM_LANG & GLM_LANG_CXX23_FLAG) && (GLM_LANG & GLM_LANG_EXT)
+#		pragma message("GLM: C++ 23 with extensions")
+#	elif (GLM_LANG & GLM_LANG_CXX23_FLAG)
+#		pragma message("GLM: C++ 23")
+#	elif (GLM_LANG & GLM_LANG_CXX20_FLAG) && (GLM_LANG & GLM_LANG_EXT)
 #		pragma message("GLM: C++ 20 with extensions")
 #	elif (GLM_LANG & GLM_LANG_CXX20_FLAG)
-#		pragma message("GLM: C++ 2A")
+#		pragma message("GLM: C++ 20")
 #	elif (GLM_LANG & GLM_LANG_CXX17_FLAG) && (GLM_LANG & GLM_LANG_EXT)
 #		pragma message("GLM: C++ 17 with extensions")
 #	elif (GLM_LANG & GLM_LANG_CXX17_FLAG)
 #		pragma message("GLM: C++ 17")
-#	elif (GLM_LANG & GLM_LANG_CXX14_FLAG) && (GLM_LANG & GLM_LANG_EXT)
-#		pragma message("GLM: C++ 14 with extensions")
-#	elif (GLM_LANG & GLM_LANG_CXX14_FLAG)
-#		pragma message("GLM: C++ 14")
-#	elif (GLM_LANG & GLM_LANG_CXX11_FLAG) && (GLM_LANG & GLM_LANG_EXT)
-#		pragma message("GLM: C++ 11 with extensions")
-#	elif (GLM_LANG & GLM_LANG_CXX11_FLAG)
-#		pragma message("GLM: C++ 11")
-#	elif (GLM_LANG & GLM_LANG_CXX0X_FLAG) && (GLM_LANG & GLM_LANG_EXT)
-#		pragma message("GLM: C++ 0x with extensions")
-#	elif (GLM_LANG & GLM_LANG_CXX0X_FLAG)
-#		pragma message("GLM: C++ 0x")
-#	elif (GLM_LANG & GLM_LANG_CXX03_FLAG) && (GLM_LANG & GLM_LANG_EXT)
-#		pragma message("GLM: C++ 03 with extensions")
-#	elif (GLM_LANG & GLM_LANG_CXX03_FLAG)
-#		pragma message("GLM: C++ 03")
-#	elif (GLM_LANG & GLM_LANG_CXX98_FLAG) && (GLM_LANG & GLM_LANG_EXT)
-#		pragma message("GLM: C++ 98 with extensions")
-#	elif (GLM_LANG & GLM_LANG_CXX98_FLAG)
-#		pragma message("GLM: C++ 98")
 #	else
 #		pragma message("GLM: C++ language undetected")
 #	endif//GLM_LANG

@@ -198,35 +198,19 @@ namespace glm
 	template<>
 	GLM_FUNC_QUALIFIER float nextFloat(float x)
 	{
-#		if GLM_HAS_CXX11_STL
-			return std::nextafter(x, std::numeric_limits<float>::max());
-#		elif((GLM_COMPILER & GLM_COMPILER_VC) || ((GLM_COMPILER & GLM_COMPILER_INTEL) && (GLM_PLATFORM & GLM_PLATFORM_WINDOWS)))
-			return detail::nextafterf(x, FLT_MAX);
-#		elif(GLM_PLATFORM & GLM_PLATFORM_ANDROID)
-			return __builtin_nextafterf(x, FLT_MAX);
-#		else
-			return nextafterf(x, FLT_MAX);
-#		endif
+		return std::nextafter(x, std::numeric_limits<float>::max());
 	}
 
 	template<>
 	GLM_FUNC_QUALIFIER double nextFloat(double x)
 	{
-#		if GLM_HAS_CXX11_STL
-			return std::nextafter(x, std::numeric_limits<double>::max());
-#		elif((GLM_COMPILER & GLM_COMPILER_VC) || ((GLM_COMPILER & GLM_COMPILER_INTEL) && (GLM_PLATFORM & GLM_PLATFORM_WINDOWS)))
-			return detail::nextafter(x, std::numeric_limits<double>::max());
-#		elif(GLM_PLATFORM & GLM_PLATFORM_ANDROID)
-			return __builtin_nextafter(x, DBL_MAX);
-#		else
-			return nextafter(x, DBL_MAX);
-#		endif
+		return std::nextafter(x, std::numeric_limits<double>::max());
 	}
 
 	template<typename T>
 	GLM_FUNC_QUALIFIER T nextFloat(T x, int ULPs)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'next_float' only accept floating-point input");
+		static_assert(std::numeric_limits<T>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'nextFloat' only accept floating-point input");
 		assert(ULPs >= 0);
 
 		T temp = x;
@@ -237,34 +221,18 @@ namespace glm
 
 	GLM_FUNC_QUALIFIER float prevFloat(float x)
 	{
-#		if GLM_HAS_CXX11_STL
-			return std::nextafter(x, std::numeric_limits<float>::min());
-#		elif((GLM_COMPILER & GLM_COMPILER_VC) || ((GLM_COMPILER & GLM_COMPILER_INTEL) && (GLM_PLATFORM & GLM_PLATFORM_WINDOWS)))
-			return detail::nextafterf(x, FLT_MIN);
-#		elif(GLM_PLATFORM & GLM_PLATFORM_ANDROID)
-			return __builtin_nextafterf(x, FLT_MIN);
-#		else
-			return nextafterf(x, FLT_MIN);
-#		endif
+		return std::nextafter(x, std::numeric_limits<float>::min());
 	}
 
 	GLM_FUNC_QUALIFIER double prevFloat(double x)
 	{
-#		if GLM_HAS_CXX11_STL
-			return std::nextafter(x, std::numeric_limits<double>::min());
-#		elif((GLM_COMPILER & GLM_COMPILER_VC) || ((GLM_COMPILER & GLM_COMPILER_INTEL) && (GLM_PLATFORM & GLM_PLATFORM_WINDOWS)))
-			return _nextafter(x, DBL_MIN);
-#		elif(GLM_PLATFORM & GLM_PLATFORM_ANDROID)
-			return __builtin_nextafter(x, DBL_MIN);
-#		else
-			return nextafter(x, DBL_MIN);
-#		endif
+		return std::nextafter(x, std::numeric_limits<double>::min());
 	}
 
 	template<typename T>
 	GLM_FUNC_QUALIFIER T prevFloat(T x, int ULPs)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'prev_float' only accept floating-point input");
+		static_assert(std::numeric_limits<T>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT, "'prevFloat' only accept floating-point input");
 		assert(ULPs >= 0);
 
 		T temp = x;

@@ -63,7 +63,7 @@ namespace glm
 		typedef length_t length_type;
 
 		/// Return the count of components of a quaternion
-		GLM_FUNC_DECL static GLM_CONSTEXPR length_type length(){return 4;}
+		GLM_FUNC_DECL static constexpr length_type length(){return 4;}
 
 		GLM_FUNC_DECL GLM_CONSTEXPR T & operator[](length_type i);
 		GLM_FUNC_DECL GLM_CONSTEXPR T const& operator[](length_type i) const;
@@ -71,7 +71,7 @@ namespace glm
 		// -- Implicit basic constructors --
 
 		GLM_DEFAULTED_DEFAULT_CTOR_DECL GLM_CONSTEXPR qua() GLM_DEFAULT_CTOR;
-		GLM_DEFAULTED_FUNC_DECL GLM_CONSTEXPR qua(qua<T, Q> const& q) GLM_DEFAULT;
+		GLM_CTOR_DECL qua(qua<T, Q> const& q) = default;
 		template<qualifier P>
 		GLM_CTOR_DECL qua(qua<T, P> const& q);
 
@@ -92,11 +92,8 @@ namespace glm
 		template<typename U, qualifier P>
 		GLM_CTOR_DECL GLM_EXPLICIT qua(qua<U, P> const& q);
 
-		/// Explicit conversion operators
-#		if GLM_HAS_EXPLICIT_CONVERSION_OPERATORS
-			GLM_FUNC_DECL explicit operator mat<3, 3, T, Q>() const;
-			GLM_FUNC_DECL explicit operator mat<4, 4, T, Q>() const;
-#		endif
+		GLM_FUNC_DECL explicit operator mat<3, 3, T, Q>() const;
+		GLM_FUNC_DECL explicit operator mat<4, 4, T, Q>() const;
 
 		/// Create a quaternion from two normalized axis
 		///
@@ -113,7 +110,7 @@ namespace glm
 
 		// -- Unary arithmetic operators --
 
-		GLM_DEFAULTED_FUNC_DECL GLM_CONSTEXPR qua<T, Q>& operator=(qua<T, Q> const& q) GLM_DEFAULT;
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR qua<T, Q>& operator=(qua<T, Q> const& q) = default;
 
 		template<typename U>
 		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR qua<T, Q>& operator=(qua<U, Q> const& q);

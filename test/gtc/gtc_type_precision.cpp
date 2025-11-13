@@ -7,7 +7,6 @@
 #	include <omp.h>
 #endif
 
-#if GLM_HAS_STATIC_ASSERT
 static_assert(sizeof(glm::lowp_u8vec1) == 1, "uint8 size isn't 1 byte on this platform");
 static_assert(sizeof(glm::mediump_u8vec1) == 1, "uint8 size isn't 1 byte on this platform");
 static_assert(sizeof(glm::highp_u8vec1) == 1, "uint8 size isn't 1 byte on this platform");
@@ -142,8 +141,6 @@ static_assert(sizeof(glm::highp_u32vec4) == 16, "uint32 size isn't 4 bytes on th
 static_assert(sizeof(glm::lowp_u64vec4) == 32, "uint64 size isn't 8 bytes on this platform");
 static_assert(sizeof(glm::mediump_u64vec4) == 32, "uint64 size isn't 8 bytes on this platform");
 static_assert(sizeof(glm::highp_u64vec4) == 32, "uint64 size isn't 8 bytes on this platform");
-
-#endif
 
 static int test_scalar_size()
 {

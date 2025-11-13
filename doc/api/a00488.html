@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>1.0.0 API documentation: vector_relational.hpp File Reference</title>
+<title>1.0.2 API documentation: vector_reciprocal.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo-mini.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">1.0.0 API documentation
+   <div id="projectname">1.0.2 API documentation
    </div>
   </td>
  </tr>
@@ -62,66 +62,78 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_885cc87fac2d91e269af0a5a959fa5f6.html">E:</a></li><li class="navelem"><a class="el" href="dir_63ed049134a778d525e06b63afc2c979.html">Github</a></li><li class="navelem"><a class="el" href="dir_c98a9ac98258ab9f831b188d66361a70.html">g-truc</a></li><li class="navelem"><a class="el" href="dir_50f12b6ceb23d7f6adfb377a1ae8b006.html">glm</a></li><li class="navelem"><a class="el" href="dir_fca33f1b5115d46f42c670590789c0d2.html">glm</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_885cc87fac2d91e269af0a5a959fa5f6.html">E:</a></li><li class="navelem"><a class="el" href="dir_63ed049134a778d525e06b63afc2c979.html">Github</a></li><li class="navelem"><a class="el" href="dir_c98a9ac98258ab9f831b188d66361a70.html">g-truc</a></li><li class="navelem"><a class="el" href="dir_50f12b6ceb23d7f6adfb377a1ae8b006.html">glm</a></li><li class="navelem"><a class="el" href="dir_fca33f1b5115d46f42c670590789c0d2.html">glm</a></li><li class="navelem"><a class="el" href="dir_b171cecbb853a9ee4caace490047c53f.html">ext</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">vector_relational.hpp File Reference</div>  </div>
+<div class="title">vector_reciprocal.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="a00889.html">Core features</a>  
+<p><a class="el" href="a00889.html">GLM_EXT_vector_reciprocal</a>  
 <a href="#details">More...</a></p>
 
 <p><a href="a00488_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga87e53f50b679f5f95c5cb4780311b3dd"><td class="memTemplParams" colspan="2">template&lt;length_t L, qualifier Q&gt; </td></tr>
-<tr class="memitem:ga87e53f50b679f5f95c5cb4780311b3dd"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL GLM_CONSTEXPR bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00985.html#ga87e53f50b679f5f95c5cb4780311b3dd">all</a> (vec&lt; L, bool, Q &gt; const &amp;v)</td></tr>
-<tr class="memdesc:ga87e53f50b679f5f95c5cb4780311b3dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if all components of x are true.  <a href="a00985.html#ga87e53f50b679f5f95c5cb4780311b3dd">More...</a><br /></td></tr>
-<tr class="separator:ga87e53f50b679f5f95c5cb4780311b3dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga911b3f8e41459dd551ccb6d385d91061"><td class="memTemplParams" colspan="2">template&lt;length_t L, qualifier Q&gt; </td></tr>
-<tr class="memitem:ga911b3f8e41459dd551ccb6d385d91061"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL GLM_CONSTEXPR bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00985.html#ga911b3f8e41459dd551ccb6d385d91061">any</a> (vec&lt; L, bool, Q &gt; const &amp;v)</td></tr>
-<tr class="memdesc:ga911b3f8e41459dd551ccb6d385d91061"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if any component of x is true.  <a href="a00985.html#ga911b3f8e41459dd551ccb6d385d91061">More...</a><br /></td></tr>
-<tr class="separator:ga911b3f8e41459dd551ccb6d385d91061"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab4c5cfdaa70834421397a85aa83ad946"><td class="memTemplParams" colspan="2">template&lt;length_t L, typename T , qualifier Q&gt; </td></tr>
-<tr class="memitem:gab4c5cfdaa70834421397a85aa83ad946"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL GLM_CONSTEXPR vec&lt; L, bool, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00985.html#gab4c5cfdaa70834421397a85aa83ad946">equal</a> (vec&lt; L, T, Q &gt; const &amp;x, vec&lt; L, T, Q &gt; const &amp;y)</td></tr>
-<tr class="memdesc:gab4c5cfdaa70834421397a85aa83ad946"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the component-wise comparison of result x == y.  <a href="a00985.html#gab4c5cfdaa70834421397a85aa83ad946">More...</a><br /></td></tr>
-<tr class="separator:gab4c5cfdaa70834421397a85aa83ad946"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gadfdb8ea82deca869ddc7e63ea5a63ae4"><td class="memTemplParams" colspan="2">template&lt;length_t L, typename T , qualifier Q&gt; </td></tr>
-<tr class="memitem:gadfdb8ea82deca869ddc7e63ea5a63ae4"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL GLM_CONSTEXPR vec&lt; L, bool, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00985.html#gadfdb8ea82deca869ddc7e63ea5a63ae4">greaterThan</a> (vec&lt; L, T, Q &gt; const &amp;x, vec&lt; L, T, Q &gt; const &amp;y)</td></tr>
-<tr class="memdesc:gadfdb8ea82deca869ddc7e63ea5a63ae4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the component-wise comparison of result x &gt; y.  <a href="a00985.html#gadfdb8ea82deca869ddc7e63ea5a63ae4">More...</a><br /></td></tr>
-<tr class="separator:gadfdb8ea82deca869ddc7e63ea5a63ae4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga859975f538940f8d18fe62f916b9abd7"><td class="memTemplParams" colspan="2">template&lt;length_t L, typename T , qualifier Q&gt; </td></tr>
-<tr class="memitem:ga859975f538940f8d18fe62f916b9abd7"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL GLM_CONSTEXPR vec&lt; L, bool, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00985.html#ga859975f538940f8d18fe62f916b9abd7">greaterThanEqual</a> (vec&lt; L, T, Q &gt; const &amp;x, vec&lt; L, T, Q &gt; const &amp;y)</td></tr>
-<tr class="memdesc:ga859975f538940f8d18fe62f916b9abd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the component-wise comparison of result x &gt;= y.  <a href="a00985.html#ga859975f538940f8d18fe62f916b9abd7">More...</a><br /></td></tr>
-<tr class="separator:ga859975f538940f8d18fe62f916b9abd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae90ed1592c395f93e3f3dfce6b2f39c6"><td class="memTemplParams" colspan="2">template&lt;length_t L, typename T , qualifier Q&gt; </td></tr>
-<tr class="memitem:gae90ed1592c395f93e3f3dfce6b2f39c6"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL GLM_CONSTEXPR vec&lt; L, bool, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00985.html#gae90ed1592c395f93e3f3dfce6b2f39c6">lessThan</a> (vec&lt; L, T, Q &gt; const &amp;x, vec&lt; L, T, Q &gt; const &amp;y)</td></tr>
-<tr class="memdesc:gae90ed1592c395f93e3f3dfce6b2f39c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the component-wise comparison result of x &lt; y.  <a href="a00985.html#gae90ed1592c395f93e3f3dfce6b2f39c6">More...</a><br /></td></tr>
-<tr class="separator:gae90ed1592c395f93e3f3dfce6b2f39c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab0bdafc019d227257ff73fb5bcca1718"><td class="memTemplParams" colspan="2">template&lt;length_t L, typename T , qualifier Q&gt; </td></tr>
-<tr class="memitem:gab0bdafc019d227257ff73fb5bcca1718"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL GLM_CONSTEXPR vec&lt; L, bool, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00985.html#gab0bdafc019d227257ff73fb5bcca1718">lessThanEqual</a> (vec&lt; L, T, Q &gt; const &amp;x, vec&lt; L, T, Q &gt; const &amp;y)</td></tr>
-<tr class="memdesc:gab0bdafc019d227257ff73fb5bcca1718"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the component-wise comparison of result x &lt;= y.  <a href="a00985.html#gab0bdafc019d227257ff73fb5bcca1718">More...</a><br /></td></tr>
-<tr class="separator:gab0bdafc019d227257ff73fb5bcca1718"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga610fcd175791fd246e328ffee10dbf1e"><td class="memTemplParams" colspan="2">template&lt;length_t L, qualifier Q&gt; </td></tr>
-<tr class="memitem:ga610fcd175791fd246e328ffee10dbf1e"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL GLM_CONSTEXPR vec&lt; L, bool, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00985.html#ga610fcd175791fd246e328ffee10dbf1e">not_</a> (vec&lt; L, bool, Q &gt; const &amp;v)</td></tr>
-<tr class="memdesc:ga610fcd175791fd246e328ffee10dbf1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the component-wise logical complement of x.  <a href="a00985.html#ga610fcd175791fd246e328ffee10dbf1e">More...</a><br /></td></tr>
-<tr class="separator:ga610fcd175791fd246e328ffee10dbf1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga17c19dc1b76cd5aef63e9e7ff3aa3c27"><td class="memTemplParams" colspan="2">template&lt;length_t L, typename T , qualifier Q&gt; </td></tr>
-<tr class="memitem:ga17c19dc1b76cd5aef63e9e7ff3aa3c27"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL GLM_CONSTEXPR vec&lt; L, bool, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00985.html#ga17c19dc1b76cd5aef63e9e7ff3aa3c27">notEqual</a> (vec&lt; L, T, Q &gt; const &amp;x, vec&lt; L, T, Q &gt; const &amp;y)</td></tr>
-<tr class="memdesc:ga17c19dc1b76cd5aef63e9e7ff3aa3c27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the component-wise comparison of result x != y.  <a href="a00985.html#ga17c19dc1b76cd5aef63e9e7ff3aa3c27">More...</a><br /></td></tr>
-<tr class="separator:ga17c19dc1b76cd5aef63e9e7ff3aa3c27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4ba4d4a791560ed05ee07e962207bb45"><td class="memTemplParams" colspan="2">template&lt;typename genType &gt; </td></tr>
+<tr class="memitem:ga4ba4d4a791560ed05ee07e962207bb45"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL genType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00871.html#ga4ba4d4a791560ed05ee07e962207bb45">acot</a> (genType x)</td></tr>
+<tr class="memdesc:ga4ba4d4a791560ed05ee07e962207bb45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inverse cotangent function.  <a href="a00871.html#ga4ba4d4a791560ed05ee07e962207bb45">More...</a><br /></td></tr>
+<tr class="separator:ga4ba4d4a791560ed05ee07e962207bb45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6dcf17da7d24ef1c29c18bad1a5507e8"><td class="memTemplParams" colspan="2">template&lt;typename genType &gt; </td></tr>
+<tr class="memitem:ga6dcf17da7d24ef1c29c18bad1a5507e8"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL genType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00871.html#ga6dcf17da7d24ef1c29c18bad1a5507e8">acoth</a> (genType x)</td></tr>
+<tr class="memdesc:ga6dcf17da7d24ef1c29c18bad1a5507e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inverse cotangent hyperbolic function.  <a href="a00871.html#ga6dcf17da7d24ef1c29c18bad1a5507e8">More...</a><br /></td></tr>
+<tr class="separator:ga6dcf17da7d24ef1c29c18bad1a5507e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0dbb21d8c5b660c7686e262115c3119e"><td class="memTemplParams" colspan="2">template&lt;typename genType &gt; </td></tr>
+<tr class="memitem:ga0dbb21d8c5b660c7686e262115c3119e"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL genType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00871.html#ga0dbb21d8c5b660c7686e262115c3119e">acsc</a> (genType x)</td></tr>
+<tr class="memdesc:ga0dbb21d8c5b660c7686e262115c3119e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inverse cosecant function.  <a href="a00871.html#ga0dbb21d8c5b660c7686e262115c3119e">More...</a><br /></td></tr>
+<tr class="separator:ga0dbb21d8c5b660c7686e262115c3119e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga64c5b1bbbeb12731f3e765f26772373c"><td class="memTemplParams" colspan="2">template&lt;typename genType &gt; </td></tr>
+<tr class="memitem:ga64c5b1bbbeb12731f3e765f26772373c"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL genType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00871.html#ga64c5b1bbbeb12731f3e765f26772373c">acsch</a> (genType x)</td></tr>
+<tr class="memdesc:ga64c5b1bbbeb12731f3e765f26772373c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inverse cosecant hyperbolic function.  <a href="a00871.html#ga64c5b1bbbeb12731f3e765f26772373c">More...</a><br /></td></tr>
+<tr class="separator:ga64c5b1bbbeb12731f3e765f26772373c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0938f4ce4f0bfe414c85dd92f7c42400"><td class="memTemplParams" colspan="2">template&lt;typename genType &gt; </td></tr>
+<tr class="memitem:ga0938f4ce4f0bfe414c85dd92f7c42400"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL genType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00871.html#ga0938f4ce4f0bfe414c85dd92f7c42400">asec</a> (genType x)</td></tr>
+<tr class="memdesc:ga0938f4ce4f0bfe414c85dd92f7c42400"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inverse secant function.  <a href="a00871.html#ga0938f4ce4f0bfe414c85dd92f7c42400">More...</a><br /></td></tr>
+<tr class="separator:ga0938f4ce4f0bfe414c85dd92f7c42400"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2db2855bc3ab46bdc83b01620f5d95f1"><td class="memTemplParams" colspan="2">template&lt;typename genType &gt; </td></tr>
+<tr class="memitem:ga2db2855bc3ab46bdc83b01620f5d95f1"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL genType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00871.html#ga2db2855bc3ab46bdc83b01620f5d95f1">asech</a> (genType x)</td></tr>
+<tr class="memdesc:ga2db2855bc3ab46bdc83b01620f5d95f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inverse secant hyperbolic function.  <a href="a00871.html#ga2db2855bc3ab46bdc83b01620f5d95f1">More...</a><br /></td></tr>
+<tr class="separator:ga2db2855bc3ab46bdc83b01620f5d95f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1f347629f919b562d9d10951e3b80968"><td class="memTemplParams" colspan="2">template&lt;typename genType &gt; </td></tr>
+<tr class="memitem:ga1f347629f919b562d9d10951e3b80968"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL genType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00871.html#ga1f347629f919b562d9d10951e3b80968">cot</a> (genType angle)</td></tr>
+<tr class="memdesc:ga1f347629f919b562d9d10951e3b80968"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cotangent function.  <a href="a00871.html#ga1f347629f919b562d9d10951e3b80968">More...</a><br /></td></tr>
+<tr class="separator:ga1f347629f919b562d9d10951e3b80968"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga35710c9529d973ad01af024f9879fdf7"><td class="memTemplParams" colspan="2">template&lt;typename genType &gt; </td></tr>
+<tr class="memitem:ga35710c9529d973ad01af024f9879fdf7"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL genType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00871.html#ga35710c9529d973ad01af024f9879fdf7">coth</a> (genType angle)</td></tr>
+<tr class="memdesc:ga35710c9529d973ad01af024f9879fdf7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cotangent hyperbolic function.  <a href="a00871.html#ga35710c9529d973ad01af024f9879fdf7">More...</a><br /></td></tr>
+<tr class="separator:ga35710c9529d973ad01af024f9879fdf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa6bf27b118f660387753bfa75af13b6d"><td class="memTemplParams" colspan="2">template&lt;typename genType &gt; </td></tr>
+<tr class="memitem:gaa6bf27b118f660387753bfa75af13b6d"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL genType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00871.html#gaa6bf27b118f660387753bfa75af13b6d">csc</a> (genType angle)</td></tr>
+<tr class="memdesc:gaa6bf27b118f660387753bfa75af13b6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cosecant function.  <a href="a00871.html#gaa6bf27b118f660387753bfa75af13b6d">More...</a><br /></td></tr>
+<tr class="separator:gaa6bf27b118f660387753bfa75af13b6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0247051ce3b0bac747136e69b51ab853"><td class="memTemplParams" colspan="2">template&lt;typename genType &gt; </td></tr>
+<tr class="memitem:ga0247051ce3b0bac747136e69b51ab853"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL genType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00871.html#ga0247051ce3b0bac747136e69b51ab853">csch</a> (genType angle)</td></tr>
+<tr class="memdesc:ga0247051ce3b0bac747136e69b51ab853"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cosecant hyperbolic function.  <a href="a00871.html#ga0247051ce3b0bac747136e69b51ab853">More...</a><br /></td></tr>
+<tr class="separator:ga0247051ce3b0bac747136e69b51ab853"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga225db01831b8a4b5a3d9bd3e486ed21c"><td class="memTemplParams" colspan="2">template&lt;typename genType &gt; </td></tr>
+<tr class="memitem:ga225db01831b8a4b5a3d9bd3e486ed21c"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL genType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00871.html#ga225db01831b8a4b5a3d9bd3e486ed21c">sec</a> (genType angle)</td></tr>
+<tr class="memdesc:ga225db01831b8a4b5a3d9bd3e486ed21c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Secant function.  <a href="a00871.html#ga225db01831b8a4b5a3d9bd3e486ed21c">More...</a><br /></td></tr>
+<tr class="separator:ga225db01831b8a4b5a3d9bd3e486ed21c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0e16a0de56f2bf9a432dc2776020fc7a"><td class="memTemplParams" colspan="2">template&lt;typename genType &gt; </td></tr>
+<tr class="memitem:ga0e16a0de56f2bf9a432dc2776020fc7a"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL genType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00871.html#ga0e16a0de56f2bf9a432dc2776020fc7a">sech</a> (genType angle)</td></tr>
+<tr class="memdesc:ga0e16a0de56f2bf9a432dc2776020fc7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Secant hyperbolic function.  <a href="a00871.html#ga0e16a0de56f2bf9a432dc2776020fc7a">More...</a><br /></td></tr>
+<tr class="separator:ga0e16a0de56f2bf9a432dc2776020fc7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="a00889.html">Core features</a> </p>
-<dl class="section see"><dt>See also</dt><dd><a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.7 Vector Relational Functions</a> </dd></dl>
+<div class="textblock"><p><a class="el" href="a00889.html">GLM_EXT_vector_reciprocal</a> </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00898.html" title="Features that implement in C++ the GLSL specification as closely as possible.">Core features</a> (dependence) </dd></dl>
 
-<p class="definition">Definition in file <a class="el" href="a00488_source.html">vector_relational.hpp</a>.</p>
+<p class="definition">Definition in file <a class="el" href="a00488_source.html">vector_reciprocal.hpp</a>.</p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

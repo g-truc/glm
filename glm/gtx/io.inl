@@ -394,6 +394,7 @@ namespace detail
 
 				switch(fmt.order)
 				{
+					default:
 					case io::column_major:
 					{
 						for(length_t i(0); i < rows; ++i)
