@@ -2,6 +2,7 @@
 /// @file glm/vec3.hpp
 
 #pragma once
+// IWYU pragma: begin_exports
 #include "./ext/vector_bool3.hpp"
 #include "./ext/vector_bool3_precision.hpp"
 #include "./ext/vector_float3.hpp"
@@ -12,3 +13,4 @@
 #include "./ext/vector_int3_sized.hpp"
 #include "./ext/vector_uint3.hpp"
 #include "./ext/vector_uint3_sized.hpp"
+// IWYU pragma: end_exports
