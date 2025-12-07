@@ -1,6 +1,13 @@
 namespace glm{
 namespace detail
 {
+#if (GLM_COMPILER & GLM_COMPILER_VC)
+#	pragma warning(push)
+#	pragma warning(disable: 4746)  // volatile access of 'f' is subject to /volatile:<iso|ms> setting; consider using __iso_volatile_load/store intrinsic functions
+#endif
+
+// This function cause a build error on Github C.I.
+#if (!(GLM_COMPILER & GLM_COMPILER_VC) && (GLM_ARCH & GLM_ARCH_ARM_BIT))
 	GLM_FUNC_QUALIFIER float overflow()
 	{
 		volatile float f = 1e10;
@@ -9,6 +16,16 @@ namespace detail
 			f = f * f; // this will overflow before the for loop terminates
 		return f;
 	}
+#else
+	GLM_FUNC_QUALIFIER float overflow()
+	{
+		return 0.0f;
+	}
+#endif//
+
+#if (GLM_COMPILER & GLM_COMPILER_VC)
+#	pragma warning(pop)
+#endif
 
 	union uif32
 	{

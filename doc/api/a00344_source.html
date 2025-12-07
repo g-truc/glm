@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>1.0.0 API documentation: quaternion_relational.hpp Source File</title>
+<title>1.0.2 API documentation: quaternion_geometric.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo-mini.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">1.0.0 API documentation
+   <div id="projectname">1.0.2 API documentation
    </div>
   </td>
  </tr>
@@ -67,41 +67,44 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">quaternion_relational.hpp</div>  </div>
+<div class="title">quaternion_geometric.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
 <a href="a00344.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">// Dependency:</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;../vector_relational.hpp&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">// Dependency:</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;../geometric.hpp&quot;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;../exponential.hpp&quot;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;../ext/vector_relational.hpp&quot;</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#if GLM_MESSAGES == GLM_ENABLE &amp;&amp; !defined(GLM_EXT_INCLUDED)</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#       pragma message(&quot;GLM: GLM_EXT_quaternion_relational extension included&quot;)</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#       pragma message(&quot;GLM: GLM_EXT_quaternion_geometric extension included&quot;)</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">namespace </span>glm</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;{</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, qualifier Q&gt;</div>
-<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="a00854.html#gad7827af0549504ff1cd6a359786acc7a">   36</a></span>&#160;        GLM_FUNC_DECL vec&lt;4, bool, Q&gt; <a class="code" href="a00854.html#gaa001eecb91106463169a8e5ef1577b39">equal</a>(qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; x, qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; y);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, qualifier Q&gt;</div>
-<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="a00854.html#gaa001eecb91106463169a8e5ef1577b39">   43</a></span>&#160;        GLM_FUNC_DECL vec&lt;4, bool, Q&gt; <a class="code" href="a00854.html#gaa001eecb91106463169a8e5ef1577b39">equal</a>(qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; x, qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; y, T <a class="code" href="a00858.html#ga2a1e57fc5592b69cfae84174cbfc9429">epsilon</a>);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, qualifier Q&gt;</div>
-<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="a00854.html#gab441cee0de5867a868f3a586ee68cfe1">   50</a></span>&#160;        GLM_FUNC_DECL vec&lt;4, bool, Q&gt; <a class="code" href="a00854.html#ga5117a44c1bf21af857cd23e44a96d313">notEqual</a>(qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; x, qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; y);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, qualifier Q&gt;</div>
-<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="a00854.html#ga5117a44c1bf21af857cd23e44a96d313">   57</a></span>&#160;        GLM_FUNC_DECL vec&lt;4, bool, Q&gt; <a class="code" href="a00854.html#ga5117a44c1bf21af857cd23e44a96d313">notEqual</a>(qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; x, qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; y, T <a class="code" href="a00858.html#ga2a1e57fc5592b69cfae84174cbfc9429">epsilon</a>);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;} <span class="comment">//namespace glm</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">#include &quot;quaternion_relational.inl&quot;</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, qualifier Q&gt;</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="a00862.html#gab703732449be6c7199369b3f9a91ed38">   38</a></span>&#160;        GLM_FUNC_DECL T <a class="code" href="a00862.html#gab703732449be6c7199369b3f9a91ed38">length</a>(qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; q);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, qualifier Q&gt;</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="a00862.html#gad815f4de07f2fe6502cdd2cd86c3dabd">   47</a></span>&#160;        GLM_FUNC_DECL GLM_CONSTEXPR qua&lt;T, Q&gt; <a class="code" href="a00862.html#gad815f4de07f2fe6502cdd2cd86c3dabd">normalize</a>(qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; q);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, qualifier Q&gt;</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="a00862.html#gadaab7b4495755b4102838d7834cd9544">   56</a></span>&#160;        GLM_FUNC_DECL GLM_CONSTEXPR T <a class="code" href="a00862.html#gadaab7b4495755b4102838d7834cd9544">dot</a>(qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; x, qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; y);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, qualifier Q&gt;</div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="a00862.html#ga9a47ad9ca44bc04eeaac260d42105134">   65</a></span>&#160;        GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua&lt;T, Q&gt; <a class="code" href="a00862.html#ga9a47ad9ca44bc04eeaac260d42105134">cross</a>(qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; q1, qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; q2);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;} <span class="comment">//namespace glm</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#include &quot;quaternion_geometric.inl&quot;</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aa00854_html_ga5117a44c1bf21af857cd23e44a96d313"><div class="ttname"><a href="a00854.html#ga5117a44c1bf21af857cd23e44a96d313">glm::notEqual</a></div><div class="ttdeci">GLM_FUNC_DECL vec&lt; 4, bool, Q &gt; notEqual(qua&lt; T, Q &gt; const &amp;x, qua&lt; T, Q &gt; const &amp;y, T epsilon)</div><div class="ttdoc">Returns the component-wise comparison of |x - y| &gt;= epsilon.</div></div>
-<div class="ttc" id="aa00858_html_ga2a1e57fc5592b69cfae84174cbfc9429"><div class="ttname"><a href="a00858.html#ga2a1e57fc5592b69cfae84174cbfc9429">glm::epsilon</a></div><div class="ttdeci">GLM_FUNC_DECL GLM_CONSTEXPR genType epsilon()</div><div class="ttdoc">Return the epsilon constant for floating point types.</div></div>
-<div class="ttc" id="aa00854_html_gaa001eecb91106463169a8e5ef1577b39"><div class="ttname"><a href="a00854.html#gaa001eecb91106463169a8e5ef1577b39">glm::equal</a></div><div class="ttdeci">GLM_FUNC_DECL vec&lt; 4, bool, Q &gt; equal(qua&lt; T, Q &gt; const &amp;x, qua&lt; T, Q &gt; const &amp;y, T epsilon)</div><div class="ttdoc">Returns the component-wise comparison of |x - y| &lt; epsilon.</div></div>
+<div class="ttc" id="aa00862_html_gadaab7b4495755b4102838d7834cd9544"><div class="ttname"><a href="a00862.html#gadaab7b4495755b4102838d7834cd9544">glm::dot</a></div><div class="ttdeci">GLM_FUNC_DECL GLM_CONSTEXPR T dot(qua&lt; T, Q &gt; const &amp;x, qua&lt; T, Q &gt; const &amp;y)</div><div class="ttdoc">Returns dot product of q1 and q2, i.e., q1[0] * q2[0] + q1[1] * q2[1] + ...</div></div>
+<div class="ttc" id="aa00862_html_gab703732449be6c7199369b3f9a91ed38"><div class="ttname"><a href="a00862.html#gab703732449be6c7199369b3f9a91ed38">glm::length</a></div><div class="ttdeci">GLM_FUNC_DECL T length(qua&lt; T, Q &gt; const &amp;q)</div><div class="ttdoc">Returns the norm of a quaternions.</div></div>
+<div class="ttc" id="aa00862_html_gad815f4de07f2fe6502cdd2cd86c3dabd"><div class="ttname"><a href="a00862.html#gad815f4de07f2fe6502cdd2cd86c3dabd">glm::normalize</a></div><div class="ttdeci">GLM_FUNC_DECL GLM_CONSTEXPR qua&lt; T, Q &gt; normalize(qua&lt; T, Q &gt; const &amp;q)</div><div class="ttdoc">Returns the normalized quaternion.</div></div>
+<div class="ttc" id="aa00862_html_ga9a47ad9ca44bc04eeaac260d42105134"><div class="ttname"><a href="a00862.html#ga9a47ad9ca44bc04eeaac260d42105134">glm::cross</a></div><div class="ttdeci">GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua&lt; T, Q &gt; cross(qua&lt; T, Q &gt; const &amp;q1, qua&lt; T, Q &gt; const &amp;q2)</div><div class="ttdoc">Compute a cross product.</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

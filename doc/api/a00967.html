@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>1.0.0 API documentation: GLM_GTX_scalar_multiplication</title>
+<title>1.0.2 API documentation: GLM_GTX_orthonormalize</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo-mini.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">1.0.0 API documentation
+   <div id="projectname">1.0.2 API documentation
    </div>
   </td>
  </tr>
@@ -62,14 +62,80 @@ $(function() {
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">GLM_GTX_scalar_multiplication<div class="ingroups"><a class="el" href="a00896.html">Experimental extensions</a></div></div>  </div>
+<div class="title">GLM_GTX_orthonormalize<div class="ingroups"><a class="el" href="a00905.html">Experimental extensions</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ga4cab5d698e6e2eccea30c8e81c74371f"><td class="memTemplParams" colspan="2">template&lt;typename T , qualifier Q&gt; </td></tr>
+<tr class="memitem:ga4cab5d698e6e2eccea30c8e81c74371f"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL mat&lt; 3, 3, T, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00967.html#ga4cab5d698e6e2eccea30c8e81c74371f">orthonormalize</a> (mat&lt; 3, 3, T, Q &gt; const &amp;m)</td></tr>
+<tr class="memdesc:ga4cab5d698e6e2eccea30c8e81c74371f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the orthonormalized matrix of m.  <a href="a00967.html#ga4cab5d698e6e2eccea30c8e81c74371f">More...</a><br /></td></tr>
+<tr class="separator:ga4cab5d698e6e2eccea30c8e81c74371f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac3bc7ef498815026bc3d361ae0b7138e"><td class="memTemplParams" colspan="2">template&lt;typename T , qualifier Q&gt; </td></tr>
+<tr class="memitem:gac3bc7ef498815026bc3d361ae0b7138e"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL vec&lt; 3, T, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00967.html#gac3bc7ef498815026bc3d361ae0b7138e">orthonormalize</a> (vec&lt; 3, T, Q &gt; const &amp;x, vec&lt; 3, T, Q &gt; const &amp;y)</td></tr>
+<tr class="memdesc:gac3bc7ef498815026bc3d361ae0b7138e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Orthonormalizes x according y.  <a href="a00967.html#gac3bc7ef498815026bc3d361ae0b7138e">More...</a><br /></td></tr>
+<tr class="separator:gac3bc7ef498815026bc3d361ae0b7138e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<p>Include &lt;<a class="el" href="a00722.html" title="GLM_GTX_scalar_multiplication">glm/gtx/scalar_multiplication.hpp</a>&gt; to use the features of this extension.</p>
-<p>Enables scalar multiplication for all types</p>
-<p>Since GLSL is very strict about types, the following (often used) combinations do not work: double * vec4 int * vec4 vec4 / int So we'll fix that! Of course "float * vec4" should remain the same (hence the enable_if magic) </p>
+<p>Include &lt;<a class="el" href="a00701.html" title="GLM_GTX_orthonormalize">glm/gtx/orthonormalize.hpp</a>&gt; to use the features of this extension.</p>
+<p>Orthonormalize matrices. </p>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="ga4cab5d698e6e2eccea30c8e81c74371f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4cab5d698e6e2eccea30c8e81c74371f">&#9670;&nbsp;</a></span>orthonormalize() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GLM_FUNC_DECL mat&lt;3, 3, T, Q&gt; glm::orthonormalize </td>
+          <td>(</td>
+          <td class="paramtype">mat&lt; 3, 3, T, Q &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>m</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the orthonormalized matrix of m. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00967.html">GLM_GTX_orthonormalize</a> </dd></dl>
+
+</div>
+</div>
+<a id="gac3bc7ef498815026bc3d361ae0b7138e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gac3bc7ef498815026bc3d361ae0b7138e">&#9670;&nbsp;</a></span>orthonormalize() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GLM_FUNC_DECL vec&lt;3, T, Q&gt; glm::orthonormalize </td>
+          <td>(</td>
+          <td class="paramtype">vec&lt; 3, T, Q &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vec&lt; 3, T, Q &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Orthonormalizes x according y. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00967.html">GLM_GTX_orthonormalize</a> </dd></dl>
+
+</div>
+</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

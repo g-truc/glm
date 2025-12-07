@@ -21,3 +21,17 @@ namespace glm
 
 	/// @}
 }//namespace glm
+
+#if GLM_CONFIG_CTOR_INIT == GLM_DISABLE
+static_assert(std::is_trivially_default_constructible<glm::dmat2x2>::value);
+static_assert(std::is_trivially_default_constructible<glm::dmat2>::value);
+#endif
+static_assert(std::is_trivially_copy_assignable<glm::dmat2x2>::value);
+static_assert(std::is_trivially_copy_assignable<glm::dmat2>::value);
+static_assert(std::is_trivially_copyable<glm::dmat2x2>::value);
+static_assert(std::is_trivially_copyable<glm::dmat2>::value);
+static_assert(std::is_copy_constructible<glm::dmat2x2>::value);
+static_assert(std::is_copy_constructible<glm::dmat2>::value);
+static_assert(glm::dmat2x2::length() == 2);
+static_assert(glm::dmat2::length() == 2);
+

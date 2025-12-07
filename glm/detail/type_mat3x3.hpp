@@ -25,14 +25,15 @@ namespace glm
 		// -- Accesses --
 
 		typedef length_t length_type;
-		GLM_FUNC_DECL static GLM_CONSTEXPR length_type length() { return 3; }
+		GLM_FUNC_DECL static constexpr length_type length() { return 3; }
 
-		GLM_FUNC_DECL GLM_CONSTEXPR col_type & operator[](length_type i) GLM_NOEXCEPT;
-		GLM_FUNC_DECL GLM_CONSTEXPR col_type const& operator[](length_type i) const GLM_NOEXCEPT;
+		GLM_FUNC_DECL GLM_CONSTEXPR col_type & operator[](length_type i) noexcept;
+		GLM_FUNC_DECL GLM_CONSTEXPR col_type const& operator[](length_type i) const noexcept;
 
 		// -- Constructors --
 
 		GLM_DEFAULTED_DEFAULT_CTOR_DECL GLM_CONSTEXPR mat() GLM_DEFAULT_CTOR;
+		GLM_CTOR_DECL mat(mat<3, 3, T, Q> const& m) = default;
 		template<qualifier P>
 		GLM_CTOR_DECL mat(mat<3, 3, T, P> const& m);
 
@@ -79,29 +80,31 @@ namespace glm
 
 		// -- Unary arithmetic operators --
 
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<3, 3, T, Q>& operator=(mat<3, 3, T, Q> const& m) = default;
+
 		template<typename U>
-		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<3, 3, T, Q> & operator=(mat<3, 3, U, Q> const& m);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<3, 3, T, Q>& operator=(mat<3, 3, U, Q> const& m);
 		template<typename U>
-		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<3, 3, T, Q> & operator+=(U s);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<3, 3, T, Q>& operator+=(U s);
 		template<typename U>
-		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<3, 3, T, Q> & operator+=(mat<3, 3, U, Q> const& m);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<3, 3, T, Q>& operator+=(mat<3, 3, U, Q> const& m);
 		template<typename U>
-		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<3, 3, T, Q> & operator-=(U s);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<3, 3, T, Q>& operator-=(U s);
 		template<typename U>
-		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<3, 3, T, Q> & operator-=(mat<3, 3, U, Q> const& m);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<3, 3, T, Q>& operator-=(mat<3, 3, U, Q> const& m);
 		template<typename U>
-		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<3, 3, T, Q> & operator*=(U s);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<3, 3, T, Q>& operator*=(U s);
 		template<typename U>
-		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<3, 3, T, Q> & operator*=(mat<3, 3, U, Q> const& m);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<3, 3, T, Q>& operator*=(mat<3, 3, U, Q> const& m);
 		template<typename U>
-		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<3, 3, T, Q> & operator/=(U s);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<3, 3, T, Q>& operator/=(U s);
 		template<typename U>
-		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<3, 3, T, Q> & operator/=(mat<3, 3, U, Q> const& m);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<3, 3, T, Q>& operator/=(mat<3, 3, U, Q> const& m);
 
 		// -- Increment and decrement operators --
 
-		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<3, 3, T, Q> & operator++();
-		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<3, 3, T, Q> & operator--();
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<3, 3, T, Q>& operator++();
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<3, 3, T, Q>& operator--();
 		GLM_FUNC_DECL GLM_CONSTEXPR mat<3, 3, T, Q> operator++(int);
 		GLM_FUNC_DECL GLM_CONSTEXPR mat<3, 3, T, Q> operator--(int);
 	};

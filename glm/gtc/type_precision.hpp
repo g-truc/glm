@@ -195,29 +195,21 @@ namespace glm
 	/// @see gtc_type_precision
 	typedef detail::int64 highp_i64;
 
-
-#if GLM_HAS_EXTENDED_INTEGER_TYPE
-	using std::int8_t;
-	using std::int16_t;
-	using std::int32_t;
-	using std::int64_t;
-#else
 	/// 8 bit signed integer type.
 	/// @see gtc_type_precision
-	typedef detail::int8 int8_t;
+	using std::int8_t;
 
 	/// 16 bit signed integer type.
 	/// @see gtc_type_precision
-	typedef detail::int16 int16_t;
+	using std::int16_t;
 
 	/// 32 bit signed integer type.
 	/// @see gtc_type_precision
-	typedef detail::int32 int32_t;
+	using std::int32_t;
 
 	/// 64 bit signed integer type.
 	/// @see gtc_type_precision
-	typedef detail::int64 int64_t;
-#endif
+	using std::int64_t;
 
 	/// 8 bit signed integer type.
 	/// @see gtc_type_precision
@@ -382,28 +374,21 @@ namespace glm
 	/// @see gtc_type_precision
 	typedef detail::uint64 highp_u64;
 
-#if GLM_HAS_EXTENDED_INTEGER_TYPE
-	using std::uint8_t;
-	using std::uint16_t;
-	using std::uint32_t;
-	using std::uint64_t;
-#else
 	/// Default qualifier 8 bit unsigned integer type.
 	/// @see gtc_type_precision
-	typedef detail::uint8 uint8_t;
+	using std::uint8_t;
 
 	/// Default qualifier 16 bit unsigned integer type.
 	/// @see gtc_type_precision
-	typedef detail::uint16 uint16_t;
+	using std::uint16_t;
 
 	/// Default qualifier 32 bit unsigned integer type.
 	/// @see gtc_type_precision
-	typedef detail::uint32 uint32_t;
+	using std::uint32_t;
 
 	/// Default qualifier 64 bit unsigned integer type.
 	/// @see gtc_type_precision
-	typedef detail::uint64 uint64_t;
-#endif
+	using std::uint64_t;
 
 	/// Default qualifier 8 bit unsigned integer type.
 	/// @see gtc_type_precision

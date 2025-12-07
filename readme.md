@@ -1,6 +1,6 @@
 ![glm](/doc/manual/logo-mini.png)
 
-[OpenGL Mathematics](http://glm.g-truc.net/) (*GLM*) is a header only C++ mathematics library for graphics software based on the [OpenGL Shading Language (GLSL) specifications](https://www.opengl.org/registry/doc/GLSLangSpec.4.50.diff.pdf).
+[OpenGL Mathematics](http://glm.g-truc.net/) (*GLM*) is a header only C++ mathematics library for graphics software based on the [OpenGL Shading Language (GLSL) specifications](https://registry.khronos.org/OpenGL/specs/gl/GLSLangSpec.4.60.pdf).
 
 *GLM* provides classes and functions designed and implemented with the same naming conventions and functionality than *GLSL* so that anyone who knows *GLSL*, can use *GLM* as well in C++.
 
@@ -8,14 +8,13 @@ This project isn't limited to *GLSL* features. An extension system, based on the
 
 This library works perfectly with *[OpenGL](https://www.opengl.org)* but it also ensures interoperability with other third party libraries and SDK. It is a good candidate for software rendering (raytracing / rasterisation), image processing, physics simulations and any development context that requires a simple and convenient mathematics library.
 
-*GLM* is written in C++98 but can take advantage of C++11 when supported by the compiler. It is a platform independent library with no dependence and it officially supports the following compilers:
-- [*GCC*](http://gcc.gnu.org/) 4.7 and higher
-- [*Intel C++ Compose*](https://software.intel.com/en-us/intel-compilers) XE 2013 and higher
-- [*Clang*](http://llvm.org/) 3.4 and higher
+*GLM* requires a C++ 17 compiler. For older C++ support, GLM 1.0 branch can be used. It is a platform independent library with no dependence and it officially supports the following compilers:
+- [*GCC*](http://gcc.gnu.org/) 8 and higher
+- [*Clang*](http://llvm.org/) 6 and higher
 - [*Apple Clang 6.0*](https://developer.apple.com/library/mac/documentation/CompilerTools/Conceptual/LLVMCompilerOverview/index.html) and higher
-- [*Visual C++*](http://www.visualstudio.com/) 2013 and higher
+- [*Visual C++*](http://www.visualstudio.com/) 2019 and higher
 - [*CUDA*](https://developer.nvidia.com/about-cuda) 9.0 and higher (experimental)
-- Any C++11 compiler
+- Any C++17 compiler
 
 For more information about *GLM*, please have a look at the [manual](manual.md) and the [API reference documentation](http://glm.g-truc.net/0.9.9/api/modules.html).
 The source code and the documentation are licensed under either the [Happy Bunny License (Modified MIT) or the MIT License](manual.md#section0).
@@ -105,10 +104,33 @@ target_link_libraries(main PRIVATE glm::glm)
 
 ## Release notes
 
-### [GLM 1.0.2](https://github.com/g-truc/glm/tree/master) - 2025-0X-XX
+### [GLM 1.0.3](https://github.com/g-truc/glm/1.0) - 2025-XX-XX
+
+#### Fixes:
+- Fixed Quaternion `rotate` direction (reverted)
+- Fixed vec4 to vec3 conversion #1398
+
+### [GLM 1.0.2](https://github.com/g-truc/glm/releases/tag/1.0.2) - 2025-10-15
+
+#### Features:
+- Added packed/aligned quat types #1353
+- Added `GLM_GTX_structured_bindings` extension
+- Added `GLM_GTX_iteration` extension
 
 #### Improvements:
+- Added `infinitePerspectiveRH` and `infinitePerspectiveLH`
+- Improved SIMD support #1278
 - Unit tests are not build by default, `GLM_BUILD_TESTS` set to `ON` required.
+
+#### Fixes:
+- Fixed `usubBorrow` #1394
+- Fixed inconsistent '#include' #1368
+- Fixed Quaternion `rotate` direction #960 #1297 
+- Fixed various NEON support issues
+- Fixed various warnings
+
+#### Deprecation:
+- From version 1.1, C++ 17 support will be required. Branch 1.0 could be used for older C++ version
 
 ### [GLM 1.0.1](https://github.com/g-truc/glm/releases/tag/1.0.1) - 2024-02-26
 

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>1.0.0 API documentation: scalar_ulp.hpp File Reference</title>
+<title>1.0.2 API documentation: scalar_uint_sized.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo-mini.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">1.0.0 API documentation
+   <div id="projectname">1.0.2 API documentation
    </div>
   </td>
  </tr>
@@ -67,46 +67,40 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a>  </div>
+<a href="#typedef-members">Typedefs</a>  </div>
   <div class="headertitle">
-<div class="title">scalar_ulp.hpp File Reference</div>  </div>
+<div class="title">scalar_uint_sized.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="a00865.html">GLM_EXT_scalar_ulp</a>  
+<p><a class="el" href="a00873.html">GLM_EXT_scalar_uint_sized</a>  
 <a href="#details">More...</a></p>
 
 <p><a href="a00377_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:ga4b76118ff56adfbc41a5925908b48606"><td class="memItemLeft" align="right" valign="top">GLM_FUNC_DECL int64&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00865.html#ga4b76118ff56adfbc41a5925908b48606">floatDistance</a> (double x, double y)</td></tr>
-<tr class="memdesc:ga4b76118ff56adfbc41a5925908b48606"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the distance in the number of ULP between 2 double-precision floating-point scalars.  <a href="a00865.html#ga4b76118ff56adfbc41a5925908b48606">More...</a><br /></td></tr>
-<tr class="separator:ga4b76118ff56adfbc41a5925908b48606"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae609a2729cacccbabe966221d61e0dc4"><td class="memItemLeft" align="right" valign="top">GLM_FUNC_DECL int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00865.html#gae609a2729cacccbabe966221d61e0dc4">floatDistance</a> (float x, float y)</td></tr>
-<tr class="memdesc:gae609a2729cacccbabe966221d61e0dc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the distance in the number of ULP between 2 single-precision floating-point scalars.  <a href="a00865.html#gae609a2729cacccbabe966221d61e0dc4">More...</a><br /></td></tr>
-<tr class="separator:gae609a2729cacccbabe966221d61e0dc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga30bc0280e7cefd159867b1aa5050b94a"><td class="memTemplParams" colspan="2">template&lt;typename genType &gt; </td></tr>
-<tr class="memitem:ga30bc0280e7cefd159867b1aa5050b94a"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL genType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00865.html#ga30bc0280e7cefd159867b1aa5050b94a">nextFloat</a> (genType x)</td></tr>
-<tr class="memdesc:ga30bc0280e7cefd159867b1aa5050b94a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the next ULP value(s) after the input value(s).  <a href="a00865.html#ga30bc0280e7cefd159867b1aa5050b94a">More...</a><br /></td></tr>
-<tr class="separator:ga30bc0280e7cefd159867b1aa5050b94a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga54eb5916c5250c8f0ad8224fb8e0d392"><td class="memTemplParams" colspan="2">template&lt;typename genType &gt; </td></tr>
-<tr class="memitem:ga54eb5916c5250c8f0ad8224fb8e0d392"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL genType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00865.html#ga54eb5916c5250c8f0ad8224fb8e0d392">nextFloat</a> (genType x, int ULPs)</td></tr>
-<tr class="memdesc:ga54eb5916c5250c8f0ad8224fb8e0d392"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the value(s) ULP distance after the input value(s).  <a href="a00865.html#ga54eb5916c5250c8f0ad8224fb8e0d392">More...</a><br /></td></tr>
-<tr class="separator:ga54eb5916c5250c8f0ad8224fb8e0d392"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga25320ace5b3e239405077912eb4e7bf9"><td class="memTemplParams" colspan="2">template&lt;typename genType &gt; </td></tr>
-<tr class="memitem:ga25320ace5b3e239405077912eb4e7bf9"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL genType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00865.html#ga25320ace5b3e239405077912eb4e7bf9">prevFloat</a> (genType x)</td></tr>
-<tr class="memdesc:ga25320ace5b3e239405077912eb4e7bf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the previous ULP value(s) before the input value(s).  <a href="a00865.html#ga25320ace5b3e239405077912eb4e7bf9">More...</a><br /></td></tr>
-<tr class="separator:ga25320ace5b3e239405077912eb4e7bf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga760b98a221f1f511edbcdf0b06c49841"><td class="memTemplParams" colspan="2">template&lt;typename genType &gt; </td></tr>
-<tr class="memitem:ga760b98a221f1f511edbcdf0b06c49841"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL genType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00865.html#ga760b98a221f1f511edbcdf0b06c49841">prevFloat</a> (genType x, int ULPs)</td></tr>
-<tr class="memdesc:ga760b98a221f1f511edbcdf0b06c49841"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the value(s) ULP distance before the input value(s).  <a href="a00865.html#ga760b98a221f1f511edbcdf0b06c49841">More...</a><br /></td></tr>
-<tr class="separator:ga760b98a221f1f511edbcdf0b06c49841"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:ga05f6b0ae8f6a6e135b0e290c25fe0e4e"><td class="memItemLeft" align="right" valign="top">
+typedef detail::uint16&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00873.html#ga05f6b0ae8f6a6e135b0e290c25fe0e4e">uint16</a></td></tr>
+<tr class="memdesc:ga05f6b0ae8f6a6e135b0e290c25fe0e4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">16 bit unsigned integer type. <br /></td></tr>
+<tr class="separator:ga05f6b0ae8f6a6e135b0e290c25fe0e4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1134b580f8da4de94ca6b1de4d37975e"><td class="memItemLeft" align="right" valign="top">
+typedef detail::uint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00873.html#ga1134b580f8da4de94ca6b1de4d37975e">uint32</a></td></tr>
+<tr class="memdesc:ga1134b580f8da4de94ca6b1de4d37975e"><td class="mdescLeft">&#160;</td><td class="mdescRight">32 bit unsigned integer type. <br /></td></tr>
+<tr class="separator:ga1134b580f8da4de94ca6b1de4d37975e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab630f76c26b50298187f7889104d4b9c"><td class="memItemLeft" align="right" valign="top">
+typedef detail::uint64&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00873.html#gab630f76c26b50298187f7889104d4b9c">uint64</a></td></tr>
+<tr class="memdesc:gab630f76c26b50298187f7889104d4b9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">64 bit unsigned integer type. <br /></td></tr>
+<tr class="separator:gab630f76c26b50298187f7889104d4b9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadde6aaee8457bee49c2a92621fe22b79"><td class="memItemLeft" align="right" valign="top">
+typedef detail::uint8&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00873.html#gadde6aaee8457bee49c2a92621fe22b79">uint8</a></td></tr>
+<tr class="memdesc:gadde6aaee8457bee49c2a92621fe22b79"><td class="mdescLeft">&#160;</td><td class="mdescRight">8 bit unsigned integer type. <br /></td></tr>
+<tr class="separator:gadde6aaee8457bee49c2a92621fe22b79"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="a00865.html">GLM_EXT_scalar_ulp</a> </p>
+<div class="textblock"><p><a class="el" href="a00873.html">GLM_EXT_scalar_uint_sized</a> </p>
 
-<p class="definition">Definition in file <a class="el" href="a00377_source.html">scalar_ulp.hpp</a>.</p>
+<p class="definition">Definition in file <a class="el" href="a00377_source.html">scalar_uint_sized.hpp</a>.</p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

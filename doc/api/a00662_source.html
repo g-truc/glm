@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>1.0.0 API documentation: matrix_interpolation.hpp Source File</title>
+<title>1.0.2 API documentation: matrix_decompose.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo-mini.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">1.0.0 API documentation
+   <div id="projectname">1.0.2 API documentation
    </div>
   </td>
  </tr>
@@ -67,48 +67,48 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">matrix_interpolation.hpp</div>  </div>
+<div class="title">matrix_decompose.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
 <a href="a00662.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">// Dependency:</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;../glm.hpp&quot;</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#ifndef GLM_ENABLE_EXPERIMENTAL</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#       error &quot;GLM: GLM_GTX_matrix_interpolation is an experimental extension and may change in the future. Use #define GLM_ENABLE_EXPERIMENTAL before including it, if you really want to use it.&quot;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#elif GLM_MESSAGES == GLM_ENABLE &amp;&amp; !defined(GLM_EXT_INCLUDED)</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#       pragma message(&quot;GLM: GLM_GTX_matrix_interpolation extension included&quot;)</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">namespace </span>glm</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;{</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, qualifier Q&gt;</div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="a00946.html#gafefe32ce5a90a135287ba34fac3623bc">   33</a></span>&#160;        GLM_FUNC_DECL <span class="keywordtype">void</span> <a class="code" href="a00946.html#gafefe32ce5a90a135287ba34fac3623bc">axisAngle</a>(</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                mat&lt;4, 4, T, Q&gt; <span class="keyword">const</span>&amp; Mat, vec&lt;3, T, Q&gt; &amp; Axis, T &amp; Angle);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, qualifier Q&gt;</div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="a00946.html#ga3a788e2f5223397df5c426413ecc2f6b">   39</a></span>&#160;        GLM_FUNC_DECL mat&lt;4, 4, T, Q&gt; <a class="code" href="a00946.html#ga3a788e2f5223397df5c426413ecc2f6b">axisAngleMatrix</a>(</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                vec&lt;3, T, Q&gt; <span class="keyword">const</span>&amp; Axis, T <span class="keyword">const</span> Angle);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, qualifier Q&gt;</div>
-<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="a00946.html#gabbc1c7385a145f04b5c54228965df145">   45</a></span>&#160;        GLM_FUNC_DECL mat&lt;4, 4, T, Q&gt; <a class="code" href="a00946.html#gabbc1c7385a145f04b5c54228965df145">extractMatrixRotation</a>(</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                mat&lt;4, 4, T, Q&gt; <span class="keyword">const</span>&amp; Mat);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, qualifier Q&gt;</div>
-<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="a00946.html#ga4e67863d150724b10c1ac00972dc958c">   52</a></span>&#160;        GLM_FUNC_DECL mat&lt;4, 4, T, Q&gt; <a class="code" href="a00946.html#ga4e67863d150724b10c1ac00972dc958c">interpolate</a>(</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                mat&lt;4, 4, T, Q&gt; <span class="keyword">const</span>&amp; m1, mat&lt;4, 4, T, Q&gt; <span class="keyword">const</span>&amp; m2, T <span class="keyword">const</span> Delta);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}<span class="comment">//namespace glm</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#include &quot;matrix_interpolation.inl&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">// Dependencies</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;../mat4x4.hpp&quot;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;../vec3.hpp&quot;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;../vec4.hpp&quot;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;../geometric.hpp&quot;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;../gtc/quaternion.hpp&quot;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;../gtc/matrix_transform.hpp&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#ifndef GLM_ENABLE_EXPERIMENTAL</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#       error &quot;GLM: GLM_GTX_matrix_decompose is an experimental extension and may change in the future. Use #define GLM_ENABLE_EXPERIMENTAL before including it, if you really want to use it.&quot;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#elif GLM_MESSAGES == GLM_ENABLE &amp;&amp; !defined(GLM_EXT_INCLUDED)</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#       pragma message(&quot;GLM: GLM_GTX_matrix_decompose extension included&quot;)</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">namespace </span>glm</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;{</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, qualifier Q&gt;</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="a00954.html#gabd7878e1b23aab583bc01040c5ed2b71">   37</a></span>&#160;        GLM_FUNC_DISCARD_DECL <span class="keywordtype">bool</span> <a class="code" href="a00954.html#gabd7878e1b23aab583bc01040c5ed2b71">decompose</a>(</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                mat&lt;4, 4, T, Q&gt; <span class="keyword">const</span>&amp; modelMatrix,</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                vec&lt;3, T, Q&gt; &amp; <a class="code" href="a00837.html#ga05051adbee603fb3c5095d8cf5cc229b">scale</a>, qua&lt;T, Q&gt; &amp; <a class="code" href="a00976.html#ga1a32fceb71962e6160e8af295c91930a">orientation</a>, vec&lt;3, T, Q&gt; &amp; translation, vec&lt;3, T, Q&gt; &amp; skew, vec&lt;4, T, Q&gt; &amp; <a class="code" href="a00814.html#ga747c8cf99458663dd7ad1bb3a2f07787">perspective</a>);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="comment">// Recomposes a model matrix from a previously-decomposed matrix</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, qualifier Q&gt;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        GLM_FUNC_DISCARD_DECL mat&lt;4, 4, T, Q&gt; recompose(</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                vec&lt;3, T, Q&gt; <span class="keyword">const</span>&amp; <a class="code" href="a00837.html#ga05051adbee603fb3c5095d8cf5cc229b">scale</a>, qua&lt;T, Q&gt; <span class="keyword">const</span>&amp; <a class="code" href="a00976.html#ga1a32fceb71962e6160e8af295c91930a">orientation</a>, vec&lt;3, T, Q&gt; <span class="keyword">const</span>&amp; translation,</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                vec&lt;3, T, Q&gt; <span class="keyword">const</span>&amp; skew, vec&lt;4, T, Q&gt; <span class="keyword">const</span>&amp; <a class="code" href="a00814.html#ga747c8cf99458663dd7ad1bb3a2f07787">perspective</a>);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;}<span class="comment">//namespace glm</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#include &quot;matrix_decompose.inl&quot;</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aa00946_html_ga4e67863d150724b10c1ac00972dc958c"><div class="ttname"><a href="a00946.html#ga4e67863d150724b10c1ac00972dc958c">glm::interpolate</a></div><div class="ttdeci">GLM_FUNC_DECL mat&lt; 4, 4, T, Q &gt; interpolate(mat&lt; 4, 4, T, Q &gt; const &amp;m1, mat&lt; 4, 4, T, Q &gt; const &amp;m2, T const Delta)</div><div class="ttdoc">Build a interpolation of 4 * 4 matrixes.</div></div>
-<div class="ttc" id="aa00946_html_gafefe32ce5a90a135287ba34fac3623bc"><div class="ttname"><a href="a00946.html#gafefe32ce5a90a135287ba34fac3623bc">glm::axisAngle</a></div><div class="ttdeci">GLM_FUNC_DECL void axisAngle(mat&lt; 4, 4, T, Q &gt; const &amp;Mat, vec&lt; 3, T, Q &gt; &amp;Axis, T &amp;Angle)</div><div class="ttdoc">Get the axis and angle of the rotation from a matrix.</div></div>
-<div class="ttc" id="aa00946_html_ga3a788e2f5223397df5c426413ecc2f6b"><div class="ttname"><a href="a00946.html#ga3a788e2f5223397df5c426413ecc2f6b">glm::axisAngleMatrix</a></div><div class="ttdeci">GLM_FUNC_DECL mat&lt; 4, 4, T, Q &gt; axisAngleMatrix(vec&lt; 3, T, Q &gt; const &amp;Axis, T const Angle)</div><div class="ttdoc">Build a matrix from axis and angle.</div></div>
-<div class="ttc" id="aa00946_html_gabbc1c7385a145f04b5c54228965df145"><div class="ttname"><a href="a00946.html#gabbc1c7385a145f04b5c54228965df145">glm::extractMatrixRotation</a></div><div class="ttdeci">GLM_FUNC_DECL mat&lt; 4, 4, T, Q &gt; extractMatrixRotation(mat&lt; 4, 4, T, Q &gt; const &amp;Mat)</div><div class="ttdoc">Extracts the rotation part of a matrix.</div></div>
+<div class="ttc" id="aa00814_html_ga747c8cf99458663dd7ad1bb3a2f07787"><div class="ttname"><a href="a00814.html#ga747c8cf99458663dd7ad1bb3a2f07787">glm::perspective</a></div><div class="ttdeci">GLM_FUNC_DECL mat&lt; 4, 4, T, defaultp &gt; perspective(T fovy, T aspect, T near, T far)</div><div class="ttdoc">Creates a matrix for a symmetric perspective-view frustum based on the default handedness and default...</div></div>
+<div class="ttc" id="aa00837_html_ga05051adbee603fb3c5095d8cf5cc229b"><div class="ttname"><a href="a00837.html#ga05051adbee603fb3c5095d8cf5cc229b">glm::scale</a></div><div class="ttdeci">GLM_FUNC_DECL mat&lt; 4, 4, T, Q &gt; scale(mat&lt; 4, 4, T, Q &gt; const &amp;m, vec&lt; 3, T, Q &gt; const &amp;v)</div><div class="ttdoc">Builds a scale 4 * 4 matrix created from 3 scalars.</div></div>
+<div class="ttc" id="aa00976_html_ga1a32fceb71962e6160e8af295c91930a"><div class="ttname"><a href="a00976.html#ga1a32fceb71962e6160e8af295c91930a">glm::orientation</a></div><div class="ttdeci">GLM_FUNC_DECL mat&lt; 4, 4, T, Q &gt; orientation(vec&lt; 3, T, Q &gt; const &amp;Normal, vec&lt; 3, T, Q &gt; const &amp;Up)</div><div class="ttdoc">Build a rotation matrix from a normal and a up vector.</div></div>
+<div class="ttc" id="aa00954_html_gabd7878e1b23aab583bc01040c5ed2b71"><div class="ttname"><a href="a00954.html#gabd7878e1b23aab583bc01040c5ed2b71">glm::decompose</a></div><div class="ttdeci">GLM_FUNC_DISCARD_DECL bool decompose(mat&lt; 4, 4, T, Q &gt; const &amp;modelMatrix, vec&lt; 3, T, Q &gt; &amp;scale, qua&lt; T, Q &gt; &amp;orientation, vec&lt; 3, T, Q &gt; &amp;translation, vec&lt; 3, T, Q &gt; &amp;skew, vec&lt; 4, T, Q &gt; &amp;perspective)</div><div class="ttdoc">Decomposes a model matrix to translations, rotation and scale components.</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

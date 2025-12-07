@@ -95,26 +95,13 @@ namespace detail
 
 	// -- Implicit basic constructors --
 
-#	if GLM_CONFIG_DEFAULTED_DEFAULT_CTOR == GLM_DISABLE
+#	if GLM_CONFIG_CTOR_INIT == GLM_ENABLE
 		template<typename T, qualifier Q>
 		GLM_DEFAULTED_DEFAULT_CTOR_QUALIFIER GLM_CONSTEXPR qua<T, Q>::qua()
-#			if GLM_CONFIG_CTOR_INIT != GLM_CTOR_INIT_DISABLE
-#				ifdef GLM_FORCE_QUAT_DATA_WXYZ
-					: w(1), x(0), y(0), z(0)
-#				else
-					: x(0), y(0), z(0), w(1)
-#				endif
-#			endif
-		{}
-#	endif
-
-#	if GLM_CONFIG_DEFAULTED_FUNCTIONS == GLM_DISABLE
-		template<typename T, qualifier Q>
-		GLM_DEFAULTED_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q>::qua(qua<T, Q> const& q)
 #			ifdef GLM_FORCE_QUAT_DATA_WXYZ
-				: w(q.w), x(q.x), y(q.y), z(q.z)
+				: w(1), x(0), y(0), z(0)
 #			else
-				: x(q.x), y(q.y), z(q.z), w(q.w)
+				: x(0), y(0), z(0), w(1)
 #			endif
 		{}
 #	endif
@@ -240,7 +227,6 @@ namespace detail
 		*this = quat_cast(m);
 	}
 
-#	if GLM_HAS_EXPLICIT_CONVERSION_OPERATORS
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER qua<T, Q>::operator mat<3, 3, T, Q>() const
 	{
@@ -252,21 +238,8 @@ namespace detail
 	{
 		return mat4_cast(*this);
 	}
-#	endif//GLM_HAS_EXPLICIT_CONVERSION_OPERATORS
 
 	// -- Unary arithmetic operators --
-
-#	if GLM_CONFIG_DEFAULTED_FUNCTIONS == GLM_DISABLE
-		template<typename T, qualifier Q>
-		GLM_DEFAULTED_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q> & qua<T, Q>::operator=(qua<T, Q> const& q)
-		{
-			this->w = q.w;
-			this->x = q.x;
-			this->y = q.y;
-			this->z = q.z;
-			return *this;
-		}
-#	endif
 
 	template<typename T, qualifier Q>
 	template<typename U>

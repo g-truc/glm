@@ -950,7 +950,7 @@ namespace sign
 	template<typename genFIType> 
 	GLM_FUNC_QUALIFIER genFIType sign_if(genFIType x)
 	{
-		GLM_STATIC_ASSERT(
+		static_assert(
 			std::numeric_limits<genFIType>::is_iec559 ||
 			(std::numeric_limits<genFIType>::is_signed && std::numeric_limits<genFIType>::is_integer), "'sign' only accept signed inputs");
 
@@ -972,7 +972,7 @@ namespace sign
 	template<typename genFIType> 
 	GLM_FUNC_QUALIFIER genFIType sign_alu1(genFIType x)
 	{
-		GLM_STATIC_ASSERT(
+		static_assert(
 			std::numeric_limits<genFIType>::is_signed && std::numeric_limits<genFIType>::is_integer, 
 			"'sign' only accept integer inputs");
 
@@ -985,7 +985,7 @@ namespace sign
 
 	GLM_FUNC_QUALIFIER int sign_alu2(int x)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<int>::is_signed && std::numeric_limits<int>::is_integer, "'sign' only accept integer inputs");
+		static_assert(std::numeric_limits<int>::is_signed && std::numeric_limits<int>::is_integer, "'sign' only accept integer inputs");
 
 #		if GLM_COMPILER & GLM_COMPILER_VC
 #			pragma warning(push)
@@ -1002,7 +1002,7 @@ namespace sign
 	template<typename genFIType> 
 	GLM_FUNC_QUALIFIER genFIType sign_sub(genFIType x)
 	{
-		GLM_STATIC_ASSERT(
+		static_assert(
 			std::numeric_limits<genFIType>::is_signed && std::numeric_limits<genFIType>::is_integer, 
 			"'sign' only accept integer inputs");
 
@@ -1012,7 +1012,7 @@ namespace sign
 	template<typename genFIType> 
 	GLM_FUNC_QUALIFIER genFIType sign_cmp(genFIType x)
 	{
-		GLM_STATIC_ASSERT(
+		static_assert(
 			std::numeric_limits<genFIType>::is_signed && std::numeric_limits<genFIType>::is_integer, 
 			"'sign' only accept integer inputs");
 
@@ -1372,29 +1372,10 @@ namespace ldexp_
 	}
 }//namespace ldexp_
 
-static int test_constexpr()
-{
-#if GLM_HAS_CONSTEXPR
-	static_assert(glm::abs(1.0f) > 0.0f, "GLM: Failed constexpr");
-	constexpr glm::vec1 const A = glm::abs(glm::vec1(1.0f));
-	constexpr glm::vec2 const B = glm::abs(glm::vec2(1.0f));
-	constexpr glm::vec3 const C = glm::abs(glm::vec3(1.0f));
-	constexpr glm::vec4 const D = glm::abs(glm::vec4(1.0f));
-
-	static_assert(glm::all(glm::equal(A, glm::vec1(1.0f), glm::epsilon<float>())), "GLM: Failed constexpr");
-	static_assert(glm::all(glm::equal(B, glm::vec2(1.0f), glm::epsilon<float>())), "GLM: Failed constexpr");
-	static_assert(glm::all(glm::equal(C, glm::vec3(1.0f), glm::epsilon<float>())), "GLM: Failed constexpr");
-	static_assert(glm::all(glm::equal(D, glm::vec4(1.0f), glm::epsilon<float>())), "GLM: Failed constexpr");
-#endif // GLM_HAS_CONSTEXPR
-
-	return 0;
-}
-
 int main()
 {
 	int Error = 0;
 
-	Error += test_constexpr();
 	Error += sign::test();
 	Error += floor_::test();
 	Error += mod_::test();

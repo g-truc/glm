@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>1.0.0 API documentation: GLM_GTC_random</title>
+<title>1.0.2 API documentation: GLM_GTC_epsilon</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo-mini.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">1.0.0 API documentation
+   <div id="projectname">1.0.2 API documentation
    </div>
   </td>
  </tr>
@@ -65,125 +65,56 @@ $(function() {
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">GLM_GTC_random<div class="ingroups"><a class="el" href="a00895.html">Recommended extensions</a></div></div>  </div>
+<div class="title">GLM_GTC_epsilon<div class="ingroups"><a class="el" href="a00904.html">Recommended extensions</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga7c53b7797f3147af68a11c767679fa3f"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga7c53b7797f3147af68a11c767679fa3f"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL vec&lt; 3, T, defaultp &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00909.html#ga7c53b7797f3147af68a11c767679fa3f">ballRand</a> (T Radius)</td></tr>
-<tr class="memdesc:ga7c53b7797f3147af68a11c767679fa3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a random 3D vector which coordinates are regularly distributed within the volume of a ball of a given radius.  <a href="a00909.html#ga7c53b7797f3147af68a11c767679fa3f">More...</a><br /></td></tr>
-<tr class="separator:ga7c53b7797f3147af68a11c767679fa3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9dd05c36025088fae25b97c869e88517"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga9dd05c36025088fae25b97c869e88517"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL vec&lt; 2, T, defaultp &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00909.html#ga9dd05c36025088fae25b97c869e88517">circularRand</a> (T Radius)</td></tr>
-<tr class="memdesc:ga9dd05c36025088fae25b97c869e88517"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a random 2D vector which coordinates are regularly distributed on a circle of a given radius.  <a href="a00909.html#ga9dd05c36025088fae25b97c869e88517">More...</a><br /></td></tr>
-<tr class="separator:ga9dd05c36025088fae25b97c869e88517"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa0b18071f3f97dbf8bcf6f53c6fe5f73"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gaa0b18071f3f97dbf8bcf6f53c6fe5f73"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL vec&lt; 2, T, defaultp &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00909.html#gaa0b18071f3f97dbf8bcf6f53c6fe5f73">diskRand</a> (T Radius)</td></tr>
-<tr class="memdesc:gaa0b18071f3f97dbf8bcf6f53c6fe5f73"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a random 2D vector which coordinates are regularly distributed within the area of a disk of a given radius.  <a href="a00909.html#gaa0b18071f3f97dbf8bcf6f53c6fe5f73">More...</a><br /></td></tr>
-<tr class="separator:gaa0b18071f3f97dbf8bcf6f53c6fe5f73"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5193a83e49e4fdc5652c084711083574"><td class="memTemplParams" colspan="2">template&lt;typename genType &gt; </td></tr>
-<tr class="memitem:ga5193a83e49e4fdc5652c084711083574"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL genType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00909.html#ga5193a83e49e4fdc5652c084711083574">gaussRand</a> (genType Mean, genType Deviation)</td></tr>
-<tr class="memdesc:ga5193a83e49e4fdc5652c084711083574"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate random numbers in the interval [Min, Max], according a gaussian distribution.  <a href="a00909.html#ga5193a83e49e4fdc5652c084711083574">More...</a><br /></td></tr>
-<tr class="separator:ga5193a83e49e4fdc5652c084711083574"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga04e241ab88374a477a2c2ceadd2fa03d"><td class="memTemplParams" colspan="2">template&lt;typename genType &gt; </td></tr>
-<tr class="memitem:ga04e241ab88374a477a2c2ceadd2fa03d"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL genType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00909.html#ga04e241ab88374a477a2c2ceadd2fa03d">linearRand</a> (genType Min, genType Max)</td></tr>
-<tr class="memdesc:ga04e241ab88374a477a2c2ceadd2fa03d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate random numbers in the interval [Min, Max], according a linear distribution.  <a href="a00909.html#ga04e241ab88374a477a2c2ceadd2fa03d">More...</a><br /></td></tr>
-<tr class="separator:ga04e241ab88374a477a2c2ceadd2fa03d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga94731130c298a9ff5e5025fdee6d97a0"><td class="memTemplParams" colspan="2">template&lt;length_t L, typename T , qualifier Q&gt; </td></tr>
-<tr class="memitem:ga94731130c298a9ff5e5025fdee6d97a0"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL vec&lt; L, T, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00909.html#ga94731130c298a9ff5e5025fdee6d97a0">linearRand</a> (vec&lt; L, T, Q &gt; const &amp;Min, vec&lt; L, T, Q &gt; const &amp;Max)</td></tr>
-<tr class="memdesc:ga94731130c298a9ff5e5025fdee6d97a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate random numbers in the interval [Min, Max], according a linear distribution.  <a href="a00909.html#ga94731130c298a9ff5e5025fdee6d97a0">More...</a><br /></td></tr>
-<tr class="separator:ga94731130c298a9ff5e5025fdee6d97a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga22f90fcaccdf001c516ca90f6428e138"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga22f90fcaccdf001c516ca90f6428e138"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL vec&lt; 3, T, defaultp &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00909.html#ga22f90fcaccdf001c516ca90f6428e138">sphericalRand</a> (T Radius)</td></tr>
-<tr class="memdesc:ga22f90fcaccdf001c516ca90f6428e138"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a random 3D vector which coordinates are regularly distributed on a sphere of a given radius.  <a href="a00909.html#ga22f90fcaccdf001c516ca90f6428e138">More...</a><br /></td></tr>
-<tr class="separator:ga22f90fcaccdf001c516ca90f6428e138"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa7f227999ca09e7ca994e8b35aba47bb"><td class="memTemplParams" colspan="2">template&lt;typename genType &gt; </td></tr>
+<tr class="memitem:gaa7f227999ca09e7ca994e8b35aba47bb"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00909.html#gaa7f227999ca09e7ca994e8b35aba47bb">epsilonEqual</a> (genType const &amp;x, genType const &amp;y, genType const &amp;epsilon)</td></tr>
+<tr class="memdesc:gaa7f227999ca09e7ca994e8b35aba47bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the component-wise comparison of |x - y| &lt; epsilon.  <a href="a00909.html#gaa7f227999ca09e7ca994e8b35aba47bb">More...</a><br /></td></tr>
+<tr class="separator:gaa7f227999ca09e7ca994e8b35aba47bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga91b417866cafadd076004778217a1844"><td class="memTemplParams" colspan="2">template&lt;length_t L, typename T , qualifier Q&gt; </td></tr>
+<tr class="memitem:ga91b417866cafadd076004778217a1844"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL vec&lt; L, bool, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00909.html#ga91b417866cafadd076004778217a1844">epsilonEqual</a> (vec&lt; L, T, Q &gt; const &amp;x, vec&lt; L, T, Q &gt; const &amp;y, T const &amp;epsilon)</td></tr>
+<tr class="memdesc:ga91b417866cafadd076004778217a1844"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the component-wise comparison of |x - y| &lt; epsilon.  <a href="a00909.html#ga91b417866cafadd076004778217a1844">More...</a><br /></td></tr>
+<tr class="separator:ga91b417866cafadd076004778217a1844"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga50a92103fb0cbd796908e1bf20c79aaf"><td class="memTemplParams" colspan="2">template&lt;typename genType &gt; </td></tr>
+<tr class="memitem:ga50a92103fb0cbd796908e1bf20c79aaf"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00909.html#ga50a92103fb0cbd796908e1bf20c79aaf">epsilonNotEqual</a> (genType const &amp;x, genType const &amp;y, genType const &amp;epsilon)</td></tr>
+<tr class="memdesc:ga50a92103fb0cbd796908e1bf20c79aaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the component-wise comparison of |x - y| &gt;= epsilon.  <a href="a00909.html#ga50a92103fb0cbd796908e1bf20c79aaf">More...</a><br /></td></tr>
+<tr class="separator:ga50a92103fb0cbd796908e1bf20c79aaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf840d33b9a5261ec78dcd5125743b025"><td class="memTemplParams" colspan="2">template&lt;length_t L, typename T , qualifier Q&gt; </td></tr>
+<tr class="memitem:gaf840d33b9a5261ec78dcd5125743b025"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL vec&lt; L, bool, Q &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00909.html#gaf840d33b9a5261ec78dcd5125743b025">epsilonNotEqual</a> (vec&lt; L, T, Q &gt; const &amp;x, vec&lt; L, T, Q &gt; const &amp;y, T const &amp;epsilon)</td></tr>
+<tr class="memdesc:gaf840d33b9a5261ec78dcd5125743b025"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the component-wise comparison of |x - y| &lt; epsilon.  <a href="a00909.html#gaf840d33b9a5261ec78dcd5125743b025">More...</a><br /></td></tr>
+<tr class="separator:gaf840d33b9a5261ec78dcd5125743b025"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<p>Include &lt;<a class="el" href="a00560.html" title="GLM_GTC_random">glm/gtc/random.hpp</a>&gt; to use the features of this extension.</p>
-<p>Generate random number from various distribution methods. </p>
+<p>Include &lt;<a class="el" href="a00542.html" title="GLM_GTC_epsilon">glm/gtc/epsilon.hpp</a>&gt; to use the features of this extension.</p>
+<p>Comparison functions for a user defined epsilon values. </p>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ga7c53b7797f3147af68a11c767679fa3f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga7c53b7797f3147af68a11c767679fa3f">&#9670;&nbsp;</a></span>ballRand()</h2>
+<a id="gaa7f227999ca09e7ca994e8b35aba47bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa7f227999ca09e7ca994e8b35aba47bb">&#9670;&nbsp;</a></span>epsilonEqual() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">GLM_FUNC_DECL vec&lt;3, T, defaultp&gt; glm::ballRand </td>
+          <td class="memname">GLM_FUNC_DECL bool glm::epsilonEqual </td>
           <td>(</td>
-          <td class="paramtype">T&#160;</td>
-          <td class="paramname"><em>Radius</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Generate a random 3D vector which coordinates are regularly distributed within the volume of a ball of a given radius. </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00909.html">GLM_GTC_random</a> </dd></dl>
-
-</div>
-</div>
-<a id="ga9dd05c36025088fae25b97c869e88517"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga9dd05c36025088fae25b97c869e88517">&#9670;&nbsp;</a></span>circularRand()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">GLM_FUNC_DECL vec&lt;2, T, defaultp&gt; glm::circularRand </td>
-          <td>(</td>
-          <td class="paramtype">T&#160;</td>
-          <td class="paramname"><em>Radius</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Generate a random 2D vector which coordinates are regularly distributed on a circle of a given radius. </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00909.html">GLM_GTC_random</a> </dd></dl>
-
-</div>
-</div>
-<a id="gaa0b18071f3f97dbf8bcf6f53c6fe5f73"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaa0b18071f3f97dbf8bcf6f53c6fe5f73">&#9670;&nbsp;</a></span>diskRand()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">GLM_FUNC_DECL vec&lt;2, T, defaultp&gt; glm::diskRand </td>
-          <td>(</td>
-          <td class="paramtype">T&#160;</td>
-          <td class="paramname"><em>Radius</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Generate a random 2D vector which coordinates are regularly distributed within the area of a disk of a given radius. </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00909.html">GLM_GTC_random</a> </dd></dl>
-
-</div>
-</div>
-<a id="ga5193a83e49e4fdc5652c084711083574"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga5193a83e49e4fdc5652c084711083574">&#9670;&nbsp;</a></span>gaussRand()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">GLM_FUNC_DECL genType glm::gaussRand </td>
-          <td>(</td>
-          <td class="paramtype">genType&#160;</td>
-          <td class="paramname"><em>Mean</em>, </td>
+          <td class="paramtype">genType const &amp;&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">genType&#160;</td>
-          <td class="paramname"><em>Deviation</em>&#160;</td>
+          <td class="paramtype">genType const &amp;&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">genType const &amp;&#160;</td>
+          <td class="paramname"><em>epsilon</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -193,72 +124,35 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Generate random numbers in the interval [Min, Max], according a gaussian distribution. </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00909.html">GLM_GTC_random</a> </dd></dl>
+<p>Returns the component-wise comparison of |x - y| &lt; epsilon. </p>
+<p>True if this expression is satisfied.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00909.html">GLM_GTC_epsilon</a> </dd></dl>
 
 </div>
 </div>
-<a id="ga04e241ab88374a477a2c2ceadd2fa03d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga04e241ab88374a477a2c2ceadd2fa03d">&#9670;&nbsp;</a></span>linearRand() <span class="overload">[1/2]</span></h2>
+<a id="ga91b417866cafadd076004778217a1844"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga91b417866cafadd076004778217a1844">&#9670;&nbsp;</a></span>epsilonEqual() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">GLM_FUNC_DECL genType glm::linearRand </td>
-          <td>(</td>
-          <td class="paramtype">genType&#160;</td>
-          <td class="paramname"><em>Min</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">genType&#160;</td>
-          <td class="paramname"><em>Max</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Generate random numbers in the interval [Min, Max], according a linear distribution. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">Min</td><td>Minimum value included in the sampling </td></tr>
-    <tr><td class="paramname">Max</td><td>Maximum value included in the sampling </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">genType</td><td>Value type. Currently supported: float or double scalars. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00909.html">GLM_GTC_random</a> </dd></dl>
-
-</div>
-</div>
-<a id="ga94731130c298a9ff5e5025fdee6d97a0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga94731130c298a9ff5e5025fdee6d97a0">&#9670;&nbsp;</a></span>linearRand() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">GLM_FUNC_DECL vec&lt;L, T, Q&gt; glm::linearRand </td>
+          <td class="memname">GLM_FUNC_DECL vec&lt;L, bool, Q&gt; glm::epsilonEqual </td>
           <td>(</td>
           <td class="paramtype">vec&lt; L, T, Q &gt; const &amp;&#160;</td>
-          <td class="paramname"><em>Min</em>, </td>
+          <td class="paramname"><em>x</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">vec&lt; L, T, Q &gt; const &amp;&#160;</td>
-          <td class="paramname"><em>Max</em>&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T const &amp;&#160;</td>
+          <td class="paramname"><em>epsilon</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -268,42 +162,85 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Generate random numbers in the interval [Min, Max], according a linear distribution. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">Min</td><td>Minimum value included in the sampling </td></tr>
-    <tr><td class="paramname">Max</td><td>Maximum value included in the sampling </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">T</td><td>Value type. Currently supported: float or double.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00909.html">GLM_GTC_random</a> </dd></dl>
+<p>Returns the component-wise comparison of |x - y| &lt; epsilon. </p>
+<p>True if this expression is satisfied.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00909.html">GLM_GTC_epsilon</a> </dd></dl>
 
 </div>
 </div>
-<a id="ga22f90fcaccdf001c516ca90f6428e138"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga22f90fcaccdf001c516ca90f6428e138">&#9670;&nbsp;</a></span>sphericalRand()</h2>
+<a id="ga50a92103fb0cbd796908e1bf20c79aaf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga50a92103fb0cbd796908e1bf20c79aaf">&#9670;&nbsp;</a></span>epsilonNotEqual() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">GLM_FUNC_DECL vec&lt;3, T, defaultp&gt; glm::sphericalRand </td>
+          <td class="memname">GLM_FUNC_DECL bool glm::epsilonNotEqual </td>
           <td>(</td>
-          <td class="paramtype">T&#160;</td>
-          <td class="paramname"><em>Radius</em></td><td>)</td>
+          <td class="paramtype">genType const &amp;&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">genType const &amp;&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">genType const &amp;&#160;</td>
+          <td class="paramname"><em>epsilon</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Generate a random 3D vector which coordinates are regularly distributed on a sphere of a given radius. </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00909.html">GLM_GTC_random</a> </dd></dl>
+<p>Returns the component-wise comparison of |x - y| &gt;= epsilon. </p>
+<p>True if this expression is not satisfied.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00909.html">GLM_GTC_epsilon</a> </dd></dl>
+
+</div>
+</div>
+<a id="gaf840d33b9a5261ec78dcd5125743b025"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf840d33b9a5261ec78dcd5125743b025">&#9670;&nbsp;</a></span>epsilonNotEqual() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GLM_FUNC_DECL vec&lt;L, bool, Q&gt; glm::epsilonNotEqual </td>
+          <td>(</td>
+          <td class="paramtype">vec&lt; L, T, Q &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vec&lt; L, T, Q &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T const &amp;&#160;</td>
+          <td class="paramname"><em>epsilon</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the component-wise comparison of |x - y| &lt; epsilon. </p>
+<p>True if this expression is not satisfied.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00909.html">GLM_GTC_epsilon</a> </dd></dl>
 
 </div>
 </div>

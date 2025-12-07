@@ -115,11 +115,9 @@ static int test_exp2()
 	glm::vec4 E = glm::exp2(glm::vec4(4.f, 3.f, 2.f, 1.f));
 	Error += glm::all(glm::equal(E, glm::vec4(16.f, 8.f, 4.f, 2.f), 0.01f)) ? 0 : 1;
 
-#   if GLM_HAS_CXX11_STL
 	//large exponent
 	float F = glm::exp2(23.f);
 	Error += glm::equal(F, 8388608.f, 0.01f) ? 0 : 1;
-#   endif
 
 	return Error;
 }

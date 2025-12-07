@@ -36,3 +36,17 @@ namespace glm
 
 	/// @}
 }//namespace glm
+
+#if GLM_CONFIG_CTOR_INIT == GLM_DISABLE
+static_assert(std::is_trivially_default_constructible<glm::imat3x3>::value);
+static_assert(std::is_trivially_default_constructible<glm::imat3>::value);
+#endif
+static_assert(std::is_trivially_copy_assignable<glm::imat3x3>::value);
+static_assert(std::is_trivially_copy_assignable<glm::imat3>::value);
+static_assert(std::is_trivially_copyable<glm::imat3x3>::value);
+static_assert(std::is_trivially_copyable<glm::imat3>::value);
+static_assert(std::is_copy_constructible<glm::imat3x3>::value);
+static_assert(std::is_copy_constructible<glm::imat3>::value);
+static_assert(glm::imat3x3::length() == 3);
+static_assert(glm::imat3::length() == 3);
+

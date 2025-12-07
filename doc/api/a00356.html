@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>1.0.0 API documentation: scalar_constants.hpp File Reference</title>
+<title>1.0.2 API documentation: scalar_common.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo-mini.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">1.0.0 API documentation
+   <div id="projectname">1.0.2 API documentation
    </div>
   </td>
  </tr>
@@ -69,37 +69,90 @@ $(function() {
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">scalar_constants.hpp File Reference</div>  </div>
+<div class="title">scalar_common.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="a00858.html">GLM_EXT_scalar_constants</a>  
+<p><a class="el" href="a00866.html">GLM_EXT_scalar_common</a>  
 <a href="#details">More...</a></p>
 
 <p><a href="a00356_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gae8d1938913da2e5b2e102b9076cd0389"><td class="memTemplParams" colspan="2">
-template&lt;typename genType &gt; </td></tr>
-<tr class="memitem:gae8d1938913da2e5b2e102b9076cd0389"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL GLM_CONSTEXPR genType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00858.html#gae8d1938913da2e5b2e102b9076cd0389">cos_one_over_two</a> ()</td></tr>
-<tr class="memdesc:gae8d1938913da2e5b2e102b9076cd0389"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the value of cos(1 / 2) for floating point types. <br /></td></tr>
-<tr class="separator:gae8d1938913da2e5b2e102b9076cd0389"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2a1e57fc5592b69cfae84174cbfc9429"><td class="memTemplParams" colspan="2">
-template&lt;typename genType &gt; </td></tr>
-<tr class="memitem:ga2a1e57fc5592b69cfae84174cbfc9429"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL GLM_CONSTEXPR genType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00858.html#ga2a1e57fc5592b69cfae84174cbfc9429">epsilon</a> ()</td></tr>
-<tr class="memdesc:ga2a1e57fc5592b69cfae84174cbfc9429"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the epsilon constant for floating point types. <br /></td></tr>
-<tr class="separator:ga2a1e57fc5592b69cfae84174cbfc9429"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga94bafeb2a0f23ab6450fed1f98ee4e45"><td class="memTemplParams" colspan="2">
-template&lt;typename genType &gt; </td></tr>
-<tr class="memitem:ga94bafeb2a0f23ab6450fed1f98ee4e45"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL GLM_CONSTEXPR genType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00858.html#ga94bafeb2a0f23ab6450fed1f98ee4e45">pi</a> ()</td></tr>
-<tr class="memdesc:ga94bafeb2a0f23ab6450fed1f98ee4e45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the pi constant for floating point types. <br /></td></tr>
-<tr class="separator:ga94bafeb2a0f23ab6450fed1f98ee4e45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6c0cc6bd1d67ea1008d2592e998bad33"><td class="memTemplParams" colspan="2">template&lt;typename genType &gt; </td></tr>
+<tr class="memitem:ga6c0cc6bd1d67ea1008d2592e998bad33"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL genType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00866.html#ga6c0cc6bd1d67ea1008d2592e998bad33">clamp</a> (genType const &amp;Texcoord)</td></tr>
+<tr class="memdesc:ga6c0cc6bd1d67ea1008d2592e998bad33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simulate GL_CLAMP OpenGL wrap mode.  <a href="a00866.html#ga6c0cc6bd1d67ea1008d2592e998bad33">More...</a><br /></td></tr>
+<tr class="separator:ga6c0cc6bd1d67ea1008d2592e998bad33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1e28539d3a46965ed9ef92ec7cb3b18a"><td class="memTemplParams" colspan="2">template&lt;typename genType &gt; </td></tr>
+<tr class="memitem:ga1e28539d3a46965ed9ef92ec7cb3b18a"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL genType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00866.html#ga1e28539d3a46965ed9ef92ec7cb3b18a">fclamp</a> (genType x, genType minVal, genType maxVal)</td></tr>
+<tr class="memdesc:ga1e28539d3a46965ed9ef92ec7cb3b18a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns min(max(x, minVal), maxVal) for each component in x.  <a href="a00866.html#ga1e28539d3a46965ed9ef92ec7cb3b18a">More...</a><br /></td></tr>
+<tr class="separator:ga1e28539d3a46965ed9ef92ec7cb3b18a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9181453c527b05bddd32b1b09b8c80e6"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ga9181453c527b05bddd32b1b09b8c80e6"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL T()&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00866.html#ga9181453c527b05bddd32b1b09b8c80e6">fmax</a> (T a, T b)</td></tr>
+<tr class="memdesc:ga9181453c527b05bddd32b1b09b8c80e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the maximum component-wise values of 2 inputs.  <a href="a00866.html#ga9181453c527b05bddd32b1b09b8c80e6">More...</a><br /></td></tr>
+<tr class="separator:ga9181453c527b05bddd32b1b09b8c80e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga65c5b6a8d1f1607fbcbf3a8ef2f93e3c"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ga65c5b6a8d1f1607fbcbf3a8ef2f93e3c"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL T()&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00866.html#ga65c5b6a8d1f1607fbcbf3a8ef2f93e3c">fmax</a> (T a, T b, T C)</td></tr>
+<tr class="memdesc:ga65c5b6a8d1f1607fbcbf3a8ef2f93e3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the maximum component-wise values of 3 inputs.  <a href="a00866.html#ga65c5b6a8d1f1607fbcbf3a8ef2f93e3c">More...</a><br /></td></tr>
+<tr class="separator:ga65c5b6a8d1f1607fbcbf3a8ef2f93e3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaed34015c7033417014cc9198a763c3e7"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:gaed34015c7033417014cc9198a763c3e7"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL T()&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00866.html#gaed34015c7033417014cc9198a763c3e7">fmax</a> (T a, T b, T C, T D)</td></tr>
+<tr class="memdesc:gaed34015c7033417014cc9198a763c3e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the maximum component-wise values of 4 inputs.  <a href="a00866.html#gaed34015c7033417014cc9198a763c3e7">More...</a><br /></td></tr>
+<tr class="separator:gaed34015c7033417014cc9198a763c3e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2ca01149554244bc668afb3f2f95a1a1"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ga2ca01149554244bc668afb3f2f95a1a1"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL T()&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00866.html#ga2ca01149554244bc668afb3f2f95a1a1">fmin</a> (T a, T b)</td></tr>
+<tr class="memdesc:ga2ca01149554244bc668afb3f2f95a1a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the minimum component-wise values of 2 inputs.  <a href="a00866.html#ga2ca01149554244bc668afb3f2f95a1a1">More...</a><br /></td></tr>
+<tr class="separator:ga2ca01149554244bc668afb3f2f95a1a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2caf4c39dd5ebc2bbc577b03bebe4aa0"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ga2caf4c39dd5ebc2bbc577b03bebe4aa0"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL T()&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00866.html#ga2caf4c39dd5ebc2bbc577b03bebe4aa0">fmin</a> (T a, T b, T c)</td></tr>
+<tr class="memdesc:ga2caf4c39dd5ebc2bbc577b03bebe4aa0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the minimum component-wise values of 3 inputs.  <a href="a00866.html#ga2caf4c39dd5ebc2bbc577b03bebe4aa0">More...</a><br /></td></tr>
+<tr class="separator:ga2caf4c39dd5ebc2bbc577b03bebe4aa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2bbac70c680668b0b1019dcf8e6c03b6"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ga2bbac70c680668b0b1019dcf8e6c03b6"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL T()&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00866.html#ga2bbac70c680668b0b1019dcf8e6c03b6">fmin</a> (T a, T b, T c, T d)</td></tr>
+<tr class="memdesc:ga2bbac70c680668b0b1019dcf8e6c03b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the minimum component-wise values of 4 inputs.  <a href="a00866.html#ga2bbac70c680668b0b1019dcf8e6c03b6">More...</a><br /></td></tr>
+<tr class="separator:ga2bbac70c680668b0b1019dcf8e6c03b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa45ff5782fde5182afa7ab211f9758a3"><td class="memTemplParams" colspan="2">template&lt;typename genType &gt; </td></tr>
+<tr class="memitem:gaa45ff5782fde5182afa7ab211f9758a3"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL int&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00866.html#gaa45ff5782fde5182afa7ab211f9758a3">iround</a> (genType const &amp;x)</td></tr>
+<tr class="memdesc:gaa45ff5782fde5182afa7ab211f9758a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a value equal to the nearest integer to x.  <a href="a00866.html#gaa45ff5782fde5182afa7ab211f9758a3">More...</a><br /></td></tr>
+<tr class="separator:gaa45ff5782fde5182afa7ab211f9758a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae7224c683ea72d2a6a395529b8c14a4c"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:gae7224c683ea72d2a6a395529b8c14a4c"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL T()&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00866.html#gae7224c683ea72d2a6a395529b8c14a4c">max</a> (T a, T b, T c)</td></tr>
+<tr class="memdesc:gae7224c683ea72d2a6a395529b8c14a4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the maximum component-wise values of 3 inputs.  <a href="a00866.html#gae7224c683ea72d2a6a395529b8c14a4c">More...</a><br /></td></tr>
+<tr class="separator:gae7224c683ea72d2a6a395529b8c14a4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae7fcb461017290d4a34e688fb9ae41ab"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:gae7fcb461017290d4a34e688fb9ae41ab"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL T()&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00866.html#gae7fcb461017290d4a34e688fb9ae41ab">max</a> (T a, T b, T c, T d)</td></tr>
+<tr class="memdesc:gae7fcb461017290d4a34e688fb9ae41ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the maximum component-wise values of 4 inputs.  <a href="a00866.html#gae7fcb461017290d4a34e688fb9ae41ab">More...</a><br /></td></tr>
+<tr class="separator:gae7fcb461017290d4a34e688fb9ae41ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae7a84710d9b7dee05eb0b2a68630cab4"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:gae7a84710d9b7dee05eb0b2a68630cab4"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL T()&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00866.html#gae7a84710d9b7dee05eb0b2a68630cab4">min</a> (T a, T b, T c)</td></tr>
+<tr class="memdesc:gae7a84710d9b7dee05eb0b2a68630cab4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the minimum component-wise values of 3 inputs.  <a href="a00866.html#gae7a84710d9b7dee05eb0b2a68630cab4">More...</a><br /></td></tr>
+<tr class="separator:gae7a84710d9b7dee05eb0b2a68630cab4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0f57f64fe8994fb4b6f7eebb6466a4e7"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ga0f57f64fe8994fb4b6f7eebb6466a4e7"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL T()&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00866.html#ga0f57f64fe8994fb4b6f7eebb6466a4e7">min</a> (T a, T b, T c, T d)</td></tr>
+<tr class="memdesc:ga0f57f64fe8994fb4b6f7eebb6466a4e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the minimum component-wise values of 4 inputs.  <a href="a00866.html#ga0f57f64fe8994fb4b6f7eebb6466a4e7">More...</a><br /></td></tr>
+<tr class="separator:ga0f57f64fe8994fb4b6f7eebb6466a4e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa6856a0a048d2749252848da35e10c8b"><td class="memTemplParams" colspan="2">template&lt;typename genType &gt; </td></tr>
+<tr class="memitem:gaa6856a0a048d2749252848da35e10c8b"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL genType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00866.html#gaa6856a0a048d2749252848da35e10c8b">mirrorClamp</a> (genType const &amp;Texcoord)</td></tr>
+<tr class="memdesc:gaa6856a0a048d2749252848da35e10c8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simulate GL_MIRRORED_REPEAT OpenGL wrap mode.  <a href="a00866.html#gaa6856a0a048d2749252848da35e10c8b">More...</a><br /></td></tr>
+<tr class="separator:gaa6856a0a048d2749252848da35e10c8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga16a89b0661b60d5bea85137bbae74d73"><td class="memTemplParams" colspan="2">template&lt;typename genType &gt; </td></tr>
+<tr class="memitem:ga16a89b0661b60d5bea85137bbae74d73"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL genType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00866.html#ga16a89b0661b60d5bea85137bbae74d73">mirrorRepeat</a> (genType const &amp;Texcoord)</td></tr>
+<tr class="memdesc:ga16a89b0661b60d5bea85137bbae74d73"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simulate GL_MIRROR_REPEAT OpenGL wrap mode.  <a href="a00866.html#ga16a89b0661b60d5bea85137bbae74d73">More...</a><br /></td></tr>
+<tr class="separator:ga16a89b0661b60d5bea85137bbae74d73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga809650c6310ea7c42666e918c117fb6f"><td class="memTemplParams" colspan="2">template&lt;typename genType &gt; </td></tr>
+<tr class="memitem:ga809650c6310ea7c42666e918c117fb6f"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL genType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00866.html#ga809650c6310ea7c42666e918c117fb6f">repeat</a> (genType const &amp;Texcoord)</td></tr>
+<tr class="memdesc:ga809650c6310ea7c42666e918c117fb6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simulate GL_REPEAT OpenGL wrap mode.  <a href="a00866.html#ga809650c6310ea7c42666e918c117fb6f">More...</a><br /></td></tr>
+<tr class="separator:ga809650c6310ea7c42666e918c117fb6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9d915647ec33c4110946665f914d3abb"><td class="memTemplParams" colspan="2">template&lt;typename genType &gt; </td></tr>
+<tr class="memitem:ga9d915647ec33c4110946665f914d3abb"><td class="memTemplItemLeft" align="right" valign="top">GLM_FUNC_DECL uint&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00866.html#ga9d915647ec33c4110946665f914d3abb">uround</a> (genType const &amp;x)</td></tr>
+<tr class="memdesc:ga9d915647ec33c4110946665f914d3abb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a value equal to the nearest integer to x.  <a href="a00866.html#ga9d915647ec33c4110946665f914d3abb">More...</a><br /></td></tr>
+<tr class="separator:ga9d915647ec33c4110946665f914d3abb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="a00858.html">GLM_EXT_scalar_constants</a> </p>
+<div class="textblock"><p><a class="el" href="a00866.html">GLM_EXT_scalar_common</a> </p>
 
-<p class="definition">Definition in file <a class="el" href="a00356_source.html">scalar_constants.hpp</a>.</p>
+<p class="definition">Definition in file <a class="el" href="a00356_source.html">scalar_common.hpp</a>.</p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

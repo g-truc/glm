@@ -68,3 +68,46 @@ namespace glm
 
 	/// @}
 }//namespace glm
+
+#if GLM_CONFIG_CTOR_INIT == GLM_DISABLE
+static_assert(std::is_trivially_default_constructible<glm::i8mat3x3>::value);
+static_assert(std::is_trivially_default_constructible<glm::i16mat3x3>::value);
+static_assert(std::is_trivially_default_constructible<glm::i32mat3x3>::value);
+static_assert(std::is_trivially_default_constructible<glm::i64mat3x3>::value);
+static_assert(std::is_trivially_default_constructible<glm::i8mat3>::value);
+static_assert(std::is_trivially_default_constructible<glm::i16mat3>::value);
+static_assert(std::is_trivially_default_constructible<glm::i32mat3>::value);
+static_assert(std::is_trivially_default_constructible<glm::i64mat3>::value);
+#endif
+static_assert(std::is_trivially_copy_assignable<glm::i8mat3x3>::value);
+static_assert(std::is_trivially_copy_assignable<glm::i16mat3x3>::value);
+static_assert(std::is_trivially_copy_assignable<glm::i32mat3x3>::value);
+static_assert(std::is_trivially_copy_assignable<glm::i64mat3x3>::value);
+static_assert(std::is_trivially_copy_assignable<glm::i8mat3>::value);
+static_assert(std::is_trivially_copy_assignable<glm::i16mat3>::value);
+static_assert(std::is_trivially_copy_assignable<glm::i32mat3>::value);
+static_assert(std::is_trivially_copy_assignable<glm::i64mat3>::value);
+static_assert(std::is_trivially_copyable<glm::i8mat3x3>::value);
+static_assert(std::is_trivially_copyable<glm::i16mat3x3>::value);
+static_assert(std::is_trivially_copyable<glm::i32mat3x3>::value);
+static_assert(std::is_trivially_copyable<glm::i64mat3x3>::value);
+static_assert(std::is_trivially_copyable<glm::i8mat3>::value);
+static_assert(std::is_trivially_copyable<glm::i16mat3>::value);
+static_assert(std::is_trivially_copyable<glm::i32mat3>::value);
+static_assert(std::is_trivially_copyable<glm::i64mat3>::value);
+static_assert(std::is_copy_constructible<glm::i8mat3x3>::value);
+static_assert(std::is_copy_constructible<glm::i16mat3x3>::value);
+static_assert(std::is_copy_constructible<glm::i32mat3x3>::value);
+static_assert(std::is_copy_constructible<glm::i64mat3x3>::value);
+static_assert(std::is_copy_constructible<glm::i8mat3>::value);
+static_assert(std::is_copy_constructible<glm::i16mat3>::value);
+static_assert(std::is_copy_constructible<glm::i32mat3>::value);
+static_assert(std::is_copy_constructible<glm::i64mat3>::value);
+static_assert(glm::i8mat3x3::length() == 3);
+static_assert(glm::i16mat3x3::length() == 3);
+static_assert(glm::i32mat3x3::length() == 3);
+static_assert(glm::i64mat3x3::length() == 3);
+static_assert(glm::i8mat3::length() == 3);
+static_assert(glm::i16mat3::length() == 3);
+static_assert(glm::i32mat3::length() == 3);
+static_assert(glm::i64mat3::length() == 3);

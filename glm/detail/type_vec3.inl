@@ -7,19 +7,10 @@ namespace glm
 {
 	// -- Implicit basic constructors --
 
-#	if GLM_CONFIG_DEFAULTED_DEFAULT_CTOR == GLM_DISABLE
+#	if GLM_CONFIG_CTOR_INIT == GLM_ENABLE
 		template<typename T, qualifier Q>
 		GLM_DEFAULTED_DEFAULT_CTOR_QUALIFIER GLM_CONSTEXPR vec<3, T, Q>::vec()
-#			if GLM_CONFIG_CTOR_INIT != GLM_CTOR_INIT_DISABLE
-				: x(0), y(0), z(0)
-#			endif
-		{}
-#	endif
-
-#	if GLM_CONFIG_DEFAULTED_FUNCTIONS == GLM_DISABLE
-		template<typename T, qualifier Q>
-		GLM_DEFAULTED_FUNC_QUALIFIER GLM_CONSTEXPR vec<3, T, Q>::vec(vec<3, T, Q> const& v)
-			: x(v.x), y(v.y), z(v.z)
+			: x(0), y(0), z(0)
 		{}
 #	endif
 
@@ -200,17 +191,6 @@ namespace glm
 	}
 
 	// -- Unary arithmetic operators --
-
-#	if GLM_CONFIG_DEFAULTED_FUNCTIONS == GLM_DISABLE
-		template<typename T, qualifier Q>
-		GLM_DEFAULTED_FUNC_QUALIFIER GLM_CONSTEXPR vec<3, T, Q>& vec<3, T, Q>::operator=(vec<3, T, Q> const& v)
-		{
-			this->x = v.x;
-			this->y = v.y;
-			this->z = v.z;
-			return *this;
-		}
-#	endif
 
 	template<typename T, qualifier Q>
 	template<typename U>
@@ -482,7 +462,7 @@ namespace glm
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<3, T, Q> operator-(vec<3, T, Q> const& v)
 	{
-		return vec<3, T, Q>(0) -= v;
+		return vec<3, T, Q>(T(0)) -= v;
 	}
 
 	// -- Binary arithmetic operators --
@@ -834,7 +814,7 @@ namespace glm
 #	include "type_vec_simd.inl"
 
 namespace glm {
-
+/* build errors on Windows ARM Github C.I.
 #if (GLM_ARCH & GLM_ARCH_NEON_BIT) && !GLM_CONFIG_XYZW_ONLY
 	CTORSL(3, CTOR_FLOAT);
 	CTORSL(3, CTOR_INT);
@@ -845,7 +825,7 @@ namespace glm {
 	CTORSL(3, CTOR_VECF_VECI);
 	CTORSL(3, CTOR_VECF_VECU);
 #endif
-
+*/
 #if GLM_ARCH & GLM_ARCH_SSE2_BIT
 	CTORSL(3, CTOR_FLOAT_COPY3);
 	CTORSL(3, CTOR_DOUBLE_COPY3);

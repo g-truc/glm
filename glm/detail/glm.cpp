@@ -10,6 +10,7 @@
 #include "../ext/scalar_int_sized.hpp"
 #include "../ext/scalar_uint_sized.hpp"
 #include "../glm.hpp"
+#include "../ext.hpp"
 
 namespace glm
 {

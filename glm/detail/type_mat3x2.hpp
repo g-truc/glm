@@ -26,14 +26,15 @@ namespace glm
 		// -- Accesses --
 
 		typedef length_t length_type;
-		GLM_FUNC_DECL static GLM_CONSTEXPR length_type length() { return 3; }
+		GLM_FUNC_DECL static constexpr length_type length() { return 3; }
 
-		GLM_FUNC_DECL GLM_CONSTEXPR col_type & operator[](length_type i) GLM_NOEXCEPT;
-		GLM_FUNC_DECL GLM_CONSTEXPR col_type const& operator[](length_type i) const GLM_NOEXCEPT;
+		GLM_FUNC_DECL GLM_CONSTEXPR col_type & operator[](length_type i) noexcept;
+		GLM_FUNC_DECL GLM_CONSTEXPR col_type const& operator[](length_type i) const noexcept;
 
 		// -- Constructors --
 
 		GLM_DEFAULTED_DEFAULT_CTOR_DECL GLM_CONSTEXPR mat() GLM_DEFAULT_CTOR;
+		GLM_CTOR_DECL mat(mat<3, 2, T, Q> const& m) = default;
 		template<qualifier P>
 		GLM_CTOR_DECL mat(mat<3, 2, T, P> const& m);
 
@@ -79,6 +80,8 @@ namespace glm
 		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<4, 3, T, Q> const& x);
 
 		// -- Unary arithmetic operators --
+
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<3, 2, T, Q>& operator=(mat<3, 2, T, Q> const& m) = default;
 
 		template<typename U>
 		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR mat<3, 2, T, Q> & operator=(mat<3, 2, U, Q> const& m);

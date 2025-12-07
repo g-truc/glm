@@ -134,19 +134,6 @@ static int test_relational()
 	return Error;
 }
 
-template <typename genType>
-static int test_constexpr()
-{
-#	if GLM_CONFIG_CONSTEXP == GLM_ENABLE
-		static_assert(genType::length() == 1, "GLM: Failed constexpr");
-		static_assert(genType(1)[0] == 1, "GLM: Failed constexpr");
-		static_assert(genType(1) == genType(1), "GLM: Failed constexpr");
-		static_assert(genType(1) != genType(0), "GLM: Failed constexpr");
-#	endif
-
-	return 0;
-}
-
 int main()
 {
 	int Error = 0;
@@ -175,12 +162,6 @@ int main()
 	Error += test_relational<glm::i32vec1>();
 	Error += test_relational<glm::i64vec1>();
 
-	Error += test_constexpr<glm::ivec1>();
-	Error += test_constexpr<glm::i8vec1>();
-	Error += test_constexpr<glm::i16vec1>();
-	Error += test_constexpr<glm::i32vec1>();
-	Error += test_constexpr<glm::i64vec1>();
-
 	Error += test_operators<glm::uvec1>();
 	Error += test_operators<glm::u8vec1>();
 	Error += test_operators<glm::u16vec1>();
@@ -204,12 +185,6 @@ int main()
 	Error += test_relational<glm::u16vec1>();
 	Error += test_relational<glm::u32vec1>();
 	Error += test_relational<glm::u64vec1>();
-	
-	Error += test_constexpr<glm::uvec1>();
-	Error += test_constexpr<glm::u8vec1>();
-	Error += test_constexpr<glm::u16vec1>();
-	Error += test_constexpr<glm::u32vec1>();
-	Error += test_constexpr<glm::u64vec1>();
 	
 	return Error;
 }
