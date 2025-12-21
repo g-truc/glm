@@ -47,12 +47,12 @@ namespace detail
 {
 	template<typename T>
 	struct TMin {
-		GLM_FUNC_QUALIFIER T operator()(const T& a, const T& b) { return min(a, b); }
+		GLM_FUNC_QUALIFIER GLM_CONSTEXPR T operator()(const T& a, const T& b) { return min(a, b); }
 	};
 
 	template<typename T>
 	struct TMax {
-		GLM_FUNC_QUALIFIER T operator()(const T& a, const T& b) { return max(a, b); }
+		GLM_FUNC_QUALIFIER GLM_CONSTEXPR T operator()(const T& a, const T& b) { return max(a, b); }
 	};
 
 	template<typename T>
@@ -87,7 +87,7 @@ namespace detail
 	template<length_t L, typename T, typename U, qualifier Q, bool Aligned>
 	struct compute_mix_vector
 	{
-		GLM_FUNC_QUALIFIER static vec<L, T, Q> call(vec<L, T, Q> const& x, vec<L, T, Q> const& y, vec<L, U, Q> const& a)
+		GLM_FUNC_QUALIFIER GLM_CONSTEXPR static vec<L, T, Q> call(vec<L, T, Q> const& x, vec<L, T, Q> const& y, vec<L, U, Q> const& a)
 		{
 			static_assert(std::numeric_limits<U>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT || GLM_CONFIG_UNRESTRICTED_GENTYPE, "'mix' only accept floating-point inputs for the interpolator a");
 
@@ -98,7 +98,7 @@ namespace detail
 	template<length_t L, typename T, qualifier Q, bool Aligned>
 	struct compute_mix_vector<L, T, bool, Q, Aligned>
 	{
-		GLM_FUNC_QUALIFIER static vec<L, T, Q> call(vec<L, T, Q> const& x, vec<L, T, Q> const& y, vec<L, bool, Q> const& a)
+		GLM_FUNC_QUALIFIER GLM_CONSTEXPR static vec<L, T, Q> call(vec<L, T, Q> const& x, vec<L, T, Q> const& y, vec<L, bool, Q> const& a)
 		{
 			vec<L, T, Q> Result(0);
 			for(length_t i = 0; i < x.length(); ++i)
@@ -110,7 +110,7 @@ namespace detail
 	template<length_t L, typename T, typename U, qualifier Q, bool Aligned>
 	struct compute_mix_scalar
 	{
-		GLM_FUNC_QUALIFIER static vec<L, T, Q> call(vec<L, T, Q> const& x, vec<L, T, Q> const& y, U const& a)
+		GLM_FUNC_QUALIFIER GLM_CONSTEXPR static vec<L, T, Q> call(vec<L, T, Q> const& x, vec<L, T, Q> const& y, U const& a)
 		{
 			static_assert(std::numeric_limits<U>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT || GLM_CONFIG_UNRESTRICTED_GENTYPE, "'mix' only accept floating-point inputs for the interpolator a");
 
@@ -121,7 +121,7 @@ namespace detail
 	template<length_t L, typename T, qualifier Q, bool Aligned>
 	struct compute_mix_scalar<L, T, bool, Q, Aligned>
 	{
-		GLM_FUNC_QUALIFIER static vec<L, T, Q> call(vec<L, T, Q> const& x, vec<L, T, Q> const& y, bool const& a)
+		GLM_FUNC_QUALIFIER GLM_CONSTEXPR static vec<L, T, Q> call(vec<L, T, Q> const& x, vec<L, T, Q> const& y, bool const& a)
 		{
 			return a ? y : x;
 		}
@@ -130,7 +130,7 @@ namespace detail
 	template<typename T, typename U>
 	struct compute_mix
 	{
-		GLM_FUNC_QUALIFIER static T call(T const& x, T const& y, U const& a)
+		GLM_FUNC_QUALIFIER GLM_CONSTEXPR static T call(T const& x, T const& y, U const& a)
 		{
 			static_assert(std::numeric_limits<U>::is_iec559 || GLM_CONFIG_UNRESTRICTED_FLOAT || GLM_CONFIG_UNRESTRICTED_GENTYPE, "'mix' only accept floating-point inputs for the interpolator a");
 
@@ -141,7 +141,7 @@ namespace detail
 	template<typename T>
 	struct compute_mix<T, bool>
 	{
-		GLM_FUNC_QUALIFIER static T call(T const& x, T const& y, bool const& a)
+		GLM_FUNC_QUALIFIER GLM_CONSTEXPR static T call(T const& x, T const& y, bool const& a)
 		{
 			return a ? y : x;
 		}
@@ -237,7 +237,7 @@ namespace detail
 	template<length_t L, typename T, qualifier Q, bool Aligned>
 	struct compute_min_vector
 	{
-		GLM_FUNC_QUALIFIER static vec<L, T, Q> call(vec<L, T, Q> const& x, vec<L, T, Q> const& y)
+		GLM_FUNC_QUALIFIER GLM_CONSTEXPR static vec<L, T, Q> call(vec<L, T, Q> const& x, vec<L, T, Q> const& y)
 		{
 			return detail::functor2<vec, L, T, Q>::call(TMin<T>(), x, y);
 		}
@@ -246,7 +246,7 @@ namespace detail
 	template<length_t L, typename T, qualifier Q, bool Aligned>
 	struct compute_max_vector
 	{
-		GLM_FUNC_QUALIFIER static vec<L, T, Q> call(vec<L, T, Q> const& x, vec<L, T, Q> const& y)
+		GLM_FUNC_QUALIFIER GLM_CONSTEXPR static vec<L, T, Q> call(vec<L, T, Q> const& x, vec<L, T, Q> const& y)
 		{
 			return detail::functor2<vec, L, T, Q>::call(TMax<T>(), x, y);
 		}
@@ -255,7 +255,7 @@ namespace detail
 	template<length_t L, typename T, qualifier Q, bool Aligned>
 	struct compute_clamp_vector
 	{
-		GLM_FUNC_QUALIFIER static vec<L, T, Q> call(vec<L, T, Q> const& x, vec<L, T, Q> const& minVal, vec<L, T, Q> const& maxVal)
+		GLM_FUNC_QUALIFIER GLM_CONSTEXPR static vec<L, T, Q> call(vec<L, T, Q> const& x, vec<L, T, Q> const& minVal, vec<L, T, Q> const& maxVal)
 		{
 			return min(max(x, minVal), maxVal);
 		}

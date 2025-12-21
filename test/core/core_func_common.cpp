@@ -298,6 +298,28 @@ namespace min_
 		return Error;
 	}
 
+#if GLM_HAS_CONSTEXPR
+	static int test_constexpr()
+	{
+		constexpr glm::vec1 A0 = glm::min(glm::vec1(1), glm::vec1(1));
+		static_assert(glm::all(glm::equal(A0, glm::vec1(1), glm::epsilon<float>())), "GLM: Failed constexpr");
+
+		constexpr glm::vec2 B0 = glm::min(glm::vec2(1), glm::vec2(1));
+		constexpr glm::vec2 B1 = glm::min(glm::vec2(1), 1.0f);
+		static_assert(glm::all(glm::equal(B0, B1, glm::epsilon<float>())), "GLM: Failed constexpr");
+
+		constexpr glm::vec3 C0 = glm::min(glm::vec3(1), glm::vec3(1));
+		constexpr glm::vec3 C1 = glm::min(glm::vec3(1), 1.0f);
+		static_assert(glm::all(glm::equal(C0, C1, glm::epsilon<float>())), "GLM: Failed constexpr");
+
+		constexpr glm::vec4 D0 = glm::min(glm::vec4(1), glm::vec4(1));
+		constexpr glm::vec4 D1 = glm::min(glm::vec4(1), 1.0f);
+		static_assert(glm::all(glm::equal(D0, D1, glm::epsilon<float>())), "GLM: Failed constexpr");
+
+		return 0;
+	}
+#endif
+
 	static int min_tern(int a, int b)
 	{
 		return a < b ? a : b;
@@ -383,6 +405,28 @@ namespace max_
 
 		return Error;
 	}
+
+#if GLM_HAS_CONSTEXPR
+	static int test_constexpr()
+	{
+		constexpr glm::vec1 A0 = glm::max(glm::vec1(1), glm::vec1(1));
+		static_assert(glm::all(glm::equal(A0, glm::vec1(1), glm::epsilon<float>())), "GLM: Failed constexpr");
+
+		constexpr glm::vec2 B0 = glm::max(glm::vec2(1), glm::vec2(1));
+		constexpr glm::vec2 B1 = glm::max(glm::vec2(1), 1.0f);
+		static_assert(glm::all(glm::equal(B0, B1, glm::epsilon<float>())), "GLM: Failed constexpr");
+
+		constexpr glm::vec3 C0 = glm::max(glm::vec3(1), glm::vec3(1));
+		constexpr glm::vec3 C1 = glm::max(glm::vec3(1), 1.0f);
+		static_assert(glm::all(glm::equal(C0, C1, glm::epsilon<float>())), "GLM: Failed constexpr");
+
+		constexpr glm::vec4 D0 = glm::max(glm::vec4(1), glm::vec4(1));
+		constexpr glm::vec4 D1 = glm::max(glm::vec4(1), 1.0f);
+		static_assert(glm::all(glm::equal(D0, D1, glm::epsilon<float>())), "GLM: Failed constexpr");
+
+		return 0;
+	}
+#endif
 }//namespace max_
 
 namespace clamp_
@@ -1386,7 +1430,13 @@ int main()
 	Error += step_::test();
 	Error += smoothstep_::test();
 	Error += max_::test();
+#if GLM_HAS_CONSTEXPR
+	Error += max_::test_constexpr();
+#endif
 	Error += min_::test();
+#if GLM_HAS_CONSTEXPR
+	Error += min_::test_constexpr();
+#endif
 	Error += clamp_::test();
 	Error += round_::test();
 	Error += roundEven::test();
