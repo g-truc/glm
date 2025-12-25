@@ -1,4 +1,4 @@
-/// @ref simd
+﻿/// @ref simd
 /// @file glm/simd/geometric.h
 
 #pragma once
@@ -26,7 +26,7 @@ GLM_FUNC_QUALIFIER glm_vec4 glm_vec4_distance(glm_vec4 p0, glm_vec4 p1)
 
 GLM_FUNC_QUALIFIER glm_vec4 glm_vec4_dot(glm_vec4 v1, glm_vec4 v2)
 {
-#	if GLM_ARCH & GLM_ARCH_AVX_BIT
+#	if GLM_ARCH & GLM_ARCH_SSE41_BIT
 		return _mm_dp_ps(v1, v2, 0xff);
 #	elif GLM_ARCH & GLM_ARCH_SSE3_BIT
 		glm_vec4 const mul0 = _mm_mul_ps(v1, v2);
@@ -43,9 +43,33 @@ GLM_FUNC_QUALIFIER glm_vec4 glm_vec4_dot(glm_vec4 v1, glm_vec4 v2)
 #	endif
 }
 
+GLM_FUNC_QUALIFIER glm_vec4 glm_vec3_dot(glm_vec4 v1, glm_vec4 v2)
+{
+#	if GLM_ARCH & GLM_ARCH_SSE41_BIT
+		return _mm_dp_ps(v1, v2, 0x77);
+#	elif GLM_ARCH & GLM_ARCH_SSE3_BIT
+		glm_vec4 const constant0 = _mm_castsi128_ps(_mm_setr_epi32(0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0));
+		glm_vec4 const mul0 = _mm_mul_ps(v1, v2);
+		glm_vec4 const and0 = _mm_and_ps(mul0, constant0);
+		glm_vec4 const hadd0 = _mm_hadd_ps(and0, and0);
+		glm_vec4 const hadd1 = _mm_hadd_ps(hadd0, hadd0);
+		return hadd1;
+#	else
+		glm_vec4 const constant0 = _mm_castsi128_ps(_mm_setr_epi32(0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0));
+		glm_vec4 const mul0 = _mm_mul_ps(v1, v2);
+		glm_vec4 const and0 = _mm_and_ps(mul0, constant0);
+		glm_vec4 const swp0 = _mm_shuffle_ps(and0, and0, _MM_SHUFFLE(2, 3, 0, 1));
+		glm_vec4 const add0 = _mm_add_ps(and0, swp0);
+		glm_vec4 const swp1 = _mm_shuffle_ps(add0, add0, _MM_SHUFFLE(0, 1, 2, 3));
+		glm_vec4 const add1 = _mm_add_ps(add0, swp1);
+		return add1;
+#	endif
+
+}
+
 GLM_FUNC_QUALIFIER glm_vec4 glm_vec1_dot(glm_vec4 v1, glm_vec4 v2)
 {
-#	if GLM_ARCH & GLM_ARCH_AVX_BIT
+#	if GLM_ARCH & GLM_ARCH_SSE41_BIT
 		return _mm_dp_ps(v1, v2, 0xff);
 #	elif GLM_ARCH & GLM_ARCH_SSE3_BIT
 		glm_vec4 const mul0 = _mm_mul_ps(v1, v2);

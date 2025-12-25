@@ -1,4 +1,4 @@
-/// @ref core
+﻿/// @ref core
 /// @file glm/detail/func_geometric_simd.inl
 
 #include "../simd/geometric.h"
@@ -40,9 +40,7 @@ namespace detail
 	{
 		GLM_FUNC_QUALIFIER static float call(vec<3, float, Q> const& a, vec<3, float, Q> const& b)
 		{
-			vec<4, float, Q> aa = xyz0(a);
-			vec<4, float, Q> bb = xyz0(b);
-			return _mm_cvtss_f32(glm_vec1_dot(aa.data, bb.data));
+			return _mm_cvtss_f32(glm_vec3_dot(a.data, b.data)); // aligned as vec4
 		}
 	};
 
