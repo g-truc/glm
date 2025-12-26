@@ -98,13 +98,54 @@ GLM_FUNC_QUALIFIER glm_vec4 glm_vec4_cross(glm_vec4 v1, glm_vec4 v2)
 	return sub0;
 }
 
-GLM_FUNC_QUALIFIER glm_vec4 glm_vec4_normalize(glm_vec4 v)
+GLM_FUNC_QUALIFIER glm_vec4 glm_vec4_normalize_lowp(glm_vec4 v)
 {
 	glm_vec4 const dot0 = glm_vec4_dot(v, v);
 	glm_vec4 const isr0 = _mm_rsqrt_ps(dot0);
 	glm_vec4 const mul0 = _mm_mul_ps(v, isr0);
 	return mul0;
 }
+
+GLM_FUNC_QUALIFIER glm_vec4 glm_vec3_normalize_lowp(glm_vec4 v)
+{
+	glm_vec4 const dot0 = glm_vec3_dot(v, v);
+	glm_vec4 const isr0 = _mm_rsqrt_ps(dot0);
+	glm_vec4 const mul0 = _mm_mul_ps(v, isr0);
+	return mul0;
+}
+
+GLM_FUNC_QUALIFIER glm_vec4 glm_vec4_normalize(glm_vec4 v)
+{
+	glm_vec4 const dot0 = glm_vec4_dot(v, v);
+	glm_vec4 const isr0 = _mm_rsqrt_ps(dot0);
+
+	// One iteration of Newton-Raphson method to improve precision
+	glm_vec4 const mul0 = glm_vec4_mul(dot0, isr0);
+	glm_vec4 const fma0 = glm_vec4_fma(mul0, isr0, _mm_set1_ps(-3.0f));
+	glm_vec4 const mul1 = glm_vec4_mul(isr0, _mm_set1_ps(-0.5f));
+
+	glm_vec4 const mul2 = glm_vec4_mul(mul1, v);
+	glm_vec4 const mul3 = glm_vec4_mul(mul2, fma0);
+
+	return mul3;
+}
+
+GLM_FUNC_QUALIFIER glm_vec4 glm_vec3_normalize(glm_vec4 v)
+{
+	glm_vec4 const dot0 = glm_vec3_dot(v, v);
+	glm_vec4 const isr0 = _mm_rsqrt_ps(dot0);
+
+	// One iteration of Newton-Raphson method to improve precision
+	glm_vec4 const mul0 = glm_vec4_mul(dot0, isr0);
+	glm_vec4 const fma0 = glm_vec4_fma(mul0, isr0, _mm_set1_ps(-3.0f));
+	glm_vec4 const mul1 = glm_vec4_mul(isr0, _mm_set1_ps(-0.5f));
+
+	glm_vec4 const mul2 = glm_vec4_mul(mul1, v);
+	glm_vec4 const mul3 = glm_vec4_mul(mul2, fma0);
+
+	return mul3;
+}
+
 
 GLM_FUNC_QUALIFIER glm_vec4 glm_vec4_faceforward(glm_vec4 N, glm_vec4 I, glm_vec4 Nref)
 {
