@@ -105,11 +105,16 @@ target_link_libraries(main PRIVATE glm::glm)
 
 ## Release notes
 
-### [GLM 1.0.3](https://github.com/g-truc/glm/1.0) - 2025-XX-XX
+### [GLM 1.0.3](https://github.com/g-truc/glm/1.0) - 2025-12-31
+
+#### Features:
+- Implemented reflection matrix calculation #1370
 
 #### Fixes:
 - Fixed Quaternion `rotate` direction (reverted)
 - Fixed vec4 to vec3 conversion #1398
+- Fixed vec3 operator-
+- Fixed swizzle compatibility with GLM_FORCE_SIZE_T_LENGTH
 
 ### [GLM 1.0.2](https://github.com/g-truc/glm/releases/tag/1.0.2) - 2025-10-15
 
