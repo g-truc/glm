@@ -60,3 +60,4 @@ build*
 /CMakeSettings.json
 .DS_Store
 *.swp
+/.cache

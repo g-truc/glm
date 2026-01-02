@@ -13,6 +13,7 @@
 #pragma once
 
 // Dependency:
+// IWYU pragma: begin_exports
 #include "../ext/vector_bool1.hpp"
 #include "../ext/vector_bool1_precision.hpp"
 #include "../ext/vector_float1.hpp"
@@ -23,6 +24,7 @@
 #include "../ext/vector_int1_sized.hpp"
 #include "../ext/vector_uint1.hpp"
 #include "../ext/vector_uint1_sized.hpp"
+// IWYU pragma: end_exports
 
 #if GLM_MESSAGES == GLM_ENABLE && !defined(GLM_EXT_INCLUDED)
 #	pragma message("GLM: GLM_GTC_vec1 extension included")
