@@ -19,6 +19,11 @@ This library works perfectly with *[OpenGL](https://www.opengl.org)* but it also
 For more information about *GLM*, please have a look at the [manual](manual.md) and the [API reference documentation](http://glm.g-truc.net/0.9.9/api/modules.html).
 The source code and the documentation are licensed under either the [Happy Bunny License (Modified MIT) or the MIT License](manual.md#section0).
 
+Initially and for a long time, GLM was on SourceForge but when that platform fall apart, it moved to Github. It was initially under [Groovounet](https://github.com/Groovounet).
+Then Github added "organization" so Groovounet created the [g-truc](https://github.com/g-truc) organization to match the [g-truc website](https://www.g-truc.net/). 
+At some point Groovounet forked his [original](https://github.com/Groovounet/glm) repository to [g-truc/glm](https://github.com/g-truc/glm) and continued the development there.
+At some point Groovounet thought original repository will cause some confusion about origin and deleted original repository. But Github started to consider that [g-truc/glm](https://github.com/g-truc/glm) is a fork of [icaven/glm](https://github.com/icaven/glm)
+
 Thanks for contributing to the project by [submitting pull requests](https://github.com/g-truc/glm/pulls).
 
 ```cpp
