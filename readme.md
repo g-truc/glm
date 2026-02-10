@@ -104,7 +104,7 @@ target_link_libraries(main PRIVATE glm::glm)
 
 ## Release notes
 
-### [GLM 1.0.3](https://github.com/g-truc/glm/1.0) - 2025-XX-XX
+### [GLM 1.0.3](https://github.com/g-truc/glm/releases/tag/1.0.3) - 2025-12-31
 
 #### Fixes:
 - Fixed Quaternion `rotate` direction (reverted)
