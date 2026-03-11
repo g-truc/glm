@@ -228,7 +228,7 @@ struct compute_vec_div<L, T, Q, true> : public compute_vec_div<L, T, Q, false>
 			vec<L, int, Q> Result;
 			glm_i32vec4 ia = a.data;
 			glm_i32vec4 ib = b.data;
-#ifdef __SSE4_1__  // modern CPU - use SSE 4.1
+#if GLM_ARCH & GLM_ARCH_SSE41_BIT
 			Result.data = _mm_mullo_epi32(ia, ib);
 #else               // old CPU - use SSE 2
 			__m128i tmp1 = _mm_mul_epu32(ia, ib); /* mul 2,0*/
