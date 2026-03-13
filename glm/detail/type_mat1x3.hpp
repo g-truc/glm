@@ -63,8 +63,8 @@ namespace glm
 		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<2, 2, T, Q> const& x);
 		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<3, 3, T, Q> const& x);
 		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<4, 4, T, Q> const& x);
-		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<2, 1, T, Q> const& x);
 		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<1, 2, T, Q> const& x);
+		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<2, 1, T, Q> const& x);
 		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<3, 1, T, Q> const& x);
 		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<1, 4, T, Q> const& x);
 		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<4, 1, T, Q> const& x);
@@ -183,5 +183,5 @@ namespace glm
 } //namespace glm
 
 #ifndef GLM_EXTERNAL_TEMPLATE
-#include "type_mat2x2.inl"
+#include "type_mat1x3.inl"
 #endif

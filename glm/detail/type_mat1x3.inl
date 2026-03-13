@@ -52,7 +52,7 @@ namespace glm
 		: value{col_type(v1)}
 	{}
 
-	// -- mat1x2 matrix conversions --
+	// -- mat1x3 matrix conversions --
 
 	template<typename T, qualifier Q>
 	template<typename U, qualifier P>
@@ -81,27 +81,27 @@ namespace glm
 	{}
 
 	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR mat<1, 1, T, Q>::mat(mat<1, 2, T, Q> const& m)
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR mat<1, 3, T, Q>::mat(mat<1, 2, T, Q> const& m)
 		: value{col_type(m[0], 0)}
 	{}
 
 	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR mat<1, 1, T, Q>::mat(mat<2, 1, T, Q> const& m)
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR mat<1, 3, T, Q>::mat(mat<2, 1, T, Q> const& m)
 		: value{col_type(m[0], 0, 0)}
 	{}
 
 	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR mat<1, 1, T, Q>::mat(mat<3, 1, T, Q> const& m)
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR mat<1, 3, T, Q>::mat(mat<3, 1, T, Q> const& m)
 		: value{col_type(m[0], 0, 0)}
 	{}
 
 	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR mat<1, 1, T, Q>::mat(mat<1, 4, T, Q> const& m)
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR mat<1, 3, T, Q>::mat(mat<1, 4, T, Q> const& m)
 		: value{col_type(m[0])}
 	{}
 
 	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR mat<1, 1, T, Q>::mat(mat<4, 1, T, Q> const& m)
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR mat<1, 3, T, Q>::mat(mat<4, 1, T, Q> const& m)
 		: value{col_type(m[0], 0, 0)}
 	{}
 
