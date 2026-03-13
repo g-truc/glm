@@ -63,6 +63,7 @@ namespace glm
 		template<typename U, qualifier P>
 		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<2, 3, U, P> const& m);
 
+		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<1, 1, T, Q> const& x);
 		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<2, 2, T, Q> const& x);
 		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<3, 3, T, Q> const& x);
 		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<4, 4, T, Q> const& x);
