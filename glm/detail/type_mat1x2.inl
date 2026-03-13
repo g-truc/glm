@@ -38,7 +38,7 @@ namespace glm
 	// -- Conversion constructors --
 
 	template<typename T, qualifier Q>
-	template<typename X1, typename Y1, typename X2, typename Y2>
+	template<typename X1, typename Y1>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR mat<1, 2, T, Q>::mat
 	(
 		X1 const& x1, Y1 const& y1
@@ -47,7 +47,7 @@ namespace glm
 	{}
 
 	template<typename T, qualifier Q>
-	template<typename V1, typename V2>
+	template<typename V1>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR mat<1, 2, T, Q>::mat(vec<2, V1, Q> const& v1)
 		: value{col_type(v1)}
 	{}
@@ -92,7 +92,7 @@ namespace glm
 
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR mat<1, 1, T, Q>::mat(mat<3, 1, T, Q> const& m)
-		: value{col_type(m[0])}
+		: value{col_type(m[0], 0)}
 	{}
 
 	template<typename T, qualifier Q>
@@ -102,7 +102,7 @@ namespace glm
 
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR mat<1, 1, T, Q>::mat(mat<4, 1, T, Q> const& m)
-		: value{col_type(m[0])}
+		: value{col_type(m[0], 0)}
 	{}
 
 	template<typename T, qualifier Q>
@@ -372,7 +372,7 @@ namespace glm
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR mat<3, 2, T, Q> operator*(mat<1, 2, T, Q> const& m1, mat<3, 1, T, Q> const& m2)
 	{
-		return mat<3, 2, T, Q>(
+		return mat<3, 1, T, Q>(
 			m1[0][0] * m2[0][0],
 			m1[0][1] * m2[0][0],
 			m1[0][0] * m2[1][0],
@@ -384,7 +384,7 @@ namespace glm
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR mat<4, 2, T, Q> operator*(mat<1, 2, T, Q> const& m1, mat<4, 1, T, Q> const& m2)
 	{
-		return mat<4, 2, T, Q>(
+		return mat<4, 1, T, Q>(
 			m1[0][0] * m2[0][0],
 			m1[0][1] * m2[0][0],
 			m1[0][0] * m2[1][0],
