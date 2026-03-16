@@ -141,6 +141,11 @@ namespace glm
 	{}
 
 	template<typename T, qualifier Q>
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR mat<4, 4, T, Q>::mat(mat<4, 1, T, Q> const& m)
+		: value{col_type(m[0], 0, 0, 0), col_type(m[1], 1, 0, 0), col_type(m[2], 0, 1, 0), col_type(m[3], 0, 0, 1)}
+	{}
+
+	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR mat<4, 4, T, Q>::mat(mat<2, 3, T, Q> const& m)
 		: value{col_type(m[0], 0), col_type(m[1], 0), col_type(0, 0, 1, 0), col_type(0, 0, 0, 1)}
 	{}

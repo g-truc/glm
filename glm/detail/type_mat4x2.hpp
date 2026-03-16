@@ -84,6 +84,7 @@ namespace glm
 		GLM_CTOR_DECL mat(mat<1, 3, T, Q> const& x);
 		GLM_CTOR_DECL mat(mat<3, 1, T, Q> const& x);
 		GLM_CTOR_DECL mat(mat<1, 4, T, Q> const& x);
+		GLM_CTOR_DECL mat(mat<4, 1, T, Q> const& x);
 		GLM_CTOR_DECL mat(mat<2, 3, T, Q> const& x);
 		GLM_CTOR_DECL mat(mat<3, 2, T, Q> const& x);
 		GLM_CTOR_DECL mat(mat<2, 4, T, Q> const& x);

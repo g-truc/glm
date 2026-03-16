@@ -382,7 +382,7 @@ namespace glm
 		mat<3, 1, T, Q> const& m
 	)
 	{
-		return vec<2, T, Q>(
+		return vec<3, T, Q>(
 			v.x * m[0][0],
 			v.x * m[1][0],
 			v.x * m[2][0]);
