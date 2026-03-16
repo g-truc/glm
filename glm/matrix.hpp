@@ -18,6 +18,7 @@
 #include "vec2.hpp"
 #include "vec3.hpp"
 #include "vec4.hpp"
+#include "mat1x1.hpp"
 #include "mat2x2.hpp"
 #include "mat2x3.hpp"
 #include "mat2x4.hpp"
@@ -33,6 +34,12 @@ namespace detail
 {
 	template<length_t C, length_t R, typename T, qualifier Q>
 	struct outerProduct_trait{};
+
+	template<typename T, qualifier Q>
+	struct outerProduct_trait<1, 1, T, Q>
+	{
+		typedef mat<1, 1, T, Q> type;
+	};
 
 	template<typename T, qualifier Q>
 	struct outerProduct_trait<2, 2, T, Q>

@@ -16,6 +16,8 @@
 #include "./ext/matrix_clip_space.hpp"
 #include "./ext/matrix_common.hpp"
 
+#include "./ext/matrix_double1x1.hpp"
+#include "./ext/matrix_double1x1_precision.hpp"
 #include "./ext/matrix_double2x2.hpp"
 #include "./ext/matrix_double2x2_precision.hpp"
 #include "./ext/matrix_double2x3.hpp"
@@ -35,6 +37,8 @@
 #include "./ext/matrix_double4x4.hpp"
 #include "./ext/matrix_double4x4_precision.hpp"
 
+#include "./ext/matrix_float1x1.hpp"
+#include "./ext/matrix_float1x1_precision.hpp"
 #include "./ext/matrix_float2x2.hpp"
 #include "./ext/matrix_float2x2_precision.hpp"
 #include "./ext/matrix_float2x3.hpp"
