@@ -151,6 +151,9 @@ namespace glm
 	GLM_FUNC_DECL GLM_CONSTEXPR mat<4, 4, T, Q> operator*(mat<3, 4, T, Q> const& m1,	mat<4, 3, T, Q> const& m2);
 
 	template<typename T, qualifier Q>
+	GLM_FUNC_DECL GLM_CONSTEXPR mat<1, 4, T, Q> operator*(mat<3, 4, T, Q> const& m1, mat<1, 3, T, Q> const& m2);
+
+	template<typename T, qualifier Q>
 	GLM_FUNC_DECL GLM_CONSTEXPR mat<2, 4, T, Q> operator*(mat<3, 4, T, Q> const& m1, mat<2, 3, T, Q> const& m2);
 
 	template<typename T, qualifier Q>
