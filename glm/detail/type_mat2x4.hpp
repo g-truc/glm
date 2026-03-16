@@ -70,6 +70,7 @@ namespace glm
 		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<3, 3, T, Q> const& x);
 		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<4, 4, T, Q> const& x);
 		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<1, 2, T, Q> const& x);
+		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<2, 1, T, Q> const& x);
 		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<1, 3, T, Q> const& x);
 		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<1, 4, T, Q> const& x);
 		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<2, 3, T, Q> const& x);
