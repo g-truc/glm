@@ -19,7 +19,7 @@ namespace glm
 
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR mat<2, 1, T, Q>::mat(T scalar)
-		: value{col_type(scalar, 0), col_type(0, scalar)}
+		: value{col_type(scalar), col_type(0)}
 	{}
 
 	template<typename T, qualifier Q>
@@ -48,7 +48,7 @@ namespace glm
 
 	template<typename T, qualifier Q>
 	template<typename V1, typename V2>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR mat<2, 1, T, Q>::mat(vec<2, V1, Q> const& v1, vec<2, V2, Q> const& v2)
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR mat<2, 1, T, Q>::mat(vec<1, V1, Q> const& v1, vec<1, V2, Q> const& v2)
 		: value{col_type(v1), col_type(v2)}
 	{}
 
