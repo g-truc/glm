@@ -58,6 +58,8 @@
 #include "./ext/matrix_float4x4.hpp"
 #include "./ext/matrix_float4x4_precision.hpp"
 
+#include "./ext/matrix_int1x1.hpp"
+#include "./ext/matrix_int1x1_sized.hpp"
 #include "./ext/matrix_int2x2.hpp"
 #include "./ext/matrix_int2x2_sized.hpp"
 #include "./ext/matrix_int2x3.hpp"
@@ -77,6 +79,8 @@
 #include "./ext/matrix_int4x4.hpp"
 #include "./ext/matrix_int4x4_sized.hpp"
 
+#include "./ext/matrix_uint1x1.hpp"
+#include "./ext/matrix_uint1x1_sized.hpp"
 #include "./ext/matrix_uint2x2.hpp"
 #include "./ext/matrix_uint2x2_sized.hpp"
 #include "./ext/matrix_uint2x3.hpp"
