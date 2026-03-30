@@ -48,6 +48,12 @@ namespace detail
 	};
 
 	template<typename T, qualifier Q>
+	struct outerProduct_trait<1, 3, T, Q>
+	{
+		typedef mat<1, 3, T, Q> type;
+	};
+
+	template<typename T, qualifier Q>
 	struct outerProduct_trait<2, 2, T, Q>
 	{
 		typedef mat<2, 2, T, Q> type;
