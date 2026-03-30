@@ -9,7 +9,7 @@ namespace glm
 	/// @addtogroup core_matrix
 	/// @{
 
-	/// 1 columns of 2 components matrix of double-precision floating-point numbers.
+	/// 2 columns of 1 components matrix of double-precision floating-point numbers.
 	typedef mat<2, 1, double, defaultp>		dmat2x1;
 
 	/// @}

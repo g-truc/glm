@@ -9,13 +9,13 @@ namespace glm
 	/// @addtogroup core_matrix_precision
 	/// @{
 
-	/// 1 columns of 2 components matrix of double-precision floating-point numbers using low precision arithmetic in term of ULPs.
+	/// 2 columns of 1 components matrix of double-precision floating-point numbers using low precision arithmetic in term of ULPs.
 	typedef mat<2, 1, double, lowp>		lowp_dmat2x1;
 
-	/// 1 columns of 2 components matrix of double-precision floating-point numbers using medium precision arithmetic in term of ULPs.
+	/// 2 columns of 1 components matrix of double-precision floating-point numbers using medium precision arithmetic in term of ULPs.
 	typedef mat<2, 1, double, mediump>	mediump_dmat2x1;
 
-	/// 1 columns of 2 components matrix of double-precision floating-point numbers using medium precision arithmetic in term of ULPs.
+	/// 2 columns of 1 components matrix of double-precision floating-point numbers using medium precision arithmetic in term of ULPs.
 	typedef mat<2, 1, double, highp>	highp_dmat2x1;
 
 	/// @}
