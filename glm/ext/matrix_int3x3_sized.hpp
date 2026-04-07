@@ -28,43 +28,43 @@ namespace glm
 	/// 8 bit signed integer 3x3 matrix.
 	///
 	/// @see ext_matrix_int3x3_sized
-	typedef mat<3, 3, int8, defaultp>				i8mat3x3;
+	using				i8mat3x3 = mat<3, 3, int8, defaultp>;
 
 	/// 16 bit signed integer 3x3 matrix.
 	///
 	/// @see ext_matrix_int3x3_sized
-	typedef mat<3, 3, int16, defaultp>				i16mat3x3;
+	using				i16mat3x3 = mat<3, 3, int16, defaultp>;
 
 	/// 32 bit signed integer 3x3 matrix.
 	///
 	/// @see ext_matrix_int3x3_sized
-	typedef mat<3, 3, int32, defaultp>				i32mat3x3;
+	using				i32mat3x3 = mat<3, 3, int32, defaultp>;
 
 	/// 64 bit signed integer 3x3 matrix.
 	///
 	/// @see ext_matrix_int3x3_sized
-	typedef mat<3, 3, int64, defaultp>				i64mat3x3;
+	using				i64mat3x3 = mat<3, 3, int64, defaultp>;
 
 
 	/// 8 bit signed integer 3x3 matrix.
 	///
 	/// @see ext_matrix_int3x3_sized
-	typedef mat<3, 3, int8, defaultp>				i8mat3;
+	using				i8mat3 = mat<3, 3, int8, defaultp>;
 
 	/// 16 bit signed integer 3x3 matrix.
 	///
 	/// @see ext_matrix_int3x3_sized
-	typedef mat<3, 3, int16, defaultp>				i16mat3;
+	using				i16mat3 = mat<3, 3, int16, defaultp>;
 
 	/// 32 bit signed integer 3x3 matrix.
 	///
 	/// @see ext_matrix_int3x3_sized
-	typedef mat<3, 3, int32, defaultp>				i32mat3;
+	using				i32mat3 = mat<3, 3, int32, defaultp>;
 
 	/// 64 bit signed integer 3x3 matrix.
 	///
 	/// @see ext_matrix_int3x3_sized
-	typedef mat<3, 3, int64, defaultp>				i64mat3;
+	using				i64mat3 = mat<3, 3, int64, defaultp>;
 
 	/// @}
 }//namespace glm

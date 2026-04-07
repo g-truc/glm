@@ -18,9 +18,9 @@ namespace glm
 	{
 		// -- Implementation detail --
 
-		typedef T value_type;
-		typedef vec<3, T, Q> type;
-		typedef vec<3, bool, Q> bool_type;
+		using value_type = T;
+		using type = vec<3, T, Q>;
+		using bool_type = vec<3, bool, Q>;
 
 		enum is_aligned
 		{
@@ -96,7 +96,7 @@ namespace glm
 		// -- Component accesses --
 
 		/// Return the count of components of the vector
-		typedef length_t length_type;
+		using length_type = length_t;
 		GLM_FUNC_DECL static constexpr length_type length(){return 3;}
 
 		GLM_FUNC_DECL GLM_CONSTEXPR T & operator[](length_type i);

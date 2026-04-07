@@ -12,12 +12,12 @@ namespace glm
 	/// 4 columns of 4 components matrix of double-precision floating-point numbers.
 	///
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 4.1.6 Matrices</a>
-	typedef mat<4, 4, double, defaultp>		dmat4x4;
+	using		dmat4x4 = mat<4, 4, double, defaultp>;
 
 	/// 4 columns of 4 components matrix of double-precision floating-point numbers.
 	///
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 4.1.6 Matrices</a>
-	typedef mat<4, 4, double, defaultp>		dmat4;
+	using		dmat4 = mat<4, 4, double, defaultp>;
 
 	/// @}
 }//namespace glm

@@ -28,43 +28,43 @@ namespace glm
 	/// 8 bit unsigned integer 4x4 matrix.
 	///
 	/// @see ext_matrix_uint4x4_sized
-	typedef mat<4, 4, uint8, defaultp>				u8mat4x4;
+	using				u8mat4x4 = mat<4, 4, uint8, defaultp>;
 
 	/// 16 bit unsigned integer 4x4 matrix.
 	///
 	/// @see ext_matrix_uint4x4_sized
-	typedef mat<4, 4, uint16, defaultp>				u16mat4x4;
+	using				u16mat4x4 = mat<4, 4, uint16, defaultp>;
 
 	/// 32 bit unsigned integer 4x4 matrix.
 	///
 	/// @see ext_matrix_uint4x4_sized
-	typedef mat<4, 4, uint32, defaultp>				u32mat4x4;
+	using				u32mat4x4 = mat<4, 4, uint32, defaultp>;
 
 	/// 64 bit unsigned integer 4x4 matrix.
 	///
 	/// @see ext_matrix_uint4x4_sized
-	typedef mat<4, 4, uint64, defaultp>				u64mat4x4;
+	using				u64mat4x4 = mat<4, 4, uint64, defaultp>;
 
 
 	/// 8 bit unsigned integer 4x4 matrix.
 	///
 	/// @see ext_matrix_uint4x4_sized
-	typedef mat<4, 4, uint8, defaultp>				u8mat4;
+	using				u8mat4 = mat<4, 4, uint8, defaultp>;
 
 	/// 16 bit unsigned integer 4x4 matrix.
 	///
 	/// @see ext_matrix_uint4x4_sized
-	typedef mat<4, 4, uint16, defaultp>				u16mat4;
+	using				u16mat4 = mat<4, 4, uint16, defaultp>;
 
 	/// 32 bit unsigned integer 4x4 matrix.
 	///
 	/// @see ext_matrix_uint4x4_sized
-	typedef mat<4, 4, uint32, defaultp>				u32mat4;
+	using				u32mat4 = mat<4, 4, uint32, defaultp>;
 
 	/// 64 bit unsigned integer 4x4 matrix.
 	///
 	/// @see ext_matrix_uint4x4_sized
-	typedef mat<4, 4, uint64, defaultp>				u64mat4;
+	using				u64mat4 = mat<4, 4, uint64, defaultp>;
 
 	/// @}
 }//namespace glm

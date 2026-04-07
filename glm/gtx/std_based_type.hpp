@@ -30,35 +30,35 @@ namespace glm
 
 	/// Vector type based of one std::size_t component.
 	/// @see GLM_GTX_std_based_type
-	typedef vec<1, std::size_t, defaultp>		size1;
+	using		size1 = vec<1, std::size_t, defaultp>;
 
 	/// Vector type based of two std::size_t components.
 	/// @see GLM_GTX_std_based_type
-	typedef vec<2, std::size_t, defaultp>		size2;
+	using		size2 = vec<2, std::size_t, defaultp>;
 
 	/// Vector type based of three std::size_t components.
 	/// @see GLM_GTX_std_based_type
-	typedef vec<3, std::size_t, defaultp>		size3;
+	using		size3 = vec<3, std::size_t, defaultp>;
 
 	/// Vector type based of four std::size_t components.
 	/// @see GLM_GTX_std_based_type
-	typedef vec<4, std::size_t, defaultp>		size4;
+	using		size4 = vec<4, std::size_t, defaultp>;
 
 	/// Vector type based of one std::size_t component.
 	/// @see GLM_GTX_std_based_type
-	typedef vec<1, std::size_t, defaultp>		size1_t;
+	using		size1_t = vec<1, std::size_t, defaultp>;
 
 	/// Vector type based of two std::size_t components.
 	/// @see GLM_GTX_std_based_type
-	typedef vec<2, std::size_t, defaultp>		size2_t;
+	using		size2_t = vec<2, std::size_t, defaultp>;
 
 	/// Vector type based of three std::size_t components.
 	/// @see GLM_GTX_std_based_type
-	typedef vec<3, std::size_t, defaultp>		size3_t;
+	using		size3_t = vec<3, std::size_t, defaultp>;
 
 	/// Vector type based of four std::size_t components.
 	/// @see GLM_GTX_std_based_type
-	typedef vec<4, std::size_t, defaultp>		size4_t;
+	using		size4_t = vec<4, std::size_t, defaultp>;
 
 	/// @}
 }//namespace glm

@@ -28,22 +28,22 @@ namespace glm
 	/// 8 bit signed integer vector of 4 components type.
 	///
 	/// @see ext_vector_int4_sized
-	typedef vec<4, int8, defaultp>		i8vec4;
+	using		i8vec4 = vec<4, int8, defaultp>;
 
 	/// 16 bit signed integer vector of 4 components type.
 	///
 	/// @see ext_vector_int4_sized
-	typedef vec<4, int16, defaultp>		i16vec4;
+	using		i16vec4 = vec<4, int16, defaultp>;
 
 	/// 32 bit signed integer vector of 4 components type.
 	///
 	/// @see ext_vector_int4_sized
-	typedef vec<4, int32, defaultp>		i32vec4;
+	using		i32vec4 = vec<4, int32, defaultp>;
 
 	/// 64 bit signed integer vector of 4 components type.
 	///
 	/// @see ext_vector_int4_sized
-	typedef vec<4, int64, defaultp>		i64vec4;
+	using		i64vec4 = vec<4, int64, defaultp>;
 
 	/// @}
 }//namespace glm

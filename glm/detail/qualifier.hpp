@@ -30,7 +30,7 @@ namespace glm
 #		endif
 	};
 
-	typedef qualifier precision;
+	using precision = qualifier;
 
 	template<length_t L, typename T, qualifier Q = defaultp> struct vec;
 	template<length_t C, length_t R, typename T, qualifier Q = defaultp> struct mat;
@@ -107,69 +107,69 @@ namespace detail
 	template<>
 	struct storage<4, float, true>
 	{
-		typedef glm_f32vec4 type;
+		using type = glm_f32vec4;
 	};
 
 	template<>
 	struct storage<4, int, true>
 	{
-		typedef glm_i32vec4 type;
+		using type = glm_i32vec4;
 	};
 
 	template<>
 	struct storage<4, unsigned int, true>
 	{
-		typedef glm_u32vec4 type;
+		using type = glm_u32vec4;
 	};
 
 	template<>
 	struct storage<3, float, true>
 	{
-		typedef glm_f32vec4 type;
+		using type = glm_f32vec4;
 	};
 
 	template<>
 	struct storage<3, int, true>
 	{
-		typedef glm_i32vec4 type;
+		using type = glm_i32vec4;
 	};
 
 	template<>
 	struct storage<3, unsigned int, true>
 	{
-		typedef glm_u32vec4 type;
+		using type = glm_u32vec4;
 	};
 
 	template<>
 	struct storage<2, double, true>
 	{
-		typedef glm_f64vec2 type;
+		using type = glm_f64vec2;
 	};
 
 	template<>
 	struct storage<2, detail::int64, true>
 	{
-		typedef glm_i64vec2 type;
+		using type = glm_i64vec2;
 	};
 
 	template<>
 	struct storage<2, detail::uint64, true>
 	{
-		typedef glm_u64vec2 type;
+		using type = glm_u64vec2;
 	};
 
 
 	template<>
 	struct storage<3, detail::uint64, true>
 	{
-		typedef glm_u64vec2 type;
+		using type = glm_u64vec2;
 	};
 
 	template<>
 	struct storage<4, double, true>
 	{
 #	if (GLM_ARCH & GLM_ARCH_AVX_BIT)
-		typedef glm_f64vec4 type;
+		using type = glm_f64vec4;
 #	else
 		struct type
 		{
@@ -195,13 +195,13 @@ namespace detail
 	template<>
 	struct storage<4, detail::int64, true>
 	{
-		typedef glm_i64vec4 type;
+		using type = glm_i64vec4;
 	};
 
 	template<>
 	struct storage<4, detail::uint64, true>
 	{
-		typedef glm_u64vec4 type;
+		using type = glm_u64vec4;
 	};
 #	endif
 
@@ -209,7 +209,7 @@ namespace detail
 	template<>
 	struct storage<4, float, true>
 	{
-		typedef glm_f32vec4 type;
+		using type = glm_f32vec4;
 	};
 
 	template<>
@@ -219,7 +219,7 @@ namespace detail
 	template<>
 	struct storage<4, int, true>
 	{
-		typedef glm_i32vec4 type;
+		using type = glm_i32vec4;
 	};
 
 	template<>
@@ -229,7 +229,7 @@ namespace detail
 	template<>
 	struct storage<4, unsigned int, true>
 	{
-		typedef glm_u32vec4 type;
+		using type = glm_u32vec4;
 	};
 /* TODO: Duplicate ?
 	template<>

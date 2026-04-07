@@ -27,7 +27,7 @@ namespace glm
 	/// Unsigned integer 4x3 matrix.
 	///
 	/// @see ext_matrix_uint4x3
-	typedef mat<4, 3, uint, defaultp>	umat4x3;
+	using	umat4x3 = mat<4, 3, uint, defaultp>;
 
 	/// @}
 }//namespace glm

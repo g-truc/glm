@@ -32,7 +32,7 @@ namespace glm
 	/// @{
 
 	/// Quaternion of single-precision floating-point numbers.
-	typedef qua<float, defaultp>		quat;
+	using		quat = qua<float, defaultp>;
 
 	/// @}
 } //namespace glm

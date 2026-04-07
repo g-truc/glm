@@ -25,17 +25,17 @@ namespace glm
 	/// Quaternion of double-precision floating-point numbers using high precision arithmetic in term of ULPs.
 	///
 	/// @see ext_quaternion_double_precision
-	typedef qua<double, lowp>		lowp_dquat;
+	using		lowp_dquat = qua<double, lowp>;
 
 	/// Quaternion of medium double-qualifier floating-point numbers using high precision arithmetic in term of ULPs.
 	///
 	/// @see ext_quaternion_double_precision
-	typedef qua<double, mediump>	mediump_dquat;
+	using	mediump_dquat = qua<double, mediump>;
 
 	/// Quaternion of high double-qualifier floating-point numbers using high precision arithmetic in term of ULPs.
 	///
 	/// @see ext_quaternion_double_precision
-	typedef qua<double, highp>		highp_dquat;
+	using		highp_dquat = qua<double, highp>;
 
 	/// @}
 } //namespace glm

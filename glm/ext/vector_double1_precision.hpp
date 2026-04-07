@@ -24,13 +24,13 @@ namespace glm
 	/// @{
 
 	/// 1 component vector of double-precision floating-point numbers using high precision arithmetic in term of ULPs.
-	typedef vec<1, double, highp>		highp_dvec1;
+	using		highp_dvec1 = vec<1, double, highp>;
 
 	/// 1 component vector of double-precision floating-point numbers using medium precision arithmetic in term of ULPs.
-	typedef vec<1, double, mediump>		mediump_dvec1;
+	using		mediump_dvec1 = vec<1, double, mediump>;
 
 	/// 1 component vector of double-precision floating-point numbers using low precision arithmetic in term of ULPs.
-	typedef vec<1, double, lowp>		lowp_dvec1;
+	using		lowp_dvec1 = vec<1, double, lowp>;
 
 	/// @}
 }//namespace glm

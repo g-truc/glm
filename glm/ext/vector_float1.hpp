@@ -25,7 +25,7 @@ namespace glm
 	/// @{
 
 	/// 1 components vector of single-precision floating-point numbers.
-	typedef vec<1, float, defaultp>		vec1;
+	using		vec1 = vec<1, float, defaultp>;
 
 	/// @}
 }//namespace glm

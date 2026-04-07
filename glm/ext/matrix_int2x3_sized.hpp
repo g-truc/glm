@@ -28,22 +28,22 @@ namespace glm
 	/// 8 bit signed integer 2x3 matrix.
 	///
 	/// @see ext_matrix_int2x3_sized
-	typedef mat<2, 3, int8, defaultp>				i8mat2x3;
+	using				i8mat2x3 = mat<2, 3, int8, defaultp>;
 
 	/// 16 bit signed integer 2x3 matrix.
 	///
 	/// @see ext_matrix_int2x3_sized
-	typedef mat<2, 3, int16, defaultp>				i16mat2x3;
+	using				i16mat2x3 = mat<2, 3, int16, defaultp>;
 
 	/// 32 bit signed integer 2x3 matrix.
 	///
 	/// @see ext_matrix_int2x3_sized
-	typedef mat<2, 3, int32, defaultp>				i32mat2x3;
+	using				i32mat2x3 = mat<2, 3, int32, defaultp>;
 
 	/// 64 bit signed integer 2x3 matrix.
 	///
 	/// @see ext_matrix_int2x3_sized
-	typedef mat<2, 3, int64, defaultp>				i64mat2x3;
+	using				i64mat2x3 = mat<2, 3, int64, defaultp>;
 
 	/// @}
 }//namespace glm

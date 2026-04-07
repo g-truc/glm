@@ -50,7 +50,7 @@ namespace glm
 
 	//! 32bit signed integer.
 	//! From GLM_GTX_integer extension.
-	typedef signed int					sint;
+	using					sint = signed int;
 
 	//! Returns x raised to the y power.
 	//! From GLM_GTX_integer extension.

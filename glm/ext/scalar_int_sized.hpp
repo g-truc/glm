@@ -23,16 +23,16 @@ namespace glm{
 	/// @{
 
 	/// 8 bit signed integer type.
-	typedef detail::int8		int8;
+	using		int8 = detail::int8;
 
 	/// 16 bit signed integer type.
-	typedef detail::int16		int16;
+	using		int16 = detail::int16;
 
 	/// 32 bit signed integer type.
-	typedef detail::int32		int32;
+	using		int32 = detail::int32;
 
 	/// 64 bit signed integer type.
-	typedef detail::int64		int64;
+	using		int64 = detail::int64;
 
 	/// @}
 }//namespace glm

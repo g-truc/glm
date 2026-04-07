@@ -34,8 +34,8 @@ namespace glm
 	{
 		// -- Implementation detail --
 
-		typedef qua<T, Q> type;
-		typedef T value_type;
+		using type = qua<T, Q>;
+		using value_type = T;
 
 		// -- Data --
 
@@ -60,7 +60,7 @@ namespace glm
 
 		// -- Component accesses --
 
-		typedef length_t length_type;
+		using length_type = length_t;
 
 		/// Return the count of components of a quaternion
 		GLM_FUNC_DECL static constexpr length_type length(){return 4;}

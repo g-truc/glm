@@ -18,8 +18,8 @@ namespace detail
 	template <>
 	union float_t<float>
 	{
-		typedef int int_type;
-		typedef float float_type;
+		using int_type = int;
+		using float_type = float;
 
 		GLM_CONSTEXPR float_t(float_type Num = 0.0f) : f(Num) {}
 
@@ -41,8 +41,8 @@ namespace detail
 	template <>
 	union float_t<double>
 	{
-		typedef detail::int64 int_type;
-		typedef double float_type;
+		using int_type = detail::int64;
+		using float_type = double;
 
 		GLM_CONSTEXPR float_t(float_type Num = static_cast<float_type>(0)) : f(Num) {}
 

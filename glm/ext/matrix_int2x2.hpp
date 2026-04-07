@@ -27,12 +27,12 @@ namespace glm
 	/// Signed integer 2x2 matrix.
 	///
 	/// @see ext_matrix_int2x2
-	typedef mat<2, 2, int, defaultp>	imat2x2;
+	using	imat2x2 = mat<2, 2, int, defaultp>;
 
 	/// Signed integer 2x2 matrix.
 	///
 	/// @see ext_matrix_int2x2
-	typedef mat<2, 2, int, defaultp>	imat2;
+	using	imat2 = mat<2, 2, int, defaultp>;
 
 	/// @}
 }//namespace glm

@@ -27,12 +27,12 @@ namespace glm
 	/// Unsigned integer 4x4 matrix.
 	///
 	/// @see ext_matrix_uint4x4
-	typedef mat<4, 4, uint, defaultp>	umat4x4;
+	using	umat4x4 = mat<4, 4, uint, defaultp>;
 
 	/// Unsigned integer 4x4 matrix.
 	///
 	/// @see ext_matrix_uint4x4
-	typedef mat<4, 4, uint, defaultp>	umat4;
+	using	umat4 = mat<4, 4, uint, defaultp>;
 
 	/// @}
 }//namespace glm

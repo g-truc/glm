@@ -27,12 +27,12 @@ namespace glm
 	/// Signed integer 3x3 matrix.
 	///
 	/// @see ext_matrix_int3x3
-	typedef mat<3, 3, int, defaultp>	imat3x3;
+	using	imat3x3 = mat<3, 3, int, defaultp>;
 
 	/// Signed integer 3x3 matrix.
 	///
 	/// @see ext_matrix_int3x3
-	typedef mat<3, 3, int, defaultp>	imat3;
+	using	imat3 = mat<3, 3, int, defaultp>;
 
 	/// @}
 }//namespace glm

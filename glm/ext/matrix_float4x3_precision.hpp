@@ -13,19 +13,19 @@ namespace glm
 	///
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 4.1.6 Matrices</a>
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 4.7.2 Precision Qualifier</a>
-	typedef mat<4, 3, float, lowp>		lowp_mat4x3;
+	using		lowp_mat4x3 = mat<4, 3, float, lowp>;
 
 	/// 4 columns of 3 components matrix of single-precision floating-point numbers using medium precision arithmetic in term of ULPs.
 	///
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 4.1.6 Matrices</a>
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 4.7.2 Precision Qualifier</a>
-	typedef mat<4, 3, float, mediump>	mediump_mat4x3;
+	using	mediump_mat4x3 = mat<4, 3, float, mediump>;
 
 	/// 4 columns of 3 components matrix of single-precision floating-point numbers using high precision arithmetic in term of ULPs.
 	///
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 4.1.6 Matrices</a>
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 4.7.2 Precision Qualifier</a>
-	typedef mat<4, 3, float, highp>		highp_mat4x3;
+	using		highp_mat4x3 = mat<4, 3, float, highp>;
 
 	/// @}
 }//namespace glm

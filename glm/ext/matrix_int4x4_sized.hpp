@@ -28,43 +28,43 @@ namespace glm
 	/// 8 bit signed integer 4x4 matrix.
 	///
 	/// @see ext_matrix_int4x4_sized
-	typedef mat<4, 4, int8, defaultp>				i8mat4x4;
+	using				i8mat4x4 = mat<4, 4, int8, defaultp>;
 
 	/// 16 bit signed integer 4x4 matrix.
 	///
 	/// @see ext_matrix_int4x4_sized
-	typedef mat<4, 4, int16, defaultp>				i16mat4x4;
+	using				i16mat4x4 = mat<4, 4, int16, defaultp>;
 
 	/// 32 bit signed integer 4x4 matrix.
 	///
 	/// @see ext_matrix_int4x4_sized
-	typedef mat<4, 4, int32, defaultp>				i32mat4x4;
+	using				i32mat4x4 = mat<4, 4, int32, defaultp>;
 
 	/// 64 bit signed integer 4x4 matrix.
 	///
 	/// @see ext_matrix_int4x4_sized
-	typedef mat<4, 4, int64, defaultp>				i64mat4x4;
+	using				i64mat4x4 = mat<4, 4, int64, defaultp>;
 
 
 	/// 8 bit signed integer 4x4 matrix.
 	///
 	/// @see ext_matrix_int4x4_sized
-	typedef mat<4, 4, int8, defaultp>				i8mat4;
+	using				i8mat4 = mat<4, 4, int8, defaultp>;
 
 	/// 16 bit signed integer 4x4 matrix.
 	///
 	/// @see ext_matrix_int4x4_sized
-	typedef mat<4, 4, int16, defaultp>				i16mat4;
+	using				i16mat4 = mat<4, 4, int16, defaultp>;
 
 	/// 32 bit signed integer 4x4 matrix.
 	///
 	/// @see ext_matrix_int4x4_sized
-	typedef mat<4, 4, int32, defaultp>				i32mat4;
+	using				i32mat4 = mat<4, 4, int32, defaultp>;
 
 	/// 64 bit signed integer 4x4 matrix.
 	///
 	/// @see ext_matrix_int4x4_sized
-	typedef mat<4, 4, int64, defaultp>				i64mat4;
+	using				i64mat4 = mat<4, 4, int64, defaultp>;
 
 	/// @}
 }//namespace glm

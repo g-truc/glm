@@ -27,7 +27,7 @@ namespace glm
 	/// Signed integer 3x2 matrix.
 	///
 	/// @see ext_matrix_int3x2
-	typedef mat<3, 2, int, defaultp>	imat3x2;
+	using	imat3x2 = mat<3, 2, int, defaultp>;
 
 	/// @}
 }//namespace glm

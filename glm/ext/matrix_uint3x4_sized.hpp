@@ -28,22 +28,22 @@ namespace glm
 	/// 8 bit unsigned integer 3x4 matrix.
 	///
 	/// @see ext_matrix_uint3x4_sized
-	typedef mat<3, 4, uint8, defaultp>				u8mat3x4;
+	using				u8mat3x4 = mat<3, 4, uint8, defaultp>;
 
 	/// 16 bit unsigned integer 3x4 matrix.
 	///
 	/// @see ext_matrix_uint3x4_sized
-	typedef mat<3, 4, uint16, defaultp>				u16mat3x4;
+	using				u16mat3x4 = mat<3, 4, uint16, defaultp>;
 
 	/// 32 bit unsigned integer 3x4 matrix.
 	///
 	/// @see ext_matrix_uint3x4_sized
-	typedef mat<3, 4, uint32, defaultp>				u32mat3x4;
+	using				u32mat3x4 = mat<3, 4, uint32, defaultp>;
 
 	/// 64 bit unsigned integer 3x4 matrix.
 	///
 	/// @see ext_matrix_uint3x4_sized
-	typedef mat<3, 4, uint64, defaultp>				u64mat3x4;
+	using				u64mat3x4 = mat<3, 4, uint64, defaultp>;
 
 	/// @}
 }//namespace glm

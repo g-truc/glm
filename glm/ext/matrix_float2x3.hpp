@@ -12,7 +12,7 @@ namespace glm
 	/// 2 columns of 3 components matrix of single-precision floating-point numbers.
 	///
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 4.1.6 Matrices</a>
-	typedef mat<2, 3, float, defaultp>		mat2x3;
+	using		mat2x3 = mat<2, 3, float, defaultp>;
 
 	/// @}
 }//namespace glm

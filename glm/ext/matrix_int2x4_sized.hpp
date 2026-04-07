@@ -28,22 +28,22 @@ namespace glm
 	/// 8 bit signed integer 2x4 matrix.
 	///
 	/// @see ext_matrix_int2x4_sized
-	typedef mat<2, 4, int8, defaultp>				i8mat2x4;
+	using				i8mat2x4 = mat<2, 4, int8, defaultp>;
 
 	/// 16 bit signed integer 2x4 matrix.
 	///
 	/// @see ext_matrix_int2x4_sized
-	typedef mat<2, 4, int16, defaultp>				i16mat2x4;
+	using				i16mat2x4 = mat<2, 4, int16, defaultp>;
 
 	/// 32 bit signed integer 2x4 matrix.
 	///
 	/// @see ext_matrix_int2x4_sized
-	typedef mat<2, 4, int32, defaultp>				i32mat2x4;
+	using				i32mat2x4 = mat<2, 4, int32, defaultp>;
 
 	/// 64 bit signed integer 2x4 matrix.
 	///
 	/// @see ext_matrix_int2x4_sized
-	typedef mat<2, 4, int64, defaultp>				i64mat2x4;
+	using				i64mat2x4 = mat<2, 4, int64, defaultp>;
 
 	/// @}
 }//namespace glm

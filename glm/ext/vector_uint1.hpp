@@ -25,7 +25,7 @@ namespace glm
 	/// @{
 
 	/// 1 component vector of unsigned integer numbers.
-	typedef vec<1, unsigned int, defaultp>			uvec1;
+	using			uvec1 = vec<1, unsigned int, defaultp>;
 
 	/// @}
 }//namespace glm

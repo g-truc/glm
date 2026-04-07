@@ -28,22 +28,22 @@ namespace glm
 	/// 8 bit unsigned integer vector of 3 components type.
 	///
 	/// @see ext_vector_uint3_sized
-	typedef vec<3, uint8, defaultp>		u8vec3;
+	using		u8vec3 = vec<3, uint8, defaultp>;
 
 	/// 16 bit unsigned integer vector of 3 components type.
 	///
 	/// @see ext_vector_uint3_sized
-	typedef vec<3, uint16, defaultp>	u16vec3;
+	using	u16vec3 = vec<3, uint16, defaultp>;
 
 	/// 32 bit unsigned integer vector of 3 components type.
 	///
 	/// @see ext_vector_uint3_sized
-	typedef vec<3, uint32, defaultp>	u32vec3;
+	using	u32vec3 = vec<3, uint32, defaultp>;
 
 	/// 64 bit unsigned integer vector of 3 components type.
 	///
 	/// @see ext_vector_uint3_sized
-	typedef vec<3, uint64, defaultp>	u64vec3;
+	using	u64vec3 = vec<3, uint64, defaultp>;
 
 	/// @}
 }//namespace glm

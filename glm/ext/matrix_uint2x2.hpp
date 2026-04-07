@@ -27,12 +27,12 @@ namespace glm
 	/// Unsigned integer 2x2 matrix.
 	///
 	/// @see ext_matrix_uint2x2
-	typedef mat<2, 2, uint, defaultp>	umat2x2;
+	using	umat2x2 = mat<2, 2, uint, defaultp>;
 
 	/// Unsigned integer 2x2 matrix.
 	///
 	/// @see ext_matrix_uint2x2
-	typedef mat<2, 2, uint, defaultp>	umat2;
+	using	umat2 = mat<2, 2, uint, defaultp>;
 
 	/// @}
 }//namespace glm

@@ -37,55 +37,55 @@ namespace detail
 	template<typename T, qualifier Q>
 	struct outerProduct_trait<2, 2, T, Q>
 	{
-		typedef mat<2, 2, T, Q> type;
+		using type = mat<2, 2, T, Q>;
 	};
 
 	template<typename T, qualifier Q>
 	struct outerProduct_trait<2, 3, T, Q>
 	{
-		typedef mat<3, 2, T, Q> type;
+		using type = mat<3, 2, T, Q>;
 	};
 
 	template<typename T, qualifier Q>
 	struct outerProduct_trait<2, 4, T, Q>
 	{
-		typedef mat<4, 2, T, Q> type;
+		using type = mat<4, 2, T, Q>;
 	};
 
 	template<typename T, qualifier Q>
 	struct outerProduct_trait<3, 2, T, Q>
 	{
-		typedef mat<2, 3, T, Q> type;
+		using type = mat<2, 3, T, Q>;
 	};
 
 	template<typename T, qualifier Q>
 	struct outerProduct_trait<3, 3, T, Q>
 	{
-		typedef mat<3, 3, T, Q> type;
+		using type = mat<3, 3, T, Q>;
 	};
 
 	template<typename T, qualifier Q>
 	struct outerProduct_trait<3, 4, T, Q>
 	{
-		typedef mat<4, 3, T, Q> type;
+		using type = mat<4, 3, T, Q>;
 	};
 
 	template<typename T, qualifier Q>
 	struct outerProduct_trait<4, 2, T, Q>
 	{
-		typedef mat<2, 4, T, Q> type;
+		using type = mat<2, 4, T, Q>;
 	};
 
 	template<typename T, qualifier Q>
 	struct outerProduct_trait<4, 3, T, Q>
 	{
-		typedef mat<3, 4, T, Q> type;
+		using type = mat<3, 4, T, Q>;
 	};
 
 	template<typename T, qualifier Q>
 	struct outerProduct_trait<4, 4, T, Q>
 	{
-		typedef mat<4, 4, T, Q> type;
+		using type = mat<4, 4, T, Q>;
 	};
 }//namespace detail
 

@@ -362,9 +362,9 @@ namespace glm
 {
 	using std::size_t;
 #	if GLM_CONFIG_LENGTH_TYPE == GLM_LENGTH_SIZE_T
-		typedef size_t length_t;
+		using length_t = size_t;
 #	else
-		typedef int length_t;
+		using length_t = int;
 #	endif
 }//namespace glm
 
@@ -376,15 +376,15 @@ namespace glm
 namespace glm{
 namespace detail
 {
-	typedef std::int8_t			int8;
-	typedef std::int16_t		int16;
-	typedef std::int32_t		int32;
-	typedef std::int64_t		int64;
+	using			int8 = std::int8_t;
+	using		int16 = std::int16_t;
+	using		int32 = std::int32_t;
+	using		int64 = std::int64_t;
 	
-	typedef std::uint8_t		uint8;
-	typedef std::uint16_t		uint16;
-	typedef std::uint32_t		uint32;
-	typedef std::uint64_t		uint64;
+	using		uint8 = std::uint8_t;
+	using		uint16 = std::uint16_t;
+	using		uint32 = std::uint32_t;
+	using		uint64 = std::uint64_t;
 
 	template<typename T>
 	struct is_int
@@ -441,7 +441,7 @@ namespace detail
 	};
 }//namespace detail
 
-	typedef unsigned int	uint;
+	using	uint = unsigned int;
 }//namespace glm
 
 ///////////////////////////////////////////////////////////////////////////////////

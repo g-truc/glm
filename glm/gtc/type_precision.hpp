@@ -53,147 +53,147 @@ namespace glm
 
 	/// Low qualifier 8 bit signed integer type.
 	/// @see gtc_type_precision
-	typedef detail::int8 lowp_int8;
+	using lowp_int8 = detail::int8;
 
 	/// Low qualifier 16 bit signed integer type.
 	/// @see gtc_type_precision
-	typedef detail::int16 lowp_int16;
+	using lowp_int16 = detail::int16;
 
 	/// Low qualifier 32 bit signed integer type.
 	/// @see gtc_type_precision
-	typedef detail::int32 lowp_int32;
+	using lowp_int32 = detail::int32;
 
 	/// Low qualifier 64 bit signed integer type.
 	/// @see gtc_type_precision
-	typedef detail::int64 lowp_int64;
+	using lowp_int64 = detail::int64;
 
 	/// Low qualifier 8 bit signed integer type.
 	/// @see gtc_type_precision
-	typedef detail::int8 lowp_int8_t;
+	using lowp_int8_t = detail::int8;
 
 	/// Low qualifier 16 bit signed integer type.
 	/// @see gtc_type_precision
-	typedef detail::int16 lowp_int16_t;
+	using lowp_int16_t = detail::int16;
 
 	/// Low qualifier 32 bit signed integer type.
 	/// @see gtc_type_precision
-	typedef detail::int32 lowp_int32_t;
+	using lowp_int32_t = detail::int32;
 
 	/// Low qualifier 64 bit signed integer type.
 	/// @see gtc_type_precision
-	typedef detail::int64 lowp_int64_t;
+	using lowp_int64_t = detail::int64;
 
 	/// Low qualifier 8 bit signed integer type.
 	/// @see gtc_type_precision
-	typedef detail::int8 lowp_i8;
+	using lowp_i8 = detail::int8;
 
 	/// Low qualifier 16 bit signed integer type.
 	/// @see gtc_type_precision
-	typedef detail::int16 lowp_i16;
+	using lowp_i16 = detail::int16;
 
 	/// Low qualifier 32 bit signed integer type.
 	/// @see gtc_type_precision
-	typedef detail::int32 lowp_i32;
+	using lowp_i32 = detail::int32;
 
 	/// Low qualifier 64 bit signed integer type.
 	/// @see gtc_type_precision
-	typedef detail::int64 lowp_i64;
+	using lowp_i64 = detail::int64;
 
 	/// Medium qualifier 8 bit signed integer type.
 	/// @see gtc_type_precision
-	typedef detail::int8 mediump_int8;
+	using mediump_int8 = detail::int8;
 
 	/// Medium qualifier 16 bit signed integer type.
 	/// @see gtc_type_precision
-	typedef detail::int16 mediump_int16;
+	using mediump_int16 = detail::int16;
 
 	/// Medium qualifier 32 bit signed integer type.
 	/// @see gtc_type_precision
-	typedef detail::int32 mediump_int32;
+	using mediump_int32 = detail::int32;
 
 	/// Medium qualifier 64 bit signed integer type.
 	/// @see gtc_type_precision
-	typedef detail::int64 mediump_int64;
+	using mediump_int64 = detail::int64;
 
 	/// Medium qualifier 8 bit signed integer type.
 	/// @see gtc_type_precision
-	typedef detail::int8 mediump_int8_t;
+	using mediump_int8_t = detail::int8;
 
 	/// Medium qualifier 16 bit signed integer type.
 	/// @see gtc_type_precision
-	typedef detail::int16 mediump_int16_t;
+	using mediump_int16_t = detail::int16;
 
 	/// Medium qualifier 32 bit signed integer type.
 	/// @see gtc_type_precision
-	typedef detail::int32 mediump_int32_t;
+	using mediump_int32_t = detail::int32;
 
 	/// Medium qualifier 64 bit signed integer type.
 	/// @see gtc_type_precision
-	typedef detail::int64 mediump_int64_t;
+	using mediump_int64_t = detail::int64;
 
 	/// Medium qualifier 8 bit signed integer type.
 	/// @see gtc_type_precision
-	typedef detail::int8 mediump_i8;
+	using mediump_i8 = detail::int8;
 
 	/// Medium qualifier 16 bit signed integer type.
 	/// @see gtc_type_precision
-	typedef detail::int16 mediump_i16;
+	using mediump_i16 = detail::int16;
 
 	/// Medium qualifier 32 bit signed integer type.
 	/// @see gtc_type_precision
-	typedef detail::int32 mediump_i32;
+	using mediump_i32 = detail::int32;
 
 	/// Medium qualifier 64 bit signed integer type.
 	/// @see gtc_type_precision
-	typedef detail::int64 mediump_i64;
+	using mediump_i64 = detail::int64;
 
 	/// High qualifier 8 bit signed integer type.
 	/// @see gtc_type_precision
-	typedef detail::int8 highp_int8;
+	using highp_int8 = detail::int8;
 
 	/// High qualifier 16 bit signed integer type.
 	/// @see gtc_type_precision
-	typedef detail::int16 highp_int16;
+	using highp_int16 = detail::int16;
 
 	/// High qualifier 32 bit signed integer type.
 	/// @see gtc_type_precision
-	typedef detail::int32 highp_int32;
+	using highp_int32 = detail::int32;
 
 	/// High qualifier 64 bit signed integer type.
 	/// @see gtc_type_precision
-	typedef detail::int64 highp_int64;
+	using highp_int64 = detail::int64;
 
 	/// High qualifier 8 bit signed integer type.
 	/// @see gtc_type_precision
-	typedef detail::int8 highp_int8_t;
+	using highp_int8_t = detail::int8;
 
 	/// High qualifier 16 bit signed integer type.
 	/// @see gtc_type_precision
-	typedef detail::int16 highp_int16_t;
+	using highp_int16_t = detail::int16;
 
 	/// 32 bit signed integer type.
 	/// @see gtc_type_precision
-	typedef detail::int32 highp_int32_t;
+	using highp_int32_t = detail::int32;
 
 	/// High qualifier 64 bit signed integer type.
 	/// @see gtc_type_precision
-	typedef detail::int64 highp_int64_t;
+	using highp_int64_t = detail::int64;
 
 	/// High qualifier 8 bit signed integer type.
 	/// @see gtc_type_precision
-	typedef detail::int8 highp_i8;
+	using highp_i8 = detail::int8;
 
 	/// High qualifier 16 bit signed integer type.
 	/// @see gtc_type_precision
-	typedef detail::int16 highp_i16;
+	using highp_i16 = detail::int16;
 
 	/// High qualifier 32 bit signed integer type.
 	/// @see gtc_type_precision
-	typedef detail::int32 highp_i32;
+	using highp_i32 = detail::int32;
 
 	/// High qualifier 64 bit signed integer type.
 	/// @see gtc_type_precision
-	typedef detail::int64 highp_i64;
+	using highp_i64 = detail::int64;
 
 	/// 8 bit signed integer type.
 	/// @see gtc_type_precision
@@ -213,166 +213,166 @@ namespace glm
 
 	/// 8 bit signed integer type.
 	/// @see gtc_type_precision
-	typedef detail::int8 i8;
+	using i8 = detail::int8;
 
 	/// 16 bit signed integer type.
 	/// @see gtc_type_precision
-	typedef detail::int16 i16;
+	using i16 = detail::int16;
 
 	/// 32 bit signed integer type.
 	/// @see gtc_type_precision
-	typedef detail::int32 i32;
+	using i32 = detail::int32;
 
 	/// 64 bit signed integer type.
 	/// @see gtc_type_precision
-	typedef detail::int64 i64;
+	using i64 = detail::int64;
 
 	/////////////////////////////
 	// Unsigned int vector types
 
 	/// Low qualifier 8 bit unsigned integer type.
 	/// @see gtc_type_precision
-	typedef detail::uint8 lowp_uint8;
+	using lowp_uint8 = detail::uint8;
 
 	/// Low qualifier 16 bit unsigned integer type.
 	/// @see gtc_type_precision
-	typedef detail::uint16 lowp_uint16;
+	using lowp_uint16 = detail::uint16;
 
 	/// Low qualifier 32 bit unsigned integer type.
 	/// @see gtc_type_precision
-	typedef detail::uint32 lowp_uint32;
+	using lowp_uint32 = detail::uint32;
 
 	/// Low qualifier 64 bit unsigned integer type.
 	/// @see gtc_type_precision
-	typedef detail::uint64 lowp_uint64;
+	using lowp_uint64 = detail::uint64;
 
 	/// Low qualifier 8 bit unsigned integer type.
 	/// @see gtc_type_precision
-	typedef detail::uint8 lowp_uint8_t;
+	using lowp_uint8_t = detail::uint8;
 
 	/// Low qualifier 16 bit unsigned integer type.
 	/// @see gtc_type_precision
-	typedef detail::uint16 lowp_uint16_t;
+	using lowp_uint16_t = detail::uint16;
 
 	/// Low qualifier 32 bit unsigned integer type.
 	/// @see gtc_type_precision
-	typedef detail::uint32 lowp_uint32_t;
+	using lowp_uint32_t = detail::uint32;
 
 	/// Low qualifier 64 bit unsigned integer type.
 	/// @see gtc_type_precision
-	typedef detail::uint64 lowp_uint64_t;
+	using lowp_uint64_t = detail::uint64;
 
 	/// Low qualifier 8 bit unsigned integer type.
 	/// @see gtc_type_precision
-	typedef detail::uint8 lowp_u8;
+	using lowp_u8 = detail::uint8;
 
 	/// Low qualifier 16 bit unsigned integer type.
 	/// @see gtc_type_precision
-	typedef detail::uint16 lowp_u16;
+	using lowp_u16 = detail::uint16;
 
 	/// Low qualifier 32 bit unsigned integer type.
 	/// @see gtc_type_precision
-	typedef detail::uint32 lowp_u32;
+	using lowp_u32 = detail::uint32;
 
 	/// Low qualifier 64 bit unsigned integer type.
 	/// @see gtc_type_precision
-	typedef detail::uint64 lowp_u64;
+	using lowp_u64 = detail::uint64;
 
 	/// Medium qualifier 8 bit unsigned integer type.
 	/// @see gtc_type_precision
-	typedef detail::uint8 mediump_uint8;
+	using mediump_uint8 = detail::uint8;
 
 	/// Medium qualifier 16 bit unsigned integer type.
 	/// @see gtc_type_precision
-	typedef detail::uint16 mediump_uint16;
+	using mediump_uint16 = detail::uint16;
 
 	/// Medium qualifier 32 bit unsigned integer type.
 	/// @see gtc_type_precision
-	typedef detail::uint32 mediump_uint32;
+	using mediump_uint32 = detail::uint32;
 
 	/// Medium qualifier 64 bit unsigned integer type.
 	/// @see gtc_type_precision
-	typedef detail::uint64 mediump_uint64;
+	using mediump_uint64 = detail::uint64;
 
 	/// Medium qualifier 8 bit unsigned integer type.
 	/// @see gtc_type_precision
-	typedef detail::uint8 mediump_uint8_t;
+	using mediump_uint8_t = detail::uint8;
 
 	/// Medium qualifier 16 bit unsigned integer type.
 	/// @see gtc_type_precision
-	typedef detail::uint16 mediump_uint16_t;
+	using mediump_uint16_t = detail::uint16;
 
 	/// Medium qualifier 32 bit unsigned integer type.
 	/// @see gtc_type_precision
-	typedef detail::uint32 mediump_uint32_t;
+	using mediump_uint32_t = detail::uint32;
 
 	/// Medium qualifier 64 bit unsigned integer type.
 	/// @see gtc_type_precision
-	typedef detail::uint64 mediump_uint64_t;
+	using mediump_uint64_t = detail::uint64;
 
 	/// Medium qualifier 8 bit unsigned integer type.
 	/// @see gtc_type_precision
-	typedef detail::uint8 mediump_u8;
+	using mediump_u8 = detail::uint8;
 
 	/// Medium qualifier 16 bit unsigned integer type.
 	/// @see gtc_type_precision
-	typedef detail::uint16 mediump_u16;
+	using mediump_u16 = detail::uint16;
 
 	/// Medium qualifier 32 bit unsigned integer type.
 	/// @see gtc_type_precision
-	typedef detail::uint32 mediump_u32;
+	using mediump_u32 = detail::uint32;
 
 	/// Medium qualifier 64 bit unsigned integer type.
 	/// @see gtc_type_precision
-	typedef detail::uint64 mediump_u64;
+	using mediump_u64 = detail::uint64;
 
 	/// High qualifier 8 bit unsigned integer type.
 	/// @see gtc_type_precision
-	typedef detail::uint8 highp_uint8;
+	using highp_uint8 = detail::uint8;
 
 	/// High qualifier 16 bit unsigned integer type.
 	/// @see gtc_type_precision
-	typedef detail::uint16 highp_uint16;
+	using highp_uint16 = detail::uint16;
 
 	/// High qualifier 32 bit unsigned integer type.
 	/// @see gtc_type_precision
-	typedef detail::uint32 highp_uint32;
+	using highp_uint32 = detail::uint32;
 
 	/// High qualifier 64 bit unsigned integer type.
 	/// @see gtc_type_precision
-	typedef detail::uint64 highp_uint64;
+	using highp_uint64 = detail::uint64;
 
 	/// High qualifier 8 bit unsigned integer type.
 	/// @see gtc_type_precision
-	typedef detail::uint8 highp_uint8_t;
+	using highp_uint8_t = detail::uint8;
 
 	/// High qualifier 16 bit unsigned integer type.
 	/// @see gtc_type_precision
-	typedef detail::uint16 highp_uint16_t;
+	using highp_uint16_t = detail::uint16;
 
 	/// High qualifier 32 bit unsigned integer type.
 	/// @see gtc_type_precision
-	typedef detail::uint32 highp_uint32_t;
+	using highp_uint32_t = detail::uint32;
 
 	/// High qualifier 64 bit unsigned integer type.
 	/// @see gtc_type_precision
-	typedef detail::uint64 highp_uint64_t;
+	using highp_uint64_t = detail::uint64;
 
 	/// High qualifier 8 bit unsigned integer type.
 	/// @see gtc_type_precision
-	typedef detail::uint8 highp_u8;
+	using highp_u8 = detail::uint8;
 
 	/// High qualifier 16 bit unsigned integer type.
 	/// @see gtc_type_precision
-	typedef detail::uint16 highp_u16;
+	using highp_u16 = detail::uint16;
 
 	/// High qualifier 32 bit unsigned integer type.
 	/// @see gtc_type_precision
-	typedef detail::uint32 highp_u32;
+	using highp_u32 = detail::uint32;
 
 	/// High qualifier 64 bit unsigned integer type.
 	/// @see gtc_type_precision
-	typedef detail::uint64 highp_u64;
+	using highp_u64 = detail::uint64;
 
 	/// Default qualifier 8 bit unsigned integer type.
 	/// @see gtc_type_precision
@@ -392,19 +392,19 @@ namespace glm
 
 	/// Default qualifier 8 bit unsigned integer type.
 	/// @see gtc_type_precision
-	typedef detail::uint8 u8;
+	using u8 = detail::uint8;
 
 	/// Default qualifier 16 bit unsigned integer type.
 	/// @see gtc_type_precision
-	typedef detail::uint16 u16;
+	using u16 = detail::uint16;
 
 	/// Default qualifier 32 bit unsigned integer type.
 	/// @see gtc_type_precision
-	typedef detail::uint32 u32;
+	using u32 = detail::uint32;
 
 	/// Default qualifier 64 bit unsigned integer type.
 	/// @see gtc_type_precision
-	typedef detail::uint64 u64;
+	using u64 = detail::uint64;
 
 
 
@@ -415,337 +415,337 @@ namespace glm
 
 	/// Single-qualifier floating-point scalar.
 	/// @see gtc_type_precision
-	typedef float float32;
+	using float32 = float;
 
 	/// Double-qualifier floating-point scalar.
 	/// @see gtc_type_precision
-	typedef double float64;
+	using float64 = double;
 
 	/// Low 32 bit single-qualifier floating-point scalar.
 	/// @see gtc_type_precision
-	typedef float32 lowp_float32;
+	using lowp_float32 = float32;
 
 	/// Low 64 bit double-qualifier floating-point scalar.
 	/// @see gtc_type_precision
-	typedef float64 lowp_float64;
+	using lowp_float64 = float64;
 
 	/// Low 32 bit single-qualifier floating-point scalar.
 	/// @see gtc_type_precision
-	typedef float32 lowp_float32_t;
+	using lowp_float32_t = float32;
 
 	/// Low 64 bit double-qualifier floating-point scalar.
 	/// @see gtc_type_precision
-	typedef float64 lowp_float64_t;
+	using lowp_float64_t = float64;
 
 	/// Low 32 bit single-qualifier floating-point scalar.
 	/// @see gtc_type_precision
-	typedef float32 lowp_f32;
+	using lowp_f32 = float32;
 
 	/// Low 64 bit double-qualifier floating-point scalar.
 	/// @see gtc_type_precision
-	typedef float64 lowp_f64;
+	using lowp_f64 = float64;
 
 	/// Low 32 bit single-qualifier floating-point scalar.
 	/// @see gtc_type_precision
-	typedef float32 lowp_float32;
+	using lowp_float32 = float32;
 
 	/// Low 64 bit double-qualifier floating-point scalar.
 	/// @see gtc_type_precision
-	typedef float64 lowp_float64;
+	using lowp_float64 = float64;
 
 	/// Low 32 bit single-qualifier floating-point scalar.
 	/// @see gtc_type_precision
-	typedef float32 lowp_float32_t;
+	using lowp_float32_t = float32;
 
 	/// Low 64 bit double-qualifier floating-point scalar.
 	/// @see gtc_type_precision
-	typedef float64 lowp_float64_t;
+	using lowp_float64_t = float64;
 
 	/// Low 32 bit single-qualifier floating-point scalar.
 	/// @see gtc_type_precision
-	typedef float32 lowp_f32;
+	using lowp_f32 = float32;
 
 	/// Low 64 bit double-qualifier floating-point scalar.
 	/// @see gtc_type_precision
-	typedef float64 lowp_f64;
+	using lowp_f64 = float64;
 
 
 	/// Low 32 bit single-qualifier floating-point scalar.
 	/// @see gtc_type_precision
-	typedef float32 lowp_float32;
+	using lowp_float32 = float32;
 
 	/// Low 64 bit double-qualifier floating-point scalar.
 	/// @see gtc_type_precision
-	typedef float64 lowp_float64;
+	using lowp_float64 = float64;
 
 	/// Low 32 bit single-qualifier floating-point scalar.
 	/// @see gtc_type_precision
-	typedef float32 lowp_float32_t;
+	using lowp_float32_t = float32;
 
 	/// Low 64 bit double-qualifier floating-point scalar.
 	/// @see gtc_type_precision
-	typedef float64 lowp_float64_t;
+	using lowp_float64_t = float64;
 
 	/// Low 32 bit single-qualifier floating-point scalar.
 	/// @see gtc_type_precision
-	typedef float32 lowp_f32;
+	using lowp_f32 = float32;
 
 	/// Low 64 bit double-qualifier floating-point scalar.
 	/// @see gtc_type_precision
-	typedef float64 lowp_f64;
+	using lowp_f64 = float64;
 
 
 	/// Medium 32 bit single-qualifier floating-point scalar.
 	/// @see gtc_type_precision
-	typedef float32 mediump_float32;
+	using mediump_float32 = float32;
 
 	/// Medium 64 bit double-qualifier floating-point scalar.
 	/// @see gtc_type_precision
-	typedef float64 mediump_float64;
+	using mediump_float64 = float64;
 
 	/// Medium 32 bit single-qualifier floating-point scalar.
 	/// @see gtc_type_precision
-	typedef float32 mediump_float32_t;
+	using mediump_float32_t = float32;
 
 	/// Medium 64 bit double-qualifier floating-point scalar.
 	/// @see gtc_type_precision
-	typedef float64 mediump_float64_t;
+	using mediump_float64_t = float64;
 
 	/// Medium 32 bit single-qualifier floating-point scalar.
 	/// @see gtc_type_precision
-	typedef float32 mediump_f32;
+	using mediump_f32 = float32;
 
 	/// Medium 64 bit double-qualifier floating-point scalar.
 	/// @see gtc_type_precision
-	typedef float64 mediump_f64;
+	using mediump_f64 = float64;
 
 
 	/// High 32 bit single-qualifier floating-point scalar.
 	/// @see gtc_type_precision
-	typedef float32 highp_float32;
+	using highp_float32 = float32;
 
 	/// High 64 bit double-qualifier floating-point scalar.
 	/// @see gtc_type_precision
-	typedef float64 highp_float64;
+	using highp_float64 = float64;
 
 	/// High 32 bit single-qualifier floating-point scalar.
 	/// @see gtc_type_precision
-	typedef float32 highp_float32_t;
+	using highp_float32_t = float32;
 
 	/// High 64 bit double-qualifier floating-point scalar.
 	/// @see gtc_type_precision
-	typedef float64 highp_float64_t;
+	using highp_float64_t = float64;
 
 	/// High 32 bit single-qualifier floating-point scalar.
 	/// @see gtc_type_precision
-	typedef float32 highp_f32;
+	using highp_f32 = float32;
 
 	/// High 64 bit double-qualifier floating-point scalar.
 	/// @see gtc_type_precision
-	typedef float64 highp_f64;
+	using highp_f64 = float64;
 
 
 #if(defined(GLM_PRECISION_LOWP_FLOAT))
 	/// Default 32 bit single-qualifier floating-point scalar.
 	/// @see gtc_type_precision
-	typedef lowp_float32_t float32_t;
+	using float32_t = lowp_float32_t;
 
 	/// Default 64 bit double-qualifier floating-point scalar.
 	/// @see gtc_type_precision
-	typedef lowp_float64_t float64_t;
+	using float64_t = lowp_float64_t;
 
 	/// Default 32 bit single-qualifier floating-point scalar.
 	/// @see gtc_type_precision
-	typedef lowp_f32 f32;
+	using f32 = lowp_f32;
 
 	/// Default 64 bit double-qualifier floating-point scalar.
 	/// @see gtc_type_precision
-	typedef lowp_f64 f64;
+	using f64 = lowp_f64;
 
 #elif(defined(GLM_PRECISION_MEDIUMP_FLOAT))
 	/// Default 32 bit single-qualifier floating-point scalar.
 	/// @see gtc_type_precision
-	typedef mediump_float32 float32_t;
+	using float32_t = mediump_float32;
 
 	/// Default 64 bit double-qualifier floating-point scalar.
 	/// @see gtc_type_precision
-	typedef mediump_float64 float64_t;
+	using float64_t = mediump_float64;
 
 	/// Default 32 bit single-qualifier floating-point scalar.
 	/// @see gtc_type_precision
-	typedef mediump_float32 f32;
+	using f32 = mediump_float32;
 
 	/// Default 64 bit double-qualifier floating-point scalar.
 	/// @see gtc_type_precision
-	typedef mediump_float64 f64;
+	using f64 = mediump_float64;
 
 #else//(defined(GLM_PRECISION_HIGHP_FLOAT))
 
 	/// Default 32 bit single-qualifier floating-point scalar.
 	/// @see gtc_type_precision
-	typedef highp_float32_t float32_t;
+	using float32_t = highp_float32_t;
 
 	/// Default 64 bit double-qualifier floating-point scalar.
 	/// @see gtc_type_precision
-	typedef highp_float64_t float64_t;
+	using float64_t = highp_float64_t;
 
 	/// Default 32 bit single-qualifier floating-point scalar.
 	/// @see gtc_type_precision
-	typedef highp_float32_t f32;
+	using f32 = highp_float32_t;
 
 	/// Default 64 bit double-qualifier floating-point scalar.
 	/// @see gtc_type_precision
-	typedef highp_float64_t f64;
+	using f64 = highp_float64_t;
 #endif
 
 
 	/// Low single-qualifier floating-point vector of 1 component.
 	/// @see gtc_type_precision
-	typedef vec<1, float, lowp> lowp_fvec1;
+	using lowp_fvec1 = vec<1, float, lowp>;
 
 	/// Low single-qualifier floating-point vector of 2 components.
 	/// @see gtc_type_precision
-	typedef vec<2, float, lowp> lowp_fvec2;
+	using lowp_fvec2 = vec<2, float, lowp>;
 
 	/// Low single-qualifier floating-point vector of 3 components.
 	/// @see gtc_type_precision
-	typedef vec<3, float, lowp> lowp_fvec3;
+	using lowp_fvec3 = vec<3, float, lowp>;
 
 	/// Low single-qualifier floating-point vector of 4 components.
 	/// @see gtc_type_precision
-	typedef vec<4, float, lowp> lowp_fvec4;
+	using lowp_fvec4 = vec<4, float, lowp>;
 
 
 	/// Medium single-qualifier floating-point vector of 1 component.
 	/// @see gtc_type_precision
-	typedef vec<1, float, mediump> mediump_fvec1;
+	using mediump_fvec1 = vec<1, float, mediump>;
 
 	/// Medium Single-qualifier floating-point vector of 2 components.
 	/// @see gtc_type_precision
-	typedef vec<2, float, mediump> mediump_fvec2;
+	using mediump_fvec2 = vec<2, float, mediump>;
 
 	/// Medium Single-qualifier floating-point vector of 3 components.
 	/// @see gtc_type_precision
-	typedef vec<3, float, mediump> mediump_fvec3;
+	using mediump_fvec3 = vec<3, float, mediump>;
 
 	/// Medium Single-qualifier floating-point vector of 4 components.
 	/// @see gtc_type_precision
-	typedef vec<4, float, mediump> mediump_fvec4;
+	using mediump_fvec4 = vec<4, float, mediump>;
 
 
 	/// High single-qualifier floating-point vector of 1 component.
 	/// @see gtc_type_precision
-	typedef vec<1, float, highp> highp_fvec1;
+	using highp_fvec1 = vec<1, float, highp>;
 
 	/// High Single-qualifier floating-point vector of 2 components.
 	/// @see core_precision
-	typedef vec<2, float, highp> highp_fvec2;
+	using highp_fvec2 = vec<2, float, highp>;
 
 	/// High Single-qualifier floating-point vector of 3 components.
 	/// @see core_precision
-	typedef vec<3, float, highp> highp_fvec3;
+	using highp_fvec3 = vec<3, float, highp>;
 
 	/// High Single-qualifier floating-point vector of 4 components.
 	/// @see core_precision
-	typedef vec<4, float, highp> highp_fvec4;
+	using highp_fvec4 = vec<4, float, highp>;
 
 
 	/// Low single-qualifier floating-point vector of 1 component.
 	/// @see gtc_type_precision
-	typedef vec<1, f32, lowp> lowp_f32vec1;
+	using lowp_f32vec1 = vec<1, f32, lowp>;
 
 	/// Low single-qualifier floating-point vector of 2 components.
 	/// @see core_precision
-	typedef vec<2, f32, lowp> lowp_f32vec2;
+	using lowp_f32vec2 = vec<2, f32, lowp>;
 
 	/// Low single-qualifier floating-point vector of 3 components.
 	/// @see core_precision
-	typedef vec<3, f32, lowp> lowp_f32vec3;
+	using lowp_f32vec3 = vec<3, f32, lowp>;
 
 	/// Low single-qualifier floating-point vector of 4 components.
 	/// @see core_precision
-	typedef vec<4, f32, lowp> lowp_f32vec4;
+	using lowp_f32vec4 = vec<4, f32, lowp>;
 
 	/// Medium single-qualifier floating-point vector of 1 component.
 	/// @see gtc_type_precision
-	typedef vec<1, f32, mediump> mediump_f32vec1;
+	using mediump_f32vec1 = vec<1, f32, mediump>;
 
 	/// Medium single-qualifier floating-point vector of 2 components.
 	/// @see core_precision
-	typedef vec<2, f32, mediump> mediump_f32vec2;
+	using mediump_f32vec2 = vec<2, f32, mediump>;
 
 	/// Medium single-qualifier floating-point vector of 3 components.
 	/// @see core_precision
-	typedef vec<3, f32, mediump> mediump_f32vec3;
+	using mediump_f32vec3 = vec<3, f32, mediump>;
 
 	/// Medium single-qualifier floating-point vector of 4 components.
 	/// @see core_precision
-	typedef vec<4, f32, mediump> mediump_f32vec4;
+	using mediump_f32vec4 = vec<4, f32, mediump>;
 
 	/// High single-qualifier floating-point vector of 1 component.
 	/// @see gtc_type_precision
-	typedef vec<1, f32, highp> highp_f32vec1;
+	using highp_f32vec1 = vec<1, f32, highp>;
 
 	/// High single-qualifier floating-point vector of 2 components.
 	/// @see gtc_type_precision
-	typedef vec<2, f32, highp> highp_f32vec2;
+	using highp_f32vec2 = vec<2, f32, highp>;
 
 	/// High single-qualifier floating-point vector of 3 components.
 	/// @see gtc_type_precision
-	typedef vec<3, f32, highp> highp_f32vec3;
+	using highp_f32vec3 = vec<3, f32, highp>;
 
 	/// High single-qualifier floating-point vector of 4 components.
 	/// @see gtc_type_precision
-	typedef vec<4, f32, highp> highp_f32vec4;
+	using highp_f32vec4 = vec<4, f32, highp>;
 
 
 	/// Low double-qualifier floating-point vector of 1 component.
 	/// @see gtc_type_precision
-	typedef vec<1, f64, lowp> lowp_f64vec1;
+	using lowp_f64vec1 = vec<1, f64, lowp>;
 
 	/// Low double-qualifier floating-point vector of 2 components.
 	/// @see gtc_type_precision
-	typedef vec<2, f64, lowp> lowp_f64vec2;
+	using lowp_f64vec2 = vec<2, f64, lowp>;
 
 	/// Low double-qualifier floating-point vector of 3 components.
 	/// @see gtc_type_precision
-	typedef vec<3, f64, lowp> lowp_f64vec3;
+	using lowp_f64vec3 = vec<3, f64, lowp>;
 
 	/// Low double-qualifier floating-point vector of 4 components.
 	/// @see gtc_type_precision
-	typedef vec<4, f64, lowp> lowp_f64vec4;
+	using lowp_f64vec4 = vec<4, f64, lowp>;
 
 	/// Medium double-qualifier floating-point vector of 1 component.
 	/// @see gtc_type_precision
-	typedef vec<1, f64, mediump> mediump_f64vec1;
+	using mediump_f64vec1 = vec<1, f64, mediump>;
 
 	/// Medium double-qualifier floating-point vector of 2 components.
 	/// @see gtc_type_precision
-	typedef vec<2, f64, mediump> mediump_f64vec2;
+	using mediump_f64vec2 = vec<2, f64, mediump>;
 
 	/// Medium double-qualifier floating-point vector of 3 components.
 	/// @see gtc_type_precision
-	typedef vec<3, f64, mediump> mediump_f64vec3;
+	using mediump_f64vec3 = vec<3, f64, mediump>;
 
 	/// Medium double-qualifier floating-point vector of 4 components.
 	/// @see gtc_type_precision
-	typedef vec<4, f64, mediump> mediump_f64vec4;
+	using mediump_f64vec4 = vec<4, f64, mediump>;
 
 	/// High double-qualifier floating-point vector of 1 component.
 	/// @see gtc_type_precision
-	typedef vec<1, f64, highp> highp_f64vec1;
+	using highp_f64vec1 = vec<1, f64, highp>;
 
 	/// High double-qualifier floating-point vector of 2 components.
 	/// @see gtc_type_precision
-	typedef vec<2, f64, highp> highp_f64vec2;
+	using highp_f64vec2 = vec<2, f64, highp>;
 
 	/// High double-qualifier floating-point vector of 3 components.
 	/// @see gtc_type_precision
-	typedef vec<3, f64, highp> highp_f64vec3;
+	using highp_f64vec3 = vec<3, f64, highp>;
 
 	/// High double-qualifier floating-point vector of 4 components.
 	/// @see gtc_type_precision
-	typedef vec<4, f64, highp> highp_f64vec4;
+	using highp_f64vec4 = vec<4, f64, highp>;
 
 
 
@@ -758,39 +758,39 @@ namespace glm
 
 	/// Low single-qualifier floating-point 2x2 matrix.
 	/// @see gtc_type_precision
-	typedef mat<2, 2, f32, lowp> lowp_fmat2x2;
+	using lowp_fmat2x2 = mat<2, 2, f32, lowp>;
 
 	/// Low single-qualifier floating-point 2x3 matrix.
 	/// @see gtc_type_precision
-	typedef mat<2, 3, f32, lowp> lowp_fmat2x3;
+	using lowp_fmat2x3 = mat<2, 3, f32, lowp>;
 
 	/// Low single-qualifier floating-point 2x4 matrix.
 	/// @see gtc_type_precision
-	typedef mat<2, 4, f32, lowp> lowp_fmat2x4;
+	using lowp_fmat2x4 = mat<2, 4, f32, lowp>;
 
 	/// Low single-qualifier floating-point 3x2 matrix.
 	/// @see gtc_type_precision
-	typedef mat<3, 2, f32, lowp> lowp_fmat3x2;
+	using lowp_fmat3x2 = mat<3, 2, f32, lowp>;
 
 	/// Low single-qualifier floating-point 3x3 matrix.
 	/// @see gtc_type_precision
-	typedef mat<3, 3, f32, lowp> lowp_fmat3x3;
+	using lowp_fmat3x3 = mat<3, 3, f32, lowp>;
 
 	/// Low single-qualifier floating-point 3x4 matrix.
 	/// @see gtc_type_precision
-	typedef mat<3, 4, f32, lowp> lowp_fmat3x4;
+	using lowp_fmat3x4 = mat<3, 4, f32, lowp>;
 
 	/// Low single-qualifier floating-point 4x2 matrix.
 	/// @see gtc_type_precision
-	typedef mat<4, 2, f32, lowp> lowp_fmat4x2;
+	using lowp_fmat4x2 = mat<4, 2, f32, lowp>;
 
 	/// Low single-qualifier floating-point 4x3 matrix.
 	/// @see gtc_type_precision
-	typedef mat<4, 3, f32, lowp> lowp_fmat4x3;
+	using lowp_fmat4x3 = mat<4, 3, f32, lowp>;
 
 	/// Low single-qualifier floating-point 4x4 matrix.
 	/// @see gtc_type_precision
-	typedef mat<4, 4, f32, lowp> lowp_fmat4x4;
+	using lowp_fmat4x4 = mat<4, 4, f32, lowp>;
 
 	/// Low single-qualifier floating-point 1x1 matrix.
 	/// @see gtc_type_precision
@@ -798,15 +798,15 @@ namespace glm
 
 	/// Low single-qualifier floating-point 2x2 matrix.
 	/// @see gtc_type_precision
-	typedef lowp_fmat2x2 lowp_fmat2;
+	using lowp_fmat2 = lowp_fmat2x2;
 
 	/// Low single-qualifier floating-point 3x3 matrix.
 	/// @see gtc_type_precision
-	typedef lowp_fmat3x3 lowp_fmat3;
+	using lowp_fmat3 = lowp_fmat3x3;
 
 	/// Low single-qualifier floating-point 4x4 matrix.
 	/// @see gtc_type_precision
-	typedef lowp_fmat4x4 lowp_fmat4;
+	using lowp_fmat4 = lowp_fmat4x4;
 
 
 	/// Medium single-qualifier floating-point 1x1 matrix.
@@ -815,39 +815,39 @@ namespace glm
 
 	/// Medium single-qualifier floating-point 2x2 matrix.
 	/// @see gtc_type_precision
-	typedef mat<2, 2, f32, mediump> mediump_fmat2x2;
+	using mediump_fmat2x2 = mat<2, 2, f32, mediump>;
 
 	/// Medium single-qualifier floating-point 2x3 matrix.
 	/// @see gtc_type_precision
-	typedef mat<2, 3, f32, mediump> mediump_fmat2x3;
+	using mediump_fmat2x3 = mat<2, 3, f32, mediump>;
 
 	/// Medium single-qualifier floating-point 2x4 matrix.
 	/// @see gtc_type_precision
-	typedef mat<2, 4, f32, mediump> mediump_fmat2x4;
+	using mediump_fmat2x4 = mat<2, 4, f32, mediump>;
 
 	/// Medium single-qualifier floating-point 3x2 matrix.
 	/// @see gtc_type_precision
-	typedef mat<3, 2, f32, mediump> mediump_fmat3x2;
+	using mediump_fmat3x2 = mat<3, 2, f32, mediump>;
 
 	/// Medium single-qualifier floating-point 3x3 matrix.
 	/// @see gtc_type_precision
-	typedef mat<3, 3, f32, mediump> mediump_fmat3x3;
+	using mediump_fmat3x3 = mat<3, 3, f32, mediump>;
 
 	/// Medium single-qualifier floating-point 3x4 matrix.
 	/// @see gtc_type_precision
-	typedef mat<3, 4, f32, mediump> mediump_fmat3x4;
+	using mediump_fmat3x4 = mat<3, 4, f32, mediump>;
 
 	/// Medium single-qualifier floating-point 4x2 matrix.
 	/// @see gtc_type_precision
-	typedef mat<4, 2, f32, mediump> mediump_fmat4x2;
+	using mediump_fmat4x2 = mat<4, 2, f32, mediump>;
 
 	/// Medium single-qualifier floating-point 4x3 matrix.
 	/// @see gtc_type_precision
-	typedef mat<4, 3, f32, mediump> mediump_fmat4x3;
+	using mediump_fmat4x3 = mat<4, 3, f32, mediump>;
 
 	/// Medium single-qualifier floating-point 4x4 matrix.
 	/// @see gtc_type_precision
-	typedef mat<4, 4, f32, mediump> mediump_fmat4x4;
+	using mediump_fmat4x4 = mat<4, 4, f32, mediump>;
 
 	/// Medium single-qualifier floating-point 1x1 matrix.
 	/// @see gtc_type_precision
@@ -855,15 +855,15 @@ namespace glm
 
 	/// Medium single-qualifier floating-point 2x2 matrix.
 	/// @see gtc_type_precision
-	typedef mediump_fmat2x2 mediump_fmat2;
+	using mediump_fmat2 = mediump_fmat2x2;
 
 	/// Medium single-qualifier floating-point 3x3 matrix.
 	/// @see gtc_type_precision
-	typedef mediump_fmat3x3 mediump_fmat3;
+	using mediump_fmat3 = mediump_fmat3x3;
 
 	/// Medium single-qualifier floating-point 4x4 matrix.
 	/// @see gtc_type_precision
-	typedef mediump_fmat4x4 mediump_fmat4;
+	using mediump_fmat4 = mediump_fmat4x4;
 
 
 	/// High single-qualifier floating-point 1x1 matrix.
@@ -872,39 +872,39 @@ namespace glm
 
 	/// High single-qualifier floating-point 2x2 matrix.
 	/// @see gtc_type_precision
-	typedef mat<2, 2, f32, highp> highp_fmat2x2;
+	using highp_fmat2x2 = mat<2, 2, f32, highp>;
 
 	/// High single-qualifier floating-point 2x3 matrix.
 	/// @see gtc_type_precision
-	typedef mat<2, 3, f32, highp> highp_fmat2x3;
+	using highp_fmat2x3 = mat<2, 3, f32, highp>;
 
 	/// High single-qualifier floating-point 2x4 matrix.
 	/// @see gtc_type_precision
-	typedef mat<2, 4, f32, highp> highp_fmat2x4;
+	using highp_fmat2x4 = mat<2, 4, f32, highp>;
 
 	/// High single-qualifier floating-point 3x2 matrix.
 	/// @see gtc_type_precision
-	typedef mat<3, 2, f32, highp> highp_fmat3x2;
+	using highp_fmat3x2 = mat<3, 2, f32, highp>;
 
 	/// High single-qualifier floating-point 3x3 matrix.
 	/// @see gtc_type_precision
-	typedef mat<3, 3, f32, highp> highp_fmat3x3;
+	using highp_fmat3x3 = mat<3, 3, f32, highp>;
 
 	/// High single-qualifier floating-point 3x4 matrix.
 	/// @see gtc_type_precision
-	typedef mat<3, 4, f32, highp> highp_fmat3x4;
+	using highp_fmat3x4 = mat<3, 4, f32, highp>;
 
 	/// High single-qualifier floating-point 4x2 matrix.
 	/// @see gtc_type_precision
-	typedef mat<4, 2, f32, highp> highp_fmat4x2;
+	using highp_fmat4x2 = mat<4, 2, f32, highp>;
 
 	/// High single-qualifier floating-point 4x3 matrix.
 	/// @see gtc_type_precision
-	typedef mat<4, 3, f32, highp> highp_fmat4x3;
+	using highp_fmat4x3 = mat<4, 3, f32, highp>;
 
 	/// High single-qualifier floating-point 4x4 matrix.
 	/// @see gtc_type_precision
-	typedef mat<4, 4, f32, highp> highp_fmat4x4;
+	using highp_fmat4x4 = mat<4, 4, f32, highp>;
 
 	/// High single-qualifier floating-point 1x1 matrix.
 	/// @see gtc_type_precision
@@ -912,15 +912,15 @@ namespace glm
 
 	/// High single-qualifier floating-point 2x2 matrix.
 	/// @see gtc_type_precision
-	typedef highp_fmat2x2 highp_fmat2;
+	using highp_fmat2 = highp_fmat2x2;
 
 	/// High single-qualifier floating-point 3x3 matrix.
 	/// @see gtc_type_precision
-	typedef highp_fmat3x3 highp_fmat3;
+	using highp_fmat3 = highp_fmat3x3;
 
 	/// High single-qualifier floating-point 4x4 matrix.
 	/// @see gtc_type_precision
-	typedef highp_fmat4x4 highp_fmat4;
+	using highp_fmat4 = highp_fmat4x4;
 
 
 	/// Low single-qualifier floating-point 1x1 matrix.
@@ -929,39 +929,39 @@ namespace glm
 
 	/// Low single-qualifier floating-point 2x2 matrix.
 	/// @see gtc_type_precision
-	typedef mat<2, 2, f32, lowp> lowp_f32mat2x2;
+	using lowp_f32mat2x2 = mat<2, 2, f32, lowp>;
 
 	/// Low single-qualifier floating-point 2x3 matrix.
 	/// @see gtc_type_precision
-	typedef mat<2, 3, f32, lowp> lowp_f32mat2x3;
+	using lowp_f32mat2x3 = mat<2, 3, f32, lowp>;
 
 	/// Low single-qualifier floating-point 2x4 matrix.
 	/// @see gtc_type_precision
-	typedef mat<2, 4, f32, lowp> lowp_f32mat2x4;
+	using lowp_f32mat2x4 = mat<2, 4, f32, lowp>;
 
 	/// Low single-qualifier floating-point 3x2 matrix.
 	/// @see gtc_type_precision
-	typedef mat<3, 2, f32, lowp> lowp_f32mat3x2;
+	using lowp_f32mat3x2 = mat<3, 2, f32, lowp>;
 
 	/// Low single-qualifier floating-point 3x3 matrix.
 	/// @see gtc_type_precision
-	typedef mat<3, 3, f32, lowp> lowp_f32mat3x3;
+	using lowp_f32mat3x3 = mat<3, 3, f32, lowp>;
 
 	/// Low single-qualifier floating-point 3x4 matrix.
 	/// @see gtc_type_precision
-	typedef mat<3, 4, f32, lowp> lowp_f32mat3x4;
+	using lowp_f32mat3x4 = mat<3, 4, f32, lowp>;
 
 	/// Low single-qualifier floating-point 4x2 matrix.
 	/// @see gtc_type_precision
-	typedef mat<4, 2, f32, lowp> lowp_f32mat4x2;
+	using lowp_f32mat4x2 = mat<4, 2, f32, lowp>;
 
 	/// Low single-qualifier floating-point 4x3 matrix.
 	/// @see gtc_type_precision
-	typedef mat<4, 3, f32, lowp> lowp_f32mat4x3;
+	using lowp_f32mat4x3 = mat<4, 3, f32, lowp>;
 
 	/// Low single-qualifier floating-point 4x4 matrix.
 	/// @see gtc_type_precision
-	typedef mat<4, 4, f32, lowp> lowp_f32mat4x4;
+	using lowp_f32mat4x4 = mat<4, 4, f32, lowp>;
 
 	/// Low single-qualifier floating-point 1x1 matrix.
 	/// @see gtc_type_precision
@@ -969,15 +969,15 @@ namespace glm
 
 	/// Low single-qualifier floating-point 2x2 matrix.
 	/// @see gtc_type_precision
-	typedef lowp_f32mat2x2 lowp_f32mat2;
+	using lowp_f32mat2 = lowp_f32mat2x2;
 
 	/// Low single-qualifier floating-point 3x3 matrix.
 	/// @see gtc_type_precision
-	typedef lowp_f32mat3x3 lowp_f32mat3;
+	using lowp_f32mat3 = lowp_f32mat3x3;
 
 	/// Low single-qualifier floating-point 4x4 matrix.
 	/// @see gtc_type_precision
-	typedef lowp_f32mat4x4 lowp_f32mat4;
+	using lowp_f32mat4 = lowp_f32mat4x4;
 
 
 	/// High single-qualifier floating-point 1x1 matrix.
@@ -986,39 +986,39 @@ namespace glm
 
 	/// Low single-qualifier floating-point 2x2 matrix.
 	/// @see gtc_type_precision
-	typedef mat<2, 2, f32, mediump> mediump_f32mat2x2;
+	using mediump_f32mat2x2 = mat<2, 2, f32, mediump>;
 
 	/// Medium single-qualifier floating-point 2x3 matrix.
 	/// @see gtc_type_precision
-	typedef mat<2, 3, f32, mediump> mediump_f32mat2x3;
+	using mediump_f32mat2x3 = mat<2, 3, f32, mediump>;
 
 	/// Medium single-qualifier floating-point 2x4 matrix.
 	/// @see gtc_type_precision
-	typedef mat<2, 4, f32, mediump> mediump_f32mat2x4;
+	using mediump_f32mat2x4 = mat<2, 4, f32, mediump>;
 
 	/// Medium single-qualifier floating-point 3x2 matrix.
 	/// @see gtc_type_precision
-	typedef mat<3, 2, f32, mediump> mediump_f32mat3x2;
+	using mediump_f32mat3x2 = mat<3, 2, f32, mediump>;
 
 	/// Medium single-qualifier floating-point 3x3 matrix.
 	/// @see gtc_type_precision
-	typedef mat<3, 3, f32, mediump> mediump_f32mat3x3;
+	using mediump_f32mat3x3 = mat<3, 3, f32, mediump>;
 
 	/// Medium single-qualifier floating-point 3x4 matrix.
 	/// @see gtc_type_precision
-	typedef mat<3, 4, f32, mediump> mediump_f32mat3x4;
+	using mediump_f32mat3x4 = mat<3, 4, f32, mediump>;
 
 	/// Medium single-qualifier floating-point 4x2 matrix.
 	/// @see gtc_type_precision
-	typedef mat<4, 2, f32, mediump> mediump_f32mat4x2;
+	using mediump_f32mat4x2 = mat<4, 2, f32, mediump>;
 
 	/// Medium single-qualifier floating-point 4x3 matrix.
 	/// @see gtc_type_precision
-	typedef mat<4, 3, f32, mediump> mediump_f32mat4x3;
+	using mediump_f32mat4x3 = mat<4, 3, f32, mediump>;
 
 	/// Medium single-qualifier floating-point 4x4 matrix.
 	/// @see gtc_type_precision
-	typedef mat<4, 4, f32, mediump> mediump_f32mat4x4;
+	using mediump_f32mat4x4 = mat<4, 4, f32, mediump>;
 
 	/// Medium single-qualifier floating-point 1x1 matrix.
 	/// @see gtc_type_precision
@@ -1026,15 +1026,15 @@ namespace glm
 
 	/// Medium single-qualifier floating-point 2x2 matrix.
 	/// @see gtc_type_precision
-	typedef mediump_f32mat2x2 mediump_f32mat2;
+	using mediump_f32mat2 = mediump_f32mat2x2;
 
 	/// Medium single-qualifier floating-point 3x3 matrix.
 	/// @see gtc_type_precision
-	typedef mediump_f32mat3x3 mediump_f32mat3;
+	using mediump_f32mat3 = mediump_f32mat3x3;
 
 	/// Medium single-qualifier floating-point 4x4 matrix.
 	/// @see gtc_type_precision
-	typedef mediump_f32mat4x4 mediump_f32mat4;
+	using mediump_f32mat4 = mediump_f32mat4x4;
 
 
 	/// High single-qualifier floating-point 1x1 matrix.
@@ -1043,39 +1043,39 @@ namespace glm
 
 	/// High single-qualifier floating-point 2x2 matrix.
 	/// @see gtc_type_precision
-	typedef mat<2, 2, f32, highp> highp_f32mat2x2;
+	using highp_f32mat2x2 = mat<2, 2, f32, highp>;
 
 	/// High single-qualifier floating-point 2x3 matrix.
 	/// @see gtc_type_precision
-	typedef mat<2, 3, f32, highp> highp_f32mat2x3;
+	using highp_f32mat2x3 = mat<2, 3, f32, highp>;
 
 	/// High single-qualifier floating-point 2x4 matrix.
 	/// @see gtc_type_precision
-	typedef mat<2, 4, f32, highp> highp_f32mat2x4;
+	using highp_f32mat2x4 = mat<2, 4, f32, highp>;
 
 	/// High single-qualifier floating-point 3x2 matrix.
 	/// @see gtc_type_precision
-	typedef mat<3, 2, f32, highp> highp_f32mat3x2;
+	using highp_f32mat3x2 = mat<3, 2, f32, highp>;
 
 	/// High single-qualifier floating-point 3x3 matrix.
 	/// @see gtc_type_precision
-	typedef mat<3, 3, f32, highp> highp_f32mat3x3;
+	using highp_f32mat3x3 = mat<3, 3, f32, highp>;
 
 	/// High single-qualifier floating-point 3x4 matrix.
 	/// @see gtc_type_precision
-	typedef mat<3, 4, f32, highp> highp_f32mat3x4;
+	using highp_f32mat3x4 = mat<3, 4, f32, highp>;
 
 	/// High single-qualifier floating-point 4x2 matrix.
 	/// @see gtc_type_precision
-	typedef mat<4, 2, f32, highp> highp_f32mat4x2;
+	using highp_f32mat4x2 = mat<4, 2, f32, highp>;
 
 	/// High single-qualifier floating-point 4x3 matrix.
 	/// @see gtc_type_precision
-	typedef mat<4, 3, f32, highp> highp_f32mat4x3;
+	using highp_f32mat4x3 = mat<4, 3, f32, highp>;
 
 	/// High single-qualifier floating-point 4x4 matrix.
 	/// @see gtc_type_precision
-	typedef mat<4, 4, f32, highp> highp_f32mat4x4;
+	using highp_f32mat4x4 = mat<4, 4, f32, highp>;
 
 	/// High single-qualifier floating-point 1x1 matrix.
 	/// @see gtc_type_precision
@@ -1083,15 +1083,15 @@ namespace glm
 
 	/// High single-qualifier floating-point 2x2 matrix.
 	/// @see gtc_type_precision
-	typedef highp_f32mat2x2 highp_f32mat2;
+	using highp_f32mat2 = highp_f32mat2x2;
 
 	/// High single-qualifier floating-point 3x3 matrix.
 	/// @see gtc_type_precision
-	typedef highp_f32mat3x3 highp_f32mat3;
+	using highp_f32mat3 = highp_f32mat3x3;
 
 	/// High single-qualifier floating-point 4x4 matrix.
 	/// @see gtc_type_precision
-	typedef highp_f32mat4x4 highp_f32mat4;
+	using highp_f32mat4 = highp_f32mat4x4;
 
 
 	/// Low double-qualifier floating-point 1x1 matrix.
@@ -1100,39 +1100,39 @@ namespace glm
 
 	/// Low double-qualifier floating-point 2x2 matrix.
 	/// @see gtc_type_precision
-	typedef mat<2, 2, f64, lowp> lowp_f64mat2x2;
+	using lowp_f64mat2x2 = mat<2, 2, f64, lowp>;
 
 	/// Low double-qualifier floating-point 2x3 matrix.
 	/// @see gtc_type_precision
-	typedef mat<2, 3, f64, lowp> lowp_f64mat2x3;
+	using lowp_f64mat2x3 = mat<2, 3, f64, lowp>;
 
 	/// Low double-qualifier floating-point 2x4 matrix.
 	/// @see gtc_type_precision
-	typedef mat<2, 4, f64, lowp> lowp_f64mat2x4;
+	using lowp_f64mat2x4 = mat<2, 4, f64, lowp>;
 
 	/// Low double-qualifier floating-point 3x2 matrix.
 	/// @see gtc_type_precision
-	typedef mat<3, 2, f64, lowp> lowp_f64mat3x2;
+	using lowp_f64mat3x2 = mat<3, 2, f64, lowp>;
 
 	/// Low double-qualifier floating-point 3x3 matrix.
 	/// @see gtc_type_precision
-	typedef mat<3, 3, f64, lowp> lowp_f64mat3x3;
+	using lowp_f64mat3x3 = mat<3, 3, f64, lowp>;
 
 	/// Low double-qualifier floating-point 3x4 matrix.
 	/// @see gtc_type_precision
-	typedef mat<3, 4, f64, lowp> lowp_f64mat3x4;
+	using lowp_f64mat3x4 = mat<3, 4, f64, lowp>;
 
 	/// Low double-qualifier floating-point 4x2 matrix.
 	/// @see gtc_type_precision
-	typedef mat<4, 2, f64, lowp> lowp_f64mat4x2;
+	using lowp_f64mat4x2 = mat<4, 2, f64, lowp>;
 
 	/// Low double-qualifier floating-point 4x3 matrix.
 	/// @see gtc_type_precision
-	typedef mat<4, 3, f64, lowp> lowp_f64mat4x3;
+	using lowp_f64mat4x3 = mat<4, 3, f64, lowp>;
 
 	/// Low double-qualifier floating-point 4x4 matrix.
 	/// @see gtc_type_precision
-	typedef mat<4, 4, f64, lowp> lowp_f64mat4x4;
+	using lowp_f64mat4x4 = mat<4, 4, f64, lowp>;
 
 	/// Low double-qualifier floating-point 1x1 matrix.
 	/// @see gtc_type_precision
@@ -1140,15 +1140,15 @@ namespace glm
 
 	/// Low double-qualifier floating-point 2x2 matrix.
 	/// @see gtc_type_precision
-	typedef lowp_f64mat2x2 lowp_f64mat2;
+	using lowp_f64mat2 = lowp_f64mat2x2;
 
 	/// Low double-qualifier floating-point 3x3 matrix.
 	/// @see gtc_type_precision
-	typedef lowp_f64mat3x3 lowp_f64mat3;
+	using lowp_f64mat3 = lowp_f64mat3x3;
 
 	/// Low double-qualifier floating-point 4x4 matrix.
 	/// @see gtc_type_precision
-	typedef lowp_f64mat4x4 lowp_f64mat4;
+	using lowp_f64mat4 = lowp_f64mat4x4;
 
 
 	/// Medium double-qualifier floating-point 1x1 matrix.
@@ -1157,39 +1157,39 @@ namespace glm
 
 	/// Medium double-qualifier floating-point 2x2 matrix.
 	/// @see gtc_type_precision
-	typedef mat<2, 2, f64, mediump> mediump_f64mat2x2;
+	using mediump_f64mat2x2 = mat<2, 2, f64, mediump>;
 
 	/// Medium double-qualifier floating-point 2x3 matrix.
 	/// @see gtc_type_precision
-	typedef mat<2, 3, f64, mediump> mediump_f64mat2x3;
+	using mediump_f64mat2x3 = mat<2, 3, f64, mediump>;
 
 	/// Medium double-qualifier floating-point 2x4 matrix.
 	/// @see gtc_type_precision
-	typedef mat<2, 4, f64, mediump> mediump_f64mat2x4;
+	using mediump_f64mat2x4 = mat<2, 4, f64, mediump>;
 
 	/// Medium double-qualifier floating-point 3x2 matrix.
 	/// @see gtc_type_precision
-	typedef mat<3, 2, f64, mediump> mediump_f64mat3x2;
+	using mediump_f64mat3x2 = mat<3, 2, f64, mediump>;
 
 	/// Medium double-qualifier floating-point 3x3 matrix.
 	/// @see gtc_type_precision
-	typedef mat<3, 3, f64, mediump> mediump_f64mat3x3;
+	using mediump_f64mat3x3 = mat<3, 3, f64, mediump>;
 
 	/// Medium double-qualifier floating-point 3x4 matrix.
 	/// @see gtc_type_precision
-	typedef mat<3, 4, f64, mediump> mediump_f64mat3x4;
+	using mediump_f64mat3x4 = mat<3, 4, f64, mediump>;
 
 	/// Medium double-qualifier floating-point 4x2 matrix.
 	/// @see gtc_type_precision
-	typedef mat<4, 2, f64, mediump> mediump_f64mat4x2;
+	using mediump_f64mat4x2 = mat<4, 2, f64, mediump>;
 
 	/// Medium double-qualifier floating-point 4x3 matrix.
 	/// @see gtc_type_precision
-	typedef mat<4, 3, f64, mediump> mediump_f64mat4x3;
+	using mediump_f64mat4x3 = mat<4, 3, f64, mediump>;
 
 	/// Medium double-qualifier floating-point 4x4 matrix.
 	/// @see gtc_type_precision
-	typedef mat<4, 4, f64, mediump> mediump_f64mat4x4;
+	using mediump_f64mat4x4 = mat<4, 4, f64, mediump>;
 
 	/// Medium double-qualifier floating-point 1x1 matrix.
 	/// @see gtc_type_precision
@@ -1197,15 +1197,15 @@ namespace glm
 
 	/// Medium double-qualifier floating-point 2x2 matrix.
 	/// @see gtc_type_precision
-	typedef mediump_f64mat2x2 mediump_f64mat2;
+	using mediump_f64mat2 = mediump_f64mat2x2;
 
 	/// Medium double-qualifier floating-point 3x3 matrix.
 	/// @see gtc_type_precision
-	typedef mediump_f64mat3x3 mediump_f64mat3;
+	using mediump_f64mat3 = mediump_f64mat3x3;
 
 	/// Medium double-qualifier floating-point 4x4 matrix.
 	/// @see gtc_type_precision
-	typedef mediump_f64mat4x4 mediump_f64mat4;
+	using mediump_f64mat4 = mediump_f64mat4x4;
 
 	/// High double-qualifier floating-point 1x1 matrix.
 	/// @see gtc_type_precision
@@ -1213,39 +1213,39 @@ namespace glm
 
 	/// High double-qualifier floating-point 2x2 matrix.
 	/// @see gtc_type_precision
-	typedef mat<2, 2, f64, highp> highp_f64mat2x2;
+	using highp_f64mat2x2 = mat<2, 2, f64, highp>;
 
 	/// High double-qualifier floating-point 2x3 matrix.
 	/// @see gtc_type_precision
-	typedef mat<2, 3, f64, highp> highp_f64mat2x3;
+	using highp_f64mat2x3 = mat<2, 3, f64, highp>;
 
 	/// High double-qualifier floating-point 2x4 matrix.
 	/// @see gtc_type_precision
-	typedef mat<2, 4, f64, highp> highp_f64mat2x4;
+	using highp_f64mat2x4 = mat<2, 4, f64, highp>;
 
 	/// High double-qualifier floating-point 3x2 matrix.
 	/// @see gtc_type_precision
-	typedef mat<3, 2, f64, highp> highp_f64mat3x2;
+	using highp_f64mat3x2 = mat<3, 2, f64, highp>;
 
 	/// High double-qualifier floating-point 3x3 matrix.
 	/// @see gtc_type_precision
-	typedef mat<3, 3, f64, highp> highp_f64mat3x3;
+	using highp_f64mat3x3 = mat<3, 3, f64, highp>;
 
 	/// High double-qualifier floating-point 3x4 matrix.
 	/// @see gtc_type_precision
-	typedef mat<3, 4, f64, highp> highp_f64mat3x4;
+	using highp_f64mat3x4 = mat<3, 4, f64, highp>;
 
 	/// High double-qualifier floating-point 4x2 matrix.
 	/// @see gtc_type_precision
-	typedef mat<4, 2, f64, highp> highp_f64mat4x2;
+	using highp_f64mat4x2 = mat<4, 2, f64, highp>;
 
 	/// High double-qualifier floating-point 4x3 matrix.
 	/// @see gtc_type_precision
-	typedef mat<4, 3, f64, highp> highp_f64mat4x3;
+	using highp_f64mat4x3 = mat<4, 3, f64, highp>;
 
 	/// High double-qualifier floating-point 4x4 matrix.
 	/// @see gtc_type_precision
-	typedef mat<4, 4, f64, highp> highp_f64mat4x4;
+	using highp_f64mat4x4 = mat<4, 4, f64, highp>;
 
 	/// High double-qualifier floating-point 1x1 matrix.
 	/// @see gtc_type_precision
@@ -1253,15 +1253,15 @@ namespace glm
 
 	/// High double-qualifier floating-point 2x2 matrix.
 	/// @see gtc_type_precision
-	typedef highp_f64mat2x2 highp_f64mat2;
+	using highp_f64mat2 = highp_f64mat2x2;
 
 	/// High double-qualifier floating-point 3x3 matrix.
 	/// @see gtc_type_precision
-	typedef highp_f64mat3x3 highp_f64mat3;
+	using highp_f64mat3 = highp_f64mat3x3;
 
 	/// High double-qualifier floating-point 4x4 matrix.
 	/// @see gtc_type_precision
-	typedef highp_f64mat4x4 highp_f64mat4;
+	using highp_f64mat4 = highp_f64mat4x4;
 
 
 	/////////////////////////////
@@ -1269,257 +1269,257 @@ namespace glm
 
 	/// Low qualifier signed integer vector of 1 component type.
 	/// @see gtc_type_precision
-	typedef vec<1, int, lowp>		lowp_ivec1;
+	using		lowp_ivec1 = vec<1, int, lowp>;
 
 	/// Low qualifier signed integer vector of 2 components type.
 	/// @see gtc_type_precision
-	typedef vec<2, int, lowp>		lowp_ivec2;
+	using		lowp_ivec2 = vec<2, int, lowp>;
 
 	/// Low qualifier signed integer vector of 3 components type.
 	/// @see gtc_type_precision
-	typedef vec<3, int, lowp>		lowp_ivec3;
+	using		lowp_ivec3 = vec<3, int, lowp>;
 
 	/// Low qualifier signed integer vector of 4 components type.
 	/// @see gtc_type_precision
-	typedef vec<4, int, lowp>		lowp_ivec4;
+	using		lowp_ivec4 = vec<4, int, lowp>;
 
 
 	/// Medium qualifier signed integer vector of 1 component type.
 	/// @see gtc_type_precision
-	typedef vec<1, int, mediump>	mediump_ivec1;
+	using	mediump_ivec1 = vec<1, int, mediump>;
 
 	/// Medium qualifier signed integer vector of 2 components type.
 	/// @see gtc_type_precision
-	typedef vec<2, int, mediump>	mediump_ivec2;
+	using	mediump_ivec2 = vec<2, int, mediump>;
 
 	/// Medium qualifier signed integer vector of 3 components type.
 	/// @see gtc_type_precision
-	typedef vec<3, int, mediump>	mediump_ivec3;
+	using	mediump_ivec3 = vec<3, int, mediump>;
 
 	/// Medium qualifier signed integer vector of 4 components type.
 	/// @see gtc_type_precision
-	typedef vec<4, int, mediump>	mediump_ivec4;
+	using	mediump_ivec4 = vec<4, int, mediump>;
 
 
 	/// High qualifier signed integer vector of 1 component type.
 	/// @see gtc_type_precision
-	typedef vec<1, int, highp>		highp_ivec1;
+	using		highp_ivec1 = vec<1, int, highp>;
 
 	/// High qualifier signed integer vector of 2 components type.
 	/// @see gtc_type_precision
-	typedef vec<2, int, highp>		highp_ivec2;
+	using		highp_ivec2 = vec<2, int, highp>;
 
 	/// High qualifier signed integer vector of 3 components type.
 	/// @see gtc_type_precision
-	typedef vec<3, int, highp>		highp_ivec3;
+	using		highp_ivec3 = vec<3, int, highp>;
 
 	/// High qualifier signed integer vector of 4 components type.
 	/// @see gtc_type_precision
-	typedef vec<4, int, highp>		highp_ivec4;
+	using		highp_ivec4 = vec<4, int, highp>;
 
 
 	/// Low qualifier 8 bit signed integer vector of 1 component type.
 	/// @see gtc_type_precision
-	typedef vec<1, i8, lowp>		lowp_i8vec1;
+	using		lowp_i8vec1 = vec<1, i8, lowp>;
 
 	/// Low qualifier 8 bit signed integer vector of 2 components type.
 	/// @see gtc_type_precision
-	typedef vec<2, i8, lowp>		lowp_i8vec2;
+	using		lowp_i8vec2 = vec<2, i8, lowp>;
 
 	/// Low qualifier 8 bit signed integer vector of 3 components type.
 	/// @see gtc_type_precision
-	typedef vec<3, i8, lowp>		lowp_i8vec3;
+	using		lowp_i8vec3 = vec<3, i8, lowp>;
 
 	/// Low qualifier 8 bit signed integer vector of 4 components type.
 	/// @see gtc_type_precision
-	typedef vec<4, i8, lowp>		lowp_i8vec4;
+	using		lowp_i8vec4 = vec<4, i8, lowp>;
 
 
 	/// Medium qualifier 8 bit signed integer scalar type.
 	/// @see gtc_type_precision
-	typedef vec<1, i8, mediump>		mediump_i8vec1;
+	using		mediump_i8vec1 = vec<1, i8, mediump>;
 
 	/// Medium qualifier 8 bit signed integer vector of 2 components type.
 	/// @see gtc_type_precision
-	typedef vec<2, i8, mediump>		mediump_i8vec2;
+	using		mediump_i8vec2 = vec<2, i8, mediump>;
 
 	/// Medium qualifier 8 bit signed integer vector of 3 components type.
 	/// @see gtc_type_precision
-	typedef vec<3, i8, mediump>		mediump_i8vec3;
+	using		mediump_i8vec3 = vec<3, i8, mediump>;
 
 	/// Medium qualifier 8 bit signed integer vector of 4 components type.
 	/// @see gtc_type_precision
-	typedef vec<4, i8, mediump>		mediump_i8vec4;
+	using		mediump_i8vec4 = vec<4, i8, mediump>;
 
 
 	/// High qualifier 8 bit signed integer scalar type.
 	/// @see gtc_type_precision
-	typedef vec<1, i8, highp>		highp_i8vec1;
+	using		highp_i8vec1 = vec<1, i8, highp>;
 
 	/// High qualifier 8 bit signed integer vector of 2 components type.
 	/// @see gtc_type_precision
-	typedef vec<2, i8, highp>		highp_i8vec2;
+	using		highp_i8vec2 = vec<2, i8, highp>;
 
 	/// High qualifier 8 bit signed integer vector of 3 components type.
 	/// @see gtc_type_precision
-	typedef vec<3, i8, highp>		highp_i8vec3;
+	using		highp_i8vec3 = vec<3, i8, highp>;
 
 	/// High qualifier 8 bit signed integer vector of 4 components type.
 	/// @see gtc_type_precision
-	typedef vec<4, i8, highp>		highp_i8vec4;
+	using		highp_i8vec4 = vec<4, i8, highp>;
 
 
 	/// Low qualifier 16 bit signed integer scalar type.
 	/// @see gtc_type_precision
-	typedef vec<1, i16, lowp>		lowp_i16vec1;
+	using		lowp_i16vec1 = vec<1, i16, lowp>;
 
 	/// Low qualifier 16 bit signed integer vector of 2 components type.
 	/// @see gtc_type_precision
-	typedef vec<2, i16, lowp>		lowp_i16vec2;
+	using		lowp_i16vec2 = vec<2, i16, lowp>;
 
 	/// Low qualifier 16 bit signed integer vector of 3 components type.
 	/// @see gtc_type_precision
-	typedef vec<3, i16, lowp>		lowp_i16vec3;
+	using		lowp_i16vec3 = vec<3, i16, lowp>;
 
 	/// Low qualifier 16 bit signed integer vector of 4 components type.
 	/// @see gtc_type_precision
-	typedef vec<4, i16, lowp>		lowp_i16vec4;
+	using		lowp_i16vec4 = vec<4, i16, lowp>;
 
 
 	/// Medium qualifier 16 bit signed integer scalar type.
 	/// @see gtc_type_precision
-	typedef vec<1, i16, mediump>	mediump_i16vec1;
+	using	mediump_i16vec1 = vec<1, i16, mediump>;
 
 	/// Medium qualifier 16 bit signed integer vector of 2 components type.
 	/// @see gtc_type_precision
-	typedef vec<2, i16, mediump>	mediump_i16vec2;
+	using	mediump_i16vec2 = vec<2, i16, mediump>;
 
 	/// Medium qualifier 16 bit signed integer vector of 3 components type.
 	/// @see gtc_type_precision
-	typedef vec<3, i16, mediump>	mediump_i16vec3;
+	using	mediump_i16vec3 = vec<3, i16, mediump>;
 
 	/// Medium qualifier 16 bit signed integer vector of 4 components type.
 	/// @see gtc_type_precision
-	typedef vec<4, i16, mediump>	mediump_i16vec4;
+	using	mediump_i16vec4 = vec<4, i16, mediump>;
 
 
 	/// High qualifier 16 bit signed integer scalar type.
 	/// @see gtc_type_precision
-	typedef vec<1, i16, highp>		highp_i16vec1;
+	using		highp_i16vec1 = vec<1, i16, highp>;
 
 	/// High qualifier 16 bit signed integer vector of 2 components type.
 	/// @see gtc_type_precision
-	typedef vec<2, i16, highp>		highp_i16vec2;
+	using		highp_i16vec2 = vec<2, i16, highp>;
 
 	/// High qualifier 16 bit signed integer vector of 3 components type.
 	/// @see gtc_type_precision
-	typedef vec<3, i16, highp>		highp_i16vec3;
+	using		highp_i16vec3 = vec<3, i16, highp>;
 
 	/// High qualifier 16 bit signed integer vector of 4 components type.
 	/// @see gtc_type_precision
-	typedef vec<4, i16, highp>		highp_i16vec4;
+	using		highp_i16vec4 = vec<4, i16, highp>;
 
 
 	/// Low qualifier 32 bit signed integer scalar type.
 	/// @see gtc_type_precision
-	typedef vec<1, i32, lowp>		lowp_i32vec1;
+	using		lowp_i32vec1 = vec<1, i32, lowp>;
 
 	/// Low qualifier 32 bit signed integer vector of 2 components type.
 	/// @see gtc_type_precision
-	typedef vec<2, i32, lowp>		lowp_i32vec2;
+	using		lowp_i32vec2 = vec<2, i32, lowp>;
 
 	/// Low qualifier 32 bit signed integer vector of 3 components type.
 	/// @see gtc_type_precision
-	typedef vec<3, i32, lowp>		lowp_i32vec3;
+	using		lowp_i32vec3 = vec<3, i32, lowp>;
 
 	/// Low qualifier 32 bit signed integer vector of 4 components type.
 	/// @see gtc_type_precision
-	typedef vec<4, i32, lowp>		lowp_i32vec4;
+	using		lowp_i32vec4 = vec<4, i32, lowp>;
 
 
 	/// Medium qualifier 32 bit signed integer scalar type.
 	/// @see gtc_type_precision
-	typedef vec<1, i32, mediump>	mediump_i32vec1;
+	using	mediump_i32vec1 = vec<1, i32, mediump>;
 
 	/// Medium qualifier 32 bit signed integer vector of 2 components type.
 	/// @see gtc_type_precision
-	typedef vec<2, i32, mediump>	mediump_i32vec2;
+	using	mediump_i32vec2 = vec<2, i32, mediump>;
 
 	/// Medium qualifier 32 bit signed integer vector of 3 components type.
 	/// @see gtc_type_precision
-	typedef vec<3, i32, mediump>	mediump_i32vec3;
+	using	mediump_i32vec3 = vec<3, i32, mediump>;
 
 	/// Medium qualifier 32 bit signed integer vector of 4 components type.
 	/// @see gtc_type_precision
-	typedef vec<4, i32, mediump>	mediump_i32vec4;
+	using	mediump_i32vec4 = vec<4, i32, mediump>;
 
 
 	/// High qualifier 32 bit signed integer scalar type.
 	/// @see gtc_type_precision
-	typedef vec<1, i32, highp>		highp_i32vec1;
+	using		highp_i32vec1 = vec<1, i32, highp>;
 
 	/// High qualifier 32 bit signed integer vector of 2 components type.
 	/// @see gtc_type_precision
-	typedef vec<2, i32, highp>		highp_i32vec2;
+	using		highp_i32vec2 = vec<2, i32, highp>;
 
 	/// High qualifier 32 bit signed integer vector of 3 components type.
 	/// @see gtc_type_precision
-	typedef vec<3, i32, highp>		highp_i32vec3;
+	using		highp_i32vec3 = vec<3, i32, highp>;
 
 	/// High qualifier 32 bit signed integer vector of 4 components type.
 	/// @see gtc_type_precision
-	typedef vec<4, i32, highp>		highp_i32vec4;
+	using		highp_i32vec4 = vec<4, i32, highp>;
 
 
 	/// Low qualifier 64 bit signed integer scalar type.
 	/// @see gtc_type_precision
-	typedef vec<1, i64, lowp>		lowp_i64vec1;
+	using		lowp_i64vec1 = vec<1, i64, lowp>;
 
 	/// Low qualifier 64 bit signed integer vector of 2 components type.
 	/// @see gtc_type_precision
-	typedef vec<2, i64, lowp>		lowp_i64vec2;
+	using		lowp_i64vec2 = vec<2, i64, lowp>;
 
 	/// Low qualifier 64 bit signed integer vector of 3 components type.
 	/// @see gtc_type_precision
-	typedef vec<3, i64, lowp>		lowp_i64vec3;
+	using		lowp_i64vec3 = vec<3, i64, lowp>;
 
 	/// Low qualifier 64 bit signed integer vector of 4 components type.
 	/// @see gtc_type_precision
-	typedef vec<4, i64, lowp>		lowp_i64vec4;
+	using		lowp_i64vec4 = vec<4, i64, lowp>;
 
 
 	/// Medium qualifier 64 bit signed integer scalar type.
 	/// @see gtc_type_precision
-	typedef vec<1, i64, mediump>	mediump_i64vec1;
+	using	mediump_i64vec1 = vec<1, i64, mediump>;
 
 	/// Medium qualifier 64 bit signed integer vector of 2 components type.
 	/// @see gtc_type_precision
-	typedef vec<2, i64, mediump>	mediump_i64vec2;
+	using	mediump_i64vec2 = vec<2, i64, mediump>;
 
 	/// Medium qualifier 64 bit signed integer vector of 3 components type.
 	/// @see gtc_type_precision
-	typedef vec<3, i64, mediump>	mediump_i64vec3;
+	using	mediump_i64vec3 = vec<3, i64, mediump>;
 
 	/// Medium qualifier 64 bit signed integer vector of 4 components type.
 	/// @see gtc_type_precision
-	typedef vec<4, i64, mediump>	mediump_i64vec4;
+	using	mediump_i64vec4 = vec<4, i64, mediump>;
 
 
 	/// High qualifier 64 bit signed integer scalar type.
 	/// @see gtc_type_precision
-	typedef vec<1, i64, highp>		highp_i64vec1;
+	using		highp_i64vec1 = vec<1, i64, highp>;
 
 	/// High qualifier 64 bit signed integer vector of 2 components type.
 	/// @see gtc_type_precision
-	typedef vec<2, i64, highp>		highp_i64vec2;
+	using		highp_i64vec2 = vec<2, i64, highp>;
 
 	/// High qualifier 64 bit signed integer vector of 3 components type.
 	/// @see gtc_type_precision
-	typedef vec<3, i64, highp>		highp_i64vec3;
+	using		highp_i64vec3 = vec<3, i64, highp>;
 
 	/// High qualifier 64 bit signed integer vector of 4 components type.
 	/// @see gtc_type_precision
-	typedef vec<4, i64, highp>		highp_i64vec4;
+	using		highp_i64vec4 = vec<4, i64, highp>;
 
 
 	/////////////////////////////
@@ -1527,257 +1527,257 @@ namespace glm
 
 	/// Low qualifier unsigned integer vector of 1 component type.
 	/// @see gtc_type_precision
-	typedef vec<1, uint, lowp>		lowp_uvec1;
+	using		lowp_uvec1 = vec<1, uint, lowp>;
 
 	/// Low qualifier unsigned integer vector of 2 components type.
 	/// @see gtc_type_precision
-	typedef vec<2, uint, lowp>		lowp_uvec2;
+	using		lowp_uvec2 = vec<2, uint, lowp>;
 
 	/// Low qualifier unsigned integer vector of 3 components type.
 	/// @see gtc_type_precision
-	typedef vec<3, uint, lowp>		lowp_uvec3;
+	using		lowp_uvec3 = vec<3, uint, lowp>;
 
 	/// Low qualifier unsigned integer vector of 4 components type.
 	/// @see gtc_type_precision
-	typedef vec<4, uint, lowp>		lowp_uvec4;
+	using		lowp_uvec4 = vec<4, uint, lowp>;
 
 
 	/// Medium qualifier unsigned integer vector of 1 component type.
 	/// @see gtc_type_precision
-	typedef vec<1, uint, mediump>	mediump_uvec1;
+	using	mediump_uvec1 = vec<1, uint, mediump>;
 
 	/// Medium qualifier unsigned integer vector of 2 components type.
 	/// @see gtc_type_precision
-	typedef vec<2, uint, mediump>	mediump_uvec2;
+	using	mediump_uvec2 = vec<2, uint, mediump>;
 
 	/// Medium qualifier unsigned integer vector of 3 components type.
 	/// @see gtc_type_precision
-	typedef vec<3, uint, mediump>	mediump_uvec3;
+	using	mediump_uvec3 = vec<3, uint, mediump>;
 
 	/// Medium qualifier unsigned integer vector of 4 components type.
 	/// @see gtc_type_precision
-	typedef vec<4, uint, mediump>	mediump_uvec4;
+	using	mediump_uvec4 = vec<4, uint, mediump>;
 
 
 	/// High qualifier unsigned integer vector of 1 component type.
 	/// @see gtc_type_precision
-	typedef vec<1, uint, highp>		highp_uvec1;
+	using		highp_uvec1 = vec<1, uint, highp>;
 
 	/// High qualifier unsigned integer vector of 2 components type.
 	/// @see gtc_type_precision
-	typedef vec<2, uint, highp>		highp_uvec2;
+	using		highp_uvec2 = vec<2, uint, highp>;
 
 	/// High qualifier unsigned integer vector of 3 components type.
 	/// @see gtc_type_precision
-	typedef vec<3, uint, highp>		highp_uvec3;
+	using		highp_uvec3 = vec<3, uint, highp>;
 
 	/// High qualifier unsigned integer vector of 4 components type.
 	/// @see gtc_type_precision
-	typedef vec<4, uint, highp>		highp_uvec4;
+	using		highp_uvec4 = vec<4, uint, highp>;
 
 
 	/// Low qualifier 8 bit unsigned integer scalar type.
 	/// @see gtc_type_precision
-	typedef vec<1, u8, lowp>		lowp_u8vec1;
+	using		lowp_u8vec1 = vec<1, u8, lowp>;
 
 	/// Low qualifier 8 bit unsigned integer vector of 2 components type.
 	/// @see gtc_type_precision
-	typedef vec<2, u8, lowp>		lowp_u8vec2;
+	using		lowp_u8vec2 = vec<2, u8, lowp>;
 
 	/// Low qualifier 8 bit unsigned integer vector of 3 components type.
 	/// @see gtc_type_precision
-	typedef vec<3, u8, lowp>		lowp_u8vec3;
+	using		lowp_u8vec3 = vec<3, u8, lowp>;
 
 	/// Low qualifier 8 bit unsigned integer vector of 4 components type.
 	/// @see gtc_type_precision
-	typedef vec<4, u8, lowp>		lowp_u8vec4;
+	using		lowp_u8vec4 = vec<4, u8, lowp>;
 
 
 	/// Medium qualifier 8 bit unsigned integer scalar type.
 	/// @see gtc_type_precision
-	typedef vec<1, u8, mediump>		mediump_u8vec1;
+	using		mediump_u8vec1 = vec<1, u8, mediump>;
 
 	/// Medium qualifier 8 bit unsigned integer vector of 2 components type.
 	/// @see gtc_type_precision
-	typedef vec<2, u8, mediump>		mediump_u8vec2;
+	using		mediump_u8vec2 = vec<2, u8, mediump>;
 
 	/// Medium qualifier 8 bit unsigned integer vector of 3 components type.
 	/// @see gtc_type_precision
-	typedef vec<3, u8, mediump>		mediump_u8vec3;
+	using		mediump_u8vec3 = vec<3, u8, mediump>;
 
 	/// Medium qualifier 8 bit unsigned integer vector of 4 components type.
 	/// @see gtc_type_precision
-	typedef vec<4, u8, mediump>		mediump_u8vec4;
+	using		mediump_u8vec4 = vec<4, u8, mediump>;
 
 
 	/// High qualifier 8 bit unsigned integer scalar type.
 	/// @see gtc_type_precision
-	typedef vec<1, u8, highp>		highp_u8vec1;
+	using		highp_u8vec1 = vec<1, u8, highp>;
 
 	/// High qualifier 8 bit unsigned integer vector of 2 components type.
 	/// @see gtc_type_precision
-	typedef vec<2, u8, highp>		highp_u8vec2;
+	using		highp_u8vec2 = vec<2, u8, highp>;
 
 	/// High qualifier 8 bit unsigned integer vector of 3 components type.
 	/// @see gtc_type_precision
-	typedef vec<3, u8, highp>		highp_u8vec3;
+	using		highp_u8vec3 = vec<3, u8, highp>;
 
 	/// High qualifier 8 bit unsigned integer vector of 4 components type.
 	/// @see gtc_type_precision
-	typedef vec<4, u8, highp>		highp_u8vec4;
+	using		highp_u8vec4 = vec<4, u8, highp>;
 
 
 	/// Low qualifier 16 bit unsigned integer scalar type.
 	/// @see gtc_type_precision
-	typedef vec<1, u16, lowp>		lowp_u16vec1;
+	using		lowp_u16vec1 = vec<1, u16, lowp>;
 
 	/// Low qualifier 16 bit unsigned integer vector of 2 components type.
 	/// @see gtc_type_precision
-	typedef vec<2, u16, lowp>		lowp_u16vec2;
+	using		lowp_u16vec2 = vec<2, u16, lowp>;
 
 	/// Low qualifier 16 bit unsigned integer vector of 3 components type.
 	/// @see gtc_type_precision
-	typedef vec<3, u16, lowp>		lowp_u16vec3;
+	using		lowp_u16vec3 = vec<3, u16, lowp>;
 
 	/// Low qualifier 16 bit unsigned integer vector of 4 components type.
 	/// @see gtc_type_precision
-	typedef vec<4, u16, lowp>		lowp_u16vec4;
+	using		lowp_u16vec4 = vec<4, u16, lowp>;
 
 
 	/// Medium qualifier 16 bit unsigned integer scalar type.
 	/// @see gtc_type_precision
-	typedef vec<1, u16, mediump>	mediump_u16vec1;
+	using	mediump_u16vec1 = vec<1, u16, mediump>;
 
 	/// Medium qualifier 16 bit unsigned integer vector of 2 components type.
 	/// @see gtc_type_precision
-	typedef vec<2, u16, mediump>	mediump_u16vec2;
+	using	mediump_u16vec2 = vec<2, u16, mediump>;
 
 	/// Medium qualifier 16 bit unsigned integer vector of 3 components type.
 	/// @see gtc_type_precision
-	typedef vec<3, u16, mediump>	mediump_u16vec3;
+	using	mediump_u16vec3 = vec<3, u16, mediump>;
 
 	/// Medium qualifier 16 bit unsigned integer vector of 4 components type.
 	/// @see gtc_type_precision
-	typedef vec<4, u16, mediump>	mediump_u16vec4;
+	using	mediump_u16vec4 = vec<4, u16, mediump>;
 
 
 	/// High qualifier 16 bit unsigned integer scalar type.
 	/// @see gtc_type_precision
-	typedef vec<1, u16, highp>		highp_u16vec1;
+	using		highp_u16vec1 = vec<1, u16, highp>;
 
 	/// High qualifier 16 bit unsigned integer vector of 2 components type.
 	/// @see gtc_type_precision
-	typedef vec<2, u16, highp>		highp_u16vec2;
+	using		highp_u16vec2 = vec<2, u16, highp>;
 
 	/// High qualifier 16 bit unsigned integer vector of 3 components type.
 	/// @see gtc_type_precision
-	typedef vec<3, u16, highp>		highp_u16vec3;
+	using		highp_u16vec3 = vec<3, u16, highp>;
 
 	/// High qualifier 16 bit unsigned integer vector of 4 components type.
 	/// @see gtc_type_precision
-	typedef vec<4, u16, highp>		highp_u16vec4;
+	using		highp_u16vec4 = vec<4, u16, highp>;
 
 
 	/// Low qualifier 32 bit unsigned integer scalar type.
 	/// @see gtc_type_precision
-	typedef vec<1, u32, lowp>		lowp_u32vec1;
+	using		lowp_u32vec1 = vec<1, u32, lowp>;
 
 	/// Low qualifier 32 bit unsigned integer vector of 2 components type.
 	/// @see gtc_type_precision
-	typedef vec<2, u32, lowp>		lowp_u32vec2;
+	using		lowp_u32vec2 = vec<2, u32, lowp>;
 
 	/// Low qualifier 32 bit unsigned integer vector of 3 components type.
 	/// @see gtc_type_precision
-	typedef vec<3, u32, lowp>		lowp_u32vec3;
+	using		lowp_u32vec3 = vec<3, u32, lowp>;
 
 	/// Low qualifier 32 bit unsigned integer vector of 4 components type.
 	/// @see gtc_type_precision
-	typedef vec<4, u32, lowp>		lowp_u32vec4;
+	using		lowp_u32vec4 = vec<4, u32, lowp>;
 
 
 	/// Medium qualifier 32 bit unsigned integer scalar type.
 	/// @see gtc_type_precision
-	typedef vec<1, u32, mediump>	mediump_u32vec1;
+	using	mediump_u32vec1 = vec<1, u32, mediump>;
 
 	/// Medium qualifier 32 bit unsigned integer vector of 2 components type.
 	/// @see gtc_type_precision
-	typedef vec<2, u32, mediump>	mediump_u32vec2;
+	using	mediump_u32vec2 = vec<2, u32, mediump>;
 
 	/// Medium qualifier 32 bit unsigned integer vector of 3 components type.
 	/// @see gtc_type_precision
-	typedef vec<3, u32, mediump>	mediump_u32vec3;
+	using	mediump_u32vec3 = vec<3, u32, mediump>;
 
 	/// Medium qualifier 32 bit unsigned integer vector of 4 components type.
 	/// @see gtc_type_precision
-	typedef vec<4, u32, mediump>	mediump_u32vec4;
+	using	mediump_u32vec4 = vec<4, u32, mediump>;
 
 
 	/// High qualifier 32 bit unsigned integer scalar type.
 	/// @see gtc_type_precision
-	typedef vec<1, u32, highp>		highp_u32vec1;
+	using		highp_u32vec1 = vec<1, u32, highp>;
 
 	/// High qualifier 32 bit unsigned integer vector of 2 components type.
 	/// @see gtc_type_precision
-	typedef vec<2, u32, highp>		highp_u32vec2;
+	using		highp_u32vec2 = vec<2, u32, highp>;
 
 	/// High qualifier 32 bit unsigned integer vector of 3 components type.
 	/// @see gtc_type_precision
-	typedef vec<3, u32, highp>		highp_u32vec3;
+	using		highp_u32vec3 = vec<3, u32, highp>;
 
 	/// High qualifier 32 bit unsigned integer vector of 4 components type.
 	/// @see gtc_type_precision
-	typedef vec<4, u32, highp>		highp_u32vec4;
+	using		highp_u32vec4 = vec<4, u32, highp>;
 
 
 	/// Low qualifier 64 bit unsigned integer scalar type.
 	/// @see gtc_type_precision
-	typedef vec<1, u64, lowp>		lowp_u64vec1;
+	using		lowp_u64vec1 = vec<1, u64, lowp>;
 
 	/// Low qualifier 64 bit unsigned integer vector of 2 components type.
 	/// @see gtc_type_precision
-	typedef vec<2, u64, lowp>		lowp_u64vec2;
+	using		lowp_u64vec2 = vec<2, u64, lowp>;
 
 	/// Low qualifier 64 bit unsigned integer vector of 3 components type.
 	/// @see gtc_type_precision
-	typedef vec<3, u64, lowp>		lowp_u64vec3;
+	using		lowp_u64vec3 = vec<3, u64, lowp>;
 
 	/// Low qualifier 64 bit unsigned integer vector of 4 components type.
 	/// @see gtc_type_precision
-	typedef vec<4, u64, lowp>		lowp_u64vec4;
+	using		lowp_u64vec4 = vec<4, u64, lowp>;
 
 
 	/// Medium qualifier 64 bit unsigned integer scalar type.
 	/// @see gtc_type_precision
-	typedef vec<1, u64, mediump>	mediump_u64vec1;
+	using	mediump_u64vec1 = vec<1, u64, mediump>;
 
 	/// Medium qualifier 64 bit unsigned integer vector of 2 components type.
 	/// @see gtc_type_precision
-	typedef vec<2, u64, mediump>	mediump_u64vec2;
+	using	mediump_u64vec2 = vec<2, u64, mediump>;
 
 	/// Medium qualifier 64 bit unsigned integer vector of 3 components type.
 	/// @see gtc_type_precision
-	typedef vec<3, u64, mediump>	mediump_u64vec3;
+	using	mediump_u64vec3 = vec<3, u64, mediump>;
 
 	/// Medium qualifier 64 bit unsigned integer vector of 4 components type.
 	/// @see gtc_type_precision
-	typedef vec<4, u64, mediump>	mediump_u64vec4;
+	using	mediump_u64vec4 = vec<4, u64, mediump>;
 
 
 	/// High qualifier 64 bit unsigned integer scalar type.
 	/// @see gtc_type_precision
-	typedef vec<1, u64, highp>		highp_u64vec1;
+	using		highp_u64vec1 = vec<1, u64, highp>;
 
 	/// High qualifier 64 bit unsigned integer vector of 2 components type.
 	/// @see gtc_type_precision
-	typedef vec<2, u64, highp>		highp_u64vec2;
+	using		highp_u64vec2 = vec<2, u64, highp>;
 
 	/// High qualifier 64 bit unsigned integer vector of 3 components type.
 	/// @see gtc_type_precision
-	typedef vec<3, u64, highp>		highp_u64vec3;
+	using		highp_u64vec3 = vec<3, u64, highp>;
 
 	/// High qualifier 64 bit unsigned integer vector of 4 components type.
 	/// @see gtc_type_precision
-	typedef vec<4, u64, highp>		highp_u64vec4;
+	using		highp_u64vec4 = vec<4, u64, highp>;
 
 
 	//////////////////////
@@ -1785,72 +1785,72 @@ namespace glm
 
 	/// 32 bit single-qualifier floating-point scalar.
 	/// @see gtc_type_precision
-	typedef float32 float32_t;
+	using float32_t = float32;
 
 	/// 32 bit single-qualifier floating-point scalar.
 	/// @see gtc_type_precision
-	typedef float32 f32;
+	using f32 = float32;
 
 #	ifndef GLM_FORCE_SINGLE_ONLY
 
 		/// 64 bit double-qualifier floating-point scalar.
 		/// @see gtc_type_precision
-		typedef float64 float64_t;
+		using float64_t = float64;
 
 		/// 64 bit double-qualifier floating-point scalar.
 		/// @see gtc_type_precision
-		typedef float64 f64;
+		using f64 = float64;
 #	endif//GLM_FORCE_SINGLE_ONLY
 
 	/// Single-qualifier floating-point vector of 1 component.
 	/// @see gtc_type_precision
-	typedef vec<1, float, defaultp> fvec1;
+	using fvec1 = vec<1, float, defaultp>;
 
 	/// Single-qualifier floating-point vector of 2 components.
 	/// @see gtc_type_precision
-	typedef vec<2, float, defaultp> fvec2;
+	using fvec2 = vec<2, float, defaultp>;
 
 	/// Single-qualifier floating-point vector of 3 components.
 	/// @see gtc_type_precision
-	typedef vec<3, float, defaultp> fvec3;
+	using fvec3 = vec<3, float, defaultp>;
 
 	/// Single-qualifier floating-point vector of 4 components.
 	/// @see gtc_type_precision
-	typedef vec<4, float, defaultp> fvec4;
+	using fvec4 = vec<4, float, defaultp>;
 
 
 	/// Single-qualifier floating-point vector of 1 component.
 	/// @see gtc_type_precision
-	typedef vec<1, f32, defaultp> f32vec1;
+	using f32vec1 = vec<1, f32, defaultp>;
 
 	/// Single-qualifier floating-point vector of 2 components.
 	/// @see gtc_type_precision
-	typedef vec<2, f32, defaultp> f32vec2;
+	using f32vec2 = vec<2, f32, defaultp>;
 
 	/// Single-qualifier floating-point vector of 3 components.
 	/// @see gtc_type_precision
-	typedef vec<3, f32, defaultp> f32vec3;
+	using f32vec3 = vec<3, f32, defaultp>;
 
 	/// Single-qualifier floating-point vector of 4 components.
 	/// @see gtc_type_precision
-	typedef vec<4, f32, defaultp> f32vec4;
+	using f32vec4 = vec<4, f32, defaultp>;
 
 #	ifndef GLM_FORCE_SINGLE_ONLY
 		/// Double-qualifier floating-point vector of 1 component.
 		/// @see gtc_type_precision
-		typedef vec<1, f64, defaultp> f64vec1;
+		using f64vec1 = vec<1, f64, defaultp>;
 
 		/// Double-qualifier floating-point vector of 2 components.
 		/// @see gtc_type_precision
-		typedef vec<2, f64, defaultp> f64vec2;
+		using f64vec2 = vec<2, f64, defaultp>;
 
 		/// Double-qualifier floating-point vector of 3 components.
 		/// @see gtc_type_precision
-		typedef vec<3, f64, defaultp> f64vec3;
+		using f64vec3 = vec<3, f64, defaultp>;
 
 		/// Double-qualifier floating-point vector of 4 components.
 		/// @see gtc_type_precision
-		typedef vec<4, f64, defaultp> f64vec4;
+		using f64vec4 = vec<4, f64, defaultp>;
 #	endif//GLM_FORCE_SINGLE_ONLY
 
 
@@ -1863,15 +1863,15 @@ namespace glm
 
 	/// Single-qualifier floating-point 2x2 matrix.
 	/// @see gtc_type_precision
-	typedef mat<2, 2, f32, defaultp> fmat2;
+	using fmat2 = mat<2, 2, f32, defaultp>;
 
 	/// Single-qualifier floating-point 3x3 matrix.
 	/// @see gtc_type_precision
-	typedef mat<3, 3, f32, defaultp> fmat3;
+	using fmat3 = mat<3, 3, f32, defaultp>;
 
 	/// Single-qualifier floating-point 4x4 matrix.
 	/// @see gtc_type_precision
-	typedef mat<4, 4, f32, defaultp> fmat4;
+	using fmat4 = mat<4, 4, f32, defaultp>;
 
 
 	/// Single-qualifier floating-point 1x1 matrix.
@@ -1880,39 +1880,39 @@ namespace glm
 
 	/// Single-qualifier floating-point 2x2 matrix.
 	/// @see gtc_type_precision
-	typedef mat<2, 2, f32, defaultp> fmat2x2;
+	using fmat2x2 = mat<2, 2, f32, defaultp>;
 
 	/// Single-qualifier floating-point 2x3 matrix.
 	/// @see gtc_type_precision
-	typedef mat<2, 3, f32, defaultp> fmat2x3;
+	using fmat2x3 = mat<2, 3, f32, defaultp>;
 
 	/// Single-qualifier floating-point 2x4 matrix.
 	/// @see gtc_type_precision
-	typedef mat<2, 4, f32, defaultp> fmat2x4;
+	using fmat2x4 = mat<2, 4, f32, defaultp>;
 
 	/// Single-qualifier floating-point 3x2 matrix.
 	/// @see gtc_type_precision
-	typedef mat<3, 2, f32, defaultp> fmat3x2;
+	using fmat3x2 = mat<3, 2, f32, defaultp>;
 
 	/// Single-qualifier floating-point 3x3 matrix.
 	/// @see gtc_type_precision
-	typedef mat<3, 3, f32, defaultp> fmat3x3;
+	using fmat3x3 = mat<3, 3, f32, defaultp>;
 
 	/// Single-qualifier floating-point 3x4 matrix.
 	/// @see gtc_type_precision
-	typedef mat<3, 4, f32, defaultp> fmat3x4;
+	using fmat3x4 = mat<3, 4, f32, defaultp>;
 
 	/// Single-qualifier floating-point 4x2 matrix.
 	/// @see gtc_type_precision
-	typedef mat<4, 2, f32, defaultp> fmat4x2;
+	using fmat4x2 = mat<4, 2, f32, defaultp>;
 
 	/// Single-qualifier floating-point 4x3 matrix.
 	/// @see gtc_type_precision
-	typedef mat<4, 3, f32, defaultp> fmat4x3;
+	using fmat4x3 = mat<4, 3, f32, defaultp>;
 
 	/// Single-qualifier floating-point 4x4 matrix.
 	/// @see gtc_type_precision
-	typedef mat<4, 4, f32, defaultp> fmat4x4;
+	using fmat4x4 = mat<4, 4, f32, defaultp>;
 
 
 	/// Single-qualifier floating-point 1x1 matrix.
@@ -1921,15 +1921,15 @@ namespace glm
 
 	/// Single-qualifier floating-point 2x2 matrix.
 	/// @see gtc_type_precision
-	typedef mat<2, 2, f32, defaultp> f32mat2;
+	using f32mat2 = mat<2, 2, f32, defaultp>;
 
 	/// Single-qualifier floating-point 3x3 matrix.
 	/// @see gtc_type_precision
-	typedef mat<3, 3, f32, defaultp> f32mat3;
+	using f32mat3 = mat<3, 3, f32, defaultp>;
 
 	/// Single-qualifier floating-point 4x4 matrix.
 	/// @see gtc_type_precision
-	typedef mat<4, 4, f32, defaultp> f32mat4;
+	using f32mat4 = mat<4, 4, f32, defaultp>;
 
 
 	/// Single-qualifier floating-point 1x1 matrix.
@@ -1938,39 +1938,39 @@ namespace glm
 
 	/// Single-qualifier floating-point 2x2 matrix.
 	/// @see gtc_type_precision
-	typedef mat<2, 2, f32, defaultp> f32mat2x2;
+	using f32mat2x2 = mat<2, 2, f32, defaultp>;
 
 	/// Single-qualifier floating-point 2x3 matrix.
 	/// @see gtc_type_precision
-	typedef mat<2, 3, f32, defaultp> f32mat2x3;
+	using f32mat2x3 = mat<2, 3, f32, defaultp>;
 
 	/// Single-qualifier floating-point 2x4 matrix.
 	/// @see gtc_type_precision
-	typedef mat<2, 4, f32, defaultp> f32mat2x4;
+	using f32mat2x4 = mat<2, 4, f32, defaultp>;
 
 	/// Single-qualifier floating-point 3x2 matrix.
 	/// @see gtc_type_precision
-	typedef mat<3, 2, f32, defaultp> f32mat3x2;
+	using f32mat3x2 = mat<3, 2, f32, defaultp>;
 
 	/// Single-qualifier floating-point 3x3 matrix.
 	/// @see gtc_type_precision
-	typedef mat<3, 3, f32, defaultp> f32mat3x3;
+	using f32mat3x3 = mat<3, 3, f32, defaultp>;
 
 	/// Single-qualifier floating-point 3x4 matrix.
 	/// @see gtc_type_precision
-	typedef mat<3, 4, f32, defaultp> f32mat3x4;
+	using f32mat3x4 = mat<3, 4, f32, defaultp>;
 
 	/// Single-qualifier floating-point 4x2 matrix.
 	/// @see gtc_type_precision
-	typedef mat<4, 2, f32, defaultp> f32mat4x2;
+	using f32mat4x2 = mat<4, 2, f32, defaultp>;
 
 	/// Single-qualifier floating-point 4x3 matrix.
 	/// @see gtc_type_precision
-	typedef mat<4, 3, f32, defaultp> f32mat4x3;
+	using f32mat4x3 = mat<4, 3, f32, defaultp>;
 
 	/// Single-qualifier floating-point 4x4 matrix.
 	/// @see gtc_type_precision
-	typedef mat<4, 4, f32, defaultp> f32mat4x4;
+	using f32mat4x4 = mat<4, 4, f32, defaultp>;
 
 
 #	ifndef GLM_FORCE_SINGLE_ONLY
@@ -1981,15 +1981,15 @@ namespace glm
 
 	/// Double-qualifier floating-point 2x2 matrix.
 	/// @see gtc_type_precision
-	typedef mat<2, 2, f64, defaultp> f64mat2;
+	using f64mat2 = mat<2, 2, f64, defaultp>;
 
 	/// Double-qualifier floating-point 3x3 matrix.
 	/// @see gtc_type_precision
-	typedef mat<3, 3, f64, defaultp> f64mat3;
+	using f64mat3 = mat<3, 3, f64, defaultp>;
 
 	/// Double-qualifier floating-point 4x4 matrix.
 	/// @see gtc_type_precision
-	typedef mat<4, 4, f64, defaultp> f64mat4;
+	using f64mat4 = mat<4, 4, f64, defaultp>;
 
 
 	/// Double-qualifier floating-point 1x1 matrix.
@@ -1998,39 +1998,39 @@ namespace glm
 
 	/// Double-qualifier floating-point 2x2 matrix.
 	/// @see gtc_type_precision
-	typedef mat<2, 2, f64, defaultp> f64mat2x2;
+	using f64mat2x2 = mat<2, 2, f64, defaultp>;
 
 	/// Double-qualifier floating-point 2x3 matrix.
 	/// @see gtc_type_precision
-	typedef mat<2, 3, f64, defaultp> f64mat2x3;
+	using f64mat2x3 = mat<2, 3, f64, defaultp>;
 
 	/// Double-qualifier floating-point 2x4 matrix.
 	/// @see gtc_type_precision
-	typedef mat<2, 4, f64, defaultp> f64mat2x4;
+	using f64mat2x4 = mat<2, 4, f64, defaultp>;
 
 	/// Double-qualifier floating-point 3x2 matrix.
 	/// @see gtc_type_precision
-	typedef mat<3, 2, f64, defaultp> f64mat3x2;
+	using f64mat3x2 = mat<3, 2, f64, defaultp>;
 
 	/// Double-qualifier floating-point 3x3 matrix.
 	/// @see gtc_type_precision
-	typedef mat<3, 3, f64, defaultp> f64mat3x3;
+	using f64mat3x3 = mat<3, 3, f64, defaultp>;
 
 	/// Double-qualifier floating-point 3x4 matrix.
 	/// @see gtc_type_precision
-	typedef mat<3, 4, f64, defaultp> f64mat3x4;
+	using f64mat3x4 = mat<3, 4, f64, defaultp>;
 
 	/// Double-qualifier floating-point 4x2 matrix.
 	/// @see gtc_type_precision
-	typedef mat<4, 2, f64, defaultp> f64mat4x2;
+	using f64mat4x2 = mat<4, 2, f64, defaultp>;
 
 	/// Double-qualifier floating-point 4x3 matrix.
 	/// @see gtc_type_precision
-	typedef mat<4, 3, f64, defaultp> f64mat4x3;
+	using f64mat4x3 = mat<4, 3, f64, defaultp>;
 
 	/// Double-qualifier floating-point 4x4 matrix.
 	/// @see gtc_type_precision
-	typedef mat<4, 4, f64, defaultp> f64mat4x4;
+	using f64mat4x4 = mat<4, 4, f64, defaultp>;
 
 #	endif//GLM_FORCE_SINGLE_ONLY
 
@@ -2039,37 +2039,37 @@ namespace glm
 
 	/// Single-qualifier floating-point quaternion.
 	/// @see gtc_type_precision
-	typedef qua<f32, defaultp> f32quat;
+	using f32quat = qua<f32, defaultp>;
 
 	/// Low single-qualifier floating-point quaternion.
 	/// @see gtc_type_precision
-	typedef qua<f32, lowp> lowp_f32quat;
+	using lowp_f32quat = qua<f32, lowp>;
 
 	/// Low double-qualifier floating-point quaternion.
 	/// @see gtc_type_precision
-	typedef qua<f64, lowp> lowp_f64quat;
+	using lowp_f64quat = qua<f64, lowp>;
 
 	/// Medium single-qualifier floating-point quaternion.
 	/// @see gtc_type_precision
-	typedef qua<f32, mediump> mediump_f32quat;
+	using mediump_f32quat = qua<f32, mediump>;
 
 #	ifndef GLM_FORCE_SINGLE_ONLY
 
 	/// Medium double-qualifier floating-point quaternion.
 	/// @see gtc_type_precision
-	typedef qua<f64, mediump> mediump_f64quat;
+	using mediump_f64quat = qua<f64, mediump>;
 
 	/// High single-qualifier floating-point quaternion.
 	/// @see gtc_type_precision
-	typedef qua<f32, highp> highp_f32quat;
+	using highp_f32quat = qua<f32, highp>;
 
 	/// High double-qualifier floating-point quaternion.
 	/// @see gtc_type_precision
-	typedef qua<f64, highp> highp_f64quat;
+	using highp_f64quat = qua<f64, highp>;
 
 	/// Double-qualifier floating-point quaternion.
 	/// @see gtc_type_precision
-	typedef qua<f64, defaultp> f64quat;
+	using f64quat = qua<f64, defaultp>;
 
 #	endif//GLM_FORCE_SINGLE_ONLY
 

@@ -13,19 +13,19 @@ namespace glm
 	///
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 4.1.5 Vectors</a>
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 4.7.2 Precision Qualifier</a>
-	typedef vec<2, bool, highp>		highp_bvec2;
+	using		highp_bvec2 = vec<2, bool, highp>;
 
 	/// 2 components vector of medium qualifier bool numbers.
 	///
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 4.1.5 Vectors</a>
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 4.7.2 Precision Qualifier</a>
-	typedef vec<2, bool, mediump>	mediump_bvec2;
+	using	mediump_bvec2 = vec<2, bool, mediump>;
 
 	/// 2 components vector of low qualifier bool numbers.
 	///
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 4.1.5 Vectors</a>
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 4.7.2 Precision Qualifier</a>
-	typedef vec<2, bool, lowp>		lowp_bvec2;
+	using		lowp_bvec2 = vec<2, bool, lowp>;
 
 	/// @}
 }//namespace glm

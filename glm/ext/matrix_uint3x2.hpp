@@ -27,7 +27,7 @@ namespace glm
 	/// Unsigned integer 3x2 matrix.
 	///
 	/// @see ext_matrix_uint3x2
-	typedef mat<3, 2, uint, defaultp>	umat3x2;
+	using	umat3x2 = mat<3, 2, uint, defaultp>;
 
 	/// @}
 }//namespace glm

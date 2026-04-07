@@ -27,7 +27,7 @@ namespace glm
 	/// Unsigned integer 2x4 matrix.
 	///
 	/// @see ext_matrix_uint2x4
-	typedef mat<2, 4, uint, defaultp>	umat2x4;
+	using	umat2x4 = mat<2, 4, uint, defaultp>;
 
 	/// @}
 }//namespace glm

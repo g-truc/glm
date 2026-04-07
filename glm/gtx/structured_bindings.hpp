@@ -33,19 +33,19 @@ namespace std {
 	struct tuple_element<I, glm::vec<L,T,Q>>
 	{
 		static_assert(I < L,"Index out of bounds");
-		typedef T type;
+		using type = T;
 	};
 	template<std::size_t I, glm::length_t C, glm::length_t R, typename T, glm::qualifier Q>
 	struct tuple_element<I, glm::mat<C,R, T, Q>>
 	{
 		static_assert(I < C, "Index out of bounds");
-		typedef glm::vec<R,T,Q> type;
+		using type = glm::vec<R,T,Q>;
 	};
 	template<std::size_t I, typename T, glm::qualifier Q>
 	struct tuple_element<I, glm::qua<T, Q>>
 	{
 		static_assert(I < 4, "Index out of bounds");
-		typedef T type;
+		using type = T;
 	};
 
 }

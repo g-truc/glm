@@ -22,13 +22,13 @@ namespace glm
 	/// @{
 
 	/// 1 component vector of bool values.
-	typedef vec<1, bool, highp>			highp_bvec1;
+	using			highp_bvec1 = vec<1, bool, highp>;
 
 	/// 1 component vector of bool values.
-	typedef vec<1, bool, mediump>		mediump_bvec1;
+	using		mediump_bvec1 = vec<1, bool, mediump>;
 
 	/// 1 component vector of bool values.
-	typedef vec<1, bool, lowp>			lowp_bvec1;
+	using			lowp_bvec1 = vec<1, bool, lowp>;
 
 	/// @}
 }//namespace glm

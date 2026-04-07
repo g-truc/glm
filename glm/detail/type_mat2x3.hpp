@@ -13,11 +13,11 @@ namespace glm
 	template<typename T, qualifier Q>
 	struct mat<2, 3, T, Q>
 	{
-		typedef vec<3, T, Q> col_type;
-		typedef vec<2, T, Q> row_type;
-		typedef mat<2, 3, T, Q> type;
-		typedef mat<3, 2, T, Q> transpose_type;
-		typedef T value_type;
+		using col_type = vec<3, T, Q>;
+		using row_type = vec<2, T, Q>;
+		using type = mat<2, 3, T, Q>;
+		using transpose_type = mat<3, 2, T, Q>;
+		using value_type = T;
 
 	private:
 		col_type value[2];
@@ -25,7 +25,7 @@ namespace glm
 	public:
 		// -- Accesses --
 
-		typedef length_t length_type;
+		using length_type = length_t;
 		GLM_FUNC_DECL static constexpr length_type length() { return 2; }
 
 		GLM_FUNC_DECL GLM_CONSTEXPR col_type & operator[](length_type i) noexcept;

@@ -52,7 +52,7 @@ namespace glm
 		template<typename CTy>
 		class format_punct : public std::locale::facet
 		{
-			typedef CTy char_type;
+			using char_type = CTy;
 
 		public:
 
@@ -82,11 +82,11 @@ namespace glm
 
 		private:
 
-			typedef ::std::basic_ios<CTy,CTr>      state_type;
-			typedef typename state_type::char_type char_type;
-			typedef ::std::ios_base::fmtflags      flags_type;
-			typedef ::std::streamsize              streamsize_type;
-			typedef ::std::locale const            locale_type;
+			using      state_type = ::std::basic_ios<CTy,CTr>;
+			using char_type = typename state_type::char_type;
+			using      flags_type = ::std::ios_base::fmtflags;
+			using              streamsize_type = ::std::streamsize;
+			using            locale_type = ::std::locale const;
 
 			state_type&     state_;
 			flags_type      flags_;
@@ -98,8 +98,8 @@ namespace glm
 			GLM_FUNC_DECL basic_state_saver& operator=(basic_state_saver const&);
 		};
 
-		typedef basic_state_saver<char>     state_saver;
-		typedef basic_state_saver<wchar_t> wstate_saver;
+		using     state_saver = basic_state_saver<char>;
+		using wstate_saver = basic_state_saver<wchar_t>;
 
 		template<typename CTy, typename CTr = std::char_traits<CTy> >
 		class basic_format_saver
@@ -116,8 +116,8 @@ namespace glm
 			GLM_FUNC_DECL basic_format_saver& operator=(basic_format_saver const&);
 		};
 
-		typedef basic_format_saver<char>     format_saver;
-		typedef basic_format_saver<wchar_t> wformat_saver;
+		using     format_saver = basic_format_saver<char>;
+		using wformat_saver = basic_format_saver<wchar_t>;
 
 		struct precision
 		{

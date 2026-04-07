@@ -28,22 +28,22 @@ namespace glm
 	/// 8 bit signed integer 3x2 matrix.
 	///
 	/// @see ext_matrix_int3x2_sized
-	typedef mat<3, 2, int8, defaultp>				i8mat3x2;
+	using				i8mat3x2 = mat<3, 2, int8, defaultp>;
 
 	/// 16 bit signed integer 3x2 matrix.
 	///
 	/// @see ext_matrix_int3x2_sized
-	typedef mat<3, 2, int16, defaultp>				i16mat3x2;
+	using				i16mat3x2 = mat<3, 2, int16, defaultp>;
 
 	/// 32 bit signed integer 3x2 matrix.
 	///
 	/// @see ext_matrix_int3x2_sized
-	typedef mat<3, 2, int32, defaultp>				i32mat3x2;
+	using				i32mat3x2 = mat<3, 2, int32, defaultp>;
 
 	/// 64 bit signed integer 3x2 matrix.
 	///
 	/// @see ext_matrix_int3x2_sized
-	typedef mat<3, 2, int64, defaultp>				i64mat3x2;
+	using				i64mat3x2 = mat<3, 2, int64, defaultp>;
 
 	/// @}
 }//namespace glm

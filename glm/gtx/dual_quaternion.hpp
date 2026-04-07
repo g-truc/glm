@@ -36,8 +36,8 @@ namespace glm
 	{
 		// -- Implementation detail --
 
-		typedef T value_type;
-		typedef qua<T, Q> part_type;
+		using value_type = T;
+		using part_type = qua<T, Q>;
 
 		// -- Data --
 
@@ -45,7 +45,7 @@ namespace glm
 
 		// -- Component accesses --
 
-		typedef length_t length_type;
+		using length_type = length_t;
 		/// Return the count of components of a dual quaternion
 		GLM_FUNC_DECL static constexpr length_type length(){return 2;}
 
@@ -182,70 +182,70 @@ namespace glm
 	/// Dual-quaternion of low single-qualifier floating-point numbers.
 	///
 	/// @see gtx_dual_quaternion
-	typedef tdualquat<float, lowp>		lowp_dualquat;
+	using		lowp_dualquat = tdualquat<float, lowp>;
 
 	/// Dual-quaternion of medium single-qualifier floating-point numbers.
 	///
 	/// @see gtx_dual_quaternion
-	typedef tdualquat<float, mediump>	mediump_dualquat;
+	using	mediump_dualquat = tdualquat<float, mediump>;
 
 	/// Dual-quaternion of high single-qualifier floating-point numbers.
 	///
 	/// @see gtx_dual_quaternion
-	typedef tdualquat<float, highp>		highp_dualquat;
+	using		highp_dualquat = tdualquat<float, highp>;
 
 
 	/// Dual-quaternion of low single-qualifier floating-point numbers.
 	///
 	/// @see gtx_dual_quaternion
-	typedef tdualquat<float, lowp>		lowp_fdualquat;
+	using		lowp_fdualquat = tdualquat<float, lowp>;
 
 	/// Dual-quaternion of medium single-qualifier floating-point numbers.
 	///
 	/// @see gtx_dual_quaternion
-	typedef tdualquat<float, mediump>	mediump_fdualquat;
+	using	mediump_fdualquat = tdualquat<float, mediump>;
 
 	/// Dual-quaternion of high single-qualifier floating-point numbers.
 	///
 	/// @see gtx_dual_quaternion
-	typedef tdualquat<float, highp>		highp_fdualquat;
+	using		highp_fdualquat = tdualquat<float, highp>;
 
 
 	/// Dual-quaternion of low double-qualifier floating-point numbers.
 	///
 	/// @see gtx_dual_quaternion
-	typedef tdualquat<double, lowp>		lowp_ddualquat;
+	using		lowp_ddualquat = tdualquat<double, lowp>;
 
 	/// Dual-quaternion of medium double-qualifier floating-point numbers.
 	///
 	/// @see gtx_dual_quaternion
-	typedef tdualquat<double, mediump>	mediump_ddualquat;
+	using	mediump_ddualquat = tdualquat<double, mediump>;
 
 	/// Dual-quaternion of high double-qualifier floating-point numbers.
 	///
 	/// @see gtx_dual_quaternion
-	typedef tdualquat<double, highp>	highp_ddualquat;
+	using	highp_ddualquat = tdualquat<double, highp>;
 
 
 #if(!defined(GLM_PRECISION_HIGHP_FLOAT) && !defined(GLM_PRECISION_MEDIUMP_FLOAT) && !defined(GLM_PRECISION_LOWP_FLOAT))
 	/// Dual-quaternion of floating-point numbers.
 	///
 	/// @see gtx_dual_quaternion
-	typedef highp_fdualquat			dualquat;
+	using			dualquat = highp_fdualquat;
 
 	/// Dual-quaternion of single-qualifier floating-point numbers.
 	///
 	/// @see gtx_dual_quaternion
-	typedef highp_fdualquat			fdualquat;
+	using			fdualquat = highp_fdualquat;
 #elif(defined(GLM_PRECISION_HIGHP_FLOAT) && !defined(GLM_PRECISION_MEDIUMP_FLOAT) && !defined(GLM_PRECISION_LOWP_FLOAT))
-	typedef highp_fdualquat			dualquat;
-	typedef highp_fdualquat			fdualquat;
+	using			dualquat = highp_fdualquat;
+	using			fdualquat = highp_fdualquat;
 #elif(!defined(GLM_PRECISION_HIGHP_FLOAT) && defined(GLM_PRECISION_MEDIUMP_FLOAT) && !defined(GLM_PRECISION_LOWP_FLOAT))
-	typedef mediump_fdualquat		dualquat;
-	typedef mediump_fdualquat		fdualquat;
+	using		dualquat = mediump_fdualquat;
+	using		fdualquat = mediump_fdualquat;
 #elif(!defined(GLM_PRECISION_HIGHP_FLOAT) && !defined(GLM_PRECISION_MEDIUMP_FLOAT) && defined(GLM_PRECISION_LOWP_FLOAT))
-	typedef lowp_fdualquat			dualquat;
-	typedef lowp_fdualquat			fdualquat;
+	using			dualquat = lowp_fdualquat;
+	using			fdualquat = lowp_fdualquat;
 #else
 #	error "GLM error: multiple default precision requested for single-precision floating-point types"
 #endif
@@ -255,13 +255,13 @@ namespace glm
 	/// Dual-quaternion of default double-qualifier floating-point numbers.
 	///
 	/// @see gtx_dual_quaternion
-	typedef highp_ddualquat			ddualquat;
+	using			ddualquat = highp_ddualquat;
 #elif(defined(GLM_PRECISION_HIGHP_DOUBLE) && !defined(GLM_PRECISION_MEDIUMP_DOUBLE) && !defined(GLM_PRECISION_LOWP_DOUBLE))
-	typedef highp_ddualquat			ddualquat;
+	using			ddualquat = highp_ddualquat;
 #elif(!defined(GLM_PRECISION_HIGHP_DOUBLE) && defined(GLM_PRECISION_MEDIUMP_DOUBLE) && !defined(GLM_PRECISION_LOWP_DOUBLE))
-	typedef mediump_ddualquat		ddualquat;
+	using		ddualquat = mediump_ddualquat;
 #elif(!defined(GLM_PRECISION_HIGHP_DOUBLE) && !defined(GLM_PRECISION_MEDIUMP_DOUBLE) && defined(GLM_PRECISION_LOWP_DOUBLE))
-	typedef lowp_ddualquat			ddualquat;
+	using			ddualquat = lowp_ddualquat;
 #else
 #	error "GLM error: Multiple default precision requested for double-precision floating-point types"
 #endif

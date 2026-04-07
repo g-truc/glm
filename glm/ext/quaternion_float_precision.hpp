@@ -23,13 +23,13 @@ namespace glm
 	/// @{
 
 	/// Quaternion of single-precision floating-point numbers using high precision arithmetic in term of ULPs.
-	typedef qua<float, lowp>		lowp_quat;
+	using		lowp_quat = qua<float, lowp>;
 
 	/// Quaternion of single-precision floating-point numbers using high precision arithmetic in term of ULPs.
-	typedef qua<float, mediump>		mediump_quat;
+	using		mediump_quat = qua<float, mediump>;
 
 	/// Quaternion of single-precision floating-point numbers using high precision arithmetic in term of ULPs.
-	typedef qua<float, highp>		highp_quat;
+	using		highp_quat = qua<float, highp>;
 
 	/// @}
 } //namespace glm

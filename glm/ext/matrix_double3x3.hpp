@@ -12,12 +12,12 @@ namespace glm
 	/// 3 columns of 3 components matrix of double-precision floating-point numbers.
 	///
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 4.1.6 Matrices</a>
-	typedef mat<3, 3, double, defaultp>		dmat3x3;
+	using		dmat3x3 = mat<3, 3, double, defaultp>;
 
 	/// 3 columns of 3 components matrix of double-precision floating-point numbers.
 	///
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 4.1.6 Matrices</a>
-	typedef mat<3, 3, double, defaultp>		dmat3;
+	using		dmat3 = mat<3, 3, double, defaultp>;
 
 	/// @}
 }//namespace glm

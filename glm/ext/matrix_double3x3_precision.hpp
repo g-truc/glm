@@ -13,37 +13,37 @@ namespace glm
 	///
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 4.1.6 Matrices</a>
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 4.7.2 Precision Qualifier</a>
-	typedef mat<3, 3, double, lowp>		lowp_dmat3;
+	using		lowp_dmat3 = mat<3, 3, double, lowp>;
 
 	/// 3 columns of 3 components matrix of double-precision floating-point numbers using medium precision arithmetic in term of ULPs.
 	///
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 4.1.6 Matrices</a>
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 4.7.2 Precision Qualifier</a>
-	typedef mat<3, 3, double, mediump>	mediump_dmat3;
+	using	mediump_dmat3 = mat<3, 3, double, mediump>;
 
 	/// 3 columns of 3 components matrix of double-precision floating-point numbers using medium precision arithmetic in term of ULPs.
 	///
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 4.1.6 Matrices</a>
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 4.7.2 Precision Qualifier</a>
-	typedef mat<3, 3, double, highp>	highp_dmat3;
+	using	highp_dmat3 = mat<3, 3, double, highp>;
 
 	/// 3 columns of 3 components matrix of double-precision floating-point numbers using low precision arithmetic in term of ULPs.
 	///
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 4.1.6 Matrices</a>
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 4.7.2 Precision Qualifier</a>
-	typedef mat<3, 3, double, lowp>		lowp_dmat3x3;
+	using		lowp_dmat3x3 = mat<3, 3, double, lowp>;
 
 	/// 3 columns of 3 components matrix of double-precision floating-point numbers using medium precision arithmetic in term of ULPs.
 	///
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 4.1.6 Matrices</a>
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 4.7.2 Precision Qualifier</a>
-	typedef mat<3, 3, double, mediump>	mediump_dmat3x3;
+	using	mediump_dmat3x3 = mat<3, 3, double, mediump>;
 
 	/// 3 columns of 3 components matrix of double-precision floating-point numbers using medium precision arithmetic in term of ULPs.
 	///
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 4.1.6 Matrices</a>
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 4.7.2 Precision Qualifier</a>
-	typedef mat<3, 3, double, highp>	highp_dmat3x3;
+	using	highp_dmat3x3 = mat<3, 3, double, highp>;
 
 	/// @}
 }//namespace glm

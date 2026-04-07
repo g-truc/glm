@@ -28,22 +28,22 @@ namespace glm
 	/// 8 bit unsigned integer vector of 4 components type.
 	///
 	/// @see ext_vector_uint4_sized
-	typedef vec<4, uint8, defaultp>		u8vec4;
+	using		u8vec4 = vec<4, uint8, defaultp>;
 
 	/// 16 bit unsigned integer vector of 4 components type.
 	///
 	/// @see ext_vector_uint4_sized
-	typedef vec<4, uint16, defaultp>	u16vec4;
+	using	u16vec4 = vec<4, uint16, defaultp>;
 
 	/// 32 bit unsigned integer vector of 4 components type.
 	///
 	/// @see ext_vector_uint4_sized
-	typedef vec<4, uint32, defaultp>	u32vec4;
+	using	u32vec4 = vec<4, uint32, defaultp>;
 
 	/// 64 bit unsigned integer vector of 4 components type.
 	///
 	/// @see ext_vector_uint4_sized
-	typedef vec<4, uint64, defaultp>	u64vec4;
+	using	u64vec4 = vec<4, uint64, defaultp>;
 
 	/// @}
 }//namespace glm
