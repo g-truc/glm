@@ -69,8 +69,15 @@ namespace glm
 		template<typename U, qualifier P>
 		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<3, 3, U, P> const& m);
 
+		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<1, 1, T, Q> const& x);
 		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<2, 2, T, Q> const& x);
 		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<4, 4, T, Q> const& x);
+		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<1, 2, T, Q> const& x);
+		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<2, 1, T, Q> const& x);
+		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<1, 3, T, Q> const& x);
+		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<3, 1, T, Q> const& x);
+		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<1, 4, T, Q> const& x);
+		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<4, 1, T, Q> const& x);
 		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<2, 3, T, Q> const& x);
 		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<3, 2, T, Q> const& x);
 		GLM_CTOR_DECL GLM_EXPLICIT mat(mat<2, 4, T, Q> const& x);
@@ -151,6 +158,9 @@ namespace glm
 
 	template<typename T, qualifier Q>
 	GLM_FUNC_DECL GLM_CONSTEXPR mat<3, 3, T, Q> operator*(mat<3, 3, T, Q> const& m1, mat<3, 3, T, Q> const& m2);
+
+	template<typename T, qualifier Q>
+	GLM_FUNC_DECL GLM_CONSTEXPR mat<1, 3, T, Q> operator*(mat<3, 3, T, Q> const& m1, mat<1, 3, T, Q> const& m2);
 
 	template<typename T, qualifier Q>
 	GLM_FUNC_DECL GLM_CONSTEXPR mat<2, 3, T, Q> operator*(mat<3, 3, T, Q> const& m1, mat<2, 3, T, Q> const& m2);

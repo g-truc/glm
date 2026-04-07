@@ -18,6 +18,7 @@
 #include "vec2.hpp"
 #include "vec3.hpp"
 #include "vec4.hpp"
+#include "mat1x1.hpp"
 #include "mat2x2.hpp"
 #include "mat2x3.hpp"
 #include "mat2x4.hpp"
@@ -33,6 +34,36 @@ namespace detail
 {
 	template<length_t C, length_t R, typename T, qualifier Q>
 	struct outerProduct_trait{};
+
+	template<typename T, qualifier Q>
+	struct outerProduct_trait<1, 1, T, Q>
+	{
+		typedef mat<1, 1, T, Q> type;
+	};
+
+	template<typename T, qualifier Q>
+	struct outerProduct_trait<1, 2, T, Q>
+	{
+		typedef mat<2, 1, T, Q> type;
+	};
+
+	template<typename T, qualifier Q>
+	struct outerProduct_trait<1, 3, T, Q>
+	{
+		typedef mat<3, 1, T, Q> type;
+	};
+
+	template<typename T, qualifier Q>
+	struct outerProduct_trait<1, 4, T, Q>
+	{
+		typedef mat<4, 1, T, Q> type;
+	};
+
+	template<typename T, qualifier Q>
+	struct outerProduct_trait<2, 1, T, Q>
+	{
+		typedef mat<1, 2, T, Q> type;
+	};
 
 	template<typename T, qualifier Q>
 	struct outerProduct_trait<2, 2, T, Q>
@@ -53,6 +84,12 @@ namespace detail
 	};
 
 	template<typename T, qualifier Q>
+	struct outerProduct_trait<3, 1, T, Q>
+	{
+		typedef mat<1, 3, T, Q> type;
+	};
+
+	template<typename T, qualifier Q>
 	struct outerProduct_trait<3, 2, T, Q>
 	{
 		typedef mat<2, 3, T, Q> type;
@@ -68,6 +105,12 @@ namespace detail
 	struct outerProduct_trait<3, 4, T, Q>
 	{
 		typedef mat<4, 3, T, Q> type;
+	};
+
+	template<typename T, qualifier Q>
+	struct outerProduct_trait<4, 1, T, Q>
+	{
+		typedef mat<1, 4, T, Q> type;
 	};
 
 	template<typename T, qualifier Q>

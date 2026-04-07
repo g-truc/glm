@@ -101,6 +101,11 @@ namespace glm
 	// -- Matrix conversions --
 
 	template<typename T, qualifier Q>
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR mat<4, 4, T, Q>::mat(mat<1, 1, T, Q> const& m)
+		: value{col_type(m[0], 0, 0, 0), col_type(0, 1, 0, 0), col_type(0, 0, 1, 0), col_type(0, 0, 0, 1)}
+	{}
+
+	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR mat<4, 4, T, Q>::mat(mat<2, 2, T, Q> const& m)
 		: value{col_type(m[0], 0, 0), col_type(m[1], 0, 0), col_type(0, 0, 1, 0), col_type(0, 0, 0, 1)}
 	{}
@@ -108,6 +113,36 @@ namespace glm
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR mat<4, 4, T, Q>::mat(mat<3, 3, T, Q> const& m)
 		: value{col_type(m[0], 0), col_type(m[1], 0), col_type(m[2], 0), col_type(0, 0, 0, 1)}
+	{}
+
+	template<typename T, qualifier Q>
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR mat<4, 4, T, Q>::mat(mat<1, 2, T, Q> const& m)
+		: value{col_type(m[0], 0, 0), col_type(0, 1, 0, 0), col_type(0, 0, 1, 0), col_type(0, 0, 0, 1)}
+	{}
+
+	template<typename T, qualifier Q>
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR mat<4, 4, T, Q>::mat(mat<2, 1, T, Q> const& m)
+		: value{col_type(m[0], 0, 0, 0), col_type(m[1], 1, 0, 0), col_type(0, 0, 1, 0), col_type(0, 0, 0, 1)}
+	{}
+
+	template<typename T, qualifier Q>
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR mat<4, 4, T, Q>::mat(mat<1, 3, T, Q> const& m)
+		: value{col_type(m[0], 0), col_type(0, 1, 0, 0), col_type(0, 0, 1, 0), col_type(0, 0, 0, 1)}
+	{}
+
+	template<typename T, qualifier Q>
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR mat<4, 4, T, Q>::mat(mat<3, 1, T, Q> const& m)
+		: value{col_type(m[0], 0, 0, 0), col_type(m[1], 1, 0, 0), col_type(m[2], 0, 1, 0), col_type(0, 0, 0, 1)}
+	{}
+
+	template<typename T, qualifier Q>
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR mat<4, 4, T, Q>::mat(mat<1, 4, T, Q> const& m)
+		: value{col_type(m[0]), col_type(0, 1, 0, 0), col_type(0, 0, 1, 0), col_type(0, 0, 0, 1)}
+	{}
+
+	template<typename T, qualifier Q>
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR mat<4, 4, T, Q>::mat(mat<4, 1, T, Q> const& m)
+		: value{col_type(m[0], 0, 0, 0), col_type(m[1], 1, 0, 0), col_type(m[2], 0, 1, 0), col_type(m[3], 0, 0, 1)}
 	{}
 
 	template<typename T, qualifier Q>
@@ -449,6 +484,16 @@ namespace glm
 			glm::dot(m[1], v),
 			glm::dot(m[2], v),
 			glm::dot(m[3], v));
+	}
+
+	template<typename T, qualifier Q>
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR mat<1, 4, T, Q> operator*(mat<4, 4, T, Q> const& m1, mat<1, 4, T, Q> const& m2)
+	{
+		return mat<1, 4, T, Q>(
+			m1[0][0] * m2[0][0] + m1[1][0] * m2[0][1] + m1[2][0] * m2[0][2] + m1[3][0] * m2[0][3],
+			m1[0][1] * m2[0][0] + m1[1][1] * m2[0][1] + m1[2][1] * m2[0][2] + m1[3][1] * m2[0][3],
+			m1[0][2] * m2[0][0] + m1[1][2] * m2[0][1] + m1[2][2] * m2[0][2] + m1[3][2] * m2[0][3],
+			m1[0][3] * m2[0][0] + m1[1][3] * m2[0][1] + m1[2][3] * m2[0][2] + m1[3][3] * m2[0][3]);
 	}
 
 	template<typename T, qualifier Q>

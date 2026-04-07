@@ -1,0 +1,41 @@
+/// @ref ext_matrix_int1x4
+/// @file glm/ext/matrix_int1x4.hpp
+///
+/// @see core (dependence)
+///
+/// @defgroup ext_matrix_int1x4 GLM_EXT_matrix_int1x4
+/// @ingroup ext
+///
+/// Include <glm/ext/matrix_int1x4.hpp> to use the features of this extension.
+///
+/// Defines a number of matrices with integer types.
+
+#pragma once
+
+// Dependency:
+#include "../mat1x4.hpp"
+
+#if GLM_MESSAGES == GLM_ENABLE && !defined(GLM_EXT_INCLUDED)
+#	pragma message("GLM: GLM_EXT_matrix_int1x4 extension included")
+#endif
+
+namespace glm
+{
+	/// @addtogroup ext_matrix_int1x4
+	/// @{
+
+	/// Signed integer 1x4 matrix.
+	///
+	/// @see ext_matrix_int1x4
+	typedef mat<1, 4, int, defaultp>	imat1x4;
+
+	/// @}
+}//namespace glm
+
+#if GLM_CONFIG_CTOR_INIT == GLM_DISABLE
+static_assert(std::is_trivially_default_constructible<glm::imat1x4>::value);
+#endif
+static_assert(std::is_trivially_copy_assignable<glm::imat1x4>::value);
+static_assert(std::is_trivially_copyable<glm::imat1x4>::value);
+static_assert(std::is_copy_constructible<glm::imat1x4>::value);
+static_assert(glm::imat1x4::length() == 1);

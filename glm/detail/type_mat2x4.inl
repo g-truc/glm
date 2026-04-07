@@ -65,6 +65,11 @@ namespace glm
 	{}
 
 	template<typename T, qualifier Q>
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR mat<2, 4, T, Q>::mat(mat<1, 1, T, Q> const& m)
+		: value{col_type(m[0], 0, 0, 0), col_type(0, 1, 0, 0)}
+	{}
+
+	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR mat<2, 4, T, Q>::mat(mat<2, 2, T, Q> const& m)
 		: value{col_type(m[0], 0, 0), col_type(m[1], 0, 0)}
 	{}
@@ -77,6 +82,36 @@ namespace glm
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR mat<2, 4, T, Q>::mat(mat<4, 4, T, Q> const& m)
 		: value{col_type(m[0]), col_type(m[1])}
+	{}
+
+	template<typename T, qualifier Q>
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR mat<2, 4, T, Q>::mat(mat<1, 2, T, Q> const& m)
+		: value{col_type(m[0], 0, 0), col_type(0, 1, 0, 0)}
+	{}
+
+	template<typename T, qualifier Q>
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR mat<2, 4, T, Q>::mat(mat<2, 1, T, Q> const& m)
+		: value{col_type(m[0], 0, 0, 0), col_type(m[1], 1, 0, 0)}
+	{}
+
+	template<typename T, qualifier Q>
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR mat<2, 4, T, Q>::mat(mat<1, 3, T, Q> const& m)
+		: value{col_type(m[0], 0), col_type(0, 1, 0, 0)}
+	{}
+
+	template<typename T, qualifier Q>
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR mat<2, 4, T, Q>::mat(mat<3, 1, T, Q> const& m)
+		: value{col_type(m[0], 0, 0, 0), col_type(m[1], 1, 0, 0)}
+	{}
+
+	template<typename T, qualifier Q>
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR mat<2, 4, T, Q>::mat(mat<1, 4, T, Q> const& m)
+		: value{col_type(m[0]), col_type(0, 1, 0, 0)}
+	{}
+
+	template<typename T, qualifier Q>
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR mat<2, 4, T, Q>::mat(mat<4, 1, T, Q> const& m)
+		: value{col_type(m[0], 0, 0, 0), col_type(m[1], 1, 0, 0)}
 	{}
 
 	template<typename T, qualifier Q>
@@ -323,6 +358,16 @@ namespace glm
 			m1[0][1] * m2[3][0] + m1[1][1] * m2[3][1],
 			m1[0][2] * m2[3][0] + m1[1][2] * m2[3][1],
 			m1[0][3] * m2[3][0] + m1[1][3] * m2[3][1]);
+	}
+
+	template<typename T, qualifier Q>
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR mat<1, 4, T, Q> operator*(mat<2, 4, T, Q> const& m1, mat<1, 2, T, Q> const& m2)
+	{
+		return mat<1, 4, T, Q>(
+			m1[0][0] * m2[0][0] + m1[1][0] * m2[0][1],
+			m1[0][1] * m2[0][0] + m1[1][1] * m2[0][1],
+			m1[0][2] * m2[0][0] + m1[1][2] * m2[0][1],
+			m1[0][3] * m2[0][0] + m1[1][3] * m2[0][1]);
 	}
 
 	template<typename T, qualifier Q>
