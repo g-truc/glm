@@ -31,8 +31,19 @@ namespace glm
 	/// @addtogroup ext_quaternion_double
 	/// @{
 
+	/// Quaternion of aligned double-precision floating-point numbers.
+	typedef qua<double, defaultp, sizeof(double) * 4>	aligned_dquat;
+
+	/// Quaternion of packed double-precision floating-point numbers.
+	typedef qua<double, defaultp>						packed_dquat;
+
+#ifdef GLM_FORCE_DEFAULT_ALIGNED_GENTYPES
 	/// Quaternion of double-precision floating-point numbers.
-	typedef qua<double, defaultp>		dquat;
+	typedef aligned_dquat								dquat;
+#else
+	/// Quaternion of double-precision floating-point numbers.
+	typedef packed_dquat								dquat;
+#endif
 
 	/// @}
 } //namespace glm
@@ -44,3 +55,16 @@ static_assert(std::is_trivially_copy_assignable<glm::dquat>::value);
 static_assert(std::is_trivially_copyable<glm::dquat>::value);
 static_assert(std::is_copy_constructible<glm::dquat>::value);
 static_assert(glm::dquat::length() == 4);
+
+static_assert(sizeof(glm::aligned_dquat) == 32);
+static_assert(alignof(glm::aligned_dquat) == 32);
+static_assert(sizeof(glm::packed_dquat) == 32);
+// static_assert(alignof(glm::packed_dquat) == 8); FIXME
+
+static_assert(sizeof(glm::dquat) == 32);
+#ifdef GLM_FORCE_DEFAULT_ALIGNED_GENTYPES
+static_assert(alignof(glm::dquat) == 32);
+#else
+static_assert(alignof(glm::dquat) == 8);
+#endif
+

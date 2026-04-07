@@ -19,18 +19,21 @@ namespace glm
 #			if GLM_COMPILER & GLM_COMPILER_GCC
 #				pragma GCC diagnostic push
 #				pragma GCC diagnostic ignored "-Wpedantic"
+#				pragma GCC diagnostic ignored "-Wattributes" // for alignas(1), packed types
 #			elif GLM_COMPILER & GLM_COMPILER_CLANG
 #				pragma clang diagnostic push
 #				pragma clang diagnostic ignored "-Wgnu-anonymous-struct"
 #				pragma clang diagnostic ignored "-Wnested-anon-types"
+#				pragma clang diagnostic ignored "-Wpadded"
 #			elif GLM_COMPILER & GLM_COMPILER_VC
 #				pragma warning(push)
 #				pragma warning(disable: 4201)  // nonstandard extension used : nameless struct/union
+#				pragma warning(disable: 4324)  // nonstandard extension used : nameless struct/union
 #			endif
 #		endif
 
-	template<typename T, qualifier Q>
-	struct qua
+	template<typename T, qualifier Q, std::size_t N>
+	struct alignas(N) qua
 	{
 		// -- Implementation detail --
 
@@ -71,9 +74,9 @@ namespace glm
 		// -- Implicit basic constructors --
 
 		GLM_DEFAULTED_DEFAULT_CTOR_DECL GLM_CONSTEXPR qua() GLM_DEFAULT_CTOR;
-		GLM_CTOR_DECL qua(qua<T, Q> const& q) = default;
+		GLM_CTOR_DECL qua(qua<T, Q, N> const& q) = default;
 		template<qualifier P>
-		GLM_CTOR_DECL qua(qua<T, P> const& q);
+		GLM_CTOR_DECL qua(qua<T, P, N> const& q);
 
 		// -- Explicit basic constructors --
 
@@ -85,12 +88,12 @@ namespace glm
 		GLM_CTOR_DECL qua(T w, T x, T y, T z);
 #		endif
 
-		GLM_FUNC_DECL static GLM_CONSTEXPR qua<T, Q> wxyz(T w, T x, T y, T z);
+		GLM_FUNC_DECL static GLM_CONSTEXPR qua<T, Q, N> wxyz(T w, T x, T y, T z);
 
 		// -- Conversion constructors --
 
-		template<typename U, qualifier P>
-		GLM_CTOR_DECL GLM_EXPLICIT qua(qua<U, P> const& q);
+		template<typename U, qualifier P, std::size_t M>
+		GLM_CTOR_DECL GLM_EXPLICIT qua(qua<U, P, M> const& q);
 
 		GLM_FUNC_DECL explicit operator mat<3, 3, T, Q>() const;
 		GLM_FUNC_DECL explicit operator mat<4, 4, T, Q>() const;
@@ -110,20 +113,20 @@ namespace glm
 
 		// -- Unary arithmetic operators --
 
-		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR qua<T, Q>& operator=(qua<T, Q> const& q) = default;
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR qua<T, Q, N>& operator=(qua<T, Q, N> const& q) = default;
 
 		template<typename U>
-		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR qua<T, Q>& operator=(qua<U, Q> const& q);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR qua<T, Q, N>& operator=(qua<U, Q, N> const& q);
 		template<typename U>
-		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR qua<T, Q>& operator+=(qua<U, Q> const& q);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR qua<T, Q, N>& operator+=(qua<U, Q, N> const& q);
 		template<typename U>
-		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR qua<T, Q>& operator-=(qua<U, Q> const& q);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR qua<T, Q, N>& operator-=(qua<U, Q, N> const& q);
 		template<typename U>
-		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR qua<T, Q>& operator*=(qua<U, Q> const& q);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR qua<T, Q, N>& operator*=(qua<U, Q, N> const& q);
 		template<typename U>
-		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR qua<T, Q>& operator*=(U s);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR qua<T, Q, N>& operator*=(U s);
 		template<typename U>
-		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR qua<T, Q>& operator/=(U s);
+		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR qua<T, Q, N>& operator/=(U s);
 	};
 
 #		if GLM_SILENT_WARNINGS == GLM_ENABLE
@@ -138,51 +141,51 @@ namespace glm
 
 	// -- Unary bit operators --
 
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR qua<T, Q> operator+(qua<T, Q> const& q);
+	template<typename T, qualifier Q, std::size_t N>
+	GLM_FUNC_DECL GLM_CONSTEXPR qua<T, Q, N> operator+(qua<T, Q, N> const& q);
 
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR qua<T, Q> operator-(qua<T, Q> const& q);
+	template<typename T, qualifier Q, std::size_t N>
+	GLM_FUNC_DECL GLM_CONSTEXPR qua<T, Q, N> operator-(qua<T, Q, N> const& q);
 
 	// -- Binary operators --
 
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR qua<T, Q> operator+(qua<T, Q> const& q, qua<T, Q> const& p);
+	template<typename T, qualifier Q, std::size_t N>
+	GLM_FUNC_DECL GLM_CONSTEXPR qua<T, Q, N> operator+(qua<T, Q, N> const& q, qua<T, Q, N> const& p);
 
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR qua<T, Q> operator-(qua<T, Q> const& q, qua<T, Q> const& p);
+	template<typename T, qualifier Q, std::size_t N>
+	GLM_FUNC_DECL GLM_CONSTEXPR qua<T, Q, N> operator-(qua<T, Q, N> const& q, qua<T, Q, N> const& p);
 
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR qua<T, Q> operator*(qua<T, Q> const& q, qua<T, Q> const& p);
+	template<typename T, qualifier Q, std::size_t N>
+	GLM_FUNC_DECL GLM_CONSTEXPR qua<T, Q, N> operator*(qua<T, Q, N> const& q, qua<T, Q, N> const& p);
 
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<3, T, Q> operator*(qua<T, Q> const& q, vec<3, T, Q> const& v);
+	template<typename T, qualifier Q, std::size_t N>
+	GLM_FUNC_DECL GLM_CONSTEXPR vec<3, T, Q> operator*(qua<T, Q, N> const& q, vec<3, T, Q> const& v);
 
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<3, T, Q> operator*(vec<3, T, Q> const& v, qua<T, Q> const& q);
+	template<typename T, qualifier Q, std::size_t N>
+	GLM_FUNC_DECL GLM_CONSTEXPR vec<3, T, Q> operator*(vec<3, T, Q> const& v, qua<T, Q, N> const& q);
 
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<4, T, Q> operator*(qua<T, Q> const& q, vec<4, T, Q> const& v);
+	template<typename T, qualifier Q, std::size_t N>
+	GLM_FUNC_DECL GLM_CONSTEXPR vec<4, T, Q> operator*(qua<T, Q, N> const& q, vec<4, T, Q> const& v);
 
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<4, T, Q> operator*(vec<4, T, Q> const& v, qua<T, Q> const& q);
+	template<typename T, qualifier Q, std::size_t N>
+	GLM_FUNC_DECL GLM_CONSTEXPR vec<4, T, Q> operator*(vec<4, T, Q> const& v, qua<T, Q, N> const& q);
 
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR qua<T, Q> operator*(qua<T, Q> const& q, T const& s);
+	template<typename T, qualifier Q, std::size_t N>
+	GLM_FUNC_DECL GLM_CONSTEXPR qua<T, Q, N> operator*(qua<T, Q, N> const& q, T const& s);
 
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR qua<T, Q> operator*(T const& s, qua<T, Q> const& q);
+	template<typename T, qualifier Q, std::size_t N>
+	GLM_FUNC_DECL GLM_CONSTEXPR qua<T, Q, N> operator*(T const& s, qua<T, Q, N> const& q);
 
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR qua<T, Q> operator/(qua<T, Q> const& q, T const& s);
+	template<typename T, qualifier Q, std::size_t N>
+	GLM_FUNC_DECL GLM_CONSTEXPR qua<T, Q, N> operator/(qua<T, Q, N> const& q, T const& s);
 
 	// -- Boolean operators --
 
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR bool operator==(qua<T, Q> const& q1, qua<T, Q> const& q2);
+	template<typename T, qualifier Q, std::size_t N>
+	GLM_FUNC_DECL GLM_CONSTEXPR bool operator==(qua<T, Q, N> const& q1, qua<T, Q, N> const& q2);
 
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR bool operator!=(qua<T, Q> const& q1, qua<T, Q> const& q2);
+	template<typename T, qualifier Q, std::size_t N>
+	GLM_FUNC_DECL GLM_CONSTEXPR bool operator!=(qua<T, Q, N> const& q1, qua<T, Q, N> const& q2);
 } //namespace glm
 
 #ifndef GLM_EXTERNAL_TEMPLATE
