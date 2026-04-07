@@ -21,12 +21,14 @@ namespace io
 		: std::locale::facet(a)
 		, formatted(true)
 		, precision(3)
-		, width(1 + 4 + 1 + precision)
+		, width(4 + 1 + precision)
 		, separator(',')
 		, delim_left('[')
 		, delim_right(']')
+		, fill(' ')
 		, space(' ')
 		, newline('\n')
+		, firstline('\n')
 		, order(column_major)
 	{}
 
@@ -39,8 +41,10 @@ namespace io
 		, separator(a.separator)
 		, delim_left(a.delim_left)
 		, delim_right(a.delim_right)
+		, fill(a.fill)
 		, space(a.space)
 		, newline(a.newline)
+		, firstline(a.firstline)
 		, order(a.order)
 	{}
 
@@ -95,6 +99,16 @@ namespace io
 		value[2] = c;
 	}
 
+	template<typename CTy>
+	GLM_FUNC_QUALIFIER filler<CTy>::filler(CTy a, CTy b, CTy c, CTy d)
+		: value()
+	{
+		value[0] = a;
+		value[1] = b;
+		value[2] = c;
+		value[3] = d;
+	}
+
 	GLM_FUNC_QUALIFIER order::order(order_type a)
 		: value(a)
 	{}
@@ -102,6 +116,7 @@ namespace io
 	template<typename FTy, typename CTy, typename CTr>
 	GLM_FUNC_QUALIFIER FTy const& get_facet(std::basic_ios<CTy, CTr>& ios)
 	{
+		// Destruction handled by locale (0 passed as default argument in the constructor)
 		if(!std::has_facet<FTy>(ios.getloc()))
 			ios.imbue(std::locale(ios.getloc(), new FTy));
 
@@ -119,6 +134,44 @@ namespace io
 	GLM_FUNC_QUALIFIER std::basic_ios<CTy, CTr>& unformatted(std::basic_ios<CTy, CTr>& ios)
 	{
 		const_cast<format_punct<CTy>&>(get_facet<format_punct<CTy> >(ios)).formatted = false;
+		return ios;
+	}
+
+	template<typename CTy, typename CTr>
+	GLM_FUNC_QUALIFIER std::basic_ios<CTy, CTr>& reset(std::basic_ios<CTy, CTr>& ios)
+	{
+		// could leverage on the default constructor, but requires additional memory allocation
+		//ios.imbue(std::locale(ios.getloc(), new format_punct<CTy>));
+		//return ios;
+
+		format_punct<CTy> & fmt(const_cast<format_punct<CTy>&>(get_facet<format_punct<CTy> >(ios)));
+
+		fmt.formatted = true;
+		fmt.precision = 3;
+		fmt.width = 4 + 1 + fmt.precision;
+		fmt.separator = ',';
+		fmt.delim_left = '[';
+		fmt.delim_right = ']';
+		fmt.fill = ' ';
+		fmt.space = ' ';
+		fmt.newline = '\n';
+		fmt.firstline = '\n';
+		fmt.order = column_major;
+
+		return ios;
+	}
+
+	template<typename CTy, typename CTr>
+	GLM_FUNC_QUALIFIER std::basic_ios<CTy, CTr>& compressed(std::basic_ios<CTy, CTr>& ios)
+	{
+		format_punct<CTy> & fmt(const_cast<format_punct<CTy>&>(get_facet<format_punct<CTy> >(ios)));
+
+		fmt.formatted = true;
+		fmt.width = 0;
+		//fmt.space = ' ';
+		fmt.newline = ',';
+		fmt.firstline = '\0';
+
 		return ios;
 	}
 
@@ -149,6 +202,19 @@ namespace io
 	}
 
 	template<typename CTy, typename CTr>
+	GLM_FUNC_QUALIFIER  std::basic_ostream<CTy, CTr>& operator<<(std::basic_ostream<CTy, CTr>& os, filler<CTy> const& a)
+	{
+		format_punct<CTy> & fmt(const_cast<format_punct<CTy>&>(get_facet<format_punct<CTy> >(os)));
+
+		fmt.fill  = a.value[0];
+		fmt.space  = a.value[1];
+		fmt.newline = a.value[2];
+		fmt.firstline = a.value[3];
+
+		return os;
+	}
+
+	template<typename CTy, typename CTr>
 	GLM_FUNC_QUALIFIER std::basic_ostream<CTy, CTr>& operator<<(std::basic_ostream<CTy, CTr>& os, order const& a)
 	{
 		const_cast<format_punct<CTy>&>(get_facet<format_punct<CTy> >(os)).order = a.value;
@@ -174,13 +240,13 @@ namespace detail
 			{
 				io::basic_state_saver<CTy> const bss(os);
 
-				os << std::fixed << std::right << std::setprecision(static_cast<std::streamsize>(fmt.precision)) << std::setfill(fmt.space) << fmt.delim_left;
+				os << std::fixed << std::right << std::setprecision(static_cast<std::streamsize>(fmt.precision)) << std::setfill(fmt.fill) << fmt.delim_left;
 
 				for(length_t i(0); i < components; ++i)
 				{
 					os << std::setw(static_cast<int>(fmt.width)) << a[i];
 					if(components-1 != i)
-						os << fmt.separator;
+						os << fmt.separator << fmt.space;
 				}
 
 				os << fmt.delim_right;
@@ -247,7 +313,8 @@ namespace detail
 
 			if(fmt.formatted)
 			{
-				os << fmt.newline << fmt.delim_left;
+				if (fmt.firstline != '\0') os << fmt.firstline;
+				os << fmt.delim_left;
 
 				switch(fmt.order)
 				{
@@ -390,7 +457,8 @@ namespace detail
 
 			if(fmt.formatted)
 			{
-				os << fmt.newline << fmt.delim_left;
+				if (fmt.firstline != '\0') os << fmt.firstline;
+				os << fmt.delim_left;
 
 				switch(fmt.order)
 				{
