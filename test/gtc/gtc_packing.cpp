@@ -4,6 +4,7 @@
 #include <glm/ext/vector_relational.hpp>
 #include <cstdio>
 #include <vector>
+#include <arpa/inet.h>
 
 /*
 static void print_bits(float const& s)
@@ -157,7 +158,7 @@ static int test_U3x10_1x2()
 
 	glm::u8vec4 const v0(0xff, 0x77, 0x0, 0x33);
 	glm::uint32 const p0 = *reinterpret_cast<glm::uint32 const*>(&v0[0]);
-	glm::uint32 const r0 = 0x330077ff;
+	glm::uint32 const r0 = htonl(0xff770033);
 
 	Error += p0 == r0 ? 0 : 1;
 

@@ -10,6 +10,9 @@
 #include "type_ptr.hpp"
 #include <cstring>
 #include <limits>
+extern "C" {
+#include <endian.h>
+}
 
 namespace glm{
 namespace detail
@@ -191,9 +194,15 @@ namespace detail
 	{
 		struct Data
 		{
+#if BYTE_ORDER == LITTLE_ENDIAN
 			uint x : 3;
 			uint y : 3;
 			uint z : 2;
+#else
+			uint z : 2;
+			uint y : 3;
+			uint x : 3;
+#endif
 		} data;
 		uint8 pack;
 	};
@@ -202,8 +211,13 @@ namespace detail
 	{
 		struct Data
 		{
+#if BYTE_ORDER == LITTLE_ENDIAN
 			uint x : 4;
 			uint y : 4;
+#else
+			uint y : 4;
+			uint x : 4;
+#endif
 		} data;
 		uint8 pack;
 	};
@@ -212,10 +226,17 @@ namespace detail
 	{
 		struct Data
 		{
+#if BYTE_ORDER == LITTLE_ENDIAN
 			uint x : 4;
 			uint y : 4;
 			uint z : 4;
 			uint w : 4;
+#else
+			uint w : 4;
+			uint z : 4;
+			uint y : 4;
+			uint x : 4;
+#endif
 		} data;
 		uint16 pack;
 	};
@@ -224,9 +245,15 @@ namespace detail
 	{
 		struct Data
 		{
+#if BYTE_ORDER == LITTLE_ENDIAN
 			uint x : 5;
 			uint y : 6;
 			uint z : 5;
+#else
+			uint z : 5;
+			uint y : 6;
+			uint x : 5;
+#endif
 		} data;
 		uint16 pack;
 	};
@@ -235,10 +262,17 @@ namespace detail
 	{
 		struct Data
 		{
+#if BYTE_ORDER == LITTLE_ENDIAN
 			uint x : 5;
 			uint y : 5;
 			uint z : 5;
 			uint w : 1;
+#else
+			uint w : 1;
+			uint z : 5;
+			uint y : 5;
+			uint x : 5;
+#endif
 		} data;
 		uint16 pack;
 	};
@@ -253,10 +287,17 @@ namespace detail
 	{
 		struct Data
 		{
+#if BYTE_ORDER == LITTLE_ENDIAN
 			uint x : 10;
 			uint y : 10;
 			uint z : 10;
 			uint w : 2;
+#else
+			uint w : 2;
+			uint z : 10;
+			uint y : 10;
+			uint x : 10;
+#endif
 		} data;
 		uint32 pack;
 	};
@@ -265,10 +306,17 @@ namespace detail
 	{
 		struct Data
 		{
+#if BYTE_ORDER == LITTLE_ENDIAN
 			int x : 10;
 			int y : 10;
 			int z : 10;
 			int w : 2;
+#else
+			int w : 2;
+			int z : 10;
+			int y : 10;
+			int x : 10;
+#endif
 		} data;
 		uint32 pack;
 	};
@@ -277,10 +325,17 @@ namespace detail
 	{
 		struct Data
 		{
+#if BYTE_ORDER == LITTLE_ENDIAN
 			uint x : 9;
 			uint y : 9;
 			uint z : 9;
 			uint w : 5;
+#else
+			uint w : 5;
+			uint z : 9;
+			uint y : 9;
+			uint x : 9;
+#endif
 		} data;
 		uint32 pack;
 	};
