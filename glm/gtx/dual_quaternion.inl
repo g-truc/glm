@@ -10,14 +10,14 @@ namespace glm
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR typename tdualquat<T, Q>::part_type & tdualquat<T, Q>::operator[](typename tdualquat<T, Q>::length_type i) noexcept
 	{
-		assert(i >= 0 && i < this->length());
+		GLM_ASSERT_LENGTH(i, this->length());
 		return (&real)[i];
 	}
 
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR typename tdualquat<T, Q>::part_type const& tdualquat<T, Q>::operator[](typename tdualquat<T, Q>::length_type i) const noexcept
 	{
-		assert(i >= 0 && i < this->length());
+		GLM_ASSERT_LENGTH(i, this->length());
 		return (&real)[i];
 	}
 

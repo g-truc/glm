@@ -353,36 +353,68 @@ namespace detail
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR T& vec<4, T, Q>::operator[](typename vec<4, T, Q>::length_type i)
 	{
 		GLM_ASSERT_LENGTH(i, this->length());
-		switch (i)
+
+#if GLM_LANG & GLM_LANG_CXX14_FLAG || GLM_LANG & GLM_LANG_CXX17_FLAG
+	#if GLM_LANG & GLM_LANG_CXX20_FLAG
+		if (std::is_constant_evaluated())
 		{
-		default:
-		case 0:
-			return x;
-		case 1:
-			return y;
-		case 2:
-			return z;
-		case 3:
-			return w;
+	#endif
+			switch (i)
+			{
+			default:
+			case 0:
+				return x;
+			case 1:
+				return y;
+			case 2:
+				return z;
+			case 3:
+				return w;
+			}
+	#if GLM_LANG & GLM_LANG_CXX20_FLAG
 		}
+		else
+		{
+			return (&x)[i];
+		}
+	#endif
+#else
+		return (&x)[i];
+#endif
 	}
 
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR T const& vec<4, T, Q>::operator[](typename vec<4, T, Q>::length_type i) const
 	{
 		GLM_ASSERT_LENGTH(i, this->length());
-		switch (i)
+
+#if GLM_LANG & GLM_LANG_CXX14_FLAG || GLM_LANG & GLM_LANG_CXX17_FLAG
+	#if GLM_LANG & GLM_LANG_CXX20_FLAG
+		if (std::is_constant_evaluated())
 		{
-		default:
-		case 0:
-			return x;
-		case 1:
-			return y;
-		case 2:
-			return z;
-		case 3:
-			return w;
+	#endif
+			switch (i)
+			{
+			default:
+			case 0:
+				return x;
+			case 1:
+				return y;
+			case 2:
+				return z;
+			case 3:
+				return w;
+			}
+	#if GLM_LANG & GLM_LANG_CXX20_FLAG
 		}
+		else
+		{
+			return (&x)[i];
+		}
+	#endif
+#else
+		return (&x)[i];
+#endif
 	}
 
 	// -- Unary arithmetic operators --
