@@ -10,12 +10,11 @@ namespace glm
 	{
 		T const Length(length(euclidean));
 		vec<3, T, Q> const tmp(euclidean / Length);
-		T const xz_dist(sqrt(tmp.x * tmp.x + tmp.z * tmp.z));
 
 		return vec<3, T, Q>(
 			asin(tmp.y),	// latitude
 			atan(tmp.x, tmp.z),		// longitude
-			xz_dist);				// xz distance
+			Length); // radial distance
 	}
 
 	template<typename T, qualifier Q>
