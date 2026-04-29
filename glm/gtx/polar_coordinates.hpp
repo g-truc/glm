@@ -26,19 +26,26 @@ namespace glm
 	/// @addtogroup gtx_polar_coordinates
 	/// @{
 
-	/// Convert Euclidean to Polar coordinates, x is the latitude, y the longitude and z the xz distance.
+	/// Convert Euclidean to Polar coordinates (x is the latitude, y the longitude, and z the radial distance). For the origin, radial distance is 0, and latitude and longitude are undefined.
 	///
 	/// @see gtx_polar_coordinates
 	template<typename T, qualifier Q>
 	GLM_FUNC_DECL vec<3, T, Q> polar(
 		vec<3, T, Q> const& euclidean);
 
-	/// Convert Polar to Euclidean coordinates.
+	/// Convert Polar coordinates (x is the latitude, y the longitude, and radial distance is 1) to Euclidean.
 	///
 	/// @see gtx_polar_coordinates
 	template<typename T, qualifier Q>
 	GLM_FUNC_DECL vec<3, T, Q> euclidean(
 		vec<2, T, Q> const& polar);
+
+	/// Convert Polar coordinates (x is the latitude, y the longitude, and z the radial distance) to Euclidean.
+	///
+	/// @see gtx_polar_coordinates
+	template<typename T, qualifier Q>
+	GLM_FUNC_DECL vec<3, T, Q> euclidean(
+		vec<3, T, Q> const& polar);
 
 	/// @}
 }//namespace glm
