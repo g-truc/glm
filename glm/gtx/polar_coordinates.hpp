@@ -33,12 +33,19 @@ namespace glm
 	GLM_FUNC_DECL vec<3, T, Q> polar(
 		vec<3, T, Q> const& euclidean);
 
-	/// Convert Polar to Euclidean coordinates.
+	/// Convert Polar coordinates (x is the latitude, y the longitude, and radial distance is 1) to Euclidean.
 	///
 	/// @see gtx_polar_coordinates
 	template<typename T, qualifier Q>
 	GLM_FUNC_DECL vec<3, T, Q> euclidean(
 		vec<2, T, Q> const& polar);
+
+	/// Convert Polar coordinates (x is the latitude, y the longitude, and z the radial distance) to Euclidean.
+	///
+	/// @see gtx_polar_coordinates
+	template<typename T, qualifier Q>
+	GLM_FUNC_DECL vec<3, T, Q> euclidean(
+		vec<3, T, Q> const& polar);
 
 	/// @}
 }//namespace glm
