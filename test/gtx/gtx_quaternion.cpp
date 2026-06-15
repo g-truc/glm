@@ -102,13 +102,14 @@ static int test_extractRealComponent()
 {
 	int Error = 0;
 
-	// A canonical unit quaternion (60 degrees about X): w = cos(30 deg) >= 0.
-	glm::quat const q(0.8660254f, 0.5f, 0.0f, 0.0f);
+	// A canonical unit quaternion (rotation about X): w = cos(angle / 2) >= 0.
+	float const Angle = glm::radians(60.0f);
+	glm::quat const q = glm::angleAxis(Angle, glm::vec3(1.0f, 0.0f, 0.0f));
 	float const w = glm::extractRealComponent(q);
 
 	// Reconstructing the real component from x/y/z must recover the canonical
 	// (non-negative) w, not its negation.
-	Error += glm::epsilonEqual(w, q.w, 0.0001f) ? 0 : 1;
+	Error += glm::epsilonEqual(w, glm::cos(Angle * 0.5f), 0.0001f) ? 0 : 1;
 	Error += (w >= 0.0f) ? 0 : 1;
 
 	return Error;
