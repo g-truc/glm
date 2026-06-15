@@ -66,7 +66,7 @@ namespace glm
 		if(w < T(0))
 			return T(0);
 		else
-			return -sqrt(w);
+			return sqrt(w);
 	}
 
 	template<typename T, qualifier Q>
