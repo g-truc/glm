@@ -32,8 +32,8 @@ namespace glm
 
 		mat<2, 2, T, Q> Inverse(
 			+ m[1][1] / Determinant,
-			- m[0][1] / Determinant,
 			- m[1][0] / Determinant,
+			- m[0][1] / Determinant,
 			+ m[0][0] / Determinant);
 
 		return Inverse;

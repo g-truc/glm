@@ -41,11 +41,55 @@ static int test_affine()
 	return Error;
 }
 
+static int test_inverse_transpose()
+{
+	int Error = 0;
+
+	{
+		glm::mat2 const M(
+			1.f, 3.f,
+			2.f, 4.f);
+		glm::mat2 const A = glm::inverseTranspose(M);
+		glm::mat2 const R = glm::transpose(glm::inverse(M));
+
+		for(glm::length_t i = 0; i < A.length(); ++i)
+			Error += glm::all(glm::epsilonEqual(A[i], R[i], 0.01f)) ? 0 : 1;
+	}
+
+	{
+		glm::mat3 const M(
+			1.f, 3.f, 0.f,
+			2.f, 4.f, 0.f,
+			0.f, 0.f, 1.f);
+		glm::mat3 const A = glm::inverseTranspose(M);
+		glm::mat3 const R = glm::transpose(glm::inverse(M));
+
+		for(glm::length_t i = 0; i < A.length(); ++i)
+			Error += glm::all(glm::epsilonEqual(A[i], R[i], 0.01f)) ? 0 : 1;
+	}
+
+	{
+		glm::mat4 const M(
+			1.f, 3.f, 0.f, 0.f,
+			2.f, 4.f, 0.f, 0.f,
+			0.f, 0.f, 1.f, 0.f,
+			0.f, 0.f, 0.f, 1.f);
+		glm::mat4 const A = glm::inverseTranspose(M);
+		glm::mat4 const R = glm::transpose(glm::inverse(M));
+
+		for(glm::length_t i = 0; i < A.length(); ++i)
+			Error += glm::all(glm::epsilonEqual(A[i], R[i], 0.01f)) ? 0 : 1;
+	}
+
+	return Error;
+}
+
 int main()
 {
 	int Error = 0;
 
 	Error += test_affine();
+	Error += test_inverse_transpose();
 
 	return Error;
 }
