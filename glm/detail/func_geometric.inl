@@ -243,7 +243,7 @@ namespace detail
 		static_assert(std::numeric_limits<genType>::is_iec559, "'refract' accepts only floating-point inputs");
 		genType const dotValue(dot(N, I));
 		genType const k(static_cast<genType>(1) - eta * eta * (static_cast<genType>(1) - dotValue * dotValue));
-		return (eta * I - (eta * dotValue + sqrt(k)) * N) * static_cast<genType>(k >= static_cast<genType>(0));
+		return (k >= static_cast<genType>(0)) ? (eta * I - (eta * dotValue + sqrt(k)) * N) : static_cast<genType>(0);
 	}
 
 	template<length_t L, typename T, qualifier Q>

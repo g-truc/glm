@@ -188,6 +188,43 @@ namespace refract
 			Error += glm::all(glm::equal(C, glm::vec4(0.0, -1.0, 0.0f, 0.0f), 0.0001f)) ? 0 : 1;
 		}
 
+		// Total internal reflection (k < 0) must yield zero, like the vector
+		// overloads, not NaN
+		{
+			float A(-0.5f);
+			float B(1.0f);
+			float C = glm::refract(A, B, 2.0f);
+			Error += glm::equal(C, 0.0f, 0.0001f) ? 0 : 1;
+		}
+
+		{
+			double A(-0.5);
+			double B(1.0);
+			double C = glm::refract(A, B, 2.0);
+			Error += glm::equal(C, 0.0, 0.0001) ? 0 : 1;
+		}
+
+		{
+			glm::vec2 A(glm::normalize(glm::vec2(1.0f, -1.0f)));
+			glm::vec2 B(0.0f, 1.0f);
+			glm::vec2 C = glm::refract(A, B, 2.0f);
+			Error += glm::all(glm::equal(C, glm::vec2(0.0f), 0.0001f)) ? 0 : 1;
+		}
+
+		{
+			glm::dvec2 A(glm::normalize(glm::dvec2(1.0, -1.0)));
+			glm::dvec2 B(0.0, 1.0);
+			glm::dvec2 C = glm::refract(A, B, 2.0);
+			Error += glm::all(glm::equal(C, glm::dvec2(0.0), 0.0001)) ? 0 : 1;
+		}
+
+		{
+			glm::vec4 A(glm::normalize(glm::vec4(1.0f, -1.0f, 0.0f, 0.0f)));
+			glm::vec4 B(0.0f, 1.0f, 0.0f, 0.0f);
+			glm::vec4 C = glm::refract(A, B, 2.0f);
+			Error += glm::all(glm::equal(C, glm::vec4(0.0f), 0.0001f)) ? 0 : 1;
+		}
+
 		return Error;
 	}
 }//namespace refract
