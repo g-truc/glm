@@ -75,22 +75,32 @@ namespace glm
 		if(!equal(Max, static_cast<T>(0), epsilon<T>()))
 		{
 			hsv.y = Delta / hsv.z;
-			T h = static_cast<T>(0);
 
-			if(equal(rgbColor.r, Max, epsilon<T>()))
-				// between yellow & magenta
-				h = static_cast<T>(0) + T(60) * (rgbColor.g - rgbColor.b) / Delta;
-			else if(equal(rgbColor.g, Max, epsilon<T>()))
-				// between cyan & yellow
-				h = static_cast<T>(120) + T(60) * (rgbColor.b - rgbColor.r) / Delta;
+			if(equal(Delta, static_cast<T>(0), epsilon<T>()))
+			{
+				// Achromatic (grey): saturation is 0 and the hue is undefined.
+				// Guarding here avoids a division by zero that would make the hue NaN.
+				hsv.x = static_cast<T>(0);
+			}
 			else
-				// between magenta & cyan
-				h = static_cast<T>(240) + T(60) * (rgbColor.r - rgbColor.g) / Delta;
+			{
+				T h = static_cast<T>(0);
 
-			if(h < T(0))
-				hsv.x = h + T(360);
-			else
-				hsv.x = h;
+				if(equal(rgbColor.r, Max, epsilon<T>()))
+					// between yellow & magenta
+					h = static_cast<T>(0) + T(60) * (rgbColor.g - rgbColor.b) / Delta;
+				else if(equal(rgbColor.g, Max, epsilon<T>()))
+					// between cyan & yellow
+					h = static_cast<T>(120) + T(60) * (rgbColor.b - rgbColor.r) / Delta;
+				else
+					// between magenta & cyan
+					h = static_cast<T>(240) + T(60) * (rgbColor.r - rgbColor.g) / Delta;
+
+				if(h < T(0))
+					hsv.x = h + T(360);
+				else
+					hsv.x = h;
+			}
 		}
 		else
 		{

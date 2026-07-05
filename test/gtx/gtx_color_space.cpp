@@ -15,6 +15,21 @@ static int test_hsv()
 	return Error;
 }
 
+static int test_hsv_achromatic()
+{
+	int Error = 0;
+
+	// Achromatic (grey) colors have delta == 0. The hue must be 0, not NaN.
+	glm::vec3 colorHSV = glm::hsvColor(glm::vec3(0.5f, 0.5f, 0.5f));
+	Error += glm::all(glm::equal(colorHSV, glm::vec3(0.0f, 0.0f, 0.5f), glm::epsilon<float>())) ? 0 : 1;
+
+	// And it must round-trip back to the same grey.
+	glm::vec3 colorRGB = glm::rgbColor(colorHSV);
+	Error += glm::all(glm::equal(colorRGB, glm::vec3(0.5f), glm::epsilon<float>())) ? 0 : 1;
+
+	return Error;
+}
+
 static int test_saturation()
 {
 	int Error = 0;
@@ -30,6 +45,7 @@ int main()
 	int Error(0);
 
 	Error += test_hsv();
+	Error += test_hsv_achromatic();
 	Error += test_saturation();
 
 	return Error;
