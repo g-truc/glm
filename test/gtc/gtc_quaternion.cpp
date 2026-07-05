@@ -318,8 +318,13 @@ static int test_identity()
 
 	glm::quat const Q = glm::identity<glm::quat>();
 
+#ifdef GLM_FORCE_QUAT_DATA_XYZW
+	Error += glm::all(glm::equal(Q, glm::quat(0, 0, 0, 1), 0.0001f)) ? 0 : 1;
+	Error += glm::any(glm::notEqual(Q, glm::quat(0, 0, 0, 1), 0.0001f)) ? 1 : 0;
+#else
 	Error += glm::all(glm::equal(Q, glm::quat(1, 0, 0, 0), 0.0001f)) ? 0 : 1;
 	Error += glm::any(glm::notEqual(Q, glm::quat(1, 0, 0, 0), 0.0001f)) ? 1 : 0;
+#endif
 
 	glm::mat4 const M = glm::identity<glm::mat4x4>();
 	glm::mat4 const N(1.0f);

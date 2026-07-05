@@ -273,7 +273,11 @@ namespace detail
 	{
 		GLM_FUNC_QUALIFIER GLM_CONSTEXPR static genType identity()
 		{
-			return genType(1, 0, 0, 0);
+#			ifdef GLM_FORCE_QUAT_DATA_XYZW
+				return genType(0, 0, 0, 1);
+#			else
+				return genType(1, 0, 0, 0);
+#			endif
 		}
 	};
 
