@@ -236,6 +236,7 @@
 #define GLM_FUNC_DISCARD_DECL GLM_CUDA_FUNC_DECL
 #define GLM_FUNC_DECL [[nodiscard]] GLM_CUDA_FUNC_DECL
 #define GLM_FUNC_QUALIFIER GLM_CUDA_FUNC_DEF GLM_INLINE
+#define GLM_FUNC_QUALIFIER_VARARG GLM_CUDA_FUNC_DEF inline
 
 // Do not use CUDA function qualifiers on CUDA compiler when functions are made default
 
