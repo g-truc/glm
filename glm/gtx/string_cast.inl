@@ -18,7 +18,7 @@ namespace detail
 		typedef double value_type;
 	};
 
-	GLM_FUNC_QUALIFIER std::string format(const char* message, ...) {
+	GLM_FUNC_QUALIFIER_VARARG std::string format(const char* message, ...) {
 		std::size_t const STRING_BUFFER(4096);
 
 		assert(message != NULL);
