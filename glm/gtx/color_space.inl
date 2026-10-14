@@ -27,34 +27,34 @@ namespace glm
 			{
 			default:
 			case 0:
-				rgbColor.r = hsv.z;
-				rgbColor.g = q;
-				rgbColor.b = o;
+				rgbColor.x = hsv.z;
+				rgbColor.y = q;
+				rgbColor.z = o;
 				break;
 			case 1:
-				rgbColor.r = p;
-				rgbColor.g = hsv.z;
-				rgbColor.b = o;
+				rgbColor.x = p;
+				rgbColor.y = hsv.z;
+				rgbColor.z = o;
 				break;
 			case 2:
-				rgbColor.r = o;
-				rgbColor.g = hsv.z;
-				rgbColor.b = q;
+				rgbColor.x = o;
+				rgbColor.y = hsv.z;
+				rgbColor.z = q;
 				break;
 			case 3:
-				rgbColor.r = o;
-				rgbColor.g = p;
-				rgbColor.b = hsv.z;
+				rgbColor.x = o;
+				rgbColor.y = p;
+				rgbColor.z = hsv.z;
 				break;
 			case 4:
-				rgbColor.r = q;
-				rgbColor.g = o;
-				rgbColor.b = hsv.z;
+				rgbColor.x = q;
+				rgbColor.y = o;
+				rgbColor.z = hsv.z;
 				break;
 			case 5:
-				rgbColor.r = hsv.z;
-				rgbColor.g = o;
-				rgbColor.b = p;
+				rgbColor.x = hsv.z;
+				rgbColor.y = o;
+				rgbColor.z = p;
 				break;
 			}
 		}
@@ -66,8 +66,8 @@ namespace glm
 	GLM_FUNC_QUALIFIER vec<3, T, Q> hsvColor(const vec<3, T, Q>& rgbColor)
 	{
 		vec<3, T, Q> hsv = rgbColor;
-		T Min   = min(min(rgbColor.r, rgbColor.g), rgbColor.b);
-		T Max   = max(max(rgbColor.r, rgbColor.g), rgbColor.b);
+		T Min   = min(min(rgbColor.x, rgbColor.y), rgbColor.z);
+		T Max   = max(max(rgbColor.x, rgbColor.y), rgbColor.z);
 		T Delta = Max - Min;
 
 		hsv.z = Max;
@@ -77,15 +77,15 @@ namespace glm
 			hsv.y = Delta / hsv.z;
 			T h = static_cast<T>(0);
 
-			if(equal(rgbColor.r, Max, epsilon<T>()))
+			if(equal(rgbColor.x, Max, epsilon<T>()))
 				// between yellow & magenta
-				h = static_cast<T>(0) + T(60) * (rgbColor.g - rgbColor.b) / Delta;
-			else if(equal(rgbColor.g, Max, epsilon<T>()))
+				h = static_cast<T>(0) + T(60) * (rgbColor.y - rgbColor.z) / Delta;
+			else if(equal(rgbColor.y, Max, epsilon<T>()))
 				// between cyan & yellow
-				h = static_cast<T>(120) + T(60) * (rgbColor.b - rgbColor.r) / Delta;
+				h = static_cast<T>(120) + T(60) * (rgbColor.z - rgbColor.x) / Delta;
 			else
 				// between magenta & cyan
-				h = static_cast<T>(240) + T(60) * (rgbColor.r - rgbColor.g) / Delta;
+				h = static_cast<T>(240) + T(60) * (rgbColor.x - rgbColor.y) / Delta;
 
 			if(h < T(0))
 				hsv.x = h + T(360);
