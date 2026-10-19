@@ -874,6 +874,59 @@ static int test_mat_vec_mul()
 	return Error;
 }
 
+static int test_mat_mat_mul()
+{
+	int Error = 0;
+
+	{
+		constexpr glm::mat2x2 R22x22 = glm::mat2x2(1.0f) * glm::mat2x2(1.0f);
+		constexpr glm::mat2x3 R22x32 = glm::mat2x2(1.0f) * glm::mat3x2(1.0f);
+		constexpr glm::mat2x4 R22x42 = glm::mat2x2(1.0f) * glm::mat4x2(1.0f);
+    }
+    {
+		constexpr glm::mat3x3 R32x23 = glm::mat3x2(1.0f) * glm::mat2x3(1.0f);
+		constexpr glm::mat3x3 R32x33 = glm::mat3x2(1.0f) * glm::mat3x3(1.0f);
+		constexpr glm::mat3x4 R32x43 = glm::mat3x2(1.0f) * glm::mat4x3(1.0f);
+    }
+    {
+		constexpr glm::mat4x4 R42x24 = glm::mat4x2(1.0f) * glm::mat2x4(1.0f);
+		constexpr glm::mat4x4 R42x34 = glm::mat4x2(1.0f) * glm::mat3x4(1.0f);
+		constexpr glm::mat4x4 R42x44 = glm::mat4x2(1.0f) * glm::mat4x4(1.0f);
+    }
+    {
+		constexpr glm::mat2x2 R23x22 = glm::mat2x3(1.0f) * glm::mat2x2(1.0f);
+		constexpr glm::mat2x2 R23x32 = glm::mat2x3(1.0f) * glm::mat3x2(1.0f);
+		constexpr glm::mat2x2 R23x42 = glm::mat2x3(1.0f) * glm::mat4x2(1.0f);
+    }
+    {
+		constexpr glm::mat3x3 R33x23 = glm::mat3x3(1.0f) * glm::mat2x3(1.0f);
+		constexpr glm::mat3x3 R33x33 = glm::mat3x3(1.0f) * glm::mat3x3(1.0f);
+		constexpr glm::mat3x4 R33x43 = glm::mat3x3(1.0f) * glm::mat4x3(1.0f);
+    }
+    {
+		constexpr glm::mat4x4 R43x24 = glm::mat4x3(1.0f) * glm::mat2x4(1.0f);
+		constexpr glm::mat4x4 R43x34 = glm::mat4x3(1.0f) * glm::mat3x4(1.0f);
+		constexpr glm::mat4x4 R43x44 = glm::mat4x3(1.0f) * glm::mat4x4(1.0f);
+    }
+    {
+		constexpr glm::mat2x2 R24x22 = glm::mat2x4(1.0f) * glm::mat2x2(1.0f);
+		constexpr glm::mat2x2 R24x32 = glm::mat2x4(1.0f) * glm::mat3x2(1.0f);
+		constexpr glm::mat2x2 R24x42 = glm::mat2x4(1.0f) * glm::mat4x2(1.0f);
+    }
+    {
+		constexpr glm::mat3x3 R34x23 = glm::mat3x4(1.0f) * glm::mat2x3(1.0f);
+		constexpr glm::mat3x3 R34x33 = glm::mat3x4(1.0f) * glm::mat3x3(1.0f);
+		constexpr glm::mat3x4 R34x43 = glm::mat3x4(1.0f) * glm::mat4x3(1.0f);
+    }
+    {
+		constexpr glm::mat4x4 R44x24 = glm::mat4x4(1.0f) * glm::mat2x4(1.0f);
+		constexpr glm::mat4x4 R44x34 = glm::mat4x4(1.0f) * glm::mat3x4(1.0f);
+		constexpr glm::mat4x4 R44x44 = glm::mat4x4(1.0f) * glm::mat4x4(1.0f);
+	}
+
+	return Error;
+}
+
 static int test_common()
 {
 	static_assert(glm::abs(1.0f) > 0.0f, "GLM: Failed constexpr");
