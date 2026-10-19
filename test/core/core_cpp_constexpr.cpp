@@ -795,6 +795,138 @@ static int test_mat4x4()
 	return Error;
 }
 
+static int test_mat_vec_mul()
+{
+	int Error = 0;
+
+	{
+		constexpr glm::mat2x2 M(1.0f, 2.0f, 3.0f, 4.0f);
+		constexpr glm::vec2 A = M * glm::vec2(1.0f, 2.0f);
+		static_assert(A == glm::vec2(7.0f, 10.0f), "GLM: Failed constexpr");
+		constexpr glm::vec2 B = glm::vec2(1.0f, 2.0f) * M;
+		static_assert(B == glm::vec2(5.0f, 11.0f), "GLM: Failed constexpr");
+	}
+
+	{
+		constexpr glm::mat2x3 M(1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f);
+		constexpr glm::vec3 A = M * glm::vec2(1.0f, 2.0f);
+		static_assert(A == glm::vec3(9.0f, 12.0f, 15.0f), "GLM: Failed constexpr");
+		constexpr glm::vec2 B = glm::vec3(1.0f, 2.0f, 3.0f) * M;
+		static_assert(B == glm::vec2(14.0f, 32.0f), "GLM: Failed constexpr");
+	}
+
+	{
+		constexpr glm::mat2x4 M(1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f, 7.0f, 8.0f);
+		constexpr glm::vec4 A = M * glm::vec2(1.0f, 2.0f);
+		static_assert(A == glm::vec4(11.0f, 14.0f, 17.0f, 20.0f), "GLM: Failed constexpr");
+		constexpr glm::vec2 B = glm::vec4(1.0f, 2.0f, 3.0f, 4.0f) * M;
+		static_assert(B == glm::vec2(30.0f, 70.0f), "GLM: Failed constexpr");
+	}
+
+	{
+		constexpr glm::mat3x2 M(1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f);
+		constexpr glm::vec2 A = M * glm::vec3(1.0f, 2.0f, 3.0f);
+		static_assert(A == glm::vec2(22.0f, 28.0f), "GLM: Failed constexpr");
+		constexpr glm::vec3 B = glm::vec2(1.0f, 2.0f) * M;
+		static_assert(B == glm::vec3(5.0f, 11.0f, 17.0f), "GLM: Failed constexpr");
+	}
+
+	{
+		constexpr glm::mat3x3 M(1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f, 7.0f, 8.0f, 9.0f);
+		constexpr glm::vec3 A = M * glm::vec3(1.0f, 2.0f, 3.0f);
+		static_assert(A == glm::vec3(30.0f, 36.0f, 42.0f), "GLM: Failed constexpr");
+		constexpr glm::vec3 B = glm::vec3(1.0f, 2.0f, 3.0f) * M;
+		static_assert(B == glm::vec3(14.0f, 32.0f, 50.0f), "GLM: Failed constexpr");
+	}
+
+	{
+		constexpr glm::mat3x4 M(1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f, 7.0f, 8.0f, 9.0f, 10.0f, 11.0f, 12.0f);
+		constexpr glm::vec4 A = M * glm::vec3(1.0f, 2.0f, 3.0f);
+		static_assert(A == glm::vec4(38.0f, 44.0f, 50.0f, 56.0f), "GLM: Failed constexpr");
+		constexpr glm::vec3 B = glm::vec4(1.0f, 2.0f, 3.0f, 4.0f) * M;
+		static_assert(B == glm::vec3(30.0f, 70.0f, 110.0f), "GLM: Failed constexpr");
+	}
+
+	{
+		constexpr glm::mat4x2 M(1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f, 7.0f, 8.0f);
+		constexpr glm::vec2 A = M * glm::vec4(1.0f, 2.0f, 3.0f, 4.0f);
+		static_assert(A == glm::vec2(50.0f, 60.0f), "GLM: Failed constexpr");
+		constexpr glm::vec4 B = glm::vec2(1.0f, 2.0f) * M;
+		static_assert(B == glm::vec4(5.0f, 11.0f, 17.0f, 23.0f), "GLM: Failed constexpr");
+	}
+
+	{
+		constexpr glm::mat4x3 M(1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f, 7.0f, 8.0f, 9.0f, 10.0f, 11.0f, 12.0f);
+		constexpr glm::vec3 A = M * glm::vec4(1.0f, 2.0f, 3.0f, 4.0f);
+		static_assert(A == glm::vec3(70.0f, 80.0f, 90.0f), "GLM: Failed constexpr");
+		constexpr glm::vec4 B = glm::vec3(1.0f, 2.0f, 3.0f) * M;
+		static_assert(B == glm::vec4(14.0f, 32.0f, 50.0f, 68.0f), "GLM: Failed constexpr");
+	}
+
+	{
+		constexpr glm::mat4x4 M(1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f, 7.0f, 8.0f, 9.0f, 10.0f, 11.0f, 12.0f, 13.0f, 14.0f, 15.0f, 16.0f);
+		constexpr glm::vec4 A = M * glm::vec4(1.0f, 2.0f, 3.0f, 4.0f);
+		static_assert(A == glm::vec4(90.0f, 100.0f, 110.0f, 120.0f), "GLM: Failed constexpr");
+		constexpr glm::vec4 B = glm::vec4(1.0f, 2.0f, 3.0f, 4.0f) * M;
+		static_assert(B == glm::vec4(30.0f, 70.0f, 110.0f, 150.0f), "GLM: Failed constexpr");
+	}
+
+	return Error;
+}
+
+static int test_mat_mat_mul()
+{
+	int Error = 0;
+
+	{
+		constexpr glm::mat2x2 R22x22 = glm::mat2x2(1.0f) * glm::mat2x2(1.0f);
+		constexpr glm::mat2x3 R22x32 = glm::mat2x2(1.0f) * glm::mat3x2(1.0f);
+		constexpr glm::mat2x4 R22x42 = glm::mat2x2(1.0f) * glm::mat4x2(1.0f);
+    }
+    {
+		constexpr glm::mat3x3 R32x23 = glm::mat3x2(1.0f) * glm::mat2x3(1.0f);
+		constexpr glm::mat3x3 R32x33 = glm::mat3x2(1.0f) * glm::mat3x3(1.0f);
+		constexpr glm::mat3x4 R32x43 = glm::mat3x2(1.0f) * glm::mat4x3(1.0f);
+    }
+    {
+		constexpr glm::mat4x4 R42x24 = glm::mat4x2(1.0f) * glm::mat2x4(1.0f);
+		constexpr glm::mat4x4 R42x34 = glm::mat4x2(1.0f) * glm::mat3x4(1.0f);
+		constexpr glm::mat4x4 R42x44 = glm::mat4x2(1.0f) * glm::mat4x4(1.0f);
+    }
+    {
+		constexpr glm::mat2x2 R23x22 = glm::mat2x3(1.0f) * glm::mat2x2(1.0f);
+		constexpr glm::mat2x2 R23x32 = glm::mat2x3(1.0f) * glm::mat3x2(1.0f);
+		constexpr glm::mat2x2 R23x42 = glm::mat2x3(1.0f) * glm::mat4x2(1.0f);
+    }
+    {
+		constexpr glm::mat3x3 R33x23 = glm::mat3x3(1.0f) * glm::mat2x3(1.0f);
+		constexpr glm::mat3x3 R33x33 = glm::mat3x3(1.0f) * glm::mat3x3(1.0f);
+		constexpr glm::mat3x4 R33x43 = glm::mat3x3(1.0f) * glm::mat4x3(1.0f);
+    }
+    {
+		constexpr glm::mat4x4 R43x24 = glm::mat4x3(1.0f) * glm::mat2x4(1.0f);
+		constexpr glm::mat4x4 R43x34 = glm::mat4x3(1.0f) * glm::mat3x4(1.0f);
+		constexpr glm::mat4x4 R43x44 = glm::mat4x3(1.0f) * glm::mat4x4(1.0f);
+    }
+    {
+		constexpr glm::mat2x2 R24x22 = glm::mat2x4(1.0f) * glm::mat2x2(1.0f);
+		constexpr glm::mat2x2 R24x32 = glm::mat2x4(1.0f) * glm::mat3x2(1.0f);
+		constexpr glm::mat2x2 R24x42 = glm::mat2x4(1.0f) * glm::mat4x2(1.0f);
+    }
+    {
+		constexpr glm::mat3x3 R34x23 = glm::mat3x4(1.0f) * glm::mat2x3(1.0f);
+		constexpr glm::mat3x3 R34x33 = glm::mat3x4(1.0f) * glm::mat3x3(1.0f);
+		constexpr glm::mat3x4 R34x43 = glm::mat3x4(1.0f) * glm::mat4x3(1.0f);
+    }
+    {
+		constexpr glm::mat4x4 R44x24 = glm::mat4x4(1.0f) * glm::mat2x4(1.0f);
+		constexpr glm::mat4x4 R44x34 = glm::mat4x4(1.0f) * glm::mat3x4(1.0f);
+		constexpr glm::mat4x4 R44x44 = glm::mat4x4(1.0f) * glm::mat4x4(1.0f);
+	}
+
+	return Error;
+}
+
 static int test_common()
 {
 	static_assert(glm::abs(1.0f) > 0.0f, "GLM: Failed constexpr");
@@ -826,6 +958,7 @@ int main()
 	Error += test_mat4x2();
 	Error += test_mat4x3();
 	Error += test_mat4x4();
+	Error += test_mat_vec_mul();
 
 	Error += test_common();
 

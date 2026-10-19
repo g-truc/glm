@@ -384,7 +384,7 @@ namespace glm
 		template<typename T, qualifier Q>
 		struct mul3x3<T, Q, false>
 		{
-			GLM_FUNC_QUALIFIER static mat<3, 3, T, Q> call(mat<3, 3, T, Q> const& m1, mat<3, 3, T, Q> const& m2)
+			GLM_FUNC_QUALIFIER GLM_CONSTEXPR static mat<3, 3, T, Q> call(mat<3, 3, T, Q> const& m1, mat<3, 3, T, Q> const& m2)
 			{
 				typename mat<3, 3, T, Q>::col_type const& SrcA0 = m1[0];
 				typename mat<3, 3, T, Q>::col_type const& SrcA1 = m1[1];
