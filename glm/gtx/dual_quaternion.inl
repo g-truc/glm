@@ -240,7 +240,7 @@ namespace glm
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER mat<3, 4, T, Q> mat3x4_cast(tdualquat<T, Q> const& x)
 	{
-		qua<T, Q> r = x.real / length2(x.real);
+		qua<T, Q> r = x.real / dot(x.real, x.real);
 
 		qua<T, Q> const rr(r.w * x.real.w, r.x * x.real.x, r.y * x.real.y, r.z * x.real.z);
 		r *= static_cast<T>(2);
