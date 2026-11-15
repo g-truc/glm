@@ -1,6 +1,8 @@
 
 #pragma once
-#include <functional>
+#if !defined(GLM_CXX_MODULE)
+#	include <functional>
+#endif
 #include "_vectorize.hpp"
 
 GLM_EXPORT namespace glm {

@@ -14,8 +14,10 @@
 #pragma once
 
 // Dependency:
-#include <cfloat>
-#include <limits>
+#if !defined(GLM_CXX_MODULE)
+#	include <cfloat>
+#	include <limits>
+#endif
 #include "../glm.hpp"
 #include "../geometric.hpp"
 #include "../gtx/closest_point.hpp"

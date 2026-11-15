@@ -8,8 +8,10 @@
 #include "../vec4.hpp"
 #include "../detail/type_half.hpp"
 #include "type_ptr.hpp"
-#include <cstring>
-#include <limits>
+#if !defined(GLM_CXX_MODULE)
+#	include <cstring>
+#	include <limits>
+#endif
 
 GLM_EXPORT namespace glm {
 namespace detail

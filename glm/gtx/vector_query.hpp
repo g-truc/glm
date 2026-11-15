@@ -14,8 +14,10 @@
 
 // Dependency:
 #include "../glm.hpp"
-#include <cfloat>
-#include <limits>
+#if !defined(GLM_CXX_MODULE)
+#	include <cfloat>
+#	include <limits>
+#endif
 
 #ifndef GLM_ENABLE_EXPERIMENTAL
 #	error "GLM: GLM_GTX_vector_query is an experimental extension and may change in the future. Use #define GLM_ENABLE_EXPERIMENTAL before including it, if you really want to use it."

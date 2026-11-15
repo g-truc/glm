@@ -19,7 +19,9 @@
 #include "../exponential.hpp"
 #include "../vec3.hpp"
 #include "../vec4.hpp"
-#include <limits>
+#if !defined(GLM_CXX_MODULE)
+#	include <limits>
+#endif
 
 #if GLM_MESSAGES == GLM_ENABLE && !defined(GLM_EXT_INCLUDED)
 #	pragma message("GLM: GLM_GTC_color_space extension included")

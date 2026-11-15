@@ -3,9 +3,11 @@
 
 #include "../vector_relational.hpp"
 #include "_vectorize.hpp"
-#include <limits>
-#include <cmath>
-#include <cassert>
+#if !defined(GLM_CXX_MODULE)
+#	include <limits>
+#	include <cmath>
+#	include <cassert>
+#endif
 
 GLM_EXPORT namespace glm {
 namespace detail
@@ -130,4 +132,3 @@ namespace detail
 #if GLM_CONFIG_SIMD == GLM_ENABLE
 #	include "func_exponential_simd.inl"
 #endif
-

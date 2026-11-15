@@ -3,7 +3,9 @@
 #include "type_mat4x4.hpp"
 #include "../geometric.hpp"
 #include "../simd/matrix.h"
-#include <cstring>
+#if !defined(GLM_CXX_MODULE)
+#	include <cstring>
+#endif
 
 GLM_EXPORT namespace glm {
 namespace detail

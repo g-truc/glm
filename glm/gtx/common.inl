@@ -1,6 +1,8 @@
 /// @ref gtx_common
 
-#include <cmath>
+#if !defined(GLM_CXX_MODULE)
+#	include <cmath>
+#endif
 #include "../gtc/epsilon.hpp"
 #include "../gtc/constants.hpp"
 

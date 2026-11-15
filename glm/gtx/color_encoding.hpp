@@ -17,7 +17,9 @@
 #include "../detail/setup.hpp"
 #include "../detail/qualifier.hpp"
 #include "../vec3.hpp"
-#include <limits>
+#if !defined(GLM_CXX_MODULE)
+#	include <limits>
+#endif
 
 #ifndef GLM_ENABLE_EXPERIMENTAL
 #	error "GLM: GLM_GTC_color_encoding is an experimental extension and may change in the future. Use #define GLM_ENABLE_EXPERIMENTAL before including it, if you really want to use it."

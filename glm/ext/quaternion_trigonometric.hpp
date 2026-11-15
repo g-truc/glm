@@ -22,7 +22,9 @@
 #include "../exponential.hpp"
 #include "scalar_constants.hpp"
 #include "vector_relational.hpp"
-#include <limits>
+#if !defined(GLM_CXX_MODULE)
+#	include <limits>
+#endif
 
 #if GLM_MESSAGES == GLM_ENABLE && !defined(GLM_EXT_INCLUDED)
 #	pragma message("GLM: GLM_EXT_quaternion_trigonometric extension included")

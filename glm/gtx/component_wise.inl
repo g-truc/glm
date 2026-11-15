@@ -1,8 +1,10 @@
 /// @ref gtx_component_wise
 
 #include "../ext/scalar_common.hpp"
-#include <limits>
-#include <cmath>
+#if !defined(GLM_CXX_MODULE)
+#	include <limits>
+#	include <cmath>
+#endif
 
 GLM_EXPORT namespace glm {
 namespace detail

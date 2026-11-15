@@ -1,4 +1,6 @@
-#include <limits>
+#if !defined(GLM_CXX_MODULE)
+#	include <limits>
+#endif
 
 GLM_EXPORT namespace glm {
 	// isfinite

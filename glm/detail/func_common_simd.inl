@@ -5,7 +5,9 @@
 
 #include "../simd/common.h"
 
-#include <immintrin.h>
+#if !defined(GLM_CXX_MODULE)
+#	include <immintrin.h>
+#endif
 
 GLM_EXPORT namespace glm {
 namespace detail

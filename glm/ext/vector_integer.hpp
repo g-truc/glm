@@ -17,7 +17,9 @@
 #include "../detail/_vectorize.hpp"
 #include "../vector_relational.hpp"
 #include "../common.hpp"
-#include <limits>
+#if !defined(GLM_CXX_MODULE)
+#	include <limits>
+#endif
 
 #if GLM_MESSAGES == GLM_ENABLE && !defined(GLM_EXT_INCLUDED)
 #	pragma message("GLM: GLM_EXT_vector_integer extension included")

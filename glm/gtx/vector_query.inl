@@ -1,6 +1,8 @@
 /// @ref gtx_vector_query
 
-#include <cassert>
+#if !defined(GLM_CXX_MODULE)
+#	include <cassert>
+#endif
 
 GLM_EXPORT namespace glm {
 namespace detail

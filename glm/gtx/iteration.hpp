@@ -20,7 +20,9 @@
 #	pragma message("GLM: GLM_GTX_iteration extension included")
 #endif
 
-#include <iterator>
+#if !defined(GLM_CXX_MODULE)
+#	include <iterator>
+#endif
 
 GLM_EXPORT namespace glm {
 	/// @addtogroup gtx_iteration

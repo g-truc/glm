@@ -2,7 +2,9 @@
 #include "../exponential.hpp"
 #include "../ext/quaternion_common.hpp"
 #include "../ext/quaternion_geometric.hpp"
-#include <limits>
+#if !defined(GLM_CXX_MODULE)
+#	include <limits>
+#endif
 
 GLM_EXPORT namespace glm {
 namespace detail
@@ -148,7 +150,7 @@ namespace detail
 		return qua<T, Q>(w, x, y, z);
 #	endif
 	}
-	
+
 	// -- Conversion constructors --
 
 	template<typename T, qualifier Q>
@@ -394,4 +396,3 @@ namespace detail
 #if GLM_CONFIG_SIMD == GLM_ENABLE
 #	include "type_quat_simd.inl"
 #endif
-

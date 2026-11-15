@@ -4,8 +4,10 @@
 #pragma once
 
 #include "type_vec3.hpp"
-#include <limits>
-#include <cstddef>
+#if !defined(GLM_CXX_MODULE)
+#	include <limits>
+#	include <cstddef>
+#endif
 
 GLM_EXPORT namespace glm {
 	template<typename T, qualifier Q>

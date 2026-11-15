@@ -2,7 +2,9 @@
 #include "../geometric.hpp"
 #include "../exponential.hpp"
 #include "epsilon.hpp"
-#include <limits>
+#if !defined(GLM_CXX_MODULE)
+#	include <limits>
+#endif
 
 GLM_EXPORT namespace glm {
 	template<typename T, qualifier Q>

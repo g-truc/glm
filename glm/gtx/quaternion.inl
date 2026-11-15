@@ -1,6 +1,8 @@
 /// @ref gtx_quaternion
 
-#include <limits>
+#if !defined(GLM_CXX_MODULE)
+#	include <limits>
+#endif
 #include "../gtc/constants.hpp"
 
 GLM_EXPORT namespace glm {

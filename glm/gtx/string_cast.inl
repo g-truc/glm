@@ -1,7 +1,9 @@
 /// @ref gtx_string_cast
 
-#include <cstdarg>
-#include <cstdio>
+#if !defined(GLM_CXX_MODULE)
+#	include <cstdarg>
+#	include <cstdio>
+#endif
 
 GLM_EXPORT namespace glm {
 namespace detail

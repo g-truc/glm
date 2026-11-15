@@ -19,9 +19,11 @@
 #include "../gtc/type_precision.hpp"
 #include "../gtc/quaternion.hpp"
 #include "../gtx/dual_quaternion.hpp"
-#include <string>
-#include <cmath>
-#include <cstring>
+#if !defined(GLM_CXX_MODULE)
+#	include <string>
+#	include <cmath>
+#	include <cstring>
+#endif
 
 #ifndef GLM_ENABLE_EXPERIMENTAL
 #	error "GLM: GLM_GTX_string_cast is an experimental extension and may change in the future. Use #define GLM_ENABLE_EXPERIMENTAL before including it, if you really want to use it."

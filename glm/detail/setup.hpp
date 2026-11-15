@@ -8,9 +8,11 @@
 #	endif
 #endif
 
-#include <cassert>
-#include <cstddef>
-#include <type_traits>
+#if !defined(GLM_CXX_MODULE)
+#	include <cassert>
+#	include <cstddef>
+#	include <type_traits>
+#endif
 
 #define GLM_VERSION_MAJOR 1
 #define GLM_VERSION_MINOR 1
@@ -379,7 +381,9 @@ GLM_EXPORT namespace glm
 ///////////////////////////////////////////////////////////////////////////////////
 // uint
 
-#include <cstdint>
+#if !defined(GLM_CXX_MODULE)
+#	include <cstdint>
+#endif
 
 GLM_EXPORT namespace glm{
 namespace detail
@@ -388,7 +392,7 @@ namespace detail
 	typedef std::int16_t		int16;
 	typedef std::int32_t		int32;
 	typedef std::int64_t		int64;
-	
+
 	typedef std::uint8_t		uint8;
 	typedef std::uint16_t		uint16;
 	typedef std::uint32_t		uint32;

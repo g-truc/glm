@@ -14,8 +14,10 @@
 
 #ifdef __cpp_structured_bindings
 #if __cpp_structured_bindings >= 201606L
-#include <utility>
-#include <cstddef>
+#if !defined(GLM_CXX_MODULE)
+#	include <utility>
+#	include <cstddef>
+#endif
 GLM_EXPORT namespace std {
 	template<glm::length_t L,typename T,glm::qualifier Q>
 	struct tuple_size<glm::vec<L, T, Q>> {

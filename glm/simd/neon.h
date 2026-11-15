@@ -4,7 +4,9 @@
 #pragma once
 
 #if GLM_ARCH & GLM_ARCH_NEON_BIT
-#include <arm_neon.h>
+#if !defined(GLM_CXX_MODULE)
+#	include <arm_neon.h>
+#endif
 
 namespace glm {
 	namespace neon {

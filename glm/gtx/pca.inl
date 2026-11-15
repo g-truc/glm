@@ -1,7 +1,9 @@
 /// @ref gtx_pca
 
-#include <algorithm>
-#include <utility>
+#if !defined(GLM_CXX_MODULE)
+#	include <algorithm>
+#	include <utility>
+#endif
 
 GLM_EXPORT namespace glm {
 

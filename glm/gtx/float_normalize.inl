@@ -1,6 +1,8 @@
 /// @ref gtx_float_normalize
 
-#include <limits>
+#if !defined(GLM_CXX_MODULE)
+#	include <limits>
+#endif
 
 GLM_EXPORT namespace glm {
 	template<length_t L, typename T, qualifier Q>

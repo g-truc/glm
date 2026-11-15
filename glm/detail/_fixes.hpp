@@ -1,4 +1,6 @@
-#include <cmath>
+#if !defined(GLM_CXX_MODULE)
+#	include <cmath>
+#endif
 
 //! Workaround for compatibility with other libraries
 #ifdef max

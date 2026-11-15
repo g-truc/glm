@@ -107,11 +107,14 @@
 
 #pragma once
 
-#include <cmath>
-#include <climits>
-#include <cfloat>
-#include <limits>
-#include <cassert>
+#if !defined(GLM_CXX_MODULE)
+#	include <cmath>
+#	include <climits>
+#	include <cfloat>
+#	include <limits>
+#	include <cassert>
+#endif
+
 #include "fwd.hpp"
 
 #include "vec2.hpp"

@@ -2,10 +2,14 @@
 
 #include "_vectorize.hpp"
 #if(GLM_ARCH & GLM_ARCH_X86 && GLM_COMPILER & GLM_COMPILER_VC)
-#	include <intrin.h>
+#	if !defined(GLM_CXX_MODULE)
+#		include <intrin.h>
+#	endif
 #	pragma intrinsic(_BitScanReverse)
 #endif//(GLM_ARCH & GLM_ARCH_X86 && GLM_COMPILER & GLM_COMPILER_VC)
-#include <limits>
+#if !defined(GLM_CXX_MODULE)
+#	include <limits>
+#endif
 
 GLM_EXPORT namespace glm {
 namespace detail
@@ -369,4 +373,3 @@ namespace detail
 #if GLM_CONFIG_SIMD == GLM_ENABLE
 #	include "func_integer_simd.inl"
 #endif
-

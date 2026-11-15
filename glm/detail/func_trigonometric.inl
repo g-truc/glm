@@ -1,6 +1,8 @@
 #include "_vectorize.hpp"
-#include <cmath>
-#include <limits>
+#if !defined(GLM_CXX_MODULE)
+#	include <cmath>
+#	include <limits>
+#endif
 
 GLM_EXPORT namespace glm {
 	// radians
@@ -159,4 +161,3 @@ GLM_EXPORT namespace glm {
 #if GLM_CONFIG_SIMD == GLM_ENABLE
 #	include "func_trigonometric_simd.inl"
 #endif
-

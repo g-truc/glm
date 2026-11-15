@@ -26,7 +26,9 @@
 #include "../common.hpp"
 #include "../trigonometric.hpp"
 #include "../exponential.hpp"
-#include <limits>
+#if !defined(GLM_CXX_MODULE)
+#	include <limits>
+#endif
 
 #if GLM_MESSAGES == GLM_ENABLE && !defined(GLM_EXT_INCLUDED)
 #	pragma message("GLM: GLM_EXT_quaternion_common extension included")

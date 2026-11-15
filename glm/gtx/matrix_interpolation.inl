@@ -2,7 +2,9 @@
 
 #include "../ext/scalar_constants.hpp"
 
-#include <limits>
+#if !defined(GLM_CXX_MODULE)
+#	include <limits>
+#endif
 
 GLM_EXPORT namespace glm {
 	template<typename T, qualifier Q>

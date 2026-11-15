@@ -8,7 +8,9 @@
 #include "type_vec3.hpp"
 #include "type_vec4.hpp"
 #include "_vectorize.hpp"
-#include <limits>
+#if !defined(GLM_CXX_MODULE)
+#	include <limits>
+#endif
 
 GLM_EXPORT namespace glm {
 	// min

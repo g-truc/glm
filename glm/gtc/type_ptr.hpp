@@ -48,7 +48,9 @@
 #include "../mat4x2.hpp"
 #include "../mat4x3.hpp"
 #include "../mat4x4.hpp"
-#include <cstring>
+#if !defined(GLM_CXX_MODULE)
+#	include <cstring>
+#endif
 
 #if GLM_MESSAGES == GLM_ENABLE && !defined(GLM_EXT_INCLUDED)
 #	pragma message("GLM: GLM_GTC_type_ptr extension included")
