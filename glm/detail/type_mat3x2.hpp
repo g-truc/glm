@@ -8,8 +8,7 @@
 #include <limits>
 #include <cstddef>
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	template<typename T, qualifier Q>
 	struct mat<3, 2, T, Q>
 	{

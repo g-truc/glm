@@ -3,7 +3,7 @@
 #include <cstdarg>
 #include <cstdio>
 
-namespace glm{
+GLM_EXPORT namespace glm {
 namespace detail
 {
 	template <typename T>

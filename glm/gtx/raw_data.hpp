@@ -22,8 +22,7 @@
 #	pragma message("GLM: GLM_GTX_raw_data extension included")
 #endif
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	/// @addtogroup gtx_raw_data
 	/// @{
 

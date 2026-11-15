@@ -2,7 +2,7 @@
 
 #include "../simd/integer.h"
 
-namespace glm{
+GLM_EXPORT namespace glm {
 namespace detail
 {
 	template<typename PARAM, typename RET>

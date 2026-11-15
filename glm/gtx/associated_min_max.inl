@@ -1,6 +1,6 @@
 /// @ref gtx_associated_min_max
 
-namespace glm{
+GLM_EXPORT namespace glm {
 
 // Min comparison between 2 variables
 template<typename T, typename U>

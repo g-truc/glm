@@ -19,8 +19,7 @@
 #include "./ext/vector_float2.hpp"
 #include "./ext/vector_float4.hpp"
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	/// @addtogroup core_func_packing
 	/// @{
 

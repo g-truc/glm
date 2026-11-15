@@ -4,8 +4,7 @@
 #pragma once
 #include "../detail/type_vec3.hpp"
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	/// @addtogroup core_vector_precision
 	/// @{
 

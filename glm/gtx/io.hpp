@@ -40,8 +40,7 @@
 #include <locale>  // std::locale, std::locale::facet, std::locale::id
 #include <utility> // std::pair<>
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	/// @addtogroup gtx_io
 	/// @{
 

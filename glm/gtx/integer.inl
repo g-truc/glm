@@ -1,7 +1,6 @@
 /// @ref gtx_integer
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	// pow
 	GLM_FUNC_QUALIFIER int pow(int x, uint y)
 	{

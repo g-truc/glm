@@ -3,7 +3,7 @@
 #include "../integer.hpp"
 #include "../ext/vector_integer.hpp"
 
-namespace glm{
+GLM_EXPORT namespace glm {
 namespace detail
 {
 	template<bool is_float, bool is_signed>

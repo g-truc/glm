@@ -2,8 +2,7 @@
 
 #include "_matrix_vectorize.hpp"
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	template<length_t C, length_t R, typename T, typename U, qualifier Q>
 	GLM_FUNC_QUALIFIER mat<C, R, T, Q> mix(mat<C, R, T, Q> const& x, mat<C, R, T, Q> const& y, U a)
 	{

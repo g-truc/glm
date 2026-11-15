@@ -2,7 +2,7 @@
 
 #include <limits>
 
-namespace glm {
+GLM_EXPORT namespace glm {
 namespace detail
 {
 	template<typename T, qualifier Q, bool Aligned>

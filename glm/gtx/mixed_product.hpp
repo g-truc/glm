@@ -21,8 +21,7 @@
 #	pragma message("GLM: GLM_GTX_mixed_product extension included")
 #endif
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	/// @addtogroup gtx_mixed_product
 	/// @{
 

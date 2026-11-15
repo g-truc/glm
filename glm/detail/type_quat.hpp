@@ -13,8 +13,7 @@
 #include "../gtc/constants.hpp"
 #include "../gtc/matrix_transform.hpp"
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 #		if GLM_SILENT_WARNINGS == GLM_ENABLE
 #			if GLM_COMPILER & GLM_COMPILER_GCC
 #				pragma GCC diagnostic push

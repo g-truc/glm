@@ -11,8 +11,7 @@
 #endif
 #include <cstddef>
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	template<typename T, qualifier Q>
 	struct vec<4, T, Q>
 	{

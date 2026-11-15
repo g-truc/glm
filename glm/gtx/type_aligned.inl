@@ -1,6 +1,5 @@
 /// @ref gtc_type_aligned
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 
 }

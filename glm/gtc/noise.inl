@@ -5,7 +5,7 @@
 // Following Stefan Gustavson's paper "Simplex noise demystified":
 // https://itn-web.it.liu.se/~stegu76/simplexnoise/simplexnoise.pdf
 
-namespace glm{
+GLM_EXPORT namespace glm {
 namespace detail
 {
 	template<typename T, qualifier Q>

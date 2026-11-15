@@ -4,8 +4,7 @@
 #include "../vector_relational.hpp"
 #include "../common.hpp"
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	template<>
 	GLM_FUNC_QUALIFIER bool epsilonEqual
 	(

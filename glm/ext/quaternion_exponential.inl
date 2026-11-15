@@ -1,7 +1,6 @@
 #include "scalar_constants.hpp"
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER qua<T, Q> exp(qua<T, Q> const& q)
 	{

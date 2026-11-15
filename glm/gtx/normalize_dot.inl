@@ -1,7 +1,6 @@
 /// @ref gtx_normalize_dot
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER T normalizeDot(vec<L, T, Q> const& x, vec<L, T, Q> const& y)
 	{

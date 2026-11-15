@@ -1,7 +1,6 @@
 #include "scalar_integer.hpp"
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER vec<L, bool, Q> isPowerOfTwo(vec<L, T, Q> const& Value)
 	{

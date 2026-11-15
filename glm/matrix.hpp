@@ -28,7 +28,7 @@
 #include "mat4x3.hpp"
 #include "mat4x4.hpp"
 
-namespace glm {
+GLM_EXPORT namespace glm {
 namespace detail
 {
 	template<length_t C, length_t R, typename T, qualifier Q>

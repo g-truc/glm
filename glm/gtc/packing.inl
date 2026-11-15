@@ -11,7 +11,7 @@
 #include <cstring>
 #include <limits>
 
-namespace glm{
+GLM_EXPORT namespace glm {
 namespace detail
 {
 	GLM_FUNC_QUALIFIER glm::uint16 float2half(glm::uint32 f)

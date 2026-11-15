@@ -1,7 +1,6 @@
 /// @ref gtx_bit
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	///////////////////
 	// highestBitValue
 

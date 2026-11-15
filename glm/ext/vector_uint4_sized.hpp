@@ -20,8 +20,7 @@
 #	pragma message("GLM: GLM_EXT_vector_uint4_sized extension included")
 #endif
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	/// @addtogroup ext_vector_uint4_sized
 	/// @{
 

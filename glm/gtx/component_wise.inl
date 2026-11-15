@@ -4,7 +4,7 @@
 #include <limits>
 #include <cmath>
 
-namespace glm{
+GLM_EXPORT namespace glm {
 namespace detail
 {
 	template<length_t L, typename T, typename floatType, qualifier Q, bool isInteger, bool signedType>

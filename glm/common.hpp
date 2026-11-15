@@ -17,8 +17,7 @@
 #include "detail/qualifier.hpp"
 #include "detail/_fixes.hpp"
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	/// @addtogroup core_func_common
 	/// @{
 

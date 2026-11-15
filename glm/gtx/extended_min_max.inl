@@ -1,7 +1,6 @@
 /// @ref gtx_extended_min_max
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	template<typename T>
 	GLM_FUNC_QUALIFIER T min(
 		T const& x,

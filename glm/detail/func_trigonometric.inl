@@ -2,8 +2,7 @@
 #include <cmath>
 #include <limits>
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	// radians
 	template<typename genType>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR genType radians(genType degrees)

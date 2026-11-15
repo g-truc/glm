@@ -22,8 +22,7 @@
 #	pragma message("GLM: GLM_GTX_fast_exponential extension included")
 #endif
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	/// @addtogroup gtx_fast_exponential
 	/// @{
 

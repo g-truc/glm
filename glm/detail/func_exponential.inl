@@ -7,7 +7,7 @@
 #include <cmath>
 #include <cassert>
 
-namespace glm{
+GLM_EXPORT namespace glm {
 namespace detail
 {
 	using std::log2;

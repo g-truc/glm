@@ -1,7 +1,6 @@
 /// @ref gtx_projection
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	template<typename genType>
 	GLM_FUNC_QUALIFIER genType proj(genType const& x, genType const& Normal)
 	{

@@ -1,6 +1,5 @@
 /// @ref gtx_wrap
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 
 }//namespace glm

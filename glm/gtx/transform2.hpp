@@ -23,8 +23,7 @@
 #	pragma message("GLM: GLM_GTX_transform2 extension included")
 #endif
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	/// @addtogroup gtx_transform2
 	/// @{
 

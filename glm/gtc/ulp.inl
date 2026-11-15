@@ -2,8 +2,7 @@
 
 #include "../ext/scalar_ulp.hpp"
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	template<>
 	GLM_FUNC_QUALIFIER float next_float(float x)
 	{

@@ -1,6 +1,5 @@
 /// @ref gtx_std_based_type
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 
 }

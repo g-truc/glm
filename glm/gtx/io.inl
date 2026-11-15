@@ -13,7 +13,7 @@
 #	pragma clang diagnostic ignored "-Wglobal-constructors"
 #endif
 
-namespace glm{
+GLM_EXPORT namespace glm {
 namespace io
 {
 	template<typename CTy>

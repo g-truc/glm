@@ -23,8 +23,7 @@
 #	pragma message("GLM: GLM_GTX_vector_query extension included")
 #endif
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	/// @addtogroup gtx_vector_query
 	/// @{
 

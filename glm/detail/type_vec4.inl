@@ -3,7 +3,7 @@
 #include "compute_vector_relational.hpp"
 #include "compute_vector_decl.hpp"
 
-namespace glm{
+GLM_EXPORT namespace glm {
 namespace detail
 {
 
@@ -1002,7 +1002,7 @@ namespace detail
 #if GLM_CONFIG_SIMD == GLM_ENABLE
 #	include "type_vec_simd.inl"
 
-namespace glm {
+GLM_EXPORT namespace glm {
 /* build errors on Windows ARM Github C.I.
 #if GLM_ARCH & GLM_ARCH_NEON_BIT && !GLM_CONFIG_XYZW_ONLY
 	CTORSL(4, CTOR_FLOAT);

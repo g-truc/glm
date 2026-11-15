@@ -3,7 +3,7 @@
 #include <functional>
 #include "_vectorize.hpp"
 
-namespace glm {
+GLM_EXPORT namespace glm {
 	namespace detail
 	{
 		template<length_t L, typename T, qualifier Q, bool UseSimd>

@@ -1,7 +1,6 @@
 /// @ref gtx_fast_exponential
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	// fastPow:
 	template<typename genType>
 	GLM_FUNC_QUALIFIER genType fastPow(genType x, genType y)

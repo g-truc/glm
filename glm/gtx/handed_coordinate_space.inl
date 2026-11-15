@@ -1,7 +1,6 @@
 /// @ref gtx_handed_coordinate_space
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER bool rightHanded
 	(

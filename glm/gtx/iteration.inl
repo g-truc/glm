@@ -1,5 +1,4 @@
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	/*
 	namespace details {
 		template<typename T, glm::length_t L>

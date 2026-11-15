@@ -21,8 +21,7 @@
 #include "detail/setup.hpp"
 #include "detail/qualifier.hpp"
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	/// @addtogroup core_func_trigonometric
 	/// @{
 

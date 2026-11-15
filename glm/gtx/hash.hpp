@@ -58,8 +58,7 @@
 #define GLM_GTX_hash 1
 #include <functional>
 
-namespace std
-{
+GLM_EXPORT namespace std {
 	template<typename T, glm::qualifier Q>
 	struct hash<glm::vec<1, T, Q> >
 	{

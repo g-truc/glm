@@ -1,7 +1,6 @@
 /// @ref gtx_texture
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	template <length_t L, typename T, qualifier Q>
 	inline T levels(vec<L, T, Q> const& Extent)
 	{

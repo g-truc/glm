@@ -31,8 +31,7 @@
 #	endif
 #endif//GLM_COMPILER
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	/// @addtogroup gtx_compatibility
 	/// @{
 

@@ -19,8 +19,7 @@
 #	pragma message("GLM: GLM_EXT_scalar_reciprocal extension included")
 #endif
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	/// @addtogroup ext_scalar_reciprocal
 	/// @{
 

@@ -1,7 +1,6 @@
 /// @ref gtx_orthonormalize
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER mat<3, 3, T, Q> orthonormalize(mat<3, 3, T, Q> const& m)
 	{

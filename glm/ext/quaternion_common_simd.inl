@@ -1,6 +1,6 @@
 #if GLM_ARCH & GLM_ARCH_SSE2_BIT
 
-namespace glm{
+GLM_EXPORT namespace glm {
 namespace detail
 {
 	template<qualifier Q>

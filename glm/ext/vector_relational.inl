@@ -3,8 +3,7 @@
 #include "../detail/qualifier.hpp"
 #include "../detail/type_float.hpp"
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<L, bool, Q> equal(vec<L, T, Q> const& x, vec<L, T, Q> const& y, T Epsilon)
 	{

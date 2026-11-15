@@ -1,5 +1,13 @@
 #ifndef GLM_SETUP_INCLUDED
 
+#ifndef GLM_EXPORT
+#	ifdef GLM_CXX_MODULE
+#		define GLM_EXPORT export
+#else
+#		define GLM_EXPORT
+#	endif
+#endif
+
 #include <cassert>
 #include <cstddef>
 #include <type_traits>

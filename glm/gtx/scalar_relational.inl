@@ -1,7 +1,6 @@
 /// @ref gtx_scalar_relational
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	template<typename T>
 	GLM_FUNC_QUALIFIER bool lessThan
 	(

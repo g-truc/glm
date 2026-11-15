@@ -5,7 +5,7 @@
 #include "../simd/matrix.h"
 #include <cstring>
 
-namespace glm{
+GLM_EXPORT namespace glm {
 namespace detail
 {
 #	if GLM_CONFIG_ALIGNED_GENTYPES == GLM_ENABLE
@@ -104,7 +104,7 @@ namespace detail
 
 #elif GLM_ARCH & GLM_ARCH_NEON_BIT
 
-namespace glm {
+GLM_EXPORT namespace glm {
 #if GLM_LANG & GLM_LANG_CXX11_FLAG
 	template <qualifier Q>
 	GLM_FUNC_QUALIFIER

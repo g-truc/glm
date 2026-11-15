@@ -21,8 +21,7 @@
 #	pragma message("GLM: GLM_GTX_scalar_relational extension included")
 #endif
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	/// @addtogroup gtx_scalar_relational
 	/// @{
 

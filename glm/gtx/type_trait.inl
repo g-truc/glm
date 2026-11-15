@@ -1,7 +1,6 @@
 /// @ref gtx_type_trait
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	template<typename T>
 	bool const type<T>::is_vec;
 	template<typename T>

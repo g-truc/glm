@@ -3,8 +3,7 @@
 #include "../geometric.hpp"
 #include <limits>
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	// -- Component accesses --
 
 	template<typename T, qualifier Q>

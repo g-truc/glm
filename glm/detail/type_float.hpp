@@ -7,7 +7,7 @@
 #	pragma warning(disable: 4512) // assignment operator could not be generated
 #endif
 
-namespace glm{
+GLM_EXPORT namespace glm {
 namespace detail
 {
 	template <typename T>

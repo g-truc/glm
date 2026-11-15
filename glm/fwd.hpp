@@ -2,8 +2,7 @@
 
 #include "detail/qualifier.hpp"
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	typedef std::int8_t				int8;
 	typedef std::int16_t			int16;
 	typedef std::int32_t			int32;

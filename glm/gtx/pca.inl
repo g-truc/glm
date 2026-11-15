@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <utility>
 
-namespace glm {
+GLM_EXPORT namespace glm {
 
 
 	template<length_t D, typename T, qualifier Q>

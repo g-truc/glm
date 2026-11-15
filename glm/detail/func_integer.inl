@@ -7,7 +7,7 @@
 #endif//(GLM_ARCH & GLM_ARCH_X86 && GLM_COMPILER & GLM_COMPILER_VC)
 #include <limits>
 
-namespace glm{
+GLM_EXPORT namespace glm {
 namespace detail
 {
 	template<typename T>

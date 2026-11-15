@@ -1,7 +1,6 @@
 /// @ref gtx_matrix_factorisation
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	template <length_t C, length_t R, typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER mat<C, R, T, Q> flipud(mat<C, R, T, Q> const& in)
 	{

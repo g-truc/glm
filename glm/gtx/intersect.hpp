@@ -27,8 +27,7 @@
 #	pragma message("GLM: GLM_GTX_closest_point extension included")
 #endif
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	/// @addtogroup gtx_intersect
 	/// @{
 

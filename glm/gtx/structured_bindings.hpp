@@ -16,7 +16,7 @@
 #if __cpp_structured_bindings >= 201606L
 #include <utility>
 #include <cstddef>
-namespace std {
+GLM_EXPORT namespace std {
 	template<glm::length_t L,typename T,glm::qualifier Q>
 	struct tuple_size<glm::vec<L, T, Q>> {
 		static constexpr size_t value = L;
@@ -58,8 +58,7 @@ namespace std {
 #	pragma message("GLM: GLM_GTX_io extension included")
 #endif
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	/// @addtogroup gtx_structured_bindings
 	/// @{
 

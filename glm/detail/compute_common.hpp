@@ -3,7 +3,7 @@
 #include "setup.hpp"
 #include <limits>
 
-namespace glm{
+GLM_EXPORT namespace glm {
 namespace detail
 {
 	template<typename genFIType, bool /*signed*/>

@@ -2,8 +2,7 @@
 
 #include "compatibility.hpp" // glm::atan2
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	template<typename T>
 	GLM_FUNC_QUALIFIER mat<4, 4, T, defaultp> eulerAngleX
 	(

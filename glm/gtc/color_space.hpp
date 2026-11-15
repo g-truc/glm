@@ -25,8 +25,7 @@
 #	pragma message("GLM: GLM_GTC_color_space extension included")
 #endif
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	/// @addtogroup gtc_color_space
 	/// @{
 

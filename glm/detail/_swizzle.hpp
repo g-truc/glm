@@ -1,6 +1,6 @@
 #pragma once
 
-namespace glm{
+GLM_EXPORT namespace glm {
 namespace detail
 {
 	// Internal class for implementing swizzle operators
@@ -275,8 +275,7 @@ namespace detail
 }//namespace detail
 }//namespace glm
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	namespace detail
 	{
 		GLM_SWIZZLE_SCALAR_BINARY_OPERATOR_IMPLEMENTATION(-)
