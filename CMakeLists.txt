@@ -21,6 +21,8 @@ if (${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_SOURCE_DIR})
 	set(GLM_IS_MASTER_PROJECT ON)
 endif()
 
+include(CMakeDependentOption)
+
 option(GLM_BUILD_LIBRARY "Build dynamic/static library" ON)
 option(GLM_BUILD_TESTS "Build the test programs" OFF)
 option(GLM_BUILD_INSTALL "Generate the install target" ${GLM_IS_MASTER_PROJECT})
@@ -29,10 +31,26 @@ include(GNUInstallDirs)
 
 option(GLM_ENABLE_CXX_17 "Enable C++ 17" OFF)
 option(GLM_ENABLE_CXX_20 "Enable C++ 20" OFF)
+option(GLM_ENABLE_CXX_23 "Enable C++ 23" OFF)
+
+cmake_dependent_option(GLM_ENABLE_MODULE "Enable C++ named module" ON CMAKE_CXX_STDLIB_MODULES_JSON OFF)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-if(GLM_ENABLE_CXX_20)
+if(GLM_ENABLE_CXX_23)
+	set(CMAKE_CXX_STANDARD 23)
+	add_definitions(-DGLM_FORCE_CXX23)
+	if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+		message(STATUS "GLM: Disable -Wc++98-compat warnings")
+		add_compile_options(-Wno-c++98-compat)
+		add_compile_options(-Wno-c++98-compat-pedantic)
+		add_compile_options(-Wno-switch-default)
+	endif()
+	if(NOT GLM_QUIET)
+		message(STATUS "GLM: Build with C++23 features")
+	endif()
+
+elseif(GLM_ENABLE_CXX_20)
 	set(CMAKE_CXX_STANDARD 20)
 	add_definitions(-DGLM_FORCE_CXX20)
 	if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
