@@ -248,17 +248,37 @@ endif()
 if (GLM_BUILD_INSTALL)
 	include(CPack)
 
-	install(TARGETS glm-header-only glm EXPORT glm)
+	if(GLM_ENABLE_MODULE AND (CMAKE_CXX_STANDARD GREATER_EQUAL 23))
+		set(CPPM_PATTERN "*.cppm")
+	else()
+		set(CPPM_PATTERN "")
+	endif()
+
 	install(
 		DIRECTORY glm
 		DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
 		PATTERN "CMakeLists.txt" EXCLUDE
+		PATTERN "${CPPM_PATTERN}" EXCLUDE
 	)
+
+	install(TARGETS glm-header-only glm EXPORT glm)
+
+	if(GLM_ENABLE_MODULE AND (CMAKE_CXX_STANDARD GREATER_EQUAL 23))
+		install(TARGETS glm-module
+			EXPORT glm
+			FILE_SET CXX_MODULES DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/glm"
+		)
+		set(CXX_MODULES_DIR_ARGS CXX_MODULES_DIRECTORY "")
+	else()
+		set(CXX_MODULES_DIR_ARGS "")
+	endif()
+
 	install(
 		EXPORT glm
 		NAMESPACE glm::
 		DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/glm"
 		FILE glmConfig.cmake
+		${CXX_MODULES_DIR_ARGS}
 	)
 	include(CMakePackageConfigHelpers)
 	write_basic_package_version_file(
