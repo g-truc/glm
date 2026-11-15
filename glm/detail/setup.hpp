@@ -366,7 +366,7 @@
 #	define GLM_ASSERT_LENGTH(l, max) (assert ((l) >= 0 && (l) < (max)))
 #endif
 
-namespace glm
+GLM_EXPORT namespace glm
 {
 	using std::size_t;
 #	if GLM_CONFIG_LENGTH_TYPE == GLM_LENGTH_SIZE_T
@@ -381,7 +381,7 @@ namespace glm
 
 #include <cstdint>
 
-namespace glm{
+GLM_EXPORT namespace glm{
 namespace detail
 {
 	typedef std::int8_t			int8;
