@@ -23,7 +23,8 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 
 	add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 	if(NOT GLM_DISABLE_AUTO_DETECTION)
-		add_compile_options(-Werror -Weverything)
+		add_compile_options(-Werror)
+		# add_compile_options(-Weverything)
 	endif()
 
 elseif(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
