@@ -22,8 +22,7 @@
 #	pragma message("GLM: GLM_GTX_matrix_interpolation extension included")
 #endif
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	/// @addtogroup gtx_matrix_interpolation
 	/// @{
 

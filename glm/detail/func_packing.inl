@@ -4,8 +4,7 @@
 #include "../common.hpp"
 #include "type_half.hpp"
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	GLM_FUNC_QUALIFIER uint packUnorm2x16(vec2 const& v)
 	{
 		union

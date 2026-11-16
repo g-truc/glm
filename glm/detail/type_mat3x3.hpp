@@ -4,11 +4,12 @@
 #pragma once
 
 #include "type_vec3.hpp"
-#include <limits>
-#include <cstddef>
+#ifndef GLM_CXX_MODULE
+#	include <limits>
+#	include <cstddef>
+#endif
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	template<typename T, qualifier Q>
 	struct mat<3, 3, T, Q>
 	{

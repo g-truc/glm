@@ -1,7 +1,6 @@
 /// @ref gtx_mixed_product
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER T mixedProduct
 	(

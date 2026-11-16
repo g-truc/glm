@@ -9,10 +9,11 @@
 #elif GLM_CONFIG_SWIZZLE == GLM_SWIZZLE_FUNCTION
 #	include "_swizzle_func.hpp"
 #endif
-#include <cstddef>
+#ifndef GLM_CXX_MODULE
+#	include <cstddef>
+#endif
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	template<typename T, qualifier Q>
 	struct vec<3, T, Q>
 	{

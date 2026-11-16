@@ -1,10 +1,11 @@
 /// @ref ext_vector_reciprocal
 
 #include "../trigonometric.hpp"
-#include <limits>
+#ifndef GLM_CXX_MODULE
+#	include <limits>
+#endif
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	// sec
 	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER vec<L, T, Q> sec(vec<L, T, Q> const& x)

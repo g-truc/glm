@@ -50,6 +50,17 @@ target_include_directories(glm-header-only INTERFACE
 	"$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
 )
 
+if(GLM_ENABLE_MODULE AND (CMAKE_CXX_STANDARD GREATER_EQUAL 23))
+	add_library(glm-module OBJECT)
+	add_library(glm::glm-module ALIAS glm-module)
+	target_sources(glm-module PUBLIC
+		FILE_SET CXX_MODULES
+		BASE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}"
+		FILES glm.cppm
+	)
+	set_target_properties(glm-module PROPERTIES CXX_SCAN_FOR_MODULES ON)
+endif()
+
 if (GLM_BUILD_LIBRARY)
 	add_library(glm
 		${ROOT_TEXT}      ${ROOT_MD}        ${ROOT_NAT}

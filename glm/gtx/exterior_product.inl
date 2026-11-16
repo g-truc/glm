@@ -1,8 +1,10 @@
 /// @ref gtx_exterior_product
 
-#include <limits>
+#ifndef GLM_CXX_MODULE
+#	include <limits>
+#endif
 
-namespace glm {
+GLM_EXPORT namespace glm {
 namespace detail
 {
 	template<typename T, qualifier Q, bool Aligned>
@@ -23,4 +25,3 @@ namespace detail
 		return detail::compute_cross_vec2<T, Q, detail::is_aligned<Q>::value>::call(x, y);
 	}
 }//namespace glm
-

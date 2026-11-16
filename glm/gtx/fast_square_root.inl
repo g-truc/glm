@@ -1,7 +1,6 @@
 /// @ref gtx_fast_square_root
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	// fastSqrt
 	template<typename genType>
 	GLM_FUNC_QUALIFIER genType fastSqrt(genType x)

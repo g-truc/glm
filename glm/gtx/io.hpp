@@ -36,12 +36,13 @@
 #	pragma clang diagnostic ignored "-Wglobal-constructors"
 #endif
 
-#include <iosfwd>  // std::basic_ostream<> (fwd)
-#include <locale>  // std::locale, std::locale::facet, std::locale::id
-#include <utility> // std::pair<>
+#ifndef GLM_CXX_MODULE
+#	include <iosfwd>
+#	include <locale>
+#	include <utility>
+#endif
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	/// @addtogroup gtx_io
 	/// @{
 

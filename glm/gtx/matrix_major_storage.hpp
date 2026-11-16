@@ -22,8 +22,7 @@
 #	pragma message("GLM: GLM_GTX_matrix_major_storage extension included")
 #endif
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	/// @addtogroup gtx_matrix_major_storage
 	/// @{
 

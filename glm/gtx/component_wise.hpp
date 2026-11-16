@@ -24,8 +24,7 @@
 #	pragma message("GLM: GLM_GTX_component_wise extension included")
 #endif
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	/// @addtogroup gtx_component_wise
 	/// @{
 

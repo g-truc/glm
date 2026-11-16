@@ -1,7 +1,6 @@
 /// @ref gtx_log_base
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	template<typename genType>
 	GLM_FUNC_QUALIFIER genType log(genType const& x, genType const& base)
 	{

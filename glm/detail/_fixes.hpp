@@ -1,4 +1,6 @@
-#include <cmath>
+#ifndef GLM_CXX_MODULE
+#	include <cmath>
+#endif
 
 //! Workaround for compatibility with other libraries
 #ifdef max
@@ -24,4 +26,3 @@
 #ifdef log2
 #undef log2
 #endif
-

@@ -1,9 +1,11 @@
 /// @ref gtx_pca
 
-#include <algorithm>
-#include <utility>
+#ifndef GLM_CXX_MODULE
+#	include <algorithm>
+#	include <utility>
+#endif
 
-namespace glm {
+GLM_EXPORT namespace glm {
 
 
 	template<length_t D, typename T, qualifier Q>
@@ -66,13 +68,13 @@ namespace glm {
 	{
 
 		template<typename T>
-		GLM_FUNC_QUALIFIER static T transferSign(T const& v, T const& s)
+		GLM_FUNC_QUALIFIER T transferSign(T const& v, T const& s)
 		{
 			return ((s) >= 0 ? glm::abs(v) : -glm::abs(v));
 		}
 
 		template<typename T>
-		GLM_FUNC_QUALIFIER static T pythag(T const& a, T const& b) {
+		GLM_FUNC_QUALIFIER T pythag(T const& a, T const& b) {
 			static const T epsilon = static_cast<T>(0.0000001);
 			T absa = glm::abs(a);
 			T absb = glm::abs(b);

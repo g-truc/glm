@@ -1,8 +1,18 @@
 #ifndef GLM_SETUP_INCLUDED
 
-#include <cassert>
-#include <cstddef>
-#include <type_traits>
+#ifndef GLM_EXPORT
+#	ifdef GLM_CXX_MODULE
+#		define GLM_EXPORT export
+#else
+#		define GLM_EXPORT
+#	endif
+#endif
+
+#ifndef GLM_CXX_MODULE
+#	include <cassert>
+#	include <cstddef>
+#	include <type_traits>
+#endif
 
 #define GLM_VERSION_MAJOR 1
 #define GLM_VERSION_MINOR 1
@@ -358,7 +368,7 @@
 #	define GLM_ASSERT_LENGTH(l, max) (assert ((l) >= 0 && (l) < (max)))
 #endif
 
-namespace glm
+GLM_EXPORT namespace glm
 {
 	using std::size_t;
 #	if GLM_CONFIG_LENGTH_TYPE == GLM_LENGTH_SIZE_T
@@ -371,16 +381,18 @@ namespace glm
 ///////////////////////////////////////////////////////////////////////////////////
 // uint
 
-#include <cstdint>
+#ifndef GLM_CXX_MODULE
+#	include <cstdint>
+#endif
 
-namespace glm{
+GLM_EXPORT namespace glm{
 namespace detail
 {
 	typedef std::int8_t			int8;
 	typedef std::int16_t		int16;
 	typedef std::int32_t		int32;
 	typedef std::int64_t		int64;
-	
+
 	typedef std::uint8_t		uint8;
 	typedef std::uint16_t		uint16;
 	typedef std::uint32_t		uint32;

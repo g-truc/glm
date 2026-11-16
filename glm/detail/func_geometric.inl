@@ -1,7 +1,7 @@
 #include "../exponential.hpp"
 #include "../common.hpp"
 
-namespace glm{
+GLM_EXPORT namespace glm {
 namespace detail
 {
 	template<length_t L, typename T, qualifier Q, bool Aligned>

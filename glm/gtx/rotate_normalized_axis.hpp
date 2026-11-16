@@ -25,8 +25,7 @@
 #	pragma message("GLM: GLM_GTX_rotate_normalized_axis extension included")
 #endif
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	/// @addtogroup gtx_rotate_normalized_axis
 	/// @{
 

@@ -21,14 +21,15 @@
 #include "../exponential.hpp"
 #include "../ext/scalar_common.hpp"
 #include "../ext/vector_common.hpp"
-#include <limits>
+#ifndef GLM_CXX_MODULE
+#	include <limits>
+#endif
 
 #if GLM_MESSAGES == GLM_ENABLE && !defined(GLM_EXT_INCLUDED)
 #	pragma message("GLM: GLM_GTC_integer extension included")
 #endif
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	/// @addtogroup gtc_integer
 	/// @{
 

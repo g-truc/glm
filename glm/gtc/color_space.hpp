@@ -19,14 +19,15 @@
 #include "../exponential.hpp"
 #include "../vec3.hpp"
 #include "../vec4.hpp"
-#include <limits>
+#ifndef GLM_CXX_MODULE
+#	include <limits>
+#endif
 
 #if GLM_MESSAGES == GLM_ENABLE && !defined(GLM_EXT_INCLUDED)
 #	pragma message("GLM: GLM_GTC_color_space extension included")
 #endif
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	/// @addtogroup gtc_color_space
 	/// @{
 

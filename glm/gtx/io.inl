@@ -1,8 +1,10 @@
 /// @ref gtx_io
 /// @author Jan P Springer (regnirpsj@gmail.com)
 
-#include <iomanip>                  // std::fixed, std::setfill<>, std::setprecision, std::right, std::setw
-#include <ostream>                  // std::basic_ostream<>
+#ifndef GLM_CXX_MODULE
+#	include <iomanip>
+#	include <ostream>
+#endif
 #include "../gtc/matrix_access.hpp" // glm::col, glm::row
 #include "../gtx/type_trait.hpp"    // glm::type<>
 
@@ -13,7 +15,7 @@
 #	pragma clang diagnostic ignored "-Wglobal-constructors"
 #endif
 
-namespace glm{
+GLM_EXPORT namespace glm {
 namespace io
 {
 	template<typename CTy>
@@ -450,4 +452,3 @@ namespace detail
 #if GLM_COMPILER & GLM_COMPILER_CLANG
 #	pragma clang diagnostic pop
 #endif
-

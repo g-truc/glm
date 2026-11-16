@@ -1,6 +1,6 @@
 #pragma once
 
-namespace glm{
+GLM_EXPORT namespace glm {
 namespace detail
 {
 	template<template<length_t L, typename T, qualifier Q> class vec, length_t L, typename R, typename T, qualifier Q>

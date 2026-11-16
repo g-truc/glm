@@ -14,8 +14,10 @@
 #pragma once
 
 // Dependency:
-#include <cfloat>
-#include <limits>
+#ifndef GLM_CXX_MODULE
+#	include <cfloat>
+#	include <limits>
+#endif
 #include "../glm.hpp"
 #include "../geometric.hpp"
 #include "../gtx/closest_point.hpp"
@@ -27,8 +29,7 @@
 #	pragma message("GLM: GLM_GTX_closest_point extension included")
 #endif
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	/// @addtogroup gtx_intersect
 	/// @{
 

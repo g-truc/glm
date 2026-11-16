@@ -4,13 +4,15 @@
 #pragma once
 
 #if GLM_ARCH & GLM_ARCH_NEON_BIT
-#include <arm_neon.h>
+#ifndef GLM_CXX_MODULE
+#	include <arm_neon.h>
+#endif
 
 namespace glm {
 	namespace neon {
 		static inline float32x4_t dupq_lane(float32x4_t vsrc, int lane) {
 			switch(lane) {
-				default: 
+				default:
 					assert(false); //Unreachable code executed!
 					return vdupq_n_f32(0.0f);
 #if GLM_ARCH & GLM_ARCH_ARMV8_BIT
@@ -29,7 +31,7 @@ namespace glm {
 
 		static inline float32x2_t dup_lane(float32x4_t vsrc, int lane) {
 			switch(lane) {
-				default: 
+				default:
 					assert(false); //Unreachable code executed!
 					return vdup_n_f32(0.0f);
 #if GLM_ARCH & GLM_ARCH_ARMV8_BIT
@@ -144,8 +146,8 @@ namespace glm {
 #	define FMADD_LANE(acc, x, y, L) do { acc = vmlaq_laneq_f32(acc, x, y, L); } while(0)
 #endif
 
-			switch(lane) { 
-				case 0: 
+			switch(lane) {
+				case 0:
 					FMADD_LANE(acc, v, vlane, 0);
 					return acc;
 				case 1:
@@ -157,7 +159,7 @@ namespace glm {
 				case 3:
 					FMADD_LANE(acc, v, vlane, 3);
 					return acc;
-				default: 
+				default:
 					assert(false); //Unreachable code executed!
 					return vdupq_n_f32(0.0f);
 			}

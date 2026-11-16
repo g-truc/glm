@@ -21,6 +21,8 @@ if (${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_SOURCE_DIR})
 	set(GLM_IS_MASTER_PROJECT ON)
 endif()
 
+include(CMakeDependentOption)
+
 option(GLM_BUILD_LIBRARY "Build dynamic/static library" ON)
 option(GLM_BUILD_TESTS "Build the test programs" OFF)
 option(GLM_BUILD_INSTALL "Generate the install target" ${GLM_IS_MASTER_PROJECT})
@@ -29,10 +31,26 @@ include(GNUInstallDirs)
 
 option(GLM_ENABLE_CXX_17 "Enable C++ 17" OFF)
 option(GLM_ENABLE_CXX_20 "Enable C++ 20" OFF)
+option(GLM_ENABLE_CXX_23 "Enable C++ 23" OFF)
+
+cmake_dependent_option(GLM_ENABLE_MODULE "Enable C++ named module" ON CMAKE_CXX_STDLIB_MODULES_JSON OFF)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-if(GLM_ENABLE_CXX_20)
+if(GLM_ENABLE_CXX_23)
+	set(CMAKE_CXX_STANDARD 23)
+	add_definitions(-DGLM_FORCE_CXX23)
+	if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+		message(STATUS "GLM: Disable -Wc++98-compat warnings")
+		add_compile_options(-Wno-c++98-compat)
+		add_compile_options(-Wno-c++98-compat-pedantic)
+		add_compile_options(-Wno-switch-default)
+	endif()
+	if(NOT GLM_QUIET)
+		message(STATUS "GLM: Build with C++23 features")
+	endif()
+
+elseif(GLM_ENABLE_CXX_20)
 	set(CMAKE_CXX_STANDARD 20)
 	add_definitions(-DGLM_FORCE_CXX20)
 	if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
@@ -230,17 +248,37 @@ endif()
 if (GLM_BUILD_INSTALL)
 	include(CPack)
 
-	install(TARGETS glm-header-only glm EXPORT glm)
+	if(GLM_ENABLE_MODULE AND (CMAKE_CXX_STANDARD GREATER_EQUAL 23))
+		set(CPPM_PATTERN "*.cppm")
+	else()
+		set(CPPM_PATTERN "")
+	endif()
+
 	install(
 		DIRECTORY glm
 		DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
 		PATTERN "CMakeLists.txt" EXCLUDE
+		PATTERN "${CPPM_PATTERN}" EXCLUDE
 	)
+
+	install(TARGETS glm-header-only glm EXPORT glm)
+
+	if(GLM_ENABLE_MODULE AND (CMAKE_CXX_STANDARD GREATER_EQUAL 23))
+		install(TARGETS glm-module
+			EXPORT glm
+			FILE_SET CXX_MODULES DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/glm"
+		)
+		set(CXX_MODULES_DIR_ARGS CXX_MODULES_DIRECTORY "")
+	else()
+		set(CXX_MODULES_DIR_ARGS "")
+	endif()
+
 	install(
 		EXPORT glm
 		NAMESPACE glm::
 		DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/glm"
 		FILE glmConfig.cmake
+		${CXX_MODULES_DIR_ARGS}
 	)
 	include(CMakePackageConfigHelpers)
 	write_basic_package_version_file(

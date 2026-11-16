@@ -1,4 +1,4 @@
-namespace glm{
+GLM_EXPORT namespace glm {
 namespace detail
 {
 #if (GLM_COMPILER & GLM_COMPILER_VC)

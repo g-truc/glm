@@ -1,9 +1,11 @@
 /// @ref gtx_string_cast
 
-#include <cstdarg>
-#include <cstdio>
+#ifndef GLM_CXX_MODULE
+#	include <cstdarg>
+#	include <cstdio>
+#endif
 
-namespace glm{
+GLM_EXPORT namespace glm {
 namespace detail
 {
 	template <typename T>
@@ -22,7 +24,7 @@ namespace detail
 		std::size_t const STRING_BUFFER(4096);
 
 		assert(message != NULL);
-		assert(strlen(message) < STRING_BUFFER);
+		assert(std::strlen(message) < STRING_BUFFER);
 
 		char buffer[STRING_BUFFER];
 		va_list list;
@@ -43,8 +45,8 @@ namespace detail
 		return buffer;
 	}
 
-	static const char* LabelTrue = "true";
-	static const char* LabelFalse = "false";
+	inline constexpr const char* LabelTrue = "true";
+	inline constexpr const char* LabelFalse = "false";
 
 	template<typename T, bool isFloat = false>
 	struct literal

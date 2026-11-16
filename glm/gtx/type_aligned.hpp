@@ -23,8 +23,7 @@
 #	pragma message("GLM: GLM_GTX_type_aligned extension included")
 #endif
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	///////////////////////////
 	// Signed int vector types
 

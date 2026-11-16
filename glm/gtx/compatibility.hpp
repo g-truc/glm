@@ -23,16 +23,19 @@
 #endif
 
 #if GLM_COMPILER & GLM_COMPILER_VC
-#	include <cfloat>
+#	if !defined(GLM_CXX_MODULE)
+#		include <cfloat>
+#	endif
 #elif GLM_COMPILER & GLM_COMPILER_GCC
-#	include <cmath>
+#	if !defined(GLM_CXX_MODULE)
+#		include <cmath>
+#	endif
 #	if(GLM_PLATFORM & GLM_PLATFORM_ANDROID)
 #		undef isfinite
 #	endif
 #endif//GLM_COMPILER
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	/// @addtogroup gtx_compatibility
 	/// @{
 

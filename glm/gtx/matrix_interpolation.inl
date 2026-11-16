@@ -2,10 +2,11 @@
 
 #include "../ext/scalar_constants.hpp"
 
-#include <limits>
+#ifndef GLM_CXX_MODULE
+#	include <limits>
+#endif
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER void axisAngle(mat<4, 4, T, Q> const& m, vec<3, T, Q>& axis, T& angle)
 	{

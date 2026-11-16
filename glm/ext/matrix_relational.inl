@@ -5,8 +5,7 @@
 #include "../ext/vector_relational.hpp"
 #include "../common.hpp"
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	template<length_t C, length_t R, typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<C, bool, Q> equal(mat<C, R, T, Q> const& a, mat<C, R, T, Q> const& b)
 	{

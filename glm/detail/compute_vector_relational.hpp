@@ -2,9 +2,11 @@
 
 //#include "compute_common.hpp"
 #include "setup.hpp"
-#include <limits>
+#ifndef GLM_CXX_MODULE
+#	include <limits>
+#endif
 
-namespace glm{
+GLM_EXPORT namespace glm {
 namespace detail
 {
 	template <typename T, bool isFloat>

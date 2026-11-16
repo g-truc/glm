@@ -4,7 +4,7 @@
 #include "../gtc/epsilon.hpp"
 #include "../gtx/transform.hpp"
 
-namespace glm{
+GLM_EXPORT namespace glm {
 namespace detail
 {
 	/// Make a linear combination of two vectors and return the result.

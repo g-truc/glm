@@ -1,7 +1,6 @@
 /// @ref gtx_rotate_normalized_axis
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER mat<4, 4, T, Q> rotateNormalizedAxis
 	(

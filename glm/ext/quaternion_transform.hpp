@@ -26,8 +26,7 @@
 #	pragma message("GLM: GLM_EXT_quaternion_transform extension included")
 #endif
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	/// @addtogroup ext_quaternion_transform
 	/// @{
 

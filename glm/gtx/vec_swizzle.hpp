@@ -20,7 +20,7 @@
 #	pragma message("GLM: GLM_GTX_vec_swizzle extension included")
 #endif
 
-namespace glm {
+GLM_EXPORT namespace glm {
 	/// @addtogroup gtx_vec_swizzle
 	/// @{
 

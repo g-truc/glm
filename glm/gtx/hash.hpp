@@ -56,10 +56,11 @@
 
 #if GLM_LANG & GLM_LANG_CXX11
 #define GLM_GTX_hash 1
-#include <functional>
+#ifndef GLM_CXX_MODULE
+#	include <functional>
+#endif
 
-namespace std
-{
+namespace std {
 	template<typename T, glm::qualifier Q>
 	struct hash<glm::vec<1, T, Q> >
 	{

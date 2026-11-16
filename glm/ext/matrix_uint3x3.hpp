@@ -19,8 +19,7 @@
 #	pragma message("GLM: GLM_EXT_matrix_uint3x3 extension included")
 #endif
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	/// @addtogroup ext_matrix_uint3x3
 	/// @{
 

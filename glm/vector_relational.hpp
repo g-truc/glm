@@ -22,8 +22,7 @@
 #include "detail/qualifier.hpp"
 #include "detail/setup.hpp"
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	/// @addtogroup core_func_vector_relational
 	/// @{
 

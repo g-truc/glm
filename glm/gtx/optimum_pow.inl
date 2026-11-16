@@ -1,7 +1,6 @@
 /// @ref gtx_optimum_pow
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	template<typename genType>
 	GLM_FUNC_QUALIFIER genType pow2(genType const& x)
 	{

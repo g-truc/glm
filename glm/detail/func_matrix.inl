@@ -1,7 +1,9 @@
 #include "../geometric.hpp"
-#include <limits>
+#ifndef GLM_CXX_MODULE
+#	include <limits>
+#endif
 
-namespace glm{
+GLM_EXPORT namespace glm {
 namespace detail
 {
 	template<length_t C, length_t R, typename T, qualifier Q, bool Aligned>
@@ -20,7 +22,7 @@ namespace detail
 	struct compute_matrixCompMult_type {
 		GLM_FUNC_QUALIFIER static mat<C, R, T, Q> call(mat<C, R, T, Q> const& x, mat<C, R, T, Q> const& y)
 		{
-			static_assert(std::numeric_limits<T>::is_iec559 || GLM_CONFIG_UNRESTRICTED_GENTYPE, 
+			static_assert(std::numeric_limits<T>::is_iec559 || GLM_CONFIG_UNRESTRICTED_GENTYPE,
 				"'matrixCompMult' only accept floating-point inputs, include <glm/ext/matrix_integer.hpp> to discard this restriction.");
 			return detail::compute_matrixCompMult<C, R, T, Q, detail::is_aligned<Q>::value>::call(x, y);
 		}
@@ -231,7 +233,7 @@ namespace detail
 	struct compute_transpose_type {
 		GLM_FUNC_QUALIFIER static mat<R, C, T, Q> call(mat<C, R, T, Q> const& m)
 		{
-			static_assert(std::numeric_limits<T>::is_iec559 || GLM_CONFIG_UNRESTRICTED_GENTYPE, 
+			static_assert(std::numeric_limits<T>::is_iec559 || GLM_CONFIG_UNRESTRICTED_GENTYPE,
 				"'transpose' only accept floating-point inputs, include <glm/ext/matrix_integer.hpp> to discard this restriction.");
 			return detail::compute_transpose<C, R, T, Q, detail::is_aligned<Q>::value>::call(m);
 		}
@@ -287,10 +289,10 @@ namespace detail
 
 	template<length_t C, length_t R, typename T, qualifier Q, bool IsFloat, bool Aligned>
 	struct compute_determinant_type{
-	
+
 		GLM_FUNC_QUALIFIER static T call(mat<C, R, T, Q> const& m)
 		{
-			static_assert(std::numeric_limits<T>::is_iec559 || GLM_CONFIG_UNRESTRICTED_GENTYPE, 
+			static_assert(std::numeric_limits<T>::is_iec559 || GLM_CONFIG_UNRESTRICTED_GENTYPE,
 				"'determinant' only accept floating-point inputs, include <glm/ext/matrix_integer.hpp> to discard this restriction.");
 			return detail::compute_determinant<C, R, T, Q, detail::is_aligned<Q>::value>::call(m);
 		}
@@ -481,4 +483,3 @@ namespace detail
 #if GLM_CONFIG_SIMD == GLM_ENABLE
 #	include "func_matrix_simd.inl"
 #endif
-

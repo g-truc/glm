@@ -24,8 +24,7 @@
 #include "../gtc/type_ptr.hpp"
 #include "../gtc/vec1.hpp"
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	/// @addtogroup gtx_range
 	/// @{
 

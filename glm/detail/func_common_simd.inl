@@ -5,9 +5,11 @@
 
 #include "../simd/common.h"
 
-#include <immintrin.h>
+#ifndef GLM_CXX_MODULE
+#	include <immintrin.h>
+#endif
 
-namespace glm{
+GLM_EXPORT namespace glm {
 namespace detail
 {
 	template<qualifier Q>
@@ -544,7 +546,7 @@ namespace detail
 #endif//GLM_ARCH & GLM_ARCH_SSE2_BIT
 
 #if GLM_ARCH & GLM_ARCH_NEON_BIT
-namespace glm {
+GLM_EXPORT namespace glm {
 namespace detail {
 /* FIXME: Breaking Windows ARM Github C.I.
 	template<qualifier Q>

@@ -5,7 +5,7 @@
 
 #if GLM_ARCH & GLM_ARCH_SSE2_BIT
 
-namespace glm{
+GLM_EXPORT namespace glm {
 namespace detail
 {
 	template<qualifier Q>
@@ -146,7 +146,7 @@ namespace detail
 }//namespace glm
 
 #elif GLM_ARCH & GLM_ARCH_NEON_BIT
-namespace glm{
+GLM_EXPORT namespace glm {
 namespace detail
 {
 	template<qualifier Q>

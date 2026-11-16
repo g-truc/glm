@@ -1,10 +1,11 @@
 /// @ref ext_scalar_reciprocal
 
 #include "../trigonometric.hpp"
-#include <limits>
+#ifndef GLM_CXX_MODULE
+#	include <limits>
+#endif
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	// sec
 	template<typename genType>
 	GLM_FUNC_QUALIFIER genType sec(genType angle)

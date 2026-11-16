@@ -1,7 +1,8 @@
-#include <limits>
+#ifndef GLM_CXX_MODULE
+#	include <limits>
+#endif
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	// isfinite
 	template<typename genType>
 	GLM_FUNC_QUALIFIER bool isfinite(genType const& x)

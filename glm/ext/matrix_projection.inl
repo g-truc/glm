@@ -1,5 +1,4 @@
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	template<typename T, typename U, qualifier Q>
 	GLM_FUNC_QUALIFIER vec<3, T, Q> projectZO(vec<3, T, Q> const& obj, mat<4, 4, T, Q> const& model, mat<4, 4, T, Q> const& proj, vec<4, U, Q> const& viewport)
 	{

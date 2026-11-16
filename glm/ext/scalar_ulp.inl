@@ -7,8 +7,10 @@
 
 #include "../detail/type_float.hpp"
 #include "../ext/scalar_constants.hpp"
-#include <cmath>
-#include <cfloat>
+#ifndef GLM_CXX_MODULE
+#	include <cmath>
+#	include <cfloat>
+#endif
 
 #if GLM_COMPILER & GLM_COMPILER_VC
 #	pragma warning(push)
@@ -67,7 +69,7 @@ typedef union
 		(d) = iw_u.value;					\
 	} while (0)
 
-namespace glm{
+GLM_EXPORT namespace glm {
 namespace detail
 {
 	GLM_FUNC_QUALIFIER float nextafterf(float x, float y)
@@ -193,8 +195,7 @@ namespace detail
 #	pragma clang diagnostic pop
 #endif
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	template<>
 	GLM_FUNC_QUALIFIER float nextFloat(float x)
 	{

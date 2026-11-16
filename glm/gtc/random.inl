@@ -2,18 +2,20 @@
 #include "../exponential.hpp"
 #include "../trigonometric.hpp"
 #include "../detail/type_vec1.hpp"
-#include <cstdlib>
-#include <ctime>
-#include <cassert>
-#include <cmath>
+#ifndef GLM_CXX_MODULE
+#	include <cstdlib>
+#	include <ctime>
+#	include <cassert>
+#	include <cmath>
+#endif
 
-namespace glm{
+GLM_EXPORT namespace glm {
 namespace detail
 {
 	template <length_t L, typename T, qualifier Q>
 	struct compute_rand
 	{
-		GLM_FUNC_QUALIFIER static vec<L, T, Q> call();
+		static vec<L, T, Q> call();
 	};
 
 	template <qualifier P>
@@ -98,7 +100,7 @@ namespace detail
 	template <length_t L, typename T, qualifier Q>
 	struct compute_linearRand
 	{
-		GLM_FUNC_QUALIFIER static vec<L, T, Q> call(vec<L, T, Q> const& Min, vec<L, T, Q> const& Max);
+		static vec<L, T, Q> call(vec<L, T, Q> const& Min, vec<L, T, Q> const& Max);
 	};
 
 	template<length_t L, qualifier Q>

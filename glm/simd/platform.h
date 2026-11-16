@@ -151,7 +151,9 @@
 // CUDA
 #elif defined(__CUDACC__)
 #	if !defined(CUDA_VERSION) && !defined(GLM_FORCE_CUDA)
-#		include <cuda.h>  // make sure version is defined since nvcc does not define it itself!
+#		if !defined(GLM_CXX_MODULE)
+#			include <cuda.h>
+#		endif
 #	endif
 #	if defined(__CUDACC_RTC__)
 #		define GLM_COMPILER GLM_COMPILER_CUDA_RTC
@@ -418,22 +420,38 @@
 #endif
 
 #if GLM_ARCH & GLM_ARCH_AVX2_BIT
-#	include <immintrin.h>
+#	if !defined(GLM_CXX_MODULE)
+#		include <immintrin.h>
+#	endif
 #elif GLM_ARCH & GLM_ARCH_AVX_BIT
-#	include <immintrin.h>
+#	if !defined(GLM_CXX_MODULE)
+#		include <immintrin.h>
+#	endif
 #elif GLM_ARCH & GLM_ARCH_SSE42_BIT
 #	if GLM_COMPILER & GLM_COMPILER_CLANG
-#		include <popcntintrin.h>
+#		if !defined(GLM_CXX_MODULE)
+#			include <popcntintrin.h>
+#		endif
 #	endif
-#	include <nmmintrin.h>
+#	if !defined(GLM_CXX_MODULE)
+#		include <nmmintrin.h>
+#	endif
 #elif GLM_ARCH & GLM_ARCH_SSE41_BIT
-#	include <smmintrin.h>
+#	if !defined(GLM_CXX_MODULE)
+#		include <smmintrin.h>
+#	endif
 #elif GLM_ARCH & GLM_ARCH_SSSE3_BIT
-#	include <tmmintrin.h>
+#	if !defined(GLM_CXX_MODULE)
+#		include <tmmintrin.h>
+#	endif
 #elif GLM_ARCH & GLM_ARCH_SSE3_BIT
-#	include <pmmintrin.h>
+#	if !defined(GLM_CXX_MODULE)
+#		include <pmmintrin.h>
+#	endif
 #elif GLM_ARCH & GLM_ARCH_SSE2_BIT
-#	include <emmintrin.h>
+#	if !defined(GLM_CXX_MODULE)
+#		include <emmintrin.h>
+#	endif
 #elif GLM_ARCH & GLM_ARCH_NEON_BIT
 #	include "neon.h"
 #endif//GLM_ARCH

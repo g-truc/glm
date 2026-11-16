@@ -1,9 +1,10 @@
 /// @ref gtx_float_normalize
 
-#include <limits>
+#ifndef GLM_CXX_MODULE
+#	include <limits>
+#endif
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER vec<L, float, Q> floatNormalize(vec<L, T, Q> const& v)
 	{

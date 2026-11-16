@@ -43,8 +43,7 @@
 #	pragma message("GLM: GLM_GTC_type_precision extension included")
 #endif
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	///////////////////////////
 	// Signed int vector types
 

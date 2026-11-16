@@ -8,10 +8,11 @@
 #include "type_vec3.hpp"
 #include "type_vec4.hpp"
 #include "_vectorize.hpp"
-#include <limits>
+#ifndef GLM_CXX_MODULE
+#	include <limits>
+#endif
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	// min
 	template<typename genType>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR genType min(genType x, genType y)
@@ -42,7 +43,7 @@ namespace glm
 	}
 }//namespace glm
 
-namespace glm{
+GLM_EXPORT namespace glm {
 namespace detail
 {
 	template<typename T>

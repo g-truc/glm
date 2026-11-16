@@ -1,9 +1,10 @@
 #include "_vectorize.hpp"
-#include <cmath>
-#include <limits>
+#ifndef GLM_CXX_MODULE
+#	include <cmath>
+#	include <limits>
+#endif
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	// radians
 	template<typename genType>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR genType radians(genType degrees)
@@ -160,4 +161,3 @@ namespace glm
 #if GLM_CONFIG_SIMD == GLM_ENABLE
 #	include "func_trigonometric_simd.inl"
 #endif
-

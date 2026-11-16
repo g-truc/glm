@@ -21,8 +21,7 @@
 #	pragma message("GLM: GLM_GTX_matrix_operation extension included")
 #endif
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	/// @addtogroup gtx_matrix_operation
 	/// @{
 

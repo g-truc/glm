@@ -21,8 +21,7 @@
 #	pragma message("GLM: GLM_GTC_packing extension included")
 #endif
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	/// @addtogroup gtc_packing
 	/// @{
 

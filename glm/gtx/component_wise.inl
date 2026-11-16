@@ -1,10 +1,12 @@
 /// @ref gtx_component_wise
 
 #include "../ext/scalar_common.hpp"
-#include <limits>
-#include <cmath>
+#ifndef GLM_CXX_MODULE
+#	include <limits>
+#	include <cmath>
+#endif
 
-namespace glm{
+GLM_EXPORT namespace glm {
 namespace detail
 {
 	template<length_t L, typename T, typename floatType, qualifier Q, bool isInteger, bool signedType>

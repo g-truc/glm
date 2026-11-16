@@ -24,7 +24,7 @@
 #	pragma message("GLM: GLM_GTX_number_precision extension included")
 #endif
 
-namespace glm{
+GLM_EXPORT namespace glm {
 	/////////////////////////////
 	// Unsigned int vector types
 

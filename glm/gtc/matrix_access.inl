@@ -1,7 +1,6 @@
 /// @ref gtc_matrix_access
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	template<typename genType>
 	GLM_FUNC_QUALIFIER genType row
 	(

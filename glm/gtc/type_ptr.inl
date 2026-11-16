@@ -1,9 +1,10 @@
 /// @ref gtc_type_ptr
 
-#include <cstring>
+#ifndef GLM_CXX_MODULE
+#	include <cstring>
+#endif
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	/// @addtogroup gtc_type_ptr
 	/// @{
 
@@ -395,4 +396,3 @@ namespace glm
 
 	/// @}
 }//namespace glm
-

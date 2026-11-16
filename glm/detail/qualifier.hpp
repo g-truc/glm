@@ -2,8 +2,7 @@
 
 #include "setup.hpp"
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	/// Qualify GLM types in term of alignment (packed, aligned) and precision in term of ULPs (lowp, mediump, highp)
 	enum qualifier
 	{

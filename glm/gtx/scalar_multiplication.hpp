@@ -29,10 +29,11 @@
 #include "../vec3.hpp"
 #include "../vec4.hpp"
 #include "../mat2x2.hpp"
-#include <type_traits>
+#ifndef GLM_CXX_MODULE
+#	include <type_traits>
+#endif
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	/// @addtogroup gtx_scalar_multiplication
 	/// @{
 

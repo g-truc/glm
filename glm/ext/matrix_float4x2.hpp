@@ -4,8 +4,7 @@
 #pragma once
 #include "../detail/type_mat4x2.hpp"
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	/// @addtogroup core_matrix
 	/// @{
 

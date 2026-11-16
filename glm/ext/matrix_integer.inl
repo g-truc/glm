@@ -1,4 +1,4 @@
-namespace glm{
+GLM_EXPORT namespace glm {
 namespace detail
 {
 	template<length_t C, length_t R, typename T, qualifier Q, bool Aligned>

@@ -15,7 +15,9 @@
 
 // Dependency:
 #include "../glm.hpp"
-#include <cstdlib>
+#ifndef GLM_CXX_MODULE
+#	include <cstdlib>
+#endif
 
 #ifndef GLM_ENABLE_EXPERIMENTAL
 #	error "GLM: GLM_GTX_std_based_type is an experimental extension and may change in the future. Use #define GLM_ENABLE_EXPERIMENTAL before including it, if you really want to use it."
@@ -23,8 +25,7 @@
 #	pragma message("GLM: GLM_GTX_std_based_type extension included")
 #endif
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	/// @addtogroup gtx_std_based_type
 	/// @{
 

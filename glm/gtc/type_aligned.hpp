@@ -35,8 +35,7 @@
 #include "../vec3.hpp"
 #include "../vec4.hpp"
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	/// @addtogroup gtc_type_aligned
 	/// @{
 

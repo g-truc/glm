@@ -1,5 +1,4 @@
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	// -- Constructors --
 
 #	if GLM_CONFIG_CTOR_INIT == GLM_ENABLE

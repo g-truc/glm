@@ -18,7 +18,7 @@
 #	pragma message("GLM: GLM_EXT_scalar_uint_sized extension included")
 #endif
 
-namespace glm{
+GLM_EXPORT namespace glm {
 	/// @addtogroup ext_scalar_uint_sized
 	/// @{
 

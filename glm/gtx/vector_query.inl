@@ -1,8 +1,10 @@
 /// @ref gtx_vector_query
 
-#include <cassert>
+#ifndef GLM_CXX_MODULE
+#	include <cassert>
+#endif
 
-namespace glm{
+GLM_EXPORT namespace glm {
 namespace detail
 {
 	template<length_t L, typename T, qualifier Q>

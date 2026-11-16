@@ -9,10 +9,11 @@
 #elif GLM_CONFIG_SWIZZLE == GLM_SWIZZLE_FUNCTION
 #	include "_swizzle_func.hpp"
 #endif
-#include <cstddef>
+#ifndef GLM_CXX_MODULE
+#	include <cstddef>
+#endif
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	template<typename T, qualifier Q>
 	struct vec<4, T, Q>
 	{
@@ -21,7 +22,7 @@ namespace glm
 		typedef T value_type;
 		typedef vec<4, T, Q> type;
 		typedef vec<4, bool, Q> bool_type;
-		
+
 		enum is_aligned
 		{
 			value = detail::is_aligned<Q>::value

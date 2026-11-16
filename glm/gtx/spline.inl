@@ -1,7 +1,6 @@
 /// @ref gtx_spline
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	template<typename genType>
 	GLM_FUNC_QUALIFIER genType catmullRom
 	(

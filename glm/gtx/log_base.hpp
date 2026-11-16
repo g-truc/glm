@@ -21,8 +21,7 @@
 #	pragma message("GLM: GLM_GTX_log_base extension included")
 #endif
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	/// @addtogroup gtx_log_base
 	/// @{
 

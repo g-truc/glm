@@ -5,7 +5,7 @@ CTOR(L, aligned_lowp)\
 CTOR(L, aligned_mediump)\
 CTOR(L, aligned_highp)\
 
-namespace glm {
+GLM_EXPORT namespace glm {
 	namespace detail
 	{
 

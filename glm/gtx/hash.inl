@@ -1,6 +1,6 @@
 /// @ref gtx_hash
 
-namespace glm {
+GLM_EXPORT namespace glm {
 namespace detail
 {
 	GLM_INLINE void hash_combine(size_t &seed, size_t hash)
@@ -10,8 +10,7 @@ namespace detail
 	}
 }}
 
-namespace std
-{
+namespace std {
 	template<typename T, glm::qualifier Q>
 	GLM_FUNC_QUALIFIER size_t hash<glm::vec<1, T, Q> >::operator()(glm::vec<1, T, Q> const& v) const noexcept
 	{

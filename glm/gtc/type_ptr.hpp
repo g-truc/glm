@@ -48,14 +48,15 @@
 #include "../mat4x2.hpp"
 #include "../mat4x3.hpp"
 #include "../mat4x4.hpp"
-#include <cstring>
+#ifndef GLM_CXX_MODULE
+#	include <cstring>
+#endif
 
 #if GLM_MESSAGES == GLM_ENABLE && !defined(GLM_EXT_INCLUDED)
 #	pragma message("GLM: GLM_GTC_type_ptr extension included")
 #endif
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	/// @addtogroup gtc_type_ptr
 	/// @{
 

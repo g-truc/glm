@@ -16,7 +16,9 @@
 // Dependency:
 #include "../glm.hpp"
 #include "../gtx/vector_query.hpp"
-#include <limits>
+#ifndef GLM_CXX_MODULE
+#	include <limits>
+#endif
 
 #ifndef GLM_ENABLE_EXPERIMENTAL
 #	error "GLM: GLM_GTX_matrix_query is an experimental extension and may change in the future. Use #define GLM_ENABLE_EXPERIMENTAL before including it, if you really want to use it."
@@ -24,8 +26,7 @@
 #	pragma message("GLM: GLM_GTX_matrix_query extension included")
 #endif
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	/// @addtogroup gtx_matrix_query
 	/// @{
 

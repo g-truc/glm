@@ -2,8 +2,7 @@
 
 #include "./compute_vector_relational.hpp"
 
-namespace glm
-{
+GLM_EXPORT namespace glm {
 	// -- Implicit basic constructors --
 
 #	if GLM_CONFIG_CTOR_INIT == GLM_ENABLE
