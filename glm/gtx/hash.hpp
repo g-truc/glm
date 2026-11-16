@@ -60,7 +60,7 @@
 #	include <functional>
 #endif
 
-GLM_EXPORT namespace std {
+namespace std {
 	template<typename T, glm::qualifier Q>
 	struct hash<glm::vec<1, T, Q> >
 	{

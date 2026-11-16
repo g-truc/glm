@@ -18,7 +18,7 @@
 #	include <utility>
 #	include <cstddef>
 #endif
-GLM_EXPORT namespace std {
+namespace std {
 	template<glm::length_t L,typename T,glm::qualifier Q>
 	struct tuple_size<glm::vec<L, T, Q>> {
 		static constexpr size_t value = L;

@@ -10,7 +10,7 @@ namespace detail
 	}
 }}
 
-GLM_EXPORT namespace std {
+namespace std {
 	template<typename T, glm::qualifier Q>
 	GLM_FUNC_QUALIFIER size_t hash<glm::vec<1, T, Q> >::operator()(glm::vec<1, T, Q> const& v) const noexcept
 	{
