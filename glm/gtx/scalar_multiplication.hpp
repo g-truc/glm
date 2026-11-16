@@ -29,7 +29,7 @@
 #include "../vec3.hpp"
 #include "../vec4.hpp"
 #include "../mat2x2.hpp"
-#if !defined(GLM_CXX_MODULE)
+#ifndef GLM_CXX_MODULE
 #	include <type_traits>
 #endif
 

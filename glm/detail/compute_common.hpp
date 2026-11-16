@@ -1,7 +1,7 @@
 #pragma once
 
 #include "setup.hpp"
-#if !defined(GLM_CXX_MODULE)
+#ifndef GLM_CXX_MODULE
 #	include <limits>
 #endif
 

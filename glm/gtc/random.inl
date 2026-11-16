@@ -2,7 +2,7 @@
 #include "../exponential.hpp"
 #include "../trigonometric.hpp"
 #include "../detail/type_vec1.hpp"
-#if !defined(GLM_CXX_MODULE)
+#ifndef GLM_CXX_MODULE
 #	include <cstdlib>
 #	include <ctime>
 #	include <cassert>

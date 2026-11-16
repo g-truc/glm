@@ -3,7 +3,7 @@
 
 #include "../vector_relational.hpp"
 #include "_vectorize.hpp"
-#if !defined(GLM_CXX_MODULE)
+#ifndef GLM_CXX_MODULE
 #	include <limits>
 #	include <cmath>
 #	include <cassert>

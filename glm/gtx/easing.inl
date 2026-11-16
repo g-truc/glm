@@ -1,6 +1,6 @@
 /// @ref gtx_easing
 
-#if !defined(GLM_CXX_MODULE)
+#ifndef GLM_CXX_MODULE
 #	include <cmath>
 #endif
 
@@ -250,7 +250,7 @@ GLM_EXPORT namespace glm {
 		{
 			genType const Complementary = a - one<genType>();
 			genType const Two = static_cast<genType>(2);
-			
+
 			return glm::pow(Two, Complementary * static_cast<genType>(10));
 		}
 	}
@@ -356,7 +356,7 @@ GLM_EXPORT namespace glm {
 			genType m = n * n * z;
 			return x * m;
 		}
-		else 
+		else
 		{
 			n -= static_cast<genType>(2);
 			genType z = ((s + static_cast<genType>(1)) * n) + s;

@@ -3,7 +3,7 @@
 #include "type_mat4x4.hpp"
 #include "../geometric.hpp"
 #include "../simd/matrix.h"
-#if !defined(GLM_CXX_MODULE)
+#ifndef GLM_CXX_MODULE
 #	include <cstring>
 #endif
 

@@ -1,7 +1,7 @@
 /// @ref gtx_component_wise
 
 #include "../ext/scalar_common.hpp"
-#if !defined(GLM_CXX_MODULE)
+#ifndef GLM_CXX_MODULE
 #	include <limits>
 #	include <cmath>
 #endif

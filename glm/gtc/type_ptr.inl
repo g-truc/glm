@@ -1,6 +1,6 @@
 /// @ref gtc_type_ptr
 
-#if !defined(GLM_CXX_MODULE)
+#ifndef GLM_CXX_MODULE
 #	include <cstring>
 #endif
 
@@ -396,4 +396,3 @@ GLM_EXPORT namespace glm {
 
 	/// @}
 }//namespace glm
-

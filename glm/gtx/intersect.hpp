@@ -14,7 +14,7 @@
 #pragma once
 
 // Dependency:
-#if !defined(GLM_CXX_MODULE)
+#ifndef GLM_CXX_MODULE
 #	include <cfloat>
 #	include <limits>
 #endif

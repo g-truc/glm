@@ -1,7 +1,7 @@
 /// @ref gtx_dual_quaternion
 
 #include "../geometric.hpp"
-#if !defined(GLM_CXX_MODULE)
+#ifndef GLM_CXX_MODULE
 #	include <limits>
 #endif
 

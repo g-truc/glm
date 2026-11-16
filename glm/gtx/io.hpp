@@ -36,7 +36,7 @@
 #	pragma clang diagnostic ignored "-Wglobal-constructors"
 #endif
 
-#if !defined(GLM_CXX_MODULE)
+#ifndef GLM_CXX_MODULE
 #	include <iosfwd>
 #	include <locale>
 #	include <utility>

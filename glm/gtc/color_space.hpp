@@ -19,7 +19,7 @@
 #include "../exponential.hpp"
 #include "../vec3.hpp"
 #include "../vec4.hpp"
-#if !defined(GLM_CXX_MODULE)
+#ifndef GLM_CXX_MODULE
 #	include <limits>
 #endif
 

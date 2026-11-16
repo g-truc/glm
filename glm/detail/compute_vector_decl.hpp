@@ -1,6 +1,6 @@
 
 #pragma once
-#if !defined(GLM_CXX_MODULE)
+#ifndef GLM_CXX_MODULE
 #	include <functional>
 #endif
 #include "_vectorize.hpp"

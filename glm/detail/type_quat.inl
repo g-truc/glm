@@ -2,7 +2,7 @@
 #include "../exponential.hpp"
 #include "../ext/quaternion_common.hpp"
 #include "../ext/quaternion_geometric.hpp"
-#if !defined(GLM_CXX_MODULE)
+#ifndef GLM_CXX_MODULE
 #	include <limits>
 #endif
 

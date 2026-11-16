@@ -19,7 +19,7 @@
 #include "../gtc/type_precision.hpp"
 #include "../gtc/quaternion.hpp"
 #include "../gtx/dual_quaternion.hpp"
-#if !defined(GLM_CXX_MODULE)
+#ifndef GLM_CXX_MODULE
 #	include <string>
 #	include <cmath>
 #	include <cstring>

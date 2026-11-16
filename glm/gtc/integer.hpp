@@ -21,7 +21,7 @@
 #include "../exponential.hpp"
 #include "../ext/scalar_common.hpp"
 #include "../ext/vector_common.hpp"
-#if !defined(GLM_CXX_MODULE)
+#ifndef GLM_CXX_MODULE
 #	include <limits>
 #endif
 

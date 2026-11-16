@@ -1,6 +1,6 @@
 /// @ref gtx_pca
 
-#if !defined(GLM_CXX_MODULE)
+#ifndef GLM_CXX_MODULE
 #	include <algorithm>
 #	include <utility>
 #endif

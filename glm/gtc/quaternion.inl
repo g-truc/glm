@@ -2,7 +2,7 @@
 #include "../geometric.hpp"
 #include "../exponential.hpp"
 #include "epsilon.hpp"
-#if !defined(GLM_CXX_MODULE)
+#ifndef GLM_CXX_MODULE
 #	include <limits>
 #endif
 
@@ -206,4 +206,3 @@ GLM_EXPORT namespace glm {
 #if GLM_CONFIG_SIMD == GLM_ENABLE
 #	include "quaternion_simd.inl"
 #endif
-

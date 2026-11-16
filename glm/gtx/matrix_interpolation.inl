@@ -2,7 +2,7 @@
 
 #include "../ext/scalar_constants.hpp"
 
-#if !defined(GLM_CXX_MODULE)
+#ifndef GLM_CXX_MODULE
 #	include <limits>
 #endif
 

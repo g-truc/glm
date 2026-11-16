@@ -1,6 +1,6 @@
 /// @ref gtx_string_cast
 
-#if !defined(GLM_CXX_MODULE)
+#ifndef GLM_CXX_MODULE
 #	include <cstdarg>
 #	include <cstdio>
 #endif

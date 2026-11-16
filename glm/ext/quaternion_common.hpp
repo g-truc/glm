@@ -26,7 +26,7 @@
 #include "../common.hpp"
 #include "../trigonometric.hpp"
 #include "../exponential.hpp"
-#if !defined(GLM_CXX_MODULE)
+#ifndef GLM_CXX_MODULE
 #	include <limits>
 #endif
 

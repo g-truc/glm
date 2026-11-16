@@ -48,7 +48,7 @@
 #include "../mat4x2.hpp"
 #include "../mat4x3.hpp"
 #include "../mat4x4.hpp"
-#if !defined(GLM_CXX_MODULE)
+#ifndef GLM_CXX_MODULE
 #	include <cstring>
 #endif
 

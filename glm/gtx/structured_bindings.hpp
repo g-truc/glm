@@ -14,7 +14,7 @@
 
 #ifdef __cpp_structured_bindings
 #if __cpp_structured_bindings >= 201606L
-#if !defined(GLM_CXX_MODULE)
+#ifndef GLM_CXX_MODULE
 #	include <utility>
 #	include <cstddef>
 #endif

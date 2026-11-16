@@ -9,7 +9,7 @@
 #elif GLM_CONFIG_SWIZZLE == GLM_SWIZZLE_FUNCTION
 #	include "_swizzle_func.hpp"
 #endif
-#if !defined(GLM_CXX_MODULE)
+#ifndef GLM_CXX_MODULE
 #	include <cstddef>
 #endif
 

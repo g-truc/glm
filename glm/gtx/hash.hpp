@@ -56,7 +56,7 @@
 
 #if GLM_LANG & GLM_LANG_CXX11
 #define GLM_GTX_hash 1
-#if !defined(GLM_CXX_MODULE)
+#ifndef GLM_CXX_MODULE
 #	include <functional>
 #endif
 

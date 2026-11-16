@@ -19,7 +19,7 @@
 #include "../detail/_vectorize.hpp"
 #include "../vector_relational.hpp"
 #include "../common.hpp"
-#if !defined(GLM_CXX_MODULE)
+#ifndef GLM_CXX_MODULE
 #	include <limits>
 #endif
 

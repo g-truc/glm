@@ -8,7 +8,7 @@
 #	endif
 #endif
 
-#if !defined(GLM_CXX_MODULE)
+#ifndef GLM_CXX_MODULE
 #	include <cassert>
 #	include <cstddef>
 #	include <type_traits>
@@ -381,7 +381,7 @@ GLM_EXPORT namespace glm
 ///////////////////////////////////////////////////////////////////////////////////
 // uint
 
-#if !defined(GLM_CXX_MODULE)
+#ifndef GLM_CXX_MODULE
 #	include <cstdint>
 #endif
 

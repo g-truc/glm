@@ -8,7 +8,7 @@
 #include "../vec4.hpp"
 #include "../detail/type_half.hpp"
 #include "type_ptr.hpp"
-#if !defined(GLM_CXX_MODULE)
+#ifndef GLM_CXX_MODULE
 #	include <cstring>
 #	include <limits>
 #endif
@@ -951,4 +951,3 @@ namespace detail
 		return Unpack;
 	}
 }//namespace glm
-

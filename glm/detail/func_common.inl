@@ -8,7 +8,7 @@
 #include "type_vec3.hpp"
 #include "type_vec4.hpp"
 #include "_vectorize.hpp"
-#if !defined(GLM_CXX_MODULE)
+#ifndef GLM_CXX_MODULE
 #	include <limits>
 #endif
 

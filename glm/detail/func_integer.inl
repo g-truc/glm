@@ -7,7 +7,7 @@
 #	endif
 #	pragma intrinsic(_BitScanReverse)
 #endif//(GLM_ARCH & GLM_ARCH_X86 && GLM_COMPILER & GLM_COMPILER_VC)
-#if !defined(GLM_CXX_MODULE)
+#ifndef GLM_CXX_MODULE
 #	include <limits>
 #endif
 

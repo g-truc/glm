@@ -1,7 +1,7 @@
 /// @ref gtx_io
 /// @author Jan P Springer (regnirpsj@gmail.com)
 
-#if !defined(GLM_CXX_MODULE)
+#ifndef GLM_CXX_MODULE
 #	include <iomanip>
 #	include <ostream>
 #endif
@@ -452,4 +452,3 @@ namespace detail
 #if GLM_COMPILER & GLM_COMPILER_CLANG
 #	pragma clang diagnostic pop
 #endif
-

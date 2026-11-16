@@ -1,6 +1,6 @@
 /// @ref gtx_iteration
 /// @file glm/gtx/iteration.hpp
-/// 
+///
 /// @defgroup gtx_iteration GLM_GTX_iteration
 /// @ingroup gtx
 ///
@@ -20,7 +20,7 @@
 #	pragma message("GLM: GLM_GTX_iteration extension included")
 #endif
 
-#if !defined(GLM_CXX_MODULE)
+#ifndef GLM_CXX_MODULE
 #	include <iterator>
 #endif
 

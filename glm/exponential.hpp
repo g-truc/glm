@@ -18,7 +18,7 @@
 #include "detail/type_vec2.hpp"
 #include "detail/type_vec3.hpp"
 #include "detail/type_vec4.hpp"
-#if !defined(GLM_CXX_MODULE)
+#ifndef GLM_CXX_MODULE
 #	include <cmath>
 #endif
 

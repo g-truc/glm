@@ -5,7 +5,7 @@
 
 #include "type_vec2.hpp"
 #include "type_vec3.hpp"
-#if !defined(GLM_CXX_MODULE)
+#ifndef GLM_CXX_MODULE
 #	include <limits>
 #	include <cstddef>
 #endif

@@ -1,6 +1,6 @@
 /// @ref gtx_vector_query
 
-#if !defined(GLM_CXX_MODULE)
+#ifndef GLM_CXX_MODULE
 #	include <cassert>
 #endif
 

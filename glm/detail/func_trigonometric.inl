@@ -1,5 +1,5 @@
 #include "_vectorize.hpp"
-#if !defined(GLM_CXX_MODULE)
+#ifndef GLM_CXX_MODULE
 #	include <cmath>
 #	include <limits>
 #endif

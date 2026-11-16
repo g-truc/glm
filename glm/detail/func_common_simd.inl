@@ -5,7 +5,7 @@
 
 #include "../simd/common.h"
 
-#if !defined(GLM_CXX_MODULE)
+#ifndef GLM_CXX_MODULE
 #	include <immintrin.h>
 #endif
 

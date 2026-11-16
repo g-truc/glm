@@ -1,7 +1,7 @@
 /// @ref ext_vector_reciprocal
 
 #include "../trigonometric.hpp"
-#if !defined(GLM_CXX_MODULE)
+#ifndef GLM_CXX_MODULE
 #	include <limits>
 #endif
 

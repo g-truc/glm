@@ -21,7 +21,7 @@
 #include "../detail/qualifier.hpp"
 #include "../detail/_vectorize.hpp"
 #include "type_precision.hpp"
-#if !defined(GLM_CXX_MODULE)
+#ifndef GLM_CXX_MODULE
 #	include <limits>
 #endif
 

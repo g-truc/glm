@@ -1,6 +1,6 @@
 /// @ref gtx_exterior_product
 
-#if !defined(GLM_CXX_MODULE)
+#ifndef GLM_CXX_MODULE
 #	include <limits>
 #endif
 
@@ -25,4 +25,3 @@ namespace detail
 		return detail::compute_cross_vec2<T, Q, detail::is_aligned<Q>::value>::call(x, y);
 	}
 }//namespace glm
-

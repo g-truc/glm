@@ -7,7 +7,7 @@
 
 #include "../detail/type_float.hpp"
 #include "../ext/scalar_constants.hpp"
-#if !defined(GLM_CXX_MODULE)
+#ifndef GLM_CXX_MODULE
 #	include <cmath>
 #	include <cfloat>
 #endif
