@@ -21,7 +21,6 @@ module;
 export module glm;
 
 import std;
-import std.compat;
 
 #include "./glm.hpp"
 #include "./ext.hpp"
