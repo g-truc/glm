@@ -1,6 +1,4 @@
-set(SAMPLE_NAME test-module)
 add_executable(test-module module.cpp)
-
 add_test(
 	NAME test-module
 	COMMAND $<TARGET_FILE:test-module>)
