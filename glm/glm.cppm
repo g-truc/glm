@@ -1,6 +1,9 @@
 module;
 
 #include <cassert>
+#include <cmath>
+#include <cstdarg>
+#include <cstdio>
 
 #include "./simd/platform.h"
 
