@@ -297,6 +297,17 @@ static int test_operators()
 	}
 
 	{
+		glm::ivec4 A(6);
+		A %= 4;
+		A |= glm::ivec1(1);
+		A &= glm::ivec4(2);
+		A ^= 3;
+		A <<= glm::ivec1(2);
+		A >>= glm::ivec4(1);
+		Error += A == glm::ivec4(2) ? 0 : 1;
+	}
+
+	{
 		glm::vec4 const A(1.0f, 2.0f, 3.0f, 4.0f);
 		glm::vec4 const B(4.0f, 5.0f, 6.0f, 7.0f);
 
